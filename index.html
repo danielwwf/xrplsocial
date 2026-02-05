@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{x} XRPL Spaces</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.62);
+      --accent: #7c5cff;
+      --shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      margin: 0;
+      padding: 22px;
+      background: #000;
+      color: var(--text);
+    }
+
+    .container { width: min(92vw, 980px); margin: 0 auto; }
+
+    h1 { margin: 0 0 4px 0; letter-spacing: -0.02em; font-size: 28px; }
+    .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .row { display:flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+
+    .badge {
+      display:inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(124,92,255,0.18);
+      border: 1px solid rgba(124,92,255,0.30);
+      color: rgba(255,255,255,0.88);
+      font-size: 12px;
+    }
+
+    a { color: rgba(124,92,255,0.95); text-decoration:none; }
+    a:hover { text-decoration: underline; }
+
+    .events { margin-top: 10px; }
+
+    .event {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 0;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 12px;
+    }
+    .event:first-child { border-top: none; }
+
+    .when { color: var(--muted); font-size: 13px; line-height: 1.3; }
+    .title { font-size: 15px; font-weight: 600; line-height: 1.25; }
+    .meta { color: var(--muted); font-size: 12px; margin-top: 6px; display:flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn {
+      display:inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      text-decoration:none;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .btn:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.20); }
+
+    @media (max-width: 700px) {
+      .event { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="container">
+    <div class="row" style="margin-bottom: 10px;">
+      <div>
+        <h1>{x} XRPL Spaces</h1>
+        <div class="sub">To get your Space listed, simply mention <a href="https://x.com/herbertxrpl" target="_blank">@HerbertXRPL</a> on a Space announcement on x.com (<a href="#" id="exampleLink">example</a>). <span class="badge">Updated: 2026-02-05T14:37:22Z</span></div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <div class="sub" style="margin:0">Showing next 7 days (max 100 events).</div>
+        <div class="sub" style="margin:0">Total: <span class="badge">2</span></div>
+      </div>
+
+      <div class="events">
+        
+
+        
+          <div class="event">
+            <div class="when">
+              <div><b>2026-02-05T14:00:00Z</b></div>
+              <div><a href="https://x.com/Stone_XRPL" target="_blank">@Stone_XRPL</a></div>
+            </div>
+            <div>
+              <div class="title">Coffee &amp; Crypto with Stone, Lady K and sometimes Opti -HBAR Thursday</div>
+              <div class="meta">
+                <span><a href="https://x.com/i/spaces/1BdxYZEPDlYKX" target="_blank">Space</a></span>
+                </div>
+            </div>
+          </div>
+        
+          <div class="event">
+            <div class="when">
+              <div><b>2026-02-05T16:00:09Z</b></div>
+              <div><a href="https://x.com/CasinoCoin" target="_blank">@CasinoCoin</a></div>
+            </div>
+            <div>
+              <div class="title">🎙️@CasinoCoin 🔜 @LuckyHashWin: The Transition</div>
+              <div class="meta">
+                <span><a href="https://x.com/i/spaces/1jMJgRmBqdqGL" target="_blank">Space</a></span>
+                </div>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Example modal -->
+  <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); align-items:center; justify-content:center; padding:24px; z-index:9999;">
+    <div style="max-width:900px; width:100%;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <div class="badge">Example</div>
+        <a class="btn" href="#" id="modalClose">Close</a>
+      </div>
+      <div class="card" style="padding:10px;">
+        <img src="/static/example.jpg" alt="Example" style="width:100%; height:auto; border-radius:10px; display:block;" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const exampleLink = document.getElementById('exampleLink');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(e){ if(e) e.preventDefault(); modal.style.display='flex'; }
+    function closeModal(e){ if(e) e.preventDefault(); modal.style.display='none'; }
+
+    if(exampleLink) exampleLink.addEventListener('click', openModal);
+    if(modalClose) modalClose.addEventListener('click', closeModal);
+    if(modal) modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(e); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(e); });
+  </script>
+
+
+  <div style="text-align:center; color: var(--muted); font-size: 12px; padding: 10px 0 2px;">
+    Vibecoded with tokens by <a href="https://x.com/herbertxrpl" target="_blank">Herbert</a>
+  </div>
+
+</body>
+</html>
