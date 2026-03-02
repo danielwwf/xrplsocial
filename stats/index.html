@@ -354,7 +354,7 @@
         branches.sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
 
         html += `
-          <div class="card amendment-card" data-days="${days}">
+          <div class="card amendment-card" data-days="${days !== null ? days : 999}">
             <div class="amendment-header">
               <div>
                 <div class="amendment-title">${type}</div>
@@ -364,22 +364,24 @@
             </div>
             
             <div class="meta-row">
-              <div class="meta-item">📅 Last commit: ${days === 0 ? 'today' : days + ' days ago'}</div>
+              <div class="meta-item">📅 Last commit: ${days !== null ? (days === 0 ? 'today' : days + ' days ago') : 'unknown'}</div>
             </div>
 
             <div class="contributor-list">
               ${Array.from(allContributors.entries()).map(([email, name]) => `
-                <span class="contributor" title="${email}">${name}</span>
+                <span class="contributor" title="${email}">${name || email.split('@')[0]}</span>
               `).join('')}
             </div>
 
             <div class="branch-list">
-              ${branches.map(b => `
+              ${branches.map(b => {
+                const bDays = daysAgo(b.last_commit?.date);
+                return `
                 <div class="branch-item">
                   <span class="branch-name">${b.name}</span>
-                  <span>${daysAgo(b.last_commit?.date) === 0 ? 'today' : daysAgo(b.last_commit?.date) + 'd ago'}</span>
+                  <span>${bDays !== null ? (bDays === 0 ? 'today' : bDays + 'd ago') : 'unknown'}</span>
                 </div>
-              `).join('')}
+              `}).join('')}
             </div>
           </div>
         `;
