@@ -310,7 +310,11 @@
     }
 
     function renderAmendments(data) {
-      const branches = data.branches || [];
+      const branches = data?.branches || [];
+      
+      if (branches.length === 0) {
+        return '<div class="card" style="text-align: center; padding: 40px;"><p>No branches found in data.</p></div>';
+      }
       
       // Group by amendment
       const byAmendment = {};
@@ -590,18 +594,39 @@
       });
     }
 
-    // Initialize
+    // Initialize with better error handling
     fetchStats()
       .then(data => {
+        console.log('Fetched data:', data);
+        
+        if (!data || !data.branches) {
+          throw new Error('Invalid data structure: missing branches array');
+        }
+        
+        if (data.branches.length === 0) {
+          document.getElementById('stats-container').innerHTML = `
+            <div class="card" style="text-align: center; padding: 40px;">
+              <p style="color: var(--muted);">No branch data available yet.</p>
+              <p style="font-size: 12px; margin-top: 10px;">Last update: ${data.generated_at || 'unknown'}</p>
+              <button onclick="location.reload()" class="filter-btn" style="margin-top: 20px;">Reload</button>
+            </div>
+          `;
+          document.getElementById('last-updated').textContent = 'Updated: ' + formatDate(data.generated_at);
+          setupTabs();
+          return;
+        }
+        
         allData = data;
         document.getElementById('last-updated').textContent = 'Updated: ' + formatDate(data.generated_at);
         setupTabs();
         renderContent();
       })
       .catch(err => {
+        console.error('Error loading stats:', err);
         document.getElementById('stats-container').innerHTML = `
-          <div class="card error">
+          <div class="card error" style="text-align: center; padding: 40px;">
             <p>Failed to load stats: ${err.message}</p>
+            <button onclick="location.reload()" class="filter-btn" style="margin-top: 20px;">Try Again</button>
           </div>
         `;
       });
