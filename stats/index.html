@@ -255,6 +255,28 @@
   </div>
 
   <script>
+    // Helper: Extract GitHub username from branch name or email
+    function extractUsername(nameOrEmail) {
+      if (!nameOrEmail) return null;
+      // Branch format: "username/branch-name" → return username
+      if (nameOrEmail.includes('/')) {
+        return nameOrEmail.split('/')[0];
+      }
+      // Email format: "user@example.com" → return user
+      if (nameOrEmail.includes('@')) {
+        return nameOrEmail.split('@')[0];
+      }
+      return nameOrEmail;
+    }
+
+    // Helper: Create GitHub links
+    function githubLink(type, value) {
+      if (!value) return '#';
+      if (type === 'branch') return `https://github.com/XRPLF/rippled/tree/${value}`;
+      if (type === 'user') return `https://github.com/${value}`;
+      return '#';
+    }
+
     let allData = null;
     let currentTab = 'amendments';
 
@@ -372,9 +394,10 @@
             </div>
 
             <div class="contributor-list">
-              ${Array.from(allContributors.entries()).map(([email, name]) => `
-                <span class="contributor" title="${email}">${name || email.split('@')[0]}</span>
-              `).join('')}
+              ${Array.from(allContributors.entries()).map(([email, name]) => {
+                const username = extractUsername(email) || name;
+                return `<a href="${githubLink('user', username)}" target="_blank" class="contributor" title="${email}" style="text-decoration: none;">@${username}</a>`;
+              }).join('')}
             </div>
 
             <div class="branch-list">
@@ -382,7 +405,8 @@
                 const bDays = daysAgo(b.last_commit?.date);
                 return `
                 <div class="branch-item">
-                  <span class="branch-name">${b.name}</span>
+                  <a href="${githubLink('branch', b.name)}" target="_blank" class="branch-name" style="text-decoration: none; color: var(--text);"
+>${b.name}</a>
                   <span>${bDays !== null ? (bDays === 0 ? 'today' : bDays + 'd ago') : 'unknown'}</span>
                 </div>
               `}).join('')}
@@ -397,6 +421,20 @@
 
     function renderPeople(data) {
       const contributors = data.contributors || [];
+      const branches = data.branches || [];
+      
+      // Build amendment activity per person
+      const personAmendments = {};
+      branches.forEach(b => {
+        const amendment = classifyBranch(b.name);
+        (b.contributors || []).forEach(c => {
+          const username = extractUsername(c.email) || c.name;
+          if (!personAmendments[username]) {
+            personAmendments[username] = new Set();
+          }
+          personAmendments[username].add(amendment);
+        });
+      });
       
       let html = `
         <div class="filter-bar">
@@ -406,26 +444,40 @@
       `;
 
       contributors.slice(0, 100).forEach(person => {
-        const initials = person.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        const username = extractUsername(person.email) || person.name;
+        const initials = username.slice(0, 2).toUpperCase();
         const daysSince = person.last_active ? daysAgo(person.last_active) : null;
+        const amendments = Array.from(personAmendments[username] || []);
         
         html += `
           <div class="card">
             <div class="person-card">
               <div class="person-avatar">${initials}</div>
               <div class="person-info">
-                <div class="person-name">${person.name}</div>
+                <a href="${githubLink('user', username)}" target="_blank" class="person-name" style="color: var(--accent); text-decoration: none;">
+                  @${username}
+                </a>
                 <div class="person-meta">
                   ${person.commits} commits • ${person.branches.length} branches
                   ${daysSince !== null ? `• Last active ${daysSince}d ago` : ''}
                 </div>
               </div>
             </div>            
-            <div class="contributor-list" style="margin-top: 12px;">
-              ${person.branches.slice(0, 15).map(b => `
-                <span class="contributor">${b}</span>
+            
+            ${amendments.length > 0 ? `
+              <div style="margin-top: 10px; font-size: 11px; color: var(--muted);">Works on:</div>
+              <div class="contributor-list" style="margin-top: 6px;">
+                ${amendments.slice(0, 6).map(a => `
+                  <span class="contributor">${a}</span>
+                `).join('')}
+              </div>
+            ` : ''}
+            
+            <div class="contributor-list" style="margin-top: 8px; max-height: 100px;">
+              ${person.branches.slice(0, 10).map(b => `
+                <a href="${githubLink('branch', b)}" target="_blank" class="contributor" style="text-decoration: none;">${b}</a>
               `).join('')}
-              ${person.branches.length > 15 ? `<span class="contributor">+${person.branches.length - 15} more</span>` : ''}
+              ${person.branches.length > 10 ? `<span class="contributor">+${person.branches.length - 10}</span>` : ''}
             </div>
           </div>
         `;
@@ -455,7 +507,7 @@
         html += `
           <div class="branch-item" style="padding: 10px 0;">
             <div style="display: flex; align-items: center; gap: 12px;">
-              <span class="branch-name">${b.name}</span>
+              <a href="${githubLink('branch', b.name)}" target="_blank" class="branch-name" style="text-decoration: none; color: var(--text);">${b.name}</a>
               <span class="badge ${status.class}" style="font-size: 10px;">${status.label}</span>
             </div>
             <div style="text-align: right; font-size: 12px;">
@@ -479,24 +531,50 @@
       const recentBranches = branches.filter(b => daysAgo(b.last_commit?.date) <= 30);
       const dormantBranches = branches.filter(b => daysAgo(b.last_commit?.date) > 90);
       
+      // Top contributor with proper username
       const topContributor = contributors[0];
+      const topUsername = topContributor ? (extractUsername(topContributor.email) || topContributor.name) : 'Unknown';
       
-      // Most active amendment
+      // Amendment activity with contributor counts
       const byAmendment = {};
       branches.forEach(b => {
         const type = classifyBranch(b.name);
-        if (!byAmendment[type]) byAmendment[type] = { count: 0, last: 0 };
+        if (!byAmendment[type]) {
+          byAmendment[type] = { count: 0, last: 999, contributors: new Set() };
+        }
         byAmendment[type].count++;
         const days = daysAgo(b.last_commit?.date);
-        if (days < byAmendment[type].last || byAmendment[type].last === 0) {
+        if (days < byAmendment[type].last) {
           byAmendment[type].last = days;
         }
+        // Count unique contributors
+        (b.contributors || []).forEach(c => {
+          byAmendment[type].contributors.add(extractUsername(c.email) || c.name);
+        });
       });
       
-      const mostActiveAmendment = Object.entries(byAmendment)
-        .sort((a, b) => a[1].last - b[1].last)[0];
+      // Sort amendments by activity (most recent first)
+      const sortedAmendments = Object.entries(byAmendment)
+        .sort((a, b) => a[1].last - b[1].last)
+        .slice(0, 5);
+      
+      // Find "Amendment Champions" - top contributor per amendment
+      const champions = {};
+      sortedAmendments.forEach(([type, data]) => {
+        // Find most active contributor for this amendment
+        const contribs = {};
+        branches.filter(b => classifyBranch(b.name) === type).forEach(b => {
+          (b.contributors || []).forEach(c => {
+            const u = extractUsername(c.email) || c.name;
+            contribs[u] = (contribs[u] || 0) + 1;
+          });
+        });
+        const top = Object.entries(contribs).sort((a, b) => b[1] - a[1])[0];
+        champions[type] = top ? top[0] : 'Unknown';
+      });
 
       return `
+        <!-- Overview Stats -->
         <div class="grid grid-3" style="margin-bottom: 20px;">
           <div class="card">
             <div class="stat-row">
@@ -518,23 +596,71 @@
           </div>
         </div>
 
+        <!-- Hot Amendments (Non-Techie Friendly) -->
+        <div class="card" style="margin-bottom: 20px;">
+          <h3 style="margin: 0 0 16px; font-size: 18px;">🔥 Hot Amendments — Where the Action Is</h3>
+          <p style="color: var(--muted); font-size: 13px; margin: -10px 0 16px;">
+            These amendments have the most recent activity. Click a name to see who's working on it.
+          </p>
+          
+          ${sortedAmendments.map(([type, data], idx) => {
+            const days = data.last;
+            const status = days <= 7 ? '🔥 Very Active' : days <= 30 ? '📅 Active' : '💤 Quiet';
+            return `
+              <div style="padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); ${idx === sortedAmendments.length-1 ? 'border-bottom: none;' : ''}">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                  <div>
+                    <div style="font-weight: 500; font-size: 15px;">${type}</div>
+                    <div style="font-size: 12px; color: var(--muted); margin-top: 4px;">
+                      ${data.count} branches • ${data.contributors.size} people working on it
+                    </div>
+                  </div>
+                  <div style="text-align: right;">
+                    <span class="badge ${days <= 7 ? 'badge-active' : days <= 30 ? 'badge-stale' : 'badge-dormant'}" 
+                          style="font-size: 11px;">
+                      ${days === 0 ? 'today' : days + ' days ago'}
+                    </span>
+                    <div style="font-size: 11px; color: var(--accent); margin-top: 6px;">
+                      🏆 Led by <a href="${githubLink('user', champions[type])}" target="_blank" style="color: var(--accent);">@${champions[type]}</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="contributor-list" style="margin-top: 10px;">
+                  ${Array.from(data.contributors).slice(0, 8).map(c => `
+                    <a href="${githubLink('user', c)}" target="_blank" class="contributor" style="font-size: 11px; text-decoration: none;">@${c}</a>
+                  `).join('')}
+                  ${data.contributors.size > 8 ? `<span class="contributor" style="font-size: 11px;">+${data.contributors.size - 8}</span>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Top Contributors -->
         <div class="grid grid-2">
           <div class="card">
             <h3 style="margin: 0 0 12px; font-size: 16px;">👑 Top Contributor</h3>
             <div class="person-card">
-              <div class="person-avatar">${topContributor?.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2) || '?'}</div>
+              <div class="person-avatar">${topUsername.slice(0, 2).toUpperCase()}</div>
               <div class="person-info">
-                <div class="person-name">${topContributor?.name || 'Unknown'}</div>
+                <a href="${githubLink('user', topUsername)}" target="_blank" class="person-name" style="color: var(--accent); text-decoration: none;">
+                  @${topUsername}
+                </a>
                 <div class="person-meta">${topContributor?.commits || 0} commits across ${topContributor?.branches?.length || 0} branches</div>
               </div>
             </div>
           </div>
 
           <div class="card">
-            <h3 style="margin: 0 0 12px; font-size: 16px;">🔥 Most Active Amendment</h3>
-            <div class="amendment-title">${mostActiveAmendment?.[0] || 'Unknown'}</div>
-            <div class="amendment-branch" style="margin-top: 4px;">
-              ${mostActiveAmendment?.[1]?.count || 0} branches • Last activity: ${mostActiveAmendment?.[1]?.last === 0 ? 'today' : mostActiveAmendment?.[1]?.last + ' days ago'}
+            <h3 style="margin: 0 0 12px; font-size: 16px;">📊 Quick Stats</h3>
+            <div style="font-size: 13px; line-height: 1.8;">
+              <div>🔥 <strong>${sortedAmendments.length}</strong> amendments currently active</div>
+              <div>👥 <strong>${contributors.length}</strong> total contributors</div>
+              <div>🌿 <strong>${branches.length}</strong> feature branches</div>
+              <div style="margin-top: 8px; color: var(--muted); font-size: 12px;">
+                Last updated: ${formatDate(data.generated_at)}
+              </div>
             </div>
           </div>
         </div>
