@@ -33,22 +33,13 @@
         h1 { font-size: 28px; margin-bottom: 4px; }
         .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
         
-        /* Navigation */
-        .nav { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .nav { display: flex; gap: 8px; margin-bottom: 20px; }
         .nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
         .nav a:hover, .nav a.active { color: var(--accent); }
         
-        /* Search Bar */
-        .search-bar {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
+        .search-bar { margin-bottom: 20px; }
         .search-input {
-            flex: 1;
-            min-width: 250px;
+            width: 100%;
             padding: 12px 16px;
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -56,13 +47,8 @@
             color: var(--text);
             font-size: 14px;
         }
+        .search-input:focus { outline: none; border-color: var(--accent); }
         
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-        
-        /* Info Box */
         .info-box {
             background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(124,92,255,0.05));
             border: 1px solid var(--accent);
@@ -74,8 +60,7 @@
         .info-box p { color: var(--muted); font-size: 13px; }
         .info-box a { color: var(--accent); }
         
-        /* Tabs */
-        .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+        .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
         .tab { 
             padding: 12px 20px; 
             cursor: pointer; 
@@ -86,17 +71,16 @@
         .tab:hover { color: var(--text); }
         .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
         
-        /* Grid */
         .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
         @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
         
-        /* Cards */
         .card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 16px;
             transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
         }
         .card:hover { transform: translateY(-2px); background: var(--card-hover); }
         .card.hidden { display: none !important; }
@@ -114,7 +98,6 @@
         
         .card-meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
         
-        /* Badges */
         .badge {
             display: inline-block;
             padding: 4px 12px;
@@ -126,7 +109,6 @@
         .badge-recent { background: rgba(251,191,36,0.2); color: var(--warning); }
         .badge-dormant { background: rgba(248,113,113,0.2); color: #f87171; }
         
-        /* Contributors */
         .contributors {
             display: flex;
             flex-wrap: wrap;
@@ -143,9 +125,8 @@
             color: var(--text);
             transition: background 0.2s;
         }
-        .contributor:hover { background: rgba(124,92,255,0.3); color: var(--accent-light); }
+        .contributor:hover { background: rgba(124,92,255,0.3); }
         
-        /* Branches list */
         .branches {
             margin-top: 12px;
             max-height: 150px;
@@ -164,10 +145,142 @@
         .branch a:hover { color: var(--accent); }
         .branch span { color: var(--muted); }
         
-        /* Loading */
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h2 { margin: 0; }
+        
+        .close-btn {
+            background: var(--border);
+            border: none;
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .close-btn:hover { background: var(--accent); }
+        
+        .section { margin-bottom: 24px; }
+        .section h3 {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .contributor-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .contributor-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .contributor-info { flex: 1; }
+        .contributor-name {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contributor-name:hover { text-decoration: underline; }
+        .contributor-meta {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+        
+        .branch-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        
+        .branch-tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .branch-tag:hover {
+            background: rgba(124,92,255,0.2);
+            color: var(--accent-light);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        
+        .timeline-date {
+            color: var(--muted);
+            min-width: 60px;
+            font-size: 12px;
+        }
+        
+        .timeline-author {
+            color: var(--accent);
+        }
+        
+        .timeline-message {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
         .loading { text-align: center; padding: 60px; color: var(--muted); }
         
-        /* Footer */
         .footer {
             text-align: center;
             padding: 40px 20px;
@@ -176,9 +289,8 @@
         }
         .footer a { color: var(--accent); }
         
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
     </style>
 </head>
@@ -195,6 +307,7 @@
         <div class="tabs">
             <div class="tab active" onclick="switchTab('amendments')">📦 By Amendment</div>
             <div class="tab" onclick="switchTab('people')">👥 By Person</div>
+            <div class="tab" onclick="switchTab('branches')">🌿 All Branches</div>
             <div class="tab" onclick="switchTab('insights')">💡 Insights</div>
         </div>
         
@@ -204,7 +317,7 @@
         
         <div class="info-box">
             <h3>❓ What are XRPL Amendments?</h3>
-            <p>Amendments are <strong>proposed changes</strong> to the XRP Ledger protocol. Each card shows who's working on what. <a href="https://xrpl.org/amendments.html" target="_blank">Learn more →</a></p>
+            <p>Amendments are <strong>proposed changes</strong> to the XRP Ledger protocol. Each card shows who's working on what. <strong>Click any card</strong> for detailed view. <a href="https://xrpl.org/amendments.html" target="_blank">Learn more →</a></p>
         </div>
         
         <div id="content">
@@ -222,9 +335,9 @@
         let currentTab = 'amendments';
         
         const AMENDMENTS = [
-            { pattern: /batch/i, name: '📦 Batch Transactions', docs: 'https://xrpl.org/batch-transactions.html' },
-            { pattern: /amm/i, name: '💰 AMM (Automated Market Maker)', docs: 'https://xrpl.org/amm.html' },
-            { pattern: /did/i, name: '🆔 DID (Decentralized Identity)', docs: 'https://xrpl.org/did.html' },
+            { pattern: /batch|lending/i, name: '📦 Batch Transactions', docs: 'https://xrpl.org/batch-transactions.html' },
+            { pattern: /amm|xls-?30/i, name: '💰 AMM (Automated Market Maker)', docs: 'https://xrpl.org/amm.html' },
+            { pattern: /did|decentralized.id/i, name: '🆔 DID (Decentralized Identity)', docs: 'https://xrpl.org/did.html' },
             { pattern: /nft/i, name: '🎨 NFTs', docs: 'https://xrpl.org/nftokens.html' },
             { pattern: /clawback/i, name: '👋 Clawback', docs: 'https://xrpl.org/clawback.html' },
             { pattern: /bridge/i, name: '🔗 Cross-chain Bridges' },
@@ -268,7 +381,6 @@
             return email.split('@')[0];
         }
         
-        // Fetch data
         fetch('./data/branches.json')
             .then(r => r.json())
             .then(d => {
@@ -298,14 +410,9 @@
             }
             
             cards.forEach(card => {
-                // Get all text content from the card
                 const text = card.innerText.toLowerCase();
-                // Also check individual data attributes if they exist
-                const searchText = text + ' ' + (card.dataset.searchTerms || '');
-                
-                // Check if query matches any part
-                const match = searchText.includes(query);
-                card.classList.toggle('hidden', !match);
+                const shouldShow = text.includes(query);
+                card.classList.toggle('hidden', !shouldShow);
             });
         }
         
@@ -314,20 +421,22 @@
             
             if (currentTab === 'amendments') renderAmendments();
             else if (currentTab === 'people') renderPeople();
+            else if (currentTab === 'branches') renderAllBranches();
             else renderInsights();
         }
         
         function renderAmendments() {
-            // Group by amendment
             const groups = {};
             data.branches.forEach(b => {
                 const a = classify(b.name);
-                if (!groups[a.name]) groups[a.name] = { amendment: a, branches: [], contributors: new Set() };
+                if (!groups[a.name]) groups[a.name] = { amendment: a, branches: [], contributors: new Map() };
                 groups[a.name].branches.push(b);
-                (b.contributors || []).forEach(c => groups[a.name].contributors.add(extractUser(c.email)));
+                (b.contributors || []).forEach(c => {
+                    const u = extractUser(c.email);
+                    groups[a.name].contributors.set(u, (groups[a.name].contributors.get(u) || 0) + 1);
+                });
             });
             
-            // Sort by activity
             const sorted = Object.entries(groups).sort((a, b) => {
                 const aLatest = Math.max(...a[1].branches.map(b => new Date(b.last_commit?.date || 0)));
                 const bLatest = Math.max(...b[1].branches.map(b => new Date(b.last_commit?.date || 0)));
@@ -340,37 +449,31 @@
                 const latest = Math.max(...info.branches.map(b => new Date(b.last_commit?.date || 0)));
                 const days = daysAgo(latest);
                 const status = getStatus(days);
+                const sortedContributors = Array.from(info.contributors.entries()).sort((a, b) => b[1] - a[1]);
                 
                 html += `
-                    <div class="card" data-searchable>
+                    <div class="card" data-searchable onclick="showModal('${name.replace(/'/g, "\\'")}')">
                         <div class="card-header">
                             <div>
-                                <div class="card-title">
-                                    <a href="${info.amendment.docs || '#' }" target="_blank">${name}</a>
-                                </div>
+                                <div class="card-title">${name}</div>
                                 <div class="card-meta">${info.branches.length} branches • ${info.contributors.size} contributors</div>
                             </div>
                             <span class="badge ${status.class}">${status.label}</span>
                         </div>
                         
                         <div class="contributors">
-                            ${Array.from(info.contributors).slice(0, 15).map(u => 
-                                `<a href="${githubUrl('user', u)}" class="contributor" target="_blank">@${u}</a>`
+                            ${sortedContributors.slice(0, 12).map(([u, count]) => 
+                                `<span class="contributor">@${u} (${count})</span>`
                             ).join('')}
-                            ${info.contributors.size > 15 ? `<span class="contributor">+${info.contributors.size - 15}</span>` : ''}
+                            ${info.contributors.size > 12 ? `<span class="contributor">+${info.contributors.size - 12}</span>` : ''}
                         </div>
                         
                         <div class="branches">
-                            ${info.branches.slice(0, 5).map(b => {
+                            ${info.branches.slice(0, 4).map(b => {
                                 const d = daysAgo(b.last_commit?.date);
-                                return `
-                                    <div class="branch">
-                                        <a href="${githubUrl('branch', b.name)}" target="_blank">${b.name}</a>
-                                        <span>${d === 0 ? 'today' : d + 'd ago'}</span>
-                                    </div>
-                                `;
+                                return `<div class="branch"><span>${b.name}</span><span>${d === 0 ? 'today' : d + 'd ago'}</span></div>`;
                             }).join('')}
-                            ${info.branches.length > 5 ? `<div class="branch" style="color:var(--muted);">+${info.branches.length - 5} more branches</div>` : ''}
+                            ${info.branches.length > 4 ? `<div class="branch" style="color:var(--muted);">+${info.branches.length - 4} more...</div>` : ''}
                         </div>
                     </div>
                 `;
@@ -386,13 +489,14 @@
             data.branches.forEach(b => {
                 (b.contributors || []).forEach(c => {
                     const u = extractUser(c.email);
-                    if (!people[u]) people[u] = { name: c.name, branches: new Set(), amendments: new Set() };
+                    if (!people[u]) people[u] = { name: c.name, branches: new Set(), amendments: new Set(), commitCount: 0 };
                     people[u].branches.add(b.name);
                     people[u].amendments.add(classify(b.name).name);
+                    people[u].commitCount++;
                 });
             });
             
-            const sorted = Object.entries(people).sort((a, b) => b[1].branches.size - a[1].branches.size);
+            const sorted = Object.entries(people).sort((a, b) => b[1].commitCount - a[1].commitCount);
             
             let html = '<div class="grid">';
             
@@ -402,15 +506,17 @@
                         <div class="card-header">
                             <div>
                                 <div class="card-title"><a href="${githubUrl('user', username)}" target="_blank">@${username}</a></div>
-                                <div class="card-meta">${info.branches.size} branches • ${info.amendments.size} amendments</div>
+                                <div class="card-meta">${info.commitCount} commits • ${info.branches.size} branches • ${info.amendments.size} amendments</div>
                             </div>
                         </div>
+                        
                         <div class="contributors">
                             ${Array.from(info.amendments).slice(0, 6).map(a => `<span class="contributor">${a}</span>`).join('')}
                         </div>
+                        
                         <div class="branches">
-                            ${Array.from(info.branches).slice(0, 8).map(b => `<div class="branch"><a href="${githubUrl('branch', b)}" target="_blank">${b}</a></div>`).join('')}
-                            ${info.branches.size > 8 ? `<div style="color:var(--muted);font-size:12px;">+${info.branches.size - 8} more</div>` : ''}
+                            ${Array.from(info.branches).slice(0, 6).map(b => `<div class="branch"><a href="${githubUrl('branch', b)}" target="_blank">${b}</a></div>`).join('')}
+                            ${info.branches.size > 6 ? `<div style="color:var(--muted);font-size:12px;">+${info.branches.size - 6} more</div>` : ''}
                         </div>
                     </div>
                 `;
@@ -420,48 +526,223 @@
             document.getElementById('content').innerHTML = html;
         }
         
+        function renderAllBranches() {
+            const sorted = [...data.branches].sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
+            
+            let html = '<div class="grid" style="grid-template-columns: 1fr;">';
+            
+            html += `<div class="card" data-searchable><div class="branches" style="max-height: none;">`;
+            
+            sorted.forEach(b => {
+                const d = daysAgo(b.last_commit?.date);
+                const contribCount = (b.contributors || []).length;
+                html += `
+                    <div class="branch" style="padding: 10px 0;">
+                        <div>
+                            <a href="${githubUrl('branch', b.name)}" target="_blank" style="font-size: 14px;">${b.name}</a>
+                            <span style="color: var(--muted); font-size: 11px; margin-left: 8px;">${contribCount} contributors</span>
+                        </div>
+                        <span>${d === 0 ? 'today' : d + 'd ago'}</span>
+                    </div>
+                `;
+            });
+            
+            html += '</div></div></div>';
+            document.getElementById('content').innerHTML = html;
+        }
+        
         function renderInsights() {
             const active = data.branches.filter(b => daysAgo(b.last_commit?.date) <= 7).length;
             const recent = data.branches.filter(b => daysAgo(b.last_commit?.date) <= 30).length;
             
-            // Top contributor
-            const contribCounts = {};
+            // Calculate contributor stats
+            const contribStats = {};
             data.branches.forEach(b => {
                 (b.contributors || []).forEach(c => {
                     const u = extractUser(c.email);
-                    contribCounts[u] = (contribCounts[u] || 0) + 1;
+                    if (!contribStats[u]) contribStats[u] = { commits: 0, branches: new Set() };
+                    contribStats[u].commits++;
+                    contribStats[u].branches.add(b.name);
                 });
             });
-            const top = Object.entries(contribCounts).sort((a, b) => b[1] - a[1])[0];
             
-            document.getElementById('content').innerHTML = `
-                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-                    <div class="card" data-searchable style="text-align:center;">
-                        <div style="font-size:32px;font-weight:700;color:var(--success);">${active}</div>
-                        <div style="color:var(--muted);">Active Branches (7d)</div>
+            const sortedContrib = Object.entries(contribStats).sort((a, b) => b[1].commits - a[1].commits);
+            const topContrib = sortedContrib[0];
+            
+            // Hot amendments (most recent activity)
+            const amendActivity = {};
+            data.branches.forEach(b => {
+                const a = classify(b.name).name;
+                if (!amendActivity[a]) amendActivity[a] = { count: 0, last: 0, contributors: new Set() };
+                amendActivity[a].count++;
+                const days = daysAgo(b.last_commit?.date) || 999;
+                if (days < amendActivity[a].last) amendActivity[a].last = days;
+                (b.contributors || []).forEach(c => amendActivity[a].contributors.add(extractUser(c.email)));
+            });
+            
+            const hotAmendments = Object.entries(amendActivity)
+                .sort((a, b) => a[1].last - b[1].last)
+                .slice(0, 5);
+            
+            let html = `
+                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); margin-bottom: 20px;">
+                    <div class="card" data-searchable style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--success);">${active}</div>
+                        <div style="color: var(--muted);">Active (7d)</div>
                     </div>
-                    <div class="card" data-searchable style="text-align:center;">
-                        <div style="font-size:32px;font-weight:700;color:var(--warning);">${recent}</div>
-                        <div style="color:var(--muted);">Recent Branches (30d)</div>
+                    <div class="card" data-searchable style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--warning);">${recent}</div>
+                        <div style="color: var(--muted);">Recent (30d)</div>
                     </div>
-                    <div class="card" data-searchable style="text-align:center;">
-                        <div style="font-size:32px;font-weight:700;color:var(--accent);">${data.branches.length}</div>
-                        <div style="color:var(--muted);">Total Branches</div>
+                    <div class="card" data-searchable style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--accent);">${data.branches.length}</div>
+                        <div style="color: var(--muted);">Total Branches</div>
                     </div>
-                    <div class="card" data-searchable style="text-align:center;">
-                        <div style="font-size:32px;font-weight:700;color:var(--accent);">${Object.keys(contribCounts).length}</div>
-                        <div style="color:var(--muted);">Contributors</div>
+                    <div class="card" data-searchable style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 700; color: var(--accent);">${Object.keys(contribStats).length}</div>
+                        <div style="color: var(--muted);">Contributors</div>
                     </div>
                 </div>
-                
-                ${top ? `
-                <div class="card" data-searchable style="margin-top:16px;">
-                    <h3 style="margin-bottom:12px;">👑 Top Contributor</h3>
-                    <p><a href="${githubUrl('user', top[0])}" target="_blank" style="color:var(--accent);font-size:18px;">@${top[0]}</a> 
-                    with ${top[1]} commits across ${data.branches.filter(b => (b.contributors || []).some(c => extractUser(c.email) === top[0])).length} branches</p>
-                </div>
-                ` : ''}
             `;
+            
+            if (topContrib) {
+                html += `
+                    <div class="card" data-searchable style="margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 12px; color: var(--muted); font-size: 14px;">👑 TOP CONTRIBUTOR</h3>
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600;">${topContrib[0].slice(0, 2).toUpperCase()}</div>
+                            <div>
+                                <a href="${githubUrl('user', topContrib[0])}" target="_blank" style="font-size: 20px; color: var(--accent); text-decoration: none; font-weight: 600;">@${topContrib[0]}</a>
+                                <div style="color: var(--muted); margin-top: 4px;">${topContrib[1].commits} commits across ${topContrib[1].branches.size} branches</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            html += `
+                <div class="card" data-searchable>
+                    <h3 style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">🔥 HOT AMENDMENTS (Most Recent Activity)</h3>
+            `;
+            
+            hotAmendments.forEach(([name, info]) => {
+                const days = info.last;
+                const status = days <= 7 ? '🔥' : days <= 30 ? '📅' : '💤';
+                html += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                        <div>
+                            <div style="font-weight: 500;">${status} ${name}</div>
+                            <div style="font-size: 12px; color: var(--muted);">${info.count} branches • ${info.contributors.size} people working on it</div>
+                        </div>
+                        <span class="badge ${days <= 7 ? 'badge-active' : days <= 30 ? 'badge-recent' : 'badge-dormant'}">${days === 0 ? 'today' : days + 'd ago'}</span>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            document.getElementById('content').innerHTML = html;
+        }
+        
+        function showModal(amendmentName) {
+            const groups = {};
+            data.branches.forEach(b => {
+                const a = classify(b.name);
+                if (!groups[a.name]) groups[a.name] = { amendment: a, branches: [], contributors: {} };
+                groups[a.name].branches.push(b);
+                (b.contributors || []).forEach(c => {
+                    const u = extractUser(c.email);
+                    if (!groups[a.name].contributors[u]) {
+                        groups[a.name].contributors[u] = { name: c.name, commits: 0, branches: [] };
+                    }
+                    groups[a.name].contributors[u].commits++;
+                    groups[a.name].contributors[u].branches.push(b.name);
+                });
+            });
+            
+            const info = groups[amendmentName];
+            if (!info) return;
+            
+            const sortedContributors = Object.entries(info.contributors).sort((a, b) => b[1].commits - a[1].commits);
+            
+            // Get recent commits
+            const allCommits = info.branches
+                .filter(b => b.last_commit)
+                .map(b => ({ ...b.last_commit, branch: b.name }))
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 10);
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+            
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <h2>${amendmentName}</h2>
+                            <div style="color: var(--muted); margin-top: 4px;">${info.branches.length} branches • ${Object.keys(info.contributors).length} contributors</div>
+                        </div>
+                        <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕ Close</button>
+                    </div>
+                    
+                    <div class="section">
+                        <h3>🏆 Top Contributors</h3>
+                        ${sortedContributors.slice(0, 8).map(([username, data]) => `
+                            <div class="contributor-detail">
+                                <div class="contributor-avatar">${username.slice(0, 2).toUpperCase()}</div>
+                                <div class="contributor-info">
+                                    <a href="${githubUrl('user', username)}" target="_blank" class="contributor-name">@${username}</a>
+                                    <div class="contributor-meta">${data.commits} commits on ${data.branches.length} branches</div>
+                                </div>
+                                <div class="branch-tags">
+                                    ${data.branches.slice(0, 3).map(b => `<a href="${githubUrl('branch', b)}" target="_blank" class="branch-tag">${b.split('/').pop()}</a>`).join('')}
+                                    ${data.branches.length > 3 ? `<span class="branch-tag">+${data.branches.length - 3}</span>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    ${allCommits.length > 0 ? `
+                    <div class="section">
+                        <h3>📅 Recent Activity</h3>
+                        ${allCommits.map(c => `
+                            <div class="timeline-item">
+                                <span class="timeline-date">${daysAgo(c.date) === 0 ? 'today' : daysAgo(c.date) + 'd'}</span>
+                                <span class="timeline-author">${c.author}</span>
+                                <span class="timeline-message">${c.message}</span>
+                                <a href="${githubUrl('branch', c.branch)}" target="_blank" style="font-size: 11px; color: var(--muted); text-decoration: none;">${c.branch.split('/').pop()}</a>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ` : ''}
+                    
+                    <div class="section">
+                        <h3>🌿 All Branches (${info.branches.length})</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            ${info.branches.map(b => {
+                                const d = daysAgo(b.last_commit?.date);
+                                return `
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                                        <a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); text-decoration: none; font-family: monospace; font-size: 13px;">${b.name}</a>
+                                        <span style="color: var(--muted); font-size: 12px;">${d === 0 ? 'today' : d + 'd ago'}</span>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Close on Escape
+            const closeOnEscape = (e) => {
+                if (e.key === 'Escape') {
+                    modal.remove();
+                    document.removeEventListener('keydown', closeOnEscape);
+                }
+            };
+            document.addEventListener('keydown', closeOnEscape);
         }
     </script>
 </body>
