@@ -231,12 +231,23 @@
       });
 
       // Calculate stats
-      const totalContributors = new Set();
+      const allContributors = new Map();
+      featureBranches.forEach(b => {
+        if (b.contributors) {
+          b.contributors.forEach(c => {
+            if (c.email) {
+              allContributors.set(c.email, c.name);
+            }
+          });
+        } else if (b.commit?.author?.email) {
+          allContributors.set(b.commit.author.email, b.commit.author.name);
+        }
+      });
+
       let activeCount = 0;
       let recentCount = 0;
 
       featureBranches.forEach(b => {
-        if (b.commit?.author?.login) totalContributors.add(b.commit.author.login);
         const days = daysAgo(b.commit?.commit?.committer?.date || b.commit?.commit?.author?.date);
         if (days <= 7) activeCount++;
         if (days <= 30) recentCount++;
@@ -260,7 +271,7 @@
           <div class="card">
             <div class="stat-row">
               <span>Contributors</span>
-              <span class="badge badge-default">${totalContributors.size}</span>
+              <span class="badge badge-default">${allContributors.size}</span>
             </div>
           </div>
         </div>
@@ -285,12 +296,17 @@
         const days = daysAgo(latest);
         const status = getActivityStatus(days);
         
-        // Get unique contributors for this amendment
+        // Get all unique contributors for this amendment from new data structure
         const amendmentContributors = new Map();
         branches.forEach(b => {
-          const author = b.commit?.author;
-          if (author?.login) {
-            amendmentContributors.set(author.login, author.avatar_url);
+          if (b.contributors) {
+            b.contributors.forEach(c => {
+              if (c.email) {
+                amendmentContributors.set(c.email, c.name);
+              }
+            });
+          } else if (b.commit?.author?.email) {
+            amendmentContributors.set(b.commit.author.email, b.commit.author.name);
           }
         });
 
@@ -310,13 +326,12 @@
             </div>
 
             <div class="contributor-list">
-              ${Array.from(amendmentContributors.entries()).slice(0, 5).map(([login, avatar]) => `
-                <a href="https://github.com/${login}" target="_blank" class="contributor" title="${login}">
-                  <img src="${avatar}" alt="${login}" />
-                  ${login}
-                </a>
+              ${Array.from(amendmentContributors.entries()).slice(0, 8).map(([email, name]) => `
+                <span class="contributor" title="${email}">
+                  ${name}
+                </span>
               `).join('')}
-              ${amendmentContributors.size > 5 ? `<span class="contributor">+${amendmentContributors.size - 5}</span>` : ''}
+              ${amendmentContributors.size > 8 ? `<span class="contributor">+${amendmentContributors.size - 8}</span>` : ''}
             </div>
 
             <div style="margin-top: 12px; font-size: 12px; color: var(--muted);">
