@@ -784,18 +784,6 @@
         });
       });
     }
-        });
-        
-        // Search in people
-        document.querySelectorAll('.person-card').forEach(card => {
-          const text = card.textContent.toLowerCase();
-          const parent = card.closest('.card');
-          if (parent) {
-            parent.style.display = text.includes(query) ? 'block' : 'none';
-          }
-        });
-      });
-    }
 
     // NEW: Show detail modal for amendment
     function showAmendmentDetail(amendmentName) {
