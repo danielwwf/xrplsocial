@@ -252,7 +252,7 @@
     </div>
 
     <!-- Search -->
-    <input type="text" class="search-box hidden" id="search-input" placeholder="Search contributors, branches, or amendments..." />
+    <input type="text" class="search-box" id="search-input" placeholder="🔍 Search for 'batch', 'amm', a username, or any branch..." />
 
     <!-- Info Box -->
     <div class="info-box" id="info-box">
@@ -414,13 +414,14 @@
         const docsUrl = getDocsLink(type);
         
         html += `
-          <div class="card amendment-card" data-days="${days !== null ? days : 999}">
+          <div class="card amendment-card" data-days="${days !== null ? days : 999}" data-amendment="${type}" onclick="if(event.target.tagName !== 'A') showAmendmentDetail('${type}')" style="cursor: pointer;">
             <div class="amendment-header">
               <div>
                 <div class="amendment-title">
-                  <a href="${docsUrl}" target="_blank" style="color: var(--text); text-decoration: none;">
+                  <a href="${docsUrl}" target="_blank" style="color: var(--text); text-decoration: none; pointer-events: none;">
                     ${type} <span style="font-size: 12px; opacity: 0.6;">→</span>
                   </a>
+                  <span style="font-size: 11px; color: var(--muted); margin-left: 8px;">(Click for details)</span>
                 </div>
                 <div class="amendment-branch">${branches.length} branch${branches.length > 1 ? 'es' : ''} • ${allContributors.size} contributor${allContributors.size !== 1 ? 's' : ''}</div>
               </div>
@@ -739,23 +740,154 @@
     }
 
     function setupFilters() {
+      // Existing filter buttons (Active/Recent/All)
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          // Remove active from siblings only
+          btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           
           const filter = btn.dataset.filter;
-          document.querySelectorAll('.amendment-card').forEach(card => {
-            const days = parseInt(card.dataset.days);
-            let show = true;
-            
-            if (filter === 'active' && days > 7) show = false;
-            if (filter === 'recent' && days > 30) show = false;
-            
-            card.style.display = show ? 'block' : 'none';
-          });
+          if (filter) {
+            document.querySelectorAll('.amendment-card').forEach(card => {
+              const days = parseInt(card.dataset.days);
+              let show = true;
+              
+              if (filter === 'active' && days > 7) show = false;
+              if (filter === 'recent' && days > 30) show = false;
+              
+              card.style.display = show ? 'block' : 'none';
+            });
+          }
         });
       });
+    }
+
+    // NEW: Search functionality
+    function setupSearch() {
+      const searchInput = document.getElementById('search-input');
+      if (!searchInput) return;
+      
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (!query) {
+          // Show all
+          document.querySelectorAll('.amendment-card, .person-card').forEach(el => {
+            el.style.display = '';
+          });
+          return;
+        }
+        
+        // Search in amendments
+        document.querySelectorAll('.amendment-card').forEach(card => {
+          const text = card.textContent.toLowerCase();
+          card.style.display = text.includes(query) ? 'block' : 'none';
+        });
+        
+        // Search in people
+        document.querySelectorAll('.person-card').forEach(card => {
+          const text = card.textContent.toLowerCase();
+          card.closest('.card').style.display = text.includes(query) ? 'block' : 'none';
+        });
+      });
+    }
+
+    // NEW: Show detail modal for amendment
+    function showAmendmentDetail(amendmentName) {
+      const branches = allData.branches.filter(b => classifyBranch(b.name) === amendmentName);
+      const allContributors = new Map();
+      
+      branches.forEach(b => {
+        (b.contributors || []).forEach(c => {
+          const username = extractUsername(c.email) || c.name;
+          if (!allContributors.has(username)) {
+            allContributors.set(username, { name: c.name, email: c.email, count: 0 });
+          }
+          allContributors.get(username).count++;
+        });
+      });
+      
+      const sortedContributors = Array.from(allContributors.entries())
+        .sort((a, b) => b[1].count - a[1].count);
+      
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.style.cssText = `
+        position: fixed; inset: 0; background: rgba(0,0,0,0.8); 
+        display: flex; align-items: center; justify-content: center; 
+        z-index: 10000; padding: 20px;
+      `;
+      
+      modal.innerHTML = `
+        <div class="card" style="max-width: 800px; width: 100%; max-height: 80vh; overflow-y: auto;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+            <h2 style="margin: 0;">${amendmentName}</h2>
+            <button onclick="this.closest('.modal').remove()" class="filter-btn">✕ Close</button>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <strong>${branches.length}</strong> branches • 
+            <strong>${allContributors.size}</strong> contributors
+          </div>
+          
+          <h3 style="margin: 0 0 12px; font-size: 14px; color: var(--muted);">All Contributors:</h3>
+          <div class="contributor-list" style="margin-bottom: 20px;">
+            ${sortedContributors.map(([username, info]) => `
+              <a href="${githubLink('user', username)}" target="_blank" class="contributor" style="font-size: 14px;">
+                @${username} <span style="opacity: 0.6; font-size: 11px;">(${info.count} commits)</span>
+              </a>
+            `).join('')}
+          </div>
+          
+          <h3 style="margin: 0 0 12px; font-size: 14px; color: var(--muted);">All Branches:</h3>
+          <div class="branch-list">
+            ${branches.map(b => `
+              <div class="branch-item">
+                <a href="${githubLink('branch', b.name)}" target="_blank" class="branch-name" style="color: var(--text);">${b.name}</a>
+                <span>${daysAgo(b.last_commit?.date) || '?'}d ago</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+      });
+      
+      document.body.appendChild(modal);
+    }
+
+    // NEW: Amendment Dropdown Filter
+    function setupAmendmentDropdown() {
+      // Only add if not already exists
+      if (document.getElementById('amendment-select')) return;
+      
+      const searchBox = document.getElementById('search-input');
+      if (!searchBox) return;
+      
+      const dropdown = document.createElement('select');
+      dropdown.id = 'amendment-select';
+      dropdown.innerHTML = `
+        <option value="">📋 All Amendments</option>
+        <option value="batch">📦 Batch</option>
+        <option value="amm">💰 AMM</option>
+        <option value="did">🆔 DID</option>
+        <option value="nft">🎨 NFTs</option>
+        <option value="clawback">👋 Clawback</option>
+      `;
+      dropdown.style.cssText = 'padding: 8px 12px; font-size: 13px; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 8px; margin-right: 10px;';
+      
+      dropdown.addEventListener('change', (e) => {
+        const value = e.target.value.toLowerCase();
+        document.querySelectorAll('.amendment-card').forEach(card => {
+          const title = card.querySelector('.amendment-title a')?.textContent?.toLowerCase() || '';
+          card.style.display = (!value || title.includes(value)) ? 'block' : 'none';
+        });
+      });
+      
+      searchBox.parentNode.insertBefore(dropdown, searchBox);
     }
 
     // Initialize with better error handling
@@ -783,6 +915,8 @@
         allData = data;
         document.getElementById('last-updated').textContent = 'Updated: ' + formatDate(data.generated_at);
         setupTabs();
+        setupSearch();
+        setupAmendmentDropdown();
         renderContent();
       })
       .catch(err => {
