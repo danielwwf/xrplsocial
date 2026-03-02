@@ -21,22 +21,24 @@ jobs:
         run: |
           MIRROR_DIR="$HOME/rippled-mirror"
           
-          if [ -d "$MIRROR_DIR/.git" ]; then
-            echo "Using existing mirror..."
+          if [ -d "$MIRROR_DIR/.git" ] || [ -f "$MIRROR_DIR/HEAD" ]; then
+            echo "Updating existing mirror..."
             cd "$MIRROR_DIR"
-            git fetch origin --prune
+            git fetch --all --prune
           else
-            echo "Creating mirror (one-time, ~2-3 minutes)..."
+            echo "Creating fresh mirror..."
+            rm -rf "$MIRROR_DIR"
             mkdir -p "$MIRROR_DIR"
-            # Shallow clone first, then unshallow to get full history
-            git clone --mirror --depth=100 https://github.com/XRPLF/rippled.git "$MIRROR_DIR"
-            cd "$MIRROR_DIR"
-            # Fetch all refs
-            git remote update
+            # Clone with full history
+            git clone --mirror https://github.com/XRPLF/rippled.git "$MIRROR_DIR"
           fi
           
-          echo "Mirror ready. Total refs:"
-          git branch -r | wc -l
+          cd "$MIRROR_DIR"
+          echo "Git remotes:"
+          git remote -v
+          echo ""
+          echo "Sample refs:"
+          git branch -r 2>/dev/null | head -10 || git show-ref | head -10
 
       - name: Extract all branch data
         run: |
@@ -44,7 +46,6 @@ jobs:
           import subprocess
           import json
           import os
-          import re
           from datetime import datetime, timezone
           from collections import defaultdict
 
@@ -58,18 +59,41 @@ jobs:
                   text=True,
                   cwd=MIRROR_DIR
               )
-              return result.stdout.strip(), result.stderr.strip(), result.returncode
+              stdout = result.stdout.strip() if result.stdout else ''
+              stderr = result.stderr.strip() if result.stderr else ''
+              return stdout, stderr, result.returncode
 
-          # Get list of all remote branches
-          print("Fetching branch list...")
+          # Get list of all refs from the mirror
+          # In a mirror repo, branches are under refs/heads/
+          print("Fetching all refs...")
+          
+          # Try to get remote branches first
           stdout, stderr, code = git(['branch', '-r', '--format=%(refname:short)'])
           
-          if code != 0:
-              print(f"Git error: {stderr}")
+          if code != 0 or not stdout:
+              # Fallback: get all refs and parse them
+              print("Trying alternative method...")
+              stdout, stderr, code = git(['show-ref', '--heads'])
+              if code == 0 and stdout:
+                  all_refs = []
+                  for line in stdout.split('\n'):
+                      if 'refs/heads/' in line:
+                          # Parse: sha refs/heads/branchname
+                          parts = line.split('refs/heads/')
+                          if len(parts) == 2:
+                              all_refs.append('origin/' + parts[1])
+                  stdout = '\n'.join(all_refs)
+          
+          if not stdout:
+              print("ERROR: Could not fetch any branches!")
+              print(f"Stderr: {stderr}")
               exit(1)
 
           all_branches = [b for b in stdout.split('\n') if b and not b.endswith('/HEAD')]
-          print(f"Total remote branches: {len(all_branches)}")
+          print(f"Total branches found: {len(all_branches)}")
+          
+          if len(all_branches) > 0:
+              print(f"Sample branches: {all_branches[:5]}")
 
           # Filter out main branches
           skip_patterns = ['master', 'main', 'develop', 'release/', 'gh-pages']
@@ -92,11 +116,11 @@ jobs:
 
           for idx, branch in enumerate(feature_branches, 1):
               name = branch.replace('origin/', '')
-              print(f"[{idx}/{len(feature_branches)}] {name}")
+              if idx <= 5 or idx % 50 == 0:
+                  print(f"[{idx}/{len(feature_branches)}] Processing {name}...")
               
               try:
                   # Get the most recent commit for this branch
-                  # Format: hash|author|email|timestamp|subject
                   stdout, stderr, code = git([
                       'log', '-1', 
                       '--format=%H|%an|%ae|%at|%s',
@@ -104,12 +128,10 @@ jobs:
                   ])
                   
                   if code != 0 or not stdout:
-                      print(f"  ⚠ No commit data")
                       continue
                   
                   parts = stdout.split('|', 4)
                   if len(parts) != 5:
-                      print(f"  ⚠ Parse error: {stdout[:50]}")
                       continue
                   
                   commit_hash, author_name, author_email, ts_str, subject = parts
@@ -117,17 +139,15 @@ jobs:
                   try:
                       timestamp = int(ts_str)
                       if timestamp <= 0:
-                          print(f"  ⚠ Invalid timestamp: {ts_str}")
                           continue
                   except ValueError:
-                      print(f"  ⚠ Non-numeric timestamp: {ts_str}")
                       continue
                   
                   commit_date = datetime.fromtimestamp(timestamp, tz=timezone.utc).isoformat()
                   
-                  # Get ALL unique contributors for this branch (last 100 commits)
+                  # Get contributors (last 50 commits for performance)
                   contributors_stdout, _, _ = git([
-                      'log', '-100',
+                      'log', '-50',
                       '--format=%ae|%an',
                       branch
                   ])
@@ -162,12 +182,11 @@ jobs:
                           'message': subject[:100]
                       },
                       'contributor_count': len(branch_contributors),
-                      'contributors': branch_contributors[:20],  # Store top 20
-                      'total_commits': len(contributors_stdout.split('\n')) if contributors_stdout else 0
+                      'contributors': branch_contributors[:20]
                   })
                   
               except Exception as e:
-                  print(f"  ✗ Error: {e}")
+                  print(f"  Error on {name}: {e}")
                   continue
 
           # Sort by most recent activity
@@ -181,13 +200,9 @@ jobs:
               reverse=True
           ):
               if stats['commits'] > 0 and stats['last_commit']:
-                  # Get the name from the first branch
-                  first_branch = list(stats['branches'])[0]
-                  name = contributor_stats[email].get('name', 'Unknown')
-                  
                   contributors_list.append({
                       'email': email,
-                      'name': name or 'Unknown',
+                      'name': list(stats['branches'])[0] if stats['branches'] else 'Unknown',
                       'commits': stats['commits'],
                       'branches': sorted(list(stats['branches'])),
                       'last_active': stats['last_commit']
@@ -202,16 +217,13 @@ jobs:
               'contributors': contributors_list
           }
 
-          # Save
           os.makedirs('stats/data', exist_ok=True)
           with open('stats/data/branches.json', 'w') as f:
               json.dump(output, f, indent=2)
 
-          print(f"\n✅ SUCCESS")
-          print(f"   Branches: {len(results)}")
-          print(f"   Contributors: {len(contributors_list)}")
-          print(f"   Sample: {results[0]['name'] if results else 'N/A'}")
-          print(f"   Last commit: {results[0]['last_commit']['date'] if results else 'N/A'}")
+          print(f"\n✅ SUCCESS: {len(results)} branches, {len(contributors_list)} contributors")
+          if results:
+              print(f"   Most recent: {results[0]['name']} ({results[0]['last_commit']['date']})")
           PYEOF
 
       - name: Commit and push
