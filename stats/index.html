@@ -529,22 +529,26 @@
         function renderAllBranches() {
             const sorted = [...data.branches].sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
             
-            let html = '<div class="grid">';
+            let html = `<div style="margin-bottom: 12px; color: var(--muted);">
+                Showing all ${sorted.length} branches (newest first)
+            </div>
+            <div class="grid">`;
             
-            sorted.forEach(b => {
+            sorted.forEach((b, idx) => {
                 const d = daysAgo(b.last_commit?.date);
                 const status = getStatus(d);
                 const amendment = classify(b.name);
                 const contribList = (b.contributors || []).slice(0, 5);
                 
                 html += `
-                    <div class="card" data-searchable onclick="showBranchModal('${b.name.replace(/'/g, "\\'")}')">
+                    <div class="card" data-searchable onclick="showBranchModal('${b.name.replace(/'/g, "\\'")}')" style="cursor: pointer;">
                         <div class="card-header">
                             <div>
                                 <div class="card-title">${b.name}</div>
                                 <div class="card-meta">
                                     <span style="color: var(--accent);">${amendment.name}</span>
                                     • ${(b.contributors || []).length} contributors
+                                    ${idx < 10 ? ' • 🔥 Recently updated' : ''}
                                 </div>
                             </div>
                             <span class="badge ${status.class}">${status.label}</span>
