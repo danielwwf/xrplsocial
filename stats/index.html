@@ -113,6 +113,17 @@
     .badge-dormant { background: rgba(248,113,113,0.15); border: 1px solid rgba(248,113,113,0.35); color: var(--danger); }
     .badge-default { background: rgba(124,92,255,0.18); border: 1px solid rgba(124,92,255,0.30); color: rgba(255,255,255,0.88); }
 
+    .info-box {
+      background: linear-gradient(135deg, rgba(124,92,255,0.1), rgba(124,92,255,0.05));
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .info-box h3 { margin: 0 0 8px; font-size: 15px; color: var(--accent); }
+    .info-box p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .info-box a { color: var(--accent); text-decoration: underline; }
+
     .amendment-card { transition: transform 0.15s; }
     .amendment-card:hover { transform: translateY(-2px); }
 
@@ -243,6 +254,17 @@
     <!-- Search -->
     <input type="text" class="search-box hidden" id="search-input" placeholder="Search contributors, branches, or amendments..." />
 
+    <!-- Info Box -->
+    <div class="info-box" id="info-box">
+      <h3>❓ What are XRPL Amendments?</h3>
+      <p>
+        Amendments are <strong>proposed changes</strong> to the XRP Ledger protocol. 
+        Each category below groups related changes (like Batch Transactions or NFTs). 
+        Click any <strong>amendment name</strong> to learn what it does, or click a <strong>person</strong> to see their GitHub profile.
+        <a href="https://xrpl.org/amendments.html" target="_blank" style="margin-left: 8px;">Learn more →</a>
+      </p>
+    </div>
+
     <!-- Content -->
     <div id="stats-container">
       <div class="loading">Loading stats...</div>
@@ -281,19 +303,29 @@
     let currentTab = 'amendments';
 
     const AMENDMENT_PATTERNS = [
-      { regex: /batch|lending/i, name: '📦 Batch & Lending' },
-      { regex: /amm|xls-?30/i, name: '💰 AMM (XLS-30)' },
-      { regex: /did|decentralized.id/i, name: '🆔 DID' },
-      { regex: /permissioned.domain/i, name: '🔒 Permissioned Domains' },
-      { regex: /nftoken|nft/i, name: '🎨 NFTokens' },
-      { regex: /clawback/i, name: '👋 Clawback' },
-      { regex: /bridge|cross.chain/i, name: '🔗 Cross-chain' },
-      { regex: /fix/i, name: '🔧 Fix Amendments' },
-      { regex: /modular|refactor/i, name: '🏗️ Modularization' },
-      { regex: /test|ci|build/i, name: '🧪 CI/Build/Test' },
-      { regex: /rust|wasm/i, name: '⚡ Rust/WASM' },
-      { regex: /feature|xls/i, name: '✨ Features' }
+      { regex: /batch|lending/i, name: '📦 Batch Transactions', docs: 'https://xrpl.org/batch-transactions.html' },
+      { regex: /amm|xls-?30/i, name: '💰 AMM (Automated Market Maker)', docs: 'https://xrpl.org/amm.html' },
+      { regex: /did|decentralized.id/i, name: '🆔 DID (Decentralized Identity)', docs: 'https://xrpl.org/did.html' },
+      { regex: /permissioned.domain/i, name: '🔒 Permissioned Domains', docs: null },
+      { regex: /nftoken|nft/i, name: '🎨 NFTs (Non-Fungible Tokens)', docs: 'https://xrpl.org/nftokens.html' },
+      { regex: /clawback/i, name: '👋 Clawback', docs: 'https://xrpl.org/clawback.html' },
+      { regex: /bridge|cross.chain/i, name: '🔗 Cross-chain Bridges', docs: null },
+      { regex: /fix/i, name: '🔧 Bug Fixes', docs: null },
+      { regex: /modular|refactor/i, name: '🏗️ Code Modularization', docs: null },
+      { regex: /test|ci|build/i, name: '🧪 Testing & CI', docs: null },
+      { regex: /rust|wasm/i, name: '⚡ Rust/WebAssembly', docs: null },
+      { regex: /feature|xls/i, name: '✨ New Features', docs: null }
     ];
+
+    // Helper: Get docs link for amendment
+    function getDocsLink(amendmentName) {
+      for (const pattern of AMENDMENT_PATTERNS) {
+        if (pattern.regex.test(amendmentName) && pattern.docs) {
+          return pattern.docs;
+        }
+      }
+      return 'https://xrpl.org/amendments.html';
+    }
 
     function classifyBranch(branchName) {
       for (const pattern of AMENDMENT_PATTERNS) {
@@ -379,11 +411,17 @@
         // Sort branches by date (newest first)
         branches.sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
 
+        const docsUrl = getDocsLink(type);
+        
         html += `
           <div class="card amendment-card" data-days="${days !== null ? days : 999}">
             <div class="amendment-header">
               <div>
-                <div class="amendment-title">${type}</div>
+                <div class="amendment-title">
+                  <a href="${docsUrl}" target="_blank" style="color: var(--text); text-decoration: none;">
+                    ${type} <span style="font-size: 12px; opacity: 0.6;">→</span>
+                  </a>
+                </div>
                 <div class="amendment-branch">${branches.length} branch${branches.length > 1 ? 'es' : ''} • ${allContributors.size} contributor${allContributors.size !== 1 ? 's' : ''}</div>
               </div>
               <span class="badge ${status.class}">${status.label}</span>
