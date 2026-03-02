@@ -167,11 +167,17 @@ jobs:
               'contributors': contributors_list
           }
 
-          os.makedirs('stats/data', exist_ok=True)
-          with open('stats/data/branches.json', 'w') as f:
+          # Save to GITHUB_WORKSPACE (not REPO_DIR)
+          output_dir = os.environ.get('GITHUB_WORKSPACE', os.getcwd())
+          data_path = os.path.join(output_dir, 'stats', 'data')
+          os.makedirs(data_path, exist_ok=True)
+          
+          output_file = os.path.join(data_path, 'branches.json')
+          with open(output_file, 'w') as f:
               json.dump(output, f, indent=2)
 
           print(f"\n✅ SUCCESS: {len(results)} branches, {len(contributors_list)} contributors")
+          print(f"   Output written to: {output_file}")
           PYEOF
 
       - name: Commit
