@@ -538,14 +538,12 @@
                 const contribList = (b.contributors || []).slice(0, 5);
                 
                 html += `
-                    <div class="card" data-searchable>
+                    <div class="card" data-searchable onclick="showBranchModal('${b.name.replace(/'/g, "\\'")}')">
                         <div class="card-header">
                             <div>
-                                <div class="card-title">
-                                    <a href="${githubUrl('branch', b.name)}" target="_blank">${b.name}</a>
-                                </div>
+                                <div class="card-title">${b.name}</div>
                                 <div class="card-meta">
-                                    <a href="${amendment.docs || '#' }" target="_blank" style="color: var(--accent); text-decoration: none;">${amendment.name}</a>
+                                    <span style="color: var(--accent);">${amendment.name}</span>
                                     • ${(b.contributors || []).length} contributors
                                 </div>
                             </div>
@@ -563,7 +561,7 @@
                         <div class="contributors">
                             ${contribList.map(c => {
                                 const u = extractUser(c.email);
-                                return `<a href="${githubUrl('user', u)}" class="contributor" target="_blank">@${u}</a>`;
+                                return `<span class="contributor">@${u}</span>`;
                             }).join('')}
                             ${(b.contributors || []).length > 5 ? `<span class="contributor">+${(b.contributors || []).length - 5}</span>` : ''}
                         </div>
@@ -573,6 +571,81 @@
             
             html += '</div>';
             document.getElementById('content').innerHTML = html;
+        }
+        
+        function showBranchModal(branchName) {
+            const branch = data.branches.find(b => b.name === branchName);
+            if (!branch) return;
+            
+            const d = daysAgo(branch.last_commit?.date);
+            const amendment = classify(branch.name);
+            const sortedContributors = (branch.contributors || []).sort((a, b) => (b.commits || 0) - (a.commits || 0));
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+            
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <h2>${branch.name}</h2>
+                            <div style="color: var(--muted); margin-top: 4px;">
+                                <a href="${amendment.docs || '#'}" target="_blank" style="color: var(--accent);">${amendment.name}</a>
+                                • ${(branch.contributors || []).length} contributors
+                            </div>
+                        </div>
+                        <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕ Close</button>
+                    </div>
+                    
+                    ${branch.last_commit ? `
+                    <div class="section">
+                        <h3>📅 Latest Commit</h3>
+                        <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                            <div style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">
+                                ${d === 0 ? 'today' : d + ' days ago'} by <span style="color: var(--accent);">${branch.last_commit.author}</span>
+                            </div>
+                            <div style="font-size: 14px; margin-bottom: 8px;">${branch.last_commit.message}</div>
+                            <a href="${githubUrl('branch', branch.name)}" target="_blank" style="font-size: 12px; color: var(--accent);">View on GitHub →</a>
+                        </div>
+                    </div>
+                    ` : ''}
+                    
+                    <div class="section">
+                        <h3>👥 Contributors (${(branch.contributors || []).length})</h3>
+                        ${sortedContributors.map(c => {
+                            const u = extractUser(c.email);
+                            return `
+                                <div class="contributor-detail">
+                                    <div class="contributor-avatar">${u.slice(0, 2).toUpperCase()}</div>
+                                    <div class="contributor-info">
+                                        <a href="${githubUrl('user', u)}" target="_blank" class="contributor-name">@${u}</a>
+                                        <div class="contributor-meta">${c.commits || 1} commits</div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    <div class="section">
+                        <h3>🔗 Quick Links</h3>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a href="${githubUrl('branch', branch.name)}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View Branch on GitHub →</a>
+                            <a href="${amendment.docs || '#' }" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">Learn about ${amendment.name.split(' ')[0]} →</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            const closeOnEscape = (e) => {
+                if (e.key === 'Escape') {
+                    modal.remove();
+                    document.removeEventListener('keydown', closeOnEscape);
+                }
+            };
+            document.addEventListener('keydown', closeOnEscape);
         }
         
         function renderInsights() {
