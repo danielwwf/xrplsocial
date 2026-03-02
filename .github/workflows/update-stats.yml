@@ -22,22 +22,28 @@ jobs:
           python-version: '3.11'
 
       - name: Fetch stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 << 'EOF'
           import json, urllib.request, os
           from datetime import datetime
 
           API = 'https://api.github.com/repos/XRPLF/rippled'
+          TOKEN = os.environ.get('GH_TOKEN')
           
           def get(url):
               req = urllib.request.Request(url)
               req.add_header('Accept', 'application/vnd.github+json')
               req.add_header('User-Agent', 'XRPL-Stats/1.0')
+              if TOKEN:
+                  req.add_header('Authorization', f'Bearer {TOKEN}')
               with urllib.request.urlopen(req, timeout=30) as r:
                   return json.loads(r.read().decode())
 
           print("Fetching branches...")
           branches = get(f'{API}/branches?per_page=100')
+          print(f"Total branches: {len(branches)}")
           
           results = []
           for b in branches:
@@ -73,7 +79,7 @@ jobs:
           with open('stats/data/branches.json', 'w') as f:
               json.dump(output, f, indent=2)
 
-          print(f"\nDone: {len(results)} branches")
+          print(f"\nDone: {len(results)} feature branches")
           EOF
 
       - name: Commit and push
@@ -89,7 +95,6 @@ jobs:
           
           git commit -m "Update stats $(date -u +%H:%M)"
           
-          # Handle concurrent updates from other workflows
           for i in 1 2 3; do
             if git pull --rebase origin main; then
               git push origin main
