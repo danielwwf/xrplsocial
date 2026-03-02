@@ -1,0 +1,123 @@
+name: Update Amendment Stats
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch branch stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 << 'SCRIPT'
+          import json
+          import os
+          import urllib.request
+          from datetime import datetime
+
+          REPO = 'XRPLF/rippled'
+          API_BASE = f'https://api.github.com/repos/{REPO}'
+          
+          def api_request(url):
+              req = urllib.request.Request(url)
+              req.add_header('Accept', 'application/vnd.github+json')
+              req.add_header('X-GitHub-Api-Version', '2022-11-28')
+              token = os.environ.get('GITHUB_TOKEN')
+              if token:
+                  req.add_header('Authorization', f'Bearer {token}')
+              
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.loads(r.read().decode('utf-8'))
+
+          # Fetch all branches
+          print("Fetching branches...")
+          branches_data = []
+          page = 1
+          
+          while True:
+              url = f'{API_BASE}/branches?per_page=100&page={page}'
+              try:
+                  branches = api_request(url)
+                  if not branches:
+                      break
+                  
+                  for branch in branches:
+                      name = branch['name']
+                      # Skip standard branches
+                      if name in ['master', 'main', 'develop'] or name.startswith('release'):
+                          continue
+                      
+                      # Fetch commit details
+                      try:
+                          commit_url = branch['commit']['url']
+                          commit_data = api_request(commit_url)
+                          
+                          branches_data.append({
+                              'name': name,
+                              'commit': {
+                                  'sha': commit_data['sha'][:8],
+                                  'author': {
+                                      'login': commit_data.get('author', {}).get('login'),
+                                      'avatar_url': commit_data.get('author', {}).get('avatar_url')
+                                  },
+                                  'commit': {
+                                      'message': commit_data['commit']['message'].split('\n')[0][:80],
+                                      'committer': {
+                                          'date': commit_data['commit']['committer']['date']
+                                      }
+                                  }
+                              }
+                          })
+                          print(f"  ✓ {name}")
+                      except Exception as e:
+                          print(f"  ✗ {name}: {e}")
+                  
+                  if len(branches) < 100:
+                      break
+                  page += 1
+                  
+              except Exception as e:
+                  print(f"Error fetching page {page}: {e}")
+                  break
+
+          # Generate output
+          output = {
+              'generated_at': datetime.utcnow().isoformat() + 'Z',
+              'repo': REPO,
+              'total_branches': len(branches_data),
+              'branches': branches_data
+          }
+
+          os.makedirs('stats/data', exist_ok=True)
+          with open('stats/data/branches.json', 'w') as f:
+              json.dump(output, f, indent=2)
+
+          print(f"\nGenerated stats for {len(branches_data)} branches")
+          SCRIPT
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stats/data/branches.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update amendment stats [$(date -u +%Y-%m-%d\ %H:%M)]"
+            git push
+          fi

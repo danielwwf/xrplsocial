@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>XRPL Amendment Stats</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.62);
+      --accent: #7c5cff;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --danger: #f87171;
+      --shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      margin: 0;
+      padding: 22px;
+      background: #000;
+      color: var(--text);
+    }
+
+    .container { width: min(92vw, 1100px); margin: 0 auto; }
+
+    h1 { margin: 0 0 4px 0; letter-spacing: -0.02em; font-size: 28px; }
+    .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+
+    .nav { display: flex; gap: 12px; margin-bottom: 20px; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .nav a:hover { color: var(--text); }
+    .nav a.active { color: var(--accent); font-weight: 500; }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      margin-bottom: 16px;
+    }
+
+    .grid { display: grid; gap: 16px; }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+    .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .stat-row:last-child { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .badge-active { background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.35); color: var(--success); }
+    .badge-stale { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.35); color: var(--warning); }
+    .badge-dormant { background: rgba(248,113,113,0.15); border: 1px solid rgba(248,113,113,0.35); color: var(--danger); }
+    .badge-default { background: rgba(124,92,255,0.18); border: 1px solid rgba(124,92,255,0.30); color: rgba(255,255,255,0.88); }
+
+    .amendment-card { transition: transform 0.15s; }
+    .amendment-card:hover { transform: translateY(-2px); }
+
+    .amendment-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; }
+    .amendment-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .amendment-branch { font-size: 12px; color: var(--muted); font-family: monospace; }
+
+    .contributor-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .contributor {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .contributor img {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+    }
+
+    .meta-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; font-size: 12px; color: var(--muted); }
+    .meta-item { display: flex; align-items: center; gap: 4px; }
+
+    .loading { text-align: center; padding: 60px 20px; color: var(--muted); }
+    .error { text-align: center; padding: 40px 20px; color: var(--danger); }
+
+    .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px 0; }
+    .footer a { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <a href="/">← Spaces</a>
+      <a href="/stats/" class="active">Amendment Stats</a>
+    </div>
+
+    <h1>XRPL Amendment Stats</h1>
+    <div class="sub">Live contributor activity across feature branches • Updates hourly</div>
+
+    <div id="stats-container">
+      <div class="loading">Loading stats...</div>
+    </div>
+
+    <div class="footer">
+      Data from <a href="https://github.com/XRPLF/rippled" target="_blank">XRPLF/rippled</a> • 
+      <span class="badge badge-default" id="last-updated">Loading...</span>
+    </div>
+  </div>
+
+  <script>
+    const GITHUB_REPO = 'XRPLF/rippled';
+    
+    // Amendment pattern matching for branch names
+    const AMENDMENT_PATTERNS = [
+      { regex: /batch/i, name: 'Batch Transactions' },
+      { regex: /amm|xls-?30/i, name: 'AMM (XLS-30)' },
+      { regex: /did|decentralized.id/i, name: 'DID' },
+      { regex: /permissioned.domain/i, name: 'Permissioned Domains' },
+      { regex: /nftoken|nft/i, name: 'NFTokens' },
+      { regex: /clawback/i, name: 'Clawback' },
+      { regex: /bridge/i, name: 'Cross-chain Bridges' },
+      { regex: /fix/i, name: 'Fix Amendment' },
+      { regex: /feature|xls/i, name: 'Feature' }
+    ];
+
+    function classifyBranch(branchName) {
+      for (const pattern of AMENDMENT_PATTERNS) {
+        if (pattern.regex.test(branchName)) {
+          return pattern.name;
+        }
+      }
+      return 'Other';
+    }
+
+    function getActivityStatus(daysSinceCommit) {
+      if (daysSinceCommit <= 7) return { label: 'Active', class: 'badge-active' };
+      if (daysSinceCommit <= 30) return { label: 'Recent', class: 'badge-stale' };
+      if (daysSinceCommit <= 90) return { label: 'Stale', class: 'badge-stale' };
+      return { label: 'Dormant', class: 'badge-dormant' };
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function daysAgo(dateString) {
+      const commit = new Date(dateString);
+      const now = new Date();
+      return Math.floor((now - commit) / (1000 * 60 * 60 * 24));
+    }
+
+    async function fetchStats() {
+      try {
+        // Try to load local data first (generated by GitHub Action)
+        const response = await fetch('./data/branches.json');
+        if (!response.ok) throw new Error('Local data not found');
+        return await response.json();
+      } catch (e) {
+        // Fallback: fetch directly from GitHub API (rate limited)
+        console.log('Fetching from GitHub API directly...');
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/branches?per_page=100`);
+        if (!response.ok) throw new Error('GitHub API rate limited');
+        const branches = await response.json();
+        
+        // Fetch details for each branch (this will hit rate limits quickly)
+        const detailedBranches = [];
+        for (const branch of branches.slice(0, 10)) {
+          try {
+            const commitRes = await fetch(branch.commit.url);
+            if (commitRes.ok) {
+              const commit = await commitRes.json();
+              detailedBranches.push({
+                name: branch.name,
+                commit: {
+                  author: commit.author,
+                  commit: commit.commit
+                }
+              });
+            }
+          } catch (err) {
+            console.warn('Failed to fetch commit for', branch.name);
+          }
+        }
+        return { branches: detailedBranches, generated_at: new Date().toISOString() };
+      }
+    }
+
+    function renderStats(data) {
+      const container = document.getElementById('stats-container');
+      const branches = data.branches || [];
+      
+      // Filter out standard branches
+      const featureBranches = branches.filter(b => {
+        const name = b.name.toLowerCase();
+        return !['master', 'main', 'develop', 'release'].some(std => name.startsWith(std));
+      });
+
+      // Group by amendment type
+      const byAmendment = {};
+      featureBranches.forEach(branch => {
+        const type = classifyBranch(branch.name);
+        if (!byAmendment[type]) byAmendment[type] = [];
+        byAmendment[type].push(branch);
+      });
+
+      // Calculate stats
+      const totalContributors = new Set();
+      let activeCount = 0;
+      let recentCount = 0;
+
+      featureBranches.forEach(b => {
+        if (b.commit?.author?.login) totalContributors.add(b.commit.author.login);
+        const days = daysAgo(b.commit?.commit?.committer?.date || b.commit?.commit?.author?.date);
+        if (days <= 7) activeCount++;
+        if (days <= 30) recentCount++;
+      });
+
+      // Build HTML
+      let html = `
+        <div class="grid grid-3" style="margin-bottom: 20px;">
+          <div class="card">
+            <div class="stat-row">
+              <span>Feature Branches</span>
+              <span class="badge badge-default">${featureBranches.length}</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="stat-row">
+              <span>Active (7d)</span>
+              <span class="badge badge-active">${activeCount}</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="stat-row">
+              <span>Contributors</span>
+              <span class="badge badge-default">${totalContributors.size}</span>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="font-size: 18px; margin: 24px 0 12px;">By Amendment</h2>
+        <div class="grid grid-2">
+      `;
+
+      // Sort amendments by activity
+      const sortedAmendments = Object.entries(byAmendment).sort((a, b) => {
+        const aActive = a[1].filter(b => daysAgo(b.commit?.commit?.committer?.date) <= 30).length;
+        const bActive = b[1].filter(b => daysAgo(b.commit?.commit?.committer?.date) <= 30).length;
+        return bActive - aActive;
+      });
+
+      sortedAmendments.forEach(([type, branches]) => {
+        const latest = branches.reduce((latest, b) => {
+          const bDate = new Date(b.commit?.commit?.committer?.date || 0);
+          return bDate > latest ? bDate : latest;
+        }, new Date(0));
+        
+        const days = daysAgo(latest);
+        const status = getActivityStatus(days);
+        
+        // Get unique contributors for this amendment
+        const amendmentContributors = new Map();
+        branches.forEach(b => {
+          const author = b.commit?.author;
+          if (author?.login) {
+            amendmentContributors.set(author.login, author.avatar_url);
+          }
+        });
+
+        html += `
+          <div class="card amendment-card">
+            <div class="amendment-header">
+              <div>
+                <div class="amendment-title">${type}</div>
+                <div class="amendment-branch">${branches.length} branch${branches.length > 1 ? 'es' : ''}</div>
+              </div>
+              <span class="badge ${status.class}">${status.label}</span>
+            </div>
+            
+            <div class="meta-row">
+              <div class="meta-item">📅 Last commit: ${days} days ago</div>
+              <div class="meta-item">👥 ${amendmentContributors.size} contributor${amendmentContributors.size !== 1 ? 's' : ''}</div>
+            </div>
+
+            <div class="contributor-list">
+              ${Array.from(amendmentContributors.entries()).slice(0, 5).map(([login, avatar]) => `
+                <a href="https://github.com/${login}" target="_blank" class="contributor" title="${login}">
+                  <img src="${avatar}" alt="${login}" />
+                  ${login}
+                </a>
+              `).join('')}
+              ${amendmentContributors.size > 5 ? `<span class="contributor">+${amendmentContributors.size - 5}</span>` : ''}
+            </div>
+
+            <div style="margin-top: 12px; font-size: 12px; color: var(--muted);">
+              ${branches.slice(0, 3).map(b => `
+                <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+                  <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;">${b.name}</code>
+                  <span style="margin-left: 8px;">${daysAgo(b.commit?.commit?.committer?.date)}d ago</span>
+                </div>
+              `).join('')}
+              ${branches.length > 3 ? `<div style="padding: 4px 0; color: var(--muted);">+${branches.length - 3} more branches</div>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      html += '</div>';
+      container.innerHTML = html;
+      
+      // Update timestamp
+      document.getElementById('last-updated').textContent = 
+        'Updated: ' + formatDate(data.generated_at || new Date());
+    }
+
+    // Load and render
+    fetchStats()
+      .then(renderStats)
+      .catch(err => {
+        document.getElementById('stats-container').innerHTML = `
+          <div class="card error">
+            <p>Failed to load stats: ${err.message}</p>
+            <p style="font-size: 13px; margin-top: 10px;">Try refreshing or check back later.</p>
+          </div>
+        `;
+      });
+  </script>
+</body>
+</html>
