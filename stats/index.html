@@ -149,7 +149,7 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.85);
+            background: rgba(10, 10, 15, 0.98);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -529,25 +529,49 @@
         function renderAllBranches() {
             const sorted = [...data.branches].sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
             
-            let html = '<div class="grid" style="grid-template-columns: 1fr;">';
-            
-            html += `<div class="card" data-searchable><div class="branches" style="max-height: none;">`;
+            let html = '<div class="grid">';
             
             sorted.forEach(b => {
                 const d = daysAgo(b.last_commit?.date);
-                const contribCount = (b.contributors || []).length;
+                const status = getStatus(d);
+                const amendment = classify(b.name);
+                const contribList = (b.contributors || []).slice(0, 5);
+                
                 html += `
-                    <div class="branch" style="padding: 10px 0;">
-                        <div>
-                            <a href="${githubUrl('branch', b.name)}" target="_blank" style="font-size: 14px;">${b.name}</a>
-                            <span style="color: var(--muted); font-size: 11px; margin-left: 8px;">${contribCount} contributors</span>
+                    <div class="card" data-searchable>
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">
+                                    <a href="${githubUrl('branch', b.name)}" target="_blank">${b.name}</a>
+                                </div>
+                                <div class="card-meta">
+                                    <a href="${amendment.docs || '#' }" target="_blank" style="color: var(--accent); text-decoration: none;">${amendment.name}</a>
+                                    • ${(b.contributors || []).length} contributors
+                                </div>
+                            </div>
+                            <span class="badge ${status.class}">${status.label}</span>
                         </div>
-                        <span>${d === 0 ? 'today' : d + 'd ago'}</span>
+                        
+                        ${b.last_commit ? `
+                        <div style="margin: 12px 0; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 12px;">
+                            <div style="color: var(--muted); margin-bottom: 4px;">Last commit ${d === 0 ? 'today' : d + ' days ago'}:</div>
+                            <div style="color: var(--text);">${b.last_commit.message}</div>
+                            <div style="color: var(--accent); margin-top: 4px;">by ${b.last_commit.author}</div>
+                        </div>
+                        ` : ''}
+                        
+                        <div class="contributors">
+                            ${contribList.map(c => {
+                                const u = extractUser(c.email);
+                                return `<a href="${githubUrl('user', u)}" class="contributor" target="_blank">@${u}</a>`;
+                            }).join('')}
+                            ${(b.contributors || []).length > 5 ? `<span class="contributor">+${(b.contributors || []).length - 5}</span>` : ''}
+                        </div>
                     </div>
                 `;
             });
             
-            html += '</div></div></div>';
+            html += '</div>';
             document.getElementById('content').innerHTML = html;
         }
         
