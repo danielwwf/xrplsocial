@@ -36,13 +36,14 @@ jobs:
             git fetch origin --prune
           else
             echo "Creating fresh mirror..."
+            rm -rf "$MIRROR_DIR"
             mkdir -p "$MIRROR_DIR"
             git clone --mirror https://github.com/XRPLF/rippled.git "$MIRROR_DIR"
             cd "$MIRROR_DIR"
           fi
           
-          echo "Mirror ready at: $(pwd)"
-          du -sh .
+          echo "Mirror ready. Branches:"
+          git branch -r | wc -l
 
       - name: Analyze branches
         run: |
@@ -50,7 +51,7 @@ jobs:
           import subprocess
           import json
           import os
-          from datetime import datetime
+          from datetime import datetime, timezone
           from collections import defaultdict
 
           MIRROR_DIR = os.path.expanduser('~/rippled-mirror')
@@ -62,10 +63,12 @@ jobs:
                   text=True,
                   cwd=MIRROR_DIR
               )
+              if result.returncode != 0:
+                  print(f"Git error: {result.stderr}")
               return result.stdout.strip()
 
           # Get all branches
-          print("Fetching branches...")
+          print("Fetching branch list...")
           branches_output = run_git(['branch', '-r', '--format=%(refname:short)'])
           all_branches = [b for b in branches_output.split('\n') if b and not b.endswith('/HEAD')]
 
@@ -79,15 +82,18 @@ jobs:
           print(f"Analyzing {len(feature_branches)} feature branches...")
 
           results = []
-          all_contributors = defaultdict(lambda: {'commits': 0, 'branches': set(), 'last_active': None})
+          all_contributors = defaultdict(lambda: {'commits': 0, 'branches': set(), 'last_active': None, 'last_ts': 0})
 
-          for branch in feature_branches[:150]:  # Limit for now, can increase
+          for branch in feature_branches[:200]:  # Limit to 200 for now
               name = branch.replace('origin/', '')
               
               try:
-                  # Get all commits for this branch
+                  # Get ALL commits for this branch
+                  # Format: hash|author_name|author_email|timestamp|subject
                   log_output = run_git(['log', '--format=%H|%an|%ae|%at|%s', branch])
+                  
                   if not log_output:
+                      print(f"  ⚠ No commits for {name}")
                       continue
 
                   commits = []
@@ -96,22 +102,32 @@ jobs:
                   for line in log_output.split('\n'):
                       if '|' not in line:
                           continue
+                          
                       parts = line.split('|', 4)
                       if len(parts) < 5:
                           continue
                           
-                      commit_hash, author_name, author_email, timestamp, message = parts
-                      ts = int(timestamp)
+                      commit_hash, author_name, author_email, timestamp_str, message = parts
+                      
+                      # Validate timestamp
+                      try:
+                          ts = int(timestamp_str)
+                          if ts <= 0:
+                              continue
+                      except ValueError:
+                          continue
+                      
+                      commit_date = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
                       
                       commits.append({
                           'hash': commit_hash[:8],
                           'author': author_name,
                           'email': author_email,
-                          'date': datetime.utcfromtimestamp(ts).isoformat() + 'Z',
+                          'date': commit_date,
                           'message': message[:100]
                       })
                       
-                      # Track unique contributors for this branch
+                      # Track contributors for this branch
                       if author_email not in branch_contributors:
                           branch_contributors[author_email] = {
                               'name': author_name,
@@ -120,17 +136,18 @@ jobs:
                           }
                       branch_contributors[author_email]['commits'] += 1
                       
-                      # Global contributor stats
+                      # Global stats
                       all_contributors[author_email]['commits'] += 1
                       all_contributors[author_email]['branches'].add(name)
-                      if not all_contributors[author_email]['last_active'] or ts > all_contributors[author_email].get('last_ts', 0):
-                          all_contributors[author_email]['last_active'] = datetime.utcfromtimestamp(ts).isoformat() + 'Z'
+                      if ts > all_contributors[author_email]['last_ts']:
+                          all_contributors[author_email]['last_active'] = commit_date
                           all_contributors[author_email]['last_ts'] = ts
 
                   if not commits:
+                      print(f"  ⚠ No valid commits for {name}")
                       continue
 
-                  # Sort commits by date (newest first)
+                  # Sort by date (newest first)
                   commits.sort(key=lambda x: x['date'], reverse=True)
                   
                   results.append({
@@ -138,30 +155,32 @@ jobs:
                       'last_commit': commits[0],
                       'commit_count': len(commits),
                       'contributors': list(branch_contributors.values()),
-                      'recent_commits': commits[:20]  # Last 20 for display
+                      'recent_commits': commits[:10]
                   })
                   
                   print(f"  ✓ {name}: {len(commits)} commits, {len(branch_contributors)} contributors")
                   
               except Exception as e:
                   print(f"  ✗ {name}: {e}")
+                  continue
 
-          # Sort branches by last activity (newest first)
+          # Sort branches by activity (newest first)
           results.sort(key=lambda x: x['last_commit']['date'], reverse=True)
 
-          # Prepare contributor list
+          # Build contributor list
           contributors_list = []
           for email, stats in sorted(all_contributors.items(), key=lambda x: x[1]['commits'], reverse=True):
-              contributors_list.append({
-                  'email': email,
-                  'name': list(stats['branches'])[0] if stats['branches'] else 'Unknown',
-                  'commits': stats['commits'],
-                  'branches': sorted(list(stats['branches'])),
-                  'last_active': stats['last_active']
-              })
+              if stats['commits'] > 0:  # Only include if they have commits
+                  contributors_list.append({
+                      'email': email,
+                      'name': list(stats['branches'])[0] if stats['branches'] else 'Unknown',
+                      'commits': stats['commits'],
+                      'branches': sorted(list(stats['branches'])),
+                      'last_active': stats['last_active']
+                  })
 
           output = {
-              'generated_at': datetime.utcnow().isoformat() + 'Z',
+              'generated_at': datetime.now(timezone.utc).isoformat(),
               'repo': 'XRPLF/rippled',
               'total_branches': len(results),
               'total_contributors': len(contributors_list),
@@ -173,7 +192,12 @@ jobs:
           with open('stats/data/branches.json', 'w') as f:
               json.dump(output, f, indent=2)
 
-          print(f"\n✓ Done: {len(results)} branches, {len(contributors_list)} contributors")
+          print(f"\n✓ Success: {len(results)} branches, {len(contributors_list)} contributors")
+          
+          # Debug: Show first branch
+          if results:
+              print(f"\nSample branch: {results[0]['name']}")
+              print(f"  Last commit: {results[0]['last_commit']}")
           PYEOF
 
       - name: Commit and push

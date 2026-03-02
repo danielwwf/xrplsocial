@@ -281,16 +281,22 @@
     }
 
     function daysAgo(dateString) {
+      if (!dateString) return null;
       const commit = new Date(dateString);
+      if (isNaN(commit.getTime())) return null;
       const now = new Date();
       return Math.floor((now - commit) / (1000 * 60 * 60 * 24));
     }
 
     function formatDate(dateString) {
-      return new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      if (!dateString) return 'unknown';
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return 'invalid date';
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     }
 
     function getActivityStatus(days) {
+      if (days === null || isNaN(days)) return { label: 'Unknown', class: 'badge-default' };
       if (days <= 7) return { label: 'Active', class: 'badge-active' };
       if (days <= 30) return { label: 'Recent', class: 'badge-stale' };
       if (days <= 90) return { label: 'Stale', class: 'badge-stale' };
