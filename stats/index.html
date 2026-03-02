@@ -289,12 +289,23 @@
         }
         
         function doSearch() {
-            const query = document.getElementById('search').value.toLowerCase();
+            const query = document.getElementById('search').value.toLowerCase().trim();
             const cards = document.querySelectorAll('.card[data-searchable]');
             
+            if (!query) {
+                cards.forEach(card => card.classList.remove('hidden'));
+                return;
+            }
+            
             cards.forEach(card => {
+                // Get all text content from the card
                 const text = card.innerText.toLowerCase();
-                card.classList.toggle('hidden', query && !text.includes(query));
+                // Also check individual data attributes if they exist
+                const searchText = text + ' ' + (card.dataset.searchTerms || '');
+                
+                // Check if query matches any part
+                const match = searchText.includes(query);
+                card.classList.toggle('hidden', !match);
             });
         }
         
