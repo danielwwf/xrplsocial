@@ -325,23 +325,21 @@
               <div class="meta-item">👥 ${amendmentContributors.size} contributor${amendmentContributors.size !== 1 ? 's' : ''}</div>
             </div>
 
-            <div class="contributor-list">
-              ${Array.from(amendmentContributors.entries()).slice(0, 8).map(([email, name]) => `
+            <div class="contributor-list" style="max-height: 200px; overflow-y: auto;">
+              ${Array.from(amendmentContributors.entries()).map(([email, name]) => `
                 <span class="contributor" title="${email}">
                   ${name}
                 </span>
               `).join('')}
-              ${amendmentContributors.size > 8 ? `<span class="contributor">+${amendmentContributors.size - 8}</span>` : ''}
             </div>
 
-            <div style="margin-top: 12px; font-size: 12px; color: var(--muted);">
-              ${branches.slice(0, 3).map(b => `
+            <div style="margin-top: 12px; font-size: 12px; color: var(--muted); max-height: 150px; overflow-y: auto;">
+              ${branches.map(b => `
                 <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
                   <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; color: var(--text);">${b.name}</code>
                   <span style="margin-left: 8px;">${daysAgo(b.commit?.commit?.committer?.date)}d ago</span>
                 </div>
               `).join('')}
-              ${branches.length > 3 ? `<div style="padding: 4px 0; color: var(--muted);">+${branches.length - 3} more branches</div>` : ''}
             </div>
           </div>
         `;

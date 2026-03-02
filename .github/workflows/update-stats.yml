@@ -102,9 +102,9 @@ jobs:
                   # Get commit date
                   commit_date = datetime.utcfromtimestamp(int(timestamp)).isoformat() + 'Z'
                   
-                  # Get recent contributors (last 20 commits)
+                  # Get ALL contributors (not just last 20)
                   contributors_output = run_git([
-                      'log', '-20', '--format=%an|%ae|%at', branch
+                      'log', '--format=%an|%ae|%at', branch
                   ])
                   
                   branch_contributors = {}
