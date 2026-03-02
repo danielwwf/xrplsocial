@@ -763,38 +763,27 @@
       });
     }
 
-    // NEW: Search functionality
+    // NEW: Search functionality - SIMPLIFIED
     function setupSearch() {
       const searchInput = document.getElementById('search-input');
       if (!searchInput) return;
       
       searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase().trim();
+        const container = document.getElementById('stats-container');
+        if (!container) return;
         
         if (!query) {
-          // Show all
-          document.querySelectorAll('.amendment-card, .person-card, .card').forEach(el => {
-            el.style.display = '';
-          });
-          // Reset amendment cards specifically
-          document.querySelectorAll('.amendment-card').forEach(card => {
-            card.style.display = 'block';
-          });
+          container.querySelectorAll('.amendment-card').forEach(el => el.style.display = 'block');
           return;
         }
         
-        // Search in amendments (include data attributes)
-        document.querySelectorAll('.amendment-card').forEach(card => {
-          const title = card.querySelector('.amendment-title')?.textContent?.toLowerCase() || '';
-          const text = card.textContent.toLowerCase();
-          const branches = card.querySelectorAll('.branch-name');
-          let branchMatch = false;
-          branches.forEach(b => {
-            if (b.textContent.toLowerCase().includes(query)) branchMatch = true;
-          });
-          
-          const match = title.includes(query) || text.includes(query) || branchMatch;
-          card.style.display = match ? 'block' : 'none';
+        container.querySelectorAll('.amendment-card').forEach(card => {
+          const text = card.innerText.toLowerCase();
+          card.style.display = text.includes(query) ? 'block' : 'none';
+        });
+      });
+    }
         });
         
         // Search in people
@@ -949,17 +938,18 @@
       document.body.appendChild(modal);
     }
 
-    // NEW: Amendment Dropdown Filter
+    // NEW: Amendment Dropdown Filter - SIMPLIFIED
     function setupAmendmentDropdown() {
-      // Only add if not already exists
-      if (document.getElementById('amendment-select')) return;
+      // Remove existing if any
+      const existing = document.getElementById('amendment-select');
+      if (existing) existing.remove();
       
       const searchBox = document.getElementById('search-input');
-      if (!searchBox) return;
+      if (!searchBox || !searchBox.parentNode) return;
       
-      const dropdown = document.createElement('select');
-      dropdown.id = 'amendment-select';
-      dropdown.innerHTML = `
+      const select = document.createElement('select');
+      select.id = 'amendment-select';
+      select.innerHTML = `
         <option value="">📋 All Amendments</option>
         <option value="batch">📦 Batch</option>
         <option value="amm">💰 AMM</option>
@@ -967,17 +957,28 @@
         <option value="nft">🎨 NFTs</option>
         <option value="clawback">👋 Clawback</option>
       `;
-      dropdown.style.cssText = 'padding: 8px 12px; font-size: 13px; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 8px; margin-right: 10px;';
+      select.style.cssText = 'padding: 8px 12px; font-size: 13px; background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--border); border-radius: 8px; margin-right: 10px; cursor: pointer;';
       
-      dropdown.addEventListener('change', (e) => {
+      select.addEventListener('change', (e) => {
         const value = e.target.value.toLowerCase();
-        document.querySelectorAll('.amendment-card').forEach(card => {
-          const title = card.querySelector('.amendment-title a')?.textContent?.toLowerCase() || '';
-          card.style.display = (!value || title.includes(value)) ? 'block' : 'none';
+        const container = document.getElementById('stats-container');
+        
+        if (!value) {
+          container.querySelectorAll('.amendment-card').forEach(c => c.style.display = 'block');
+          return;
+        }
+        
+        container.querySelectorAll('.amendment-card').forEach(card => {
+          const title = card.querySelector('.amendment-title')?.innerText?.toLowerCase() || '';
+          card.style.display = title.includes(value) ? 'block' : 'none';
         });
+        
+        // Clear search box
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) searchInput.value = '';
       });
       
-      searchBox.parentNode.insertBefore(dropdown, searchBox);
+      searchBox.parentNode.insertBefore(select, searchBox);
     }
 
     // Initialize with better error handling
