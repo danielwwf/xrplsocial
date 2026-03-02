@@ -773,22 +773,37 @@
         
         if (!query) {
           // Show all
-          document.querySelectorAll('.amendment-card, .person-card').forEach(el => {
+          document.querySelectorAll('.amendment-card, .person-card, .card').forEach(el => {
             el.style.display = '';
+          });
+          // Reset amendment cards specifically
+          document.querySelectorAll('.amendment-card').forEach(card => {
+            card.style.display = 'block';
           });
           return;
         }
         
-        // Search in amendments
+        // Search in amendments (include data attributes)
         document.querySelectorAll('.amendment-card').forEach(card => {
+          const title = card.querySelector('.amendment-title')?.textContent?.toLowerCase() || '';
           const text = card.textContent.toLowerCase();
-          card.style.display = text.includes(query) ? 'block' : 'none';
+          const branches = card.querySelectorAll('.branch-name');
+          let branchMatch = false;
+          branches.forEach(b => {
+            if (b.textContent.toLowerCase().includes(query)) branchMatch = true;
+          });
+          
+          const match = title.includes(query) || text.includes(query) || branchMatch;
+          card.style.display = match ? 'block' : 'none';
         });
         
         // Search in people
         document.querySelectorAll('.person-card').forEach(card => {
           const text = card.textContent.toLowerCase();
-          card.closest('.card').style.display = text.includes(query) ? 'block' : 'none';
+          const parent = card.closest('.card');
+          if (parent) {
+            parent.style.display = text.includes(query) ? 'block' : 'none';
+          }
         });
       });
     }
@@ -796,58 +811,133 @@
     // NEW: Show detail modal for amendment
     function showAmendmentDetail(amendmentName) {
       const branches = allData.branches.filter(b => classifyBranch(b.name) === amendmentName);
-      const allContributors = new Map();
+      
+      // Build contributor stats with branch breakdown
+      const contributorStats = {};
+      const branchContributors = {}; // Map branch -> contributors
       
       branches.forEach(b => {
+        branchContributors[b.name] = [];
         (b.contributors || []).forEach(c => {
           const username = extractUsername(c.email) || c.name;
-          if (!allContributors.has(username)) {
-            allContributors.set(username, { name: c.name, email: c.email, count: 0 });
+          branchContributors[b.name].push(username);
+          
+          if (!contributorStats[username]) {
+            contributorStats[username] = { 
+              name: c.name, 
+              email: c.email, 
+              totalCommits: 0,
+              branches: []
+            };
           }
-          allContributors.get(username).count++;
+          contributorStats[username].totalCommits++;
+          if (!contributorStats[username].branches.includes(b.name)) {
+            contributorStats[username].branches.push(b.name);
+          }
         });
       });
       
-      const sortedContributors = Array.from(allContributors.entries())
-        .sort((a, b) => b[1].count - a[1].count);
+      // Sort contributors by total commits
+      const sortedContributors = Object.entries(contributorStats)
+        .sort((a, b) => b[1].totalCommits - a[1].totalCommits);
+      
+      // Get recent activity (last 10 commits across all branches)
+      const allCommits = [];
+      branches.forEach(b => {
+        if (b.last_commit) {
+          allCommits.push({
+            ...b.last_commit,
+            branch: b.name
+          });
+        }
+      });
+      allCommits.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const recentCommits = allCommits.slice(0, 10);
       
       const modal = document.createElement('div');
       modal.className = 'modal';
       modal.style.cssText = `
-        position: fixed; inset: 0; background: rgba(0,0,0,0.8); 
+        position: fixed; inset: 0; background: rgba(0,0,0,0.85); 
         display: flex; align-items: center; justify-content: center; 
         z-index: 10000; padding: 20px;
       `;
       
       modal.innerHTML = `
-        <div class="card" style="max-width: 800px; width: 100%; max-height: 80vh; overflow-y: auto;">
-          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
-            <h2 style="margin: 0;">${amendmentName}</h2>
-            <button onclick="this.closest('.modal').remove()" class="filter-btn">✕ Close</button>
-          </div>
-          
-          <div style="margin-bottom: 20px;">
-            <strong>${branches.length}</strong> branches • 
-            <strong>${allContributors.size}</strong> contributors
-          </div>
-          
-          <h3 style="margin: 0 0 12px; font-size: 14px; color: var(--muted);">All Contributors:</h3>
-          <div class="contributor-list" style="margin-bottom: 20px;">
-            ${sortedContributors.map(([username, info]) => `
-              <a href="${githubLink('user', username)}" target="_blank" class="contributor" style="font-size: 14px;">
-                @${username} <span style="opacity: 0.6; font-size: 11px;">(${info.count} commits)</span>
-              </a>
-            `).join('')}
-          </div>
-          
-          <h3 style="margin: 0 0 12px; font-size: 14px; color: var(--muted);">All Branches:</h3>
-          <div class="branch-list">
-            ${branches.map(b => `
-              <div class="branch-item">
-                <a href="${githubLink('branch', b.name)}" target="_blank" class="branch-name" style="color: var(--text);">${b.name}</a>
-                <span>${daysAgo(b.last_commit?.date) || '?'}d ago</span>
+        <div class="card" style="max-width: 900px; width: 100%; max-height: 85vh; overflow-y: auto;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+            <div>
+              <h2 style="margin: 0 0 8px;">${amendmentName}</h2>
+              <div style="color: var(--muted); font-size: 14px;">
+                <strong>${branches.length}</strong> implementation branches • 
+                <strong>${Object.keys(contributorStats).length}</strong> contributors
               </div>
-            `).join('')}
+            </div>
+            <button onclick="this.closest('.modal').remove()" class="filter-btn" style="font-size: 16px;">✕</button>
+          </div>
+          
+          <!-- Top Contributors with their branches -->
+          <div style="margin-bottom: 24px;">
+            <h3 style="margin: 0 0 12px; font-size: 14px; color: var(--muted);">🏆 Top Contributors:</h3>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              ${sortedContributors.slice(0, 8).map(([username, info]) => `
+                <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px;">
+                    ${username.slice(0, 2).toUpperCase()}
+                  </div>
+                  <div style="flex: 1;">
+                    <a href="${githubLink('user', username)}" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 500;">@${username}</a>
+                    <div style="font-size: 12px; color: var(--muted); margin-top: 2px;">
+                      ${info.totalCommits} commits across ${info.branches.length} branch${info.branches.length > 1 ? 'es' : ''}
+                    </div>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 4px; max-width: 300px; justify-content: flex-end;">
+                    ${info.branches.slice(0, 3).map(b => `
+                      <a href="${githubLink('branch', b)}" target="_blank" style="font-size: 10px; padding: 2px 6px; background: rgba(255,255,255,0.08); border-radius: 4px; color: var(--muted); text-decoration: none;">${b.split('/').slice(1).join('/')}</a>
+                    `).join('')}
+                    ${info.branches.length > 3 ? `<span style="font-size: 10px; color: var(--muted);">+${info.branches.length - 3}</span>` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <!-- Recent Activity Timeline -->
+          ${recentCommits.length > 0 ? `
+            <div style="margin-bottom: 24px;">
+              <h3 style="margin: 0 0 12px; font-size: 14px; color: var(--muted);">📅 Recent Activity:</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                ${recentCommits.map(c => `
+                  <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 13px;">
+                    <div style="color: var(--muted); min-width: 60px; font-size: 12px;">${daysAgo(c.date) === 0 ? 'today' : daysAgo(c.date) + 'd ago'}</div>
+                    <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                      <span style="color: var(--accent);">${c.author}</span>: ${c.message}
+                    </div>
+                    <a href="${githubLink('branch', c.branch)}" target="_blank" style="font-size: 11px; color: var(--muted); text-decoration: none; min-width: 150px; text-align: right;">${c.branch}</a>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          <!-- All Branches with their contributors -->
+          <div>
+            <h3 style="margin: 0 0 12px; font-size: 14px; color: var(--muted);">🌿 All Branches (${branches.length}):</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              ${branches.map(b => `
+                <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <a href="${githubLink('branch', b.name)}" target="_blank" style="color: var(--text); text-decoration: none; font-family: monospace; font-size: 13px;">${b.name}</a>
+                    <span style="font-size: 12px; color: var(--muted);">${daysAgo(b.last_commit?.date) === 0 ? 'today' : daysAgo(b.last_commit?.date) + 'd ago'}</span>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                    ${(branchContributors[b.name] || []).slice(0, 5).map(u => `
+                      <a href="${githubLink('user', u)}" target="_blank" style="font-size: 10px; padding: 2px 8px; background: rgba(124,92,255,0.15); border-radius: 12px; color: var(--accent); text-decoration: none;">@${u}</a>
+                    `).join('')}
+                    ${(branchContributors[b.name] || []).length > 5 ? `<span style="font-size: 10px; color: var(--muted); padding: 2px 8px;">+${branchContributors[b.name].length - 5}</span>` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
           </div>
         </div>
       `;
