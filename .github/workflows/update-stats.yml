@@ -17,31 +17,28 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Git Mirror
+      - name: Clone XRPL rippled
         run: |
-          MIRROR_DIR="$HOME/rippled-mirror"
+          REPO_DIR="$HOME/rippled"
           
-          if [ -d "$MIRROR_DIR/.git" ] || [ -f "$MIRROR_DIR/HEAD" ]; then
-            echo "Updating existing mirror..."
-            cd "$MIRROR_DIR"
-            git fetch --all --prune
+          if [ -d "$REPO_DIR/.git" ]; then
+            echo "Updating existing clone..."
+            cd "$REPO_DIR"
+            git fetch origin
           else
-            echo "Creating fresh mirror..."
-            rm -rf "$MIRROR_DIR"
-            mkdir -p "$MIRROR_DIR"
-            # Clone with full history
-            git clone --mirror https://github.com/XRPLF/rippled.git "$MIRROR_DIR"
+            echo "Creating fresh clone (this will take ~1-2 minutes)..."
+            rm -rf "$REPO_DIR"
+            git clone --depth=500 https://github.com/XRPLF/rippled.git "$REPO_DIR"
           fi
-          
-          cd "$MIRROR_DIR"
-          echo "Git remotes:"
-          git remote -v
-          echo ""
-          echo "Sample refs:"
-          git branch -r 2>/dev/null | head -10 || git show-ref | head -10
 
-      - name: Extract all branch data
+      - name: Extract branch data
         run: |
+          cd "$HOME/rippled"
+          
+          echo "Remote branches:"
+          git branch -r | head -20
+          echo ""
+          
           python3 << 'PYEOF'
           import subprocess
           import json
@@ -49,84 +46,47 @@ jobs:
           from datetime import datetime, timezone
           from collections import defaultdict
 
-          MIRROR_DIR = os.path.expanduser('~/rippled-mirror')
+          REPO_DIR = os.path.expanduser('~/rippled')
 
           def git(args):
-              """Run git command in mirror dir"""
               result = subprocess.run(
                   ['git'] + args,
                   capture_output=True,
                   text=True,
-                  cwd=MIRROR_DIR
+                  cwd=REPO_DIR
               )
-              stdout = result.stdout.strip() if result.stdout else ''
-              stderr = result.stderr.strip() if result.stderr else ''
-              return stdout, stderr, result.returncode
+              return result.stdout.strip(), result.stderr.strip(), result.returncode
 
-          # Get list of all refs from the mirror
-          # In a mirror repo, branches are under refs/heads/
-          print("Fetching all refs...")
-          
-          # Try to get remote branches first
+          # Get remote branches
           stdout, stderr, code = git(['branch', '-r', '--format=%(refname:short)'])
           
-          if code != 0 or not stdout:
-              # Fallback: get all refs and parse them
-              print("Trying alternative method...")
-              stdout, stderr, code = git(['show-ref', '--heads'])
-              if code == 0 and stdout:
-                  all_refs = []
-                  for line in stdout.split('\n'):
-                      if 'refs/heads/' in line:
-                          # Parse: sha refs/heads/branchname
-                          parts = line.split('refs/heads/')
-                          if len(parts) == 2:
-                              all_refs.append('origin/' + parts[1])
-                  stdout = '\n'.join(all_refs)
-          
-          if not stdout:
-              print("ERROR: Could not fetch any branches!")
-              print(f"Stderr: {stderr}")
+          if code != 0:
+              print(f"Git error: {stderr}")
               exit(1)
-
-          all_branches = [b for b in stdout.split('\n') if b and not b.endswith('/HEAD')]
-          print(f"Total branches found: {len(all_branches)}")
           
-          if len(all_branches) > 0:
-              print(f"Sample branches: {all_branches[:5]}")
-
-          # Filter out main branches
-          skip_patterns = ['master', 'main', 'develop', 'release/', 'gh-pages']
+          all_branches = [b for b in stdout.split('\n') if b and not b.endswith('/HEAD')]
+          print(f"Total remote branches: {len(all_branches)}")
+          
+          # Filter feature branches
+          skip = ['master', 'main', 'develop', 'release/', 'gh-pages']
           feature_branches = []
           for branch in all_branches:
               name = branch.replace('origin/', '')
-              if not any(name.startswith(p) or name == p for p in skip_patterns):
-                  feature_branches.append(branch)
+              if not any(name.startswith(p) or name == p for p in skip):
+                  feature_branches.append((branch, name))
           
-          print(f"Feature branches to analyze: {len(feature_branches)}")
+          print(f"Feature branches: {len(feature_branches)}")
+          if feature_branches:
+              print(f"Examples: {feature_branches[:3]}")
 
-          # Process ALL branches
+          # Process branches
           results = []
-          contributor_stats = defaultdict(lambda: {
-              'commits': 0, 
-              'branches': set(), 
-              'last_commit': None,
-              'last_ts': 0
-          })
+          contributor_stats = defaultdict(lambda: {'commits': 0, 'branches': set(), 'last_commit': None, 'last_ts': 0})
 
-          for idx, branch in enumerate(feature_branches, 1):
-              name = branch.replace('origin/', '')
-              if idx <= 5 or idx % 50 == 0:
-                  print(f"[{idx}/{len(feature_branches)}] Processing {name}...")
-              
+          for full_ref, name in feature_branches[:300]:  # Limit for safety
               try:
-                  # Get the most recent commit for this branch
-                  stdout, stderr, code = git([
-                      'log', '-1', 
-                      '--format=%H|%an|%ae|%at|%s',
-                      branch
-                  ])
-                  
+                  # Get last commit
+                  stdout, _, code = git(['log', '-1', '--format=%H|%an|%ae|%at|%s', full_ref])
                   if code != 0 or not stdout:
                       continue
                   
@@ -134,78 +94,57 @@ jobs:
                   if len(parts) != 5:
                       continue
                   
-                  commit_hash, author_name, author_email, ts_str, subject = parts
+                  hash, author, email, ts_str, msg = parts
                   
                   try:
-                      timestamp = int(ts_str)
-                      if timestamp <= 0:
+                      ts = int(ts_str)
+                      if ts <= 0:
                           continue
-                  except ValueError:
+                  except:
                       continue
                   
-                  commit_date = datetime.fromtimestamp(timestamp, tz=timezone.utc).isoformat()
+                  date = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
                   
-                  # Get contributors (last 50 commits for performance)
-                  contributors_stdout, _, _ = git([
-                      'log', '-50',
-                      '--format=%ae|%an',
-                      branch
-                  ])
+                  # Get contributors
+                  contrib_out, _, _ = git(['log', '-30', '--format=%ae|%an', full_ref])
+                  contributors = []
+                  seen = set()
                   
-                  branch_contributors = []
-                  seen_emails = set()
-                  
-                  for line in contributors_stdout.split('\n'):
+                  for line in contrib_out.split('\n'):
                       if '|' in line:
-                          email, name_from_log = line.split('|', 1)
-                          if email and email not in seen_emails:
-                              seen_emails.add(email)
-                              branch_contributors.append({
-                                  'email': email,
-                                  'name': name_from_log
-                              })
-                              
-                              # Update global stats
-                              contributor_stats[email]['commits'] += 1
-                              contributor_stats[email]['branches'].add(name)
-                              if timestamp > contributor_stats[email]['last_ts']:
-                                  contributor_stats[email]['last_commit'] = commit_date
-                                  contributor_stats[email]['last_ts'] = timestamp
+                          e, n = line.split('|', 1)
+                          if e and e not in seen:
+                              seen.add(e)
+                              contributors.append({'email': e, 'name': n})
+                              contributor_stats[e]['commits'] += 1
+                              contributor_stats[e]['branches'].add(name)
+                              if ts > contributor_stats[e]['last_ts']:
+                                  contributor_stats[e]['last_commit'] = date
+                                  contributor_stats[e]['last_ts'] = ts
                   
                   results.append({
                       'name': name,
-                      'last_commit': {
-                          'hash': commit_hash[:8],
-                          'author': author_name,
-                          'email': author_email,
-                          'date': commit_date,
-                          'message': subject[:100]
-                      },
-                      'contributor_count': len(branch_contributors),
-                      'contributors': branch_contributors[:20]
+                      'last_commit': {'hash': hash[:8], 'author': author, 'email': email, 'date': date, 'message': msg[:100]},
+                      'contributor_count': len(contributors),
+                      'contributors': contributors[:15]
                   })
                   
               except Exception as e:
-                  print(f"  Error on {name}: {e}")
+                  print(f"Error on {name}: {e}")
                   continue
 
-          # Sort by most recent activity
+          # Sort and save
           results.sort(key=lambda x: x['last_commit']['date'], reverse=True)
-
-          # Build contributors list
+          
           contributors_list = []
-          for email, stats in sorted(
-              contributor_stats.items(), 
-              key=lambda x: x[1]['commits'], 
-              reverse=True
-          ):
-              if stats['commits'] > 0 and stats['last_commit']:
+          for email, s in sorted(contributor_stats.items(), key=lambda x: x[1]['commits'], reverse=True):
+              if s['commits'] > 0 and s['last_commit']:
                   contributors_list.append({
                       'email': email,
-                      'name': list(stats['branches'])[0] if stats['branches'] else 'Unknown',
-                      'commits': stats['commits'],
-                      'branches': sorted(list(stats['branches'])),
-                      'last_active': stats['last_commit']
+                      'name': list(s['branches'])[0],
+                      'commits': s['commits'],
+                      'branches': sorted(list(s['branches'])),
+                      'last_active': s['last_commit']
                   })
 
           output = {
@@ -222,30 +161,11 @@ jobs:
               json.dump(output, f, indent=2)
 
           print(f"\n✅ SUCCESS: {len(results)} branches, {len(contributors_list)} contributors")
-          if results:
-              print(f"   Most recent: {results[0]['name']} ({results[0]['last_commit']['date']})")
           PYEOF
 
-      - name: Commit and push
+      - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add stats/data/branches.json
-          
-          if git diff --cached --quiet; then
-            echo "No changes"
-            exit 0
-          fi
-          
-          git commit -m "Update stats $(date -u +%H:%M UTC)"
-          
-          for i in 1 2 3; do
-            if git pull --rebase origin main; then
-              git push origin main
-              exit 0
-            fi
-            echo "Retry $i..."
-            sleep 2
-          done
-          
-          exit 1
+          git diff --cached --quiet || (git commit -m "Update stats $(date -u +%H:%M)" && git pull --rebase origin main && git push)
