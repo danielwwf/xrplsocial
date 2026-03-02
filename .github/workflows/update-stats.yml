@@ -26,16 +26,27 @@ jobs:
             cd "$REPO_DIR"
             git fetch origin
           else
-            echo "Creating fresh clone (this will take ~1-2 minutes)..."
+            echo "Creating fresh clone (full history, ~2-3 minutes)..."
             rm -rf "$REPO_DIR"
-            git clone --depth=500 https://github.com/XRPLF/rippled.git "$REPO_DIR"
+            # Full clone to get all branches
+            git clone https://github.com/XRPLF/rippled.git "$REPO_DIR"
           fi
+          
+          cd "$REPO_DIR"
+          # Fetch all remote branches
+          git remote update
+          git fetch --all
 
       - name: Extract branch data
         run: |
           cd "$HOME/rippled"
           
+          # Ensure we have all remote branches
+          git remote update
+          git fetch --all --prune
+          
           echo "Remote branches:"
+          git branch -r | wc -l
           git branch -r | head -20
           echo ""
           
