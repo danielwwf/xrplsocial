@@ -502,10 +502,10 @@
             
             sorted.forEach(([username, info]) => {
                 html += `
-                    <div class="card" data-searchable>
+                    <div class="card" data-searchable onclick="showPersonModal('${username.replace(/'/g, "\\'")}')" style="cursor: pointer;">
                         <div class="card-header">
                             <div>
-                                <div class="card-title"><a href="${githubUrl('user', username)}" target="_blank">@${username}</a></div>
+                                <div class="card-title">@${username}</div>
                                 <div class="card-meta">${info.commitCount} commits • ${info.branches.size} branches • ${info.amendments.size} amendments</div>
                             </div>
                         </div>
@@ -515,7 +515,7 @@
                         </div>
                         
                         <div class="branches">
-                            ${Array.from(info.branches).slice(0, 6).map(b => `<div class="branch"><a href="${githubUrl('branch', b)}" target="_blank">${b}</a></div>`).join('')}
+                            ${Array.from(info.branches).slice(0, 6).map(b => `<div class="branch">${b}</div>`).join('')}
                             ${info.branches.size > 6 ? `<div style="color:var(--muted);font-size:12px;">+${info.branches.size - 6} more</div>` : ''}
                         </div>
                     </div>
