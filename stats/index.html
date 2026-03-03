@@ -808,24 +808,37 @@
                 render();
             });
             
-            // Search with debouncing
+            // Search with debouncing - optimized for many cards
             let searchTimeout;
             document.getElementById('search').addEventListener('input', (e) => {
                 clearTimeout(searchTimeout);
+                const query = e.target.value.toLowerCase().trim();
+                
+                if (!query) {
+                    document.querySelectorAll('.card.hidden').forEach(c => c.classList.remove('hidden'));
+                    return;
+                }
+                
                 searchTimeout = setTimeout(() => {
-                    const query = e.target.value.toLowerCase().trim();
                     const cards = document.querySelectorAll('.card[data-searchable]');
+                    // Process in chunks to avoid blocking
+                    let i = 0;
+                    const chunkSize = 50;
                     
-                    if (!query) {
-                        cards.forEach(card => card.classList.remove('hidden'));
-                        return;
+                    function processChunk() {
+                        const end = Math.min(i + chunkSize, cards.length);
+                        for (; i < end; i++) {
+                            const card = cards[i];
+                            // Use textContent instead of innerText (much faster)
+                            const text = (card.textContent || '').toLowerCase();
+                            card.classList.toggle('hidden', !text.includes(query));
+                        }
+                        if (i < cards.length) {
+                            requestAnimationFrame(processChunk);
+                        }
                     }
-                    
-                    cards.forEach(card => {
-                        const text = card.innerText.toLowerCase();
-                        card.classList.toggle('hidden', !text.includes(query));
-                    });
-                }, 300); // 300ms debounce
+                    processChunk();
+                }, 150); // Reduced debounce for responsiveness
             });
             
             // Card clicks (event delegation)
