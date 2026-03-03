@@ -241,40 +241,7 @@
         ];
         
         // Utility functions
-        function classify(name, prTitle = '', prBody = '') {
-            const textToCheck = (name + ' ' + prTitle + ' ' + prBody).toLowerCase();
-            
-            // First: Check official amendments mapping
-            if (amendmentsMappingData && amendmentsMappingData.amendments) {
-                for (const amendment of amendmentsMappingData.amendments) {
-                    for (const keyword of amendment.keywords) {
-                        if (textToCheck.includes(keyword.toLowerCase())) {
-                            return {
-                                name: amendment.name,
-                                docs: amendment.docs,
-                                id: amendment.id,
-                                xls: amendment.xls
-                            };
-                        }
-                    }
-                }
-            }
-            
-            // Second: Check for XLS references
-            const xlsMatch = textToCheck.match(/xls[-\s]?(\d+)/i);
-            if (xlsMatch && xlsStandardsData) {
-                const xlsNum = xlsMatch[1].padStart(4, '0');
-                const standard = xlsStandardsData[xlsNum];
-                if (standard) {
-                    return {
-                        name: standard.name,
-                        docs: `https://github.com/XRPLF/XRPL-Standards/tree/master/${standard.folder}`,
-                        xls: xlsNum
-                    };
-                }
-            }
-            
-            // Fallback to pattern matching
+        function classify(name) {
             for (const a of AMENDMENTS) {
                 if (a.pattern.test(name)) return a;
             }
@@ -614,136 +581,51 @@
         function renderAmendments() {
             const groups = {};
             
-            // Initialize groups from amendments mapping
-            if (amendmentsMappingData && amendmentsMappingData.amendments) {
-                amendmentsMappingData.amendments.forEach(amendment => {
-                    groups[amendment.name] = { 
-                        amendment: amendment, 
-                        branches: [], 
-                        contributors: new Map(),
-                        latestDate: null
-                    };
-                });
-            }
-            
             data.branches.forEach(b => {
                 const a = classify(b.name);
-                const groupName = a.name;
-                
-                if (!groups[groupName]) {
-                    groups[groupName] = { 
-                        amendment: a, 
-                        branches: [], 
-                        contributors: new Map(),
-                        latestDate: null
-                    };
-                }
-                
-                groups[groupName].branches.push(b);
-                const branchDate = new Date(b.last_commit?.date || 0);
-                if (!groups[groupName].latestDate || branchDate > groups[groupName].latestDate) {
-                    groups[groupName].latestDate = branchDate;
-                }
-                
+                if (!groups[a.name]) groups[a.name] = { amendment: a, branches: [], contributors: new Map() };
+                groups[a.name].branches.push(b);
                 (b.contributors || []).forEach(c => {
                     const u = extractUser(c.email);
-                    groups[groupName].contributors.set(u, (groups[groupName].contributors.get(u) || 0) + 1);
+                    groups[a.name].contributors.set(u, (groups[a.name].contributors.get(u) || 0) + 1);
                 });
             });
             
-            // Sort by latest activity
             const sorted = Object.entries(groups).sort((a, b) => {
-                return (b[1].latestDate || 0) - (a[1].latestDate || 0);
+                const aLatest = Math.max(...a[1].branches.map(b => new Date(b.last_commit?.date || 0)));
+                const bLatest = Math.max(...b[1].branches.map(b => new Date(b.last_commit?.date || 0)));
+                return bLatest - aLatest;
             });
             
-            let html = '<div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));">';
-            
+            let html = '<div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">';
             sorted.forEach(([name, info]) => {
-                const days = info.latestDate ? daysAgo(info.latestDate) : 999;
-                const statusClass = days <= 7 ? 'active' : days <= 30 ? 'recent' : 'dormant';
-                const statusLabel = days <= 7 ? 'Active' : days <= 30 ? 'Recent' : 'Dormant';
+                const latest = Math.max(...info.branches.map(b => new Date(b.last_commit?.date || 0)));
+                const days = daysAgo(latest);
+                const status = getStatus(days);
                 const sortedContributors = Array.from(info.contributors.entries()).sort((a, b) => b[1] - a[1]);
                 
-                // Get description from mapping or fallback
-                const description = info.amendment.description || 
+                // Get latest commit message as description
+                const latestBranch = info.branches.sort((a, b) => 
+                    new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0)
+                )[0];
+                const description = latestBranch?.last_commit?.message?.split('\n')[0]?.substring(0, 100) || 
                     `${info.branches.length} branches with ${info.contributors.size} contributors`;
                 
-                // Get status from mapping
-                const amendmentStatus = info.amendment.status || 'development';
-                const statusBadgeClass = amendmentStatus === 'enabled' ? 'status-enabled' : 
-                                        amendmentStatus === 'proposed' ? 'status-proposed' : 'status-development';
-                const statusBadgeText = amendmentStatus === 'enabled' ? 'Enabled' : 
-                                       amendmentStatus === 'proposed' ? 'Proposed' : 'In Development';
-                
-                // Icon class
-                const iconClass = info.amendment.iconClass || 'icon-other';
-                const icon = info.amendment.icon || '📁';
-                const xls = info.amendment.xls || '';
-                
                 html += `
-                    <div class="card amendment-card" data-searchable data-amendment="${name.replace(/"/g, '&quot;')}" style="position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity: 0; transition: opacity 0.2s;" class="card-accent"></div>
-                        
-                        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
-                            <div style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; ${getIconStyle(iconClass)}">${icon}</div>
-                            <div style="flex: 1; min-width: 0;">
-                                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${name}</h3>
-                                ${xls ? `<span style="font-size: 11px; color: var(--accent-light); font-family: monospace;">${xls}</span>` : ''}
+                    <div class="card amendment-card" data-searchable data-amendment="${name.replace(/"/g, '&quot;')}">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">${name}</div>
+                                <div class="card-meta">${info.branches.length} branches • ${info.contributors.size} contributors</div>
                             </div>
+                            <span class="badge ${status.class}">${status.label}</span>
                         </div>
-                        
-                        <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
-                            <span class="status-badge ${statusBadgeClass}" style="font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;">● ${statusBadgeText}</span>
-                            <span class="status-badge ${statusClass}" style="font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;">${statusLabel}</span>
-                        </div>
-                        
-                        <div style="font-size: 13px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${description}</div>
-                        
-                        <div style="display: flex; gap: 16px; margin-bottom: 12px; font-size: 12px; color: var(--muted);">
-                            <span>🔀 ${info.branches.length} branches</span>
-                            <span>👥 ${info.contributors.size} contributors</span>
-                        </div>
-                        
-                        <div class="contributors">${sortedContributors.slice(0, 6).map(([u, count]) => `<span class="contributor" style="font-size: 11px; padding: 3px 8px;">@${u}</span>`).join('')}${info.contributors.size > 6 ? `<span class="contributor" style="font-size: 11px; padding: 3px 8px;">+${info.contributors.size - 6}</span>` : ''}</div>
-                        
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
-                            <span style="font-size: 12px; color: var(--muted);">Last activity</span>
-                            <span style="font-size: 12px; color: var(--muted);">${days === 0 ? 'today' : days + 'd ago'}</span>
-                        </div>
+                        <div style="font-size: 13px; color: var(--muted); margin: 12px 0; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${description}</div>
+                        <div class="contributors">${sortedContributors.slice(0, 8).map(([u, count]) => `<span class="contributor">@${u}</span>`).join('')}${info.contributors.size > 8 ? `<span class="contributor">+${info.contributors.size - 8}</span>` : ''}</div>
                     </div>`;
             });
-            
             html += '</div>';
             document.getElementById('content').innerHTML = html;
-            
-            // Add hover effect via JS
-            document.querySelectorAll('.amendment-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.querySelector('.card-accent').style.opacity = '1';
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.querySelector('.card-accent').style.opacity = '0';
-                });
-            });
-        }
-        
-        // Helper function for icon styles
-        function getIconStyle(iconClass) {
-            const styles = {
-                'icon-amm': 'background: rgba(236,72,153,0.15);',
-                'icon-batch': 'background: rgba(59,130,246,0.15);',
-                'icon-did': 'background: rgba(16,185,129,0.15);',
-                'icon-nft': 'background: rgba(139,92,246,0.15);',
-                'icon-clawback': 'background: rgba(245,158,11,0.15);',
-                'icon-lending': 'background: rgba(14,165,233,0.15);',
-                'icon-mpt': 'background: rgba(99,102,241,0.15);',
-                'icon-oracle': 'background: rgba(20,184,166,0.15);',
-                'icon-escrow': 'background: rgba(168,85,247,0.15);',
-                'icon-credentials': 'background: rgba(225,29,72,0.15);',
-                'icon-fix': 'background: rgba(107,114,128,0.15);',
-                'icon-other': 'background: rgba(255,255,255,0.08);'
-            };
-            return styles[iconClass] || styles['icon-other'];
         }
         
         function renderPeople() {
