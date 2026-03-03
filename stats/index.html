@@ -414,6 +414,21 @@
             document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
         };
         
+        // Simple Markdown to HTML converter
+        function markdownToHtml(md) {
+            if (!md) return '';
+            return md
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^\- \[x\] (.*$)/gim, '<div><span style="color: #3fb950;">✓</span> $1</div>')
+                .replace(/^\- \[ \] (.*$)/gim, '<div><span style="color: var(--muted);">○</span> $1</div>')
+                .replace(/^\- (.*$)/gim, '<div>• $1</div>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+        }
+        
         // Completed branch modal with rich PR details
         window.showCompletedModal = function(branchName) {
             const branch = completedData.find(b => b.name === branchName);
@@ -473,7 +488,7 @@
                         <div class="section">
                             <h3>📝 Description</h3>
                             <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 14px; line-height: 1.6;">
-                                ${richPr.body.replace(/\n/g, '<br>')}
+                                ${markdownToHtml(richPr.body)}
                             </div>
                         </div>` : ''}
                         
@@ -820,7 +835,7 @@
                         <div class="card-status" style="background: rgba(163, 113, 247, 0.15); color: #a371f7;">
                             <span>✅ Completed</span>
                         </div>
-                        <div class="card-title" style="font-family: monospace; font-size: 15px;">${b.name}</div>
+                        <div class="card-title" style="font-family: monospace; font-size: 15px; word-break: break-all;">${b.name}</div>
                         <div class="card-description">
                             ${b.last_commit ? b.last_commit.message.split('\n')[0].substring(0, 120) : 'No commit message'}
                         </div>
