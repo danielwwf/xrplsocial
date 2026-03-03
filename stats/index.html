@@ -208,6 +208,7 @@
         let data = null;
         let completedData = null;
         let activityData = null;
+        let richPrsData = null;  // Rich PR details for top 100
         let currentTab = 'amendments';
         
         // Amendment definitions
@@ -406,6 +407,140 @@
                         <a href="${amendment.docs || '#'}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">Learn about ${amendment.name.split(' ')[0]} →</a>
                     </div></div>
                 </div>`;
+            
+            document.body.appendChild(modal);
+            modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+            document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
+        };
+        
+        // Completed branch modal with rich PR details
+        window.showCompletedModal = function(branchName) {
+            const branch = completedData.find(b => b.name === branchName);
+            if (!branch) return;
+            
+            // Find rich PR data if available (top 100)
+            const richPr = richPrsData ? richPrsData.find(p => p.branch_name === branchName) : null;
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            
+            let content = '';
+            
+            if (richPr) {
+                // Rich PR data available
+                const amendment = classify(branchName);
+                const createdDate = new Date(richPr.created_at);
+                const mergedDate = new Date(richPr.merged_at);
+                
+                content = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div>
+                                <h2>${richPr.title}</h2>
+                                <div style="color: var(--muted);">
+                                    <a href="https://github.com/${richPr.user}" target="_blank" style="color: var(--accent);">@${richPr.user}</a> • 
+                                    PR #${richPr.pr_number} • 
+                                    <span style="color: #a371f7;">✅ Merged</span>
+                                </div>
+                            </div>
+                            <button class="close-btn">✕ Close</button>
+                        </div>
+                        
+                        <div class="section">
+                            <h3>📅 Timeline</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                                    <div style="color: var(--muted); font-size: 12px;">Proposed</div>
+                                    <div>${createdDate.toLocaleDateString()}</div>
+                                </div>
+                                <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                                    <div style="color: var(--muted); font-size: 12px;">Merged</div>
+                                    <div>${mergedDate.toLocaleDateString()}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        ${richPr.labels.length > 0 ? `
+                        <div class="section">
+                            <h3>🏷️ Labels</h3>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                ${richPr.labels.map(l => `<span style="padding: 4px 12px; background: rgba(124,92,255,0.2); border-radius: 16px; font-size: 12px;">${l}</span>`).join('')}
+                            </div>
+                        </div>` : ''}
+                        
+                        ${richPr.body ? `
+                        <div class="section">
+                            <h3>📝 Description</h3>
+                            <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 14px; line-height: 1.6;">
+                                ${richPr.body.replace(/\n/g, '<br>')}
+                            </div>
+                        </div>` : ''}
+                        
+                        ${richPr.comments.length > 0 ? `
+                        <div class="section">
+                            <h3>💬 Recent Comments (${richPr.comments_count} total)</h3>
+                            ${richPr.comments.map(c => `
+                                <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px;">
+                                    <div style="color: var(--accent); font-size: 13px; margin-bottom: 4px;">@${c.user}</div>
+                                    <div style="font-size: 13px; color: var(--muted);">${c.body.substring(0, 200)}${c.body.length > 200 ? '...' : ''}</div>
+                                </div>
+                            `).join('')}
+                        </div>` : ''}
+                        
+                        <div class="section">
+                            <h3>🔗 Links</h3>
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                <a href="https://github.com/XRPLF/rippled/pull/${richPr.pr_number}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View PR on GitHub →</a>
+                                ${amendment.docs ? `<a href="${amendment.docs}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">Learn about ${amendment.name.split(' ')[0]} →</a>` : ''}
+                            </div>
+                        </div>
+                    </div>`;
+            } else {
+                // Basic data only - fetch on demand or show basic info
+                const amendment = classify(branchName);
+                const d = daysAgo(branch.last_commit?.date);
+                
+                content = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div>
+                                <h2>${branchName}</h2>
+                                <div style="color: var(--muted);">
+                                    ${amendment.name} • 
+                                    <span style="color: #a371f7;">✅ Completed</span>
+                                </div>
+                            </div>
+                            <button class="close-btn">✕ Close</button>
+                        </div>
+                        
+                        ${branch.last_commit ? `
+                        <div class="section">
+                            <h3>📅 Last Activity</h3>
+                            <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                                <div style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">${d === 0 ? 'today' : d + ' days ago'}</div>
+                                <div>${branch.last_commit.message}</div>
+                            </div>
+                        </div>` : ''}
+                        
+                        <div class="section">
+                            <h3>🔗 Links</h3>
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                <a href="https://github.com/XRPLF/rippled/tree/${branchName}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View Branch on GitHub →</a>
+                                ${amendment.docs ? `<a href="${amendment.docs}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">Learn about ${amendment.name.split(' ')[0]} →</a>` : ''}
+                            </div>
+                        </div>
+                        
+                        <div class="section" style="background: rgba(124,92,255,0.1); padding: 16px; border-radius: 8px;">
+                            <div style="color: var(--muted); font-size: 13px;">
+                                💡 Rich PR details are available for the top 100 most recent completed branches. 
+                                This branch is older and shows basic information only.
+                            </div>
+                        </div>
+                    </div>`;
+            }
+            
+            modal.innerHTML = content;
             
             document.body.appendChild(modal);
             modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
@@ -761,16 +896,18 @@
         
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Fetch both data files
+            // Fetch all data files
             Promise.all([
                 fetch('./data/branches.json?t=' + Date.now()).then(r => r.json()),
                 fetch('./data/completed.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
-                fetch('./data/timeline.json?t=' + Date.now()).then(r => r.json()).catch(() => [])
+                fetch('./data/timeline.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
+                fetch('./data/rich_prs.json?t=' + Date.now()).then(r => r.json()).catch(() => [])
             ])
-                .then(([branchesData, completed, timeline]) => {
+                .then(([branchesData, completed, timeline, richPrs]) => {
                     data = branchesData;
                     completedData = completed;
-                    activityData = timeline;  // Now using git-based timeline
+                    activityData = timeline;
+                    richPrsData = richPrs;  // Now using git-based timeline
                     
                     document.getElementById('updated').textContent = 'Updated: ' + new Date(data.generated_at).toLocaleDateString();
                     
@@ -852,6 +989,8 @@
                     window.showPersonModal(card.dataset.person);
                 } else if (card.classList.contains('branch-card') && card.dataset.branch) {
                     window.showBranchModal(card.dataset.branch);
+                } else if (card.classList.contains('completed-card') && card.dataset.branch) {
+                    window.showCompletedModal(card.dataset.branch);
                 }
             });
         });
