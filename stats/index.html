@@ -663,12 +663,17 @@
                 return;
             }
             
+            // Sort by completed_at date, newest first
+            const sorted = [...completedData].sort((a, b) => 
+                new Date(b.completed_at || 0) - new Date(a.completed_at || 0)
+            );
+            
             let html = `<div style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">
-                ${completedData.length} completed branches (newest first)
+                ${sorted.length} completed branches (newest first)
             </div>
             <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">`;
             
-            completedData.forEach(b => {
+            sorted.forEach(b => {
                 const completedDate = new Date(b.completed_at);
                 const daysAgo = Math.floor((Date.now() - completedDate) / (86400000));
                 const amendment = classify(b.name);
