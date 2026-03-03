@@ -131,6 +131,51 @@ jobs:
               # Sort by completion date, newest first
               completed_branches.sort(key=lambda x: x.get('completed_at', ''), reverse=True)
 
+          # Fetch historical merged PRs for completed branches (backfill)
+          # This runs only if we have fewer than 100 completed branches
+          if len(completed_branches) < 100:
+              try:
+                  import urllib.request
+                  
+                  # GitHub API to get merged PRs
+                  url = "https://api.github.com/repos/XRPLF/rippled/pulls?state=closed&per_page=100&sort=updated&direction=desc"
+                  headers = {"Accept": "application/vnd.github.v3+json", "User-Agent": "xrpl-stats"}
+                  
+                  req = urllib.request.Request(url, headers=headers)
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      prs = json.loads(response.read().decode())
+                  
+                  api_completed = []
+                  for pr in prs:
+                      if pr.get("merged_at"):  # Only merged PRs
+                          branch_name = pr.get("head", {}).get("ref", "")
+                          # Skip if already in our list
+                          if branch_name and not any(c["name"] == branch_name for c in completed_branches):
+                              # Skip main branches
+                              if not any(branch_name.startswith(p) or branch_name == p for p in skip):
+                                  api_completed.append({
+                                      "name": branch_name,
+                                      "last_commit": {
+                                          "hash": pr.get("merge_commit_sha", "")[:8] if pr.get("merge_commit_sha") else "",
+                                          "author": pr.get("user", {}).get("login", ""),
+                                          "email": "",
+                                          "date": pr.get("merged_at"),
+                                          "message": pr.get("title", "")[:100]
+                                      },
+                                      "contributor_count": 0,
+                                      "contributors": [],
+                                      "completed_at": pr.get("merged_at"),
+                                      "reason": "merged_via_api",
+                                      "pr_number": pr.get("number")
+                                  })
+                  
+                  if api_completed:
+                      completed_branches.extend(api_completed)
+                      completed_branches.sort(key=lambda x: x.get('completed_at', ''), reverse=True)
+                      print(f"Added {len(api_completed)} historical merged PRs from GitHub API")
+              except Exception as e:
+                  print(f"Could not fetch historical PRs: {e}")
+
           # Filter feature branches
           skip = ['master', 'main', 'develop', 'release/', 'gh-pages']
           feature_branches = []
