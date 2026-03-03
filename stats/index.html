@@ -669,6 +669,9 @@
                     document.getElementById('statContrib').textContent = Object.keys(contribStats).length;
                     
                     render();
+                    
+                    // Fetch PR status for active branches after render
+                    setTimeout(fetchPRStatusForActiveBranches, 1000);
                 })
                 .catch(e => {
                     document.getElementById('content').innerHTML = `<div class="card" style="text-align:center;padding:40px;"><p>Error loading data</p><p style="color:var(--muted);font-size:12px;">${e.message}</p></div>`;
@@ -716,6 +719,46 @@
                 }
             });
         });
+        
+        // PR Status cache and fetcher
+        const prCache = new Map();
+        
+        async function fetchPRStatusForActiveBranches() {
+            if (!data) return;
+            const activeBranches = data.branches
+                .filter(b => daysAgo(b.last_commit?.date) <= 7)
+                .slice(0, 15);
+            
+            for (const branch of activeBranches) {
+                try {
+                    const response = await fetch(`https://api.github.com/repos/XRPLF/rippled/pulls?head=XRPLF:${encodeURIComponent(branch.name)}`);
+                    if (response.ok) {
+                        const prs = await response.json();
+                        if (prs.length > 0) {
+                            const pr = prs[0];
+                            prCache.set(branch.name, {
+                                number: pr.number,
+                                state: pr.state,
+                                merged: pr.merged_at !== null,
+                                url: pr.html_url
+                            });
+                            
+                            const card = document.querySelector(`.branch-card[data-branch="${branch.name}"]`);
+                            if (card) {
+                                const footer = card.querySelector('.card-footer');
+                                if (footer && !footer.querySelector('.pr-badge')) {
+                                    const prBadge = document.createElement('span');
+                                    prBadge.className = 'pr-badge';
+                                    prBadge.style.cssText = 'font-size: 11px; padding: 2px 8px; background: rgba(88, 166, 255, 0.2); color: #58a6ff; border-radius: 12px; margin-right: 8px;';
+                                    prBadge.innerHTML = `<a href="${pr.html_url}" target="_blank" style="color: inherit; text-decoration: none;">PR #${pr.number}</a>`;
+                                    footer.insertBefore(prBadge, footer.firstChild);
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {}
+            }
+        }
     </script>
 </body>
 </html>
