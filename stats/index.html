@@ -423,6 +423,35 @@
             else if (currentTab === 'people') renderPeople();
             else if (currentTab === 'branches') renderAllBranches();
             else renderInsights();
+            
+            // Add click handlers after rendering
+            setupClickHandlers();
+        }
+        
+        function setupClickHandlers() {
+            const container = document.getElementById('content');
+            if (!container) return;
+            
+            // Remove existing handler to avoid duplicates
+            container.onclick = null;
+            
+            container.addEventListener('click', (e) => {
+                // Find closest card
+                const card = e.target.closest('.card[data-searchable]');
+                if (!card) return;
+                
+                // Check which type of card
+                if (card.classList.contains('amendment-card')) {
+                    const name = card.dataset.amendment;
+                    if (name) showModal(name);
+                } else if (card.classList.contains('person-card')) {
+                    const person = card.dataset.person;
+                    if (person) showPersonModal(person);
+                } else if (card.classList.contains('branch-card')) {
+                    const branch = card.dataset.branch;
+                    if (branch) showBranchModal(branch);
+                }
+            });
         }
         
         function renderAmendments() {
@@ -502,7 +531,7 @@
             
             sorted.forEach(([username, info]) => {
                 html += `
-                    <div class="card" data-searchable onclick="showPersonModal('${username.replace(/'/g, "\\'")}')" style="cursor: pointer;">
+                    <div class="card person-card" data-searchable data-person="${username.replace(/"/g, '&quot;')}">
                         <div class="card-header">
                             <div>
                                 <div class="card-title">@${username}</div>
@@ -541,7 +570,7 @@
                 const contribList = (b.contributors || []).slice(0, 5);
                 
                 html += `
-                    <div class="card" data-searchable onclick="showBranchModal('${b.name.replace(/'/g, "\\'")}')" style="cursor: pointer;">
+                    <div class="card branch-card" data-searchable data-branch="${b.name.replace(/"/g, '&quot;')}">
                         <div class="card-header">
                             <div>
                                 <div class="card-title">${b.name}</div>
