@@ -789,8 +789,8 @@
                     
                     render();
                     
-                    // Fetch PR status for active branches after render
-                    setTimeout(fetchPRStatusForActiveBranches, 1000);
+                    // PR Status fetching disabled (causes rate limit issues)
+                    // setTimeout(fetchPRStatusForActiveBranches, 1000);
                 })
                 .catch(e => {
                     document.getElementById('content').innerHTML = `<div class="card" style="text-align:center;padding:40px;"><p>Error loading data</p><p style="color:var(--muted);font-size:12px;">${e.message}</p></div>`;
