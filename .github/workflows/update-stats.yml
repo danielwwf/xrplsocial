@@ -537,10 +537,25 @@ jobs:
 
       - name: Ensure AMENDMENTS are generic
         run: |
-          # Fix AMENDMENTS to use generic categories only
-          sed -i '/const AMENDMENTS = \[/,/&\#93; \];/c\
-        const AMENDMENTS = [\n            { pattern: /fix/i, name: '\''🔧 Bug Fixes'\'' },\n            { pattern: /test|ci/i, name: '\''🧪 Testing \& CI'\'' },\n            { pattern: /modular|refactor/i, name: '\''🏗️ Code Modularization'\'' },\n            { pattern: /rust|wasm/i, name: '\''⚡ Rust/WASM'\'' },\n            { pattern: /.*/, name: '\''📁 Other'\'' }\n        ];' stats/index.html
-          echo "AMENDMENTS fixed to generic categories"
+          python3 << 'EOF'
+          import re
+          with open('stats/index.html', 'r') as f:
+            content = f.read()
+          
+          new_amendments = '''const AMENDMENTS = [
+            { pattern: /fix/i, name: '🔧 Bug Fixes' },
+            { pattern: /test|ci/i, name: '🧪 Testing & CI' },
+            { pattern: /modular|refactor/i, name: '🏗️ Code Modularization' },
+            { pattern: /rust|wasm/i, name: '⚡ Rust/WASM' },
+            { pattern: /.*/, name: '📁 Other' }
+        ];'''
+          
+          content = re.sub(r'const AMENDMENTS = \[.*?\];', new_amendments, content, flags=re.DOTALL)
+          
+          with open('stats/index.html', 'w') as f:
+            f.write(content)
+          print("AMENDMENTS fixed to generic categories")
+          EOF
 
       - name: Commit
         run: |
