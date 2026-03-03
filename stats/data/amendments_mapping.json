@@ -97,7 +97,7 @@
       "keywords": ["credential", "credentials", "xls-70", "auth"],
       "xls": "XLS-70",
       "docs": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials",
-      "status": "in-development"
+      "status": "proposed"
     },
     {
       "id": "escrow",
@@ -109,121 +109,11 @@
       "xls": "XLS-46",
       "docs": "https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0046-smart-escrow",
       "status": "enabled"
-    },
-    {
-      "id": "check-cash",
-      "name": "CheckCashMakesTrustLine",
-      "icon": "💳",
-      "iconClass": "icon-fix",
-      "description": "Automatically create trust lines when cashing checks. Improves UX for token payments.",
-      "keywords": ["check-cash", "trustline-check", "check"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "fix-nf-token",
-      "name": "fixNFTokenRemint",
-      "icon": "🔧",
-      "iconClass": "icon-fix",
-      "description": "Fix for NFT reminting vulnerability. Prevents unauthorized re-minting of burned NFTs.",
-      "keywords": ["nft-remint", "fix-nft", "remint", "nftoken-remint"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "fix-unburnable",
-      "name": "fixUnburnableNFToken",
-      "icon": "🔧",
-      "iconClass": "icon-fix",
-      "description": "Fix for unburnable NFT edge cases. Ensures proper handling of non-transferable tokens.",
-      "keywords": ["unburnable", "fix-unburnable", "nft-burn"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "negative-unl",
-      "name": "Negative UNL",
-      "icon": "⚡",
-      "iconClass": "icon-fix",
-      "description": "Improved validator liveness tracking. Allows network to continue with offline validators.",
-      "keywords": ["negative-unl", "unl", "validator", "negative"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "tick-size",
-      "name": "TickSize",
-      "icon": "📊",
-      "iconClass": "icon-fix",
-      "description": "Minimum price increment for order book entries. Reduces order book spam and storage.",
-      "keywords": ["tick-size", "ticksize", "orderbook-precision"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "fix-1578",
-      "name": "fix1578",
-      "icon": "🔧",
-      "iconClass": "icon-fix",
-      "description": "Escrow fix for finish time calculation. Ensures correct release timing.",
-      "keywords": ["fix1578", "escrow-fix", "escrow-bug"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "fix-1543",
-      "name": "fix1543",
-      "icon": "🔧",
-      "iconClass": "icon-fix",
-      "description": "Offer processing fix. Corrects edge cases in DEX offer matching.",
-      "keywords": ["fix1543", "offer-fix"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "deposit-preauth",
-      "name": "DepositPreauth",
-      "icon": "🔒",
-      "iconClass": "icon-fix",
-      "description": "Pre-authorization for deposits. Required for regulatory compliance in certain jurisdictions.",
-      "keywords": ["deposit-preauth", "preauth", "authorization"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "fix-1368",
-      "name": "fix1368",
-      "icon": "🔧",
-      "iconClass": "icon-fix",
-      "description": "Escrow overspend fix. Prevents spending more than escrowed amount.",
-      "keywords": ["fix1368", "escrow-over-fix"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
-    },
-    {
-      "id": "fix-1515",
-      "name": "fix1515",
-      "icon": "🔧",
-      "iconClass": "icon-fix",
-      "description": "Offer cancel fix. Corrects offer cancellation edge cases.",
-      "keywords": ["fix1515", "offer-cancel-fix"],
-      "xls": null,
-      "docs": "https://xrpl.org/resources/known-amendments/",
-      "status": "enabled"
     }
   ],
   "_meta": {
-    "source": "xrpl.org/resources/known-amendments/ + XLS Standards",
+    "source": "https://xrpl.org/resources/known-amendments/",
     "last_updated": "2026-03-03",
-    "note": "This is a manually maintained mapping of XRPL amendments for classification purposes"
+    "note": "Status: enabled=live on mainnet, in-development=being coded, proposed=spec written but not implemented"
   }
 }
