@@ -208,7 +208,8 @@
         let data = null;
         let completedData = null;
         let activityData = null;
-        let richPrsData = null;  // Rich PR details for top 100
+        let richPrsData = null;
+        let xlsStandardsData = null;  // XLS (XRPL Standards) official definitions
         let currentTab = 'amendments';
         
         // Amendment definitions
@@ -227,7 +228,24 @@
         ];
         
         // Utility functions
-        function classify(name) {
+        function classify(name, prTitle = '', prBody = '') {
+            const textToCheck = (name + ' ' + prTitle + ' ' + prBody).toLowerCase();
+            
+            // Check for XLS references first (most specific)
+            const xlsMatch = textToCheck.match(/xls[-\s]?(\d+)/i);
+            if (xlsMatch && xlsStandardsData) {
+                const xlsNum = xlsMatch[1].padStart(4, '0');
+                const standard = xlsStandardsData[xlsNum];
+                if (standard) {
+                    return {
+                        name: standard.name,
+                        docs: `https://github.com/XRPLF/XRPL-Standards/tree/master/${standard.folder}`,
+                        xls: xlsNum
+                    };
+                }
+            }
+            
+            // Fallback to pattern matching
             for (const a of AMENDMENTS) {
                 if (a.pattern.test(name)) return a;
             }
@@ -911,18 +929,20 @@
         
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Fetch all data files
+            // Fetch all data files including XLS standards
             Promise.all([
                 fetch('./data/branches.json?t=' + Date.now()).then(r => r.json()),
                 fetch('./data/completed.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
                 fetch('./data/timeline.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
-                fetch('./data/rich_prs.json?t=' + Date.now()).then(r => r.json()).catch(() => [])
+                fetch('./data/rich_prs.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
+                fetch('./data/xls_standards.json?t=' + Date.now()).then(r => r.json()).catch(() => ({}))
             ])
-                .then(([branchesData, completed, timeline, richPrs]) => {
+                .then(([branchesData, completed, timeline, richPrs, xlsStandards]) => {
                     data = branchesData;
                     completedData = completed;
                     activityData = timeline;
-                    richPrsData = richPrs;  // Now using git-based timeline
+                    richPrsData = richPrs;
+                    xlsStandardsData = xlsStandards;  // Now using git-based timeline
                     
                     document.getElementById('updated').textContent = 'Updated: ' + new Date(data.generated_at).toLocaleDateString();
                     
