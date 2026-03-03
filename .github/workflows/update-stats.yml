@@ -229,6 +229,66 @@ jobs:
                   completed_branches.sort(key=lambda x: x.get('completed_at', ''), reverse=True)
                   print(f"\n✅ Total: Added {len(api_completed)} merged PRs")
                   print(f"   Total completed branches: {len(completed_branches)}")
+              
+              # Fetch rich details for TOP 100 newest completed PRs
+              rich_prs = []
+              top_100 = completed_branches[:100]
+              print(f"\nFetching rich details for top 100 PRs...")
+              
+              for idx, pr_data in enumerate(top_100):
+                  if not pr_data.get('pr_number'):
+                      continue
+                  
+                  pr_num = pr_data['pr_number']
+                  try:
+                      # PR details
+                      pr_url = f"https://api.github.com/repos/XRPLF/rippled/pulls/{pr_num}"
+                      req = urllib.request.Request(pr_url, headers=headers)
+                      with urllib.request.urlopen(req, timeout=10) as resp:
+                          pr_detail = json.loads(resp.read().decode())
+                      
+                      # Comments
+                      comments_url = f"https://api.github.com/repos/XRPLF/rippled/issues/{pr_num}/comments"
+                      req = urllib.request.Request(comments_url, headers=headers)
+                      with urllib.request.urlopen(req, timeout=10) as resp:
+                          comments = json.loads(resp.read().decode())
+                      
+                      # Reviews
+                      reviews_url = f"https://api.github.com/repos/XRPLF/rippled/pulls/{pr_num}/reviews"
+                      req = urllib.request.Request(reviews_url, headers=headers)
+                      with urllib.request.urlopen(req, timeout=10) as resp:
+                          reviews = json.loads(resp.read().decode())
+                      
+                      rich_prs.append({
+                          'pr_number': pr_num,
+                          'branch_name': pr_data['name'],
+                          'title': pr_detail.get('title', ''),
+                          'body': pr_detail.get('body', '')[:2000] if pr_detail.get('body') else '',
+                          'user': pr_detail.get('user', {}).get('login', ''),
+                          'state': pr_detail.get('state', ''),
+                          'merged': pr_detail.get('merged_at') is not None,
+                          'created_at': pr_detail.get('created_at', ''),
+                          'merged_at': pr_detail.get('merged_at', ''),
+                          'labels': [l.get('name', '') for l in pr_detail.get('labels', [])],
+                          'comments_count': len(comments),
+                          'comments': [{'user': c.get('user', {}).get('login', ''), 'body': c.get('body', '')[:500], 'created_at': c.get('created_at', '')} for c in comments[:5]],
+                          'reviews_count': len(reviews),
+                          'reviews': [{'user': r.get('user', {}).get('login', ''), 'state': r.get('state', ''), 'body': r.get('body', '')[:200] if r.get('body') else ''} for r in reviews[:3]]
+                      })
+                      
+                      if (idx + 1) % 10 == 0:
+                          print(f"  {idx + 1}/100 rich PRs fetched...")
+                      
+                  except Exception as e:
+                      print(f"  Error fetching PR #{pr_num}: {e}")
+                      continue
+              
+              # Save rich PRs
+              RICH_PRS_FILE = os.path.join(DATA_DIR, 'rich_prs.json')
+              with open(RICH_PRS_FILE, 'w') as f:
+                  json.dump(rich_prs, f, indent=2)
+              print(f"\n✅ Saved {len(rich_prs)} rich PR details")
+              
           except Exception as e:
               print(f"Could not fetch PRs: {e}")
               import traceback
@@ -376,5 +436,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json
+          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json stats/data/rich_prs.json
           git diff --cached --quiet || (git commit -m "Update stats $(date -u +%H:%M)" && git pull --rebase origin main && git push)
