@@ -728,21 +728,17 @@
                     lastDate = dateStr;
                 }
                 
-                let icon = '💬';
-                let actionText = 'commented';
-                let badgeColor = 'rgba(88, 166, 255, 0.2)';
-                let badgeText = '#58a6ff';
+                let icon = '🆕';
+                let actionText = 'opened PR';
+                let badgeColor = 'rgba(63, 185, 80, 0.2)';
+                let badgeText = '#3fb950';
                 
-                if (item.type === 'pr_opened') {
-                    icon = '🆕'; actionText = 'opened PR';
-                    badgeColor = 'rgba(63, 185, 80, 0.2)'; badgeText = '#3fb950';
-                } else if (item.type === 'pr_merged') {
+                if (item.type === 'pr_merged') {
                     icon = '✅'; actionText = 'merged PR';
                     badgeColor = 'rgba(163, 113, 247, 0.2)'; badgeText = '#a371f7';
-                } else if (item.type === 'reviewed') {
-                    icon = '👀'; actionText = 'reviewed';
-                } else if (item.type === 'head_ref_force_pushed') {
-                    icon = '🔄'; actionText = 'force pushed';
+                } else if (item.type === 'pr_closed') {
+                    icon = '❌'; actionText = 'closed PR';
+                    badgeColor = 'rgba(248, 81, 73, 0.2)'; badgeText = '#f85149';
                 }
                 
                 html += `

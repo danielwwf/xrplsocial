@@ -133,17 +133,26 @@ jobs:
 
           # Fetch historical merged PRs for completed branches (backfill)
           # This runs only if we have fewer than 100 completed branches
+          # Note: Unauthenticated API has 60 req/h limit
           if len(completed_branches) < 100:
               try:
                   import urllib.request
+                  import urllib.error
                   
                   # GitHub API to get merged PRs
                   url = "https://api.github.com/repos/XRPLF/rippled/pulls?state=closed&per_page=100&sort=updated&direction=desc"
                   headers = {"Accept": "application/vnd.github.v3+json", "User-Agent": "xrpl-stats"}
                   
                   req = urllib.request.Request(url, headers=headers)
-                  with urllib.request.urlopen(req, timeout=30) as response:
-                      prs = json.loads(response.read().decode())
+                  try:
+                      with urllib.request.urlopen(req, timeout=30) as response:
+                          prs = json.loads(response.read().decode())
+                  except urllib.error.HTTPError as e:
+                      if e.code == 403:
+                          print("GitHub API rate limit exceeded (60 req/h). Skipping historical backfill.")
+                          prs = []
+                      else:
+                          raise
                   
                   api_completed = []
                   for pr in prs:
@@ -152,7 +161,8 @@ jobs:
                           # Skip if already in our list
                           if branch_name and not any(c["name"] == branch_name for c in completed_branches):
                               # Skip main branches
-                              if not any(branch_name.startswith(p) or branch_name == p for p in skip):
+                              skip_main = ['master', 'main', 'develop', 'release/', 'gh-pages']
+                              if not any(branch_name.startswith(p) or branch_name == p for p in skip_main):
                                   api_completed.append({
                                       "name": branch_name,
                                       "last_commit": {
@@ -272,51 +282,33 @@ jobs:
           
           # Fetch recent PR activity for timeline
           ACTIVITY_FILE = os.path.join(DATA_DIR, 'activity.json')
+          activity_items = []
           try:
               import urllib.request
+              import urllib.error
               
               # Get recent PRs with activity
-              url = "https://api.github.com/repos/XRPLF/rippled/pulls?state=all&per_page=50&sort=updated&direction=desc"
+              url = "https://api.github.com/repos/XRPLF/rippled/pulls?state=all&per_page=30&sort=updated&direction=desc"
               headers = {"Accept": "application/vnd.github.v3+json", "User-Agent": "xrpl-stats"}
               
               req = urllib.request.Request(url, headers=headers)
-              with urllib.request.urlopen(req, timeout=30) as response:
-                  prs = json.loads(response.read().decode())
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      prs = json.loads(response.read().decode())
+              except urllib.error.HTTPError as e:
+                  if e.code == 403:
+                      print("GitHub API rate limit exceeded for activity feed. Skipping.")
+                      prs = []
+                  else:
+                      raise
               
-              activity_items = []
               for pr in prs:
                   pr_num = pr.get("number")
                   pr_title = pr.get("title", "")
                   pr_user = pr.get("user", {}).get("login", "")
                   pr_state = "merged" if pr.get("merged_at") else pr.get("state", "open")
                   
-                  # Get PR events (reviews, comments)
-                  try:
-                      events_url = f"https://api.github.com/repos/XRPLF/rippled/issues/{pr_num}/events"
-                      events_req = urllib.request.Request(events_url, headers=headers)
-                      with urllib.request.urlopen(events_req, timeout=10) as events_resp:
-                          events = json.loads(events_resp.read().decode())
-                      
-                      for event in events[:10]:  # Limit events per PR
-                          event_type = event.get("event", "")
-                          actor = event.get("actor", {}).get("login", "")
-                          created_at = event.get("created_at", "")
-                          
-                          if event_type in ["reviewed", "commented", "head_ref_force_pushed", "ready_for_review"]:
-                              activity_items.append({
-                                  "type": event_type,
-                                  "actor": actor,
-                                  "pr_number": pr_num,
-                                  "pr_title": pr_title[:80],
-                                  "pr_user": pr_user,
-                                  "pr_state": pr_state,
-                                  "created_at": created_at,
-                                  "body": event.get("commit_id", "")[:7] if event_type == "head_ref_force_pushed" else ""
-                              })
-                  except:
-                      pass  # Skip if events fail
-                  
-                  # Also add the PR itself as an activity item
+                  # Add the PR itself as an activity item
                   activity_items.append({
                       "type": "pr_opened" if pr.get("state") == "open" and not pr.get("merged_at") else "pr_merged" if pr.get("merged_at") else "pr_closed",
                       "actor": pr_user,
@@ -331,13 +323,16 @@ jobs:
               # Sort by date, newest first
               activity_items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
               
-              # Save only last 100 activities
+              # Save only last 50 activities (reduced to avoid large file)
               with open(ACTIVITY_FILE, 'w') as f:
-                  json.dump(activity_items[:100], f, indent=2)
+                  json.dump(activity_items[:50], f, indent=2)
               
               print(f"Saved {len(activity_items)} activity items")
           except Exception as e:
               print(f"Could not fetch activity: {e}")
+              # Create empty activity file
+              with open(ACTIVITY_FILE, 'w') as f:
+                  json.dump([], f, indent=2)
 
           print(f"\n✅ SUCCESS: {len(results)} active branches, {len(completed_branches)} completed, {len(activity_items) if 'activity_items' in locals() else 0} activities")
           PYEOF
