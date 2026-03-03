@@ -442,6 +442,42 @@
             });
             
             html += '</div>';
+            
+            // Most Active Branches (by commit count in contributors)
+            const branchActivity = data.branches.map(b => ({
+                name: b.name,
+                commits: (b.contributors || []).reduce((sum, c) => sum + (c.commits || 1), 0),
+                contributors: (b.contributors || []).length,
+                daysAgo: daysAgo(b.last_commit?.date)
+            })).sort((a, b) => b.commits - a.commits).slice(0, 5);
+            
+            html += `<div class="card" data-searchable style="margin-top: 20px;"><h3 style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">📊 MOST ACTIVE BRANCHES (by commits)</h3>`;
+            branchActivity.forEach(b => {
+                html += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                        <div><a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; text-decoration: none;">${b.name}</a><div style="font-size: 12px; color: var(--muted);">${b.contributors} contributors</div></div>
+                        <div style="text-align: right;"><div style="font-weight: 600; color: var(--accent);">${b.commits} commits</div><div style="font-size: 11px; color: var(--muted);">${b.daysAgo === 0 ? 'today' : b.daysAgo + 'd ago'}</div></div>
+                    </div>`;
+            });
+            html += '</div>';
+            
+            // Recently Updated Branches
+            const recentBranches = [...data.branches]
+                .filter(b => b.last_commit)
+                .sort((a, b) => new Date(b.last_commit.date) - new Date(a.last_commit.date))
+                .slice(0, 5);
+            
+            html += `<div class="card" data-searchable style="margin-top: 20px;"><h3 style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">🔥 RECENTLY UPDATED</h3>`;
+            recentBranches.forEach(b => {
+                const d = daysAgo(b.last_commit?.date);
+                html += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                        <div><a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; text-decoration: none;">${b.name}</a><div style="font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; max-width: 300px;">${b.last_commit.message}</div></div>
+                        <span class="badge ${d <= 1 ? 'badge-active' : d <= 7 ? 'badge-recent' : 'badge-dormant'}" style="font-size: 10px;">${d === 0 ? 'today' : d + 'd ago'}</span>
+                    </div>`;
+            });
+            html += '</div>';
+            
             document.getElementById('content').innerHTML = html;
         }
         
