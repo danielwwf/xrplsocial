@@ -113,11 +113,25 @@ jobs:
           current_names = set(b.replace('origin/', '') for b in all_branches)
           print(f"Total remote branches: {len(all_branches)}")
           
+          # Determine if this is first run (no previous data) or incremental
+          last_scan_time = None
+          if prev_branches:
+              # Get the most recent commit date from existing data
+              all_dates = []
+              for b in prev_branches.values():
+                  if b.get('last_commit', {}).get('date'):
+                      all_dates.append(b['last_commit']['date'])
+              if all_dates:
+                  last_scan_time = max(all_dates)
+                  print(f"Incremental mode: Only fetching commits after {last_scan_time}")
+          
+          if not last_scan_time:
+              print("Full history mode: Fetching ALL commits (first run)")
+
           # Find vanished branches (were there before, now gone)
           vanished = []
           for name, data in prev_branches.items():
               if name not in current_names:
-                  # Check if already in completed list
                   if not any(c['name'] == name for c in completed_branches):
                       vanished.append({
                           'name': name,
@@ -131,7 +145,6 @@ jobs:
           if vanished:
               print(f"Found {len(vanished)} newly vanished branches")
               completed_branches.extend(vanished)
-              # Sort by completion date, newest first
               completed_branches.sort(key=lambda x: x.get('completed_at', ''), reverse=True)
 
           # Fetch ALL merged PRs from GitHub API
@@ -221,32 +234,64 @@ jobs:
           
           print(f"Feature branches: {len(feature_branches)}")
 
-          # Process branches
+          # Process branches with FULL commit history
           results = []
+          all_commits = []  # For timeline
           contributor_stats = defaultdict(lambda: {'commits': 0, 'branches': set(), 'last_commit': None, 'last_ts': 0})
 
           for full_ref, name in feature_branches[:300]:
               try:
-                  stdout, _, code = git(['log', '-1', '--format=%H|%an|%ae|%at|%s', full_ref])
+                  # Determine how many commits to fetch
+                  if last_scan_time:
+                      # Incremental: Only new commits since last scan
+                      stdout, _, code = git(['log', f'--since={last_scan_time}', '--format=%H|%an|%ae|%at|%s', full_ref])
+                  else:
+                      # First run: Get up to 100 commits per branch
+                      stdout, _, code = git(['log', '-100', '--format=%H|%an|%ae|%at|%s', full_ref])
+                  
                   if code != 0 or not stdout:
                       continue
                   
-                  parts = stdout.split('|', 4)
-                  if len(parts) != 5:
-                      continue
-                  
-                  hash, author, email, ts_str, msg = parts
-                  
-                  try:
-                      ts = int(ts_str)
-                      if ts <= 0:
+                  commits = []
+                  for line in stdout.strip().split('\n'):
+                      if not line:
                           continue
-                  except:
+                      parts = line.split('|', 4)
+                      if len(parts) != 5:
+                          continue
+                      
+                      hash, author, email, ts_str, msg = parts
+                      
+                      try:
+                          ts = int(ts_str)
+                          if ts <= 0:
+                              continue
+                      except:
+                          continue
+                      
+                      date = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
+                      commits.append({
+                          'hash': hash[:8],
+                          'author': author,
+                          'email': email,
+                          'date': date,
+                          'message': msg[:200]
+                      })
+                      
+                      # Add to global timeline
+                      all_commits.append({
+                          'hash': hash[:8],
+                          'author': author,
+                          'branch': name,
+                          'date': date,
+                          'message': msg[:200]
+                      })
+                  
+                  if not commits:
                       continue
                   
-                  date = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
-                  
-                  contrib_out, _, _ = git(['log', '-30', '--format=%ae|%an', full_ref])
+                  # Get unique contributors
+                  contrib_out, _, _ = git(['log', '-100', '--format=%ae|%an', full_ref])
                   contributors = []
                   seen = set()
                   
@@ -258,13 +303,11 @@ jobs:
                               contributors.append({'email': e, 'name': n})
                               contributor_stats[e]['commits'] += 1
                               contributor_stats[e]['branches'].add(name)
-                              if ts > contributor_stats[e]['last_ts']:
-                                  contributor_stats[e]['last_commit'] = date
-                                  contributor_stats[e]['last_ts'] = ts
                   
                   results.append({
                       'name': name,
-                      'last_commit': {'hash': hash[:8], 'author': author, 'email': email, 'date': date, 'message': msg[:100]},
+                      'last_commit': commits[0],  # Most recent
+                      'commits': commits[:50],  # Store up to 50 commits per branch
                       'contributor_count': len(contributors),
                       'contributors': contributors[:15]
                   })
@@ -272,6 +315,12 @@ jobs:
               except Exception as e:
                   print(f"Error on {name}: {e}")
                   continue
+          
+          # Sort all commits for timeline
+          all_commits.sort(key=lambda x: x['date'], reverse=True)
+          
+          print(f"Total commits collected: {len(all_commits)}")
+          print(f"Branches processed: {len(results)}")
 
           results.sort(key=lambda x: x['last_commit']['date'], reverse=True)
           
@@ -305,9 +354,12 @@ jobs:
           with open(COMPLETED_FILE, 'w') as f:
               json.dump(completed_branches, f, indent=2)
           
-          # Fetch recent PR activity for timeline
-          ACTIVITY_FILE = os.path.join(DATA_DIR, 'activity.json')
-          activity_items = []
+          # Save timeline data (all commits)
+          TIMELINE_FILE = os.path.join(DATA_DIR, 'timeline.json')
+          with open(TIMELINE_FILE, 'w') as f:
+              json.dump(all_commits[:500], f, indent=2)  # Top 500 for timeline
+          
+          print(f"\n✅ SUCCESS: {len(results)} branches, {len(completed_branches)} completed, {len(all_commits)} total commits")
           try:
               import urllib.request
               import urllib.error
