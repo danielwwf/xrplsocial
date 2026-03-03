@@ -491,8 +491,8 @@
         
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Fetch data
-            fetch('./data/branches.json')
+            // Fetch data with cache busting using timestamp from generated_at
+            fetch('./data/branches.json?t=' + Date.now())
                 .then(r => r.json())
                 .then(d => {
                     data = d;
