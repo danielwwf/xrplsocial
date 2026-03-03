@@ -2,8 +2,11 @@ name: Update Amendment Stats
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   update-stats:
@@ -141,7 +144,11 @@ jobs:
                   
                   # GitHub API to get merged PRs
                   url = "https://api.github.com/repos/XRPLF/rippled/pulls?state=closed&per_page=100&sort=updated&direction=desc"
-                  headers = {"Accept": "application/vnd.github.v3+json", "User-Agent": "xrpl-stats"}
+                  headers = {
+                      "Accept": "application/vnd.github.v3+json", 
+                      "User-Agent": "xrpl-stats",
+                      "Authorization": f"token {os.environ.get('GITHUB_TOKEN', '')}"
+                  }
                   
                   req = urllib.request.Request(url, headers=headers)
                   try:
@@ -289,7 +296,11 @@ jobs:
               
               # Get recent PRs with activity
               url = "https://api.github.com/repos/XRPLF/rippled/pulls?state=all&per_page=30&sort=updated&direction=desc"
-              headers = {"Accept": "application/vnd.github.v3+json", "User-Agent": "xrpl-stats"}
+              headers = {
+                  "Accept": "application/vnd.github.v3+json", 
+                  "User-Agent": "xrpl-stats",
+                  "Authorization": f"token {os.environ.get('GITHUB_TOKEN', '')}"
+              }
               
               req = urllib.request.Request(url, headers=headers)
               try:
