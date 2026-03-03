@@ -134,8 +134,8 @@ jobs:
               # Sort by completion date, newest first
               completed_branches.sort(key=lambda x: x.get('completed_at', ''), reverse=True)
 
-          # Fetch ALL merged PRs from GitHub API with pagination
-          # Using GITHUB_TOKEN for 5000 req/h limit
+          # Fetch merged PRs from GitHub API with pagination
+          # Only fetch PRs newer than what we already have
           api_completed = []
           try:
               import urllib.request
@@ -148,12 +148,25 @@ jobs:
                   "Authorization": f"token {token}"
               }
               
-              # Pagination - fetch all merged PRs
-              page = 1
-              max_pages = 50  # Safety limit: 50 * 100 = 5000 PRs max
+              # Find the most recent completed_at date we already have
               existing_names = {c['name'] for c in completed_branches}
+              newest_date = None
+              if completed_branches:
+                  try:
+                      newest_date = max(c.get('completed_at', '') for c in completed_branches if c.get('completed_at'))
+                      print(f"Newest completed PR we have: {newest_date}")
+                  except:
+                      pass
               
-              while page <= max_pages:
+              # If we have fewer than 100 total, fetch everything (initial backfill)
+              # Otherwise only fetch recent PRs until we hit existing ones
+              fetch_all = len(completed_branches) < 100
+              
+              page = 1
+              max_pages = 50 if fetch_all else 10  # Fewer pages for incremental
+              stop_fetching = False
+              
+              while page <= max_pages and not stop_fetching:
                   url = f"https://api.github.com/repos/XRPLF/rippled/pulls?state=closed&per_page=100&sort=updated&direction=desc&page={page}"
                   
                   req = urllib.request.Request(url, headers=headers)
@@ -162,19 +175,23 @@ jobs:
                           prs = json.loads(response.read().decode())
                   except urllib.error.HTTPError as e:
                       if e.code == 403:
-                          print("GitHub API rate limit hit. Stopping pagination.")
+                          print("GitHub API rate limit hit. Stopping.")
                           break
                       raise
                   
-                  if not prs:  # No more PRs
+                  if not prs:
                       break
                   
                   new_count = 0
                   for pr in prs:
-                      if pr.get("merged_at"):  # Only merged PRs
+                      if pr.get("merged_at"):
+                          # For incremental: stop if we hit a PR older than what we have
+                          if not fetch_all and newest_date and pr.get("merged_at") < newest_date:
+                              stop_fetching = True
+                              break
+                          
                           branch_name = pr.get("head", {}).get("ref", "")
                           if branch_name and branch_name not in existing_names:
-                              # Skip main branches
                               skip_main = ['master', 'main', 'develop', 'release/', 'gh-pages']
                               if not any(branch_name.startswith(p) or branch_name == p for p in skip_main):
                                   api_completed.append({
@@ -195,10 +212,9 @@ jobs:
                                   existing_names.add(branch_name)
                                   new_count += 1
                   
-                  print(f"Page {page}: Found {new_count} new merged PRs")
+                  print(f"Page {page}: {new_count} new merged PRs" + (" (stopping)" if stop_fetching else ""))
                   
-                  # If we got fewer than 100 results, we've reached the end
-                  if len(prs) < 100:
+                  if len(prs) < 100 or stop_fetching:
                       break
                   
                   page += 1
@@ -206,9 +222,9 @@ jobs:
               if api_completed:
                   completed_branches.extend(api_completed)
                   completed_branches.sort(key=lambda x: x.get('completed_at', ''), reverse=True)
-                  print(f"Total: Added {len(api_completed)} merged PRs from GitHub API")
+                  print(f"Total: Added {len(api_completed)} new merged PRs")
           except Exception as e:
-              print(f"Could not fetch historical PRs: {e}")
+              print(f"Could not fetch PRs: {e}")
 
           # Filter feature branches
           skip = ['master', 'main', 'develop', 'release/', 'gh-pages']
