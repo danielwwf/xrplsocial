@@ -535,28 +535,6 @@ jobs:
           print(f"\n✅ SUCCESS: {len(results)} branches, {len(completed_branches)} completed, {len(all_commits)} total commits")
           PYEOF
 
-      - name: Ensure AMENDMENTS are generic
-        run: |
-          python3 << 'EOF'
-          import re
-          with open('stats/index.html', 'r') as f:
-            content = f.read()
-          
-          new_amendments = '''const AMENDMENTS = [
-            { pattern: /fix/i, name: '🔧 Bug Fixes' },
-            { pattern: /test|ci/i, name: '🧪 Testing & CI' },
-            { pattern: /modular|refactor/i, name: '🏗️ Code Modularization' },
-            { pattern: /rust|wasm/i, name: '⚡ Rust/WASM' },
-            { pattern: /.*/, name: '📁 Other' }
-        ];'''
-          
-          content = re.sub(r'const AMENDMENTS = \[.*?\];', new_amendments, content, flags=re.DOTALL)
-          
-          with open('stats/index.html', 'w') as f:
-            f.write(content)
-          print("AMENDMENTS fixed to generic categories")
-          EOF
-
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
