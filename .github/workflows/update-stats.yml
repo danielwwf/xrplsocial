@@ -114,18 +114,14 @@ jobs:
           print(f"Total remote branches: {len(all_branches)}")
           
           # Determine if this is first run (no previous data) or incremental
+          # Force full history until we have proper commits data
           last_scan_time = None
-          force_full_history = False
           
-          if prev_branches:
-              # Check if data has commits array with actual data
-              sample_branch = list(prev_branches.values())[0] if prev_branches else None
-              has_commits = sample_branch and 'commits' in sample_branch and sample_branch.get('commits')
-              
-              if not has_commits:
-                  print("Full history mode: No 'commits' data found, fetching ALL commits")
-                  force_full_history = True
-              else:
+          if prev_branches and len(prev_branches) > 100:
+              # Only use incremental if we have many branches already
+              sample_branch = list(prev_branches.values())[0]
+              commits_list = sample_branch.get('commits', [])
+              if isinstance(commits_list, list) and len(commits_list) > 10:
                   # Get the most recent commit date from existing data
                   all_dates = []
                   for b in prev_branches.values():
@@ -135,9 +131,8 @@ jobs:
                       last_scan_time = max(all_dates)
                       print(f"Incremental mode: Only fetching commits after {last_scan_time}")
           
-          if not last_scan_time or force_full_history:
-              print("Full history mode: Fetching ALL commits")
-              last_scan_time = None
+          if not last_scan_time:
+              print("Full history mode: Fetching ALL commits for all branches")
 
           # Find vanished branches (were there before, now gone)
           vanished = []
