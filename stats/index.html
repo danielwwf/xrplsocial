@@ -808,20 +808,24 @@
                 render();
             });
             
-            // Search
+            // Search with debouncing
+            let searchTimeout;
             document.getElementById('search').addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                const cards = document.querySelectorAll('.card[data-searchable]');
-                
-                if (!query) {
-                    cards.forEach(card => card.classList.remove('hidden'));
-                    return;
-                }
-                
-                cards.forEach(card => {
-                    const text = card.innerText.toLowerCase();
-                    card.classList.toggle('hidden', !text.includes(query));
-                });
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    const query = e.target.value.toLowerCase().trim();
+                    const cards = document.querySelectorAll('.card[data-searchable]');
+                    
+                    if (!query) {
+                        cards.forEach(card => card.classList.remove('hidden'));
+                        return;
+                    }
+                    
+                    cards.forEach(card => {
+                        const text = card.innerText.toLowerCase();
+                        card.classList.toggle('hidden', !text.includes(query));
+                    });
+                }, 300); // 300ms debounce
             });
             
             // Card clicks (event delegation)
