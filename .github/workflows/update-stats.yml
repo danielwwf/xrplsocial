@@ -170,24 +170,30 @@ jobs:
           print(f"Total remote branches: {len(all_branches)}")
           
           # Determine if this is first run (no previous data) or incremental
-          # Force full history until we have proper commits data
+          # Force full history until all branches have sufficient commits
           last_scan_time = None
           
+          # Check if existing data looks complete (all branches have commits array with data)
+          data_looks_complete = False
           if prev_branches and len(prev_branches) > 100:
-              # Only use incremental if we have many branches already
-              sample_branch = list(prev_branches.values())[0]
-              commits_list = sample_branch.get('commits', [])
-              if isinstance(commits_list, list) and len(commits_list) > 10:
-                  # Get the most recent commit date from existing data
-                  all_dates = []
-                  for b in prev_branches.values():
-                      if b.get('last_commit', {}).get('date'):
-                          all_dates.append(b['last_commit']['date'])
-                  if all_dates:
-                      last_scan_time = max(all_dates)
-                      print(f"Incremental mode: Only fetching commits after {last_scan_time}")
+              # Sample 10 random branches to check if they have commits
+              sample_branches = list(prev_branches.values())[:10]
+              branches_with_commits = sum(1 for b in sample_branches if b.get('commits') and len(b.get('commits', [])) > 5)
+              
+              if branches_with_commits >= 8:  # 80% of sampled branches have commits
+                  data_looks_complete = True
+                  print(f"Data looks complete ({branches_with_commits}/10 branches have commits)")
           
-          if not last_scan_time:
+          if data_looks_complete:
+              # Get the most recent commit date from existing data
+              all_dates = []
+              for b in prev_branches.values():
+                  if b.get('last_commit', {}).get('date'):
+                      all_dates.append(b['last_commit']['date'])
+              if all_dates:
+                  last_scan_time = max(all_dates)
+                  print(f"Incremental mode: Only fetching commits after {last_scan_time}")
+          else:
               print("Full history mode: Fetching ALL commits for all branches")
 
           # Find vanished branches (were there before, now gone)
@@ -360,6 +366,28 @@ jobs:
           results = []
           all_commits = []  # For timeline
           contributor_stats = defaultdict(lambda: {'commits': 0, 'branches': set(), 'last_commit': None, 'last_ts': 0})
+          
+          # If incremental, start with existing branches and update them
+          if last_scan_time and prev_branches:
+              print(f"Incremental: Loading {len(prev_branches)} existing branches...")
+              for name, data in prev_branches.items():
+                  results.append(data)
+                  # Add existing commits to timeline
+                  for c in data.get('commits', []):
+                      all_commits.append({
+                          'hash': c['hash'],
+                          'author': c['author'],
+                          'branch': name,
+                          'date': c['date'],
+                          'message': c['message']
+                      })
+                  # Restore contributor stats
+                  for contrib in data.get('contributors', []):
+                      email = contrib.get('email', '')
+                      if email:
+                          contributor_stats[email]['commits'] += contrib.get('commits', 1)
+                          contributor_stats[email]['branches'].add(name)
+                          contributor_stats[email]['last_commit'] = data.get('last_commit', {}).get('date')
 
           for full_ref, name in feature_branches[:300]:
               try:
@@ -426,13 +454,30 @@ jobs:
                               contributor_stats[e]['commits'] += 1
                               contributor_stats[e]['branches'].add(name)
                   
-                  results.append({
+                  # For incremental mode, update existing branch or add new
+                  existing_idx = None
+                  if last_scan_time:
+                      for i, r in enumerate(results):
+                          if r['name'] == name:
+                              existing_idx = i
+                              break
+                  
+                  branch_data = {
                       'name': name,
                       'last_commit': commits[0],  # Most recent
                       'commits': commits[:50],  # Store up to 50 commits per branch
                       'contributor_count': len(contributors),
                       'contributors': contributors[:15]
-                  })
+                  }
+                  
+                  if existing_idx is not None:
+                      # Update existing branch (prepend new commits)
+                      old_commits = results[existing_idx].get('commits', [])
+                      all_branch_commits = commits[:50] + old_commits
+                      branch_data['commits'] = all_branch_commits[:50]  # Keep max 50
+                      results[existing_idx] = branch_data
+                  else:
+                      results.append(branch_data)
                   
               except Exception as e:
                   print(f"Error on {name}: {e}")
