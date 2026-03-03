@@ -535,9 +535,16 @@ jobs:
           print(f"\n✅ SUCCESS: {len(results)} branches, {len(completed_branches)} completed, {len(all_commits)} total commits")
           PYEOF
 
+      - name: Ensure AMENDMENTS are generic
+        run: |
+          # Fix AMENDMENTS to use generic categories only
+          sed -i '/const AMENDMENTS = \[/,/&\#93; \];/c\
+        const AMENDMENTS = [\n            { pattern: /fix/i, name: '\''🔧 Bug Fixes'\'' },\n            { pattern: /test|ci/i, name: '\''🧪 Testing \& CI'\'' },\n            { pattern: /modular|refactor/i, name: '\''🏗️ Code Modularization'\'' },\n            { pattern: /rust|wasm/i, name: '\''⚡ Rust/WASM'\'' },\n            { pattern: /.*/, name: '\''📁 Other'\'' }\n        ];' stats/index.html
+          echo "AMENDMENTS fixed to generic categories"
+
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json stats/data/rich_prs.json stats/data/xls_standards.json
+          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json stats/data/rich_prs.json stats/data/xls_standards.json stats/index.html
           git diff --cached --quiet || (git commit -m "Update stats $(date -u +%H:%M)" && git pull --rebase origin main && git push)
