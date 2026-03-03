@@ -209,7 +209,8 @@
         let completedData = null;
         let activityData = null;
         let richPrsData = null;
-        let xlsStandardsData = null;  // XLS (XRPL Standards) official definitions
+        let xlsStandardsData = null;
+        let amendmentsMappingData = null;  // Official amendments mapping
         let currentTab = 'amendments';
         
         // Amendment definitions
@@ -231,7 +232,23 @@
         function classify(name, prTitle = '', prBody = '') {
             const textToCheck = (name + ' ' + prTitle + ' ' + prBody).toLowerCase();
             
-            // Check for XLS references first (most specific)
+            // First: Check official amendments mapping
+            if (amendmentsMappingData && amendmentsMappingData.amendments) {
+                for (const amendment of amendmentsMappingData.amendments) {
+                    for (const keyword of amendment.keywords) {
+                        if (textToCheck.includes(keyword.toLowerCase())) {
+                            return {
+                                name: amendment.name,
+                                docs: amendment.docs,
+                                id: amendment.id,
+                                xls: amendment.xls
+                            };
+                        }
+                    }
+                }
+            }
+            
+            // Second: Check for XLS references
             const xlsMatch = textToCheck.match(/xls[-\s]?(\d+)/i);
             if (xlsMatch && xlsStandardsData) {
                 const xlsNum = xlsMatch[1].padStart(4, '0');
@@ -929,20 +946,22 @@
         
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Fetch all data files including XLS standards
+            // Fetch all data files including amendments mapping
             Promise.all([
                 fetch('./data/branches.json?t=' + Date.now()).then(r => r.json()),
                 fetch('./data/completed.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
                 fetch('./data/timeline.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
                 fetch('./data/rich_prs.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
-                fetch('./data/xls_standards.json?t=' + Date.now()).then(r => r.json()).catch(() => ({}))
+                fetch('./data/xls_standards.json?t=' + Date.now()).then(r => r.json()).catch(() => ({})),
+                fetch('./data/amendments_mapping.json?t=' + Date.now()).then(r => r.json()).catch(() => ({amendments: []}))
             ])
-                .then(([branchesData, completed, timeline, richPrs, xlsStandards]) => {
+                .then(([branchesData, completed, timeline, richPrs, xlsStandards, amendmentsMapping]) => {
                     data = branchesData;
                     completedData = completed;
                     activityData = timeline;
                     richPrsData = richPrs;
-                    xlsStandardsData = xlsStandards;  // Now using git-based timeline
+                    xlsStandardsData = xlsStandards;
+                    amendmentsMappingData = amendmentsMapping;  // Now using git-based timeline
                     
                     document.getElementById('updated').textContent = 'Updated: ' + new Date(data.generated_at).toLocaleDateString();
                     
