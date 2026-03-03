@@ -193,6 +193,7 @@
             <div class="tab" data-tab="people">👥 By Person</div>
             <div class="tab" data-tab="branches">🌿 All Branches</div>
             <div class="tab" data-tab="insights">💡 Insights</div>
+            <div class="tab" data-tab="completed">✅ Completed</div>
         </div>
         <div class="search-bar"><input type="text" class="search-input" id="search" placeholder="🔍 Search amendments, contributors, or branches..."></div>
         <div class="info-box"><h3>❓ What are XRPL Amendments?</h3><p>Amendments are <strong>proposed changes</strong> to the XRP Ledger protocol. Each card shows who's working on what. <strong>Click any card</strong> for detailed view. <a href="https://xrpl.org/amendments.html" target="_blank">Learn more →</a></p></div>
@@ -203,6 +204,7 @@
     <script>
         // Data and state
         let data = null;
+        let completedData = null;
         let currentTab = 'amendments';
         
         // Amendment definitions
@@ -643,17 +645,68 @@
             if (currentTab === 'amendments') renderAmendments();
             else if (currentTab === 'people') renderPeople();
             else if (currentTab === 'branches') renderAllBranches();
+            else if (currentTab === 'completed') renderCompleted();
             else renderInsights();
+        }
+        
+        function renderCompleted() {
+            if (!completedData || completedData.length === 0) {
+                document.getElementById('content').innerHTML = `
+                    <div class="card" style="text-align:center; padding: 60px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">📝</div>
+                        <p style="font-size: 18px; margin-bottom: 8px;">No completed branches tracked yet</p>
+                        <p style="color: var(--muted);">Completed branches will appear here once they are merged or deleted.</p>
+                    </div>`;
+                return;
+            }
+            
+            let html = `<div style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">
+                ${completedData.length} completed branches (newest first)
+            </div>
+            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">`;
+            
+            completedData.forEach(b => {
+                const completedDate = new Date(b.completed_at);
+                const daysAgo = Math.floor((Date.now() - completedDate) / (86400000));
+                const amendment = classify(b.name);
+                const contribList = (b.contributors || []).slice(0, 4);
+                
+                html += `
+                    <div class="card completed-card" data-searchable data-branch="${b.name.replace(/"/g, '&quot;')}">
+                        <div class="card-status" style="background: rgba(163, 113, 247, 0.15); color: #a371f7;">
+                            <span>✅ Completed</span>
+                        </div>
+                        <div class="card-title" style="font-family: monospace; font-size: 15px;">${b.name}</div>
+                        <div class="card-description">
+                            ${b.last_commit ? b.last_commit.message.split('\n')[0].substring(0, 120) : 'No commit message'}
+                        </div>
+                        <div class="contributors" style="margin-bottom: 12px;">
+                            ${contribList.map(c => `<span class="contributor">@${extractUser(c.email)}</span>`).join('')}
+                            ${(b.contributors || []).length > 4 ? `<span class="contributor">+${(b.contributors || []).length - 4}</span>` : ''}
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-meta">${amendment.name}</span>
+                            <span class="card-meta">Completed ${daysAgo === 0 ? 'today' : daysAgo + 'd ago'}</span>
+                        </div>
+                    </div>`;
+            });
+            
+            html += '</div>';
+            document.getElementById('content').innerHTML = html;
         }
         
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Fetch data with cache busting using timestamp from generated_at
-            fetch('./data/branches.json?t=' + Date.now())
-                .then(r => r.json())
-                .then(d => {
-                    data = d;
-                    document.getElementById('updated').textContent = 'Updated: ' + new Date(d.generated_at).toLocaleDateString();
+            // Fetch both data files
+            Promise.all([
+                fetch('./data/branches.json?t=' + Date.now()).then(r => r.json()),
+                fetch('./data/completed.json?t=' + Date.now()).then(r => r.json()).catch(() => [])
+            ])
+                .then(([branchesData, completed]) => {
+                    data = branchesData;
+                    completedData = completed;
+                    
+                    document.getElementById('updated').textContent = 'Updated: ' + new Date(data.generated_at).toLocaleDateString();
                     
                     // Update Hero Stats
                     const activeBranches = data.branches.filter(b => daysAgo(b.last_commit?.date) <= 7).length;

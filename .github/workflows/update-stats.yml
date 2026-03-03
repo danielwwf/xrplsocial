@@ -50,6 +50,12 @@ jobs:
           git branch -r | head -20
           echo ""
           
+          # Load previous data to track vanished branches
+          WORKSPACE="${GITHUB_WORKSPACE:-$(pwd)}"
+          DATA_DIR="$WORKSPACE/stats/data"
+          PREV_FILE="$DATA_DIR/branches.json"
+          COMPLETED_FILE="$DATA_DIR/completed.json"
+          
           python3 << 'PYEOF'
           import subprocess
           import json
@@ -58,6 +64,10 @@ jobs:
           from collections import defaultdict
 
           REPO_DIR = os.path.expanduser('~/rippled')
+          WORKSPACE = os.environ.get('GITHUB_WORKSPACE', os.getcwd())
+          DATA_DIR = os.path.join(WORKSPACE, 'stats', 'data')
+          PREV_FILE = os.path.join(DATA_DIR, 'branches.json')
+          COMPLETED_FILE = os.path.join(DATA_DIR, 'completed.json')
 
           def git(args):
               result = subprocess.run(
@@ -68,6 +78,27 @@ jobs:
               )
               return result.stdout.strip(), result.stderr.strip(), result.returncode
 
+          # Load previous branches to track vanished ones
+          prev_branches = {}
+          if os.path.exists(PREV_FILE):
+              try:
+                  with open(PREV_FILE, 'r') as f:
+                      prev_data = json.load(f)
+                      prev_branches = {b['name']: b for b in prev_data.get('branches', [])}
+                  print(f"Loaded {len(prev_branches)} previous branches")
+              except Exception as e:
+                  print(f"Could not load previous data: {e}")
+
+          # Load existing completed branches
+          completed_branches = []
+          if os.path.exists(COMPLETED_FILE):
+              try:
+                  with open(COMPLETED_FILE, 'r') as f:
+                      completed_branches = json.load(f)
+                  print(f"Loaded {len(completed_branches)} previously completed branches")
+              except Exception as e:
+                  print(f"Could not load completed data: {e}")
+
           # Get remote branches
           stdout, stderr, code = git(['branch', '-r', '--format=%(refname:short)'])
           
@@ -76,8 +107,30 @@ jobs:
               exit(1)
           
           all_branches = [b for b in stdout.split('\n') if b and not b.endswith('/HEAD')]
+          current_names = set(b.replace('origin/', '') for b in all_branches)
           print(f"Total remote branches: {len(all_branches)}")
           
+          # Find vanished branches (were there before, now gone)
+          vanished = []
+          for name, data in prev_branches.items():
+              if name not in current_names:
+                  # Check if already in completed list
+                  if not any(c['name'] == name for c in completed_branches):
+                      vanished.append({
+                          'name': name,
+                          'last_commit': data.get('last_commit'),
+                          'contributor_count': data.get('contributor_count', 0),
+                          'contributors': data.get('contributors', []),
+                          'completed_at': datetime.now(timezone.utc).isoformat(),
+                          'reason': 'merged_or_deleted'
+                      })
+          
+          if vanished:
+              print(f"Found {len(vanished)} newly vanished branches")
+              completed_branches.extend(vanished)
+              # Sort by completion date, newest first
+              completed_branches.sort(key=lambda x: x.get('completed_at', ''), reverse=True)
+
           # Filter feature branches
           skip = ['master', 'main', 'develop', 'release/', 'gh-pages']
           feature_branches = []
@@ -87,16 +140,13 @@ jobs:
                   feature_branches.append((branch, name))
           
           print(f"Feature branches: {len(feature_branches)}")
-          if feature_branches:
-              print(f"Examples: {feature_branches[:3]}")
 
           # Process branches
           results = []
           contributor_stats = defaultdict(lambda: {'commits': 0, 'branches': set(), 'last_commit': None, 'last_ts': 0})
 
-          for full_ref, name in feature_branches[:300]:  # Limit for safety
+          for full_ref, name in feature_branches[:300]:
               try:
-                  # Get last commit
                   stdout, _, code = git(['log', '-1', '--format=%H|%an|%ae|%at|%s', full_ref])
                   if code != 0 or not stdout:
                       continue
@@ -116,7 +166,6 @@ jobs:
                   
                   date = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
                   
-                  # Get contributors
                   contrib_out, _, _ = git(['log', '-30', '--format=%ae|%an', full_ref])
                   contributors = []
                   seen = set()
@@ -144,7 +193,6 @@ jobs:
                   print(f"Error on {name}: {e}")
                   continue
 
-          # Sort and save
           results.sort(key=lambda x: x['last_commit']['date'], reverse=True)
           
           contributors_list = []
@@ -158,6 +206,7 @@ jobs:
                       'last_active': s['last_commit']
                   })
 
+          # Save branches.json
           output = {
               'generated_at': datetime.now(timezone.utc).isoformat(),
               'repo': 'XRPLF/rippled',
@@ -167,22 +216,21 @@ jobs:
               'contributors': contributors_list
           }
 
-          # Save to GITHUB_WORKSPACE (not REPO_DIR)
-          output_dir = os.environ.get('GITHUB_WORKSPACE', os.getcwd())
-          data_path = os.path.join(output_dir, 'stats', 'data')
-          os.makedirs(data_path, exist_ok=True)
+          os.makedirs(DATA_DIR, exist_ok=True)
           
-          output_file = os.path.join(data_path, 'branches.json')
-          with open(output_file, 'w') as f:
+          with open(PREV_FILE, 'w') as f:
               json.dump(output, f, indent=2)
 
-          print(f"\n✅ SUCCESS: {len(results)} branches, {len(contributors_list)} contributors")
-          print(f"   Output written to: {output_file}")
+          # Save completed.json
+          with open(COMPLETED_FILE, 'w') as f:
+              json.dump(completed_branches, f, indent=2)
+
+          print(f"\n✅ SUCCESS: {len(results)} active branches, {len(completed_branches)} completed, {len(contributors_list)} contributors")
           PYEOF
 
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add stats/data/branches.json
+          git add stats/data/branches.json stats/data/completed.json
           git diff --cached --quiet || (git commit -m "Update stats $(date -u +%H:%M)" && git pull --rebase origin main && git push)
