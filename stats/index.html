@@ -305,10 +305,10 @@
         </div>
         
         <div class="tabs">
-            <div class="tab active" onclick="switchTab('amendments')">📦 By Amendment</div>
-            <div class="tab" onclick="switchTab('people')">👥 By Person</div>
-            <div class="tab" onclick="switchTab('branches')">🌿 All Branches</div>
-            <div class="tab" onclick="switchTab('insights')">💡 Insights</div>
+            <div class="tab active" data-tab="amendments">📦 By Amendment</div>
+            <div class="tab" data-tab="people">👥 By Person</div>
+            <div class="tab" data-tab="branches">🌿 All Branches</div>
+            <div class="tab" data-tab="insights">💡 Insights</div>
         </div>
         
         <div class="search-bar">
@@ -432,9 +432,7 @@
             const container = document.getElementById('content');
             if (!container) return;
             
-            // Remove existing handler to avoid duplicates
-            container.onclick = null;
-            
+            // Event delegation for cards
             container.addEventListener('click', (e) => {
                 // Find closest card
                 const card = e.target.closest('.card[data-searchable]');
@@ -450,6 +448,31 @@
                 } else if (card.classList.contains('branch-card')) {
                     const branch = card.dataset.branch;
                     if (branch) showBranchModal(branch);
+                }
+            });
+            
+            // Event delegation for tabs
+            const tabsContainer = document.querySelector('.tabs');
+            if (tabsContainer) {
+                tabsContainer.addEventListener('click', (e) => {
+                    const tab = e.target.closest('.tab[data-tab]');
+                    if (!tab) return;
+                    
+                    const tabName = tab.dataset.tab;
+                    if (tabName) {
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        currentTab = tabName;
+                        document.getElementById('search').value = '';
+                        render();
+                    }
+                });
+            }
+            
+            // Event delegation for modal close buttons (works on document since modals are appended to body)
+            document.addEventListener('click', (e) => {
+                if (e.target.matches('[data-close-modal]')) {
+                    e.target.closest('.modal-overlay').remove();
                 }
             });
         }
@@ -481,7 +504,7 @@
                 const sortedContributors = Array.from(info.contributors.entries()).sort((a, b) => b[1] - a[1]);
                 
                 html += `
-                    <div class="card" data-searchable onclick="showModal('${name.replace(/'/g, "\\'")}')">
+                    <div class="card amendment-card" data-searchable data-amendment="${name.replace(/"/g, '&quot;')}">
                         <div class="card-header">
                             <div>
                                 <div class="card-title">${name}</div>
@@ -616,7 +639,7 @@
             
             const modal = document.createElement('div');
             modal.className = 'modal-overlay';
-            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
             
             modal.innerHTML = `
                 <div class="modal-content">
@@ -628,7 +651,7 @@
                                 • ${(branch.contributors || []).length} contributors
                             </div>
                         </div>
-                        <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕ Close</button>
+                        <button class="close-btn" data-close-modal>✕ Close</button>
                     </div>
                     
                     ${branch.last_commit ? `
@@ -803,7 +826,7 @@
             
             const modal = document.createElement('div');
             modal.className = 'modal-overlay';
-            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
             
             modal.innerHTML = `
                 <div class="modal-content">
@@ -812,7 +835,7 @@
                             <h2>${amendmentName}</h2>
                             <div style="color: var(--muted); margin-top: 4px;">${info.branches.length} branches • ${Object.keys(info.contributors).length} contributors</div>
                         </div>
-                        <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕ Close</button>
+                        <button class="close-btn" data-close-modal>✕ Close</button>
                     </div>
                     
                     <div class="section">
