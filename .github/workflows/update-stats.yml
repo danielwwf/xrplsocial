@@ -119,20 +119,23 @@ jobs:
           force_full_history = False
           
           if prev_branches:
-              # Check if existing data has the new 'commits' array format
+              # Check if existing data has the new 'commits' array format with actual data
               sample_branch = list(prev_branches.values())[0] if prev_branches else None
-              if sample_branch and 'commits' not in sample_branch:
-                  print("Data format changed (missing 'commits' array). Force full history.")
-                  force_full_history = True
-              else:
-                  # Get the most recent commit date from existing data
-                  all_dates = []
-                  for b in prev_branches.values():
-                      if b.get('last_commit', {}).get('date'):
-                          all_dates.append(b['last_commit']['date'])
-                  if all_dates:
-                      last_scan_time = max(all_dates)
-                      print(f"Incremental mode: Only fetching commits after {last_scan_time}")
+              if sample_branch:
+                  # Check if 'commits' exists and has actual commit data (not just empty or missing)
+                  commits_data = sample_branch.get('commits')
+                  if not commits_data or not isinstance(commits_data, list) or len(commits_data) < 2:
+                      print(f"Data format changed or insufficient commits data (found {len(commits_data) if isinstance(commits_data, list) else 'none'}). Force full history.")
+                      force_full_history = True
+                  else:
+                      # Get the most recent commit date from existing data
+                      all_dates = []
+                      for b in prev_branches.values():
+                          if b.get('last_commit', {}).get('date'):
+                              all_dates.append(b['last_commit']['date'])
+                      if all_dates:
+                          last_scan_time = max(all_dates)
+                          print(f"Incremental mode: Only fetching commits after {last_scan_time}")
           
           if not last_scan_time or force_full_history:
               print("Full history mode: Fetching ALL commits")
