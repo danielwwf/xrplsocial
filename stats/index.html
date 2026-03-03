@@ -225,17 +225,11 @@
         let amendmentsMappingData = null;  // Official amendments mapping
         let currentTab = 'amendments';
         
-        // Amendment definitions
+        // Amendment definitions - GENERIC CATEGORIES ONLY
         const AMENDMENTS = [
-            { pattern: /batch|lending/i, name: '📦 Batch Transactions', docs: 'https://xrpl.org/batch-transactions.html' },
-            { pattern: /amm|xls-?30/i, name: '💰 AMM (Automated Market Maker)', docs: 'https://xrpl.org/amm.html' },
-            { pattern: /did|decentralized.id/i, name: '🆔 DID (Decentralized Identity)', docs: 'https://xrpl.org/did.html' },
-            { pattern: /nft/i, name: '🎨 NFTs', docs: 'https://xrpl.org/nftokens.html' },
-            { pattern: /clawback/i, name: '👋 Clawback', docs: 'https://xrpl.org/clawback.html' },
-            { pattern: /bridge/i, name: '🔗 Cross-chain Bridges' },
             { pattern: /fix/i, name: '🔧 Bug Fixes' },
-            { pattern: /modular|refactor/i, name: '🏗️ Code Modularization' },
             { pattern: /test|ci/i, name: '🧪 Testing & CI' },
+            { pattern: /modular|refactor/i, name: '🏗️ Code Modularization' },
             { pattern: /rust|wasm/i, name: '⚡ Rust/WASM' },
             { pattern: /.*/, name: '📁 Other' }
         ];
