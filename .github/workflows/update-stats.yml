@@ -38,6 +38,19 @@ jobs:
           cd "$REPO_DIR"
           # Fetch all remote branches
           git remote update
+
+      - name: Clone XRPL Standards
+        run: |
+          STANDARDS_DIR="$HOME/xrpl-standards"
+          
+          if [ -d "$STANDARDS_DIR/.git" ]; then
+            echo "Updating XRPL Standards..."
+            cd "$STANDARDS_DIR"
+            git pull
+          else
+            echo "Cloning XRPL Standards..."
+            git clone https://github.com/XRPLF/XRPL-Standards.git "$STANDARDS_DIR"
+          fi
           git fetch --all
 
       - name: Extract branch data
@@ -67,6 +80,7 @@ jobs:
           from collections import defaultdict
 
           REPO_DIR = os.path.expanduser('~/rippled')
+          STANDARDS_DIR = os.path.expanduser('~/xrpl-standards')
           WORKSPACE = os.environ.get('GITHUB_WORKSPACE', os.getcwd())
           DATA_DIR = os.path.join(WORKSPACE, 'stats', 'data')
           PREV_FILE = os.path.join(DATA_DIR, 'branches.json')
@@ -101,6 +115,48 @@ jobs:
                   print(f"Loaded {len(completed_branches)} previously completed branches")
               except Exception as e:
                   print(f"Could not load completed data: {e}")
+
+          # Parse XLS (XRPL Standards) for official amendment definitions
+          xls_standards = {}
+          try:
+              if os.path.exists(STANDARDS_DIR):
+                  for folder in os.listdir(STANDARDS_DIR):
+                      if folder.startswith('XLS-') or folder.startswith('xls-'):
+                          # Extract XLS number and name
+                          parts = folder.split('-', 2)
+                          if len(parts) >= 2:
+                              xls_num = parts[1]  # e.g., "0030"
+                              name_part = parts[2] if len(parts) > 2 else ""
+                              
+                              # Read README if exists
+                              readme_path = os.path.join(STANDARDS_DIR, folder, 'README.md')
+                              title = name_part.replace('-', ' ').title()
+                              
+                              if os.path.exists(readme_path):
+                                  try:
+                                      with open(readme_path, 'r') as f:
+                                          content = f.read()
+                                          # Try to extract title from first line
+                                          lines = content.split('\n')
+                                          for line in lines[:5]:
+                                              if line.strip().startswith('# '):
+                                                  title = line.strip()[2:].strip()
+                                                  break
+                                  except:
+                                      pass
+                              
+                              xls_standards[xls_num] = {
+                                  'folder': folder,
+                                  'name': title,
+                                  'slug': name_part
+                              }
+                  
+                  print(f"Loaded {len(xls_standards)} XLS standards")
+                  # Print some examples
+                  for num, data in list(xls_standards.items())[:5]:
+                      print(f"  XLS-{num}: {data['name']}")
+          except Exception as e:
+              print(f"Could not parse XLS standards: {e}")
 
           # Get remote branches
           stdout, stderr, code = git(['branch', '-r', '--format=%(refname:short)'])
@@ -401,6 +457,12 @@ jobs:
                       'last_active': s['last_commit']
                   })
 
+          # Save XLS standards mapping
+          XLS_FILE = os.path.join(DATA_DIR, 'xls_standards.json')
+          with open(XLS_FILE, 'w') as f:
+              json.dump(xls_standards, f, indent=2)
+          print(f"Saved {len(xls_standards)} XLS standards mapping")
+
           # Save branches.json
           output = {
               'generated_at': datetime.now(timezone.utc).isoformat(),
@@ -432,5 +494,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json stats/data/rich_prs.json
+          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json stats/data/rich_prs.json stats/data/xls_standards.json
           git diff --cached --quiet || (git commit -m "Update stats $(date -u +%H:%M)" && git pull --rebase origin main && git push)
