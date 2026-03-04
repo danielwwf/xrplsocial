@@ -37,6 +37,7 @@ KEYWORD_MAP = {
     "wasm": {"amendment": "Rust/WASM", "type": "Feature", "confidence": 0.8},
 }
 
+# XLS Standards mapping
 XLS_STANDARDS = {
     "30": "AMM",
     "14": "Escrow",
@@ -45,6 +46,76 @@ XLS_STANDARDS = {
     "20": "Batch",
     "34": "NFTs",
     "38": "Multi-Purpose Tokens",
+    "33": "Credentials",
+    "37": "Checks",
+    "11": "Payment Channels",
+}
+
+# Feature file patterns (from rippled source code)
+FEATURE_PATTERNS = {
+    r'fixTokenEscrow|fix1623': {'amendment': 'Token Escrow', 'type': 'Bug Fix'},
+    r'fixNFT|fixTokenization': {'amendment': 'NFTs', 'type': 'Bug Fix'},
+    r'fixAMMv[0-9]*|fixAMM': {'amendment': 'AMM', 'type': 'Bug Fix'},
+    r'fixDID|fixDid': {'amendment': 'DID', 'type': 'Bug Fix'},
+    r'fixClawback|fix1620': {'amendment': 'Clawback', 'type': 'Bug Fix'},
+    r'fixBatch|fix1575': {'amendment': 'Batch Transactions', 'type': 'Bug Fix'},
+    r'fixCredentials|fixCredential': {'amendment': 'Credentials', 'type': 'Bug Fix'},
+    r'fixMPT|fixMultiPurposeToken': {'amendment': 'Multi-Purpose Tokens', 'type': 'Bug Fix'},
+    r'fixCheck|fixCheckCash': {'amendment': 'Checks', 'type': 'Bug Fix'},
+    r'featureAMM': {'amendment': 'AMM', 'type': 'Feature'},
+    r'featureNFT': {'amendment': 'NFTs', 'type': 'Feature'},
+    r'featureDID': {'amendment': 'DID', 'type': 'Feature'},
+    r'featureClawback': {'amendment': 'Clawback', 'type': 'Feature'},
+    r'featureBatch': {'amendment': 'Batch Transactions', 'type': 'Feature'},
+    r'featureMPT': {'amendment': 'Multi-Purpose Tokens', 'type': 'Feature'},
+    r'featureCredentials': {'amendment': 'Credentials', 'type': 'Feature'},
+}
+
+# Extended keyword mapping with more patterns
+EXTENDED_KEYWORDS = {
+    # Amendments
+    'nft': {'amendment': 'NFTs', 'type': 'Feature', 'confidence': 0.85},
+    'tokenization': {'amendment': 'NFTs', 'type': 'Feature', 'confidence': 0.8},
+    'amm': {'amendment': 'AMM', 'type': 'Feature', 'confidence': 0.9},
+    'automated.market': {'amendment': 'AMM', 'type': 'Feature', 'confidence': 0.85},
+    'liquidity.pool': {'amendment': 'AMM', 'type': 'Feature', 'confidence': 0.8},
+    'batch': {'amendment': 'Batch Transactions', 'type': 'Feature', 'confidence': 0.9},
+    'did': {'amendment': 'DID', 'type': 'Feature', 'confidence': 0.9},
+    'decentralized.identity': {'amendment': 'DID', 'type': 'Feature', 'confidence': 0.85},
+    'clawback': {'amendment': 'Clawback', 'type': 'Feature', 'confidence': 0.95},
+    'escrow': {'amendment': 'Escrow', 'type': 'Feature', 'confidence': 0.7},
+    'token.escrow': {'amendment': 'Token Escrow', 'type': 'Feature', 'confidence': 0.8},
+    'check': {'amendment': 'Checks', 'type': 'Feature', 'confidence': 0.6},
+    'credential': {'amendment': 'Credentials', 'type': 'Feature', 'confidence': 0.85},
+    'auth': {'amendment': 'Credentials', 'type': 'Feature', 'confidence': 0.5},
+    'mpt': {'amendment': 'Multi-Purpose Tokens', 'type': 'Feature', 'confidence': 0.9},
+    'multi.purpose': {'amendment': 'Multi-Purpose Tokens', 'type': 'Feature', 'confidence': 0.85},
+    'payment.channel': {'amendment': 'Payment Channels', 'type': 'Feature', 'confidence': 0.8},
+    'bridge': {'amendment': 'Cross-chain Bridges', 'type': 'Feature', 'confidence': 0.8},
+    'lending': {'amendment': 'Lending', 'type': 'Feature', 'confidence': 0.8},
+    'negative.unl': {'amendment': 'Negative UNL', 'type': 'Feature', 'confidence': 0.8},
+    'fee.escalation': {'amendment': 'Fee Escalation', 'type': 'Feature', 'confidence': 0.8},
+    
+    # Types
+    'fix': {'amendment': None, 'type': 'Bug Fix', 'confidence': 0.6},
+    'bugfix': {'amendment': None, 'type': 'Bug Fix', 'confidence': 0.7},
+    'hotfix': {'amendment': None, 'type': 'Bug Fix', 'confidence': 0.7},
+    'patch': {'amendment': None, 'type': 'Bug Fix', 'confidence': 0.5},
+    'test': {'amendment': None, 'type': 'Testing', 'confidence': 0.7},
+    'testing': {'amendment': None, 'type': 'Testing', 'confidence': 0.7},
+    'ci': {'amendment': None, 'type': 'CI/CD', 'confidence': 0.8},
+    'github.action': {'amendment': None, 'type': 'CI/CD', 'confidence': 0.8},
+    'workflow': {'amendment': None, 'type': 'CI/CD', 'confidence': 0.6},
+    'refactor': {'amendment': None, 'type': 'Refactor', 'confidence': 0.7},
+    'modular': {'amendment': 'Code Modularization', 'type': 'Refactor', 'confidence': 0.8},
+    'cleanup': {'amendment': None, 'type': 'Refactor', 'confidence': 0.6},
+    'rust': {'amendment': 'Rust/WASM', 'type': 'Feature', 'confidence': 0.9},
+    'wasm': {'amendment': 'Rust/WASM', 'type': 'Feature', 'confidence': 0.9},
+    'webassembly': {'amendment': 'Rust/WASM', 'type': 'Feature', 'confidence': 0.85},
+    'conan': {'amendment': 'Code Modularization', 'type': 'Refactor', 'confidence': 0.6},
+    'cmake': {'amendment': 'Code Modularization', 'type': 'Refactor', 'confidence': 0.5},
+    'docs': {'amendment': None, 'type': 'Documentation', 'confidence': 0.7},
+    'readme': {'amendment': None, 'type': 'Documentation', 'confidence': 0.8},
 }
 
 
@@ -103,38 +174,56 @@ def get_total_cost() -> float:
 
 def keyword_categorize(branch_name: str, commit_messages: list = None) -> Optional[dict]:
     """
-    Categorize using keywords only (free, no AI)
+    Categorize using extended keywords and patterns (free, no AI)
+    Checks branch name AND commit messages
     Returns None if no confident match found
     """
-    text = branch_name.lower()
+    # Combine all text to check
+    texts = [branch_name.lower()]
     if commit_messages:
-        text += " " + " ".join(commit_messages[:5]).lower()
+        # Check first 5 commit messages
+        texts.extend([msg.lower() for msg in commit_messages[:5]])
     
-    best_match = None
-    best_confidence = 0
+    combined_text = " ".join(texts)
     
-    for keyword, category in KEYWORD_MAP.items():
-        if keyword in text:
-            if category["confidence"] > best_confidence:
-                best_confidence = category["confidence"]
-                best_match = category
-    
-    # Check for XLS references
-    xls_match = re.search(r'xls-?(=\d+)', text)
+    # Check XLS references first (high confidence)
+    xls_match = re.search(r'xls-?(\d+)', combined_text)
     if xls_match:
         xls_num = xls_match.group(1).lstrip('0') or '0'
         if xls_num in XLS_STANDARDS:
             return {
                 "amendment": XLS_STANDARDS[xls_num],
                 "type": "Feature",
-                "confidence": 0.85,
+                "confidence": 0.9,
                 "source": "xls_reference"
             }
     
+    # Check for feature file patterns in commit messages
+    if commit_messages:
+        for msg in commit_messages[:3]:  # Check first 3 commits
+            msg_lower = msg.lower()
+            for pattern, category in FEATURE_PATTERNS.items():
+                if re.search(pattern, msg_lower, re.IGNORECASE):
+                    result = category.copy()
+                    result["confidence"] = 0.85
+                    result["source"] = "feature_pattern"
+                    return result
+    
+    # Check extended keywords with word boundaries
+    best_match = None
+    best_confidence = 0
+    
+    for keyword, category in EXTENDED_KEYWORDS.items():
+        # Use word boundary matching for better accuracy
+        pattern = r'\b' + keyword.replace('.', r'\.').replace('-', r'\-') + r'\b'
+        if re.search(pattern, combined_text, re.IGNORECASE):
+            if category["confidence"] > best_confidence:
+                best_confidence = category["confidence"]
+                best_match = category.copy()
+                best_match["source"] = "keyword_match"
+    
     if best_match and best_confidence >= 0.6:
-        result = best_match.copy()
-        result["source"] = "keyword_match"
-        return result
+        return best_match
     
     return None
 
