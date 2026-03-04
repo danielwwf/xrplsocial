@@ -284,7 +284,7 @@ If you see "fix" in the name, it's likely a bug fix for an existing amendment.
         }
         
         data = {
-            "model": "kimi-k2-0905-preview",  # Correct model name
+            "model": "kimi-k2-thinking",  # Correct model name
             "messages": [{"role": "user", "content": prompt}],
             "temperature": 0.3,
             "max_tokens": 300
