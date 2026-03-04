@@ -539,6 +539,9 @@ jobs:
         env:
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
         run: |
+          # Clear cache to FORCE AI analysis for all branches
+          rm -f stats/data/ai_categories.json stats/data/ai_cost_log.json
+          echo "🗑️  Cache cleared - forcing AI analysis for all branches"
           python3 scripts/integrate_categories.py
           echo "Categories integrated"
 
