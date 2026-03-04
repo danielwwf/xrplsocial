@@ -319,7 +319,7 @@ If you see "fix" in the name, it's likely a bug fix for an existing amendment.
                         log_cost(branch_name, estimated_cost, "kimi-k2-thinking")
                         
                         # Rate limiting - stay well under 500 RPM limit
-                        time.sleep(0.2)  # 200ms pause = max 300 RPM
+                        time.sleep(5.0)  # 5s pause = max 12 RPM - maximum reliability
                         
                         return result_data
                     
