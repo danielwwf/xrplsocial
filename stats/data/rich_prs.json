@@ -175,6 +175,51 @@
     ]
   },
   {
+    "pr_number": 6420,
+    "branch_name": "6399_Fix_flaky_subscribe_test",
+    "title": "tests: Improve stability of Subscribe tests",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR improves stability of Subscribe tests.\r\n\r\nFixes #6399.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\nSubscribe tests were flaky because each test performs some operations (e.g. sends transactions) and waits for messages to appear in subscription with 100ms timeout. If tests are slow (because compiled in debug or the machine is slow) some of them could fail. This PR adds an attempt to synchronise background `Env`'s thread and test's thread by ensuring that all the scheduled operations  are started before test's thread starts to wait for a websocket message. This is done by limiting IO threads of the app inside `Env` to `1` and adding a synchronisation barrier after closing ledger.\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-25T17:40:44Z",
+    "merged_at": "2026-03-03T13:46:56Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6420?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`afc660a`](https://app.codecov.io/gh/XRPLF/rippled/commit/afc660a1b5764536cf40350714ee5849ac60a067?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-02-25T18:22:58Z"
+      },
+      {
+        "user": "kuznetsss",
+        "body": "@godexsoft, you are right and it turned out that the application was not single threaded. I've added an assert into `syncClose()` and enforced the application to have only 1 IO thread in these tests.",
+        "created_at": "2026-02-27T13:33:18Z"
+      }
+    ],
+    "reviews_count": 14,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR addresses flaky Subscribe tests by introducing a synchronization mechanism to ensure WebSocket subscription messages have been initiated before tests check for them. "
+      },
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 2 out of 2 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*."
+      }
+    ]
+  },
+  {
     "pr_number": 6449,
     "branch_name": "backup-check-length",
     "title": "add defensive check for sfData length",
@@ -299,6 +344,51 @@
         "user": "kuznetsss",
         "state": "APPROVED",
         "body": "\ud83d\udc4d "
+      }
+    ]
+  },
+  {
+    "pr_number": 6431,
+    "branch_name": "Optional_nix_hook",
+    "title": "chore: Make nix hook optional",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nThis PR makes nix pre-commit hook optional in development environment and enforced only inside Github Actions.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping supp",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-26T12:19:27Z",
+    "merged_at": "2026-02-27T18:36:10Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "kuznetsss",
+        "body": "@ximinez, good idea! I've [added](https://github.com/XRPLF/actions/commit/56de1bdf19639e009639a50b8d17c28ca954f267) `--verbose` in pre-commit call and updated action hash.",
+        "created_at": "2026-02-26T17:26:44Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6431?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`404f35d`](https://app.codecov.io/gh/XRPLF/rippled/commit/404f35d5568f60d914b9f2749fff9518cd1324cb?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-02-27T15:32:06Z"
+      }
+    ],
+    "reviews_count": 5,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR makes the nix pre-commit hook optional for local development environments while keeping it enforced in GitHub Actions CI. This allows developers without nix installed"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": "Works on my end. \n\nWhat do you think about running `pre-commit` with `--verbose` in the action?"
       }
     ]
   },
@@ -2289,6 +2379,36 @@
     ]
   },
   {
+    "pr_number": 6336,
+    "branch_name": "vntb/thread-names-followup",
+    "title": "Threads renaming follow up",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis update builds on the thread-renaming PR (https://github.com/XRPLF/rippled/pull/6212).\r\nIt clarifies thread names to reduce ambiguity in performance monitoring tools.\r\nNo functional changes.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation up",
+    "user": "vlntb",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-06T12:08:52Z",
+    "merged_at": "2026-02-06T21:33:42Z",
+    "labels": [
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6336?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`bf4674f`](https://app.codecov.io/gh/XRPLF/rippled/commit/bf4674f42b0515f0fe81d4b523c98d68fd7269b3?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-02-06T12:29:53Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "lmaisons",
+        "state": "APPROVED",
+        "body": "As requested."
+      }
+    ]
+  },
+  {
     "pr_number": 6199,
     "branch_name": "cspell-tests",
     "title": "refactor: fix spelling issues in tests",
@@ -2384,6 +2504,49 @@
     ]
   },
   {
+    "pr_number": 6337,
+    "branch_name": "remove_rpc_reviewers",
+    "title": "ci: Remove @xrplf/rpc-reviewers",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-06T16:27:59Z",
+    "merged_at": "2026-02-06T16:39:23Z",
+    "labels": [],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "mathbunnyru",
+        "body": "> Should we just remove the entire file?\r\n\r\nI think let's keep it - I might want to add myself for the github/tooling related changes in the future, for example, so it might be useful",
+        "created_at": "2026-02-06T16:31:19Z"
+      },
+      {
+        "user": "mathbunnyru",
+        "body": "Oh, GitHub tells it's incorrect right now (and was incorrect before my change), so let's indeed remove it",
+        "created_at": "2026-02-06T16:33:02Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR updates repository review ownership rules by removing the `@xrplf/rpc-reviewers` team from CODEOWNERS, effectively dropping required-reviewer enforcement for RPC-rela"
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": "Should we just remove the entire file?"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 1 out of 1 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*."
+      }
+    ]
+  },
+  {
     "pr_number": 5439,
     "branch_name": "bthomee/disable-cache",
     "title": "perf: Remove unnecessary caches",
@@ -2439,6 +2602,54 @@
       },
       {
         "user": "sublimator",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 6328,
+    "branch_name": "bthomee/unity",
+    "title": "chore: Restore unity builds",
+    "body": "## High Level Overview of Change\r\n\r\nThis change restores the ability to do unity builds, while only having a single configuration use it. It also fixes an issue with the coverage target.\r\n\r\n### Context of Change\r\n\r\nIn certain cases, such as when modifying headers used by many compilation units, performing a unity build is slower than when performing a regular build with `ccache` enabled. There is also a benefit to a unity build in that it can detect things such as macro redefinitions within the group of files that are compiled together as a unit. This PR therefore restores the ability to perform unity builds. However, instead of running every configuration with and without unity enabled, it is now only enabled for a single configuration to maintain lower computational use.\r\n\r\nAs part of restoring the code, it became clear that currently two configurations have coverage enabled, since the check doesn't focus specifically on Debian Bookworm so it also applies to Debian Trixie. This has been fixed too in this PR.\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [X] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
+    "user": "bthomee",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-04T18:53:57Z",
+    "merged_at": "2026-02-06T14:12:45Z",
+    "labels": [],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6328?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`0a626d9`](https://app.codecov.io/gh/XRPLF/rippled/commit/0a626d95f435f603b89ba5bf95fe201c71088e7a?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-02-04T19:12:14Z"
+      },
+      {
+        "user": "a1q123456",
+        "body": "Thank you so much, Bart! This will make rebuilding faster.",
+        "created_at": "2026-02-04T20:27:24Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "@ximinez The unity builds succeeded without the exceptions for the RPC and Invariant test files using configurations on all three platforms. While this is no guarantee it will work for all configurations - we will find out during a nightly run after merging - it is a good indicator that it may be that way.",
+        "created_at": "2026-02-05T00:11:26Z"
+      }
+    ],
+    "reviews_count": 10,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR restores unity build support to the project while maintaining lower computational overhead by enabling it for only a single CI configuration (Ubuntu Jammy with GCC 12"
+      },
+      {
+        "user": "a1q123456",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "a1q123456",
         "state": "COMMENTED",
         "body": ""
       }
@@ -3311,6 +3522,46 @@
     ]
   },
   {
+    "pr_number": 6288,
+    "branch_name": "clang_format_120",
+    "title": "style: Set ColumnLimit to 120 in clang-format",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis only changes 80 -> 120 for ColumnLimit and reruns clang-format, no manual changes were done.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-01-28T16:58:22Z",
+    "merged_at": "2026-01-28T18:09:51Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6288?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `85.09700%` with `169 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`9204678`](https://app.codecov.io/gh/XRPLF/rippled/commit/92046785d1fea5f9efe5a770d636792ea6cab78b?dropdown=coverage&el=desc&utm_medium=r",
+        "created_at": "2026-01-28T17:24:44Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR updates the clang-format configuration to increase the `ColumnLimit` from 80 to 120 characters, and applies this formatting change across the entire codebase. This al"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": "Once merged we probably should add the commit hash to `.git-blame-ignore-revs`."
+      },
+      {
+        "user": "legleux",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6241,
     "branch_name": "a1q123456/fix-xrpl-net-test",
     "title": "Fix the xrpl.net unit test",
@@ -3346,6 +3597,36 @@
       {
         "user": "bthomee",
         "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 6286,
+    "branch_name": "bthomee/ref",
+    "title": "ci: Upload Conan recipes for develop, release candidates, and releases",
+    "body": "## High Level Overview of Change\r\n\r\nThis change exports and uploads the Conan recipe with the version names `develop`, `rc`, and `release` when applicable.\r\n\r\n### Context of Change\r\n\r\nTo allow developers to consume the latest unstable and (near-)stable versions of our `xrpl` Conan recipe, we should export and upload it whenever a push occurs to the corresponding branch or a release tag has been created. This way, developers do not have to figure out themselves what the most recent shortened commit hash was to determine the latest unstable recipe version (e.g. `3.2.0-b0+a1b2c3d`) or what the most recent release (candidate) was to determine the latest (near-)stable recipe version (e.g. `3.1.0-rc2`).\r\n\r\nNow, pushes to the `develop` branch will produce the `develop` recipe version, pushes to the `release` branch will produce the `rc` recipe version, and creation of versioned tags will produce the `release` recipe version.\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [X] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
+    "user": "bthomee",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-01-28T08:41:54Z",
+    "merged_at": "2026-01-28T10:02:35Z",
+    "labels": [
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6286?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.4%. Comparing base ([`bb529d0`](https://app.codecov.io/gh/XRPLF/rippled/commit/bb529d03175fc988a9d7b593bf60e21b6803cbb7?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-01-28T09:00:36Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
         "body": ""
       }
     ]
