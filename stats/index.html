@@ -475,21 +475,133 @@ document.getElementById('search').addEventListener('input', (e) => {
     });
 });
 
-// Other render functions (simplified versions)
+// Other render functions
 function renderPeople() {
-    document.getElementById('content').innerHTML = '<div class="loading">Loading people...</div>';
+    const people = {};
+    data.branches.forEach(b => {
+        (b.contributors || []).forEach(c => {
+            const u = c.email?.split('@')[0] || 'unknown';
+            if (!people[u]) {
+                people[u] = { name: c.name || u, branches: new Set(), commits: 0 };
+            }
+            people[u].branches.add(b.name);
+            people[u].commits += c.commits || 1;
+        });
+    });
+    
+    const sorted = Object.entries(people).sort((a, b) => b[1].commits - a[1].commits);
+    
+    let html = '<div class="grid">';
+    sorted.forEach(([username, info]) => {
+        html += `
+            <div class="amendment-card" data-searchable>
+                <div class="card-header">
+                    <div class="amendment-icon icon-other">👤</div>
+                    <div class="amendment-title">
+                        <h3>@${username}</h3>
+                        <span class="amendment-category">${info.commits} commits</span>
+                    </div>
+                </div>
+                <div class="amendment-stats">
+                    <span>🔀 ${info.branches.size} branches</span>
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    document.getElementById('content').innerHTML = html;
 }
 
 function renderAllBranches() {
-    document.getElementById('content').innerHTML = '<div class="loading">Loading branches...</div>';
+    const sorted = [...data.branches].sort((a, b) => 
+        new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0)
+    );
+    
+    let html = '<div class="grid">';
+    sorted.forEach(b => {
+        const days = Math.floor((Date.now() - new Date(b.last_commit?.date || 0)) / 86400000);
+        const status = days <= 7 ? '🔥 Active' : days <= 30 ? '⚡ Recent' : '💤 Dormant';
+        const statusClass = days <= 7 ? 'status-enabled' : days <= 30 ? 'status-development' : 'status-other';
+        
+        html += `
+            <div class="amendment-card" data-searchable>
+                <div class="card-header">
+                    <div class="amendment-icon icon-other">🌿</div>
+                    <div class="amendment-title">
+                        <h3>${b.name}</h3>
+                        <span class="amendment-category">${days} days ago</span>
+                    </div>
+                </div>
+                <span class="status-badge ${statusClass}">${status}</span>
+                <p class="amendment-desc">${b.last_commit?.message?.substring(0, 100) || 'No commits'}</p>
+                <div class="amendment-stats">
+                    <span>👥 ${b.contributor_count || 0} contributors</span>
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    document.getElementById('content').innerHTML = html;
 }
 
 function renderCompleted() {
-    document.getElementById('content').innerHTML = '<div class="loading">Loading completed...</div>';
+    if (!completedData || completedData.length === 0) {
+        document.getElementById('content').innerHTML = '<div class="loading">No completed data available yet.</div>';
+        return;
+    }
+    
+    const sorted = completedData.sort((a, b) => 
+        new Date(b.completed_at || 0) - new Date(a.completed_at || 0)
+    );
+    
+    let html = '<div class="grid">';
+    sorted.slice(0, 100).forEach(b => {
+        const date = new Date(b.completed_at || b.last_commit?.date || 0);
+        html += `
+            <div class="amendment-card" data-searchable>
+                <div class="card-header">
+                    <div class="amendment-icon icon-other">✅</div>
+                    <div class="amendment-title">
+                        <h3>${b.name}</h3>
+                        <span class="amendment-category">${date.toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">✅ Completed</span>
+                <p class="amendment-desc">${b.last_commit?.message?.substring(0, 100) || 'No message'}</p>
+            </div>
+        `;
+    });
+    html += '</div>';
+    document.getElementById('content').innerHTML = html;
 }
 
 function renderTimeline() {
-    document.getElementById('content').innerHTML = '<div class="loading">Loading timeline...</div>';
+    if (!data.timeline || data.timeline.length === 0) {
+        document.getElementById('content').innerHTML = '<div class="loading">Timeline data not available yet.</div>';
+        return;
+    }
+    
+    const sorted = data.timeline.sort((a, b) => 
+        new Date(b.date || 0) - new Date(a.date || 0)
+    );
+    
+    let html = '<div style="max-width: 800px; margin: 0 auto;">';
+    sorted.slice(0, 50).forEach(commit => {
+        const date = new Date(commit.date);
+        html += `
+            <div style="display: flex; gap: 16px; padding: 16px; border-bottom: 1px solid var(--border);">
+                <div style="color: var(--muted); font-size: 12px; min-width: 80px;">
+                    ${date.toLocaleDateString()}
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 14px; margin-bottom: 4px;">${commit.message?.substring(0, 80) || 'No message'}</div>
+                    <div style="font-size: 12px; color: var(--accent);">@${commit.author} • ${commit.branch}</div>
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    document.getElementById('content').innerHTML = html;
 }
 
 // Init
