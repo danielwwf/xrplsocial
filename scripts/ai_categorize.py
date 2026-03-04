@@ -277,70 +277,41 @@ Common XRPL amendments: AMM, NFTs, Batch Transactions, DID, Clawback, Escrow, Ch
 If you see "fix" in the name, it's likely a bug fix for an existing amendment.
 """
         
-        # Moonshot API call (OpenAI-compatible)
-        url = "https://api.moonshot.ai/v1/chat/completions"
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key}"
-        }
-        
-        data = {
-            "model": "kimi-k2-thinking",  # Correct model name
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": 0.3,
-            "max_tokens": 300
-        }
-        
-        req = urllib.request.Request(
-            url,
-            data=json.dumps(data).encode('utf-8'),
-            headers=headers,
-            method='POST'
-        )
-        
-        # Retry logic with exponential backoff
-        max_retries = 5
-        base_delay = 1  # Start with 1 second
-        
-        for attempt in range(max_retries):
-            try:
-                with urllib.request.urlopen(req, timeout=30) as response:
-                    result = json.loads(response.read().decode('utf-8'))
-                    content = result['choices'][0]['message']['content']
-                    
-                    # Extract JSON from response
-                    json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
-                    if json_match:
-                        result_data = json.loads(json_match.group())
-                        result_data["source"] = "ai_kimi"
-                        
-                        # Log cost
-                        estimated_cost = 0.0007
-                        log_cost(branch_name, estimated_cost, "kimi-k2-thinking")
-                        
-                        # Rate limiting - stay well under 500 RPM limit
-                        time.sleep(5.0)  # 5s pause = max 12 RPM - maximum reliability
-                        
-                        return result_data
-                    
-            except urllib.error.HTTPError as e:
-                if e.code == 429:
-                    # Rate limited - exponential backoff
-                    delay = base_delay * (2 ** attempt)
-                    print(f"⚠️  Rate limited (429) for {branch_name}, waiting {delay}s... (attempt {attempt + 1}/{max_retries})")
-                    time.sleep(delay)
-                    if attempt == max_retries - 1:
-                        print(f"❌ Max retries reached for {branch_name}, falling back to keywords")
-                else:
-                    # Other HTTP error
-                    print(f"⚠️  HTTP Error {e.code} for {branch_name}: {e.reason}")
-                    break
-            except Exception as e:
-                print(f"⚠️  Error for {branch_name}: {e}")
-                break
-        
-    except Exception as e:
-        print(f"⚠️  Moonshot AI analysis setup failed for {branch_name}: {e}")
+        # Moonshot API call using OpenAI client (more reliable)
+        try:
+            from openai import OpenAI
+            
+            client = OpenAI(
+                api_key=api_key,
+                base_url="https://api.moonshot.ai/v1"
+            )
+            
+            response = client.chat.completions.create(
+                model="kimi-k2-thinking",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.3,
+                max_tokens=300
+            )
+            
+            content = response.choices[0].message.content
+            
+            # Extract JSON from response
+            json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
+            if json_match:
+                result_data = json.loads(json_match.group())
+                result_data["source"] = "ai_kimi"
+                
+                # Log cost
+                estimated_cost = 0.0007
+                log_cost(branch_name, estimated_cost, "kimi-k2-thinking")
+                
+                # Rate limiting - stay well under 500 RPM limit
+                time.sleep(1.0)  # 1s pause = max 60 RPM
+                
+                return result_data
+                
+        except Exception as e:
+            print(f"⚠️  OpenAI client error for {branch_name}: {e}")
     
     # Fallback to keywords
     return keyword_categorize(branch_name, commit_messages) or {
