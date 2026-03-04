@@ -276,8 +276,8 @@ Common XRPL amendments: AMM, NFTs, Batch Transactions, DID, Clawback, Escrow, Ch
 If you see "fix" in the name, it's likely a bug fix for an existing amendment.
 """
         
-        # Moonshot API call
-        url = "https://api.moonshot.cn/v1/chat/completions"
+        # Moonshot API call (OpenAI-compatible)
+        url = "https://platform.moonshot.ai/v1/chat/completions"
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}"
