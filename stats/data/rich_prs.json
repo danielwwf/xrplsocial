@@ -1,5 +1,43 @@
 [
   {
+    "pr_number": 6376,
+    "branch_name": "hf-ai",
+    "title": "assorted fixes",
+    "body": "## High Level Overview of Change\r\n\r\n* Improve comments\r\n* Better SField erroring\r\n* Remove the possibility of negative gas limits\r\n* Slightly cleaner memory bounds error handling\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-17T22:04:09Z",
+    "merged_at": "2026-03-04T13:30:10Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6376?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.3%. Comparing base ([`1775251`](https://app.codecov.io/gh/XRPLF/rippled/commit/1775251e90cb11a22e2229bb87a0f15036257442?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-02-17T23:28:46Z"
+      }
+    ],
+    "reviews_count": 13,
+    "reviews": [
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6063,
     "branch_name": "refactor-pdomain",
     "title": "Refactor: Update PermissionedDomainDelete to use keylet for sle access",
@@ -3810,44 +3848,6 @@
       {
         "user": "Tapanito",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6268,
-    "branch_name": "core_merge",
-    "title": "Switch to series expansion method for ln()",
-    "body": "## High Level Overview of Change\r\n\r\nSwitch to more accurate \"series expansion\" method for ln()\r\nAdd wasm float lg() tests to Number tests;\r\n\r\n\r\n### Type of Change\r\n\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [X] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-22T21:59:54Z",
-    "merged_at": "2026-01-26T19:04:03Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6268?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.14286%` with `1 line` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`df98db1`](https://app.codecov.io/gh/XRPLF/rippled/commit/df98db14528eb825b26c6180a7404bb033b04993?dropdown=coverage&el=desc&utm_medium=refe",
-        "created_at": "2026-01-22T22:40:33Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
