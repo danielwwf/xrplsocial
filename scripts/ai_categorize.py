@@ -298,28 +298,49 @@ If you see "fix" in the name, it's likely a bug fix for an existing amendment.
             method='POST'
         )
         
-        with urllib.request.urlopen(req, timeout=30) as response:
-            result = json.loads(response.read().decode('utf-8'))
-            content = result['choices'][0]['message']['content']
-            
-            # Extract JSON from response
-            json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
-            if json_match:
-                result_data = json.loads(json_match.group())
-                result_data["source"] = "ai_kimi"
-                
-                # Log cost (Kimi K2.5: ~$0.50/1M tokens input, $1.50/1M output)
-                # Estimate: ~1000 input, ~150 output = ~$0.0007
-                estimated_cost = 0.0007
-                log_cost(branch_name, estimated_cost, "kimi-k2-5")
-                
-                # Rate limiting - stay well under 200 RPM limit
-                time.sleep(0.3)  # 300ms pause = max 200 RPM
-                
-                return result_data
+        # Retry logic with exponential backoff
+        max_retries = 5
+        base_delay = 1  # Start with 1 second
+        
+        for attempt in range(max_retries):
+            try:
+                with urllib.request.urlopen(req, timeout=30) as response:
+                    result = json.loads(response.read().decode('utf-8'))
+                    content = result['choices'][0]['message']['content']
+                    
+                    # Extract JSON from response
+                    json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
+                    if json_match:
+                        result_data = json.loads(json_match.group())
+                        result_data["source"] = "ai_kimi"
+                        
+                        # Log cost
+                        estimated_cost = 0.0007
+                        log_cost(branch_name, estimated_cost, "kimi-k2-thinking")
+                        
+                        # Rate limiting - stay well under 500 RPM limit
+                        time.sleep(0.2)  # 200ms pause = max 300 RPM
+                        
+                        return result_data
+                    
+            except urllib.error.HTTPError as e:
+                if e.code == 429:
+                    # Rate limited - exponential backoff
+                    delay = base_delay * (2 ** attempt)
+                    print(f"⚠️  Rate limited (429) for {branch_name}, waiting {delay}s... (attempt {attempt + 1}/{max_retries})")
+                    time.sleep(delay)
+                    if attempt == max_retries - 1:
+                        print(f"❌ Max retries reached for {branch_name}, falling back to keywords")
+                else:
+                    # Other HTTP error
+                    print(f"⚠️  HTTP Error {e.code} for {branch_name}: {e.reason}")
+                    break
+            except Exception as e:
+                print(f"⚠️  Error for {branch_name}: {e}")
+                break
         
     except Exception as e:
-        print(f"⚠️  Moonshot AI analysis failed for {branch_name}: {e}")
+        print(f"⚠️  Moonshot AI analysis setup failed for {branch_name}: {e}")
     
     # Fallback to keywords
     return keyword_categorize(branch_name, commit_messages) or {
