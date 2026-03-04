@@ -535,9 +535,16 @@ jobs:
           print(f"\n✅ SUCCESS: {len(results)} branches, {len(completed_branches)} completed, {len(all_commits)} total commits")
           PYEOF
 
+      - name: AI Categorize Branches
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python3 scripts/integrate_categories.py
+          echo "Categories integrated"
+
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json stats/data/rich_prs.json stats/data/xls_standards.json stats/index.html
+          git add stats/data/branches.json stats/data/completed.json stats/data/timeline.json stats/data/rich_prs.json stats/data/xls_standards.json stats/data/ai_categories.json stats/data/category_summary.json stats/index.html scripts/ai_categorize.py scripts/integrate_categories.py
           git diff --cached --quiet || (git commit -m "Update stats $(date -u +%H:%M)" && git pull --rebase origin main && git push)
