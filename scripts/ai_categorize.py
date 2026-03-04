@@ -8,6 +8,7 @@ import json
 import os
 import re
 import sys
+import time
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
@@ -311,6 +312,9 @@ If you see "fix" in the name, it's likely a bug fix for an existing amendment.
                 # Estimate: ~1000 input, ~150 output = ~$0.0007
                 estimated_cost = 0.0007
                 log_cost(branch_name, estimated_cost, "kimi-k2-5")
+                
+                # Rate limiting - stay well under 200 RPM limit
+                time.sleep(0.3)  # 300ms pause = max 200 RPM
                 
                 return result_data
         
