@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6464,
+    "branch_name": "build_info",
+    "title": "chore: Add Git information compile-time info to only one file",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nPrevious approach had one big flaw:\r\n- The git commit info (GIT_COMMIT_HASH and GIT_BRANCH) is added to every file which is being compiled (https://github.com/search?q=repo%3AXRPLF%2Frippled%20add_definitions&type=code)\r\n- It probably stopped ccache completely from working on Windows (will check this after this PR is merged)\r\n- And made it work worse on non-Windows (cache was taken after pre-processor, which also takes time, and not directly).\r\n\r\n~I also introduce change of behaviour: we require git to be installed, and to build with git information available. It just makes life easier, because reduces number of cases we need to support.~\r\n\r\nInstead, I added a separate C++ file, where these compile-time variables are propagated and removed all other usages by using functions.\r\nThese fixes problems mentioned above.\r\n\r\nNote: this PR doesn't change how these variables are calculated.\r\n\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better th",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-03T17:49:31Z",
+    "merged_at": "2026-03-04T19:45:28Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6464?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `93.10345%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`595f0dd`](https://app.codecov.io/gh/XRPLF/rippled/commit/595f0dd4619a668f629a7bc8982924b9742134bc?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-03-04T14:15:48Z"
+      }
+    ],
+    "reviews_count": 13,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage1: "
+      },
+      {
+        "user": "ximinez",
+        "state": "CHANGES_REQUESTED",
+        "body": "I don't like requiring git, and requiring the repo to be checked out. It seems unnecessarily restrictive to not support building from the source in a zip file, for example. There are places on Github "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6466,
     "branch_name": "chore/clang-tidy-checks-bugprone-sizeof-expression",
     "title": "chore: Enable clang-tidy `bugprone-sizeof-expression` check",
@@ -17,7 +57,7 @@
     "comments": [
       {
         "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6466?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`3cd1e3d`](https://app.codecov.io/gh/XRPLF/rippled/commit/3cd1e3d94e3e2498f98352e720dbc9948c1213a4?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6466?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`b451d5e`](https://app.codecov.io/gh/XRPLF/rippled/commit/b451d5e412590f55426de91bacea0f3bdaf45183?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
         "created_at": "2026-03-04T13:50:28Z"
       }
     ],
@@ -3766,67 +3806,6 @@
       {
         "user": "bthomee",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6286,
-    "branch_name": "bthomee/ref",
-    "title": "ci: Upload Conan recipes for develop, release candidates, and releases",
-    "body": "## High Level Overview of Change\r\n\r\nThis change exports and uploads the Conan recipe with the version names `develop`, `rc`, and `release` when applicable.\r\n\r\n### Context of Change\r\n\r\nTo allow developers to consume the latest unstable and (near-)stable versions of our `xrpl` Conan recipe, we should export and upload it whenever a push occurs to the corresponding branch or a release tag has been created. This way, developers do not have to figure out themselves what the most recent shortened commit hash was to determine the latest unstable recipe version (e.g. `3.2.0-b0+a1b2c3d`) or what the most recent release (candidate) was to determine the latest (near-)stable recipe version (e.g. `3.1.0-rc2`).\r\n\r\nNow, pushes to the `develop` branch will produce the `develop` recipe version, pushes to the `release` branch will produce the `rc` recipe version, and creation of versioned tags will produce the `release` recipe version.\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [X] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
-    "user": "bthomee",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-28T08:41:54Z",
-    "merged_at": "2026-01-28T10:02:35Z",
-    "labels": [
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6286?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.4%. Comparing base ([`bb529d0`](https://app.codecov.io/gh/XRPLF/rippled/commit/bb529d03175fc988a9d7b593bf60e21b6803cbb7?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-28T09:00:36Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6284,
-    "branch_name": "ximinez/proposed-3.1.0",
-    "title": "Set version to 3.1.0",
-    "body": "## High Level Overview of Change\r\n\r\nThis change sets the version to 3.1.0.\r\n\r\n### Context of Change\r\n\r\n3.1.0 is getting close to ready to release. When it is, this PR will be merged to update the version number, starting the release process.",
-    "user": "ximinez",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-27T23:51:29Z",
-    "merged_at": "2026-01-28T01:13:06Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6284?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.4%. Comparing base ([`69dda6b`](https://app.codecov.io/gh/XRPLF/rippled/commit/69dda6b34cc085855d479f41712423d9d28e3c6e?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-28T00:23:45Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "gregtatcam",
-        "state": "APPROVED",
         "body": ""
       }
     ]
