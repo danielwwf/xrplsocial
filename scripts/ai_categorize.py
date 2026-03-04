@@ -329,7 +329,8 @@ If you see "fix" in the name, it's likely a bug fix for an existing amendment.
 def categorize_branch(branch_name: str, commit_messages: list = None, 
                       pr_diff: str = None, force_refresh: bool = False) -> dict:
     """
-    Main entry point: categorizes a branch using cache or AI
+    Main entry point: AI-first categorization
+    Uses AI for ALL branches when API key available, keywords as fallback
     """
     cache = load_cache()
     
@@ -339,24 +340,31 @@ def categorize_branch(branch_name: str, commit_messages: list = None,
         cached["cached"] = True
         return cached
     
-    # Try keyword categorization first (free)
+    # Check if we have API key - if yes, use AI for everything
+    api_key = os.environ.get("MOONSHOT_API_KEY")
+    if api_key:
+        result = ai_categorize(branch_name, commit_messages, pr_diff)
+        result["cached"] = False
+        cache[branch_name] = result
+        save_cache(cache)
+        return result
+    
+    # No API key: Try keyword categorization as fallback
     keyword_result = keyword_categorize(branch_name, commit_messages)
     
-    if keyword_result and keyword_result.get("confidence", 0) >= 0.8:
-        # High confidence keyword match - no need for AI
+    if keyword_result:
         cache[branch_name] = keyword_result
         save_cache(cache)
         return keyword_result
     
-    # Low confidence or no keyword match - use AI
-    result = ai_categorize(branch_name, commit_messages, pr_diff)
-    result["cached"] = False
-    
-    # Save to cache
-    cache[branch_name] = result
-    save_cache(cache)
-    
-    return result
+    # Ultimate fallback
+    return { 
+        "amendment": "Other", 
+        "type": "Unknown", 
+        "confidence": 0, 
+        "source": "fallback",
+        "cached": False
+    }
 
 
 def batch_categorize(branches: list, branches_data: dict = None) -> dict:
