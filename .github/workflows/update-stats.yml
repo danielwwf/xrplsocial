@@ -537,7 +537,7 @@ jobs:
 
       - name: AI Categorize Branches
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
         run: |
           python3 scripts/integrate_categories.py
           echo "Categories integrated"

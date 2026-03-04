@@ -57,7 +57,7 @@ def integrate_categories():
     # Generate summary
     amendment_counts = {}
     type_counts = {}
-    ai_vs_keyword = {'ai_claude': 0, 'keyword_match': 0, 'fallback': 0}
+    ai_vs_keyword = {'ai_kimi': 0, 'keyword_match': 0, 'fallback': 0}
     
     for branch in branches:
         cat = branch.get('ai_category', {})
@@ -85,7 +85,7 @@ def integrate_categories():
         print(f"  {typ}: {count}")
     
     print(f"\nSource breakdown:")
-    print(f"  🤖 AI (Claude): {ai_vs_keyword['ai_claude']}")
+    print(f"  🤖 AI (Kimi K2.5): {ai_vs_keyword['ai_kimi']}")
     print(f"  🔑 Keywords: {ai_vs_keyword['keyword_match']}")
     print(f"  ❓ Fallback: {ai_vs_keyword['fallback']}")
     

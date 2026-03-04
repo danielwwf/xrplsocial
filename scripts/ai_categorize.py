@@ -141,13 +141,13 @@ def keyword_categorize(branch_name: str, commit_messages: list = None) -> Option
 
 def ai_categorize(branch_name: str, commit_messages: list, pr_diff: str = None) -> dict:
     """
-    Categorize using AI (Claude/Anthropic API)
-    Cost: ~$0.01-0.02 per analysis
+    Categorize using AI (Moonshot API with Kimi K2.5)
+    Cost: ~$0.001-0.002 per analysis (much cheaper than Claude)
     """
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = os.environ.get("MOONSHOT_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
     
     if not api_key:
-        print(f"⚠️  No ANTHROPIC_API_KEY found, falling back to keywords for {branch_name}")
+        print(f"⚠️  No API key found, falling back to keywords for {branch_name}")
         return keyword_categorize(branch_name, commit_messages) or {
             "amendment": "Other",
             "type": "Unknown",
@@ -155,11 +155,11 @@ def ai_categorize(branch_name: str, commit_messages: list, pr_diff: str = None) 
             "source": "fallback"
         }
     
+    # Try Moonshot first, fallback to Anthropic
     try:
-        import anthropic
-        client = anthropic.Anthropic(api_key=api_key)
+        import urllib.request
+        import urllib.error
         
-        # Prepare context
         context = f"""
 Branch name: {branch_name}
 
@@ -187,30 +187,46 @@ Common XRPL amendments: AMM, NFTs, Batch Transactions, DID, Clawback, Escrow, Ch
 If you see "fix" in the name, it's likely a bug fix for an existing amendment.
 """
         
-        response = client.messages.create(
-            model="claude-3-haiku-20240307",  # Cheapest model
-            max_tokens=300,
-            messages=[{"role": "user", "content": prompt}]
+        # Moonshot API call
+        url = "https://api.moonshot.cn/v1/chat/completions"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}"
+        }
+        
+        data = {
+            "model": "kimi-k2-5",  # Kimi K2.5 model
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.3,
+            "max_tokens": 300
+        }
+        
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(data).encode('utf-8'),
+            headers=headers,
+            method='POST'
         )
         
-        # Parse response
-        content = response.content[0].text if response.content else "{}"
-        
-        # Extract JSON from response
-        json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
-        if json_match:
-            result = json.loads(json_match.group())
-            result["source"] = "ai_claude"
+        with urllib.request.urlopen(req, timeout=30) as response:
+            result = json.loads(response.read().decode('utf-8'))
+            content = result['choices'][0]['message']['content']
             
-            # Log cost (Haiku: ~$0.25/1M input tokens, ~$1.25/1M output tokens)
-            # Estimate: ~1000 input tokens, ~100 output tokens = ~$0.0004
-            estimated_cost = 0.0004
-            log_cost(branch_name, estimated_cost, "claude-3-haiku")
-            
-            return result
+            # Extract JSON from response
+            json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
+            if json_match:
+                result_data = json.loads(json_match.group())
+                result_data["source"] = "ai_kimi"
+                
+                # Log cost (Kimi K2.5: ~$0.50/1M tokens input, $1.50/1M output)
+                # Estimate: ~1000 input, ~150 output = ~$0.0007
+                estimated_cost = 0.0007
+                log_cost(branch_name, estimated_cost, "kimi-k2-5")
+                
+                return result_data
         
     except Exception as e:
-        print(f"⚠️  AI analysis failed for {branch_name}: {e}")
+        print(f"⚠️  Moonshot AI analysis failed for {branch_name}: {e}")
     
     # Fallback to keywords
     return keyword_categorize(branch_name, commit_messages) or {
@@ -309,7 +325,7 @@ if __name__ == "__main__":
     
     for branch in test_branches:
         result = categorize_branch(branch)
-        source_icon = "🤖" if result.get("source") == "ai_claude" else "🔑" if result.get("source") == "keyword_match" else "❓"
+        source_icon = "🤖" if result.get("source") == "ai_kimi" else "🔑" if result.get("source") == "keyword_match" else "❓"
         cached_icon = "💾" if result.get("cached") else "🆕"
         amendment_name = result.get('amendment') or 'Other'
         print(f"{source_icon} {cached_icon} {branch:40} → {amendment_name:25} ({result.get('type', 'Unknown')}, conf: {result.get('confidence', 0):.2f})")
