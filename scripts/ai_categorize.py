@@ -277,14 +277,14 @@ If you see "fix" in the name, it's likely a bug fix for an existing amendment.
 """
         
         # Moonshot API call (OpenAI-compatible)
-        url = "https://platform.moonshot.ai/v1/chat/completions"
+        url = "https://api.moonshot.ai/v1/chat/completions"
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}"
         }
         
         data = {
-            "model": "kimi-k2-5",  # Kimi K2.5 model
+            "model": "kimi-k2-0905-preview",  # Correct model name
             "messages": [{"role": "user", "content": prompt}],
             "temperature": 0.3,
             "max_tokens": 300
