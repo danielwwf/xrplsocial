@@ -225,46 +225,6 @@
     ]
   },
   {
-    "pr_number": 6440,
-    "branch_name": "tapanito/refactor-invariant-check",
-    "title": "breaks down InvariantCheck to multiple classes",
-    "body": "\r\n### Summary\r\n\r\n- Split `InvariantCheck.h` (733 lines) and `InvariantCheck.cpp` (3,483 lines) into 10 focused header/source pairs organized by domain under a new `invariants/` subdirectory\r\n- Extract the shared `Privilege` enum and `hasPrivilege()` function into a dedicated `InvariantCheckPrivilege.h` header so domain-specific files can reference them independently\r\n\r\n### Motivation\r\n\r\nThe invariant check system had grown into a single monolithic file pair containing 24 invariant checker classes. At 3,483 lines, `InvariantCheck.cpp` was a frequent source of merge conflicts and difficult to navigate. This refactoring improves maintainability and readability with zero behavioral changes.\r\n\r\n### File layout\r\n\r\n```\r\ninclude/xrpl/tx/invariants/\r\n  InvariantCheck.h              # Core invariants + InvariantChecks tuple + sub-header aggregation\r\n  InvariantCheckPrivilege.h     # Privilege enum, operator|, hasPrivilege() declaration\r\n  AMMInvariant.h                # ValidAMM\r\n  FreezeInvariant.h             # TransfersNotFrozen\r\n  LoanInvariant.h               # ValidLoanBroker, ValidLoan\r\n  MPTInvariant.h                # ValidMPTIssuance\r\n  NFTInvariant.h                # ValidNFTokenPage, NFTokenCountTracking\r\n  PermissionedDEXInvariant.h    # ValidPermissionedDEX\r\n  PermissionedDomainInvariant.h # ValidPermissionedDomain\r\n  VaultInvariant.h              # ValidVault\r\n\r\nsrc/libxrpl/tx/invariants/\r\n  InvariantCheck.cpp              # Core invariant impls + hasPrivilege() definition\r\n  AMMInvariant.cpp                # ValidAMM + validBalances()\r\n  FreezeInvariant.cpp             # TransfersNotFrozen (all methods)\r\n  LoanInvariant.cpp               # ValidLoanBroker, ValidLoan\r\n  MPTInvariant.cpp                # ValidMPTIssuance\r\n  NFTInvariant.cpp                # ValidNFTokenPage, NFTokenCountTracking\r\n  PermissionedDEXInvariant.cpp    # ValidPermissionedDEX\r\n  PermissionedDomainInvariant.cpp # ValidPermissionedDomain\r\n  VaultInvariant.cpp              # ValidVault\r\n`",
-    "user": "Tapanito",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-26T17:30:48Z",
-    "merged_at": "2026-02-27T21:02:40Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6440?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `93.07642%` with `106 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`404f35d`](https://app.codecov.io/gh/XRPLF/rippled/commit/404f35d5568f60d914b9f2749fff9518cd1324cb?dropdown=coverage&el=desc&utm_medium=r",
-        "created_at": "2026-02-26T17:59:35Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "> I like this new structure. We should consider adding a namespace like 'invariants' for all of this (could be done in a separate pr if there is interest).\r\n> \r\n> To fix pre-commit you may want to setup pre-commit hooks so that clang-format automatically fixes code when you commit/push.\r\n\r\nThanks @godexsoft ! I'm not sure why my local formatter keeps making these changes... I configured pre-commit ",
-        "created_at": "2026-02-27T17:11:49Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": "I like this new structure. We should consider adding a namespace like 'invariants' for all of this (could be done in a separate pr if there is interest).\n\nTo fix pre-commit you may want to setup pre-c"
-      },
-      {
-        "user": "kuznetsss",
-        "state": "APPROVED",
-        "body": "\ud83d\udc4d "
-      }
-    ]
-  },
-  {
     "pr_number": 6431,
     "branch_name": "Optional_nix_hook",
     "title": "chore: Make nix hook optional",
