@@ -1,5 +1,36 @@
 [
   {
+    "pr_number": 6466,
+    "branch_name": "chore/clang-tidy-checks-bugprone-sizeof-expression",
+    "title": "chore: Enable clang-tidy `bugprone-sizeof-expression` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables clang-tidy `bugprone-sizeof-expression` check.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-04T13:10:53Z",
+    "merged_at": "2026-03-04T19:15:22Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6466?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`3cd1e3d`](https://app.codecov.io/gh/XRPLF/rippled/commit/3cd1e3d94e3e2498f98352e720dbc9948c1213a4?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-04T13:50:28Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6451,
     "branch_name": "add_Replay_tests_confidential_mpt",
     "title": "tests: add replay tests to confidential MPT",
@@ -3796,44 +3827,6 @@
       {
         "user": "gregtatcam",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6277,
-    "branch_name": "float_canon",
-    "title": "Reject non-canonical binaries",
-    "body": "## High Level Overview of Change\r\n\r\nCheck and reject slices if they are non-canonical (which is possible if craft binary manually) but still represent valid number. \r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [X] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-23T21:08:39Z",
-    "merged_at": "2026-01-27T21:30:51Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6277?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `95.55556%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`977caea`](https://app.codecov.io/gh/XRPLF/rippled/commit/977caea0a5e40e2579fa3497371d7bb8705ddfb6?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-01-23T21:44:24Z"
-      }
-    ],
-    "reviews_count": 17,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
