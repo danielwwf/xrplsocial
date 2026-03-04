@@ -284,17 +284,24 @@ async function loadData() {
     const cacheBuster = '?t=' + Date.now();
     
     try {
-        const [branchesRes, completedRes, aiCatRes] = await Promise.all([
-            fetch('data/branches.json' + cacheBuster),
-            fetch('data/completed.json' + cacheBuster),
-            fetch('data/ai_categories.json' + cacheBuster).catch(() => null)
-        ]);
-        
+        const branchesRes = await fetch('data/branches.json' + cacheBuster);
         data = await branchesRes.json();
-        completedData = await completedRes.json();
         
-        if (aiCatRes) {
+        // Try to load completed data
+        try {
+            const completedRes = await fetch('data/completed.json' + cacheBuster);
+            completedData = await completedRes.json();
+        } catch (e) {
+            completedData = [];
+        }
+        
+        // Try to load AI categories (optional)
+        try {
+            const aiCatRes = await fetch('data/ai_categories.json' + cacheBuster);
             aiCategories = await aiCatRes.json();
+        } catch (e) {
+            console.log('AI categories not available yet, using fallback');
+            aiCategories = null;
         }
         
         updateHeroStats();
@@ -324,8 +331,23 @@ function updateHeroStats() {
 }
 
 function getAICategory(branchName) {
-    if (!aiCategories || !aiCategories[branchName]) return null;
+    // Fallback: try to infer from branch name if no AI data available
+    if (!aiCategories) {
+        return inferCategoryFromName(branchName);
+    }
+    if (!aiCategories[branchName]) {
+        return inferCategoryFromName(branchName);
+    }
     return aiCategories[branchName];
+}
+
+function inferCategoryFromName(name) {
+    const lower = name.toLowerCase();
+    if (lower.includes('fix')) return { amendment: 'Bug Fixes', source: 'keyword_match', confidence: 0.7 };
+    if (lower.includes('test') || lower.includes('ci')) return { amendment: 'Testing & CI', source: 'keyword_match', confidence: 0.7 };
+    if (lower.includes('modular') || lower.includes('refactor')) return { amendment: 'Code Modularization', source: 'keyword_match', confidence: 0.7 };
+    if (lower.includes('rust') || lower.includes('wasm')) return { amendment: 'Rust/WASM', source: 'keyword_match', confidence: 0.7 };
+    return { amendment: 'Other', source: 'fallback', confidence: 0 };
 }
 
 function getCategoryClass(category) {
