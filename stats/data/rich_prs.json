@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 6457,
+    "branch_name": "chore/clang-tidy-checks-move-forwarding-reference",
+    "title": "chore: Enable clang-tidy `bugprone-move-forwarding-reference` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nThis PR enables clang-tidy `bugprone-move-forwarding-reference` check.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-03T14:27:07Z",
+    "merged_at": "2026-03-04T17:03:28Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6457?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`e39954d`](https://app.codecov.io/gh/XRPLF/rippled/commit/e39954d12809042001e94ce212bd9533cce84fc3?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-03T15:14:25Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR enables the clang-tidy `bugprone-move-forwarding-reference` check and updates a unit test to avoid triggering the new diagnostic.\n\n**Changes:**\n- Enable `bugprone-mov"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6463,
     "branch_name": "fix_clang_tidy",
     "title": "Fix clang tidy",
@@ -3809,61 +3845,6 @@
       },
       {
         "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6248,
-    "branch_name": "a1q123456/fix-frozen-unittest-on-arm",
-    "title": "Stop the embedded tests hanging forever on ARM by fixing the memory ordering issue",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR replaces the mutex `stoppingMutex_`, the `atomic_bool` variable `isTimeToStop`, and the conditional variable `stoppingCondition_` with an `atomic_flag` variable.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\nWhen xrpld is running the embedded tests as a child process, it has a control thread (the app bundle thread) that starts the application, and an application thread (the thread that executes `app_->run()`). Due to the relaxed memory ordering on ARM, it's not guaranteed that the application thread can see the change of the value that `isTimeToStop.exchange(true)` does before it sees the conditional variable `stoppingCondition_` notifies at `Application.cpp:1544`, even though they do happen in the right order in the app bundle thread in `ApplicationImp::signalStop`, and therefore, we often get into the situation where `isTimeToStop` is `true` but the application thread is waiting for `stoppingCondition_` to notify (because at the time the app bundle thread has notified once before the application thread starts wai",
-    "user": "a1q123456",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-21T14:52:55Z",
-    "merged_at": "2026-01-26T21:39:29Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6248?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.4%. Comparing base ([`a2f1973`](https://app.codecov.io/gh/XRPLF/rippled/commit/a2f1973574d4a370ffbbcad8e8d6590425657924?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-21T15:10:08Z"
-      },
-      {
-        "user": "lmaisons",
-        "body": "Maybe it's just me, but this line:\r\n\r\n> Switching to a single atomic_flag variable makes sure that there's only one synchronisation object and then the memory order guarantee provided by c++ can make sure that notify_all gets synchronised after test_and_set does.\r\n\r\nmakes it sound like most of the value this change provides comes from reducing everything to an `std::atomic_flag`. I don't know how important such considerations usually are for PR summaries, but I don't think the one here is explic",
-        "created_at": "2026-01-21T21:06:52Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "> Maybe it's just me, but this line:\r\n> \r\n> > Switching to a single atomic_flag variable makes sure that there's only one synchronisation object and then the memory order guarantee provided by c++ can make sure that notify_all gets synchronised after test_and_set does.\r\n> \r\n> makes it sound like most of the value this change provides comes from reducing everything to an `std::atomic_flag`. I don't know how important such considerations usually are for PR summaries, but I don't think the one here",
-        "created_at": "2026-01-22T13:52:56Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "```\r\n114 failed: Subscribe_test.cpp(1121)\r\n```\r\n\r\nI'm seeing this in the build logs. This is a separate issue and I'll work on it now.",
-        "created_at": "2026-01-23T13:53:59Z"
-      }
-    ],
-    "reviews_count": 8,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
         "state": "COMMENTED",
         "body": ""
       }
