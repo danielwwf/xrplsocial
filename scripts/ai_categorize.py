@@ -245,12 +245,8 @@ def ai_categorize(branch_name: str, commit_messages: list, pr_diff: str = None) 
             "source": "fallback"
         }
     
-    # Try Moonshot first, fallback to Anthropic
-    try:
-        import urllib.request
-        import urllib.error
-        
-        context = f"""
+    # Prepare context and prompt
+    context = f"""
 Branch name: {branch_name}
 
 Recent commits:
@@ -259,8 +255,8 @@ Recent commits:
 PR diff excerpt (first 2000 chars):
 {pr_diff[:2000] if pr_diff else "No diff available"}
 """
-        
-        prompt = f"""Analyze this GitHub branch and categorize it for the XRP Ledger (XRPL) protocol.
+    
+    prompt = f"""Analyze this GitHub branch and categorize it for the XRP Ledger (XRPL) protocol.
 
 {context}
 
@@ -276,42 +272,42 @@ Respond ONLY with valid JSON in this exact format:
 Common XRPL amendments: AMM, NFTs, Batch Transactions, DID, Clawback, Escrow, Check, Payment Channel, Token Escrow, Multi-Purpose Tokens, Credentials.
 If you see "fix" in the name, it's likely a bug fix for an existing amendment.
 """
+    
+    # Try Moonshot API using OpenAI client
+    try:
+        from openai import OpenAI
         
-        # Moonshot API call using OpenAI client (more reliable)
-        try:
-            from openai import OpenAI
+        client = OpenAI(
+            api_key=api_key,
+            base_url="https://api.moonshot.ai/v1"
+        )
+        
+        response = client.chat.completions.create(
+            model="kimi-k2-thinking",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3,
+            max_tokens=300
+        )
+        
+        content = response.choices[0].message.content
+        
+        # Extract JSON from response
+        json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
+        if json_match:
+            result_data = json.loads(json_match.group())
+            result_data["source"] = "ai_kimi"
             
-            client = OpenAI(
-                api_key=api_key,
-                base_url="https://api.moonshot.ai/v1"
-            )
+            # Log cost
+            estimated_cost = 0.0007
+            log_cost(branch_name, estimated_cost, "kimi-k2-thinking")
             
-            response = client.chat.completions.create(
-                model="kimi-k2-thinking",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.3,
-                max_tokens=300
-            )
+            # Rate limiting - stay well under 500 RPM limit
+            time.sleep(1.0)  # 1s pause = max 60 RPM
             
-            content = response.choices[0].message.content
+            return result_data
             
-            # Extract JSON from response
-            json_match = re.search(r'\{[^}]*\}', content, re.DOTALL)
-            if json_match:
-                result_data = json.loads(json_match.group())
-                result_data["source"] = "ai_kimi"
-                
-                # Log cost
-                estimated_cost = 0.0007
-                log_cost(branch_name, estimated_cost, "kimi-k2-thinking")
-                
-                # Rate limiting - stay well under 500 RPM limit
-                time.sleep(1.0)  # 1s pause = max 60 RPM
-                
-                return result_data
-                
-        except Exception as e:
-            print(f"⚠️  OpenAI client error for {branch_name}: {e}")
+    except Exception as e:
+        print(f"⚠️  OpenAI client error for {branch_name}: {e}")
     
     # Fallback to keywords
     return keyword_categorize(branch_name, commit_messages) or {
