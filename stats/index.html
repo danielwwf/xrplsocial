@@ -3,1069 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XRPL Amendment Stats v3</title>
+    <title>XRPL Amendment Stats - Preview</title>
     <style>
-        :root { --bg: #0a0a0f; --card: rgba(255,255,255,0.05); --card-hover: rgba(255,255,255,0.08); --border: rgba(255,255,255,0.1); --text: #fff; --muted: rgba(255,255,255,0.6); --accent: #7c5cff; --accent-light: #9a7cff; --success: #4ade80; --warning: #fbbf24; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1 { font-size: 28px; margin-bottom: 4px; }
-        .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
-        .nav { display: flex; gap: 8px; margin-bottom: 20px; }
-        .nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
-        .nav a:hover, .nav a.active { color: var(--accent); }
-        .search-bar { margin-bottom: 20px; }
-        .search-input { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); font-size: 14px; }
-        .search-input:focus { outline: none; border-color: var(--accent); }
-        .info-box { background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(124,92,255,0.05)); border: 1px solid var(--accent); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; }
-        .info-box h3 { margin-bottom: 8px; color: var(--accent); font-size: 15px; }
-        .info-box p { color: var(--muted); font-size: 13px; }
-        .info-box a { color: var(--accent); }
-        .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-        .tab { padding: 12px 20px; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; transition: all 0.2s; }
-        .tab:hover { color: var(--text); }
-        .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-        .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-        .hero {
-            background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(124,92,255,0.05));
-            border: 1px solid var(--accent);
-            border-radius: 16px;
-            padding: 32px 24px;
-            margin-bottom: 24px;
-            text-align: center;
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-hover: #1a1a25;
+            --border: rgba(255,255,255,0.08);
+            --text: #e8e8ed;
+            --muted: #6b7280;
+            --accent: #7c5cff;
+            --accent-light: #a78bfa;
+            --success: #4ade80;
+            --warning: #fbbf24;
         }
-        .hero h2 {
-            font-size: 24px;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, #fff, var(--accent-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
-        .hero p {
-            color: var(--muted);
-            font-size: 14px;
-            margin-bottom: 20px;
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        h1 { font-size: 28px; margin-bottom: 8px; }
+        h1 span { color: var(--accent); font-size: 14px; }
+        .subtitle { color: var(--muted); margin-bottom: 24px; }
+        
+        /* Amendment Cards with Icons & Status */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
         }
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-        .hero-stat {
-            text-align: center;
-        }
-        .hero-stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            display: block;
-        }
-        .hero-stat-label {
-            font-size: 13px;
-            color: var(--muted);
-        }
-        .stat-active { color: var(--success); }
-        .stat-total { color: var(--accent-light); }
-        .stat-contrib { color: var(--warning); }
-        .card {
+        .amendment-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 20px;
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover {
+        .amendment-card:hover {
             transform: translateY(-3px);
             background: var(--card-hover);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px rgba(124,92,255,0.15);
         }
-        .card-status {
+        .amendment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .amendment-card:hover::before { opacity: 1; }
+        
+        /* Header with Icon & Title */
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .amendment-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .amendment-title {
+            flex: 1;
+        }
+        .amendment-title h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .amendment-xls {
+            font-size: 11px;
+            color: var(--accent-light);
+            font-family: monospace;
+        }
+        
+        /* Status Badge */
+        .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
+            gap: 4px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 500;
             margin-bottom: 12px;
-            width: fit-content;
         }
-        .card-status.active {
+        .status-enabled {
             background: rgba(74,222,128,0.15);
             color: var(--success);
         }
-        .card-status.recent {
+        .status-development {
+            background: rgba(124,92,255,0.15);
+            color: var(--accent-light);
+        }
+        .status-proposed {
             background: rgba(251,191,36,0.15);
             color: var(--warning);
         }
-        .card-status.dormant {
-            background: rgba(248,113,113,0.15);
-            color: #f87171;
-        }
-        .status-enabled {
-            background: rgba(74,222,128,0.15) !important;
-            color: var(--success) !important;
-        }
-        .status-development {
-            background: rgba(124,92,255,0.15) !important;
-            color: var(--accent-light) !important;
-        }
-        .status-proposed {
-            background: rgba(251,191,36,0.15) !important;
-            color: var(--warning) !important;
-        }
-        .card-title {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-        .card-description {
+        
+        /* Description */
+        .amendment-desc {
             font-size: 13px;
             color: var(--muted);
-            margin-bottom: 16px;
-            flex: 1;
+            margin-bottom: 12px;
+            line-height: 1.5;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            line-height: 1.5;
         }
-        .card-footer {
+        
+        /* Stats */
+        .amendment-stats {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 12px;
-            border-top: 1px solid var(--border);
-            margin-top: auto;
-        }
-        .card-meta {
+            gap: 16px;
+            margin-bottom: 12px;
             font-size: 12px;
             color: var(--muted);
         }
-        .contributors { display: flex; flex-wrap: wrap; gap: 6px; }
-        .contributor { padding: 4px 10px; background: rgba(255,255,255,0.08); border-radius: 16px; font-size: 12px; text-decoration: none; color: var(--text); }
-        .contributor:hover { background: rgba(124,92,255,0.3); }
-        .branches { margin-top: 12px; max-height: 150px; overflow-y: auto; }
-        .branch { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 12px; }
-        .branch:last-child { border-bottom: none; }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(10, 10, 15, 0.98); display: flex; align-items: center; justify-content: center; z-index: 10000; padding: 20px; }
-        .modal-content { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .modal-header h2 { margin: 0; }
-        .close-btn { background: var(--border); border: none; color: var(--text); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; }
-        .close-btn:hover { background: var(--accent); }
-        .section { margin-bottom: 24px; }
-        .section h3 { font-size: 14px; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; }
-        .contributor-detail { display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; }
-        .contributor-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
-        .contributor-info { flex: 1; }
-        .contributor-name { color: var(--accent); text-decoration: none; font-weight: 500; }
-        .contributor-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
-        .branch-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-        .branch-tag { font-size: 10px; padding: 2px 8px; background: rgba(255,255,255,0.08); border-radius: 4px; color: var(--muted); text-decoration: none; }
-        .loading { text-align: center; padding: 60px; color: var(--muted); }
-        .footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 12px; }
-        .footer a { color: var(--accent); }
-        .card.hidden { display: none !important; }
-        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); } ::-webkit-scrollbar-thumb { background: var(--accent); }
+        .amendment-stats span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        /* Contributors */
+        .contributors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .contributor {
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 16px;
+            font-size: 12px;
+        }
+        
+        /* Preview Banner */
+        .preview-banner {
+            background: linear-gradient(135deg, rgba(124,92,255,0.2), rgba(124,92,255,0.05));
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .preview-banner span { font-size: 24px; }
+        .preview-banner h2 { font-size: 16px; margin-bottom: 2px; }
+        .preview-banner p { font-size: 13px; color: var(--muted); }
+        
+        /* Icon Colors per Amendment Type */
+        .icon-amm { background: rgba(236,72,153,0.15); } /* Pink */
+        .icon-batch { background: rgba(59,130,246,0.15); } /* Blue */
+        .icon-did { background: rgba(16,185,129,0.15); } /* Green */
+        .icon-nft { background: rgba(139,92,246,0.15); } /* Purple */
+        .icon-clawback { background: rgba(245,158,11,0.15); } /* Orange */
+        .icon-lending { background: rgba(14,165,233,0.15); } /* Sky */
+        .icon-mpt { background: rgba(99,102,241,0.15); } /* Indigo */
+        .icon-oracle { background: rgba(20,184,166,0.15); } /* Teal */
+        .icon-escrow { background: rgba(168,85,247,0.15); } /* Violet */
+        .icon-credentials { background: rgba(225,29,72,0.15); } /* Rose */
+        .icon-fix { background: rgba(107,114,128,0.15); } /* Gray */
+        .icon-other { background: rgba(255,255,255,0.08); }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>XRPL Amendment Stats <span style="font-size: 14px; color: var(--accent);">v2.4</span></h1>
-        <p class="subtitle">Live contributor activity across all feature branches</p>
+        <h1>XRPL Amendment Stats <span>v3.0 PREVIEW</span></h1>
+        <p class="subtitle">Enhanced amendment visualization with icons, descriptions & status</p>
         
-        <div class="hero">
-            <h2>🔧 XRPL Feature Development</h2>
-            <p>See what developers are working on to improve the XRP Ledger</p>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="hero-stat-number stat-active" id="statActive">—</span>
-                    <span class="hero-stat-label">Active (7d)</span>
+        <div class="preview-banner">
+            <span>👁️</span>
+            <div>
+                <h2>Preview Mode</h2>
+                <p>This is a demo of the enhanced UI. Reload the main page to see live data.</p>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <!-- AMM -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-amm">💰</div>
+                    <div class="amendment-title">
+                        <h3>Automated Market Maker</h3>
+                        <span class="amendment-xls">XLS-30</span>
+                    </div>
                 </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number stat-total" id="statTotal">—</span>
-                    <span class="hero-stat-label">Total Branches</span>
+                <span class="status-badge status-enabled">● Enabled</span>
+                <p class="amendment-desc">Native automated market maker functionality for XRPL. Enables liquidity pools and continuous trading without order books.</p>
+                <div class="amendment-stats">
+                    <span>🔀 12 branches</span>
+                    <span>👥 8 contributors</span>
                 </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number stat-contrib" id="statContrib">—</span>
-                    <span class="hero-stat-label">Contributors</span>
+                <div class="contributors">
+                    <span class="contributor">@mvadari</span>
+                    <span class="contributor">@bthomee</span>
+                    <span class="contributor">+6</span>
+                </div>
+            </div>
+            
+            <!-- Batch -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-batch">📦</div>
+                    <div class="amendment-title">
+                        <h3>Batch Transactions</h3>
+                        <span class="amendment-xls">XLS-56</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">● Enabled</span>
+                <p class="amendment-desc">Submit multiple transactions atomically in a single batch. Reduces fees and improves throughput.</p>
+                <div class="amendment-stats">
+                    <span>🔀 15 branches</span>
+                    <span>👥 12 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@dangell</span>
+                    <span class="contributor">@ed</span>
+                    <span class="contributor">+10</span>
+                </div>
+            </div>
+            
+            <!-- DID -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-did">🆔</div>
+                    <div class="amendment-title">
+                        <h3>Decentralized Identity</h3>
+                        <span class="amendment-xls">XLS-40</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">● Enabled</span>
+                <p class="amendment-desc">W3C-compliant Decentralized Identifiers (DIDs) on XRPL. Self-sovereign identity management.</p>
+                <div class="amendment-stats">
+                    <span>🔀 8 branches</span>
+                    <span>👥 6 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@ximinez</span>
+                    <span class="contributor">@a1q123456</span>
+                    <span class="contributor">+4</span>
+                </div>
+            </div>
+            
+            <!-- NFTs -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-nft">🎨</div>
+                    <div class="amendment-title">
+                        <h3>Non-Fungible Tokens</h3>
+                        <span class="amendment-xls">XLS-20</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">● Enabled</span>
+                <p class="amendment-desc">Native NFT support on XRPL with minting, burning, and trading capabilities. No smart contracts needed.</p>
+                <div class="amendment-stats">
+                    <span>🔀 18 branches</span>
+                    <span>👥 15 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@pmankawde</span>
+                    <span class="contributor">@pratikmankawde</span>
+                    <span class="contributor">+13</span>
+                </div>
+            </div>
+            
+            <!-- Clawback -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-clawback">👋</div>
+                    <div class="amendment-title">
+                        <h3>Clawback</h3>
+                        <span class="amendment-xls">XLS-37</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">● Enabled</span>
+                <p class="amendment-desc">Allow issuers to clawback tokens from user accounts. Required for regulatory compliance and asset recovery.</p>
+                <div class="amendment-stats">
+                    <span>🔀 6 branches</span>
+                    <span>👥 5 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@shawnxie999</span>
+                    <span class="contributor">@brok</span>
+                    <span class="contributor">+3</span>
+                </div>
+            </div>
+            
+            <!-- Lending -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-lending">🏦</div>
+                    <div class="amendment-title">
+                        <h3>Lending Protocol</h3>
+                        <span class="amendment-xls">XLS-66</span>
+                    </div>
+                </div>
+                <span class="status-badge status-development">● In Development</span>
+                <p class="amendment-desc">Native lending and borrowing on XRPL. Collateralized loans with automatic liquidations.</p>
+                <div class="amendment-stats">
+                    <span>🔀 18 branches</span>
+                    <span>👥 35 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@mvadari</span>
+                    <span class="contributor">@bthomee</span>
+                    <span class="contributor">+33</span>
+                </div>
+            </div>
+            
+            <!-- MPT -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-mpt">🎭</div>
+                    <div class="amendment-title">
+                        <h3>Multi-Purpose Tokens</h3>
+                        <span class="amendment-xls">XLS-69</span>
+                    </div>
+                </div>
+                <span class="status-badge status-development">● In Development</span>
+                <p class="amendment-desc">Hybrid tokens with both fungible and non-fungible characteristics. Advanced tokenization use cases.</p>
+                <div class="amendment-stats">
+                    <span>🔀 2 branches</span>
+                    <span>👥 24 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@13349202+vltnb</span>
+                    <span class="contributor">@mathbunnyru</span>
+                    <span class="contributor">+22</span>
+                </div>
+            </div>
+            
+            <!-- Price Oracle -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-oracle">💹</div>
+                    <div class="amendment-title">
+                        <h3>Price Oracle</h3>
+                        <span class="amendment-xls">XLS-49</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">● Enabled</span>
+                <p class="amendment-desc">On-chain price feeds for assets. Multi-sig validator price aggregation for DeFi applications.</p>
+                <div class="amendment-stats">
+                    <span>🔀 4 branches</span>
+                    <span>👥 8 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@gregtatcam</span>
+                    <span class="contributor">@mvadari</span>
+                    <span class="contributor">+6</span>
+                </div>
+            </div>
+            
+            <!-- Smart Escrow -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-escrow">🔐</div>
+                    <div class="amendment-title">
+                        <h3>Smart Escrow</h3>
+                        <span class="amendment-xls">XLS-46</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">● Enabled</span>
+                <p class="amendment-desc">Conditional escrows with time-based and oracle-based release triggers. Programmable escrow logic.</p>
+                <div class="amendment-stats">
+                    <span>🔀 4 branches</span>
+                    <span>👥 25 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@mvadari</span>
+                    <span class="contributor">@bthomee</span>
+                    <span class="contributor">+23</span>
+                </div>
+            </div>
+            
+            <!-- Credentials -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-credentials">🛡️</div>
+                    <div class="amendment-title">
+                        <h3>Credentials</h3>
+                        <span class="amendment-xls">XLS-70</span>
+                    </div>
+                </div>
+                <span class="status-badge status-proposed">● Proposed</span>
+                <p class="amendment-desc">Verifiable credentials on XRPL. Standardized attestation framework for identity and compliance.</p>
+                <div class="amendment-stats">
+                    <span>🔀 3 branches</span>
+                    <span>👥 7 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@mvadari</span>
+                    <span class="contributor">@bthomee</span>
+                    <span class="contributor">+5</span>
+                </div>
+            </div>
+            
+            <!-- Bug Fixes -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-fix">🔧</div>
+                    <div class="amendment-title">
+                        <h3>Bug Fixes & Improvements</h3>
+                        <span class="amendment-xls">Multiple</span>
+                    </div>
+                </div>
+                <span class="status-badge status-enabled">● Various</span>
+                <p class="amendment-desc">Critical bug fixes, performance improvements, and protocol hardening amendments.</p>
+                <div class="amendment-stats">
+                    <span>🔀 23 branches</span>
+                    <span>👥 43 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@mvadari</span>
+                    <span class="contributor">@ed</span>
+                    <span class="contributor">+41</span>
+                </div>
+            </div>
+            
+            <!-- Other -->
+            <div class="amendment-card">
+                <div class="card-header">
+                    <div class="amendment-icon icon-other">📁</div>
+                    <div class="amendment-title">
+                        <h3>Other & Tooling</h3>
+                        <span class="amendment-xls">Various</span>
+                    </div>
+                </div>
+                <span class="status-badge status-development">● Active</span>
+                <p class="amendment-desc">Infrastructure improvements, CI/CD, testing, refactoring, and miscellaneous development work.</p>
+                <div class="amendment-stats">
+                    <span>🔀 106 branches</span>
+                    <span>👥 70 contributors</span>
+                </div>
+                <div class="contributors">
+                    <span class="contributor">@mvadari</span>
+                    <span class="contributor">@bthomee</span>
+                    <span class="contributor">+68</span>
                 </div>
             </div>
         </div>
         
-        <div class="nav"><a href="/">← Spaces</a> <a href="/stats/" class="active">Amendment Stats</a></div>
-        <div class="tabs" id="tabs">
-            <div class="tab active" data-tab="amendments">📦 By Amendment</div>
-            <div class="tab" data-tab="people">👥 By Person</div>
-            <div class="tab" data-tab="branches">🌿 All Branches</div>
-            <div class="tab" data-tab="insights">💡 Insights</div>
-            <div class="tab" data-tab="completed">✅ Completed</div>
-            <div class="tab" data-tab="timeline">📅 Timeline</div>
+        <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+            <h3 style="margin-bottom: 12px;">📝 Demo Notes</h3>
+            <ul style="color: var(--muted); font-size: 14px; padding-left: 20px;">
+                <li>Each card shows: Icon, Title, XLS number, Status, Description, Stats</li>
+                <li>Status: Enabled (green), In Development (purple), Proposed (yellow)</li>
+                <li>Hover effects: Card lifts up, gradient line appears</li>
+                <li>Icon backgrounds are color-coded per amendment type</li>
+                <li>Descriptions explain what each amendment does</li>
+            </ul>
         </div>
-        <div class="search-bar"><input type="text" class="search-input" id="search" placeholder="🔍 Search amendments, contributors, or branches..."></div>
-        <div class="info-box"><h3>❓ What are XRPL Amendments?</h3><p>Amendments are <strong>proposed changes</strong> to the XRP Ledger protocol. Each card shows who's working on what. <strong>Click any card</strong> for detailed view. <a href="https://xrpl.org/amendments.html" target="_blank">Learn more →</a></p></div>
-        <div id="content"><div class="loading">Loading stats...</div></div>
-        <div class="footer">Data from <a href="https://github.com/XRPLF/rippled" target="_blank">XRPLF/rippled</a> • <span id="updated">Loading...</span></div>
     </div>
-
-    <script>
-        // Data and state
-        let data = null;
-        let completedData = null;
-        let activityData = null;
-        let richPrsData = null;
-        let xlsStandardsData = null;
-        let amendmentsMappingData = null;  // Official amendments mapping
-        let currentTab = 'amendments';
-        
-        // Amendment definitions
-        const AMENDMENTS = [
-            { pattern: /batch|lending/i, name: '📦 Batch Transactions', docs: 'https://xrpl.org/batch-transactions.html' },
-            { pattern: /amm|xls-?30/i, name: '💰 AMM (Automated Market Maker)', docs: 'https://xrpl.org/amm.html' },
-            { pattern: /did|decentralized.id/i, name: '🆔 DID (Decentralized Identity)', docs: 'https://xrpl.org/did.html' },
-            { pattern: /nft/i, name: '🎨 NFTs', docs: 'https://xrpl.org/nftokens.html' },
-            { pattern: /clawback/i, name: '👋 Clawback', docs: 'https://xrpl.org/clawback.html' },
-            { pattern: /bridge/i, name: '🔗 Cross-chain Bridges' },
-            { pattern: /fix/i, name: '🔧 Bug Fixes' },
-            { pattern: /modular|refactor/i, name: '🏗️ Code Modularization' },
-            { pattern: /test|ci/i, name: '🧪 Testing & CI' },
-            { pattern: /rust|wasm/i, name: '⚡ Rust/WASM' },
-            { pattern: /.*/, name: '📁 Other' }
-        ];
-        
-        // Utility functions
-        function classify(name) {
-            for (const a of AMENDMENTS) {
-                if (a.pattern.test(name)) return a;
-            }
-            return AMENDMENTS[AMENDMENTS.length - 1];
-        }
-        
-        function daysAgo(date) {
-            if (!date) return null;
-            const d = new Date(date);
-            if (isNaN(d)) return null;
-            return Math.floor((Date.now() - d) / (86400000));
-        }
-        
-        function getStatus(days) {
-            if (days === null) return { label: 'Unknown', class: 'badge-dormant' };
-            if (days <= 7) return { label: 'Active', class: 'badge-active' };
-            if (days <= 30) return { label: 'Recent', class: 'badge-recent' };
-            return { label: 'Dormant', class: 'badge-dormant' };
-        }
-        
-        function githubUrl(type, value) {
-            if (!value) return '#';
-            if (type === 'branch') return `https://github.com/XRPLF/rippled/tree/${value}`;
-            if (type === 'user') return `https://github.com/${value}`;
-            return '#';
-        }
-        
-        function extractUser(email) {
-            if (!email) return 'unknown';
-            return email.split('@')[0];
-        }
-        
-        // MODAL FUNCTIONS - defined early to ensure availability
-        window.showModal = function(amendmentName) {
-            const groups = {};
-            data.branches.forEach(b => {
-                const a = classify(b.name);
-                if (!groups[a.name]) groups[a.name] = { amendment: a, branches: [], contributors: {} };
-                groups[a.name].branches.push(b);
-                (b.contributors || []).forEach(c => {
-                    const u = extractUser(c.email);
-                    if (!groups[a.name].contributors[u]) groups[a.name].contributors[u] = { name: c.name, commits: 0, branches: [] };
-                    groups[a.name].contributors[u].commits++;
-                    groups[a.name].contributors[u].branches.push(b.name);
-                });
-            });
-            
-            const info = groups[amendmentName];
-            if (!info) return;
-            
-            const sortedContributors = Object.entries(info.contributors).sort((a, b) => b[1].commits - a[1].commits);
-            const allCommits = info.branches.filter(b => b.last_commit).map(b => ({ ...b.last_commit, branch: b.name })).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
-            
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div><h2>${amendmentName}</h2><div style="color: var(--muted); margin-top: 4px;">${info.branches.length} branches • ${Object.keys(info.contributors).length} contributors</div></div>
-                        <button class="close-btn">✕ Close</button>
-                    </div>
-                    <div class="section"><h3>🏆 Top Contributors</h3>
-                        ${sortedContributors.slice(0, 8).map(([username, data]) => `
-                            <div class="contributor-detail">
-                                <div class="contributor-avatar">${username.slice(0, 2).toUpperCase()}</div>
-                                <div class="contributor-info">
-                                    <a href="${githubUrl('user', username)}" target="_blank" class="contributor-name">@${username}</a>
-                                    <div class="contributor-meta">${data.commits} commits on ${data.branches.length} branches</div>
-                                </div>
-                                <div class="branch-tags">${data.branches.slice(0, 3).map(b => `<a href="${githubUrl('branch', b)}" target="_blank" class="branch-tag">${b.split('/').pop()}</a>`).join('')}${data.branches.length > 3 ? `<span class="branch-tag">+${data.branches.length - 3}</span>` : ''}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                    ${allCommits.length > 0 ? `
-                    <div class="section"><h3>📅 Recent Activity</h3>
-                        ${allCommits.map(c => `
-                            <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; font-size: 13px;">
-                                <span style="color: var(--muted); min-width: 50px;">${daysAgo(c.date) === 0 ? 'today' : daysAgo(c.date) + 'd'}</span>
-                                <span style="color: var(--accent);">${c.author}</span>
-                                <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${c.message}</span>
-                                <a href="${githubUrl('branch', c.branch)}" target="_blank" style="font-size: 11px; color: var(--muted);">${c.branch.split('/').pop()}</a>
-                            </div>
-                        `).join('')}
-                    </div>` : ''}
-                    <div class="section"><h3>🌿 All Branches (${info.branches.length})</h3>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">${info.branches.map(b => `
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                                <a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; font-size: 13px; text-decoration: none;">${b.name}</a>
-                                <span style="color: var(--muted); font-size: 12px;">${daysAgo(b.last_commit?.date) === 0 ? 'today' : daysAgo(b.last_commit?.date) + 'd ago'}</span>
-                            </div>
-                        `).join('')}</div></div>
-                </div>`;
-            
-            document.body.appendChild(modal);
-            modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-            document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
-        };
-        
-        window.showPersonModal = function(username) {
-            const personData = { branches: [], amendments: new Set(), commitCount: 0 };
-            
-            data.branches.forEach(b => {
-                const userCommits = (b.contributors || []).filter(c => extractUser(c.email) === username);
-                if (userCommits.length > 0) {
-                    personData.branches.push(b);
-                    personData.amendments.add(classify(b.name).name);
-                    personData.commitCount += userCommits.length;
-                }
-            });
-            
-            personData.branches.sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
-            
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div style="display: flex; align-items: center; gap: 16px;">
-                            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700;">${username.slice(0, 2).toUpperCase()}</div>
-                            <div><h2>@${username}</h2><div style="color: var(--muted);">${personData.commitCount} commits • ${personData.branches.length} branches • ${personData.amendments.size} amendments</div></div>
-                        </div>
-                        <button class="close-btn">✕ Close</button>
-                    </div>
-                    <div class="section"><h3>🔗 GitHub Profile</h3><a href="${githubUrl('user', username)}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View @${username} on GitHub →</a></div>
-                    <div class="section"><h3>📦 Amendments (${personData.amendments.size})</h3><div class="contributors">${Array.from(personData.amendments).map(a => `<span class="contributor" style="font-size: 14px; padding: 8px 16px;">${a}</span>`).join('')}</div></div>
-                    <div class="section"><h3>🌿 Branches (${personData.branches.length})</h3>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">${personData.branches.slice(0, 15).map(b => `
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                                <div><a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; text-decoration: none;">${b.name}</a>
-                                    <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">Last commit: ${daysAgo(b.last_commit?.date) === 0 ? 'today' : daysAgo(b.last_commit?.date) + ' days ago'}</div>
-                                </div>
-                                <span class="badge ${getStatus(daysAgo(b.last_commit?.date)).class}" style="font-size: 10px;">${getStatus(daysAgo(b.last_commit?.date)).label}</span>
-                            </div>
-                        `).join('')}
-                        ${personData.branches.length > 15 ? `<div style="text-align: center; color: var(--muted); padding: 10px;">+${personData.branches.length - 15} more branches</div>` : ''}
-                        </div></div>
-                </div>`;
-            
-            document.body.appendChild(modal);
-            modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-            document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
-        };
-        
-        window.showBranchModal = function(branchName) {
-            const branch = data.branches.find(b => b.name === branchName);
-            if (!branch) return;
-            
-            const d = daysAgo(branch.last_commit?.date);
-            const amendment = classify(branch.name);
-            
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div><h2>${branch.name}</h2><div style="color: var(--muted);"><a href="${amendment.docs || '#'}" target="_blank" style="color: var(--accent);">${amendment.name}</a> • ${(branch.contributors || []).length} contributors</div></div>
-                        <button class="close-btn">✕ Close</button>
-                    </div>
-                    ${branch.last_commit ? `
-                    <div class="section"><h3>📅 Latest Commit</h3>
-                        <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                            <div style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">${d === 0 ? 'today' : d + ' days ago'} by <span style="color: var(--accent);">${branch.last_commit.author}</span></div>
-                            <div style="margin-bottom: 8px;">${branch.last_commit.message}</div>
-                            <a href="${githubUrl('branch', branch.name)}" target="_blank" style="font-size: 12px; color: var(--accent);">View on GitHub →</a>
-                        </div>
-                    </div>` : ''}
-                    <div class="section"><h3>👥 Contributors (${(branch.contributors || []).length})</h3>
-                        ${(branch.contributors || []).map(c => {
-                            const u = extractUser(c.email);
-                            return `<div class="contributor-detail"><div class="contributor-avatar">${u.slice(0, 2).toUpperCase()}</div><div class="contributor-info"><a href="${githubUrl('user', u)}" target="_blank" class="contributor-name">@${u}</a><div class="contributor-meta">${c.commits || 1} commits</div></div></div>`;
-                        }).join('')}
-                    </div>
-                    <div class="section"><h3>🔗 Quick Links</h3><div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <a href="${githubUrl('branch', branch.name)}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View Branch on GitHub →</a>
-                        <a href="${amendment.docs || '#'}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">Learn about ${amendment.name.split(' ')[0]} →</a>
-                    </div></div>
-                </div>`;
-            
-            document.body.appendChild(modal);
-            modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-            document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
-        };
-        
-        // Simple Markdown to HTML converter
-        function markdownToHtml(md) {
-            if (!md) return '';
-            return md
-                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                .replace(/^\- \[x\] (.*$)/gim, '<div><span style="color: #3fb950;">✓</span> $1</div>')
-                .replace(/^\- \[ \] (.*$)/gim, '<div><span style="color: var(--muted);">○</span> $1</div>')
-                .replace(/^\- (.*$)/gim, '<div>• $1</div>')
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                .replace(/\n/g, '<br>');
-        }
-        
-        // Completed branch modal with rich PR details
-        window.showCompletedModal = function(branchName) {
-            const branch = completedData.find(b => b.name === branchName);
-            if (!branch) return;
-            
-            // Find rich PR data if available (top 100)
-            const richPr = richPrsData ? richPrsData.find(p => p.branch_name === branchName) : null;
-            
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            
-            let content = '';
-            
-            if (richPr) {
-                // Rich PR data available
-                const amendment = classify(branchName);
-                const createdDate = new Date(richPr.created_at);
-                const mergedDate = new Date(richPr.merged_at);
-                
-                content = `
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div>
-                                <h2>${richPr.title}</h2>
-                                <div style="color: var(--muted);">
-                                    <a href="https://github.com/${richPr.user}" target="_blank" style="color: var(--accent);">@${richPr.user}</a> • 
-                                    PR #${richPr.pr_number} • 
-                                    <span style="color: #a371f7;">✅ Merged</span>
-                                </div>
-                            </div>
-                            <button class="close-btn">✕ Close</button>
-                        </div>
-                        
-                        <div class="section">
-                            <h3>📅 Timeline</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                                <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                                    <div style="color: var(--muted); font-size: 12px;">Proposed</div>
-                                    <div>${createdDate.toLocaleDateString()}</div>
-                                </div>
-                                <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                                    <div style="color: var(--muted); font-size: 12px;">Merged</div>
-                                    <div>${mergedDate.toLocaleDateString()}</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        ${richPr.labels.length > 0 ? `
-                        <div class="section">
-                            <h3>🏷️ Labels</h3>
-                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                ${richPr.labels.map(l => `<span style="padding: 4px 12px; background: rgba(124,92,255,0.2); border-radius: 16px; font-size: 12px;">${l}</span>`).join('')}
-                            </div>
-                        </div>` : ''}
-                        
-                        ${richPr.body ? `
-                        <div class="section">
-                            <h3>📝 Description</h3>
-                            <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 14px; line-height: 1.6;">
-                                ${markdownToHtml(richPr.body)}
-                            </div>
-                        </div>` : ''}
-                        
-                        ${richPr.comments.length > 0 ? `
-                        <div class="section">
-                            <h3>💬 Recent Comments (${richPr.comments_count} total)</h3>
-                            ${richPr.comments.map(c => `
-                                <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px;">
-                                    <div style="color: var(--accent); font-size: 13px; margin-bottom: 4px;">@${c.user}</div>
-                                    <div style="font-size: 13px; color: var(--muted);">${c.body.substring(0, 200)}${c.body.length > 200 ? '...' : ''}</div>
-                                </div>
-                            `).join('')}
-                        </div>` : ''}
-                        
-                        <div class="section">
-                            <h3>🔗 Links</h3>
-                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                                <a href="https://github.com/XRPLF/rippled/pull/${richPr.pr_number}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View PR on GitHub →</a>
-                                ${amendment.docs ? `<a href="${amendment.docs}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">Learn about ${amendment.name.split(' ')[0]} →</a>` : ''}
-                            </div>
-                        </div>
-                    </div>`;
-            } else {
-                // Basic data only - fetch on demand or show basic info
-                const amendment = classify(branchName);
-                const d = daysAgo(branch.last_commit?.date);
-                
-                content = `
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div>
-                                <h2>${branchName}</h2>
-                                <div style="color: var(--muted);">
-                                    ${amendment.name} • 
-                                    <span style="color: #a371f7;">✅ Completed</span>
-                                </div>
-                            </div>
-                            <button class="close-btn">✕ Close</button>
-                        </div>
-                        
-                        ${branch.last_commit ? `
-                        <div class="section">
-                            <h3>📅 Last Activity</h3>
-                            <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                                <div style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">${d === 0 ? 'today' : d + ' days ago'}</div>
-                                <div>${branch.last_commit.message}</div>
-                            </div>
-                        </div>` : ''}
-                        
-                        <div class="section">
-                            <h3>🔗 Links</h3>
-                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                                <a href="https://github.com/XRPLF/rippled/tree/${branchName}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View Branch on GitHub →</a>
-                                ${amendment.docs ? `<a href="${amendment.docs}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">Learn about ${amendment.name.split(' ')[0]} →</a>` : ''}
-                            </div>
-                        </div>
-                        
-                        <div class="section" style="background: rgba(124,92,255,0.1); padding: 16px; border-radius: 8px;">
-                            <div style="color: var(--muted); font-size: 13px;">
-                                💡 Rich PR details are available for the top 100 most recent completed branches. 
-                                This branch is older and shows basic information only.
-                            </div>
-                        </div>
-                    </div>`;
-            }
-            
-            modal.innerHTML = content;
-            
-            document.body.appendChild(modal);
-            modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-            document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
-        };
-        
-        // Render functions
-        function renderAmendments() {
-            const groups = {};
-            
-            data.branches.forEach(b => {
-                const a = classify(b.name);
-                if (!groups[a.name]) groups[a.name] = { amendment: a, branches: [], contributors: new Map() };
-                groups[a.name].branches.push(b);
-                (b.contributors || []).forEach(c => {
-                    const u = extractUser(c.email);
-                    groups[a.name].contributors.set(u, (groups[a.name].contributors.get(u) || 0) + 1);
-                });
-            });
-            
-            const sorted = Object.entries(groups).sort((a, b) => {
-                const aLatest = Math.max(...a[1].branches.map(b => new Date(b.last_commit?.date || 0)));
-                const bLatest = Math.max(...b[1].branches.map(b => new Date(b.last_commit?.date || 0)));
-                return bLatest - aLatest;
-            });
-            
-            let html = '<div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">';
-            sorted.forEach(([name, info]) => {
-                const latest = Math.max(...info.branches.map(b => new Date(b.last_commit?.date || 0)));
-                const days = daysAgo(latest);
-                const status = getStatus(days);
-                const sortedContributors = Array.from(info.contributors.entries()).sort((a, b) => b[1] - a[1]);
-                
-                // Get latest commit message as description
-                const latestBranch = info.branches.sort((a, b) => 
-                    new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0)
-                )[0];
-                const description = latestBranch?.last_commit?.message?.split('\n')[0]?.substring(0, 100) || 
-                    `${info.branches.length} branches with ${info.contributors.size} contributors`;
-                
-                html += `
-                    <div class="card amendment-card" data-searchable data-amendment="${name.replace(/"/g, '&quot;')}">
-                        <div class="card-header">
-                            <div>
-                                <div class="card-title">${name}</div>
-                                <div class="card-meta">${info.branches.length} branches • ${info.contributors.size} contributors</div>
-                            </div>
-                            <span class="badge ${status.class}">${status.label}</span>
-                        </div>
-                        <div style="font-size: 13px; color: var(--muted); margin: 12px 0; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${description}</div>
-                        <div class="contributors">${sortedContributors.slice(0, 8).map(([u, count]) => `<span class="contributor">@${u}</span>`).join('')}${info.contributors.size > 8 ? `<span class="contributor">+${info.contributors.size - 8}</span>` : ''}</div>
-                    </div>`;
-            });
-            html += '</div>';
-            document.getElementById('content').innerHTML = html;
-        }
-        
-        function renderPeople() {
-            const people = {};
-            data.branches.forEach(b => {
-                (b.contributors || []).forEach(c => {
-                    const u = extractUser(c.email);
-                    if (!people[u]) people[u] = { name: c.name, branches: new Set(), amendments: new Set(), commitCount: 0 };
-                    people[u].branches.add(b.name);
-                    people[u].amendments.add(classify(b.name).name);
-                    people[u].commitCount++;
-                });
-            });
-            
-            const sorted = Object.entries(people).sort((a, b) => b[1].commitCount - a[1].commitCount);
-            
-            let html = '<div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">';
-            sorted.forEach(([username, info]) => {
-                const topAmendment = Array.from(info.amendments)[0] || 'Various';
-                
-                html += `
-                    <div class="card person-card" data-searchable data-person="${username.replace(/"/g, '&quot;')}">
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px;">${username.slice(0, 2).toUpperCase()}</div>
-                            <div>
-                                <div class="card-title" style="margin: 0;">@${username}</div>
-                                <div class="card-meta">${info.commitCount} commits</div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            Working on ${info.amendments.size} amendments across ${info.branches.size} branches
-                        </div>
-                        <div class="contributors" style="margin-bottom: 12px;">
-                            ${Array.from(info.amendments).slice(0, 4).map(a => `<span class="contributor">${a}</span>`).join('')}
-                            ${info.amendments.size > 4 ? `<span class="contributor">+${info.amendments.size - 4}</span>` : ''}
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-meta">${info.branches.size} branches</span>
-                            <span class="card-meta">Top: ${topAmendment.split(' ')[0]}</span>
-                        </div>
-                    </div>`;
-            });
-            html += '</div>';
-            document.getElementById('content').innerHTML = html;
-        }
-        
-        function renderAllBranches() {
-            const sorted = [...data.branches].sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
-            
-            let html = `<div style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">Showing ${sorted.length} branches (newest first)</div>
-            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">`;
-            
-            sorted.forEach((b, idx) => {
-                const d = daysAgo(b.last_commit?.date);
-                const statusClass = d <= 1 ? 'active' : d <= 7 ? 'recent' : 'dormant';
-                const statusLabel = d <= 1 ? '🔥 Hot' : d <= 7 ? 'Active' : d <= 30 ? 'Recent' : 'Dormant';
-                const amendment = classify(b.name);
-                const contribList = (b.contributors || []).slice(0, 4);
-                
-                html += `
-                    <div class="card branch-card" data-searchable data-branch="${b.name.replace(/"/g, '&quot;')}">
-                        <div class="card-status ${statusClass}"><span>${statusLabel}</span></div>
-                        <div class="card-title" style="font-family: monospace; font-size: 15px;">${b.name}</div>
-                        <div class="card-description">
-                            ${b.last_commit ? b.last_commit.message.split('\n')[0].substring(0, 120) : 'No recent commits'}
-                        </div>
-                        <div class="contributors" style="margin-bottom: 12px;">
-                            ${contribList.map(c => `<span class="contributor">@${extractUser(c.email)}</span>`).join('')}
-                            ${(b.contributors || []).length > 4 ? `<span class="contributor">+${(b.contributors || []).length - 4}</span>` : ''}
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-meta">${amendment.name}</span>
-                            <span class="card-meta">${d === 0 ? 'today' : d + 'd ago'}</span>
-                        </div>
-                    </div>`;
-            });
-            html += '</div>';
-            document.getElementById('content').innerHTML = html;
-        }
-        
-        function renderInsights() {
-            const active = data.branches.filter(b => daysAgo(b.last_commit?.date) <= 7).length;
-            const recent = data.branches.filter(b => daysAgo(b.last_commit?.date) <= 30).length;
-            
-            const contribStats = {};
-            data.branches.forEach(b => {
-                (b.contributors || []).forEach(c => {
-                    const u = extractUser(c.email);
-                    contribStats[u] = (contribStats[u] || 0) + 1;
-                });
-            });
-            
-            const sortedContrib = Object.entries(contribStats).sort((a, b) => b[1] - a[1]);
-            const topContrib = sortedContrib[0];
-            
-            const amendActivity = {};
-            data.branches.forEach(b => {
-                const a = classify(b.name).name;
-                if (!amendActivity[a]) amendActivity[a] = { count: 0, last: 999 };
-                amendActivity[a].count++;
-                const days = daysAgo(b.last_commit?.date) || 999;
-                if (days < amendActivity[a].last) amendActivity[a].last = days;
-            });
-            
-            const hotAmendments = Object.entries(amendActivity).sort((a, b) => a[1].last - b[1].last).slice(0, 5);
-            
-            let html = `
-                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); margin-bottom: 24px;">
-                    <div class="card" data-searchable style="text-align: center; padding: 24px;"><div style="font-size: 36px; font-weight: 700; color: var(--success);">${active}</div><div style="color: var(--muted); font-size: 13px;">Active (7d)</div></div>
-                    <div class="card" data-searchable style="text-align: center; padding: 24px;"><div style="font-size: 36px; font-weight: 700; color: var(--warning);">${recent}</div><div style="color: var(--muted); font-size: 13px;">Recent (30d)</div></div>
-                    <div class="card" data-searchable style="text-align: center; padding: 24px;"><div style="font-size: 36px; font-weight: 700; color: var(--accent);">${data.branches.length}</div><div style="color: var(--muted); font-size: 13px;">Total Branches</div></div>
-                    <div class="card" data-searchable style="text-align: center; padding: 24px;"><div style="font-size: 36px; font-weight: 700; color: var(--accent-light);">${Object.keys(contribStats).length}</div><div style="color: var(--muted); font-size: 13px;">Contributors</div></div>
-                </div>`;
-            
-            if (topContrib) {
-                const topBranches = data.branches.filter(b => (b.contributors || []).some(c => extractUser(c.email) === topContrib[0]));
-                html += `
-                    <div class="card" data-searchable style="margin-bottom: 24px;">
-                        <div style="display: flex; align-items: center; gap: 16px;">
-                            <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700;">${topContrib[0].slice(0, 2).toUpperCase()}</div>
-                            <div style="flex: 1;">
-                                <div style="font-size: 13px; color: var(--muted); margin-bottom: 4px;">👑 TOP CONTRIBUTOR</div>
-                                <a href="${githubUrl('user', topContrib[0])}" target="_blank" style="font-size: 20px; color: var(--accent); text-decoration: none; font-weight: 600;">@${topContrib[0]}</a>
-                                <div style="color: var(--muted); font-size: 13px; margin-top: 4px;">${topContrib[1]} commits across ${topBranches.length} branches</div>
-                            </div>
-                        </div>
-                    </div>`;
-            }
-            
-            html += `<div class="card" data-searchable><h3 style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">🔥 HOT AMENDMENTS (Most Recent Activity)</h3>`;
-            
-            hotAmendments.forEach(([name, info]) => {
-                const days = info.last;
-                html += `
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
-                        <div><div style="font-weight: 500;">${days <= 7 ? '🔥' : days <= 30 ? '📅' : '💤'} ${name}</div><div style="font-size: 12px; color: var(--muted);">${info.count} branches</div></div>
-                        <span class="badge ${days <= 7 ? 'badge-active' : days <= 30 ? 'badge-recent' : 'badge-dormant'}" style="font-size: 11px;">${days === 0 ? 'today' : days + 'd ago'}</span>
-                    </div>`;
-            });
-            
-            html += '</div>';
-            
-            // Most Active Branches (by commit count in contributors)
-            const branchActivity = data.branches.map(b => ({
-                name: b.name,
-                commits: (b.contributors || []).reduce((sum, c) => sum + (c.commits || 1), 0),
-                contributors: (b.contributors || []).length,
-                daysAgo: daysAgo(b.last_commit?.date)
-            })).sort((a, b) => b.commits - a.commits).slice(0, 5);
-            
-            html += `<div class="card" data-searchable style="margin-top: 20px;"><h3 style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">📊 MOST ACTIVE BRANCHES (by commits)</h3>`;
-            branchActivity.forEach(b => {
-                html += `
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
-                        <div><a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; text-decoration: none;">${b.name}</a><div style="font-size: 12px; color: var(--muted);">${b.contributors} contributors</div></div>
-                        <div style="text-align: right;"><div style="font-weight: 600; color: var(--accent);">${b.commits} commits</div><div style="font-size: 11px; color: var(--muted);">${b.daysAgo === 0 ? 'today' : b.daysAgo + 'd ago'}</div></div>
-                    </div>`;
-            });
-            html += '</div>';
-            
-            // Recently Updated Branches
-            const recentBranches = [...data.branches]
-                .filter(b => b.last_commit)
-                .sort((a, b) => new Date(b.last_commit.date) - new Date(a.last_commit.date))
-                .slice(0, 5);
-            
-            html += `<div class="card" data-searchable style="margin-top: 20px;"><h3 style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">🔥 RECENTLY UPDATED</h3>`;
-            recentBranches.forEach(b => {
-                const d = daysAgo(b.last_commit?.date);
-                html += `
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
-                        <div><a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; text-decoration: none;">${b.name}</a><div style="font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; max-width: 300px;">${b.last_commit.message}</div></div>
-                        <span class="badge ${d <= 1 ? 'badge-active' : d <= 7 ? 'badge-recent' : 'badge-dormant'}" style="font-size: 10px;">${d === 0 ? 'today' : d + 'd ago'}</span>
-                    </div>`;
-            });
-            html += '</div>';
-            
-            document.getElementById('content').innerHTML = html;
-        }
-        
-        function render() {
-            if (!data) return;
-            if (currentTab === 'amendments') renderAmendments();
-            else if (currentTab === 'people') renderPeople();
-            else if (currentTab === 'branches') renderAllBranches();
-            else if (currentTab === 'completed') renderCompleted();
-            else if (currentTab === 'timeline') renderTimeline();
-            else renderInsights();
-        }
-        
-        function renderCompleted() {
-            if (!completedData || completedData.length === 0) {
-                document.getElementById('content').innerHTML = `
-                    <div class="card" style="text-align:center; padding: 60px;">
-                        <div style="font-size: 48px; margin-bottom: 16px;">📝</div>
-                        <p style="font-size: 18px; margin-bottom: 8px;">No completed branches tracked yet</p>
-                        <p style="color: var(--muted);">Completed branches will appear here once they are merged or deleted.</p>
-                    </div>`;
-                return;
-            }
-            
-            // Sort by completed_at date, newest first
-            const sorted = [...completedData].sort((a, b) => 
-                new Date(b.completed_at || 0) - new Date(a.completed_at || 0)
-            );
-            
-            let html = `<div style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">
-                ${sorted.length} completed branches (newest first)
-            </div>
-            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">`;
-            
-            sorted.forEach(b => {
-                const completedDate = new Date(b.completed_at);
-                const daysAgo = Math.floor((Date.now() - completedDate) / (86400000));
-                const amendment = classify(b.name);
-                const contribList = (b.contributors || []).slice(0, 4);
-                
-                html += `
-                    <div class="card completed-card" data-searchable data-branch="${b.name.replace(/"/g, '&quot;')}">
-                        <div class="card-status" style="background: rgba(163, 113, 247, 0.15); color: #a371f7;">
-                            <span>✅ Completed</span>
-                        </div>
-                        <div class="card-title" style="font-family: monospace; font-size: 15px; word-break: break-all;">${b.name}</div>
-                        <div class="card-description">
-                            ${b.last_commit ? b.last_commit.message.split('\n')[0].substring(0, 120) : 'No commit message'}
-                        </div>
-                        <div class="contributors" style="margin-bottom: 12px;">
-                            ${contribList.map(c => `<span class="contributor">@${extractUser(c.email)}</span>`).join('')}
-                            ${(b.contributors || []).length > 4 ? `<span class="contributor">+${(b.contributors || []).length - 4}</span>` : ''}
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-meta">${amendment.name}</span>
-                            <span class="card-meta">Completed ${daysAgo === 0 ? 'today' : daysAgo + 'd ago'}</span>
-                        </div>
-                    </div>`;
-            });
-            
-            html += '</div>';
-            document.getElementById('content').innerHTML = html;
-        }
-        
-        function renderTimeline() {
-            // activityData now comes from git log (timeline.json)
-            if (!activityData || activityData.length === 0) {
-                document.getElementById('content').innerHTML = `
-                    <div class="card" style="text-align:center; padding: 60px;">
-                        <div style="font-size: 48px; margin-bottom: 16px;">📅</div>
-                        <p style="font-size: 18px; margin-bottom: 8px;">Loading timeline...</p>
-                        <p style="color: var(--muted);">Full commit history will appear after the next workflow run.</p>
-                    </div>`;
-                return;
-            }
-            
-            let html = `
-                <div style="margin-bottom: 16px; color: var(--muted); font-size: 14px;">
-                    ${activityData.length} recent commits from all branches
-                </div>
-                <div class="timeline-container">`;
-            
-            let lastDate = '';
-            
-            activityData.forEach(item => {
-                if (!item.date) return;
-                
-                const date = new Date(item.date);
-                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                const timeAgo = Math.floor((Date.now() - date) / (60000));
-                const timeStr = timeAgo < 60 ? `${timeAgo}m ago` : timeAgo < 1440 ? `${Math.floor(timeAgo/60)}h ago` : `${Math.floor(timeAgo/1440)}d ago`;
-                
-                if (dateStr !== lastDate) {
-                    html += `<div style="margin: 24px 0 12px; color: var(--muted); font-size: 13px; font-weight: 600; text-transform: uppercase;">${dateStr}</div>`;
-                    lastDate = dateStr;
-                }
-                
-                html += `
-                    <div class="card timeline-card" data-searchable style="margin-bottom: 12px; padding: 16px;">
-                        <div style="display: flex; gap: 12px; align-items: flex-start;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">${item.author.slice(0, 2).toUpperCase()}</div>
-                            <div style="flex: 1; min-width: 0;">
-                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
-                                    <span style="color: var(--accent); font-weight: 500;">${item.author}</span>
-                                    <span style="color: var(--muted); font-size: 13px;">committed to</span>
-                                    <a href="https://github.com/XRPLF/rippled/commit/${item.hash}" target="_blank" style="font-size: 11px; padding: 2px 8px; background: rgba(124, 92, 255, 0.2); color: var(--accent-light); border-radius: 12px; text-decoration: none;">${item.hash}</a>
-                                </div>
-                                <a href="https://github.com/XRPLF/rippled/tree/${item.branch}" target="_blank" style="color: var(--text); text-decoration: none; font-size: 14px; font-family: monospace; display: block; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.branch}</a>
-                                <div style="color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.message}</div>
-                                <div style="color: var(--muted); font-size: 12px; margin-top: 4px;">${timeStr}</div>
-                            </div>
-                        </div>
-                    </div>`;
-            });
-            
-            html += '</div>';
-            document.getElementById('content').innerHTML = html;
-        }
-        
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', () => {
-            // Fetch all data files including amendments mapping
-            Promise.all([
-                fetch('./data/branches.json?t=' + Date.now()).then(r => r.json()),
-                fetch('./data/completed.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
-                fetch('./data/timeline.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
-                fetch('./data/rich_prs.json?t=' + Date.now()).then(r => r.json()).catch(() => []),
-                fetch('./data/xls_standards.json?t=' + Date.now()).then(r => r.json()).catch(() => ({})),
-                fetch('./data/amendments_mapping.json?t=' + Date.now()).then(r => r.json()).catch(() => ({amendments: []}))
-            ])
-                .then(([branchesData, completed, timeline, richPrs, xlsStandards, amendmentsMapping]) => {
-                    data = branchesData;
-                    completedData = completed;
-                    activityData = timeline;
-                    richPrsData = richPrs;
-                    xlsStandardsData = xlsStandards;
-                    amendmentsMappingData = amendmentsMapping;  // Now using git-based timeline
-                    
-                    document.getElementById('updated').textContent = 'Updated: ' + new Date(data.generated_at).toLocaleDateString();
-                    
-                    // Update Hero Stats
-                    const activeBranches = data.branches.filter(b => daysAgo(b.last_commit?.date) <= 7).length;
-                    const contribStats = {};
-                    data.branches.forEach(b => {
-                        (b.contributors || []).forEach(c => {
-                            const u = extractUser(c.email);
-                            contribStats[u] = (contribStats[u] || 0) + 1;
-                        });
-                    });
-                    document.getElementById('statActive').textContent = activeBranches;
-                    document.getElementById('statTotal').textContent = data.branches.length;
-                    document.getElementById('statContrib').textContent = Object.keys(contribStats).length;
-                    
-                    render();
-                    
-                    // PR Status fetching disabled (causes rate limit issues)
-                    // setTimeout(fetchPRStatusForActiveBranches, 1000);
-                })
-                .catch(e => {
-                    document.getElementById('content').innerHTML = `<div class="card" style="text-align:center;padding:40px;"><p>Error loading data</p><p style="color:var(--muted);font-size:12px;">${e.message}</p></div>`;
-                });
-            
-            // Tab clicks
-            document.getElementById('tabs').addEventListener('click', (e) => {
-                const tab = e.target.closest('.tab');
-                if (!tab) return;
-                
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                currentTab = tab.dataset.tab;
-                document.getElementById('search').value = '';
-                render();
-            });
-            
-            // Search with debouncing - optimized for many cards
-            let searchTimeout;
-            document.getElementById('search').addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                const query = e.target.value.toLowerCase().trim();
-                
-                if (!query) {
-                    document.querySelectorAll('.card.hidden').forEach(c => c.classList.remove('hidden'));
-                    return;
-                }
-                
-                searchTimeout = setTimeout(() => {
-                    const cards = document.querySelectorAll('.card[data-searchable]');
-                    // Process in chunks to avoid blocking
-                    let i = 0;
-                    const chunkSize = 50;
-                    
-                    function processChunk() {
-                        const end = Math.min(i + chunkSize, cards.length);
-                        for (; i < end; i++) {
-                            const card = cards[i];
-                            // Use textContent instead of innerText (much faster)
-                            const text = (card.textContent || '').toLowerCase();
-                            card.classList.toggle('hidden', !text.includes(query));
-                        }
-                        if (i < cards.length) {
-                            requestAnimationFrame(processChunk);
-                        }
-                    }
-                    processChunk();
-                }, 150); // Reduced debounce for responsiveness
-            });
-            
-            // Card clicks (event delegation)
-            document.getElementById('content').addEventListener('click', (e) => {
-                const card = e.target.closest('.card[data-searchable]');
-                if (!card) return;
-                
-                if (card.classList.contains('amendment-card') && card.dataset.amendment) {
-                    window.showModal(card.dataset.amendment);
-                } else if (card.classList.contains('person-card') && card.dataset.person) {
-                    window.showPersonModal(card.dataset.person);
-                } else if (card.classList.contains('branch-card') && card.dataset.branch) {
-                    window.showBranchModal(card.dataset.branch);
-                } else if (card.classList.contains('completed-card') && card.dataset.branch) {
-                    window.showCompletedModal(card.dataset.branch);
-                }
-            });
-        });
-        
-        // PR Status cache and fetcher
-        const prCache = new Map();
-        
-        async function fetchPRStatusForActiveBranches() {
-            if (!data) return;
-            const activeBranches = data.branches
-                .filter(b => daysAgo(b.last_commit?.date) <= 7)
-                .slice(0, 15);
-            
-            for (const branch of activeBranches) {
-                try {
-                    const response = await fetch(`https://api.github.com/repos/XRPLF/rippled/pulls?head=XRPLF:${encodeURIComponent(branch.name)}`);
-                    if (response.ok) {
-                        const prs = await response.json();
-                        if (prs.length > 0) {
-                            const pr = prs[0];
-                            prCache.set(branch.name, {
-                                number: pr.number,
-                                state: pr.state,
-                                merged: pr.merged_at !== null,
-                                url: pr.html_url
-                            });
-                            
-                            const card = document.querySelector(`.branch-card[data-branch="${branch.name}"]`);
-                            if (card) {
-                                const footer = card.querySelector('.card-footer');
-                                if (footer && !footer.querySelector('.pr-badge')) {
-                                    const prBadge = document.createElement('span');
-                                    prBadge.className = 'pr-badge';
-                                    prBadge.style.cssText = 'font-size: 11px; padding: 2px 8px; background: rgba(88, 166, 255, 0.2); color: #58a6ff; border-radius: 12px; margin-right: 8px;';
-                                    prBadge.innerHTML = `<a href="${pr.html_url}" target="_blank" style="color: inherit; text-decoration: none;">PR #${pr.number}</a>`;
-                                    footer.insertBefore(prBadge, footer.firstChild);
-                                }
-                            }
-                        }
-                    }
-                } catch (e) {}
-            }
-        }
-    </script>
 </body>
 </html>
+<script>
+// Modal Functions - Working Version
+function showModal(title, content) {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>${title}</h2>
+        <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕</button>
+      </div>
+      <div class="modal-body">${content}</div>
+    </div>
+  `;
+  modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+  document.body.appendChild(modal);
+}
+
+function showBranchModal(branch) {
+  if (!branch) return;
+  const commits = (branch.commits || []).slice(0, 5).map(c => 
+    `<p>• ${(c.message || '').substring(0, 100)}</p>`
+  ).join('') || '<p>No commits</p>';
+  
+  const content = `
+    <div class="section">
+      <h3>Branch Info</h3>
+      <p><strong>Name:</strong> ${branch.name}</p>
+      <p><strong>Contributors:</strong> ${branch.contributor_count || 0}</p>
+      <p><strong>Last Commit:</strong> ${branch.last_commit?.date ? new Date(branch.last_commit.date).toLocaleString() : 'N/A'}</p>
+    </div>
+    <div class="section">
+      <h3>Recent Commits</h3>
+      ${commits}
+    </div>
+  `;
+  showModal(branch.name, content);
+}
+
+function showCompletedModal(branch) {
+  if (!branch) return;
+  const content = `
+    <div class="section">
+      <h3>Completed PR</h3>
+      <p><strong>Name:</strong> ${branch.name}</p>
+      <p><strong>Completed:</strong> ${branch.completed_at ? new Date(branch.completed_at).toLocaleString() : 'N/A'}</p>
+      <p><strong>Reason:</strong> ${branch.reason || 'N/A'}</p>
+    </div>
+    <div class="section">
+      <h3>Last Commit</h3>
+      <p>${branch.last_commit?.message || 'No message'}</p>
+    </div>
+  `;
+  showModal(`✅ ${branch.name}`, content);
+}
+
+// Click handler for cards
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.amendment-card');
+  if (!card) return;
+  const titleEl = card.querySelector('h3');
+  if (!titleEl || typeof data === 'undefined') return;
+  const branchName = titleEl.textContent.trim();
+  const branch = data.branches?.find(b => b.name === branchName);
+  if (branch) showBranchModal(branch);
+});
+</script>
