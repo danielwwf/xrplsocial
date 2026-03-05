@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6321,
+    "branch_name": "feature/flags-server-definitions",
+    "title": "feat: Add Formats and Flags to server_definitions",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nCloses https://github.com/XRPLF/rippled/issues/5151\r\nAttempts to implement https://github.com/XRPLF/XRPL-Standards/discussions/418\r\n\r\nThis is a combination of https://github.com/XRPLF/rippled/pull/5702 (bulk of functionality) and https://github.com/XRPLF/rippled/pull/5616 (tests). \r\n\r\nIf merged:\r\n* Closes #5702 \r\n* Closes #5616\r\n\r\n- Issue with `tfBatchMask` not matching the previous constant is fixed and covered by an extra test in `Batch_test.cpp`.\r\n- Modernized the code where possible, removed incorrect uses of `initializer_list` where applicable.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [x] New feature (non-breaking change which adds functionality)\r\n-",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-03T18:10:35Z",
+    "merged_at": "2026-03-05T16:11:28Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6321?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`7751839`](https://app.codecov.io/gh/XRPLF/rippled/commit/77518394e8ced1581460b3fb02f7ac8aa41a2683?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-02-03T19:03:54Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6464,
     "branch_name": "build_info",
     "title": "chore: Add Git information compile-time info to only one file",
@@ -3649,46 +3689,6 @@
       },
       {
         "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6279,
-    "branch_name": "cmake_format",
-    "title": "style: Add cmake-format pre-commit hook",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nI add `cmake-format` pre-commit hook.\r\nThe style file is exactly like in Clio (so I would probably argue not to change it).\r\nFor now, I've added files where applying cmake-format doesn't look too bad, and added other files as exceptions - manually adjusting these files is a bit time-consuming, so I would probably do it separately, but we can benefit from cmake-format for most files already.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures ",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-26T13:53:09Z",
-    "merged_at": "2026-01-29T13:33:24Z",
-    "labels": [
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6279?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`f3627fb`](https://app.codecov.io/gh/XRPLF/rippled/commit/f3627fb5d5c23cf14d9e94a3a45ebb5b2766f9f5?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-26T14:17:24Z"
-      }
-    ],
-    "reviews_count": 20,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
         "state": "COMMENTED",
         "body": ""
       }
