@@ -541,9 +541,8 @@ jobs:
         run: |
           # Install openai package
           pip install openai -q
-          # Clear cache to FORCE AI analysis for all branches
-          rm -f stats/data/ai_categories.json stats/data/ai_cost_log.json
-          echo "🗑️  Cache cleared - forcing AI analysis for all branches"
+          # Cache wird NICHT gelöscht - nur neue Branches werden analysiert
+          echo "🔍 Analyzing branches (using cache for existing)..."
           python3 scripts/integrate_categories.py
           echo "Categories integrated"
 
