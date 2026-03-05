@@ -609,26 +609,8 @@ function renderTimeline() {
 loadData();
 </script>
 
-// Modal click handler
-document.addEventListener('click', function(e) {
-    const card = e.target.closest('.amendment-card');
-    if (!card) return;
-    
-    // Find branch name from card content
-    const titleEl = card.querySelector('h3');
-    if (!titleEl || !window.data) return;
-    
-    const branchName = titleEl.textContent.trim();
-    const branch = window.data.branches?.find(b => b.name === branchName);
-    
-    if (branch && typeof showBranchModal === 'function') {
-        showBranchModal(branch);
-    }
-});
-</body>
-</html>
 
-// Modal functions
+// Modal Functions (Global Scope)
 function showModal(title, content) {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
@@ -648,28 +630,30 @@ function showModal(title, content) {
 }
 
 function showBranchModal(branch) {
+    if (!branch) return;
     const content = `
         <div class="section">
             <h3>Branch Info</h3>
             <p><strong>Name:</strong> ${branch.name}</p>
-            <p><strong>Contributors:</strong> ${branch.contributor_count}</p>
-            <p><strong>Last Commit:</strong> ${new Date(branch.last_commit?.date).toLocaleString()}</p>
+            <p><strong>Contributors:</strong> ${branch.contributor_count || 0}</p>
+            <p><strong>Last Commit:</strong> ${branch.last_commit?.date ? new Date(branch.last_commit.date).toLocaleString() : 'N/A'}</p>
         </div>
         <div class="section">
             <h3>Recent Commits</h3>
-            ${branch.commits?.slice(0, 5).map(c => `<p>• ${c.message?.substring(0, 100)}</p>`).join('') || 'No commits'}
+            ${branch.commits?.slice(0, 5).map(c => `<p>• ${(c.message || '').substring(0, 100)}</p>`).join('') || '<p>No commits</p>'}
         </div>
     `;
     showModal(branch.name, content);
 }
 
 function showCompletedModal(branch) {
+    if (!branch) return;
     const content = `
         <div class="section">
             <h3>Completed PR</h3>
             <p><strong>Name:</strong> ${branch.name}</p>
-            <p><strong>Completed:</strong> ${new Date(branch.completed_at).toLocaleString()}</p>
-            <p><strong>Reason:</strong> ${branch.reason}</p>
+            <p><strong>Completed:</strong> ${branch.completed_at ? new Date(branch.completed_at).toLocaleString() : 'N/A'}</p>
+            <p><strong>Reason:</strong> ${branch.reason || 'N/A'}</p>
         </div>
         <div class="section">
             <h3>Last Commit</h3>
@@ -679,17 +663,19 @@ function showCompletedModal(branch) {
     showModal(`✅ ${branch.name}`, content);
 }
 
-// Add click handlers to cards
-document.addEventListener('click', (e) => {
+// Click handler for cards
+document.addEventListener('click', function(e) {
     const card = e.target.closest('.amendment-card');
     if (!card) return;
     
-    const branchName = card.dataset.category;
-    if (!branchName || !data) return;
+    const titleEl = card.querySelector('h3');
+    if (!titleEl) return;
     
-    // Find branch in data
-    const branch = data.branches?.find(b => b.name === branchName);
-    if (branch) {
-        showBranchModal(branch);
+    const branchName = titleEl.textContent.trim();
+    
+    // Use global data variable
+    if (typeof data !== 'undefined' && data.branches) {
+        const branch = data.branches.find(b => b.name === branchName);
+        if (branch) showBranchModal(branch);
     }
 });
