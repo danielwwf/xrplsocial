@@ -3769,45 +3769,5 @@
         "body": ""
       }
     ]
-  },
-  {
-    "pr_number": 6241,
-    "branch_name": "a1q123456/fix-xrpl-net-test",
-    "title": "Fix the xrpl.net unit test",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR makes the `read` function call in `handleConnection` async, adds a new class `TestSink` to help debugging, and adds a new target `xrpl.tests.helpers` to put the helper class in.\r\n\r\n### Context of Change\r\n\r\nOur [Trigger](https://github.com/XRPLF/rippled/actions/runs/21127965702/job/60752802219) job fails almost everyday because of two unit tests. The first issue is that it takes forever for the unit tests to finish, and the second issue is we get a time out error in the `xrpl.net` test case.\r\n\r\nI investigated the second issue and found out that the synchronous function `read` blocks the connection callback on the client side. As the `read` function expect some data that is supposed to be sent in the connection callback, we're getting a deadlock here. By making the read function asynchronous, the connection callback will have a chance to be called so that the `read` function can consume the data eventually.\r\n\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [x] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [x] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
-    "user": "a1q123456",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-20T14:22:21Z",
-    "merged_at": "2026-01-28T15:14:35Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6241?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.4%. Comparing base ([`b90a843`](https://app.codecov.io/gh/XRPLF/rippled/commit/b90a843dddeb6df2acdc6a04b74386cbb892e8ff?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-20T14:40:34Z"
-      }
-    ],
-    "reviews_count": 29,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
   }
 ]
