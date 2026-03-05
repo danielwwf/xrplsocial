@@ -715,3 +715,48 @@ document.addEventListener('click', function(e) {
         if (branch) showBranchModal(branch);
     }
 });
+
+<script>
+// Modal Functions
+window.showModal = function(title, content) {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = '<div class="modal-content"><div class="modal-header"><h2>' + title + '</h2><button class="close-btn" onclick="this.closest(\x27.modal-overlay\x27).remove()">✕</button></div><div class="modal-body">' + content + '</div></div>';
+  modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+  document.body.appendChild(modal);
+};
+
+window.showBranchModal = function(branch) {
+  if (!branch) return;
+  var commits = '';
+  if (branch.commits) {
+    for (var i = 0; i < Math.min(5, branch.commits.length); i++) {
+      var msg = branch.commits[i].message || '';
+      commits += '<p>• ' + msg.substring(0, 100) + '</p>';
+    }
+  }
+  if (!commits) commits = '<p>No commits</p>';
+  
+  var content = '<div class="section"><h3>Branch Info</h3><p><strong>Name:</strong> ' + branch.name + '</p><p><strong>Contributors:</strong> ' + (branch.contributor_count || 0) + '</p></div>';
+  content += '<div class="section"><h3>Recent Commits</h3>' + commits + '</div>';
+  
+  window.showModal(branch.name, content);
+};
+
+// Click handler
+document.addEventListener('click', function(e) {
+  var card = e.target.closest('.amendment-card');
+  if (!card) return;
+  var titleEl = card.querySelector('h3');
+  if (!titleEl) return;
+  var branchName = titleEl.textContent.trim();
+  if (typeof data !== 'undefined' && data.branches) {
+    for (var i = 0; i < data.branches.length; i++) {
+      if (data.branches[i].name === branchName) {
+        window.showBranchModal(data.branches[i]);
+        break;
+      }
+    }
+  }
+});
+</script>
