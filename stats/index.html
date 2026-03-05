@@ -642,94 +642,147 @@
             document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
         };
         
+
         window.showPersonModal = function(username) {
-            const personData = { branches: [], amendments: new Set(), commitCount: 0 };
+            // Collect all data for this person
+            const personBranches = [];
+            const personCommits = [];
             
             data.branches.forEach(b => {
                 const userCommits = (b.contributors || []).filter(c => extractUser(c.email) === username);
                 if (userCommits.length > 0) {
-                    personData.branches.push(b);
-                    personData.amendments.add(classify(b.name).name);
-                    personData.commitCount += userCommits.length;
+                    personBranches.push(b);
+                    // Collect commits
+                    if (b.commits) {
+                        b.commits.forEach(c => {
+                            if (extractUser(c.email) === username) {
+                                personCommits.push({ ...c, branch: b.name });
+                            }
+                        });
+                    } else if (b.last_commit && extractUser(b.last_commit.email) === username) {
+                        personCommits.push({ ...b.last_commit, branch: b.name });
+                    }
                 }
             });
             
-            personData.branches.sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
+            personBranches.sort((a, b) => new Date(b.last_commit?.date || 0) - new Date(a.last_commit?.date || 0));
+            personCommits.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Build contributors data (just this one person)
+            const contributorsData = {};
+            contributorsData[username] = {
+                commits: personCommits.length,
+                branches: personBranches.map(b => b.name)
+            };
+            
+            const sortedContributors = [[username, contributorsData[username]]];
+            const allCommits = personCommits.slice(0, 10);
             
             const modal = document.createElement('div');
             modal.className = 'modal-overlay';
             modal.innerHTML = `
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div style="display: flex; align-items: center; gap: 16px;">
-                            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700;">${username.slice(0, 2).toUpperCase()}</div>
-                            <div><h2>@${username}</h2><div style="color: var(--muted);">${personData.commitCount} commits • ${personData.branches.length} branches • ${personData.amendments.size} amendments</div></div>
-                        </div>
+                        <div><h2>@${username}</h2><div style="color: var(--muted); margin-top: 4px;">${personBranches.length} branches • ${personCommits.length} commits</div></div>
                         <button class="close-btn">✕ Close</button>
                     </div>
-                    <div class="section"><h3>🔗 GitHub Profile</h3><a href="${githubUrl('user', username)}" target="_blank" class="contributor" style="font-size: 14px; padding: 10px 20px;">View @${username} on GitHub →</a></div>
-                    <div class="section"><h3>📦 Amendments (${personData.amendments.size})</h3><div class="contributors">${Array.from(personData.amendments).map(a => `<span class="contributor" style="font-size: 14px; padding: 8px 16px;">${a}</span>`).join('')}</div></div>
-                    <div class="section"><h3>🌿 Branches (${personData.branches.length})</h3>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">${personData.branches.slice(0, 15).map(b => `
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                                <div>
-                                    <a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; font-size: 13px; text-decoration: none;">${b.name}</a>
-                                    <div style="font-size: 11px; color: var(--muted); margin-top: 2px;">Last commit: ${daysAgo(b.last_commit?.date) === 0 ? 'today' : daysAgo(b.last_commit?.date) + 'd ago'}</div>
+                    <div class="section"><h3>🏆 Top Contributors</h3>
+                        ${sortedContributors.map(([uname, data]) => `
+                            <div class="contributor-detail">
+                                <div class="contributor-avatar">${uname.slice(0, 2).toUpperCase()}</div>
+                                <div class="contributor-info">
+                                    <a href="${githubUrl('user', uname)}" target="_blank" class="contributor-name">@${uname}</a>
+                                    <div class="contributor-meta">${data.commits} commits on ${data.branches.length} branches</div>
                                 </div>
-                                <span style="color: var(--muted); font-size: 12px;">${daysAgo(b.last_commit?.date) === 0 ? 'today' : daysAgo(b.last_commit?.date) + 'd ago'}</span>
+                                <div class="branch-tags">${data.branches.slice(0, 3).map(b => `<a href="${githubUrl('branch', b)}" target="_blank" class="branch-tag">${b.split('/').pop()}</a>`).join('')}${data.branches.length > 3 ? `<span class="branch-tag">+${data.branches.length - 3}</span>` : ''}</div>
                             </div>
                         `).join('')}
-                        ${personData.branches.length > 15 ? `<div style="text-align: center; color: var(--muted); padding: 10px;">+${personData.branches.length - 15} more branches</div>` : ''}
                     </div>
-                </div>`;
-            
-            document.body.appendChild(modal);
-            modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-            document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
-        };
-        
-        window.showBranchModal = function(branchName) {
-            const branch = data.branches.find(b => b.name === branchName);
-            if (!branch) return;
-            
-            const d = daysAgo(branch.last_commit?.date);
-            const amendment = classify(branch.name);
-            const iconData = getAmendmentIcon(amendment.name);
-            
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div><h2 style="font-family: monospace; font-size: 18px;">${branch.name}</h2>
-                            <div style="color: var(--muted); margin-top: 4px;">
-                                <span class="amendment-icon ${iconData.class}" style="width: 24px; height: 24px; font-size: 12px; display: inline-flex; vertical-align: middle; margin-right: 8px;">${iconData.icon}</span>
-                                ${amendment.name} • ${(branch.contributors || []).length} contributors
-                            </div>
-                        </div>
-                        <button class="close-btn">✕ Close</button>
-                    </div>
-                    <div class="section"><h3>🔗 Quick Links</h3>
-                        <a href="${githubUrl('branch', branch.name)}" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(255,255,255,0.06); border-radius: 8px; text-decoration: none; color: var(--text);">
-                            <span>View Branch on GitHub →</span>
-                        </a>
-                    </div>
-                    ${branch.commits && branch.commits.length > 0 ? `
-                    <div class="section"><h3>📅 Recent Commits</h3>
-                        ${branch.commits.slice(0, 10).map(c => `
+                    ${allCommits.length > 0 ? `
+                    <div class="section"><h3>📅 Recent Activity</h3>
+                        ${allCommits.map(c => `
                             <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; font-size: 13px;">
                                 <span style="color: var(--muted); min-width: 50px;">${daysAgo(c.date) === 0 ? 'today' : daysAgo(c.date) + 'd'}</span>
                                 <span style="color: var(--accent);">${c.author}</span>
                                 <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${c.message}</span>
+                                <a href="${githubUrl('branch', c.branch)}" target="_blank" style="font-size: 11px; color: var(--muted);">${c.branch.split('/').pop()}</a>
                             </div>
                         `).join('')}
                     </div>` : ''}
-                    <div class="section"><h3>👥 Contributors (${(branch.contributors || []).length})</h3>
-                        ${(branch.contributors || []).map(c => {
-                            const u = extractUser(c.email);
-                            return `<div class="contributor-detail"><div class="contributor-avatar">${u.slice(0, 2).toUpperCase()}</div><div class="contributor-info"><a href="${githubUrl('user', u)}" target="_blank" class="contributor-name">@${u}</a><div class="contributor-meta">${c.commits || 1} commits</div></div></div>`;
-                        }).join('')}
+                    <div class="section"><h3>🌿 All Branches (${personBranches.length})</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">${personBranches.map(b => `
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                                <a href="${githubUrl('branch', b.name)}" target="_blank" style="color: var(--text); font-family: monospace; font-size: 13px; text-decoration: none;">${b.name}</a>
+                                <span style="color: var(--muted); font-size: 12px;">${daysAgo(b.last_commit?.date) === 0 ? 'today' : daysAgo(b.last_commit?.date) + 'd ago'}</span>
+                            </div>
+                        `).join('')}</div></div>
+                </div>`;
+            
+            document.body.appendChild(modal);
+            modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+            document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
+        };
+
+        window.showBranchModal = function(branchName) {
+            const branch = data.branches.find(b => b.name === branchName);
+            if (!branch) return;
+            
+            const amendment = classify(branch.name);
+            
+            // Build contributors data
+            const contributorsData = {};
+            (branch.contributors || []).forEach(c => {
+                const u = extractUser(c.email);
+                if (!contributorsData[u]) {
+                    contributorsData[u] = { commits: 0, branches: [] };
+                }
+                contributorsData[u].commits += c.commits || 1;
+                contributorsData[u].branches.push(branch.name);
+            });
+            
+            const sortedContributors = Object.entries(contributorsData).sort((a, b) => b[1].commits - a[1].commits);
+            
+            // Get commits for this branch
+            const allCommits = (branch.commits || (branch.last_commit ? [branch.last_commit] : [])).slice(0, 10);
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div><h2 style="font-family: monospace; font-size: 18px;">${branch.name}</h2><div style="color: var(--muted); margin-top: 4px;">${amendment.name} • ${(branch.contributors || []).length} contributors</div></div>
+                        <button class="close-btn">✕ Close</button>
+                    </div>
+                    <div class="section"><h3>🏆 Top Contributors</h3>
+                        ${sortedContributors.slice(0, 8).map(([username, data]) => `
+                            <div class="contributor-detail">
+                                <div class="contributor-avatar">${username.slice(0, 2).toUpperCase()}</div>
+                                <div class="contributor-info">
+                                    <a href="${githubUrl('user', username)}" target="_blank" class="contributor-name">@${username}</a>
+                                    <div class="contributor-meta">${data.commits} commits on ${data.branches.length} branches</div>
+                                </div>
+                                <div class="branch-tags">${data.branches.slice(0, 3).map(b => `<a href="${githubUrl('branch', b)}" target="_blank" class="branch-tag">${b.split('/').pop()}</a>`).join('')}${data.branches.length > 3 ? `<span class="branch-tag">+${data.branches.length - 3}</span>` : ''}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${allCommits.length > 0 ? `
+                    <div class="section"><h3>📅 Recent Activity</h3>
+                        ${allCommits.map(c => `
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; font-size: 13px;">
+                                <span style="color: var(--muted); min-width: 50px;">${daysAgo(c.date) === 0 ? 'today' : daysAgo(c.date) + 'd'}</span>
+                                <span style="color: var(--accent);">${c.author}</span>
+                                <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${c.message}</span>
+                                <a href="${githubUrl('branch', branch.name)}" target="_blank" style="font-size: 11px; color: var(--muted);">${branch.name.split('/').pop()}</a>
+                            </div>
+                        `).join('')}
+                    </div>` : ''}
+                    <div class="section"><h3>🌿 Branch Info</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                                <a href="${githubUrl('branch', branch.name)}" target="_blank" style="color: var(--accent); text-decoration: none;">View on GitHub →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>`;
             
@@ -738,48 +791,66 @@
             modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
             document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
         };
-        
+
         window.showCompletedModal = function(branchName) {
             const branch = completedData.find(b => b.name === branchName);
             if (!branch) return;
             
             const amendment = classify(branchName);
-            const iconData = getAmendmentIcon(amendment.name);
-            const daysAgoVal = Math.floor((Date.now() - new Date(branch.completed_at || 0)) / 86400000);
+            
+            // Build contributors data
+            const contributorsData = {};
+            (branch.contributors || []).forEach(c => {
+                const u = extractUser(c.email);
+                if (!contributorsData[u]) {
+                    contributorsData[u] = { commits: 0, branches: [] };
+                }
+                contributorsData[u].commits += c.commits || 1;
+                contributorsData[u].branches.push(branchName);
+            });
+            
+            const sortedContributors = Object.entries(contributorsData).sort((a, b) => b[1].commits - a[1].commits);
+            
+            // Get last activity
+            const allCommits = branch.last_commit ? [{...branch.last_commit, branch: branchName}] : [];
             
             const modal = document.createElement('div');
             modal.className = 'modal-overlay';
             modal.innerHTML = `
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div><h2 style="font-family: monospace; font-size: 18px;">${branchName}</h2>
-                            <div style="color: var(--muted); margin-top: 4px;">
-                                <span class="amendment-icon ${iconData.class}" style="width: 24px; height: 24px; font-size: 12px; display: inline-flex; vertical-align: middle; margin-right: 8px;">${iconData.icon}</span>
-                                ${amendment.name} • <span style="color: #a371f7;">✅ Completed</span>
-                            </div>
-                        </div>
+                        <div><h2 style="font-family: monospace; font-size: 18px;">${branchName}</h2><div style="color: var(--muted); margin-top: 4px;">${amendment.name} • ✅ Completed</div></div>
                         <button class="close-btn">✕ Close</button>
                     </div>
-                    
-                    <div class="section"><h3>🔗 Quick Links</h3>
-                        <a href="https://github.com/XRPLF/rippled/tree/${branchName}" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(255,255,255,0.06); border-radius: 8px; text-decoration: none; color: var(--text);">
-                            <span>View Branch on GitHub →</span>
-                        </a>
+                    <div class="section"><h3>🏆 Top Contributors</h3>
+                        ${sortedContributors.slice(0, 8).map(([username, data]) => `
+                            <div class="contributor-detail">
+                                <div class="contributor-avatar">${username.slice(0, 2).toUpperCase()}</div>
+                                <div class="contributor-info">
+                                    <a href="${githubUrl('user', username)}" target="_blank" class="contributor-name">@${username}</a>
+                                    <div class="contributor-meta">${data.commits} commits on ${data.branches.length} branches</div>
+                                </div>
+                                <div class="branch-tags">${data.branches.slice(0, 3).map(b => `<a href="${githubUrl('branch', b)}" target="_blank" class="branch-tag">${b.split('/').pop()}</a>`).join('')}${data.branches.length > 3 ? `<span class="branch-tag">+${data.branches.length - 3}</span>` : ''}</div>
+                            </div>
+                        `).join('')}
                     </div>
-                    
-                    ${branch.last_commit ? `
-                    <div class="section"><h3>📅 Last Activity</h3>
-                        <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 13px;">
-                            <span style="color: var(--muted); min-width: 50px;">${daysAgoVal === 0 ? 'today' : daysAgoVal + 'd'}</span>
-                            <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${branch.last_commit.message}</span>
-                        </div>
+                    ${allCommits.length > 0 ? `
+                    <div class="section"><h3>📅 Recent Activity</h3>
+                        ${allCommits.map(c => `
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; font-size: 13px;">
+                                <span style="color: var(--muted); min-width: 50px;">${daysAgo(c.date) === 0 ? 'today' : daysAgo(c.date) + 'd'}</span>
+                                <span style="color: var(--accent);">${c.author}</span>
+                                <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${c.message}</span>
+                                <a href="${githubUrl('branch', branchName)}" target="_blank" style="font-size: 11px; color: var(--muted);">${branchName.split('/').pop()}</a>
+                            </div>
+                        `).join('')}
                     </div>` : ''}
-                    
-                    <div class="section"><h3>👥 Contributors (${(branch.contributors || []).length})</h3>
-                        ${(branch.contributors || []).slice(0, 10).map(c => {
-                            const u = extractUser(c.email);
-                            return `<div class="contributor-detail"><div class="contributor-avatar">${u.slice(0, 2).toUpperCase()}</div><div class="contributor-info"><a href="${githubUrl('user', u)}" target="_blank" class="contributor-name">@${u}</a></div></div>`;
-                        }).join('')}
+                    <div class="section"><h3>🌿 Branch Info</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                                <a href="https://github.com/XRPLF/rippled/tree/${branchName}" target="_blank" style="color: var(--accent); text-decoration: none;">View on GitHub →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>`;
             
@@ -788,7 +859,6 @@
             modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
             document.addEventListener('keydown', function close(e) { if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', close); } });
         };
-        
         function renderAmendments() {
             const groups = {};
             
