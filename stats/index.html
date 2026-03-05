@@ -609,3 +609,69 @@ loadData();
 </script>
 </body>
 </html>
+
+// Modal functions
+function showModal(title, content) {
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>${title}</h2>
+                <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕</button>
+            </div>
+            <div class="modal-body">${content}</div>
+        </div>
+    `;
+    modal.onclick = (e) => {
+        if (e.target === modal) modal.remove();
+    };
+    document.body.appendChild(modal);
+}
+
+function showBranchModal(branch) {
+    const content = `
+        <div class="section">
+            <h3>Branch Info</h3>
+            <p><strong>Name:</strong> ${branch.name}</p>
+            <p><strong>Contributors:</strong> ${branch.contributor_count}</p>
+            <p><strong>Last Commit:</strong> ${new Date(branch.last_commit?.date).toLocaleString()}</p>
+        </div>
+        <div class="section">
+            <h3>Recent Commits</h3>
+            ${branch.commits?.slice(0, 5).map(c => `<p>• ${c.message?.substring(0, 100)}</p>`).join('') || 'No commits'}
+        </div>
+    `;
+    showModal(branch.name, content);
+}
+
+function showCompletedModal(branch) {
+    const content = `
+        <div class="section">
+            <h3>Completed PR</h3>
+            <p><strong>Name:</strong> ${branch.name}</p>
+            <p><strong>Completed:</strong> ${new Date(branch.completed_at).toLocaleString()}</p>
+            <p><strong>Reason:</strong> ${branch.reason}</p>
+        </div>
+        <div class="section">
+            <h3>Last Commit</h3>
+            <p>${branch.last_commit?.message || 'No message'}</p>
+        </div>
+    `;
+    showModal(`✅ ${branch.name}`, content);
+}
+
+// Add click handlers to cards
+document.addEventListener('click', (e) => {
+    const card = e.target.closest('.amendment-card');
+    if (!card) return;
+    
+    const branchName = card.dataset.category;
+    if (!branchName || !data) return;
+    
+    // Find branch in data
+    const branch = data.branches?.find(b => b.name === branchName);
+    if (branch) {
+        showBranchModal(branch);
+    }
+});
