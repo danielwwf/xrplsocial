@@ -421,8 +421,9 @@ function renderAmendments() {
         const description = latestBranch?.last_commit?.message?.split('\n')[0]?.substring(0, 100) || 
             `${info.branches.length} branches with ${info.contributors.size} contributors`;
         
+        const branchForClick = info.branches[0];
         html += `
-            <div class="amendment-card" data-searchable data-category="${category}">
+            <div class="amendment-card" data-searchable data-category="${category}" onclick="if(data && data.branches) { const b = data.branches.find(x => x.name === '${branchForClick?.name || ''}'); if(b) showBranchModal(b); }">
                 <div class="card-header">
                     <div class="amendment-icon ${getCategoryClass(category)}">${getCategoryIcon(category)}</div>
                     <div class="amendment-title">
@@ -607,6 +608,23 @@ function renderTimeline() {
 // Init
 loadData();
 </script>
+
+// Modal click handler
+document.addEventListener('click', function(e) {
+    const card = e.target.closest('.amendment-card');
+    if (!card) return;
+    
+    // Find branch name from card content
+    const titleEl = card.querySelector('h3');
+    if (!titleEl || !window.data) return;
+    
+    const branchName = titleEl.textContent.trim();
+    const branch = window.data.branches?.find(b => b.name === branchName);
+    
+    if (branch && typeof showBranchModal === 'function') {
+        showBranchModal(branch);
+    }
+});
 </body>
 </html>
 
