@@ -1,6 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Modal Functions - Global Scope -->
+  <script>
+    window.showModal = function(title, content) {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>${title}</h2>
+            <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕</button>
+          </div>
+          <div class="modal-body">${content}</div>
+        </div>
+      `;
+      modal.onclick = function(e) {
+        if (e.target === modal) modal.remove();
+      };
+      document.body.appendChild(modal);
+    };
+
+    window.showBranchModal = function(branch) {
+      if (!branch) return;
+      const content = `
+        <div class="section">
+          <h3>Branch Info</h3>
+          <p><strong>Name:</strong> ${branch.name}</p>
+          <p><strong>Contributors:</strong> ${branch.contributor_count || 0}</p>
+          <p><strong>Last Commit:</strong> ${branch.last_commit?.date ? new Date(branch.last_commit.date).toLocaleString() : 'N/A'}</p>
+        </div>
+        <div class="section">
+          <h3>Recent Commits</h3>
+          ${branch.commits?.slice(0, 5).map(c => `<p>• ${(c.message || '').substring(0, 100)}</p>`).join('') || '<p>No commits</p>'}
+        </div>
+      `;
+      window.showModal(branch.name, content);
+    };
+
+    window.showCompletedModal = function(branch) {
+      if (!branch) return;
+      const content = `
+        <div class="section">
+          <h3>Completed PR</h3>
+          <p><strong>Name:</strong> ${branch.name}</p>
+          <p><strong>Completed:</strong> ${branch.completed_at ? new Date(branch.completed_at).toLocaleString() : 'N/A'}</p>
+          <p><strong>Reason:</strong> ${branch.reason || 'N/A'}</p>
+        </div>
+        <div class="section">
+          <h3>Last Commit</h3>
+          <p>${branch.last_commit?.message || 'No message'}</p>
+        </div>
+      `;
+      window.showModal(`✅ ${branch.name}`, content);
+    };
+  </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XRPL Amendment Stats v4.0 - AI Powered</title>
@@ -609,25 +664,6 @@ function renderTimeline() {
 loadData();
 </script>
 
-
-// Modal Functions (Global Scope)
-function showModal(title, content) {
-    const modal = document.createElement('div');
-    modal.className = 'modal-overlay';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>${title}</h2>
-                <button class="close-btn" onclick="this.closest('.modal-overlay').remove()">✕</button>
-            </div>
-            <div class="modal-body">${content}</div>
-        </div>
-    `;
-    modal.onclick = (e) => {
-        if (e.target === modal) modal.remove();
-    };
-    document.body.appendChild(modal);
-}
 
 function showBranchModal(branch) {
     if (!branch) return;
