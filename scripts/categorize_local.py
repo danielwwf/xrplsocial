@@ -14,14 +14,17 @@ from datetime import datetime
 
 # Config
 API_KEY = os.environ.get("MOONSHOT_API_KEY", "")
-PAUSE_SECONDS = 2.0  # Pause zwischen Calls
+PAUSE_SECONDS = 5.0  # Pause zwischen Calls (5s wegen Überlastung)
 MAX_RETRIES = 10     # Max Retries bei 429
-BASE_DELAY = 2       # Start-Delay für Backoff
+BASE_DELAY = 3       # Start-Delay für Backoff
 
 def log_progress(current, total, branch_name, status):
     """Zeige Fortschritt an"""
-    percent = (current / total) * 100
-    print(f"[{current:3d}/{total}] {percent:5.1f}% | {status:15s} | {branch_name[:50]}")
+    if total > 0:
+        percent = (current / total) * 100
+        print(f"[{current:3d}/{total}] {percent:5.1f}% | {status:15s} | {branch_name[:50]}")
+    else:
+        print(f"[Retry] {status:15s} | {branch_name[:50]}")
     sys.stdout.flush()
 
 def ai_categorize_with_retry(branch_name, commit_messages):
@@ -78,10 +81,10 @@ Common XRPL amendments: AMM, NFTs, Batch, DID, Clawback, Escrow, Lending, Multi-
         except Exception as e:
             error_msg = str(e)
             
-            if "429" in error_msg or "overloaded" in error_msg.lower():
+            if "429" in error_msg or "overloaded" in error_msg.lower() or "rate" in error_msg.lower():
                 # Exponential Backoff
                 delay = BASE_DELAY * (2 ** attempt)
-                log_progress(0, 0, branch_name, f"429/Retry {attempt+1}")
+                log_progress(0, 0, branch_name, f"Retry {attempt+1}/{MAX_RETRIES} ({delay}s)")
                 time.sleep(delay)
             else:
                 print(f"⚠️  Error: {error_msg[:50]}")
