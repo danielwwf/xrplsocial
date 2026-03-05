@@ -3661,37 +3661,5 @@
         "body": ""
       }
     ]
-  },
-  {
-    "pr_number": 6289,
-    "branch_name": "send-pedersen",
-    "title": "Support Pedersen-ElGamal  linkage for ConfidentialSend",
-    "body": "- Introduced `AmountCommitment` and `BalanceCommitment` \r\n- Support the linkage of ElGamal encrypted amount and its corresponding `AmountCommitment`. Proves knowledge of the amount ($m$), the encryption randomness ($r$), and the Pedersen blinding factor ($\\rho$).\r\n- Support the linkage of the sender's encrypted spending balance to `BalanceCommitment`. Proves knowledge of the balance ($b$), the Pedersen blinding factor ($\\rho$), and the sender\u2019s secret key ($s$).\r\n- Enriches the test framework and add the corresponding tests.\r\n- **NOTICE**:  Pipeline fails due to copying C lib functions directly, but we are going to use package management tool soon.\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-bre",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-28T17:22:38Z",
-    "merged_at": "2026-01-29T16:18:47Z",
-    "labels": [],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
   }
 ]
