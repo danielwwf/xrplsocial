@@ -1,5 +1,36 @@
 [
   {
+    "pr_number": 6469,
+    "branch_name": "chore/clang-tidy-checks-pointer-arithmetic-on-polymorphic-object",
+    "title": "chore: Enable clang-tidy `bugprone-pointer-arithmetic-on-polymorphic-object` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables clang-tidy `bugprone-pointer-arithmetic-on-polymorphic-object` check.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n-",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-04T14:55:36Z",
+    "merged_at": "2026-03-09T18:36:57Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6469?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`0335076`](https://app.codecov.io/gh/XRPLF/rippled/commit/0335076359db5d88335e2b174b3169b84599ef29?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-04T15:15:07Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6484,
     "branch_name": "ct-audit-17",
     "title": "fix: add safety size checks in helper functions (audit no. 17)",
@@ -2815,66 +2846,6 @@
     ]
   },
   {
-    "pr_number": 6134,
-    "branch_name": "pd_inv",
-    "title": "Fix invariant checks for Permissioned Domains",
-    "body": "## High Level Overview of Change\r\nFixed typo in invariant checks, found by Immunefi\r\n\r\n### Type of Change\r\n\r\n\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2025-12-10T16:40:08Z",
-    "merged_at": "2026-02-10T19:02:54Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 6,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6134?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`db2734c`](https://app.codecov.io/gh/XRPLF/rippled/commit/db2734cbc96329f64c23ea68fadc2fc898696510?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2025-12-10T17:05:35Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "Does this need an amendment?",
-        "created_at": "2025-12-11T14:38:17Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "> Does this need an amendment?\r\n\r\nNo it didn't change anything. I can't imagine situation where before is different from after (except where before is null)",
-        "created_at": "2025-12-11T20:26:44Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "@ximinez \r\n\r\n>1.  sleStatus_ is an optional. It should be a vector, in case more than one permissioned domain is affected\r\n\r\nmodified and added check for size() > 1  (which is actually impossible as there is no such transaction)\r\n\r\n> 3. Because you're checking the integrity of the object, and not checking any of the changes between before and after\r\n\r\nremoved check for \"before\"\r\n\r\n> 2. The conditions in finalize are only checked for successful PermissionedDomainSet transactions.\r\n> 2.1 If no oth",
-        "created_at": "2025-12-12T20:00:06Z"
-      },
-      {
-        "user": "ximinez",
-        "body": "> > 1. sleStatus_ is an optional. It should be a vector, in case more than one permissioned domain is affected\r\n> \r\n> modified and added check for size() > 1 (which is actually impossible as there is no such transaction)\r\n\r\n**_EVERY_** failure case in an Invariant should be impossible. The intention is less \"double-check that the transaction did the right thing\", and more \"if something goes extremely wrong, or an attacker finds an exploit, what are some reasonable checks we can do to stop it?\"\r\n",
-        "created_at": "2025-12-13T00:08:17Z"
-      }
-    ],
-    "reviews_count": 11,
-    "reviews": [
-      {
-        "user": "Tapanito",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "ximinez",
-        "state": "CHANGES_REQUESTED",
-        "body": "This invariant has a few problems in general:\n1. `sleStatus_` is an `optional`. It should be a `vector`, in case more than one permissioned domain is affected by a transaction. If that is supposed to "
-      },
-      {
-        "user": "ximinez",
-        "state": "CHANGES_REQUESTED",
-        "body": "This is so much better and safer! Thank you for making the changes. I left a couple of suggestions, but they're all pretty minor, and easy to fix."
-      }
-    ]
-  },
-  {
     "pr_number": 6332,
     "branch_name": "ct-comments",
     "title": "Add doxygen comments for new transactions and helper functions",
@@ -3374,37 +3345,6 @@
     ]
   },
   {
-    "pr_number": 6215,
-    "branch_name": "tapanito/lending-tyops",
-    "title": "fixes typo in LendingHelpers unit-test",
-    "body": "## High Level Overview of Change\r\n\r\nFixes a typo and does minor refactoring to overpayment unit tests in LendingHelpers_test.cpp.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be backward ",
-    "user": "Tapanito",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-14T15:40:41Z",
-    "merged_at": "2026-02-05T10:23:45Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6215?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`7f41012`](https://app.codecov.io/gh/XRPLF/rippled/commit/7f41012e599fde6d8c3985c954db57181c720a53?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-14T15:59:24Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "ximinez",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
     "pr_number": 6327,
     "branch_name": "update_deps",
     "title": "chore: Update secp256k1 and openssl",
@@ -3438,35 +3378,6 @@
         "user": "bthomee",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6326,
-    "branch_name": "bthomee/include",
-    "title": "chore: Remove unnecessary script",
-    "body": "## High Level Overview of Change\r\n\r\nThis change removes the script that was used to replace most include guards by `#pragma once`.\r\n\r\n### Context of Change\r\n\r\nThis script did part of the work but not all, and is unnecessary to have in the repo. It had not been intended to merge but was accidentally committed and merged.\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [X] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
-    "user": "bthomee",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-04T16:28:14Z",
-    "merged_at": "2026-02-04T16:30:16Z",
-    "labels": [
-      "Trivial"
-    ],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "a1q123456",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR removes a Python script that was accidentally committed and merged, which was used to convert C++ include guards to `#pragma once` directives. The script has served i"
       }
     ]
   }
