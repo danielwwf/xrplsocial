@@ -1,5 +1,81 @@
 [
   {
+    "pr_number": 6484,
+    "branch_name": "ct-audit-17",
+    "title": "fix: add safety size checks in helper functions (audit no. 17)",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
+    "user": "shawnxie999",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-05T18:07:17Z",
+    "merged_at": "2026-03-09T17:27:33Z",
+    "labels": [],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6484?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:warning: Please [upload](https://docs.codecov.com/docs/codecov-uploader) report for BASE (`shawnxie999/ct-audit-feedbacks@219dcce`). [Learn more](https://docs.codecov.io/docs/error-reference?utm_medium=referral&utm_source=git",
+        "created_at": "2026-03-05T18:54:28Z"
+      },
+      {
+        "user": "yinyiqian1",
+        "body": "`verifyAggregatedBulletproof` needs to check proof size as well.\r\n(And we can just check m is 1 or 2 in the beginning of that function, which is the only possible values in our protocol.)",
+        "created_at": "2026-03-06T22:58:45Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "APPROVED",
+        "body": "approve with a minor comment"
+      }
+    ]
+  },
+  {
+    "pr_number": 6471,
+    "branch_name": "ct-audit-14",
+    "title": "fix: (no. 14) fix credential checks in ConfidentialMPTSend",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
+    "user": "shawnxie999",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-04T16:02:39Z",
+    "merged_at": "2026-03-09T17:26:25Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6471?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:warning: Please [upload](https://docs.codecov.com/docs/codecov-uploader) report for BASE (`shawnxie999/ct-audit-feedbacks@219dcce`). [Learn more](https://docs.codecov.io/docs/error-reference?utm_medium=referral&utm_source=git",
+        "created_at": "2026-03-04T16:25:10Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "APPROVED",
+        "body": "looks good"
+      }
+    ]
+  },
+  {
     "pr_number": 6509,
     "branch_name": "chore/clang-tidy-checks-unused-local-non-trivial-variable2",
     "title": "chore: Fix clang-tidy issues from merging `unused-local-non-trivial-variable`",
@@ -12,8 +88,14 @@
     "labels": [
       "Ready to merge"
     ],
-    "comments_count": 0,
-    "comments": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6509?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`e2290b1`](https://app.codecov.io/gh/XRPLF/rippled/commit/e2290b1a0af2d90ca58b67c7d8b38cd8db1c2879?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-09T17:43:09Z"
+      }
+    ],
     "reviews_count": 1,
     "reviews": [
       {
@@ -37,12 +119,17 @@
       "Ready to merge",
       "Trivial"
     ],
-    "comments_count": 1,
+    "comments_count": 2,
     "comments": [
       {
         "user": "mathbunnyru",
         "body": "> Shouldn't this be added to the on-pr.yml file? Then it can be used as part of the success/failure (\"pass\") checks.\r\n\r\nIt can't be added there, because `on-pr` is not triggered on `edited`.\r\nIt's crucial for pr-title check (because `edited` is for title changes), and useless for other workflows.\r\n\r\nBut, after merge, please add this job to the list of required checks.",
         "created_at": "2026-03-09T16:14:52Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6506?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`e2290b1`](https://app.codecov.io/gh/XRPLF/rippled/commit/e2290b1a0af2d90ca58b67c7d8b38cd8db1c2879?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-09T17:29:37Z"
       }
     ],
     "reviews_count": 2,
@@ -3380,150 +3467,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "## Pull request overview\n\nThis PR removes a Python script that was accidentally committed and merged, which was used to convert C++ include guards to `#pragma once` directives. The script has served i"
-      }
-    ]
-  },
-  {
-    "pr_number": 6322,
-    "branch_name": "bthomee/pragma",
-    "title": "refactor: Replace include guards by '#pragma once'",
-    "body": "## High Level Overview of Change\r\n\r\nThis change replaces all include guards in the `src/` and `include/` directories by `#pragma once`.\r\n\r\n### Context of Change\r\n\r\nThe use of traditional include guards, i.e.\r\n\r\n```\r\n#ifndef XXX\r\n#define XXX\r\n\r\n[code here]\r\n\r\n#endif // XXX\r\n```\r\n\r\nis error prone (e.g. naming collisions, typos) and takes up a lot of space. The `#pragma once` directive overcomes these issues and is supported by the major compilers. Hence, this change serves to simplify our codebase and to reduce maintenance going forward.\r\n\r\nNote that AI was used to create a script that performed the majority of these substitutions. However, as it made a few mistakes that needed manual fixing, I've not included the script in this PR. We will need to keep an eye out on currently open PRs to ensure any new files use `#pragma once`.\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [X] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
-    "user": "bthomee",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-03T19:37:45Z",
-    "merged_at": "2026-02-04T14:50:22Z",
-    "labels": [],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "mvadari",
-        "body": "Should be easy enough to add a regex check to ensure these aren't included, right? Even without having a script that will replace successfully.",
-        "created_at": "2026-02-03T19:40:19Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "> Should be easy enough to add a regex check to ensure these aren't included, right? Even without having a script that will replace successfully.\r\n\r\nFair. I simplified by only checking for `#ifndef XRPL_` under the assumption that new files in open PRs will have include guards that start with `XRPL_`.\r\n\r\nThis script has been added to the collection of \"rename\" PRs as in my original proposal the possibility was raised of using `#pragma once`.",
-        "created_at": "2026-02-03T20:00:49Z"
-      },
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6322?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`3a17230`](https://app.codecov.io/gh/XRPLF/rippled/commit/3a172301cec7a43aa7b9b170508f0f0b5be66c19?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-03T20:34:44Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@dangell7 FYI",
-        "created_at": "2026-02-04T13:40:45Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR refactors the header inclusion pattern by replacing traditional `#ifndef/#define/#endif` include guards with `#pragma once` across the `include/` tree (and per descri"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 300 out of 677 changed files in this pull request and generated 3 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.i"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 300 out of 677 changed files in this pull request and generated 1 comment.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.in"
-      }
-    ]
-  },
-  {
-    "pr_number": 6296,
-    "branch_name": "ci_fix",
-    "title": "Fix negation of int64_t",
-    "body": "## High Level Overview of Change\r\nFix negation of int64_t in  wasm float Numkber2 class\r\n\r\n\r\n### Type of Change\r\n\r\n- [X] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-29T17:35:51Z",
-    "merged_at": "2026-02-03T22:43:55Z",
-    "labels": [],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6296?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.4%. Comparing base ([`7c8279e`](https://app.codecov.io/gh/XRPLF/rippled/commit/7c8279ec83d5c0246568b75de44a305e14ad6b0c?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-29T18:02:57Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "```\r\n/__w/rippled/rippled/src/xrpld/app/wasm/detail/HostFuncImplFloat.cpp:96:33: runtime error: negation of 9223372036854775808 cannot be represented in type 'uint64_t' (aka 'unsigned long')\r\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /__w/rippled/rippled/src/xrpld/app/wasm/detail/HostFuncImplFloat.cpp:96:33 \r\n```\r\nThis is false positive, as [makeNumber](https://github.com/XRPLF/rippled/pull/6296/changes#diff-2a26d5b37bae0a126bcde69b07e80a6eb0293373ddec742329d3af15026207f3R95) has c",
-        "created_at": "2026-01-29T19:49:07Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "> /__w/rippled/rippled/src/xrpld/app/wasm/detail/HostFuncImplFloat.cpp:96:33: runtime error: negation of 9223372036854775808 cannot be represented in type 'uint64_t' (aka 'unsigned long')\r\n> SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /__w/rippled/rippled/src/xrpld/app/wasm/detail/HostFuncImplFloat.cpp:96:33\r\n\r\nI asked Augment to try to fix this and this was its suggestion:\r\n```cpp\r\nstatic Number\r\nmakeNumber(int64_t mantissa, int32_t exponent)\r\n{\r\n    if (mantissa < 0)\r\n    {\r\n      ",
-        "created_at": "2026-01-29T20:54:37Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "> > /__w/rippled/rippled/src/xrpld/app/wasm/detail/HostFuncImplFloat.cpp:96:33: runtime error: negation of 9223372036854775808 cannot be represented in type 'uint64_t' (aka 'unsigned long')\r\n> > SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /__w/rippled/rippled/src/xrpld/app/wasm/detail/HostFuncImplFloat.cpp:96:33\r\n> \r\n> I asked Augment to try to fix this and this was its suggestion:\r\n> \r\n> ```c++\r\n> static Number\r\n> makeNumber(int64_t mantissa, int32_t exponent)\r\n> {\r\n>     if (mantis",
-        "created_at": "2026-01-30T15:00:31Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "sappenin",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6291,
-    "branch_name": "u32-buffer",
-    "title": "use buffers for uint32 WASM params",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-28T20:47:24Z",
-    "merged_at": "2026-02-03T21:08:46Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6291?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.4%. Comparing base ([`0418ffb`](https://app.codecov.io/gh/XRPLF/rippled/commit/0418ffb26a1715b9ccfb52872484a3aadd986c08?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-28T21:19:42Z"
-      }
-    ],
-    "reviews_count": 12,
-    "reviews": [
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
