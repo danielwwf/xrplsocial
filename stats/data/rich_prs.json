@@ -1,5 +1,105 @@
 [
   {
+    "pr_number": 6509,
+    "branch_name": "chore/clang-tidy-checks-unused-local-non-trivial-variable2",
+    "title": "chore: Fix clang-tidy issues from merging `unused-local-non-trivial-variable`",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR fixes some more issues that were not detected in the original PR (strange) but popped up in develop: https://github.com/XRPLF/rippled/actions/runs/22860818639/job/66313977737\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] ",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-09T16:38:41Z",
+    "merged_at": "2026-03-09T17:16:05Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 6506,
+    "branch_name": "check_pr_title",
+    "title": "chore: Use check-pr-title from XRPLF/actions",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-09T14:56:17Z",
+    "merged_at": "2026-03-09T16:53:52Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "mathbunnyru",
+        "body": "> Shouldn't this be added to the on-pr.yml file? Then it can be used as part of the success/failure (\"pass\") checks.\r\n\r\nIt can't be added there, because `on-pr` is not triggered on `edited`.\r\nIt's crucial for pr-title check (because `edited` is for title changes), and useless for other workflows.\r\n\r\nBut, after merge, please add this job to the list of required checks.",
+        "created_at": "2026-03-09T16:14:52Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": "Shouldn't this be added to the on-pr.yml file? Then it can be used as part of the success/failure (\"pass\") checks."
+      }
+    ]
+  },
+  {
+    "pr_number": 6447,
+    "branch_name": "Add_mutex",
+    "title": "feat: Add mutex wrapper from clio",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR adds a mutex wrapper copied from [clio](https://github.com/XRPLF/clio/). This wrapper makes a mutex attached to the data it protects which improves safety and readability.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [x] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [] Chore ",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-27T14:54:33Z",
+    "merged_at": "2026-03-09T16:33:21Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6447?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`1ee0567`](https://app.codecov.io/gh/XRPLF/rippled/commit/1ee0567b140bf77a229c7699aa86d9c419f64d0f?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-02-27T15:27:07Z"
+      }
+    ],
+    "reviews_count": 21,
+    "reviews": [
+      {
+        "user": "vlntb",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR adds a new mutex+data wrapper (ported from clio) intended to bundle protected data with its mutex and provide an RAII lock object that grants scoped access to the dat"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 1 out of 1 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*."
+      }
+    ]
+  },
+  {
     "pr_number": 6468,
     "branch_name": "chore/clang-tidy-checks-suspicious-missing-comma",
     "title": "chore: Enable clang-tidy `bugprone-suspicious-missing-comma` check",
@@ -3423,143 +3523,6 @@
       {
         "user": "oleks-rip",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6222,
-    "branch_name": "a1q123456/add_service_registry",
-    "title": "Add ServiceRegistry to help migration",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR adds a service registry class.\r\n### Context of Change\r\n\r\nWe're passing `Application` around and the `Application` class acts more like a service registry that gives other classes access to other services. In order to allow modularisation, we should replace `Application` with a service registry class so that modules depending on `Application` for other services can be moved easily.\r\n\r\nThis PR is part of the modularisation of the transactors. See all PRs here:\r\nhttps://github.com/XRPLF/rippled/pull/6222\r\nhttps://github.com/XRPLF/rippled/pull/6223\r\nhttps://github.com/XRPLF/rippled/pull/6224\r\nhttps://github.com/XRPLF/rippled/pull/6225\r\nhttps://github.com/XRPLF/rippled/pull/6226\r\nhttps://github.com/XRPLF/rippled/pull/6227\r\nhttps://github.com/XRPLF/rippled/pull/6228\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n",
-    "user": "a1q123456",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-15T12:10:51Z",
-    "merged_at": "2026-02-03T19:08:28Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6222?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`7813683`](https://app.codecov.io/gh/XRPLF/rippled/commit/78136830914f39024da0665806756e216b562d09?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-15T12:39:43Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@vvysokikh1 how does this look to you?",
-        "created_at": "2026-01-30T12:47:54Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "There's an unrelated file, `src/xrpld/app/tx/detail/Taker.h` with only whitespace changes (according to the \"New GitHub Experience\") or no changes (according to the legacy experience) included in this PR. The file curiously _is_ actually empty.\r\n\r\nI would suggest to revert the modification to the empty file in this PR, and then to delete it later as part of a modularization PR.",
-        "created_at": "2026-02-03T17:33:00Z"
-      }
-    ],
-    "reviews_count": 10,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "vvysokikh1",
-        "state": "CHANGES_REQUESTED",
-        "body": "I don't have any concrete numbers on how this will affect performance, but this change adds another layer of virtual dispatch into the picture. Considering functions from application being called mult"
-      },
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 5707,
-    "branch_name": "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
-    "title": "fix(amendment): expired NFToken offers not being deleted from ledger",
-    "body": "## High Level Overview of Change\n\nFixes expired NFToken offers not being deleted from the ledger when `NFTokenAcceptOffer` transactions fail with `tecEXPIRED`, preventing ledger bloat.\n\nIntroduces the `fixExpiredNFTokenOfferRemoval` amendment that allows expired offers to pass through `preclaim()` and be deleted in `doApply()`, following the same pattern used for expired credentials.\n\nFixes #5247\n\n### Context of Change\n\n**Bug Background**: Currently, expired NFToken offers remain on the ledger indefinitely. The bug exists because the current implementation checks for expired offers in `NFTokenAcceptOffer::preclaim()` and returns `tecEXPIRED` immediately, causing the transaction to fail before reaching `doApply()`. Since offers are only deleted in `doApply()`, expired offers never get cleaned up.\n\n**Solution Architecture**: This PR follows the same pattern used for expired credential handling in `Credentials.cpp`:\n\n1. **In `preclaim()`**: When the amendment is enabled, allow expired offers to pass through instead of failing immediately\n2. **In `doApply()`**: Check for expired offers, delete them from the ledger, and return `tecEXPIRED`\n\n**Behavior Changes**:\n- **Before amendment** (preserves current behavior): Expired offers cause `tecEXPIRED` in `preclaim()`, transaction fails early, offers remain on ledger\n- **After amendment** (fixed behavior): Expired offers pass through `preclaim()`, `doApply()` detects and deletes expired offers, returns `tecEXPIRED` after cleanup\n\n**Implementation Details**:\n- All behavior changes are properly gated behind `fixExpiredNFTokenOfferRemoval` amendment\n- Handles both direct offers and brokered scenarios\n- Includes proper logging and fallback error codes\n- Maintains backward compatibility - without amendment, behavior is identical to current state\n\n### Type of Change\n\n- [x] Bug fix (non-breaking change which fixes an issue)\n- [x] Tests (you added tests for code that already exists, or your new feature included in this PR)\n\n### API I",
-    "user": "Copilot",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2025-08-20T23:12:54Z",
-    "merged_at": "2026-02-03T16:37:25Z",
-    "labels": [
-      "Ready to merge",
-      "Amendment",
-      "QE test required",
-      "Triaged"
-    ],
-    "comments_count": 21,
-    "comments": [
-      {
-        "user": "mvadari",
-        "body": "@copilot tests are failing, please fix them. I can provide the CI output if you don't have access to it.\n\nclang-format is also still failing, though it does seem you caught a bunch of issues before.",
-        "created_at": "2025-08-21T13:32:20Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "@copilot this might be useful as the link to a failing test:\n```\n17> #25 failed: NFToken_test.cpp(6021)\n```",
-        "created_at": "2025-08-21T13:35:50Z"
-      },
-      {
-        "user": "Copilot",
-        "body": "\n> @copilot tests are failing, please fix them. I can provide the CI output if you don't have access to it.\n> \n> clang-format is also still failing, though it does seem you caught a bunch of issues before.\n\nI need the CI output to identify what specific tests are failing. The clang-format check passes on the files I modified, but there appear to be some existing formatting issues in other files. Could you provide the CI output so I can see the exact failures and address them?",
-        "created_at": "2025-08-21T13:37:16Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "> > @copilot tests are failing, please fix them. I can provide the CI output if you don't have access to it.\n> > \n> > clang-format is also still failing, though it does seem you caught a bunch of issues before.\n> \n> I need the CI output to identify what specific tests are failing. The clang-format check passes on the files I modified, but there appear to be some existing formatting issues in other files. Could you provide the CI output so I can see the exact failures and address them?\n\n@copilot ",
-        "created_at": "2025-08-21T13:45:15Z"
-      },
-      {
-        "user": "Copilot",
-        "body": "\n> @copilot this might be useful as the link to a failing test:\n> ```\n> 17> #25 failed: NFToken_test.cpp(6021)...\n\nFixed the failing test at line 6021. The issue was that the test tried to create NFToken offers with already-expired expiration times, but NFTokenCreateOffer rejects such offers during creation. Fixed by creating offers with future expiration times, then advancing the ledger time to make them expired before testing the acceptance logic. Changes in commit 4109a59.\n\n\n> > > @copilot te",
-        "created_at": "2025-08-21T13:51:59Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": "@copilot some notes"
-      },
-      {
-        "user": "copilot-swe-agent[bot]",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6317,
-    "branch_name": "tapanito/gitignore-zed",
-    "title": "Adds zed IDE to .gitignore",
-    "body": "This PR adds project configuration directory to `.gitignore` for the `zed` editor. \r\n\r\nAs per the [documentation](https://zed.dev/docs/remote-development?highlight=.zed#zed-settings), the project configuration files are stored in the `.zed` directory at the project root dir. \r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code tha",
-    "user": "Tapanito",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-03T11:47:44Z",
-    "merged_at": "2026-02-03T15:13:11Z",
-    "labels": [
-      "Trivial"
-    ],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
         "body": ""
       }
     ]
