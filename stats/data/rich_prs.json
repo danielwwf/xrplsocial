@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6456,
+    "branch_name": "chore/clang-tidy-checks-reserved-identifier",
+    "title": "chore: Enable clang-tidy `bugprone-reserved-identifier` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables clang-tidy `bugprone-reserved-identifier` check.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### A",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-03T12:36:48Z",
+    "merged_at": "2026-03-10T09:29:09Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6456?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`92983d8`](https://app.codecov.io/gh/XRPLF/rippled/commit/92983d8040b1e920938a6b3aa3bb92fcf303dc72?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-03T13:00:46Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nEnables the clang-tidy `bugprone-reserved-identifier` check and updates code to avoid triggering it, improving static analysis coverage and preventing use of C++ reserved ide"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "pratikmankawde",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6473,
     "branch_name": "chore/clang-tidy-checks-too-small-loop-variable",
     "title": "chore: Enable clang-tidy `bugprone-too-small-loop-variable` check",
@@ -3382,67 +3422,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "## Pull request overview\n\nCopilot reviewed 1 out of 1 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*."
-      }
-    ]
-  },
-  {
-    "pr_number": 5439,
-    "branch_name": "bthomee/disable-cache",
-    "title": "perf: Remove unnecessary caches",
-    "body": "## High Level Overview of Change\r\n\r\nThis change removes the cache in `DatabaseNodeImp`  and simplifies the caching logic in `SHAMapStoreImp`.\r\n\r\n### Context of Change\r\n\r\nThe codebase contains many caches, and this PR is one of several to refactor the codebase with as goal to improve performance, such as reducing memory use, to support future account, trust line, and transaction growth. In this case. as NuDB and RocksDB internally already use caches, additional caches in the code are not very valuable or may even be unnecessary. A number of performance analyses demonstrated improved performance, and more extensive performance analyses will be performed before this change is released.\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [X] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
-    "user": "bthomee",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2025-05-20T14:01:08Z",
-    "merged_at": "2026-02-06T14:42:35Z",
-    "labels": [
-      "QE test required",
-      "Triaged"
-    ],
-    "comments_count": 8,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/5439?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `29.62963%` with `19 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`25d7c2c`](https://app.codecov.io/gh/XRPLF/rippled/commit/25d7c2c4ec7580db602145c258ff49463a58f14a?dropdown=coverage&el=desc&utm_medium=re",
-        "created_at": "2025-05-20T14:47:00Z"
-      },
-      {
-        "user": "PeterChen13579",
-        "body": "Just looping in @kuznetsss before approving, I don\u2019t believe we do any node-level DB caching in Clio, right? So no changes should be needed on our side?",
-        "created_at": "2025-05-20T14:53:16Z"
-      },
-      {
-        "user": "kuznetsss",
-        "body": "As I understand this is rippled's internal database. So no changes on Clio's side are required.",
-        "created_at": "2025-05-20T15:46:23Z"
-      },
-      {
-        "user": "sublimator",
-        "body": "I was looking into memory usago a few weeks ago too and noticed some oddities with the node store cache. Sharing my notes.\r\n\r\n---\r\n\r\nSo regarding the NodeStore cache, **like you, I'm of the opinion that it is actually largely pointless**.\r\n- Peer messages use the SHAMap as source of truth and use a custom wire encoding\r\n- There's already a TreeNodeCache for SHAMap nodes that you may want to have laying around \r\n\r\nWhy was it ever there!? Well, it seems like back in the day, for some reason the Tr",
-        "created_at": "2025-08-13T12:15:17Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@sublimator I loved the historical context and the results from your deep dive - the amount of detail is very much appreciated!\r\n\r\nAs for your recommendations, our old performance analysis platform didn't let me modify the `rippled.cfg`, hence I created this PR in which I completely removed the code so I could evaluate its memory and cpu usage. It did show memory improvements at a slight increase in CPU. However, as our platform turned out to have some shortcomings (for one, it measured system m",
-        "created_at": "2025-08-14T18:53:37Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "sublimator",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "sublimator",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
