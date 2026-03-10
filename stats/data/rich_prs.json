@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 6504,
+    "branch_name": "chore/clang-tidy-checks-unhandled-self-assignment",
+    "title": "chore: Enable clang-tidy `bugprone-unhandled-self-assignment` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables clang-tidy `bugprone-unhandled-self-assignment` check.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-09T14:32:09Z",
+    "merged_at": "2026-03-10T17:42:49Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6504?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `50.00000%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`a896ed3`](https://app.codecov.io/gh/XRPLF/rippled/commit/a896ed39879df82d0528c7a31e6136a93122e1ee?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-03-09T14:52:57Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "/ai-review",
+        "created_at": "2026-03-10T14:59:19Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues.\n\n*Review by Claude Opus 4.5* \u00b7 Prompt: V11\n\n<!-- review-fingerprint:63ec5d42a72e6285 -->"
+      },
+      {
+        "user": "kuznetsss",
+        "state": "APPROVED",
+        "body": "LGTM"
+      }
+    ]
+  },
+  {
     "pr_number": 6488,
     "branch_name": "modularization_fix",
     "title": "Modularization fixes",
@@ -3358,56 +3399,6 @@
         "user": "lmaisons",
         "state": "APPROVED",
         "body": "As requested."
-      }
-    ]
-  },
-  {
-    "pr_number": 6199,
-    "branch_name": "cspell-tests",
-    "title": "refactor: fix spelling issues in tests",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR removes the `src/tests` exception from the cspell config and fixes all the issues that arise as a result. No functionality/test change.\r\n\r\n### Context of Change\r\n\r\nMore cspell work, follow-up from #5719 \r\n\r\n### Type of Change\r\n\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n\r\n### API Impact\r\n\r\nN/A\r\n\r\n## Test Plan\r\n\r\nCI passes.",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-09T16:43:09Z",
-    "merged_at": "2026-02-06T20:30:22Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6199?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`f5208fc`](https://app.codecov.io/gh/XRPLF/rippled/commit/f5208fc85020eb96de6a2b625ccb7f53c744d07a?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-01-09T17:24:25Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@godexsoft is this one ready to go per your assessment?",
-        "created_at": "2026-01-30T12:31:08Z"
-      },
-      {
-        "user": "godexsoft",
-        "body": "> @godexsoft is this one ready to go per your assessment?\r\n\r\nIf you are asking about proto then yes, this is not going to affect Clio. I left other comments though.",
-        "created_at": "2026-02-04T22:46:41Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR enables spell checking for test files by removing the `src/test/**` exception from the cspell configuration and systematically fixes all spelling issues found in test"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 38 out of 38 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename="
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
