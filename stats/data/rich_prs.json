@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 6526,
+    "branch_name": "chore/clang-tidy-checks-inc-dec-conditions2",
+    "title": "fix: Add missed clang-tidy `bugprone-inc-dec-conditions` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR fixes the currently failing clang-tidy check in develop.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### A",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-11T12:01:03Z",
+    "merged_at": "2026-03-11T14:04:27Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6526?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`bee2d11`](https://app.codecov.io/gh/XRPLF/rippled/commit/bee2d112c6cc067e478d5f9dbc9748ad927382c4?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-11T14:05:26Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6455,
     "branch_name": "chore/clang-tidy-checks-inc-dec-conditions",
     "title": "chore: Enable clang-tidy `bugprone-inc-dec-in-conditions` check",
@@ -3208,66 +3244,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "## Pull request overview\n\nCleans up cspell spellcheck warnings in test/fixture code and updates cspell configuration so generated/fixture sources don\u2019t create noise during spellchecking.\n\n**Changes:**"
-      }
-    ]
-  },
-  {
-    "pr_number": 6134,
-    "branch_name": "pd_inv",
-    "title": "Fix invariant checks for Permissioned Domains",
-    "body": "## High Level Overview of Change\r\nFixed typo in invariant checks, found by Immunefi\r\n\r\n### Type of Change\r\n\r\n\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2025-12-10T16:40:08Z",
-    "merged_at": "2026-02-10T19:02:54Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 6,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6134?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`db2734c`](https://app.codecov.io/gh/XRPLF/rippled/commit/db2734cbc96329f64c23ea68fadc2fc898696510?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2025-12-10T17:05:35Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "Does this need an amendment?",
-        "created_at": "2025-12-11T14:38:17Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "> Does this need an amendment?\r\n\r\nNo it didn't change anything. I can't imagine situation where before is different from after (except where before is null)",
-        "created_at": "2025-12-11T20:26:44Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "@ximinez \r\n\r\n>1.  sleStatus_ is an optional. It should be a vector, in case more than one permissioned domain is affected\r\n\r\nmodified and added check for size() > 1  (which is actually impossible as there is no such transaction)\r\n\r\n> 3. Because you're checking the integrity of the object, and not checking any of the changes between before and after\r\n\r\nremoved check for \"before\"\r\n\r\n> 2. The conditions in finalize are only checked for successful PermissionedDomainSet transactions.\r\n> 2.1 If no oth",
-        "created_at": "2025-12-12T20:00:06Z"
-      },
-      {
-        "user": "ximinez",
-        "body": "> > 1. sleStatus_ is an optional. It should be a vector, in case more than one permissioned domain is affected\r\n> \r\n> modified and added check for size() > 1 (which is actually impossible as there is no such transaction)\r\n\r\n**_EVERY_** failure case in an Invariant should be impossible. The intention is less \"double-check that the transaction did the right thing\", and more \"if something goes extremely wrong, or an attacker finds an exploit, what are some reasonable checks we can do to stop it?\"\r\n",
-        "created_at": "2025-12-13T00:08:17Z"
-      }
-    ],
-    "reviews_count": 11,
-    "reviews": [
-      {
-        "user": "Tapanito",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "ximinez",
-        "state": "CHANGES_REQUESTED",
-        "body": "This invariant has a few problems in general:\n1. `sleStatus_` is an `optional`. It should be a `vector`, in case more than one permissioned domain is affected by a transaction. If that is supposed to "
-      },
-      {
-        "user": "ximinez",
-        "state": "CHANGES_REQUESTED",
-        "body": "This is so much better and safer! Thank you for making the changes. I left a couple of suggestions, but they're all pretty minor, and easy to fix."
       }
     ]
   }
