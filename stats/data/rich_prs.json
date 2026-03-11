@@ -1,5 +1,36 @@
 [
   {
+    "pr_number": 6532,
+    "branch_name": "smol-nits",
+    "title": "fix: Remove unneeded import, fix log",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR:\r\n* Removes an unneeded import in `DeleteAccount.cpp`\r\n* Fixes a typoed log statement in `SetAccount.cpp`\r\n\r\nThat is it.\r\n\r\n### Context of Change\r\n\r\nAI code review\r\n\r\n### Type of Change\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n\r\n### API Impact\r\n\r\nN/A",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-11T19:19:32Z",
+    "merged_at": "2026-03-11T19:36:04Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6532?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`c791cae`](https://app.codecov.io/gh/XRPLF/rippled/commit/c791cae1ec627bd34b29894eb9ea5ef78b36ce1e?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-11T19:36:28Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6510,
     "branch_name": "6399_Another_attempt_to_fix_flaky_test",
     "title": "test: Fix flaky subscribe tests",
@@ -3221,51 +3252,6 @@
         "user": "godexsoft",
         "state": "COMMENTED",
         "body": "Looks fine from refactoring perspective except for the questions i left. I agree with @kuznetsss and there are more obvious things we should fix but i'd leave that for another pr."
-      }
-    ]
-  },
-  {
-    "pr_number": 6223,
-    "branch_name": "a1q123456/modularise-wallet-db-and-manifest",
-    "title": "Modularise WalletDB and Manifest",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR modularises the walletdb and manifest. Please be aware that the wallet db actually has nothing to do with account wallets and it stores node configuration, which is why it depends on `Manifest`.\r\n\r\n### Context of Change\r\n\r\nTo help modularisation, the wallet db has to be modularised.\r\n\r\nThis PR is part of the modularisation of the transactors. See all PRs here:\r\nhttps://github.com/XRPLF/rippled/pull/6222\r\nhttps://github.com/XRPLF/rippled/pull/6223\r\nhttps://github.com/XRPLF/rippled/pull/6224\r\nhttps://github.com/XRPLF/rippled/pull/6225\r\nhttps://github.com/XRPLF/rippled/pull/6226\r\nhttps://github.com/XRPLF/rippled/pull/6227\r\nhttps://github.com/XRPLF/rippled/pull/6228\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n",
-    "user": "a1q123456",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-15T12:23:44Z",
-    "merged_at": "2026-02-11T13:42:31Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6223?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `86.76471%` with `18 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`e11f619`](https://app.codecov.io/gh/XRPLF/rippled/commit/e11f6190b74599737f9f554da3b141f269e43803?dropdown=coverage&el=desc&utm_medium=re",
-        "created_at": "2026-01-15T14:34:01Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "RIPD-4880 Ticket created.",
-        "created_at": "2026-02-10T16:02:30Z"
-      }
-    ],
-    "reviews_count": 20,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "CHANGES_REQUESTED",
-        "body": "Leaving some suggestions."
-      },
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
