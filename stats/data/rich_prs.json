@@ -1,5 +1,66 @@
 [
   {
+    "pr_number": 6489,
+    "branch_name": "disable-new-feature-delegation",
+    "title": "fix: Mark SAV and Lending transactions as `NotDelegable`",
+    "body": "\r\nAny new transactions should be marked as `NotDelegable`, unless the interactions are fully tested and confirmed.\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping ",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-05T21:35:23Z",
+    "merged_at": "2026-03-11T21:27:35Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "yinyiqian1",
+        "body": "> I would not object if you added the \"Trivial\" label to this PR.\r\n\r\nIt looks like some vault tests are related to delegation. I\u2019ve removed them for now\u2014please let me know if that\u2019s okay with you. We can still add back if we want to support in the future.\r\n",
+        "created_at": "2026-03-05T22:04:34Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6489?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`ce9ccf8`](https://app.codecov.io/gh/XRPLF/rippled/commit/ce9ccf844a23963d08fc55ccc8a1d4b32d9cf41b?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-05T23:38:00Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@ximinez should this go into Lending 1.1? If so, should the PR be against `tapanito/lending-fix-amendment` ?",
+        "created_at": "2026-03-09T14:42:09Z"
+      },
+      {
+        "user": "ximinez",
+        "body": "> should this go into Lending 1.1? If so, should the PR be against `tapanito/lending-fix-amendment` ?\r\n\r\n@Tapanito It could, but I don't think it needs to.\r\n1. It is controlled by the delegation amendment, not lending 1.1. Because delegation is not yet supported, it can be changed without a separate amendment.\r\n2. They're both going to the same place (`develop`). If `lending-fix-amendment` ends up not going to `develop`, it'll be moot because the delegation amendment is unsupported.\r\n3. @yinyiqi",
+        "created_at": "2026-03-09T18:27:27Z"
+      },
+      {
+        "user": "yinyiqian1",
+        "body": "@ximinez Can we merge it if it looks good to you?",
+        "created_at": "2026-03-10T18:03:41Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": "I would not object if you added the \"Trivial\" label to this PR."
+      },
+      {
+        "user": "kennyzlei",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6532,
     "branch_name": "smol-nits",
     "title": "fix: Remove unneeded import, fix log",
@@ -3075,28 +3136,6 @@
       {
         "user": "a1q123456",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6365,
-    "branch_name": "ct-remove-lib",
-    "title": "Remove copied crypto library and use it from conan",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-12T19:11:33Z",
-    "merged_at": "2026-02-12T19:18:36Z",
-    "labels": [],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "yinyiqian1",
-        "state": "APPROVED",
         "body": ""
       }
     ]
