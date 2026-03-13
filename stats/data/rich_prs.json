@@ -31,6 +31,39 @@
     ]
   },
   {
+    "pr_number": 6540,
+    "branch_name": "fix-exceptions",
+    "title": "refactor: Improve exception handling",
+    "body": "## High Level Overview of Change\r\n\r\nThis change replaces `LogicError` by `Throw<std::logic_error>` in transactors, and adds `const` to exception handlers.\r\n\r\n### Context of Change\r\n\r\nTransactor executions are already being performed within a try-catch statement, so we may as well use throw to gracefully return in case of an edge case occurring. Clang-tidy further indicated that the exceptions can be made constant in the catch statements.",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-12T18:39:40Z",
+    "merged_at": "2026-03-12T20:18:26Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6540?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `4.65116%` with `41 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.3%. Comparing base ([`c598823`](https://app.codecov.io/gh/XRPLF/rippled/commit/c5988233d05bedddac28866ed37607f4869855f9?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-03-12T20:07:07Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": "Looks good."
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "Looks good! "
+      }
+    ]
+  },
+  {
     "pr_number": 6522,
     "branch_name": "update_pr_template",
     "title": "ci: Move Type of Change from PR template to CONTRIBUTING",
@@ -3045,46 +3078,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": "Fine for modularization refactoring. Please check if we can fix the comments i left. Otherwise good to go \ud83d\udc4d "
-      }
-    ]
-  },
-  {
-    "pr_number": 6227,
-    "branch_name": "a1q123456/decouple-app-tx-with-application",
-    "title": "Decouple app/tx from Application and Config",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR decouples app/tx with Application and Config to clear the way to moving transactors to libxrpl.\r\n\r\nThis PR is part of the modularisation of the transactors. See all PRs here:\r\n- [x] https://github.com/XRPLF/rippled/pull/6222\r\n- [x] https://github.com/XRPLF/rippled/pull/6223\r\n- [x] https://github.com/XRPLF/rippled/pull/6224\r\n- [x] https://github.com/XRPLF/rippled/pull/6225\r\n- [x] https://github.com/XRPLF/rippled/pull/6226\r\n- [ ] https://github.com/XRPLF/rippled/pull/6227\r\n- [ ] https://github.com/XRPLF/rippled/pull/6228\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release",
-    "user": "a1q123456",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-15T14:52:44Z",
-    "merged_at": "2026-02-17T16:29:53Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6227?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `93.40659%` with `6 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`958d8f3`](https://app.codecov.io/gh/XRPLF/rippled/commit/958d8f375453d80bb1aa4c293b5102c045a3e4b4?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-01-15T18:43:47Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": "For modularization this refactoring is ok i believe \ud83d\udc4d "
-      },
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
