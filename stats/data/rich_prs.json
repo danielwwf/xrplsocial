@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6539,
+    "branch_name": "remove-testline",
+    "title": "test: Remove testline JTX helper class",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR removes the JTX helper class `testline`, which adds the line that made the `env` call.\r\n\r\n### Context of Change\r\n\r\n`testline.h` is unnecessary after #6276\r\n\r\n### API Impact\r\n\r\nN/A\r\n\r\n## Test Plan\r\n\r\nCI passes, it builds properly.",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-12T18:19:53Z",
+    "merged_at": "2026-03-16T16:28:49Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6539?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`9838162`](https://app.codecov.io/gh/XRPLF/rippled/commit/983816248a9a05e7920cf3a432d0827d59989ba4?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-12T18:48:37Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": "Pretty straightforward."
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "Tapanito",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6490,
     "branch_name": "add_homomorphic_testss",
     "title": "add homomorphic tests to confidential MPT",
@@ -2845,52 +2885,6 @@
         "user": "bthomee",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6387,
-    "branch_name": "clang_format_100",
-    "title": "chore: Set clang-format width to 100",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-19T13:07:21Z",
-    "merged_at": "2026-02-20T00:26:00Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6387?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `87.79577%` with `294 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`469ce9f`](https://app.codecov.io/gh/XRPLF/rippled/commit/469ce9f291a4480c38d4ee3baca5136b2f053cd0?dropdown=coverage&el=desc&utm_medium=r",
-        "created_at": "2026-02-19T13:37:56Z"
-      },
-      {
-        "user": "mathbunnyru",
-        "body": "> Could you split this PR into two commits? The first would _only_ change `.clang-format`, and the second would do the actual formatting. (Include \"(#6387)\" in both of the commit messages.)\r\n> \r\n> Historically, but inconsistently, we have done it this way to make it easier for others to merge. Basically, a developer would merge up to and including the `.clang-format` commit only, then format themselves, commit, and merge in the rest. There may still be conflicts, but they're usually greatly redu",
-        "created_at": "2026-02-19T23:31:08Z"
-      }
-    ],
-    "reviews_count": 4,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "Copilot wasn't able to review this pull request. There are 300 or more changed files, try reducing the number of files in this pull request and requesting a review from Copilot again.\n\n\n---\n\n\ud83d\udca1 <a href"
-      },
-      {
-        "user": "ximinez",
-        "state": "CHANGES_REQUESTED",
-        "body": "Could you split this PR into two commits? The first would _only_ change `.clang-format`, and the second would do the actual formatting. (Include \"(#6387)\" in both of the commit messages.)\n\nHistoricall"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "Copilot wasn't able to review this pull request. There are 300 or more changed files, try reducing the number of files in this pull request and requesting a review from Copilot again.\n\n\n---\n\n\ud83d\udca1 <a href"
       }
     ]
   }
