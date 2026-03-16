@@ -2959,43 +2959,5 @@
         "body": "## Pull request overview\n\nCopilot reviewed 7 out of 8 changed files in this pull request and generated 3 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instr"
       }
     ]
-  },
-  {
-    "pr_number": 6385,
-    "branch_name": "ct-use-compress-pk",
-    "title": "Compress ElGamal Public Keys and Pedersen Commitments + Add Validation",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n\r\n### Summary\r\nReduces storage size for ElGamal public keys and Pedersen commitments from 64 bytes to 33 bytes by using compressed EC point format. Adds validation to ensure these fields contain valid EC points before storing on ledger.\r\n\r\n### Changes\r\n\r\n**Field Size Reduction**\r\n| Field | Before | After |\r\n|-------|--------|-------|\r\n| `sfHolderElGamalPublicKey` | 64 bytes | 33 bytes |\r\n| `sfIssuerElGamalPublicKey` | 64 bytes | 33 bytes |\r\n| `sfAuditorElGamalPublicKey` | 64 bytes | 33 bytes |\r\n| `sfBalanceCommitment` | 64 bytes | 33 bytes |\r\n| `sfAmountCommitment` | 64 bytes | 33 bytes |\r\n\r\n**Validation**\r\n- Added `isValidPublicKey()` and `isValidCommitment()` functions\r\n- Preflight now validates that public keys and commitments are parseable compressed EC points\r\n- Invalid values rejected with `temMALFORMED`\r\n\r\n**Affected Transactions**\r\n- `ConfidentialMPTConvert` - validates holder public key\r\n- `MPTokenIssuanceSet` - validates issuer and auditor public keys\r\n- `ConfidentialMPTSend` - validates amount and balance commitments\r\n- `ConfidentialMPTConvertBack` - validates balance commitment\r\n\r\n### Breaking Changes\r\n- Public keys and commi",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-18T22:29:39Z",
-    "merged_at": "2026-02-19T13:41:16Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6385?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `92.00000%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 80.1%. Comparing base ([`67e8e89`](https://app.codecov.io/gh/XRPLF/rippled/commit/67e8e89e0f702b3ce5de7eba8b1aaa01bea209ef?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-02-18T23:16:08Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
   }
 ]
