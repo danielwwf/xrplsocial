@@ -1,5 +1,55 @@
 [
   {
+    "pr_number": 6461,
+    "branch_name": "chore/clang-tidy-checks-switch-missing-default-case",
+    "title": "chore: Enable clang-tidy `switch-missing-default-case` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nThis PR enables clang-tidy `switch-missing-default-case` check.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### AP",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-03T16:27:43Z",
+    "merged_at": "2026-03-16T21:19:38Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6461?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `42.85714%` with `20 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`e4dbaf5`](https://app.codecov.io/gh/XRPLF/rippled/commit/e4dbaf5efc8e2951ef96051736c8974bf1f0d1fe?dropdown=coverage&el=desc&utm_medium=re",
+        "created_at": "2026-03-03T16:46:38Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "@godexsoft ready to merge?",
+        "created_at": "2026-03-09T14:56:57Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "> @godexsoft ready to merge?\r\n\r\nI did not mark this as trivial so i assume we need one more reviewer. I'm happy to merge though if you think we do not.",
+        "created_at": "2026-03-09T17:38:13Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6452,
     "branch_name": "chore/clang-tidy-checks-crtp-accessibility",
     "title": "chore: Enable clang-tidy check for CRTP constructor accessibility",
@@ -2821,68 +2871,6 @@
         "user": "shawnxie999",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6398,
-    "branch_name": "dependabot/github_actions/develop/codecov/codecov-action-5.5.2",
-    "title": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.4.3 to 5.5.2",
-    "body": "Bumps [codecov/codecov-action](https://github.com/codecov/codecov-action) from 5.4.3 to 5.5.2.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/codecov/codecov-action/releases\">codecov/codecov-action's releases</a>.</em></p>\n<blockquote>\n<h2>v5.5.2</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>check gpg only when skip-validation = false by <a href=\"https://github.com/maxweng-sentry\"><code>@\u200bmaxweng-sentry</code></a> in <a href=\"https://redirect.github.com/codecov/codecov-action/pull/1894\">codecov/codecov-action#1894</a></li>\n<li>chore: <code>disable_search</code> alignment by <a href=\"https://github.com/freemanzMrojo\"><code>@\u200bfreemanzMrojo</code></a> in <a href=\"https://redirect.github.com/codecov/codecov-action/pull/1881\">codecov/codecov-action#1881</a></li>\n<li>chore(release): 5.5.2 by <a href=\"https://github.com/thomasrockhu-codecov\"><code>@\u200bthomasrockhu-codecov</code></a> in <a href=\"https://redirect.github.com/codecov/codecov-action/pull/1902\">codecov/codecov-action#1902</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/maxweng-sentry\"><code>@\u200bmaxweng-sentry</code></a> made their first contribution in <a href=\"https://redirect.github.com/codecov/codecov-action/pull/1894\">codecov/codecov-action#1894</a></li>\n<li><a href=\"https://github.com/freemanzMrojo\"><code>@\u200bfreemanzMrojo</code></a> made their first contribution in <a href=\"https://redirect.github.com/codecov/codecov-action/pull/1881\">codecov/codecov-action#1881</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/codecov/codecov-action/compare/v5.5.1...v5.5.2\">https://github.com/codecov/codecov-action/compare/v5.5.1...v5.5.2</a></p>\n<h2>v5.5.1</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>build(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2 by <a href=\"https://github.com/dependabot\"><code>@\u200bdependabot</code></a>[bot] in <a href=\"https://redirect.github.com/codecov/codecov-action/pull/1833\">codecov/codecov-action#1833</a><",
-    "user": "dependabot[bot]",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-20T09:20:04Z",
-    "merged_at": "2026-02-20T19:11:27Z",
-    "labels": [
-      "Ready to merge",
-      "Dependencies",
-      "github_actions"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6398?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`2c1fad1`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c1fad102353e11293e3edde1c043224e7d3e983?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-20T19:50:44Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6400,
-    "branch_name": "fix_docs_build",
-    "title": "ci: Build docs in PRs and in private repos",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis:\r\n- builds docs in PRs correctly (including PRs created from forks)\r\n- makes it work in private repos, where `ubunu-latest` is a runner with only 2 CPUs\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binar",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-20T14:38:06Z",
-    "merged_at": "2026-02-20T18:41:44Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR updates the documentation publishing workflow so it selects a smaller parallelism reduction when running in **private repositories**, accommodating GitHub-hosted runn"
-      },
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage1: "
       }
     ]
   }
