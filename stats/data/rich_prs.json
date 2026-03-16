@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6452,
+    "branch_name": "chore/clang-tidy-checks-crtp-accessibility",
+    "title": "chore: Enable clang-tidy check for CRTP constructor accessibility",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nThis PR enables `bugprone-crtp-constructor-accessibility` and fixes the few compilation issues we got from enabling it.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, drop",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-02T18:23:04Z",
+    "merged_at": "2026-03-16T20:18:16Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6452?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`1738a69`](https://app.codecov.io/gh/XRPLF/rippled/commit/1738a69619f93a00ba2278a2aa8fd370cda8c6c1?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-02T18:55:42Z"
+      }
+    ],
+    "reviews_count": 5,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nEnables the `bugprone-crtp-constructor-accessibility` clang-tidy check and updates several CRTP-style classes to satisfy the new rule by tightening base-constructor accessibi"
+      },
+      {
+        "user": "a1q123456",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6533,
     "branch_name": "fix-hasexpired",
     "title": "refactor: Use `hasExpired` in `CancelCheck`",
@@ -2843,47 +2883,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": ":rage1: "
-      }
-    ]
-  },
-  {
-    "pr_number": 6379,
-    "branch_name": "dependabot",
-    "title": "ci: Add dependabot config",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nFix: https://github.com/XRPLF/rippled/issues/6375\r\n\r\nThis keeps our actions up-to-date.\r\nOnly applies to published actions with releases (doesn't apply to XRPLF/actions).\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no im",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-18T14:25:22Z",
-    "merged_at": "2026-02-20T09:19:00Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6379?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`2c1fad1`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c1fad102353e11293e3edde1c043224e7d3e983?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-20T08:49:31Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage1: "
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "Copilot encountered an error and was unable to review this pull request. You can try again by re-requesting a review."
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 1 out of 1 changed files in this pull request and generated 1 comment.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instru"
       }
     ]
   }
