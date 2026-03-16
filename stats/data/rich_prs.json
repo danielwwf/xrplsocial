@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 6475,
+    "branch_name": "chore/clang-tidy-checks-unused-return-value",
+    "title": "chore: Enable clang-tidy `bugprone-unused-return-value` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables clang-tidy `bugprone-unused-return-value` check.\r\n\r\nThere is potentially a way to fix those by defining `BOOST_ASIO_NO_DEPRECATED` or even rewrite parts to use more modern asio API. But that's a much larger, scary and unrelated to clang-tidy effort. So for now we just nolint these because the code works fine as is.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput an",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-04T17:24:06Z",
+    "merged_at": "2026-03-16T13:55:22Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6475?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `0%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`1738a69`](https://app.codecov.io/gh/XRPLF/rippled/commit/1738a69619f93a00ba2278a2aa8fd370cda8c6c1?dropdown=coverage&el=desc&utm_medium=referral&u",
+        "created_at": "2026-03-04T17:56:33Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nEnables the clang-tidy `bugprone-unused-return-value` check and suppresses newly reported findings in a few Boost.Asio call sites where the return value is intentionally igno"
+      },
+      {
+        "user": "pratikmankawde",
+        "state": "APPROVED",
+        "body": "LGTM"
+      }
+    ]
+  },
+  {
     "pr_number": 6534,
     "branch_name": "fix-optexp",
     "title": "refactor: Simplify set/get call to use existing variable",
@@ -2873,91 +2909,5 @@
     "comments": [],
     "reviews_count": 0,
     "reviews": []
-  },
-  {
-    "pr_number": 6386,
-    "branch_name": "cmake_format_100",
-    "title": "chore: Set cmake-format width to 100",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-19T13:04:45Z",
-    "merged_at": "2026-02-19T19:42:52Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6386?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.0%. Comparing base ([`3130287`](https://app.codecov.io/gh/XRPLF/rippled/commit/31302877abfbec2c5397ba1ae7766632d7361b18?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-19T13:23:13Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR updates the cmake-format configuration to reduce the line width from 120 to 100 characters and applies this formatting change across all CMake files in the repository"
-      },
-      {
-        "user": "ximinez",
-        "state": "APPROVED",
-        "body": "Looks good.\n\nUnlike #6387, this is fine as one commit because it has a _much_ smaller footprint, and cmake files are not edited nearly as often as other code files."
-      }
-    ]
-  },
-  {
-    "pr_number": 6369,
-    "branch_name": "Add_clang_tidy_to_CI",
-    "title": "ci: Add clang tidy to ci",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nThis PR adds clang-tidy check to CI. It also includes fixes of the issues clang-tidy found with the enabled checks.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nAutomation added:\r\n- clang-tidy check of the changed c++ files on PR\r\n- clang-tidy check of all c++ files on merge to develop\r\n- clang-tidy check of all files c++ on nightly schedule and creating an issue if the check failed\r\n\r\nClang-tidy configuration is taken from Clio but almost all the checks are commented for now.\r\n\r\nI didn't test issue creation, but the rest should be fine.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause ex",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-13T17:52:13Z",
-    "merged_at": "2026-02-19T19:06:45Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "mvadari",
-        "body": "Can clang-tidy also be included in the pre-commit config?",
-        "created_at": "2026-02-13T17:58:18Z"
-      },
-      {
-        "user": "kuznetsss",
-        "body": "@mvadari, clang-tidy requires to run conan, cmake and generate c++ code from proto files. Pre-commit checks don't require any extra files. Also clang-tidy check is relatively heavy (comparable to compilation or even slower depending on enabled checks). Running it locally on each commit will significantly slow down development process.",
-        "created_at": "2026-02-13T18:08:28Z"
-      },
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6369?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`0976b2b`](https://app.codecov.io/gh/XRPLF/rippled/commit/0976b2b68b64972af8e6e7c497900b5bce9fe22f?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-13T18:46:41Z"
-      }
-    ],
-    "reviews_count": 24,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR adds clang-tidy static analysis checks to the CI pipeline with three different triggers: on PRs (checking only changed files), on merges to develop (checking all file"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 7 out of 8 changed files in this pull request and generated 4 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instr"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 7 out of 8 changed files in this pull request and generated 3 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instr"
-      }
-    ]
   }
 ]
