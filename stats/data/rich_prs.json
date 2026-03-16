@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 6533,
+    "branch_name": "fix-hasexpired",
+    "title": "refactor: Use `hasExpired` in `CancelCheck`",
+    "body": "## High Level Overview of Change\r\n\r\nTitle says it pretty much in its entirety. This simplifies the code a bit and aligns it with other expiry calls.\r\n\r\nWorth checking in review as well, but `hasExpired` is identical to the code being replaced, so no amendment is needed here.\r\n\r\n### Context of Change\r\n\r\nAI code review\r\n\r\n### Type of Change\r\n\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n\r\n### API Impact\r\n\r\nN/A",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-11T21:18:05Z",
+    "merged_at": "2026-03-16T18:14:59Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6533?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`e4dbaf5`](https://app.codecov.io/gh/XRPLF/rippled/commit/e4dbaf5efc8e2951ef96051736c8974bf1f0d1fe?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-11T21:37:54Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nRefactors `CancelCheck::preclaim` to use the shared `hasExpired(ReadView, optional<uint32_t>)` helper for check expiration logic, aligning this transactor with other expirati"
+      },
+      {
+        "user": "a1q123456",
+        "state": "APPROVED",
+        "body": "LGTM. Have checked the logic and can confirm it's identical."
+      },
+      {
+        "user": "pratikmankawde",
+        "state": "APPROVED",
+        "body": "LGTM"
+      }
+    ]
+  },
+  {
     "pr_number": 6539,
     "branch_name": "remove-testline",
     "title": "test: Remove testline JTX helper class",
@@ -2843,48 +2884,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "## Pull request overview\n\nCopilot reviewed 1 out of 1 changed files in this pull request and generated 1 comment.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instru"
-      }
-    ]
-  },
-  {
-    "pr_number": 6393,
-    "branch_name": "ximinez/fix-keylet-assert",
-    "title": "trivial: Fix tautological assert",
-    "body": "## High Level Overview of Change\r\n\r\n`sle.getType() != ltANY || sle.getType() != ltCHILD` can't be false. Change to `&&`.\r\n\r\n### Context of Change\r\n\r\nLooks like a simple typo introduced in https://github.com/XRPLF/rippled/commit/af5f28cbf8861996b1bb5c35cf16bd28401916dc#diff-952cdb0e645311ca00fe512132b41c9b4d7dd160e38ce8f4c1df0992cfa7aa5b which has managed to go unnoticed.\r\n\r\n### Type of Change\r\n\r\n- [X] Bug fix (non-breaking change which fixes an issue)\r\n\r\n## Before / After\r\n\r\nThis change should have no noticeable effect, unless there are existing bugs in `Keylet` handling. Since it's an assert, it won't have any effect on published packages.",
-    "user": "ximinez",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-19T23:37:48Z",
-    "merged_at": "2026-02-20T01:58:48Z",
-    "labels": [
-      "Ready to merge",
-      "Bug",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6393?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`2c1fad1`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c1fad102353e11293e3edde1c043224e7d3e983?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-20T01:34:16Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nFixes a tautological assertion in `Keylet::check()` so it correctly rejects invalid `STLedgerEntry` types (`ltANY` / `ltCHILD`), aligning with `LedgerEntryType` documentation"
-      },
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
       }
     ]
   }
