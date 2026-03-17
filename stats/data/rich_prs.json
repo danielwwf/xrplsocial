@@ -1,5 +1,50 @@
 [
   {
+    "pr_number": 6478,
+    "branch_name": "get-fee-payer",
+    "title": "refactor: Clean up `getFeePayer`, `mSourceBalance`, and `mPriorBalance`",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR:\r\n* Introduces a new helper function on `STTx`, `getFeePayer`\r\n* Removes the usage of `mSourceBalance` (and replaces it with SLE balance lookups)\r\n* Renames `mPriorBalance` to `preFeeBalance_`\r\n\r\nThis simplifies some of the code in the transactors and makes it a lot more readable.\r\n\r\n### Context of Change\r\n\r\nSimplifies Permission Delegation code (and will simplify #5887 a bit too). General improvement of the codebase.\r\n\r\n### Type of Change\r\n\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n\r\n### API Impact\r\n\r\nN/A\r\n\r\n<!--\r\n## Before / After\r\nIf relevant, use this section for an English description of the change at a technical level.\r\nIf this change affects an API, examples should be included here.\r\n\r\nFor performance-impacting changes, please provide these details:\r\n1. Is this a new feature, bug fix, or improvement to existing functionality?\r\n2. What behavior/functionality does the change impact?\r\n3. In what processing can the impact be measured? Be as specific as possible - e.g. RPC client call, payment transaction that involves LOB, AMM, caching, DB operations, etc.\r\n4. Does this change affect concurrent processing - e.g. does it involve acquiring locks, multi-threaded processing, or async processing?\r\n-->\r\n\r\n## Test Plan\r\n\r\nCI passes.",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-04T22:27:50Z",
+    "merged_at": "2026-03-17T14:12:17Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6478?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`5ae97fa`](https://app.codecov.io/gh/XRPLF/rippled/commit/5ae97fa8ae955bf8067919bcbebe2a18b64e3ffd?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-04T23:03:45Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "@yinyiqian1 @tequdev I was able to simplify the code (mainly `payFee`) even more by removing `mSourceBalance` and replacing it with a direct call to `account_`'s balance everywhere.\r\nI also took the liberty of renaming `mPriorBalance` to `preFeeBalance` so it's clearer and isn't using the outdated Hungarian notation.",
+        "created_at": "2026-03-05T03:40:00Z"
+      }
+    ],
+    "reviews_count": 14,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nRefactors permission-delegation fee handling by centralizing \u201cwho pays the fee\u201d logic into a single `STTx` helper, and updating transaction processing to use it.\n\n**Changes:*"
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "tequdev",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6502,
     "branch_name": "chore/clang-tidy-checks-unchecked-optional-access",
     "title": "chore: Fix tests for clang-tidy `bugprone-unchecked-optional-access` check",
@@ -2784,38 +2829,6 @@
         "user": "codecov[bot]",
         "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6396?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`625becf`](https://app.codecov.io/gh/XRPLF/rippled/commit/625becff183f4c8c22b62df19a9f1fdc1cea3874?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
         "created_at": "2026-02-20T23:35:01Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6397,
-    "branch_name": "dependabot/github_actions/develop/actions/checkout-6.0.2",
-    "title": "ci: [DEPENDABOT] bump actions/checkout from 4.3.0 to 6.0.2",
-    "body": "Bumps [actions/checkout](https://github.com/actions/checkout) from 4.3.0 to 6.0.2.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/actions/checkout/releases\">actions/checkout's releases</a>.</em></p>\n<blockquote>\n<h2>v6.0.2</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Add orchestration_id to git user-agent when ACTIONS_ORCHESTRATION_ID is set by <a href=\"https://github.com/TingluoHuang\"><code>@\u200bTingluoHuang</code></a> in <a href=\"https://redirect.github.com/actions/checkout/pull/2355\">actions/checkout#2355</a></li>\n<li>Fix tag handling: preserve annotations and explicit fetch-tags by <a href=\"https://github.com/ericsciple\"><code>@\u200bericsciple</code></a> in <a href=\"https://redirect.github.com/actions/checkout/pull/2356\">actions/checkout#2356</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/actions/checkout/compare/v6.0.1...v6.0.2\">https://github.com/actions/checkout/compare/v6.0.1...v6.0.2</a></p>\n<h2>v6.0.1</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Update all references from v5 and v4 to v6 by <a href=\"https://github.com/ericsciple\"><code>@\u200bericsciple</code></a> in <a href=\"https://redirect.github.com/actions/checkout/pull/2314\">actions/checkout#2314</a></li>\n<li>Add worktree support for persist-credentials includeIf by <a href=\"https://github.com/ericsciple\"><code>@\u200bericsciple</code></a> in <a href=\"https://redirect.github.com/actions/checkout/pull/2327\">actions/checkout#2327</a></li>\n<li>Clarify v6 README by <a href=\"https://github.com/ericsciple\"><code>@\u200bericsciple</code></a> in <a href=\"https://redirect.github.com/actions/checkout/pull/2328\">actions/checkout#2328</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/actions/checkout/compare/v6...v6.0.1\">https://github.com/actions/checkout/compare/v6...v6.0.1</a></p>\n<h2>v6.0.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Update README to include Node.js 24 support details and requirements by <a href=\"https://github.com/salmanmkc\"><co",
-    "user": "dependabot[bot]",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-20T09:20:00Z",
-    "merged_at": "2026-02-20T22:09:49Z",
-    "labels": [
-      "Ready to merge",
-      "Dependencies",
-      "github_actions"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6397?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`625becf`](https://app.codecov.io/gh/XRPLF/rippled/commit/625becff183f4c8c22b62df19a9f1fdc1cea3874?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-20T22:58:11Z"
       }
     ],
     "reviews_count": 1,
