@@ -1,5 +1,50 @@
 [
   {
+    "pr_number": 6502,
+    "branch_name": "chore/clang-tidy-checks-unchecked-optional-access",
+    "title": "chore: Fix tests for clang-tidy `bugprone-unchecked-optional-access` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nFixing all instances of `bugprone-unchecked-optional-access` is a scary fix so let's do it step by step.\r\nThis PR works around all instances found in tests. It's safe to ignore as tests already pass meaning there is no unchecked optionals that lead to UB.\r\nThe next PR for `bugprone-unchecked-optional-access` will be addressing the issues in actual libxrpl/xrpld code.\r\n\r\nNote that is some places `if(BEAST_EXPECT(v))` was replaced by simple `if(v.has_value())`, in some cases checking `BEAST_EXPECT(v)` before the if condition. This is because BEAST_EXPECT does not actually seem to fail the test correctly when used in the `if` like this. And some places it does not make sense to fail either because `nullopt` is actually expected.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-09T12:59:09Z",
+    "merged_at": "2026-03-16T23:47:41Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6502?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`ffea397`](https://app.codecov.io/gh/XRPLF/rippled/commit/ffea3977f0b771fe8e43a8f74e4d393d63a7afd8?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-09T13:20:40Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "> I know it's a lot of work, but maybe we can add `.has_value()` check above the `*val` statements, so clang-tidy actually knows we checked that the optional is not null?\r\n\r\nThat's what i decided to avoid. Proper fix is to add an option for the check in clang-tidy to be able to setup our own magic function (like CHECK and DCHECK).",
+        "created_at": "2026-03-09T17:55:53Z"
+      }
+    ],
+    "reviews_count": 10,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": "I know it's a lot of work, but maybe we can add `.has_value()` check above the `*val` statements, so clang-tidy actually knows we checked that the optional is not null?"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6461,
     "branch_name": "chore/clang-tidy-checks-switch-missing-default-case",
     "title": "chore: Enable clang-tidy `switch-missing-default-case` check",
@@ -66,7 +111,7 @@
     "comments": [
       {
         "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6452?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`1738a69`](https://app.codecov.io/gh/XRPLF/rippled/commit/1738a69619f93a00ba2278a2aa8fd370cda8c6c1?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6452?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`1a4c359`](https://app.codecov.io/gh/XRPLF/rippled/commit/1a4c3593518594632bd16a0af66af0904306be32?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
         "created_at": "2026-03-02T18:55:42Z"
       }
     ],
@@ -2841,34 +2886,6 @@
     "reviews": [
       {
         "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6404,
-    "branch_name": "send-range-proof",
-    "title": "Support Range Proof for ConfidentialMPTSend",
-    "body": "Support Range Proof for `ConfidentialMPTSend`:\r\n\r\n- The transfer amount ($m$) is in the range $[0, 2^{64})$.\r\n- The remaining balance ($b - m$) is in the range $[0, 2^{64})$.\r\n\r\n- Adopt constant-time execution for multi-proof verification under `verifySendProofs`. By accumulating results instead of failing fast, avoiding analysis that might distinguish between range, linkage, or equality proof failures\r\n- Added basic tests for range proof\r\n\r\n- todo: To test ($m$) is in the range $[0, 2^{64})$, some refactor needs to be done, which I think can be added after the `mpt-crypto/utility` lib\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [x] New feature (non-break",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-20T18:26:28Z",
-    "merged_at": "2026-02-20T19:18:35Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6404?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `85.00000%` with `6 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 80.1%. Comparing base ([`67e8e89`](https://app.codecov.io/gh/XRPLF/rippled/commit/67e8e89e0f702b3ce5de7eba8b1aaa01bea209ef?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-02-20T19:32:44Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "shawnxie999",
         "state": "APPROVED",
         "body": ""
       }
