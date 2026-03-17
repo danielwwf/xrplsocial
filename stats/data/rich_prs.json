@@ -1,5 +1,33 @@
 [
   {
+    "pr_number": 6550,
+    "branch_name": "ct-rename",
+    "title": "Rename privacy flag and public key names",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\nCorresponding spec change: https://github.com/XRPLF/XRPL-Standards/pull/501\r\n\r\n### Field Renames (SFields)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `sfIssuerElGamalPublicKey` | `sfIssuerEncryptionKey` |\r\n| `sfHolderElGamalPublicKey` | `sfHolderEncryptionKey` |\r\n| `sfAuditorElGamalPublicKey` | `sfAuditorEncryptionKey` |\r\n\r\n### Flag Renames\r\n\r\n#### Transaction Flags (`tf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `tfMPTCanPrivacy` | `tfMPTCanConfidentialAmount` |\r\n\r\n#### Ledger State Flags (`lsf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `lsfMPTCanPrivacy` | `lsfMPTCanConfidentialAmount` |\r\n\r\n#### Ledger State Mutable Flags (`lsmf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `lsmfMPTCannotMutatePrivacy` | `lsmfMPTCannotMutateCanConfidentialAmount` |\r\n\r\n#### Transaction Mutable Flags (`tmf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `tmfMPTCannotMutatePrivacy` | `tmfMPTCannotMutateCanConfidentialAmount` |\r\n| `tmfMPTSetPrivacy` | `tmfMPTSetCanConfidentialAmount` |\r\n| `tmfMPTClearPrivacy` | `tmfMPTClearCanConfidentialAmount` |\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the ",
+    "user": "shawnxie999",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-16T17:14:18Z",
+    "merged_at": "2026-03-17T14:53:17Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6550?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.0%. Comparing base ([`2c94e21`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c94e213c209a82cbb6412d943641766ad5a3ffe?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-16T19:36:41Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "yinyiqian1",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6478,
     "branch_name": "get-fee-payer",
     "title": "refactor: Clean up `getFeePayer`, `mSourceBalance`, and `mPriorBalance`",
@@ -2760,81 +2788,6 @@
       },
       {
         "user": "mvadari",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6402,
-    "branch_name": "vlntb/hotfix3.1.1",
-    "title": "Disable support for Batch and fixBatchInnerSigs",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis hotfix release marks Batch and fixBatchInnerSigs as unsupported, pending further investigation.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [x] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github",
-    "user": "vlntb",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-20T17:12:45Z",
-    "merged_at": "2026-02-21T00:46:47Z",
-    "labels": [],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6402?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.4%. Comparing base ([`d325f20`](https://app.codecov.io/gh/XRPLF/rippled/commit/d325f20c76fa798d0286d25e80b126ec0a2ee679?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-20T17:38:38Z"
-      },
-      {
-        "user": "vlntb",
-        "body": "> This needs a little bit of reorganizing.\r\n> \r\n> 1. Split into two commits.\r\n>    \r\n>    1. The first only changes `features.macro`. Also write a better commit message. e.g. \"Disable featureBatch and featureBatchInnerSigs amendments\", and you can include the PR number since you have one now.\r\n>    2. The second changes the version number. The commit message will match previous version-setting commits: \"Set version to X.Y.Z\".\r\n> 2. I also thought that this PR was going to set the version to \"3.1",
-        "created_at": "2026-02-20T20:11:03Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "a1q123456",
-        "state": "APPROVED",
-        "body": "lgtm"
-      },
-      {
-        "user": "ximinez",
-        "state": "CHANGES_REQUESTED",
-        "body": "This needs a little bit of reorganizing.\n\n1. Split into two commits.\n\t1. The first only changes `features.macro`. Also write a better commit message. e.g. \"Disable featureBatch and featureBatchInnerSi"
-      },
-      {
-        "user": "ximinez",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6396,
-    "branch_name": "dependabot/github_actions/develop/actions/upload-artifact-6.0.0",
-    "title": "ci: [DEPENDABOT] bump actions/upload-artifact from 4.6.2 to 6.0.0",
-    "body": "Bumps [actions/upload-artifact](https://github.com/actions/upload-artifact) from 4.6.2 to 6.0.0.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/actions/upload-artifact/releases\">actions/upload-artifact's releases</a>.</em></p>\n<blockquote>\n<h2>v6.0.0</h2>\n<h2>v6 - What's new</h2>\n<blockquote>\n<p>[!IMPORTANT]\nactions/upload-artifact@v6 now runs on Node.js 24 (<code>runs.using: node24</code>) and requires a minimum Actions Runner version of 2.327.1. If you are using self-hosted runners, ensure they are updated before upgrading.</p>\n</blockquote>\n<h3>Node.js 24</h3>\n<p>This release updates the runtime to Node.js 24. v5 had preliminary support for Node.js 24, however this action was by default still running on Node.js 20. Now this action by default will run on Node.js 24.</p>\n<h2>What's Changed</h2>\n<ul>\n<li>Upload Artifact Node 24 support by <a href=\"https://github.com/salmanmkc\"><code>@\u200bsalmanmkc</code></a> in <a href=\"https://redirect.github.com/actions/upload-artifact/pull/719\">actions/upload-artifact#719</a></li>\n<li>fix: update <code>@\u200bactions/artifact</code> for Node.js 24 punycode deprecation by <a href=\"https://github.com/salmanmkc\"><code>@\u200bsalmanmkc</code></a> in <a href=\"https://redirect.github.com/actions/upload-artifact/pull/744\">actions/upload-artifact#744</a></li>\n<li>prepare release v6.0.0 for Node.js 24 support by <a href=\"https://github.com/salmanmkc\"><code>@\u200bsalmanmkc</code></a> in <a href=\"https://redirect.github.com/actions/upload-artifact/pull/745\">actions/upload-artifact#745</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a href=\"https://github.com/actions/upload-artifact/compare/v5.0.0...v6.0.0\">https://github.com/actions/upload-artifact/compare/v5.0.0...v6.0.0</a></p>\n<h2>v5.0.0</h2>\n<h2>What's Changed</h2>\n<p><strong>BREAKING CHANGE:</strong> this update supports Node <code>v24.x</code>. This is not a breaking change per-se but we're treating it as such.</p>\n<ul>\n<li>Update README.md by <a href=\"h",
-    "user": "dependabot[bot]",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-20T09:19:59Z",
-    "merged_at": "2026-02-20T22:48:01Z",
-    "labels": [
-      "Ready to merge",
-      "Dependencies",
-      "github_actions"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6396?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`625becf`](https://app.codecov.io/gh/XRPLF/rippled/commit/625becff183f4c8c22b62df19a9f1fdc1cea3874?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-20T23:35:01Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
         "state": "APPROVED",
         "body": ""
       }
