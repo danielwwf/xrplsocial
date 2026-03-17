@@ -1,5 +1,81 @@
 [
   {
+    "pr_number": 6560,
+    "branch_name": "refactor-authorizedDepositPreauth-readview",
+    "title": "refactor: Use ReadView instead of ApplyView in `authorizedDepositPreauth()`",
+    "body": "\r\n  ## High Level Overview of Change                                                                                                                                                                        \r\n                                                                                                                                                                                                          \r\n  Change the parameter type of `credentials::authorizedDepositPreauth` from `ApplyView const&` to `ReadView const&`, since the function only performs read operations on the view.                        \r\n                                                                                                                                                                                                          \r\n  ### Context of Change                                                                                                                                                                                   \r\n                                                                                                                                                                                                        \r\n  `authorizedDepositPreauth` only calls `view.read()` and `view.exists()`, which are `ReadView` methods. Using `ApplyView` was unnecessarily restrictive and misleading about the function's intent. This \r\n  change narrows the interface to the minimal required type. ",
+    "user": "tequdev",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-17T15:58:09Z",
+    "merged_at": "2026-03-17T19:56:51Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6560?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`78b2d70`](https://app.codecov.io/gh/XRPLF/rippled/commit/78b2d70a1198ae6a366cea8979be82fbe977bb90?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-17T16:31:53Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "@tequdev is this PR ready to merge?",
+        "created_at": "2026-03-17T16:33:13Z"
+      },
+      {
+        "user": "tequdev",
+        "body": "> @tequdev is this PR ready to merge?\r\n\r\nyes",
+        "created_at": "2026-03-17T16:50:28Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 6555,
+    "branch_name": "refactor-verifyDepositPreauth-sleDst",
+    "title": "refactor: Add const qualifier to SLE in `verifyDepositPreauth` parameter",
+    "body": "\r\n  ## High Level Overview of Change                                                                                                                                                                        \r\n                                                                                                                                                                                                          \r\n  Add `const` qualifier to `SLE` in the `verifyDepositPreauth` function parameter, changing `std::shared_ptr<SLE> const&` to `std::shared_ptr<SLE const> const&`.                                         \r\n                                                                                                                                                                                                          \r\n  ### Context of Change                                                                                                                                                                                   \r\n                                                                \r\n  The `sleDst` parameter in `verifyDepositPreauth` is not modified within the function body. Using `std::shared_ptr<SLE const>` instead of `std::shared_ptr<SLE>` enforces const-correctness at the type  \r\n  level, preventing accidental mutation of the ledger entry through this pointer.\r\n                                                                                                                                                                                                          \r\n  This is a refactor to improve const-correctness with no behavioral change.                                                                                                                              \r\n   \r\n   https://github.com/XRPLF/rippled/pull/5887#discussion_r2921165062\r\n",
+    "user": "tequdev",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-17T12:27:58Z",
+    "merged_at": "2026-03-17T19:33:18Z",
+    "labels": [
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6555?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`72f4cb0`](https://app.codecov.io/gh/XRPLF/rippled/commit/72f4cb097f626b08b02fc3efcb4aa11cb2e7adb8?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-17T12:50:42Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6538,
     "branch_name": "refactor/clang-tidy-cppcoreguidelines",
     "title": "refactor: Enable remaining clang-tidy `cppcoreguidelines` checks",
@@ -2507,56 +2583,6 @@
       {
         "user": "shawnxie999",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6418,
-    "branch_name": "updateCryptoLib",
-    "title": "chore: update crypto-lib",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelev",
-    "user": "PeterChen13579",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-24T18:33:29Z",
-    "merged_at": "2026-02-25T17:18:31Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6418?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.1%. Comparing base ([`67e8e89`](https://app.codecov.io/gh/XRPLF/rippled/commit/67e8e89e0f702b3ce5de7eba8b1aaa01bea209ef?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-24T21:41:21Z"
-      }
-    ],
-    "reviews_count": 0,
-    "reviews": []
-  },
-  {
-    "pr_number": 6413,
-    "branch_name": "params_test",
-    "title": "UT for wasm parameters",
-    "body": "## High Level Overview of Change\r\nMore unit tests for functions parameters\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [X] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-23T19:43:23Z",
-    "merged_at": "2026-02-25T16:49:28Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6413?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.5%. Comparing base ([`1b4a564`](https://app.codecov.io/gh/XRPLF/rippled/commit/1b4a564369e6b39defdc63004c5fba4cf73e47f6?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-23T21:45:51Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
         "body": ""
       }
     ]
