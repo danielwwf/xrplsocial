@@ -1,5 +1,36 @@
 [
   {
+    "pr_number": 6578,
+    "branch_name": "new_pr_title",
+    "title": "ci: Use external action implementation of check-pr-title",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be bac",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-18T16:32:45Z",
+    "merged_at": "2026-03-18T18:52:39Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "mathbunnyru",
+        "body": "@bthomee please merge this as part of `merge_group`",
+        "created_at": "2026-03-18T16:33:17Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": "You do have a conflict btw."
+      }
+    ]
+  },
+  {
     "pr_number": 6573,
     "branch_name": "no_pr_title_draft",
     "title": "ci: Don't check PR title for drafts",
@@ -2300,44 +2331,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "## Pull request overview\n\nCopilot reviewed 2 out of 2 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*."
-      }
-    ]
-  },
-  {
-    "pr_number": 6449,
-    "branch_name": "backup-check-length",
-    "title": "add defensive check for sfData length",
-    "body": "## High Level Overview of Change\r\n\r\nTitle says it all\r\n\r\n### Context of Change\r\n\r\nGoing through AI review of the PR\r\n\r\n### Type of Change\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n\r\n### API Impact\r\n\r\nN/A\r\n\r\n## Test Plan\r\n\r\nCI passes",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-27T22:26:31Z",
-    "merged_at": "2026-03-02T19:47:48Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6449?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.5%. Comparing base ([`446ad36`](https://app.codecov.io/gh/XRPLF/rippled/commit/446ad36cbba459c07de030c5f4a1455be3d35ee8?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-27T23:00:08Z"
-      }
-    ],
-    "reviews_count": 4,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nAdds a defensive guard in `EscrowFinish::doApply()` to ensure any WASM-produced `sfData` does not exceed the protocol\u2019s maximum allowed length before writing it into the Escr"
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
