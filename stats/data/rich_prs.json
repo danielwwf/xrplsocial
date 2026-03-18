@@ -1,5 +1,85 @@
 [
   {
+    "pr_number": 6409,
+    "branch_name": "is-tes-success",
+    "title": "refactor: Replace !=/== tesSuccess with using isTesSuccess",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR replaces all instances of `<variable> != tesSUCCESS` with `!isTesSuccess(<variable>)` and `<variable> == tesSUCCESS` with `isTesSuccess(<variable>)`.\r\n\r\n### Context of Change\r\n\r\nGeneral code cleanup\r\n\r\n### Type of Change\r\n\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n\r\n### API Impact\r\n\r\nN/A\r\n\r\n## Test Plan\r\n\r\nCI passes.",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-23T16:41:29Z",
+    "merged_at": "2026-03-18T14:15:10Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6409?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `96.24060%` with `5 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`6fbeb04`](https://app.codecov.io/gh/XRPLF/rippled/commit/6fbeb04d9e231aaa16b04503ae389885b81f6e31?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-02-26T17:46:28Z"
+      }
+    ],
+    "reviews_count": 11,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR refactors the codebase to replace direct comparisons with `tesSUCCESS` (i.e., `!= tesSUCCESS` and `== tesSUCCESS`) with calls to the `isTesSuccess()` helper function."
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 27 out of 27 changed files in this pull request and generated 4 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*.ins"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 27 out of 27 changed files in this pull request and generated 2 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*.ins"
+      }
+    ]
+  },
+  {
+    "pr_number": 6542,
+    "branch_name": "fix-delegate",
+    "title": "fix: Disallow empty permission list when Delegate object is absent",
+    "body": "fix delegation: \r\n\r\n- If the Delegate object is not present, we should disallow empty permission list in DelegateSet `preclaim`.\r\n- Empty permission list is only allowed to delete the existing Delegate object.\r\n- In `doApply`, permission list being empty returns `tecINTERNAL`, which should not happen.\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.htm",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-12T19:17:57Z",
+    "merged_at": "2026-03-18T13:39:32Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6542?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`2a325e7`](https://app.codecov.io/gh/XRPLF/rippled/commit/2a325e7e2c133bdadd0c0f010598860570dc2624?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-12T19:58:08Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": "LGTM. The PR title and description should be fixed given the slight change in how this was implemented"
+      }
+    ]
+  },
+  {
     "pr_number": 6476,
     "branch_name": "chore/clang-tidy-checks-bugprone-use-after-move",
     "title": "chore: Enable clang-tidy `bugprone-use-after-move` check",
@@ -2317,75 +2397,6 @@
         "user": "ximinez",
         "state": "APPROVED",
         "body": "Works on my end. \n\nWhat do you think about running `pre-commit` with `--verbose` in the action?"
-      }
-    ]
-  },
-  {
-    "pr_number": 6444,
-    "branch_name": "update-hash",
-    "title": "Update hashing and support ticket",
-    "body": "\r\n- Update hashing: hash = `TxCommonHash || TxSpecific`\r\n  - TxCommonHash = `TxType || Account || IssuanceID || SequenceOrTicket`\r\n  - TxSpecific = `identity || freshness`\r\n\r\n- Support ticket for hash calculation by adopting `ctx.tx.getSeqProxy().value()`\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, o",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-26T21:33:34Z",
-    "merged_at": "2026-02-27T16:50:22Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6444?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.1%. Comparing base ([`67e8e89`](https://app.codecov.io/gh/XRPLF/rippled/commit/67e8e89e0f702b3ce5de7eba8b1aaa01bea209ef?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-27T00:34:24Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "shawnxie999",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6339,
-    "branch_name": "better-erroring",
-    "title": "chore: grep for failures in CI",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR adjusts the CI tests to make it easier to spot errors without needing to sift through the thousands of lines of output.\r\n\r\n### Context of Change\r\n\r\nEasier to sort through the test output, especially on mobile where there is no ctrl-f\r\n\r\n### Type of Change\r\n\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n\r\n### API Impact\r\n\r\nN/A\r\n\r\n## Test Plan\r\n\r\nhttps://github.com/XRPLF/rippled/actions/runs/22004407043/job/63584713622?pr=6339\r\nSee \"Show test failure summary\" section",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-06T19:23:16Z",
-    "merged_at": "2026-02-27T03:01:39Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6339?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`2e595b6`](https://app.codecov.io/gh/XRPLF/rippled/commit/2e595b603118963d209ef81386dfed4a413912c2?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-06T20:31:32Z"
-      }
-    ],
-    "reviews_count": 18,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR aims to make CI failures easier to spot by capturing embedded unit test output into a log file and printing a small \u201cfailure\u201d summary, alongside a small wording tweak"
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 2 out of 2 changed files in this pull request and generated 1 comment.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instru"
       }
     ]
   }
