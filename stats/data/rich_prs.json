@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6580,
+    "branch_name": "rename-tx-files",
+    "title": "refactor: Rename transactor files/classes to match the tx name",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR refactors the transactor code so that the transactor classes and filenames (and other artifacts like logs) match the canonical transaction names (e.g. `SetTrust` -> `TrustSet` and `PayChanCreate` -> `PaymentChannelCreate`).\r\n\r\n### Context of Change\r\n\r\nThis has been a long-time minor annoyance in this codebase, and #6483 and #6495 made this a lot easier to do.\r\n\r\n### API Impact\r\n\r\nN/A",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-18T16:54:08Z",
+    "merged_at": "2026-03-18T20:13:20Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6580?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.91667%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.7%. Comparing base ([`804a351`](https://app.codecov.io/gh/XRPLF/rippled/commit/804a351773c1d28eead4377227cac5e4420d475b?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-03-18T17:52:37Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "Tapanito",
+        "state": "APPROVED",
+        "body": "What a change! LGTM"
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6578,
     "branch_name": "new_pr_title",
     "title": "ci: Use external action implementation of check-pr-title",
@@ -2286,51 +2326,6 @@
         "user": "bthomee",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6420,
-    "branch_name": "6399_Fix_flaky_subscribe_test",
-    "title": "tests: Improve stability of Subscribe tests",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR improves stability of Subscribe tests.\r\n\r\nFixes #6399.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\nSubscribe tests were flaky because each test performs some operations (e.g. sends transactions) and waits for messages to appear in subscription with 100ms timeout. If tests are slow (because compiled in debug or the machine is slow) some of them could fail. This PR adds an attempt to synchronise background `Env`'s thread and test's thread by ensuring that all the scheduled operations  are started before test's thread starts to wait for a websocket message. This is done by limiting IO threads of the app inside `Env` to `1` and adding a synchronisation barrier after closing ledger.\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-25T17:40:44Z",
-    "merged_at": "2026-03-03T13:46:56Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6420?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`afc660a`](https://app.codecov.io/gh/XRPLF/rippled/commit/afc660a1b5764536cf40350714ee5849ac60a067?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-25T18:22:58Z"
-      },
-      {
-        "user": "kuznetsss",
-        "body": "@godexsoft, you are right and it turned out that the application was not single threaded. I've added an assert into `syncClose()` and enforced the application to have only 1 IO thread in these tests.",
-        "created_at": "2026-02-27T13:33:18Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR addresses flaky Subscribe tests by introducing a synchronization mechanism to ensure WebSocket subscription messages have been initiated before tests check for them. "
-      },
-      {
-        "user": "kuznetsss",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 2 out of 2 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*."
       }
     ]
   }
