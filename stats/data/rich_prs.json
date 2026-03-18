@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6476,
+    "branch_name": "chore/clang-tidy-checks-bugprone-use-after-move",
+    "title": "chore: Enable clang-tidy `bugprone-use-after-move` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables clang-tidy `bugprone-use-after-move` check.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Im",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-04T17:53:31Z",
+    "merged_at": "2026-03-18T00:12:07Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6476?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `83.33333%` with `1 line` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`9e14707`](https://app.codecov.io/gh/XRPLF/rippled/commit/9e14707e7717be5c5958ec966ba4c79ecd133777?dropdown=coverage&el=desc&utm_medium=refe",
+        "created_at": "2026-03-04T18:35:07Z"
+      }
+    ],
+    "reviews_count": 13,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": "Seems like an old `.reset()` might not be needed anymore. @ximinez if you could take a look and advise, would be great. "
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nEnables the clang-tidy `bugprone-use-after-move` check and updates existing code/tests to accommodate the new diagnostic by adding targeted suppressions where moved-from stat"
+      },
+      {
+        "user": "ximinez",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6572,
     "branch_name": "bthomee/title",
     "title": "ci: Update check-pr-title action hash",
@@ -2344,49 +2384,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "## Pull request overview\n\nCopilot reviewed 2 out of 2 changed files in this pull request and generated 1 comment.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instru"
-      }
-    ]
-  },
-  {
-    "pr_number": 6364,
-    "branch_name": "one_inst",
-    "title": "Disable reusing wasm module",
-    "body": "## High Level Overview of Change\r\nReusing module functionality left only for performance testing and will not be available in release.\r\n\r\n### Type of Change\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [X] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-12T18:15:00Z",
-    "merged_at": "2026-02-26T20:30:47Z",
-    "labels": [],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6364?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `95.90164%` with `5 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 80.5%. Comparing base ([`1d9ec84`](https://app.codecov.io/gh/XRPLF/rippled/commit/1d9ec843506146ec514d07d88ef729d5d9aa3b60?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-02-12T18:43:47Z"
-      },
-      {
-        "user": "pwang200",
-        "body": "I realized the PR was merged while reviewing it. I didn't review the testing part, but the implementation is good. ",
-        "created_at": "2026-02-26T21:09:39Z"
-      }
-    ],
-    "reviews_count": 22,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
