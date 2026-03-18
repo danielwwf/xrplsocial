@@ -1,5 +1,26 @@
 [
   {
+    "hash": "37b7dcbf",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/fix-workers-stop-race-condition",
+    "date": "2026-03-18T11:56:58+00:00",
+    "message": "fix: Fix Workers::stop() race between m_allPaused and m_runningTaskCount"
+  },
+  {
+    "hash": "acabb9c2",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/std-coro/tsan-fixes",
+    "date": "2026-03-18T11:22:25+00:00",
+    "message": "fix: add TSAN suppression for RCLConsensus/NetworkOPs lock-order-inversion"
+  },
+  {
+    "hash": "3b24fdd2",
+    "author": "JCW",
+    "branch": "a1q123456/modularise-ledger",
+    "date": "2026-03-18T11:14:59+00:00",
+    "message": "Merge branch 'a1q123456/add-code-generator' into a1q123456/modularise-ledger"
+  },
+  {
     "hash": "3b24fdd2",
     "author": "JCW",
     "branch": "a1q123456/modularise-ledger",
@@ -16,23 +37,16 @@
   {
     "hash": "2a859883",
     "author": "JCW",
-    "branch": "a1q123456/add-code-generator",
+    "branch": "a1q123456/modularise-ledger",
     "date": "2026-03-18T11:05:36+00:00",
     "message": "Merge remote-tracking branch 'origin/develop' into a1q123456/add-code-generator"
   },
   {
     "hash": "2a859883",
     "author": "JCW",
-    "branch": "a1q123456/modularise-ledger",
+    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-18T11:05:36+00:00",
     "message": "Merge remote-tracking branch 'origin/develop' into a1q123456/add-code-generator"
-  },
-  {
-    "hash": "5156cdf4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-18T10:58:14+00:00",
-    "message": "Fix dashboard units and axis labels for phase9 panels"
   },
   {
     "hash": "5156cdf4",
@@ -42,9 +56,16 @@
     "message": "Fix dashboard units and axis labels for phase9 panels"
   },
   {
-    "hash": "a5f1e8f2",
+    "hash": "5156cdf4",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-18T10:58:14+00:00",
+    "message": "Fix dashboard units and axis labels for phase9 panels"
+  },
+  {
+    "hash": "a5f1e8f2",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-03-18T10:57:01+00:00",
     "message": "Fix dashboard units (short\u2192none), histogram queries, and OTelCollector hook invocation"
   },
@@ -63,16 +84,16 @@
     "message": "Fix dashboard units (short\u2192none), histogram queries, and OTelCollector hook invocation"
   },
   {
-    "hash": "a5f1e8f2",
+    "hash": "5618b706",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-18T10:57:01+00:00",
-    "message": "Fix dashboard units (short\u2192none), histogram queries, and OTelCollector hook invocation"
+    "date": "2026-03-18T10:56:38+00:00",
+    "message": "Fix dashboard units: short\u2192none for counts, add missing units to heatmap and piecharts"
   },
   {
     "hash": "5618b706",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
+    "branch": "pratik/otel-phase7-native-metrics",
     "date": "2026-03-18T10:56:38+00:00",
     "message": "Fix dashboard units: short\u2192none for counts, add missing units to heatmap and piecharts"
   },
@@ -86,20 +107,6 @@
   {
     "hash": "5618b706",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-03-18T10:56:38+00:00",
-    "message": "Fix dashboard units: short\u2192none for counts, add missing units to heatmap and piecharts"
-  },
-  {
-    "hash": "5618b706",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-18T10:56:38+00:00",
-    "message": "Fix dashboard units: short\u2192none for counts, add missing units to heatmap and piecharts"
-  },
-  {
-    "hash": "5618b706",
-    "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase8-log-correlation",
     "date": "2026-03-18T10:56:38+00:00",
     "message": "Fix dashboard units: short\u2192none for counts, add missing units to heatmap and piecharts"
@@ -107,14 +114,21 @@
   {
     "hash": "5618b706",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "branch": "pratik/otel-phase6-statsd",
     "date": "2026-03-18T10:56:38+00:00",
     "message": "Fix dashboard units: short\u2192none for counts, add missing units to heatmap and piecharts"
   },
   {
     "hash": "903c5036",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-03-18T10:55:39+00:00",
+    "message": "Add axis labels to consensus-health and rpc-performance dashboard panels"
+  },
+  {
+    "hash": "903c5036",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5b-spans",
     "date": "2026-03-18T10:55:39+00:00",
     "message": "Add axis labels to consensus-health and rpc-performance dashboard panels"
   },
@@ -128,27 +142,6 @@
   {
     "hash": "903c5036",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5b-spans",
-    "date": "2026-03-18T10:55:39+00:00",
-    "message": "Add axis labels to consensus-health and rpc-performance dashboard panels"
-  },
-  {
-    "hash": "903c5036",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-03-18T10:55:39+00:00",
-    "message": "Add axis labels to consensus-health and rpc-performance dashboard panels"
-  },
-  {
-    "hash": "903c5036",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-18T10:55:39+00:00",
-    "message": "Add axis labels to consensus-health and rpc-performance dashboard panels"
-  },
-  {
-    "hash": "903c5036",
-    "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase8-log-correlation",
     "date": "2026-03-18T10:55:39+00:00",
     "message": "Add axis labels to consensus-health and rpc-performance dashboard panels"
@@ -156,7 +149,7 @@
   {
     "hash": "903c5036",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "branch": "pratik/otel-phase6-statsd",
     "date": "2026-03-18T10:55:39+00:00",
     "message": "Add axis labels to consensus-health and rpc-performance dashboard panels"
   },
@@ -693,7 +686,7 @@
     "message": "fix: Prevent early loan impairment and due-date manipulation"
   },
   {
-    "hash": "d741ba2d",
+    "hash": "fbafab8d",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-03-17T15:11:08+00:00",
@@ -707,14 +700,7 @@
     "message": "Remove effort estimates from Phase 9-11 docs"
   },
   {
-    "hash": "fbafab8d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-17T15:11:08+00:00",
-    "message": "Remove effort estimates from Phase 9-11 docs"
-  },
-  {
-    "hash": "5e38c670",
+    "hash": "f8cb67e3",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-03-17T15:10:54+00:00",
@@ -728,11 +714,18 @@
     "message": "Normalize cache hit rates to 0.0-1.0 for Grafana percentunit display"
   },
   {
-    "hash": "f8cb67e3",
+    "hash": "483c5dad",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-17T15:10:54+00:00",
-    "message": "Normalize cache hit rates to 0.0-1.0 for Grafana percentunit display"
+    "date": "2026-03-17T15:05:49+00:00",
+    "message": "Remove effort estimates from Phase 8 task table"
+  },
+  {
+    "hash": "483c5dad",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-03-17T15:05:49+00:00",
+    "message": "Remove effort estimates from Phase 8 task table"
   },
   {
     "hash": "d646242d",
@@ -749,18 +742,18 @@
     "message": "Remove effort estimates from Phase 8 task table"
   },
   {
-    "hash": "483c5dad",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-03-17T15:05:49+00:00",
-    "message": "Remove effort estimates from Phase 8 task table"
-  },
-  {
-    "hash": "483c5dad",
+    "hash": "470ba81c",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-17T15:05:49+00:00",
-    "message": "Remove effort estimates from Phase 8 task table"
+    "date": "2026-03-17T15:05:14+00:00",
+    "message": "Remove effort estimates from Phase 7 task table"
+  },
+  {
+    "hash": "470ba81c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-03-17T15:05:14+00:00",
+    "message": "Remove effort estimates from Phase 7 task table"
   },
   {
     "hash": "211859d3",
@@ -772,70 +765,42 @@
   {
     "hash": "470ba81c",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-17T15:05:14+00:00",
-    "message": "Remove effort estimates from Phase 7 task table"
-  },
-  {
-    "hash": "470ba81c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-17T15:05:14+00:00",
-    "message": "Remove effort estimates from Phase 7 task table"
-  },
-  {
-    "hash": "470ba81c",
-    "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase8-log-correlation",
     "date": "2026-03-17T15:05:14+00:00",
     "message": "Remove effort estimates from Phase 7 task table"
   },
   {
-    "hash": "470ba81c",
+    "hash": "53d4eb5e",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-17T15:05:14+00:00",
-    "message": "Remove effort estimates from Phase 7 task table"
+    "date": "2026-03-17T15:04:42+00:00",
+    "message": "Remove effort estimates from Phase 6 task table"
+  },
+  {
+    "hash": "53d4eb5e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-03-17T15:04:42+00:00",
+    "message": "Remove effort estimates from Phase 6 task table"
+  },
+  {
+    "hash": "53d4eb5e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-03-17T15:04:42+00:00",
+    "message": "Remove effort estimates from Phase 6 task table"
+  },
+  {
+    "hash": "53d4eb5e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-03-17T15:04:42+00:00",
+    "message": "Remove effort estimates from Phase 6 task table"
   },
   {
     "hash": "41bc7e46",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-03-17T15:04:42+00:00",
-    "message": "Remove effort estimates from Phase 6 task table"
-  },
-  {
-    "hash": "53d4eb5e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-17T15:04:42+00:00",
-    "message": "Remove effort estimates from Phase 6 task table"
-  },
-  {
-    "hash": "53d4eb5e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-03-17T15:04:42+00:00",
-    "message": "Remove effort estimates from Phase 6 task table"
-  },
-  {
-    "hash": "53d4eb5e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-17T15:04:42+00:00",
-    "message": "Remove effort estimates from Phase 6 task table"
-  },
-  {
-    "hash": "53d4eb5e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-03-17T15:04:42+00:00",
-    "message": "Remove effort estimates from Phase 6 task table"
-  },
-  {
-    "hash": "53d4eb5e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-03-17T15:04:42+00:00",
     "message": "Remove effort estimates from Phase 6 task table"
   },
@@ -859,13 +824,6 @@
     "branch": "ripple/confidential-transfer",
     "date": "2026-03-17T14:53:17+00:00",
     "message": "Rename privacy flag and public key names (#6550)"
-  },
-  {
-    "hash": "95d82188",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-17T14:46:59+00:00",
-    "message": "Update Phase 9/10 docs: rippled_ prefix, 6-node cluster, 12 dashboards"
   },
   {
     "hash": "14786613",
@@ -936,13 +894,6 @@
     "branch": "bthomee/sign",
     "date": "2026-03-17T14:44:07+00:00",
     "message": "refactor: Assorted small DID fixes (#6552)"
-  },
-  {
-    "hash": "8bda1fbd",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-17T14:42:29+00:00",
-    "message": "Fix integration test: WORKDIR override and insight service_instance_id"
   },
   {
     "hash": "c61e1685",
@@ -1024,6 +975,13 @@
   {
     "hash": "5ae97fa8",
     "author": "Pratik Mankawde",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-17T13:10:32+00:00",
+    "message": "refactor: Add no-ASAN macro for Throw statements (#6373)"
+  },
+  {
+    "hash": "5ae97fa8",
+    "author": "Pratik Mankawde",
     "branch": "origin",
     "date": "2026-03-17T13:10:32+00:00",
     "message": "refactor: Add no-ASAN macro for Throw statements (#6373)"
@@ -1071,13 +1029,6 @@
     "message": "refactor: Add no-ASAN macro for Throw statements (#6373)"
   },
   {
-    "hash": "5ae97fa8",
-    "author": "Pratik Mankawde",
-    "branch": "a1q123456/add-code-generator",
-    "date": "2026-03-17T13:10:32+00:00",
-    "message": "refactor: Add no-ASAN macro for Throw statements (#6373)"
-  },
-  {
     "hash": "00959c75",
     "author": "Pratik Mankawde",
     "branch": "pratik/std-coro/tsan-fixes",
@@ -1111,6 +1062,13 @@
     "branch": "pratik/std-coro/migrate-entry-points",
     "date": "2026-03-17T11:38:29+00:00",
     "message": "Merge branch 'develop' into pratik/std-coro/add-coroutine-primitives"
+  },
+  {
+    "hash": "eff344fa",
+    "author": "Pratik Mankawde",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-17T11:22:49+00:00",
+    "message": "chore: Move sanitizer runtime options out to files (#6371)"
   },
   {
     "hash": "eff344fa",
@@ -1171,13 +1129,6 @@
   {
     "hash": "eff344fa",
     "author": "Pratik Mankawde",
-    "branch": "a1q123456/add-code-generator",
-    "date": "2026-03-17T11:22:49+00:00",
-    "message": "chore: Move sanitizer runtime options out to files (#6371)"
-  },
-  {
-    "hash": "eff344fa",
-    "author": "Pratik Mankawde",
     "branch": "pratik/std-coro/add-coroutine-primitives",
     "date": "2026-03-17T11:22:49+00:00",
     "message": "chore: Move sanitizer runtime options out to files (#6371)"
@@ -1204,16 +1155,9 @@
     "message": "chore: Move sanitizer runtime options out to files (#6371)"
   },
   {
-    "hash": "010ac78f",
+    "hash": "6fe7baac",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-17T10:58:56+00:00",
-    "message": "Fix MetricsRegistry: add rippled_ prefix and Resource attributes"
-  },
-  {
-    "hash": "010ac78f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-17T10:58:56+00:00",
     "message": "Fix MetricsRegistry: add rippled_ prefix and Resource attributes"
   },
@@ -1225,23 +1169,16 @@
     "message": "Fix MetricsRegistry: add rippled_ prefix and Resource attributes"
   },
   {
-    "hash": "6fe7baac",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-17T10:58:56+00:00",
-    "message": "Fix MetricsRegistry: add rippled_ prefix and Resource attributes"
-  },
-  {
-    "hash": "8af6af6b",
+    "hash": "7f10c951",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-03-17T10:55:41+00:00",
     "message": "Fix std::bad_weak_ptr crash in OTelGaugeImpl constructor"
   },
   {
-    "hash": "8af6af6b",
+    "hash": "7f10c951",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
+    "branch": "pratik/otel-phase7-native-metrics",
     "date": "2026-03-17T10:55:41+00:00",
     "message": "Fix std::bad_weak_ptr crash in OTelGaugeImpl constructor"
   },
@@ -1255,28 +1192,7 @@
   {
     "hash": "7f10c951",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-17T10:55:41+00:00",
-    "message": "Fix std::bad_weak_ptr crash in OTelGaugeImpl constructor"
-  },
-  {
-    "hash": "7f10c951",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-17T10:55:41+00:00",
-    "message": "Fix std::bad_weak_ptr crash in OTelGaugeImpl constructor"
-  },
-  {
-    "hash": "7f10c951",
-    "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-03-17T10:55:41+00:00",
-    "message": "Fix std::bad_weak_ptr crash in OTelGaugeImpl constructor"
-  },
-  {
-    "hash": "7f10c951",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-03-17T10:55:41+00:00",
     "message": "Fix std::bad_weak_ptr crash in OTelGaugeImpl constructor"
   },
@@ -1297,6 +1213,13 @@
   {
     "hash": "7e7b71d8",
     "author": "Alex Kremer",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T23:47:40+00:00",
+    "message": "chore: Fix tests for clang-tidy `bugprone-unchecked-optional-access` check (#6502)"
+  },
+  {
+    "hash": "7e7b71d8",
+    "author": "Alex Kremer",
     "branch": "origin",
     "date": "2026-03-16T23:47:40+00:00",
     "message": "chore: Fix tests for clang-tidy `bugprone-unchecked-optional-access` check (#6502)"
@@ -1347,13 +1270,6 @@
     "hash": "7e7b71d8",
     "author": "Alex Kremer",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T23:47:40+00:00",
-    "message": "chore: Fix tests for clang-tidy `bugprone-unchecked-optional-access` check (#6502)"
-  },
-  {
-    "hash": "7e7b71d8",
-    "author": "Alex Kremer",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T23:47:40+00:00",
     "message": "chore: Fix tests for clang-tidy `bugprone-unchecked-optional-access` check (#6502)"
   },
@@ -1395,6 +1311,13 @@
   {
     "hash": "ffea3977",
     "author": "Bart",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T21:51:31+00:00",
+    "message": "refactor: Rename system name from 'ripple' to 'xrpld' (#6347)"
+  },
+  {
+    "hash": "ffea3977",
+    "author": "Bart",
     "branch": "origin",
     "date": "2026-03-16T21:51:31+00:00",
     "message": "refactor: Rename system name from 'ripple' to 'xrpld' (#6347)"
@@ -1445,13 +1368,6 @@
     "hash": "ffea3977",
     "author": "Bart",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T21:51:31+00:00",
-    "message": "refactor: Rename system name from 'ripple' to 'xrpld' (#6347)"
-  },
-  {
-    "hash": "ffea3977",
-    "author": "Bart",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T21:51:31+00:00",
     "message": "refactor: Rename system name from 'ripple' to 'xrpld' (#6347)"
   },
@@ -1493,6 +1409,13 @@
   {
     "hash": "47a235b7",
     "author": "Alex Kremer",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T21:19:37+00:00",
+    "message": "chore: Enable clang-tidy `switch-missing-default-case` check (#6461)"
+  },
+  {
+    "hash": "47a235b7",
+    "author": "Alex Kremer",
     "branch": "origin",
     "date": "2026-03-16T21:19:37+00:00",
     "message": "chore: Enable clang-tidy `switch-missing-default-case` check (#6461)"
@@ -1543,13 +1466,6 @@
     "hash": "47a235b7",
     "author": "Alex Kremer",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T21:19:37+00:00",
-    "message": "chore: Enable clang-tidy `switch-missing-default-case` check (#6461)"
-  },
-  {
-    "hash": "47a235b7",
-    "author": "Alex Kremer",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T21:19:37+00:00",
     "message": "chore: Enable clang-tidy `switch-missing-default-case` check (#6461)"
   },
@@ -1591,6 +1507,13 @@
   {
     "hash": "f5e2415c",
     "author": "Alex Kremer",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T20:18:15+00:00",
+    "message": "chore: Enable clang-tidy check for CRTP constructor accessibility (#6452)"
+  },
+  {
+    "hash": "f5e2415c",
+    "author": "Alex Kremer",
     "branch": "origin",
     "date": "2026-03-16T20:18:15+00:00",
     "message": "chore: Enable clang-tidy check for CRTP constructor accessibility (#6452)"
@@ -1641,13 +1564,6 @@
     "hash": "f5e2415c",
     "author": "Alex Kremer",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T20:18:15+00:00",
-    "message": "chore: Enable clang-tidy check for CRTP constructor accessibility (#6452)"
-  },
-  {
-    "hash": "f5e2415c",
-    "author": "Alex Kremer",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T20:18:15+00:00",
     "message": "chore: Enable clang-tidy check for CRTP constructor accessibility (#6452)"
   },
@@ -1689,6 +1605,13 @@
   {
     "hash": "1a4c3593",
     "author": "Mayukha Vadari",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T18:14:59+00:00",
+    "message": "refactor: use `hasExpired` in `CancelCheck` (#6533)"
+  },
+  {
+    "hash": "1a4c3593",
+    "author": "Mayukha Vadari",
     "branch": "origin",
     "date": "2026-03-16T18:14:59+00:00",
     "message": "refactor: use `hasExpired` in `CancelCheck` (#6533)"
@@ -1739,13 +1662,6 @@
     "hash": "1a4c3593",
     "author": "Mayukha Vadari",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T18:14:59+00:00",
-    "message": "refactor: use `hasExpired` in `CancelCheck` (#6533)"
-  },
-  {
-    "hash": "1a4c3593",
-    "author": "Mayukha Vadari",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T18:14:59+00:00",
     "message": "refactor: use `hasExpired` in `CancelCheck` (#6533)"
   },
@@ -1806,16 +1722,9 @@
     "message": "feat: Add transaction-specific invariant checking"
   },
   {
-    "hash": "a2651262",
+    "hash": "1b8b2d97",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-16T16:48:04+00:00",
-    "message": "Remove 'rippled - ' prefix from Phase 9 dashboard titles"
-  },
-  {
-    "hash": "a2651262",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-16T16:48:04+00:00",
     "message": "Remove 'rippled - ' prefix from Phase 9 dashboard titles"
   },
@@ -1827,23 +1736,16 @@
     "message": "Remove 'rippled - ' prefix from Phase 9 dashboard titles"
   },
   {
-    "hash": "1b8b2d97",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-16T16:48:04+00:00",
-    "message": "Remove 'rippled - ' prefix from Phase 9 dashboard titles"
-  },
-  {
-    "hash": "350a546b",
+    "hash": "5a2fc732",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-03-16T16:46:27+00:00",
     "message": "Update Consensus Mode Over Time panel description to Title Case"
   },
   {
-    "hash": "350a546b",
+    "hash": "5a2fc732",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
+    "branch": "pratik/otel-phase7-native-metrics",
     "date": "2026-03-16T16:46:27+00:00",
     "message": "Update Consensus Mode Over Time panel description to Title Case"
   },
@@ -1851,13 +1753,6 @@
     "hash": "350a546b",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-16T16:46:27+00:00",
-    "message": "Update Consensus Mode Over Time panel description to Title Case"
-  },
-  {
-    "hash": "5a2fc732",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-16T16:46:27+00:00",
     "message": "Update Consensus Mode Over Time panel description to Title Case"
   },
@@ -1871,65 +1766,23 @@
   {
     "hash": "5a2fc732",
     "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-03-16T16:46:27+00:00",
+    "message": "Update Consensus Mode Over Time panel description to Title Case"
+  },
+  {
+    "hash": "5a2fc732",
+    "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase6-statsd",
     "date": "2026-03-16T16:46:27+00:00",
     "message": "Update Consensus Mode Over Time panel description to Title Case"
   },
   {
-    "hash": "5a2fc732",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-16T16:46:27+00:00",
-    "message": "Update Consensus Mode Over Time panel description to Title Case"
-  },
-  {
-    "hash": "5a2fc732",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-03-16T16:46:27+00:00",
-    "message": "Update Consensus Mode Over Time panel description to Title Case"
-  },
-  {
-    "hash": "5a2fc732",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-16T16:46:27+00:00",
-    "message": "Update Consensus Mode Over Time panel description to Title Case"
-  },
-  {
-    "hash": "5499cbcd",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-16T16:45:17+00:00",
-    "message": "Update consensus mode filter description to Title Case"
-  },
-  {
-    "hash": "5499cbcd",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-03-16T16:45:17+00:00",
-    "message": "Update consensus mode filter description to Title Case"
-  },
-  {
-    "hash": "5499cbcd",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-16T16:45:17+00:00",
-    "message": "Update consensus mode filter description to Title Case"
-  },
-  {
-    "hash": "9bb8f2e1",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-03-16T16:43:55+00:00",
-    "message": "Use Title Case for consensus mode names in telemetry attributes"
-  },
-  {
-    "hash": "9bb8f2e1",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-16T16:43:55+00:00",
-    "message": "Use Title Case for consensus mode names in telemetry attributes"
+    "hash": "e4dbaf5e",
+    "author": "Mayukha Vadari",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T16:28:49+00:00",
+    "message": "test: Remove testline JTX helper class (#6539)"
   },
   {
     "hash": "e4dbaf5e",
@@ -1984,13 +1837,6 @@
     "hash": "e4dbaf5e",
     "author": "Mayukha Vadari",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T16:28:49+00:00",
-    "message": "test: Remove testline JTX helper class (#6539)"
-  },
-  {
-    "hash": "e4dbaf5e",
-    "author": "Mayukha Vadari",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T16:28:49+00:00",
     "message": "test: Remove testline JTX helper class (#6539)"
   },
@@ -2072,27 +1918,6 @@
     "message": "Update files"
   },
   {
-    "hash": "3c07a420",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-03-16T16:11:35+00:00",
-    "message": "Fix Grafana datasource default and add human-friendly standalone node name"
-  },
-  {
-    "hash": "3c07a420",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-03-16T16:11:35+00:00",
-    "message": "Fix Grafana datasource default and add human-friendly standalone node name"
-  },
-  {
-    "hash": "3c07a420",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-03-16T16:11:35+00:00",
-    "message": "Fix Grafana datasource default and add human-friendly standalone node name"
-  },
-  {
     "hash": "48258c87",
     "author": "JCW",
     "branch": "a1q123456/add-code-generator",
@@ -2112,6 +1937,13 @@
     "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T15:37:47+00:00",
     "message": "Test the ci script"
+  },
+  {
+    "hash": "98381624",
+    "author": "Pratik Mankawde",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T15:34:15+00:00",
+    "message": "fix: Switch to boost::coroutine2 (#6372)"
   },
   {
     "hash": "98381624",
@@ -2166,13 +1998,6 @@
     "hash": "98381624",
     "author": "Pratik Mankawde",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T15:34:15+00:00",
-    "message": "fix: Switch to boost::coroutine2 (#6372)"
-  },
-  {
-    "hash": "98381624",
-    "author": "Pratik Mankawde",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T15:34:15+00:00",
     "message": "fix: Switch to boost::coroutine2 (#6372)"
   },
@@ -2270,6 +2095,13 @@
   {
     "hash": "b585dc78",
     "author": "Pratik Mankawde",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T14:12:48+00:00",
+    "message": "fix: Fix memory leaks in HTTPClient (#6370)"
+  },
+  {
+    "hash": "b585dc78",
+    "author": "Pratik Mankawde",
     "branch": "origin",
     "date": "2026-03-16T14:12:48+00:00",
     "message": "fix: Fix memory leaks in HTTPClient (#6370)"
@@ -2326,13 +2158,6 @@
   {
     "hash": "b585dc78",
     "author": "Pratik Mankawde",
-    "branch": "a1q123456/add-code-generator",
-    "date": "2026-03-16T14:12:48+00:00",
-    "message": "fix: Fix memory leaks in HTTPClient (#6370)"
-  },
-  {
-    "hash": "b585dc78",
-    "author": "Pratik Mankawde",
     "branch": "pratik/std-coro/add-coroutine-primitives",
     "date": "2026-03-16T14:12:48+00:00",
     "message": "fix: Fix memory leaks in HTTPClient (#6370)"
@@ -2371,6 +2196,13 @@
     "branch": "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
     "date": "2026-03-16T14:12:48+00:00",
     "message": "fix: Fix memory leaks in HTTPClient (#6370)"
+  },
+  {
+    "hash": "918185e1",
+    "author": "Alex Kremer",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T13:55:22+00:00",
+    "message": "chore: Enable clang-tidy `bugprone-unused-return-value` check (#6475)"
   },
   {
     "hash": "918185e1",
@@ -2431,13 +2263,6 @@
   {
     "hash": "918185e1",
     "author": "Alex Kremer",
-    "branch": "a1q123456/add-code-generator",
-    "date": "2026-03-16T13:55:22+00:00",
-    "message": "chore: Enable clang-tidy `bugprone-unused-return-value` check (#6475)"
-  },
-  {
-    "hash": "918185e1",
-    "author": "Alex Kremer",
     "branch": "pratik/std-coro/add-coroutine-primitives",
     "date": "2026-03-16T13:55:22+00:00",
     "message": "chore: Enable clang-tidy `bugprone-unused-return-value` check (#6475)"
@@ -2476,13 +2301,6 @@
     "branch": "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
     "date": "2026-03-16T13:55:22+00:00",
     "message": "chore: Enable clang-tidy `bugprone-unused-return-value` check (#6475)"
-  },
-  {
-    "hash": "4bdec848",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-16T13:38:11+00:00",
-    "message": "Document complete 71-check enumeration and working/not-working status"
   },
   {
     "hash": "db469452",
@@ -2490,13 +2308,6 @@
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-16T13:38:11+00:00",
     "message": "Document complete 71-check enumeration and working/not-working status"
-  },
-  {
-    "hash": "84cf05d2",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-16T12:55:40+00:00",
-    "message": "Fix all 5 remaining telemetry validation failures"
   },
   {
     "hash": "b2b62cec",
@@ -2548,25 +2359,11 @@
     "message": "Clean up the output directory before generating"
   },
   {
-    "hash": "51b25bef",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-16T12:19:56+00:00",
-    "message": "Remove accidentally committed pycache file"
-  },
-  {
     "hash": "dd8034a8",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-16T12:19:56+00:00",
     "message": "Remove accidentally committed pycache file"
-  },
-  {
-    "hash": "d504a72a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-16T12:19:46+00:00",
-    "message": "Revert optional metrics \u2014 all metrics must fire in validation"
   },
   {
     "hash": "9c182051",
@@ -2576,13 +2373,6 @@
     "message": "Revert optional metrics \u2014 all metrics must fire in validation"
   },
   {
-    "hash": "9da2e288",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-16T12:06:28+00:00",
-    "message": "Update Phase 10 docs to reflect current implementation"
-  },
-  {
     "hash": "41a99b8e",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
@@ -2590,25 +2380,11 @@
     "message": "Update Phase 10 docs to reflect current implementation"
   },
   {
-    "hash": "5e601390",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-16T12:01:58+00:00",
-    "message": "Fix WS response parsing and add optional metric support"
-  },
-  {
     "hash": "14e74998",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-16T12:01:58+00:00",
     "message": "Fix WS response parsing and add optional metric support"
-  },
-  {
-    "hash": "ed2e212a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-16T11:41:20+00:00",
-    "message": "Fix tx_submitter: switch to native WebSocket command format"
   },
   {
     "hash": "de3282c4",
@@ -2623,6 +2399,13 @@
     "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T11:29:11+00:00",
     "message": "Add an option to allow skipping code generation"
+  },
+  {
+    "hash": "1738a696",
+    "author": "Pratik Mankawde",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-16T10:55:12+00:00",
+    "message": "refactor: Delete `SecretKey` compare op from library and move it to tests module (#6503)"
   },
   {
     "hash": "1738a696",
@@ -2677,13 +2460,6 @@
     "hash": "1738a696",
     "author": "Pratik Mankawde",
     "branch": "bthomee/sign",
-    "date": "2026-03-16T10:55:12+00:00",
-    "message": "refactor: Delete `SecretKey` compare op from library and move it to tests module (#6503)"
-  },
-  {
-    "hash": "1738a696",
-    "author": "Pratik Mankawde",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-16T10:55:12+00:00",
     "message": "refactor: Delete `SecretKey` compare op from library and move it to tests module (#6503)"
   },
@@ -2774,6 +2550,13 @@
   {
     "hash": "1bf9e6e7",
     "author": "Mayukha Vadari",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-13T18:12:25+00:00",
+    "message": "fix: Remove a newline from logging statement in `changeSpotPrice` calculation (#6547)"
+  },
+  {
+    "hash": "1bf9e6e7",
+    "author": "Mayukha Vadari",
     "branch": "origin",
     "date": "2026-03-13T18:12:25+00:00",
     "message": "fix: Remove a newline from logging statement in `changeSpotPrice` calculation (#6547)"
@@ -2824,13 +2607,6 @@
     "hash": "1bf9e6e7",
     "author": "Mayukha Vadari",
     "branch": "bthomee/sign",
-    "date": "2026-03-13T18:12:25+00:00",
-    "message": "fix: Remove a newline from logging statement in `changeSpotPrice` calculation (#6547)"
-  },
-  {
-    "hash": "1bf9e6e7",
-    "author": "Mayukha Vadari",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-13T18:12:25+00:00",
     "message": "fix: Remove a newline from logging statement in `changeSpotPrice` calculation (#6547)"
   },
@@ -2893,6 +2669,13 @@
   {
     "hash": "0446bef7",
     "author": "Bronek Kozicki",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-13T17:41:50+00:00",
+    "message": "feat: Enforce feature name lengths and character set (#5555)"
+  },
+  {
+    "hash": "0446bef7",
+    "author": "Bronek Kozicki",
     "branch": "origin",
     "date": "2026-03-13T17:41:50+00:00",
     "message": "feat: Enforce feature name lengths and character set (#5555)"
@@ -2943,13 +2726,6 @@
     "hash": "0446bef7",
     "author": "Bronek Kozicki",
     "branch": "bthomee/sign",
-    "date": "2026-03-13T17:41:50+00:00",
-    "message": "feat: Enforce feature name lengths and character set (#5555)"
-  },
-  {
-    "hash": "0446bef7",
-    "author": "Bronek Kozicki",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-13T17:41:50+00:00",
     "message": "feat: Enforce feature name lengths and character set (#5555)"
   },
@@ -3008,13 +2784,6 @@
     "branch": "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
     "date": "2026-03-13T17:41:50+00:00",
     "message": "feat: Enforce feature name lengths and character set (#5555)"
-  },
-  {
-    "hash": "c38e1867",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-13T17:14:34+00:00",
-    "message": "Fix remaining validation failures: tx submission and peer topology"
   },
   {
     "hash": "2949a2fe",
@@ -3031,18 +2800,18 @@
     "message": "chore: Remove unnecessary newline in getFlagsMask method"
   },
   {
-    "hash": "4c7cc10e",
+    "hash": "dc3f761a",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-13T16:36:19+00:00",
     "message": "Fix metric names and add diagnostic output for CI debugging"
   },
   {
-    "hash": "dc3f761a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-13T16:36:19+00:00",
-    "message": "Fix metric names and add diagnostic output for CI debugging"
+    "hash": "7a3bf169",
+    "author": "Mayukha Vadari",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-13T13:53:44+00:00",
+    "message": "refactor: Simplify set/get field call to use existing variable (#6534)"
   },
   {
     "hash": "7a3bf169",
@@ -3097,13 +2866,6 @@
     "hash": "7a3bf169",
     "author": "Mayukha Vadari",
     "branch": "bthomee/sign",
-    "date": "2026-03-13T13:53:44+00:00",
-    "message": "refactor: Simplify set/get field call to use existing variable (#6534)"
-  },
-  {
-    "hash": "7a3bf169",
-    "author": "Mayukha Vadari",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-13T13:53:44+00:00",
     "message": "refactor: Simplify set/get field call to use existing variable (#6534)"
   },
@@ -3171,25 +2933,11 @@
     "message": "refactor: Simplify set/get field call to use existing variable (#6534)"
   },
   {
-    "hash": "273e3a8e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-12T23:54:50+00:00",
-    "message": "Address code review findings"
-  },
-  {
     "hash": "6ece9c75",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-12T23:54:50+00:00",
     "message": "Address code review findings"
-  },
-  {
-    "hash": "f785890a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-12T23:50:01+00:00",
-    "message": "Fix telemetry validation check expectations"
   },
   {
     "hash": "b5d2a756",
@@ -3199,25 +2947,11 @@
     "message": "Fix telemetry validation check expectations"
   },
   {
-    "hash": "4bb19d4a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-12T23:45:21+00:00",
-    "message": "Add plan to fix telemetry validation check failures"
-  },
-  {
     "hash": "3dfe9f5d",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-12T23:45:21+00:00",
     "message": "Add plan to fix telemetry validation check failures"
-  },
-  {
-    "hash": "8e0db173",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-12T22:08:47+00:00",
-    "message": "Remove Docker healthchecks from workload compose"
   },
   {
     "hash": "97031fa9",
@@ -3229,7 +2963,14 @@
   {
     "hash": "fe6cd317",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
+    "branch": "pratik/otel-phase5b-spans",
+    "date": "2026-03-12T22:08:13+00:00",
+    "message": "Add Phase 4a implementation status to plan docs"
+  },
+  {
+    "hash": "fe6cd317",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
     "date": "2026-03-12T22:08:13+00:00",
     "message": "Add Phase 4a implementation status to plan docs"
   },
@@ -3264,21 +3005,7 @@
   {
     "hash": "fe6cd317",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5b-spans",
-    "date": "2026-03-12T22:08:13+00:00",
-    "message": "Add Phase 4a implementation status to plan docs"
-  },
-  {
-    "hash": "fe6cd317",
-    "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-03-12T22:08:13+00:00",
-    "message": "Add Phase 4a implementation status to plan docs"
-  },
-  {
-    "hash": "fe6cd317",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
     "date": "2026-03-12T22:08:13+00:00",
     "message": "Add Phase 4a implementation status to plan docs"
   },
@@ -3292,14 +3019,14 @@
   {
     "hash": "31d0ed17",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
+    "branch": "pratik/otel-phase5b-spans",
     "date": "2026-03-12T22:06:48+00:00",
     "message": "Phase 4a: Establish-phase gap fill & cross-node correlation"
   },
   {
     "hash": "31d0ed17",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
+    "branch": "pratik/otel-phase5-docs-deployment",
     "date": "2026-03-12T22:06:48+00:00",
     "message": "Phase 4a: Establish-phase gap fill & cross-node correlation"
   },
@@ -3318,32 +3045,18 @@
     "message": "Phase 4a: Establish-phase gap fill & cross-node correlation"
   },
   {
-    "hash": "31d0ed17",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5b-spans",
-    "date": "2026-03-12T22:06:48+00:00",
-    "message": "Phase 4a: Establish-phase gap fill & cross-node correlation"
-  },
-  {
-    "hash": "31d0ed17",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-03-12T22:06:48+00:00",
-    "message": "Phase 4a: Establish-phase gap fill & cross-node correlation"
-  },
-  {
-    "hash": "7acb7bca",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-12T21:56:17+00:00",
-    "message": "Fix collector healthcheck: use wget instead of curl"
-  },
-  {
     "hash": "bf25051b",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-12T21:56:17+00:00",
     "message": "Fix collector healthcheck: use wget instead of curl"
+  },
+  {
+    "hash": "c1d108e5",
+    "author": "Vito Tumas",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-12T21:50:35+00:00",
+    "message": "docs: Improve documentation for InvariantCheck (#6518)"
   },
   {
     "hash": "c1d108e5",
@@ -3398,13 +3111,6 @@
     "hash": "c1d108e5",
     "author": "Vito Tumas",
     "branch": "bthomee/sign",
-    "date": "2026-03-12T21:50:35+00:00",
-    "message": "docs: Improve documentation for InvariantCheck (#6518)"
-  },
-  {
-    "hash": "c1d108e5",
-    "author": "Vito Tumas",
-    "branch": "a1q123456/add-code-generator",
     "date": "2026-03-12T21:50:35+00:00",
     "message": "docs: Improve documentation for InvariantCheck (#6518)"
   },
@@ -3472,13 +3178,6 @@
     "message": "docs: Improve documentation for InvariantCheck (#6518)"
   },
   {
-    "hash": "afb12240",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-12T21:43:01+00:00",
-    "message": "Fix OTel collector healthcheck and workload compose issues"
-  },
-  {
     "hash": "7c9ede7d",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
@@ -3486,17 +3185,318 @@
     "message": "Fix OTel collector healthcheck and workload compose issues"
   },
   {
-    "hash": "7070e7c8",
+    "hash": "a6f8d025",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
     "date": "2026-03-12T21:28:11+00:00",
     "message": "Fix volume mount paths in workload docker-compose"
   },
   {
-    "hash": "a6f8d025",
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "origin",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/oracle-fixes",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "bthomee/iops",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/nft-ai-fixes",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/tsan-fixes",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "tapanito/transaction-invariant",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "legleux/fix-tag-workflow",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "bthomee/sign",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/add-coroutine-primitives",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "bthomee/node_depth",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/otel-phase1c-rpc-integration",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/otel-phase1b-telemetry-infra",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/ammdeposit-blank",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/cleanup-boost-coroutine",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/migrate-test-code",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/migrate-entry-points",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "1ba1bf9a",
+    "author": "Mayukha Vadari",
+    "branch": "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+    "date": "2026-03-12T21:24:38+00:00",
+    "message": "chore: Fix typo in freezeHandling parameter name (#6543)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "a1q123456/add-code-generator",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "origin",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/oracle-fixes",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "bthomee/iops",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/nft-ai-fixes",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/tsan-fixes",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "tapanito/transaction-invariant",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "legleux/fix-tag-workflow",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "bthomee/sign",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/add-coroutine-primitives",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "bthomee/node_depth",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/otel-phase1c-rpc-integration",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/otel-phase1b-telemetry-infra",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/ammdeposit-blank",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/cleanup-boost-coroutine",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/migrate-test-code",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "pratik/std-coro/migrate-entry-points",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "7dd3e0b3",
+    "author": "Mayukha Vadari",
+    "branch": "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+    "date": "2026-03-12T21:03:35+00:00",
+    "message": "refactor: remove dead code in `CreateOffer` (#6541)"
+  },
+  {
+    "hash": "3a351c4c",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-03-12T21:28:11+00:00",
-    "message": "Fix volume mount paths in workload docker-compose"
+    "date": "2026-03-12T20:49:21+00:00",
+    "message": "Fix CI: split telemetry workflow into build + validate jobs"
+  },
+  {
+    "hash": "ad720561",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-12T20:28:34+00:00",
+    "message": "Fix Conan config: use global.conf append instead of config set"
+  },
+  {
+    "hash": "71cb8393",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-12T20:24:27+00:00",
+    "message": "Enable Conan optimized compatibility mode for binary matching"
+  },
+  {
+    "hash": "e604a586",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-12T20:16:38+00:00",
+    "message": "Add back conan install step"
+  },
+  {
+    "hash": "819ccf48",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-12T20:13:35+00:00",
+    "message": "Allow print-env to fail gracefully on native runners"
+  },
+  {
+    "hash": "2a4edb91",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-12T20:10:18+00:00",
+    "message": "Fix prepare-runner /root permission error on ubuntu-latest"
+  },
+  {
+    "hash": "17f7b4c7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-12T20:06:59+00:00",
+    "message": "Align telemetry workflow build with main CI pipeline"
+  },
+  {
+    "hash": "339f4317",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-03-12T19:49:04+00:00",
+    "message": "Add workflow file to its own paths trigger"
   }
 ]
