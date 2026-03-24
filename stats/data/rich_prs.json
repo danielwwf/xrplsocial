@@ -1,5 +1,36 @@
 [
   {
+    "pr_number": 6624,
+    "branch_name": "rearchitect-pre2",
+    "title": "refactor: Improve imports to only call the needed helpers",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR simplifies the `includes` statements after #6453.\r\n\r\nThere is no real source code change here, only updating `includes`.\r\n\r\n### Context of Change\r\n\r\nRequested by @Tapanito in https://github.com/XRPLF/rippled/pull/6453#discussion_r2884111604\r\n\r\n### API Impact\r\n\r\nN/A\r\n",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-23T17:14:56Z",
+    "merged_at": "2026-03-24T10:44:30Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6624?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`e0dbe90`](https://app.codecov.io/gh/XRPLF/rippled/commit/e0dbe9037086248dc2a5b99511953a6677fcfc6b?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-03-23T19:03:24Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "Tapanito",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6545,
     "branch_name": "rm_upd",
     "title": "fix: Remove superfluous view update from credentials",
@@ -2190,41 +2221,6 @@
     ],
     "reviews_count": 1,
     "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6486,
-    "branch_name": "gersemi",
-    "title": "style: Use gersemi instead of ancient cmake-format",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n`cmake-format` hasn't been updated in 5 years, and the styling is weird even with heavy customization.\r\n`gersemi` looks nice, by default, with 0 configuration, and has been updated recently.\r\n\r\nIn my opinion it also just looks better.\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature incl",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-05T19:23:37Z",
-    "merged_at": "2026-03-06T01:31:06Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6486?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`dde4507`](https://app.codecov.io/gh/XRPLF/rippled/commit/dde450784dafe5bb84799cae3f7e4a4968e5496e?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-05T20:12:41Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "legleux",
-        "state": "APPROVED",
-        "body": ""
-      },
       {
         "user": "bthomee",
         "state": "APPROVED",
