@@ -82,7 +82,8 @@
     "merged_at": "2026-03-23T19:14:43Z",
     "labels": [
       "Ready to merge",
-      "Trivial"
+      "Trivial",
+      "AI Triage"
     ],
     "comments_count": 2,
     "comments": [
@@ -1024,7 +1025,8 @@
     "merged_at": "2026-03-16T18:14:59Z",
     "labels": [
       "Ready to merge",
-      "Trivial"
+      "Trivial",
+      "AI Triage"
     ],
     "comments_count": 1,
     "comments": [
@@ -1179,7 +1181,8 @@
     "merged_at": "2026-03-13T13:53:44Z",
     "labels": [
       "Ready to merge",
-      "Trivial"
+      "Trivial",
+      "AI Triage"
     ],
     "comments_count": 1,
     "comments": [
@@ -1339,7 +1342,8 @@
     "merged_at": "2026-03-11T19:36:04Z",
     "labels": [
       "Ready to merge",
-      "Trivial"
+      "Trivial",
+      "AI Triage"
     ],
     "comments_count": 1,
     "comments": [
@@ -2028,118 +2032,6 @@
         "user": "bthomee",
         "state": "COMMENTED",
         "body": "Shouldn't this be added to the on-pr.yml file? Then it can be used as part of the success/failure (\"pass\") checks."
-      }
-    ]
-  },
-  {
-    "pr_number": 6447,
-    "branch_name": "Add_mutex",
-    "title": "feat: Add mutex wrapper from clio",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR adds a mutex wrapper copied from [clio](https://github.com/XRPLF/clio/). This wrapper makes a mutex attached to the data it protects which improves safety and readability.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [x] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [] Chore ",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-27T14:54:33Z",
-    "merged_at": "2026-03-09T16:33:21Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6447?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`1ee0567`](https://app.codecov.io/gh/XRPLF/rippled/commit/1ee0567b140bf77a229c7699aa86d9c419f64d0f?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-02-27T15:27:07Z"
-      }
-    ],
-    "reviews_count": 21,
-    "reviews": [
-      {
-        "user": "vlntb",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR adds a new mutex+data wrapper (ported from clio) intended to bundle protected data with its mutex and provide an RAII lock object that grants scoped access to the dat"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 1 out of 1 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*."
-      }
-    ]
-  },
-  {
-    "pr_number": 6468,
-    "branch_name": "chore/clang-tidy-checks-suspicious-missing-comma",
-    "title": "chore: Enable clang-tidy `bugprone-suspicious-missing-comma` check",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nEnable clang-tidy `bugprone-suspicious-missing-comma` check.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API I",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-04T14:15:27Z",
-    "merged_at": "2026-03-09T15:48:38Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6468?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`9e0d350`](https://app.codecov.io/gh/XRPLF/rippled/commit/9e0d350fca688cfa6adae8ee0b16ec8ed8653f69?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-04T14:34:27Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6458,
-    "branch_name": "chore/clang-tidy-checks-unused-local-non-trivial-variable",
-    "title": "chore: Enable clang-tidy `bugprone-unused-local-non-trivial-variable` check",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nThis PR enables clang-tidy `bugprone-unused-local-non-trivial-variable` check.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Re",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-03T15:03:57Z",
-    "merged_at": "2026-03-09T15:25:53Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6458?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`9e0d350`](https://app.codecov.io/gh/XRPLF/rippled/commit/9e0d350fca688cfa6adae8ee0b16ec8ed8653f69?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-03T15:21:22Z"
-      }
-    ],
-    "reviews_count": 4,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nEnables the clang-tidy `bugprone-unused-local-non-trivial-variable` check and updates a few code/test sites to comply by removing unused non-trivial locals and avoiding repea"
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
