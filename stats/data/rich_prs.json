@@ -1,5 +1,90 @@
 [
   {
+    "pr_number": 6687,
+    "branch_name": "no_publish_private_docs",
+    "title": "ci: Only publish docs in public repos",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nPublishing docs requires artifact storage, which might be exhausted in private repos.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that ",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-30T16:35:58Z",
+    "merged_at": "2026-03-30T17:38:13Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 6648,
+    "branch_name": "chore/clang-tidy-checks-performance",
+    "title": "chore: Enable remaining clang-tidy `performance` checks",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR enables the following clang-tidy checks:\r\n- performance-faster-string-find\r\n- performance-for-range-copy\r\n- performance-inefficient-vector-operation\r\n- performance-move-const-arg\r\n- performance-no-automatic-move\r\n\r\n### API Impact\r\n\r\nNo impact.\r\n",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-25T14:09:23Z",
+    "merged_at": "2026-03-30T17:25:55Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6648?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `91.17647%` with `6 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`3a477e4`](https://app.codecov.io/gh/XRPLF/rippled/commit/3a477e4d0189454303ea82bac98048b4591909ff?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-03-25T17:02:58Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-03-26T00:44:37Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-03-27T01:14:44Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-03-30T15:46:30Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-03-30T16:39:22Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6686,
     "branch_name": "chore/clang-tidy-fix-headers",
     "title": "chore: Fix clang-tidy header filter",
@@ -1340,79 +1425,6 @@
       },
       {
         "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6550,
-    "branch_name": "ct-rename",
-    "title": "Rename privacy flag and public key names",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\nCorresponding spec change: https://github.com/XRPLF/XRPL-Standards/pull/501\r\n\r\n### Field Renames (SFields)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `sfIssuerElGamalPublicKey` | `sfIssuerEncryptionKey` |\r\n| `sfHolderElGamalPublicKey` | `sfHolderEncryptionKey` |\r\n| `sfAuditorElGamalPublicKey` | `sfAuditorEncryptionKey` |\r\n\r\n### Flag Renames\r\n\r\n#### Transaction Flags (`tf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `tfMPTCanPrivacy` | `tfMPTCanConfidentialAmount` |\r\n\r\n#### Ledger State Flags (`lsf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `lsfMPTCanPrivacy` | `lsfMPTCanConfidentialAmount` |\r\n\r\n#### Ledger State Mutable Flags (`lsmf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `lsmfMPTCannotMutatePrivacy` | `lsmfMPTCannotMutateCanConfidentialAmount` |\r\n\r\n#### Transaction Mutable Flags (`tmf`)\r\n\r\n| Before | After |\r\n|--------|-------|\r\n| `tmfMPTCannotMutatePrivacy` | `tmfMPTCannotMutateCanConfidentialAmount` |\r\n| `tmfMPTSetPrivacy` | `tmfMPTSetCanConfidentialAmount` |\r\n| `tmfMPTClearPrivacy` | `tmfMPTClearCanConfidentialAmount` |\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the ",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-16T17:14:18Z",
-    "merged_at": "2026-03-17T14:53:17Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6550?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.0%. Comparing base ([`2c94e21`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c94e213c209a82cbb6412d943641766ad5a3ffe?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-16T19:36:41Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "yinyiqian1",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6478,
-    "branch_name": "get-fee-payer",
-    "title": "refactor: Clean up `getFeePayer`, `mSourceBalance`, and `mPriorBalance`",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR:\r\n* Introduces a new helper function on `STTx`, `getFeePayer`\r\n* Removes the usage of `mSourceBalance` (and replaces it with SLE balance lookups)\r\n* Renames `mPriorBalance` to `preFeeBalance_`\r\n\r\nThis simplifies some of the code in the transactors and makes it a lot more readable.\r\n\r\n### Context of Change\r\n\r\nSimplifies Permission Delegation code (and will simplify #5887 a bit too). General improvement of the codebase.\r\n\r\n### Type of Change\r\n\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n\r\n### API Impact\r\n\r\nN/A\r\n\r\n<!--\r\n## Before / After\r\nIf relevant, use this section for an English description of the change at a technical level.\r\nIf this change affects an API, examples should be included here.\r\n\r\nFor performance-impacting changes, please provide these details:\r\n1. Is this a new feature, bug fix, or improvement to existing functionality?\r\n2. What behavior/functionality does the change impact?\r\n3. In what processing can the impact be measured? Be as specific as possible - e.g. RPC client call, payment transaction that involves LOB, AMM, caching, DB operations, etc.\r\n4. Does this change affect concurrent processing - e.g. does it involve acquiring locks, multi-threaded processing, or async processing?\r\n-->\r\n\r\n## Test Plan\r\n\r\nCI passes.",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-04T22:27:50Z",
-    "merged_at": "2026-03-17T14:12:17Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6478?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.9%. Comparing base ([`5ae97fa`](https://app.codecov.io/gh/XRPLF/rippled/commit/5ae97fa8ae955bf8067919bcbebe2a18b64e3ffd?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-04T23:03:45Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "@yinyiqian1 @tequdev I was able to simplify the code (mainly `payFee`) even more by removing `mSourceBalance` and replacing it with a direct call to `account_`'s balance everywhere.\r\nI also took the liberty of renaming `mPriorBalance` to `preFeeBalance` so it's clearer and isn't using the outdated Hungarian notation.",
-        "created_at": "2026-03-05T03:40:00Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nRefactors permission-delegation fee handling by centralizing \u201cwho pays the fee\u201d logic into a single `STTx` helper, and updating transaction processing to use it.\n\n**Changes:*"
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "tequdev",
         "state": "COMMENTED",
         "body": ""
       }
