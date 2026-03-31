@@ -1421,46 +1421,5 @@
         "body": ":rage2: "
       }
     ]
-  },
-  {
-    "pr_number": 6560,
-    "branch_name": "refactor-authorizedDepositPreauth-readview",
-    "title": "refactor: Use ReadView instead of ApplyView in `authorizedDepositPreauth()`",
-    "body": "\r\n  ## High Level Overview of Change                                                                                                                                                                        \r\n                                                                                                                                                                                                          \r\n  Change the parameter type of `credentials::authorizedDepositPreauth` from `ApplyView const&` to `ReadView const&`, since the function only performs read operations on the view.                        \r\n                                                                                                                                                                                                          \r\n  ### Context of Change                                                                                                                                                                                   \r\n                                                                                                                                                                                                        \r\n  `authorizedDepositPreauth` only calls `view.read()` and `view.exists()`, which are `ReadView` methods. Using `ApplyView` was unnecessarily restrictive and misleading about the function's intent. This \r\n  change narrows the interface to the minimal required type. ",
-    "user": "tequdev",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-17T15:58:09Z",
-    "merged_at": "2026-03-17T19:56:51Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6560?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.8%. Comparing base ([`013c2d6`](https://app.codecov.io/gh/XRPLF/rippled/commit/013c2d6a56377342756d39a55d131c6c56cc1d89?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-17T16:31:53Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "@tequdev is this PR ready to merge?",
-        "created_at": "2026-03-17T16:33:13Z"
-      },
-      {
-        "user": "tequdev",
-        "body": "> @tequdev is this PR ready to merge?\r\n\r\nyes",
-        "created_at": "2026-03-17T16:50:28Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
   }
 ]
