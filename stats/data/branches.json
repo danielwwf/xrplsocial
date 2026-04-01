@@ -1,9 +1,1302 @@
 {
-  "generated_at": "2026-04-01T07:30:24.762913+00:00",
+  "generated_at": "2026-04-01T08:24:31.584192+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 231,
   "total_contributors": 73,
   "branches": [
+    {
+      "name": "tapanito/fix-multi-send-max-amount",
+      "last_commit": {
+        "hash": "da162348",
+        "author": "Vito",
+        "email": "5780819+Tapanito@users.noreply.github.com",
+        "date": "2026-04-01T08:12:12+00:00",
+        "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-multi-send-max-amount"
+      },
+      "commits": [
+        {
+          "hash": "da162348",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-01T08:12:12+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-multi-send-max-amount"
+        },
+        {
+          "hash": "e56d7c08",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T09:44:47+00:00",
+          "message": "fix: change totalSendAmount to uint64"
+        },
+        {
+          "hash": "1fec636c",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T09:28:51+00:00",
+          "message": "fix: use exact integer arithmetic for MaximumAmount checks"
+        },
+        {
+          "hash": "867f2198",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T08:32:00+00:00",
+          "message": "fix: build errors"
+        },
+        {
+          "hash": "6105bf7a",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T07:57:46+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-multi-send-max-amount"
+        },
+        {
+          "hash": "5c8dfe54",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-30T17:15:40+00:00",
+          "message": "ci: Only publish docs in public repos (#6687)"
+        },
+        {
+          "hash": "ab8c168e",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-30T17:08:47+00:00",
+          "message": "chore: Enable remaining clang-tidy `performance` checks (#6648)"
+        },
+        {
+          "hash": "3a477e4d",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-30T15:22:38+00:00",
+          "message": "refactor: Address PR comments after the modularisation PRs (#6389)"
+        },
+        {
+          "hash": "96bfc32f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-30T14:59:53+00:00",
+          "message": "chore: Fix clang-tidy header filter (#6686)"
+        },
+        {
+          "hash": "de671863",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T14:09:57+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
+        },
+        {
+          "hash": "e0cabb9f",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T13:57:32+00:00",
+          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
+        },
+        {
+          "hash": "3d9c545f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-27T18:52:18+00:00",
+          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
+        },
+        {
+          "hash": "9b944ee8",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T18:35:42+00:00",
+          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
+        },
+        {
+          "hash": "5b3ae8c9",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-26T14:21:40+00:00",
+          "message": "fix: Harden MaximumAmount overflow checks in rippleSendMultiMPT"
+        },
+        {
+          "hash": "509677ab",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T14:11:37+00:00",
+          "message": "ci: Don't publish docs on release branches (#6673)"
+        },
+        {
+          "hash": "addc1e8e",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-26T14:11:16+00:00",
+          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
+        },
+        {
+          "hash": "faf69da4",
+          "author": "Valentin Balaschenko",
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "date": "2026-03-26T14:10:51+00:00",
+          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
+        },
+        {
+          "hash": "76e3b4fb",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-26T12:40:26+00:00",
+          "message": "fix: Improve loan invariant message (#6668)"
+        },
+        {
+          "hash": "e8bdbf97",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T12:37:37+00:00",
+          "message": "ci: Upload artifacts only in public repositories (#6670)"
+        },
+        {
+          "hash": "e5b2d9a6",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-26T09:19:27+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-multi-send-max-amount"
+        },
+        {
+          "hash": "2c765f6e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T00:18:17+00:00",
+          "message": "ci: Add conflicting-pr workflow (#6656)"
+        },
+        {
+          "hash": "a9269fa8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T23:55:50+00:00",
+          "message": "chore: Add more AI tools to .gitignore (#6658)"
+        },
+        {
+          "hash": "15fd9fea",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T23:54:49+00:00",
+          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
+        },
+        {
+          "hash": "b9d07730",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-25T23:54:33+00:00",
+          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
+        },
+        {
+          "hash": "85b65c8e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T18:22:50+00:00",
+          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
+        },
+        {
+          "hash": "8f182e82",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T16:32:45+00:00",
+          "message": "refactor: Modularise ledger (#6536)"
+        },
+        {
+          "hash": "cd78569d",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T16:06:31+00:00",
+          "message": "chore: Use unpatched version of soci (#6649)"
+        },
+        {
+          "hash": "2c7af360",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T16:02:14+00:00",
+          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
+        },
+        {
+          "hash": "403fd7c6",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-25T14:28:28+00:00",
+          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
+        },
+        {
+          "hash": "dfed0481",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T14:25:33+00:00",
+          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
+        },
+        {
+          "hash": "0dc0c8e9",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-03-25T14:24:10+00:00",
+          "message": "docs: Update LICENSE.md year to present (#6636)"
+        },
+        {
+          "hash": "bd544acb",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-25T11:22:33+00:00",
+          "message": "fix: Enforce aggregate MaximumAmount in multi-send MPT"
+        },
+        {
+          "hash": "0510ee47",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T10:44:14+00:00",
+          "message": "chore: Update some external dependencies (#6642)"
+        },
+        {
+          "hash": "589c9c69",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-24T23:18:41+00:00",
+          "message": "chore: Update external dependencies due to upstream merge (#6630)"
+        },
+        {
+          "hash": "4096623a",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-24T23:00:41+00:00",
+          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
+        },
+        {
+          "hash": "dda16208",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-24T21:18:03+00:00",
+          "message": "docs: Add note about `clang-tidy` installation (#6634)"
+        },
+        {
+          "hash": "85a4015a",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T18:53:57+00:00",
+          "message": "fix: Assorted Permissioned Domain fixes (#6587)"
+        },
+        {
+          "hash": "f7bb4018",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T18:53:49+00:00",
+          "message": "fix: Assorted Vault fixes (#6607)"
+        },
+        {
+          "hash": "0eedefbf",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-24T15:42:12+00:00",
+          "message": "refactor: Enable more clang-tidy readability checks (#6595)"
+        },
+        {
+          "hash": "8b986e4a",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T10:20:32+00:00",
+          "message": "refactor: Improve imports to only call the needed helpers (#6624)"
+        },
+        {
+          "hash": "dcfcdab1",
+          "author": "Olek",
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "date": "2026-03-23T18:29:34+00:00",
+          "message": "fix: Remove superfluous view update from credentials (#6545)"
+        },
+        {
+          "hash": "e0dbe903",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-23T15:39:58+00:00",
+          "message": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files (#6453)"
+        },
+        {
+          "hash": "c463d0ff",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-23T14:04:22+00:00",
+          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.2 to 5.5.3 (#6615)"
+        },
+        {
+          "hash": "be1cc48d",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-22T18:08:18+00:00",
+          "message": "fix: Assorted Oracle fixes (#6570)"
+        },
+        {
+          "hash": "cf2eb149",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T22:48:20+00:00",
+          "message": "fix: Update `.git-blame-ignore-revs` (#6577)"
+        },
+        {
+          "hash": "762922a0",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T21:20:56+00:00",
+          "message": "chore: Don't allow files more than 400kb to be added to the repo (#6597)"
+        },
+        {
+          "hash": "fd28656d",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-03-19T17:38:09+00:00",
+          "message": "ci: Check for signed commits in PR (#6559)"
+        },
+        {
+          "hash": "9316da78",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T17:29:22+00:00",
+          "message": "ci: Update XRPLF/actions (#6594)"
+        },
+        {
+          "hash": "6efd3122",
+          "author": "Michael Legleux",
+          "email": "legleux@users.noreply.github.com",
+          "date": "2026-03-19T10:23:51+00:00",
+          "message": "fix: Use correct format and event for workflows for release tags (#6554)"
+        },
+        {
+          "hash": "12954d53",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-18T22:41:09+00:00",
+          "message": "fix: Address remaining issue after clang-tidy merge (#6582)"
+        }
+      ],
+      "contributor_count": 16,
+      "contributors": [
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        },
+        {
+          "email": "legleux@users.noreply.github.com",
+          "name": "Michael Legleux"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "name": "Copilot"
+        },
+        {
+          "email": "git@tequ.dev",
+          "name": "tequ"
+        },
+        {
+          "email": "brok@incorrekt.com",
+          "name": "Bronek Kozicki"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Multi-Purpose Tokens",
+        "type": "Feature",
+        "confidence": 0.9,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "tapanito/fix-vault-withdraw-shares",
+      "last_commit": {
+        "hash": "3f204fb1",
+        "author": "Vito Tumas",
+        "email": "5780819+Tapanito@users.noreply.github.com",
+        "date": "2026-04-01T08:10:36+00:00",
+        "message": "Merge branch 'develop' into tapanito/fix-vault-withdraw-shares"
+      },
+      "commits": [
+        {
+          "hash": "3f204fb1",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-01T08:10:36+00:00",
+          "message": "Merge branch 'develop' into tapanito/fix-vault-withdraw-shares"
+        },
+        {
+          "hash": "a2cc0ae6",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T10:00:59+00:00",
+          "message": "fix: Catch overflow in preclaim for share-denominated withdrawals"
+        },
+        {
+          "hash": "73b0e6ca",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T09:52:17+00:00",
+          "message": "address review comments"
+        },
+        {
+          "hash": "6594b5dd",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T07:58:58+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-vault-withdraw-shares"
+        },
+        {
+          "hash": "5c8dfe54",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-30T17:15:40+00:00",
+          "message": "ci: Only publish docs in public repos (#6687)"
+        },
+        {
+          "hash": "ab8c168e",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-30T17:08:47+00:00",
+          "message": "chore: Enable remaining clang-tidy `performance` checks (#6648)"
+        },
+        {
+          "hash": "3a477e4d",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-30T15:22:38+00:00",
+          "message": "refactor: Address PR comments after the modularisation PRs (#6389)"
+        },
+        {
+          "hash": "96bfc32f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-30T14:59:53+00:00",
+          "message": "chore: Fix clang-tidy header filter (#6686)"
+        },
+        {
+          "hash": "de671863",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T14:09:57+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
+        },
+        {
+          "hash": "e0cabb9f",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T13:57:32+00:00",
+          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
+        },
+        {
+          "hash": "3d9c545f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-27T18:52:18+00:00",
+          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
+        },
+        {
+          "hash": "9b944ee8",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T18:35:42+00:00",
+          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
+        },
+        {
+          "hash": "509677ab",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T14:11:37+00:00",
+          "message": "ci: Don't publish docs on release branches (#6673)"
+        },
+        {
+          "hash": "addc1e8e",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-26T14:11:16+00:00",
+          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
+        },
+        {
+          "hash": "faf69da4",
+          "author": "Valentin Balaschenko",
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "date": "2026-03-26T14:10:51+00:00",
+          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
+        },
+        {
+          "hash": "76e3b4fb",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-26T12:40:26+00:00",
+          "message": "fix: Improve loan invariant message (#6668)"
+        },
+        {
+          "hash": "e8bdbf97",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T12:37:37+00:00",
+          "message": "ci: Upload artifacts only in public repositories (#6670)"
+        },
+        {
+          "hash": "cdecd5d3",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-26T09:41:50+00:00",
+          "message": "Merge origin/develop; replace fixAssortedFixes with fixSecurity3_1_3"
+        },
+        {
+          "hash": "2c765f6e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T00:18:17+00:00",
+          "message": "ci: Add conflicting-pr workflow (#6656)"
+        },
+        {
+          "hash": "a9269fa8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T23:55:50+00:00",
+          "message": "chore: Add more AI tools to .gitignore (#6658)"
+        },
+        {
+          "hash": "15fd9fea",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T23:54:49+00:00",
+          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
+        },
+        {
+          "hash": "b9d07730",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-25T23:54:33+00:00",
+          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
+        },
+        {
+          "hash": "85b65c8e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T18:22:50+00:00",
+          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
+        },
+        {
+          "hash": "8f182e82",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T16:32:45+00:00",
+          "message": "refactor: Modularise ledger (#6536)"
+        },
+        {
+          "hash": "cd78569d",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T16:06:31+00:00",
+          "message": "chore: Use unpatched version of soci (#6649)"
+        },
+        {
+          "hash": "2c7af360",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T16:02:14+00:00",
+          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
+        },
+        {
+          "hash": "403fd7c6",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-25T14:28:28+00:00",
+          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
+        },
+        {
+          "hash": "dfed0481",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T14:25:33+00:00",
+          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
+        },
+        {
+          "hash": "0dc0c8e9",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-03-25T14:24:10+00:00",
+          "message": "docs: Update LICENSE.md year to present (#6636)"
+        },
+        {
+          "hash": "8d3f7e25",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-25T12:48:25+00:00",
+          "message": "fix: Address review feedback for vault withdraw shares"
+        },
+        {
+          "hash": "f92277cb",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-25T11:31:39+00:00",
+          "message": "fix: Check trustline limits for share-denominated vault withdrawals"
+        },
+        {
+          "hash": "0510ee47",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T10:44:14+00:00",
+          "message": "chore: Update some external dependencies (#6642)"
+        },
+        {
+          "hash": "589c9c69",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-24T23:18:41+00:00",
+          "message": "chore: Update external dependencies due to upstream merge (#6630)"
+        },
+        {
+          "hash": "4096623a",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-24T23:00:41+00:00",
+          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
+        },
+        {
+          "hash": "dda16208",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-24T21:18:03+00:00",
+          "message": "docs: Add note about `clang-tidy` installation (#6634)"
+        },
+        {
+          "hash": "85a4015a",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T18:53:57+00:00",
+          "message": "fix: Assorted Permissioned Domain fixes (#6587)"
+        },
+        {
+          "hash": "f7bb4018",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T18:53:49+00:00",
+          "message": "fix: Assorted Vault fixes (#6607)"
+        },
+        {
+          "hash": "0eedefbf",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-24T15:42:12+00:00",
+          "message": "refactor: Enable more clang-tidy readability checks (#6595)"
+        },
+        {
+          "hash": "8b986e4a",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T10:20:32+00:00",
+          "message": "refactor: Improve imports to only call the needed helpers (#6624)"
+        },
+        {
+          "hash": "dcfcdab1",
+          "author": "Olek",
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "date": "2026-03-23T18:29:34+00:00",
+          "message": "fix: Remove superfluous view update from credentials (#6545)"
+        },
+        {
+          "hash": "e0dbe903",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-23T15:39:58+00:00",
+          "message": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files (#6453)"
+        },
+        {
+          "hash": "c463d0ff",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-23T14:04:22+00:00",
+          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.2 to 5.5.3 (#6615)"
+        },
+        {
+          "hash": "be1cc48d",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-22T18:08:18+00:00",
+          "message": "fix: Assorted Oracle fixes (#6570)"
+        },
+        {
+          "hash": "cf2eb149",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T22:48:20+00:00",
+          "message": "fix: Update `.git-blame-ignore-revs` (#6577)"
+        },
+        {
+          "hash": "762922a0",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T21:20:56+00:00",
+          "message": "chore: Don't allow files more than 400kb to be added to the repo (#6597)"
+        },
+        {
+          "hash": "fd28656d",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-03-19T17:38:09+00:00",
+          "message": "ci: Check for signed commits in PR (#6559)"
+        },
+        {
+          "hash": "9316da78",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T17:29:22+00:00",
+          "message": "ci: Update XRPLF/actions (#6594)"
+        },
+        {
+          "hash": "6efd3122",
+          "author": "Michael Legleux",
+          "email": "legleux@users.noreply.github.com",
+          "date": "2026-03-19T10:23:51+00:00",
+          "message": "fix: Use correct format and event for workflows for release tags (#6554)"
+        },
+        {
+          "hash": "12954d53",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-18T22:41:09+00:00",
+          "message": "fix: Address remaining issue after clang-tidy merge (#6582)"
+        },
+        {
+          "hash": "b1e5ba05",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-18T21:11:51+00:00",
+          "message": "feat: Add code generator for transactions and ledger entries (#6443)"
+        }
+      ],
+      "contributor_count": 17,
+      "contributors": [
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        },
+        {
+          "email": "legleux@users.noreply.github.com",
+          "name": "Michael Legleux"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "name": "Copilot"
+        },
+        {
+          "email": "git@tequ.dev",
+          "name": "tequ"
+        },
+        {
+          "email": "brok@incorrekt.com",
+          "name": "Bronek Kozicki"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Checks",
+        "type": "Feature",
+        "confidence": 0.6,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "tapanito/lending-assorted-fixes",
+      "last_commit": {
+        "hash": "d78a051d",
+        "author": "Vito",
+        "email": "5780819+Tapanito@users.noreply.github.com",
+        "date": "2026-04-01T08:06:38+00:00",
+        "message": "fix: shorten comments"
+      },
+      "commits": [
+        {
+          "hash": "d78a051d",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-01T08:06:38+00:00",
+          "message": "fix: shorten comments"
+        },
+        {
+          "hash": "80ca2dc7",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-01T08:02:28+00:00",
+          "message": "refactor: Address PR review comments"
+        },
+        {
+          "hash": "c0f53da4",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T16:38:20+00:00",
+          "message": "Apply suggestions from code review"
+        },
+        {
+          "hash": "3f4c96d6",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-31T10:10:10+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-assorted-fixes"
+        },
+        {
+          "hash": "5c8dfe54",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-30T17:15:40+00:00",
+          "message": "ci: Only publish docs in public repos (#6687)"
+        },
+        {
+          "hash": "ab8c168e",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-30T17:08:47+00:00",
+          "message": "chore: Enable remaining clang-tidy `performance` checks (#6648)"
+        },
+        {
+          "hash": "3a477e4d",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-30T15:22:38+00:00",
+          "message": "refactor: Address PR comments after the modularisation PRs (#6389)"
+        },
+        {
+          "hash": "96bfc32f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-30T14:59:53+00:00",
+          "message": "chore: Fix clang-tidy header filter (#6686)"
+        },
+        {
+          "hash": "de671863",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T14:09:57+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
+        },
+        {
+          "hash": "e0cabb9f",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T13:57:32+00:00",
+          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
+        },
+        {
+          "hash": "3d9c545f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-27T18:52:18+00:00",
+          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
+        },
+        {
+          "hash": "9b944ee8",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T18:35:42+00:00",
+          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
+        },
+        {
+          "hash": "b441bfcd",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T13:42:10+00:00",
+          "message": "addresses review comments"
+        },
+        {
+          "hash": "4ea3e45a",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T11:37:35+00:00",
+          "message": "fix: Add upper-bound invariant for LoanBroker cover available"
+        },
+        {
+          "hash": "db995303",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T10:58:45+00:00",
+          "message": "fix: change tem code to tec code in LoanPay::preclaim"
+        },
+        {
+          "hash": "a96d7841",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T10:58:03+00:00",
+          "message": "fix: call associateAsset after LoanManage execution"
+        },
+        {
+          "hash": "509677ab",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T14:11:37+00:00",
+          "message": "ci: Don't publish docs on release branches (#6673)"
+        },
+        {
+          "hash": "addc1e8e",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-26T14:11:16+00:00",
+          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
+        },
+        {
+          "hash": "faf69da4",
+          "author": "Valentin Balaschenko",
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "date": "2026-03-26T14:10:51+00:00",
+          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
+        },
+        {
+          "hash": "76e3b4fb",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-26T12:40:26+00:00",
+          "message": "fix: Improve loan invariant message (#6668)"
+        },
+        {
+          "hash": "e8bdbf97",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T12:37:37+00:00",
+          "message": "ci: Upload artifacts only in public repositories (#6670)"
+        },
+        {
+          "hash": "2c765f6e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T00:18:17+00:00",
+          "message": "ci: Add conflicting-pr workflow (#6656)"
+        },
+        {
+          "hash": "a9269fa8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T23:55:50+00:00",
+          "message": "chore: Add more AI tools to .gitignore (#6658)"
+        },
+        {
+          "hash": "15fd9fea",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T23:54:49+00:00",
+          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
+        },
+        {
+          "hash": "b9d07730",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-25T23:54:33+00:00",
+          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
+        },
+        {
+          "hash": "85b65c8e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T18:22:50+00:00",
+          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
+        },
+        {
+          "hash": "8f182e82",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T16:32:45+00:00",
+          "message": "refactor: Modularise ledger (#6536)"
+        },
+        {
+          "hash": "cd78569d",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T16:06:31+00:00",
+          "message": "chore: Use unpatched version of soci (#6649)"
+        },
+        {
+          "hash": "2c7af360",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T16:02:14+00:00",
+          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
+        },
+        {
+          "hash": "403fd7c6",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-25T14:28:28+00:00",
+          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
+        },
+        {
+          "hash": "dfed0481",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T14:25:33+00:00",
+          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
+        },
+        {
+          "hash": "0dc0c8e9",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-03-25T14:24:10+00:00",
+          "message": "docs: Update LICENSE.md year to present (#6636)"
+        },
+        {
+          "hash": "0510ee47",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T10:44:14+00:00",
+          "message": "chore: Update some external dependencies (#6642)"
+        },
+        {
+          "hash": "589c9c69",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-24T23:18:41+00:00",
+          "message": "chore: Update external dependencies due to upstream merge (#6630)"
+        },
+        {
+          "hash": "4096623a",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-24T23:00:41+00:00",
+          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
+        },
+        {
+          "hash": "dda16208",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-24T21:18:03+00:00",
+          "message": "docs: Add note about `clang-tidy` installation (#6634)"
+        },
+        {
+          "hash": "85a4015a",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T18:53:57+00:00",
+          "message": "fix: Assorted Permissioned Domain fixes (#6587)"
+        },
+        {
+          "hash": "f7bb4018",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T18:53:49+00:00",
+          "message": "fix: Assorted Vault fixes (#6607)"
+        },
+        {
+          "hash": "0eedefbf",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-24T15:42:12+00:00",
+          "message": "refactor: Enable more clang-tidy readability checks (#6595)"
+        },
+        {
+          "hash": "8b986e4a",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-24T10:20:32+00:00",
+          "message": "refactor: Improve imports to only call the needed helpers (#6624)"
+        },
+        {
+          "hash": "dcfcdab1",
+          "author": "Olek",
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "date": "2026-03-23T18:29:34+00:00",
+          "message": "fix: Remove superfluous view update from credentials (#6545)"
+        },
+        {
+          "hash": "e0dbe903",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-23T15:39:58+00:00",
+          "message": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files (#6453)"
+        },
+        {
+          "hash": "c463d0ff",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-23T14:04:22+00:00",
+          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.2 to 5.5.3 (#6615)"
+        },
+        {
+          "hash": "be1cc48d",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-22T18:08:18+00:00",
+          "message": "fix: Assorted Oracle fixes (#6570)"
+        },
+        {
+          "hash": "cf2eb149",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T22:48:20+00:00",
+          "message": "fix: Update `.git-blame-ignore-revs` (#6577)"
+        },
+        {
+          "hash": "762922a0",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T21:20:56+00:00",
+          "message": "chore: Don't allow files more than 400kb to be added to the repo (#6597)"
+        },
+        {
+          "hash": "fd28656d",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-03-19T17:38:09+00:00",
+          "message": "ci: Check for signed commits in PR (#6559)"
+        },
+        {
+          "hash": "9316da78",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-19T17:29:22+00:00",
+          "message": "ci: Update XRPLF/actions (#6594)"
+        },
+        {
+          "hash": "6efd3122",
+          "author": "Michael Legleux",
+          "email": "legleux@users.noreply.github.com",
+          "date": "2026-03-19T10:23:51+00:00",
+          "message": "fix: Use correct format and event for workflows for release tags (#6554)"
+        },
+        {
+          "hash": "12954d53",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-18T22:41:09+00:00",
+          "message": "fix: Address remaining issue after clang-tidy merge (#6582)"
+        }
+      ],
+      "contributor_count": 17,
+      "contributors": [
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        },
+        {
+          "email": "legleux@users.noreply.github.com",
+          "name": "Michael Legleux"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "name": "Copilot"
+        },
+        {
+          "email": "git@tequ.dev",
+          "name": "tequ"
+        },
+        {
+          "email": "brok@incorrekt.com",
+          "name": "Bronek Kozicki"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Lending",
+        "type": "Feature",
+        "confidence": 0.8,
+        "source": "keyword_match"
+      }
+    },
     {
       "name": "ximinez/loanpay-assertion",
       "last_commit": {
@@ -14,6 +1307,13 @@
         "message": "Review feedback from @tapanito"
       },
       "commits": [
+        {
+          "hash": "f68b3326",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-01T01:02:28+00:00",
+          "message": "Review feedback from @tapanito"
+        },
         {
           "hash": "f68b3326",
           "author": "Ed Hennis",
@@ -356,13 +1656,6 @@
           "email": "5780819+Tapanito@users.noreply.github.com",
           "date": "2026-03-21T13:39:10+00:00",
           "message": "Merge branch 'develop' into tapanito/lending-fix-amendment"
-        },
-        {
-          "hash": "cf2eb149",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T22:48:20+00:00",
-          "message": "fix: Update `.git-blame-ignore-revs` (#6577)"
         }
       ],
       "contributor_count": 17,
@@ -4383,437 +5676,6 @@
         "amendment": "Other",
         "type": "Bug Fix",
         "confidence": 0.7,
-        "source": "keyword_match"
-      }
-    },
-    {
-      "name": "tapanito/lending-assorted-fixes",
-      "last_commit": {
-        "hash": "c0f53da4",
-        "author": "Vito Tumas",
-        "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-03-31T16:38:20+00:00",
-        "message": "Apply suggestions from code review"
-      },
-      "commits": [
-        {
-          "hash": "c0f53da4",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T16:38:20+00:00",
-          "message": "Apply suggestions from code review"
-        },
-        {
-          "hash": "3f4c96d6",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T10:10:10+00:00",
-          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-assorted-fixes"
-        },
-        {
-          "hash": "5c8dfe54",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-30T17:15:40+00:00",
-          "message": "ci: Only publish docs in public repos (#6687)"
-        },
-        {
-          "hash": "ab8c168e",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-30T17:08:47+00:00",
-          "message": "chore: Enable remaining clang-tidy `performance` checks (#6648)"
-        },
-        {
-          "hash": "3a477e4d",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-30T15:22:38+00:00",
-          "message": "refactor: Address PR comments after the modularisation PRs (#6389)"
-        },
-        {
-          "hash": "96bfc32f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-30T14:59:53+00:00",
-          "message": "chore: Fix clang-tidy header filter (#6686)"
-        },
-        {
-          "hash": "de671863",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T14:09:57+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
-        },
-        {
-          "hash": "e0cabb9f",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T13:57:32+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
-        },
-        {
-          "hash": "3d9c545f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-27T18:52:18+00:00",
-          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
-        },
-        {
-          "hash": "9b944ee8",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T18:35:42+00:00",
-          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
-        },
-        {
-          "hash": "b441bfcd",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T13:42:10+00:00",
-          "message": "addresses review comments"
-        },
-        {
-          "hash": "4ea3e45a",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T11:37:35+00:00",
-          "message": "fix: Add upper-bound invariant for LoanBroker cover available"
-        },
-        {
-          "hash": "db995303",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T10:58:45+00:00",
-          "message": "fix: change tem code to tec code in LoanPay::preclaim"
-        },
-        {
-          "hash": "a96d7841",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T10:58:03+00:00",
-          "message": "fix: call associateAsset after LoanManage execution"
-        },
-        {
-          "hash": "509677ab",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T14:11:37+00:00",
-          "message": "ci: Don't publish docs on release branches (#6673)"
-        },
-        {
-          "hash": "addc1e8e",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-26T14:11:16+00:00",
-          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
-        },
-        {
-          "hash": "faf69da4",
-          "author": "Valentin Balaschenko",
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "date": "2026-03-26T14:10:51+00:00",
-          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
-        },
-        {
-          "hash": "76e3b4fb",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-26T12:40:26+00:00",
-          "message": "fix: Improve loan invariant message (#6668)"
-        },
-        {
-          "hash": "e8bdbf97",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T12:37:37+00:00",
-          "message": "ci: Upload artifacts only in public repositories (#6670)"
-        },
-        {
-          "hash": "2c765f6e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T00:18:17+00:00",
-          "message": "ci: Add conflicting-pr workflow (#6656)"
-        },
-        {
-          "hash": "a9269fa8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T23:55:50+00:00",
-          "message": "chore: Add more AI tools to .gitignore (#6658)"
-        },
-        {
-          "hash": "15fd9fea",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T23:54:49+00:00",
-          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
-        },
-        {
-          "hash": "b9d07730",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-25T23:54:33+00:00",
-          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
-        },
-        {
-          "hash": "85b65c8e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T18:22:50+00:00",
-          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
-        },
-        {
-          "hash": "8f182e82",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T16:32:45+00:00",
-          "message": "refactor: Modularise ledger (#6536)"
-        },
-        {
-          "hash": "cd78569d",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T16:06:31+00:00",
-          "message": "chore: Use unpatched version of soci (#6649)"
-        },
-        {
-          "hash": "2c7af360",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T16:02:14+00:00",
-          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
-        },
-        {
-          "hash": "403fd7c6",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-25T14:28:28+00:00",
-          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
-        },
-        {
-          "hash": "dfed0481",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T14:25:33+00:00",
-          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
-        },
-        {
-          "hash": "0dc0c8e9",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-03-25T14:24:10+00:00",
-          "message": "docs: Update LICENSE.md year to present (#6636)"
-        },
-        {
-          "hash": "0510ee47",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T10:44:14+00:00",
-          "message": "chore: Update some external dependencies (#6642)"
-        },
-        {
-          "hash": "589c9c69",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-24T23:18:41+00:00",
-          "message": "chore: Update external dependencies due to upstream merge (#6630)"
-        },
-        {
-          "hash": "4096623a",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-24T23:00:41+00:00",
-          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
-        },
-        {
-          "hash": "dda16208",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T21:18:03+00:00",
-          "message": "docs: Add note about `clang-tidy` installation (#6634)"
-        },
-        {
-          "hash": "85a4015a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:57+00:00",
-          "message": "fix: Assorted Permissioned Domain fixes (#6587)"
-        },
-        {
-          "hash": "f7bb4018",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:49+00:00",
-          "message": "fix: Assorted Vault fixes (#6607)"
-        },
-        {
-          "hash": "0eedefbf",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T15:42:12+00:00",
-          "message": "refactor: Enable more clang-tidy readability checks (#6595)"
-        },
-        {
-          "hash": "8b986e4a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T10:20:32+00:00",
-          "message": "refactor: Improve imports to only call the needed helpers (#6624)"
-        },
-        {
-          "hash": "dcfcdab1",
-          "author": "Olek",
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "date": "2026-03-23T18:29:34+00:00",
-          "message": "fix: Remove superfluous view update from credentials (#6545)"
-        },
-        {
-          "hash": "e0dbe903",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-23T15:39:58+00:00",
-          "message": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files (#6453)"
-        },
-        {
-          "hash": "c463d0ff",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-23T14:04:22+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.2 to 5.5.3 (#6615)"
-        },
-        {
-          "hash": "be1cc48d",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-22T18:08:18+00:00",
-          "message": "fix: Assorted Oracle fixes (#6570)"
-        },
-        {
-          "hash": "cf2eb149",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T22:48:20+00:00",
-          "message": "fix: Update `.git-blame-ignore-revs` (#6577)"
-        },
-        {
-          "hash": "762922a0",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T21:20:56+00:00",
-          "message": "chore: Don't allow files more than 400kb to be added to the repo (#6597)"
-        },
-        {
-          "hash": "fd28656d",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-03-19T17:38:09+00:00",
-          "message": "ci: Check for signed commits in PR (#6559)"
-        },
-        {
-          "hash": "9316da78",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T17:29:22+00:00",
-          "message": "ci: Update XRPLF/actions (#6594)"
-        },
-        {
-          "hash": "6efd3122",
-          "author": "Michael Legleux",
-          "email": "legleux@users.noreply.github.com",
-          "date": "2026-03-19T10:23:51+00:00",
-          "message": "fix: Use correct format and event for workflows for release tags (#6554)"
-        },
-        {
-          "hash": "12954d53",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-18T22:41:09+00:00",
-          "message": "fix: Address remaining issue after clang-tidy merge (#6582)"
-        },
-        {
-          "hash": "b1e5ba05",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-18T21:11:51+00:00",
-          "message": "feat: Add code generator for transactions and ledger entries (#6443)"
-        },
-        {
-          "hash": "d360e7c5",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-18T19:52:07+00:00",
-          "message": "refactor: Rename transactor files/classes to match the tx name (#6580)"
-        }
-      ],
-      "contributor_count": 17,
-      "contributors": [
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "name": "Valentin Balaschenko"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "name": "Olek"
-        },
-        {
-          "email": "legleux@users.noreply.github.com",
-          "name": "Michael Legleux"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "name": "Copilot"
-        },
-        {
-          "email": "git@tequ.dev",
-          "name": "tequ"
-        },
-        {
-          "email": "brok@incorrekt.com",
-          "name": "Bronek Kozicki"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Lending",
-        "type": "Feature",
-        "confidence": 0.8,
         "source": "keyword_match"
       }
     },
@@ -12133,868 +12995,6 @@
         "amendment": "Other",
         "type": "Refactor",
         "confidence": 0.7,
-        "source": "keyword_match"
-      }
-    },
-    {
-      "name": "tapanito/fix-vault-withdraw-shares",
-      "last_commit": {
-        "hash": "a2cc0ae6",
-        "author": "Vito",
-        "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-03-31T10:00:59+00:00",
-        "message": "fix: Catch overflow in preclaim for share-denominated withdrawals"
-      },
-      "commits": [
-        {
-          "hash": "a2cc0ae6",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T10:00:59+00:00",
-          "message": "fix: Catch overflow in preclaim for share-denominated withdrawals"
-        },
-        {
-          "hash": "73b0e6ca",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T09:52:17+00:00",
-          "message": "address review comments"
-        },
-        {
-          "hash": "6594b5dd",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T07:58:58+00:00",
-          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-vault-withdraw-shares"
-        },
-        {
-          "hash": "5c8dfe54",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-30T17:15:40+00:00",
-          "message": "ci: Only publish docs in public repos (#6687)"
-        },
-        {
-          "hash": "ab8c168e",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-30T17:08:47+00:00",
-          "message": "chore: Enable remaining clang-tidy `performance` checks (#6648)"
-        },
-        {
-          "hash": "3a477e4d",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-30T15:22:38+00:00",
-          "message": "refactor: Address PR comments after the modularisation PRs (#6389)"
-        },
-        {
-          "hash": "96bfc32f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-30T14:59:53+00:00",
-          "message": "chore: Fix clang-tidy header filter (#6686)"
-        },
-        {
-          "hash": "de671863",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T14:09:57+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
-        },
-        {
-          "hash": "e0cabb9f",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T13:57:32+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
-        },
-        {
-          "hash": "3d9c545f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-27T18:52:18+00:00",
-          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
-        },
-        {
-          "hash": "9b944ee8",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T18:35:42+00:00",
-          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
-        },
-        {
-          "hash": "509677ab",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T14:11:37+00:00",
-          "message": "ci: Don't publish docs on release branches (#6673)"
-        },
-        {
-          "hash": "addc1e8e",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-26T14:11:16+00:00",
-          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
-        },
-        {
-          "hash": "faf69da4",
-          "author": "Valentin Balaschenko",
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "date": "2026-03-26T14:10:51+00:00",
-          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
-        },
-        {
-          "hash": "76e3b4fb",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-26T12:40:26+00:00",
-          "message": "fix: Improve loan invariant message (#6668)"
-        },
-        {
-          "hash": "e8bdbf97",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T12:37:37+00:00",
-          "message": "ci: Upload artifacts only in public repositories (#6670)"
-        },
-        {
-          "hash": "cdecd5d3",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-26T09:41:50+00:00",
-          "message": "Merge origin/develop; replace fixAssortedFixes with fixSecurity3_1_3"
-        },
-        {
-          "hash": "2c765f6e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T00:18:17+00:00",
-          "message": "ci: Add conflicting-pr workflow (#6656)"
-        },
-        {
-          "hash": "a9269fa8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T23:55:50+00:00",
-          "message": "chore: Add more AI tools to .gitignore (#6658)"
-        },
-        {
-          "hash": "15fd9fea",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T23:54:49+00:00",
-          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
-        },
-        {
-          "hash": "b9d07730",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-25T23:54:33+00:00",
-          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
-        },
-        {
-          "hash": "85b65c8e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T18:22:50+00:00",
-          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
-        },
-        {
-          "hash": "8f182e82",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T16:32:45+00:00",
-          "message": "refactor: Modularise ledger (#6536)"
-        },
-        {
-          "hash": "cd78569d",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T16:06:31+00:00",
-          "message": "chore: Use unpatched version of soci (#6649)"
-        },
-        {
-          "hash": "2c7af360",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T16:02:14+00:00",
-          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
-        },
-        {
-          "hash": "403fd7c6",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-25T14:28:28+00:00",
-          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
-        },
-        {
-          "hash": "dfed0481",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T14:25:33+00:00",
-          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
-        },
-        {
-          "hash": "0dc0c8e9",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-03-25T14:24:10+00:00",
-          "message": "docs: Update LICENSE.md year to present (#6636)"
-        },
-        {
-          "hash": "8d3f7e25",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-25T12:48:25+00:00",
-          "message": "fix: Address review feedback for vault withdraw shares"
-        },
-        {
-          "hash": "f92277cb",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-25T11:31:39+00:00",
-          "message": "fix: Check trustline limits for share-denominated vault withdrawals"
-        },
-        {
-          "hash": "0510ee47",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T10:44:14+00:00",
-          "message": "chore: Update some external dependencies (#6642)"
-        },
-        {
-          "hash": "589c9c69",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-24T23:18:41+00:00",
-          "message": "chore: Update external dependencies due to upstream merge (#6630)"
-        },
-        {
-          "hash": "4096623a",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-24T23:00:41+00:00",
-          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
-        },
-        {
-          "hash": "dda16208",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T21:18:03+00:00",
-          "message": "docs: Add note about `clang-tidy` installation (#6634)"
-        },
-        {
-          "hash": "85a4015a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:57+00:00",
-          "message": "fix: Assorted Permissioned Domain fixes (#6587)"
-        },
-        {
-          "hash": "f7bb4018",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:49+00:00",
-          "message": "fix: Assorted Vault fixes (#6607)"
-        },
-        {
-          "hash": "0eedefbf",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T15:42:12+00:00",
-          "message": "refactor: Enable more clang-tidy readability checks (#6595)"
-        },
-        {
-          "hash": "8b986e4a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T10:20:32+00:00",
-          "message": "refactor: Improve imports to only call the needed helpers (#6624)"
-        },
-        {
-          "hash": "dcfcdab1",
-          "author": "Olek",
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "date": "2026-03-23T18:29:34+00:00",
-          "message": "fix: Remove superfluous view update from credentials (#6545)"
-        },
-        {
-          "hash": "e0dbe903",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-23T15:39:58+00:00",
-          "message": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files (#6453)"
-        },
-        {
-          "hash": "c463d0ff",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-23T14:04:22+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.2 to 5.5.3 (#6615)"
-        },
-        {
-          "hash": "be1cc48d",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-22T18:08:18+00:00",
-          "message": "fix: Assorted Oracle fixes (#6570)"
-        },
-        {
-          "hash": "cf2eb149",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T22:48:20+00:00",
-          "message": "fix: Update `.git-blame-ignore-revs` (#6577)"
-        },
-        {
-          "hash": "762922a0",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T21:20:56+00:00",
-          "message": "chore: Don't allow files more than 400kb to be added to the repo (#6597)"
-        },
-        {
-          "hash": "fd28656d",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-03-19T17:38:09+00:00",
-          "message": "ci: Check for signed commits in PR (#6559)"
-        },
-        {
-          "hash": "9316da78",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T17:29:22+00:00",
-          "message": "ci: Update XRPLF/actions (#6594)"
-        },
-        {
-          "hash": "6efd3122",
-          "author": "Michael Legleux",
-          "email": "legleux@users.noreply.github.com",
-          "date": "2026-03-19T10:23:51+00:00",
-          "message": "fix: Use correct format and event for workflows for release tags (#6554)"
-        },
-        {
-          "hash": "12954d53",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-18T22:41:09+00:00",
-          "message": "fix: Address remaining issue after clang-tidy merge (#6582)"
-        },
-        {
-          "hash": "b1e5ba05",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-18T21:11:51+00:00",
-          "message": "feat: Add code generator for transactions and ledger entries (#6443)"
-        },
-        {
-          "hash": "d360e7c5",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-18T19:52:07+00:00",
-          "message": "refactor: Rename transactor files/classes to match the tx name (#6580)"
-        }
-      ],
-      "contributor_count": 17,
-      "contributors": [
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "name": "Valentin Balaschenko"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "name": "Olek"
-        },
-        {
-          "email": "legleux@users.noreply.github.com",
-          "name": "Michael Legleux"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "name": "Copilot"
-        },
-        {
-          "email": "git@tequ.dev",
-          "name": "tequ"
-        },
-        {
-          "email": "brok@incorrekt.com",
-          "name": "Bronek Kozicki"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Checks",
-        "type": "Feature",
-        "confidence": 0.6,
-        "source": "keyword_match"
-      }
-    },
-    {
-      "name": "tapanito/fix-multi-send-max-amount",
-      "last_commit": {
-        "hash": "e56d7c08",
-        "author": "Vito Tumas",
-        "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-03-31T09:44:47+00:00",
-        "message": "fix: change totalSendAmount to uint64"
-      },
-      "commits": [
-        {
-          "hash": "e56d7c08",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T09:44:47+00:00",
-          "message": "fix: change totalSendAmount to uint64"
-        },
-        {
-          "hash": "1fec636c",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T09:28:51+00:00",
-          "message": "fix: use exact integer arithmetic for MaximumAmount checks"
-        },
-        {
-          "hash": "867f2198",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T08:32:00+00:00",
-          "message": "fix: build errors"
-        },
-        {
-          "hash": "6105bf7a",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-31T07:57:46+00:00",
-          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-multi-send-max-amount"
-        },
-        {
-          "hash": "5c8dfe54",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-30T17:15:40+00:00",
-          "message": "ci: Only publish docs in public repos (#6687)"
-        },
-        {
-          "hash": "ab8c168e",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-30T17:08:47+00:00",
-          "message": "chore: Enable remaining clang-tidy `performance` checks (#6648)"
-        },
-        {
-          "hash": "3a477e4d",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-30T15:22:38+00:00",
-          "message": "refactor: Address PR comments after the modularisation PRs (#6389)"
-        },
-        {
-          "hash": "96bfc32f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-30T14:59:53+00:00",
-          "message": "chore: Fix clang-tidy header filter (#6686)"
-        },
-        {
-          "hash": "de671863",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T14:09:57+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
-        },
-        {
-          "hash": "e0cabb9f",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T13:57:32+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
-        },
-        {
-          "hash": "3d9c545f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-27T18:52:18+00:00",
-          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
-        },
-        {
-          "hash": "9b944ee8",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T18:35:42+00:00",
-          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
-        },
-        {
-          "hash": "5b3ae8c9",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-26T14:21:40+00:00",
-          "message": "fix: Harden MaximumAmount overflow checks in rippleSendMultiMPT"
-        },
-        {
-          "hash": "509677ab",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T14:11:37+00:00",
-          "message": "ci: Don't publish docs on release branches (#6673)"
-        },
-        {
-          "hash": "addc1e8e",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-26T14:11:16+00:00",
-          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
-        },
-        {
-          "hash": "faf69da4",
-          "author": "Valentin Balaschenko",
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "date": "2026-03-26T14:10:51+00:00",
-          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
-        },
-        {
-          "hash": "76e3b4fb",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-26T12:40:26+00:00",
-          "message": "fix: Improve loan invariant message (#6668)"
-        },
-        {
-          "hash": "e8bdbf97",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T12:37:37+00:00",
-          "message": "ci: Upload artifacts only in public repositories (#6670)"
-        },
-        {
-          "hash": "e5b2d9a6",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-26T09:19:27+00:00",
-          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/fix-multi-send-max-amount"
-        },
-        {
-          "hash": "2c765f6e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T00:18:17+00:00",
-          "message": "ci: Add conflicting-pr workflow (#6656)"
-        },
-        {
-          "hash": "a9269fa8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T23:55:50+00:00",
-          "message": "chore: Add more AI tools to .gitignore (#6658)"
-        },
-        {
-          "hash": "15fd9fea",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T23:54:49+00:00",
-          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
-        },
-        {
-          "hash": "b9d07730",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-25T23:54:33+00:00",
-          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
-        },
-        {
-          "hash": "85b65c8e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T18:22:50+00:00",
-          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
-        },
-        {
-          "hash": "8f182e82",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T16:32:45+00:00",
-          "message": "refactor: Modularise ledger (#6536)"
-        },
-        {
-          "hash": "cd78569d",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T16:06:31+00:00",
-          "message": "chore: Use unpatched version of soci (#6649)"
-        },
-        {
-          "hash": "2c7af360",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T16:02:14+00:00",
-          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
-        },
-        {
-          "hash": "403fd7c6",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-25T14:28:28+00:00",
-          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
-        },
-        {
-          "hash": "dfed0481",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T14:25:33+00:00",
-          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
-        },
-        {
-          "hash": "0dc0c8e9",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-03-25T14:24:10+00:00",
-          "message": "docs: Update LICENSE.md year to present (#6636)"
-        },
-        {
-          "hash": "bd544acb",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-25T11:22:33+00:00",
-          "message": "fix: Enforce aggregate MaximumAmount in multi-send MPT"
-        },
-        {
-          "hash": "0510ee47",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T10:44:14+00:00",
-          "message": "chore: Update some external dependencies (#6642)"
-        },
-        {
-          "hash": "589c9c69",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-24T23:18:41+00:00",
-          "message": "chore: Update external dependencies due to upstream merge (#6630)"
-        },
-        {
-          "hash": "4096623a",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-24T23:00:41+00:00",
-          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
-        },
-        {
-          "hash": "dda16208",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T21:18:03+00:00",
-          "message": "docs: Add note about `clang-tidy` installation (#6634)"
-        },
-        {
-          "hash": "85a4015a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:57+00:00",
-          "message": "fix: Assorted Permissioned Domain fixes (#6587)"
-        },
-        {
-          "hash": "f7bb4018",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:49+00:00",
-          "message": "fix: Assorted Vault fixes (#6607)"
-        },
-        {
-          "hash": "0eedefbf",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T15:42:12+00:00",
-          "message": "refactor: Enable more clang-tidy readability checks (#6595)"
-        },
-        {
-          "hash": "8b986e4a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T10:20:32+00:00",
-          "message": "refactor: Improve imports to only call the needed helpers (#6624)"
-        },
-        {
-          "hash": "dcfcdab1",
-          "author": "Olek",
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "date": "2026-03-23T18:29:34+00:00",
-          "message": "fix: Remove superfluous view update from credentials (#6545)"
-        },
-        {
-          "hash": "e0dbe903",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-23T15:39:58+00:00",
-          "message": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files (#6453)"
-        },
-        {
-          "hash": "c463d0ff",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-23T14:04:22+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.2 to 5.5.3 (#6615)"
-        },
-        {
-          "hash": "be1cc48d",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-22T18:08:18+00:00",
-          "message": "fix: Assorted Oracle fixes (#6570)"
-        },
-        {
-          "hash": "cf2eb149",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T22:48:20+00:00",
-          "message": "fix: Update `.git-blame-ignore-revs` (#6577)"
-        },
-        {
-          "hash": "762922a0",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T21:20:56+00:00",
-          "message": "chore: Don't allow files more than 400kb to be added to the repo (#6597)"
-        },
-        {
-          "hash": "fd28656d",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-03-19T17:38:09+00:00",
-          "message": "ci: Check for signed commits in PR (#6559)"
-        },
-        {
-          "hash": "9316da78",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-19T17:29:22+00:00",
-          "message": "ci: Update XRPLF/actions (#6594)"
-        },
-        {
-          "hash": "6efd3122",
-          "author": "Michael Legleux",
-          "email": "legleux@users.noreply.github.com",
-          "date": "2026-03-19T10:23:51+00:00",
-          "message": "fix: Use correct format and event for workflows for release tags (#6554)"
-        },
-        {
-          "hash": "12954d53",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-18T22:41:09+00:00",
-          "message": "fix: Address remaining issue after clang-tidy merge (#6582)"
-        },
-        {
-          "hash": "b1e5ba05",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-18T21:11:51+00:00",
-          "message": "feat: Add code generator for transactions and ledger entries (#6443)"
-        }
-      ],
-      "contributor_count": 17,
-      "contributors": [
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "name": "Valentin Balaschenko"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "name": "Olek"
-        },
-        {
-          "email": "legleux@users.noreply.github.com",
-          "name": "Michael Legleux"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "name": "Copilot"
-        },
-        {
-          "email": "git@tequ.dev",
-          "name": "tequ"
-        },
-        {
-          "email": "brok@incorrekt.com",
-          "name": "Bronek Kozicki"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Multi-Purpose Tokens",
-        "type": "Feature",
-        "confidence": 0.9,
         "source": "keyword_match"
       }
     },
@@ -98938,8 +98938,8 @@
   "contributors": [
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 227,
+      "name": "legleux/test_gl",
+      "commits": 230,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99172,8 +99172,8 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 224,
+      "name": "legleux/test_gl",
+      "commits": 227,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99403,8 +99403,8 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 216,
+      "name": "legleux/test_gl",
+      "commits": 219,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99626,8 +99626,8 @@
     },
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 214,
+      "name": "legleux/test_gl",
+      "commits": 217,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99847,8 +99847,8 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 203,
+      "name": "legleux/test_gl",
+      "commits": 206,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -100057,8 +100057,8 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 175,
+      "name": "tapanito/lending-fix-amendment",
+      "commits": 178,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -100239,8 +100239,8 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 155,
+      "name": "legleux/test_gl",
+      "commits": 158,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/default-cover-optimisation",
@@ -100401,8 +100401,8 @@
     },
     {
       "email": "brok@incorrekt.com",
-      "name": "dangell7/canonical-tx-tests",
-      "commits": 151,
+      "name": "tapanito/lending-fix-amendment",
+      "commits": 154,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -100560,8 +100560,8 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "dangell7/canonical-tx-tests",
-      "commits": 145,
+      "name": "tapanito/lending-fix-amendment",
+      "commits": 148,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -100712,8 +100712,8 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 144,
+      "name": "tapanito/lending-fix-amendment",
+      "commits": 147,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -100863,7 +100863,7 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "ximinez/online-delete-lastrotated",
+      "name": "legleux/test_gl",
       "commits": 141,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101011,8 +101011,8 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 137,
+      "name": "legleux/test_gl",
+      "commits": 140,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -101155,8 +101155,8 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "ripple/wasmi-perf-test",
-      "commits": 125,
+      "name": "legleux/test_gl",
+      "commits": 128,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -101287,8 +101287,8 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "ripple/wasmi-perf-test",
-      "commits": 120,
+      "name": "legleux/test_gl",
+      "commits": 123,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -101414,8 +101414,8 @@
     },
     {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "ripple/wasmi-perf-test",
-      "commits": 107,
+      "name": "tapanito/lending-fix-amendment",
+      "commits": 110,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -101528,8 +101528,8 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 106,
+      "name": "legleux/test_gl",
+      "commits": 109,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -101641,7 +101641,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "dangell7/canonical-tx-tests",
+      "name": "a1q123456/structured-logs-support-performance-test-final",
       "commits": 80,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101729,7 +101729,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "ci/windows-test",
+      "name": "a1q123456/remove-const-cast-from-tagged-cache-2",
       "commits": 59,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -101796,7 +101796,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "a1q123456/structured-logs-support-performance-test-3",
+      "name": "a1q123456/structured-logs-support-performance-test-7-2",
       "commits": 54,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101858,7 +101858,7 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-3",
+      "name": "a1q123456/structured-logs-support-performance-test-7-2",
       "commits": 54,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101920,8 +101920,8 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "ximinez/online-delete-lastrotated",
-      "commits": 46,
+      "name": "legleux/test_gl",
+      "commits": 48,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache",
         "bthomee/iops",
@@ -101948,7 +101948,9 @@
         "pratik/use_boost_coroutine2",
         "ripple/confidential-devnet",
         "ripple/confidential-transfer",
+        "tapanito/fix-vault-withdraw-shares",
         "tapanito/invariant-architecture",
+        "tapanito/lending-assorted-fixes",
         "tapanito/poc-vault-valuation",
         "tapanito/transactor-invariant-pt2",
         "tapanito/tx-restructure",
@@ -101974,8 +101976,8 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "tapanito/vault-bugfixes",
-      "commits": 32,
+      "name": "tapanito/fix-multi-send-max-amount",
+      "commits": 35,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/new-jtx",
@@ -102001,6 +102003,9 @@
         "pratik/std-coro/migrate-test-code",
         "pratik/std-coro/tsan-fixes",
         "pratik/test-tsan-and-gcc14-asan",
+        "tapanito/fix-multi-send-max-amount",
+        "tapanito/fix-vault-withdraw-shares",
+        "tapanito/lending-assorted-fixes",
         "tapanito/transactor-invariant-pt2",
         "tapanito/vault-bugfixes",
         "vlntb/mem-leak-ledger-history-3",
@@ -102014,7 +102019,7 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "ximinez/online-delete-lastrotated",
+      "name": "legleux/test_gl",
       "commits": 31,
       "branches": [
         "bthomee/ripplerpc",
@@ -102053,7 +102058,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
+      "name": "bthomee/matrix",
       "commits": 30,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -102091,7 +102096,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "ripple/se/fees",
+      "name": "mvadari/refactor-tec-deletions",
       "commits": 29,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -102128,7 +102133,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "a1q123456/structured-logs-support-performance-test-3",
+      "name": "a1q123456/structured-logs-support-performance-test-7-2",
       "commits": 29,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -102165,7 +102170,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "tapanito/lending-remove-liquidation-rate",
+      "name": "ripple/permission-delegation-devnet",
       "commits": 23,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -102196,7 +102201,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "tapanito/lending-remove-liquidation-rate",
+      "name": "ripple/permission-delegation-devnet",
       "commits": 22,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -102226,7 +102231,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
+      "name": "bthomee/matrix",
       "commits": 21,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -102255,7 +102260,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "tapanito/lending-remove-liquidation-rate",
+      "name": "ripple/permission-delegation-devnet",
       "commits": 21,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -102284,7 +102289,7 @@
     },
     {
       "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "ximinez/online-delete-lastrotated",
+      "name": "ximinez/emptydirectoryinvariant",
       "commits": 20,
       "branches": [
         "bthomee/ripplerpc",
@@ -102312,7 +102317,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "tapanito/lending-remove-liquidation-rate",
+      "name": "bthomee/matrix",
       "commits": 19,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -102339,7 +102344,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-3",
+      "name": "a1q123456/structured-logs-support-performance-test-7-2",
       "commits": 19,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -102366,7 +102371,7 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-3",
+      "name": "a1q123456/remove-const-cast-from-tagged-cache-2",
       "commits": 19,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -102393,7 +102398,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "ximinez/online-delete-lastrotated",
+      "name": "legleux/test_gl",
       "commits": 17,
       "branches": [
         "copilot/apply-asfdisallowincomingtrustline",
@@ -102418,7 +102423,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "name": "ripple/smart-escrow-srlabs",
       "commits": 17,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -102443,7 +102448,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "legleux/test_gl",
       "commits": 16,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -102467,7 +102472,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "ci/windows-test",
+      "name": "hotfix2.5.1",
       "commits": 14,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -102489,7 +102494,7 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "vlntb/RIPD-4257-fix-tecFROZEN",
+      "name": "hotfix2.5.1",
       "commits": 12,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -102509,7 +102514,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "pratik/Fix_Sanitizer_flagged_issues",
+      "name": "ximinez/lending-number-explicit-deadend",
       "commits": 12,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -102568,7 +102573,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "a1q123456/rust-integration",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -102585,7 +102590,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "a1q123456/rust-integration",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -102619,7 +102624,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "vlntb/job-queue-latency",
+      "name": "a1q123456/test-xxhash-signle-shot-hash",
       "commits": 8,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -102635,7 +102640,7 @@
     },
     {
       "email": "zinger777@gmail.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "zhang/groth16",
       "commits": 7,
       "branches": [
         "a1q123456/fix-windows-runner-build-dep-speed-test",
@@ -102679,7 +102684,7 @@
     },
     {
       "email": "vvysokikh@gmail.com",
-      "name": "release",
+      "name": "release-3.1",
       "commits": 5,
       "branches": [
         "release",
@@ -102692,7 +102697,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "ci/windows-test",
+      "name": "hotfix2.5.1",
       "commits": 5,
       "branches": [
         "a1q123456/windows-test",
@@ -102705,7 +102710,7 @@
     },
     {
       "email": "brettmollin@users.noreply.github.com",
-      "name": "tapanito/experiment/squelch",
+      "name": "a1q123456/test-xxhash-signle-shot-hash",
       "commits": 5,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -102718,7 +102723,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "ximinez/action-job-names",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 4,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -102730,7 +102735,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "ximinez/action-job-names",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 4,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -102742,7 +102747,7 @@
     },
     {
       "email": "shawnxie920@gmail.com",
-      "name": "ripple/confidential-devnet",
+      "name": "ripple/confidential-transfer",
       "commits": 2,
       "branches": [
         "ripple/confidential-devnet",
