@@ -618,44 +618,6 @@
     ]
   },
   {
-    "pr_number": 6679,
-    "branch_name": "integrate-sdk",
-    "title": "Integrate mpt-crypto SDK lib for on-chain verification",
-    "body": "All the on-chain verifications are now using the `mpt-crypto/mpt_utility` APIs\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may a",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-27T15:24:38Z",
-    "merged_at": "2026-03-27T20:26:37Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6679?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `89.23077%` with `14 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 80.0%. Comparing base ([`2c94e21`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c94e213c209a82cbb6412d943641766ad5a3ffe?dropdown=coverage&el=desc&utm_medium=re",
-        "created_at": "2026-03-27T17:13:48Z"
-      }
-    ],
-    "reviews_count": 12,
-    "reviews": [
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
     "pr_number": 6673,
     "branch_name": "no_release_docs",
     "title": "ci: Don't publish docs on release branches",
@@ -1395,64 +1357,6 @@
         "user": "bthomee",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6497,
-    "branch_name": "imp_exp_tst",
-    "title": "Add import / export sections test",
-    "body": "## High Level Overview of Change\r\nChange in cycle every byte of import / export section and try to load module test\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [X] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-07T00:11:16Z",
-    "merged_at": "2026-03-19T16:46:59Z",
-    "labels": [],
-    "comments_count": 5,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6497?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.3%. Comparing base ([`9c25d18`](https://app.codecov.io/gh/XRPLF/rippled/commit/9c25d18851417b17d670338705676ecdae700767?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-07T00:35:06Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "> Why are so many lines deleted in fixtures.cpp when there are no removals in fixtures.h?\r\n\r\nThey are not deleted, they are formatted with new clang-format settings",
-        "created_at": "2026-03-17T17:37:35Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "> > Why are so many lines deleted in fixtures.cpp when there are no removals in fixtures.h?\r\n> \r\n> They are not deleted, they are formatted with new clang-format settings\r\n\r\nCan that be done separately, given that this PR's parent branch isn't failing the clang-format check?",
-        "created_at": "2026-03-17T17:41:23Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "> > > Why are so many lines deleted in fixtures.cpp when there are no removals in fixtures.h?\r\n> > \r\n> > \r\n> > They are not deleted, they are formatted with new clang-format settings\r\n> \r\n> Can that be done separately, given that this PR's parent branch isn't failing the clang-format check?\r\n\r\nremoved",
-        "created_at": "2026-03-17T18:01:12Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "> I only check the bug in my previous comment, and assumed other code is not changed except formatting. Force push make it hard to see what else is changed. Please let me know if you changed anything other than formatting.\r\n\r\nremoved formatting and rebases with latest changes from wasmi-host-functions",
-        "created_at": "2026-03-19T13:51:51Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "pwang200",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": "Why are so many lines deleted in fixtures.cpp when there are no removals in fixtures.h?"
       }
     ]
   }
