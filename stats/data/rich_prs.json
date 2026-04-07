@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 6734,
+    "branch_name": "private_repos",
+    "title": "ci: Change conditions for uploading artifacts in public/private/org repos",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nWe can still exhaust artifact storage on the private repo in the org, so we'll have to only upload in public repos.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `lib",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-07T14:15:26Z",
+    "merged_at": "2026-04-07T14:55:54Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6734?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`c00ed67`](https://app.codecov.io/gh/XRPLF/rippled/commit/c00ed673a81c5595ef29b7f69423098d0c899eaf?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-07T14:33:09Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6725,
     "branch_name": "ct-merge",
     "title": "Merge develop into confidential-transfer",
@@ -1292,56 +1328,6 @@
         "user": "mvadari",
         "state": "COMMENTED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6453,
-    "branch_name": "rearchitect-pre",
-    "title": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files",
-    "body": "## High Level Overview of Change\r\n\r\nReorganizes helper functions from `View.h`/`View.cpp` into dedicated files based on the ledger entry type they operate on. This is a preparatory step for the [Typed Ledger Entry Views](https://github.com/XRPLF/rippled/pull/6408) proposal.\r\n\r\nThere are no changes to functionality, only functions moved to new files.\r\n\r\n**New helper files created:**\r\n- `DirectoryHelpers.h/cpp` - Directory iteration (`dirFirst`, `dirNext`, `cdirFirst`, `cdirNext`, `forEachItem`, etc.)\r\n- `AccountRootHelpers.h/cpp` - Account operations (`xrpLiquid`, `adjustOwnerCount`, `transferRate`, `isPseudoAccount`, etc.)\r\n- `RippleStateHelpers.h/cpp` - Trust line operations (`isFrozen`, `trustCreate`, `trustDelete`, `issueIOU`, `redeemIOU`, etc.)\r\n- `MPTokenHelpers.h/cpp` - MPToken operations (`isFrozen`, `transferRate`, `authorizeMPToken`, `accountHolds`, etc.)\r\n- `OfferHelpers.h/cpp` - Offer operations (`offerDelete`)\r\n- `VaultHelpers.h/cpp` - Vault calculations (`assetsToSharesDeposit`, `sharesToAssetsWithdraw`, etc.)\r\n- `TokenHelpers.h/cpp` - Asset-agnostic dispatchers that work with XRP/IOU/MPT via `std::visit`\r\n\r\n### Context of Change\r\n\r\n`View.h` had grown to contain helper functions for many different ledger entry types, making it difficult to find and maintain ledger-entry-specific logic. This refactoring:\r\n\r\n1. Groups related functions by the ledger entry type they operate on\r\n2. Makes it easier to understand which functions affect which ledger entries\r\n3. Prepares the codebase for future typed ledger entry views\r\n4. Keeps multi-entry functions in `View.h` where they cross unrelated entry type boundaries\r\n\r\n### Type of Change\r\n\r\n- [x] Refactor (non-breaking change that only restructures code)\r\n\r\n### API Impact\r\n\r\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n\r\n## Before / After\r\n\r\n**Before:** All ledger entry helper functions lived in `View.h`/`View.cpp` (~1500+ lines)\r\n\r\n**After:** Functions organized by ledger",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-02T20:53:19Z",
-    "merged_at": "2026-03-23T16:05:07Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6453?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `94.31138%` with `76 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`c463d0f`](https://app.codecov.io/gh/XRPLF/rippled/commit/c463d0ff06d18c55d8f3982597667d29fd6f6166?dropdown=coverage&el=desc&utm_medium=re",
-        "created_at": "2026-03-02T21:44:03Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "I think it'd be nice if we could create some jira tickets for the follow up work (i.e. use the auto generated class) to keep things on track",
-        "created_at": "2026-03-20T11:59:00Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "> I think it'd be nice if we could create some jira tickets for the follow up work (i.e. use the auto generated class) to keep things on track\n\nHappy to, but I'd like to get this PR merged first so that I can open up the PRs that I have so far.",
-        "created_at": "2026-03-20T13:04:33Z"
-      }
-    ],
-    "reviews_count": 25,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR refactors ledger-entry helper logic out of `View.h`/`View.cpp` into dedicated helper headers/sources grouped by ledger entry type (AccountRoot, RippleState, MPToken, "
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 18 out of 19 changed files in this pull request and generated no new comments.\n\n\n<details>\n<summary>Comments suppressed due to low confidence (4)</summary>\n\n"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 18 out of 19 changed files in this pull request and generated no new comments.\n\n\n<details>\n<summary>Comments suppressed due to low confidence (4)</summary>\n\n"
       }
     ]
   }
