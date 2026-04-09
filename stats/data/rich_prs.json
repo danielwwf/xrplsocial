@@ -1,5 +1,63 @@
 [
   {
+    "pr_number": 6699,
+    "branch_name": "wrapper_ut",
+    "title": "test: Calling wrap from c++ side",
+    "body": "## High Level Overview of Change\r\nUnit tests now calling Hostfunctions through  _wrap context\r\n",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-01T01:37:22Z",
+    "merged_at": "2026-04-09T22:48:58Z",
+    "labels": [],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6699?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `99.30070%` with `1 line` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`d2641d8`](https://app.codecov.io/gh/XRPLF/rippled/commit/d2641d85bd6816e5bd3714acc1a6568cda99470b?dropdown=coverage&el=desc&utm_medium=refe",
+        "created_at": "2026-04-01T02:06:39Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-02T23:06:03Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-03T03:12:05Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-08T00:19:35Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-08T02:51:19Z"
+      }
+    ],
+    "reviews_count": 15,
+    "reviews": [
+      {
+        "user": "pwang200",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "pwang200",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "pwang200",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6830,
     "branch_name": "DEFI-568",
     "title": "fix: Bidirection Object Storage for delegation for Attackathon",
@@ -1500,76 +1558,6 @@
         "user": "pwang200",
         "state": "APPROVED",
         "body": "please continue the discussion with Olek"
-      }
-    ]
-  },
-  {
-    "pr_number": 6640,
-    "branch_name": "bugfix/clang-tidy-extrafix2",
-    "title": "fix: More clang-tidy issues found after merging to develop",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR fixes issues that did not show up before we merged #6595 \r\n\r\n### API Impact\r\n\r\nNo impact.\r\n",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-25T00:59:43Z",
-    "merged_at": "2026-03-25T15:06:20Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6640?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `94.73684%` with `1 line` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`0510ee4`](https://app.codecov.io/gh/XRPLF/rippled/commit/0510ee47d7b2832a601cd42bbb4c0997281169b3?dropdown=coverage&el=desc&utm_medium=refe",
-        "created_at": "2026-03-25T01:49:08Z"
-      }
-    ],
-    "reviews_count": 10,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6647,
-    "branch_name": "better_conan_docs",
-    "title": "docs: Rewrite conan docs for custom recipes",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nWe now:\r\n- use `export_all` script from our fork CCI\r\n- update a list of recipes to export\r\n- Use `settings_user.yml`, to make it easier to add new compilers support\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes sh",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-25T13:18:51Z",
-    "merged_at": "2026-03-25T15:06:20Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
       }
     ]
   }
