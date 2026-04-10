@@ -1,5 +1,43 @@
 [
   {
+    "pr_number": 6850,
+    "branch_name": "ct-fix-clangtidy",
+    "title": "fix: fix pipeline failures",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be bac",
+    "user": "shawnxie999",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-10T14:39:04Z",
+    "merged_at": "2026-04-10T17:42:59Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6850?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.8%. Comparing base ([`6a8016f`](https://app.codecov.io/gh/XRPLF/rippled/commit/6a8016f2881fa119fd32afe04ead425ce88022ab?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-10T15:08:41Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6852,
     "branch_name": "fix-pipe-attackathon",
     "title": "fix: Fix pipeline for attackathon",
@@ -688,6 +726,67 @@
         "user": "yinyiqian1",
         "state": "APPROVED",
         "body": "LGTM"
+      }
+    ]
+  },
+  {
+    "pr_number": 6635,
+    "branch_name": "DEFI-614",
+    "title": "fix: Prevent deletion of MPTokens with active escrow",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis change prevents MPTokens from being deleted while there is still an active escrow associated with them. It ensures that token state remains consistent and avoids situations where escrowed tokens reference non-existent objects.\r\n\r\n### Context of Change\r\n\r\nThe removeEmptyHolding function in src/libxrpl/ledger/View.cpp can delete an MPToken ledger object even when it has a non-zero sfLockedAmount (i.e., funds are currently held in escrow). This orphans the escrowed funds: the Escrow ledger object still exists, but the MPToken it references has been removed. Any subsequent attempt to finish or cancel the escrow fails, resulting in permanent loss of the escrowed tokens.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public",
+    "user": "Kassaking7",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-24T18:39:41Z",
+    "merged_at": "2026-04-06T18:09:10Z",
+    "labels": [
+      "Ready to merge",
+      "AI Triage"
+    ],
+    "comments_count": 23,
+    "comments": [
+      {
+        "user": "Kassaking7",
+        "body": "Do we have any other fix needed. Maybe we can batch those fixes with one amendment-gate?",
+        "created_at": "2026-03-24T19:37:08Z"
+      },
+      {
+        "user": "kennyzlei",
+        "body": "> Do we have any other fix needed. Maybe we can batch those fixes with one amendment-gate?\r\n\r\n@Kassaking7  it is likely we may have one amendment containing other fixes too, @bthomee any suggestions for the fix amendment name here?",
+        "created_at": "2026-03-24T19:54:41Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "/ai-review",
+        "created_at": "2026-03-24T20:07:04Z"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "body": "\u26a0\ufe0f **Review Error** \u2014 The automated review failed to complete. Please re-trigger with `/ai-review`.\n\nError: Failed to post review to GitHub after 3 attempts: Server error '500 Internal Server Error' for url 'https://api.github.com/repos/XRPLF/rippled/pulls/6635/reviews'\n\n*Review by Claude Opus 4.6 \u00b7 Prompt: v12*",
+        "created_at": "2026-03-24T20:10:14Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "> > Do we have any other fix needed. Maybe we can batch those fixes with one amendment-gate?\r\n> \r\n> @Kassaking7 it is likely we may have one amendment containing other fixes too, @bthomee any suggestions for the fix amendment name here?\r\n\r\nWe don't have a name for that amendment yet, but I'll add this PR to my local release tracker sheet so when the time comes we can ask @Kassaking7 to update this PR.\r\n\r\nIn the meantime, @Kassaking7, please guard the changes by a new fix amendment with a suitabl",
+        "created_at": "2026-03-24T20:37:47Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "CHANGES_REQUESTED",
+        "body": "This change needs to be amendment-gated, since it has already been released with `Supported::yes`"
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "CHANGES_REQUESTED",
+        "body": "Good job on your first PR! Small changes requested to make the tests more readable"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues.\n\n*Review by Claude Opus 4.6* \u00b7 Prompt: V12\n\n<!-- review-fingerprint:ded7c0daf4a379a6 -->"
       }
     ]
   },
@@ -1445,48 +1544,6 @@
       {
         "user": "mathbunnyru",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6653,
-    "branch_name": "update_libs",
-    "title": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis updates all the libs but soci to the latest available in the CCI.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `lib",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-25T17:21:49Z",
-    "merged_at": "2026-03-25T19:24:29Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial",
-      "QE test required"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6653?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`8f182e8`](https://app.codecov.io/gh/XRPLF/rippled/commit/8f182e825a2402b5dbb160fd19d35475248d9de5?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-25T18:04:47Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
         "body": ""
       }
     ]
