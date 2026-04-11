@@ -1,5 +1,37 @@
 [
   {
+    "pr_number": 6724,
+    "branch_name": "dangell/smart-contracts",
+    "title": "Fix STJson and multiple emitted transactions",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR updates the `xrplf/smart-contracts` branch to a) avoid crashing client listeners when they receive non-UTF-8 characters (by displaying STJson keys as hex instead of decoding the hex) and b) properly handle multiple emitted txns from the same `ContractCall` tx.\r\n\r\n### Context of Change\r\n\r\nhttps://github.com/ripple/xrpl-wasm-stdlib/pull/161\r\n\r\n### API Impact\r\n\r\nN/A",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-06T14:48:03Z",
+    "merged_at": "2026-04-11T22:21:56Z",
+    "labels": [],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 8,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR updates the WASM smart-contract execution path to (1) make `STJson` JSON output safe for consumers by hex-encoding object keys, and (2) correctly support multiple emi"
+      },
+      {
+        "user": "dangell7",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "dangell7",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6861,
     "branch_name": "confidential-mpt-compact-proof",
     "title": "Support compact AND-composed sigma proof",
