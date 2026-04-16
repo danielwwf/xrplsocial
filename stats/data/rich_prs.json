@@ -1,5 +1,43 @@
 [
   {
+    "pr_number": 6859,
+    "branch_name": "mpt-compact-proof",
+    "title": "Support compact AND-composed sigma proof",
+    "body": "This PR is to integrate the new changes from `mpt-crypto` SDK `mpt_utility`:\r\n\r\nThe `mpt_utility` SDK change can be found here: https://github.com/XRPLF/mpt-crypto/pull/24\r\n\r\nFor reference, the updated proof sizes per transaction are:\r\n\r\n`ConfidentialMPTConvert`: 64 byte.\r\n`ConfidentialMPTSend`: 192 byte compact sigma + 754 byte bullet proof = 946 byte.\r\n`ConfidentialMPTConvertBack`: 128 byte compact sigma + 688 byte bullet proof = 816 byte\r\n`ConfidentialMPTClawback`: 64 byte.\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in ",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-10T22:20:31Z",
+    "merged_at": "2026-04-16T21:51:31Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6859?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.8%. Comparing base ([`5d38603`](https://app.codecov.io/gh/XRPLF/rippled/commit/5d38603f9090ae4bff6d6b27a34f052998910195?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-14T16:04:50Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "shawnxie999",
+        "state": "APPROVED",
+        "body": "LGTM"
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "APPROVED",
+        "body": "LGTM \ud83d\udc4d "
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6617,
     "branch_name": "Speed_up_compilation",
     "title": "chore: Move codegen venv setup into build stage",
