@@ -1,5 +1,60 @@
 [
   {
+    "pr_number": 6947,
+    "branch_name": "chore/clang-tidy-includes",
+    "title": "chore: Enable clang-tidy include cleaner",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR enables the misc-include-cleaner check which automatically keeps the includes tidy.\r\n\r\nAs a bonus this PR also fixes clang-format to automatically detect and place the main include first, without having to add extra '//' markers to separate them.\r\n\r\n### Context of Change\r\n\r\nFixing clang-tidy for all source.\r\n\r\n### API Impact\r\n\r\nNo impact.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-14T21:20:24Z",
+    "merged_at": "2026-04-17T17:05:48Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-14T21:33:28Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-14T22:47:41Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6947?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `0%` with `3 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.6%. Comparing base ([`f1a5ba4`](https://app.codecov.io/gh/XRPLF/rippled/commit/f1a5ba43adcb74ce039749ac80ad10ed88df74ea?dropdown=coverage&el=desc&utm_medium=referral&u",
+        "created_at": "2026-04-15T04:22:04Z"
+      },
+      {
+        "user": "a1q123456",
+        "body": "Stripped out `#include` related changes and this PR looks good in general. Just left a small question, happy to approve once we try and see if removing `IWYU pragma: keep` works for standard library includes.\r\n\r\n\r\nAttaching the script here:\r\n\r\n\r\n```python\r\n#!/usr/bin/env python3\r\n\"\"\"Strip #include-related changes from a unified diff file.\r\nIdentifies contiguous change blocks and drops them if they are include-related.\r\nA block is include-related if ALL changes are #include/#pragma once, blanks, ",
+        "created_at": "2026-04-16T15:33:16Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6930,
     "branch_name": "chore/clang-tidy-readability2",
     "title": "chore: Enable clang-tidy readability checks",
