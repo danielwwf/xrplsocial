@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6930,
+    "branch_name": "chore/clang-tidy-readability2",
+    "title": "chore: Enable clang-tidy readability checks",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR enables the following clang-tidy checks:\r\n- readability-avoid-nested-conditional-operator\r\n- readability-avoid-return-with-void-value\r\n- readability-braces-around-statements\r\n- readability-const-return-type\r\n- readability-container-size-empty\r\n- readability-convert-member-functions-to-static\r\n- readability-else-after-return\r\n- readability-enum-initial-value\r\n- readability-implicit-bool-conversion\r\n- readability-make-member-function-const\r\n- readability-math-missing-parentheses\r\n- readability-non-const-parameter\r\n- readability-redundant-casting\r\n- readability-redundant-inline-specifier\r\n- readability-redundant-member-init\r\n- readability-simplify-boolean-expr\r\n- readability-static-definition-in-anonymous-namespace\r\n- readability-suspicious-call-argument\r\n\r\n### Context of Change\r\n\r\nFix clang-tidy for all source.\r\n\r\n### API Impact\r\n\r\nNo impact.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-13T16:50:05Z",
+    "merged_at": "2026-04-17T13:55:16Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6930?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `92.30769%` with `12 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.6%. Comparing base ([`4a73be4`](https://app.codecov.io/gh/XRPLF/rippled/commit/4a73be499d69d7f4157e2dff1f1b775a65962d6f?dropdown=coverage&el=desc&utm_medium=re",
+        "created_at": "2026-04-13T21:36:57Z"
+      }
+    ],
+    "reviews_count": 24,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6859,
     "branch_name": "mpt-compact-proof",
     "title": "Support compact AND-composed sigma proof",
@@ -1697,44 +1737,6 @@
       }
     ],
     "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6679,
-    "branch_name": "integrate-sdk",
-    "title": "Integrate mpt-crypto SDK lib for on-chain verification",
-    "body": "All the on-chain verifications are now using the `mpt-crypto/mpt_utility` APIs\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may a",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-27T15:24:38Z",
-    "merged_at": "2026-03-27T20:26:37Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6679?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `89.23077%` with `14 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 80.0%. Comparing base ([`2c94e21`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c94e213c209a82cbb6412d943641766ad5a3ffe?dropdown=coverage&el=desc&utm_medium=re",
-        "created_at": "2026-03-27T17:13:48Z"
-      }
-    ],
-    "reviews_count": 12,
     "reviews": [
       {
         "user": "shawnxie999",
