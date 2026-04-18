@@ -1,5 +1,48 @@
 [
   {
+    "pr_number": 6715,
+    "branch_name": "del_cred2",
+    "title": "Stop tx processing if failed to delete expired credentials",
+    "body": "## High Level Overview of Change\r\nReturn error code if deleting expired credentials failed\r\nPort to develop [PR #6962 ](https://github.com/XRPLF/rippled/pull/6962)",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-02T22:07:52Z",
+    "merged_at": "2026-04-18T00:26:52Z",
+    "labels": [],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6715?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `88.88889%` with `3 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.5%. Comparing base ([`eefa1d0`](https://app.codecov.io/gh/XRPLF/rippled/commit/eefa1d03bfd16f13c62c217db4f3ed2ae4040296?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-04-02T22:32:16Z"
+      },
+      {
+        "user": "oleks-rip",
+        "body": "[Develop PR](https://github.com/XRPLF/rippled/pull/6962)",
+        "created_at": "2026-04-16T21:12:51Z"
+      }
+    ],
+    "reviews_count": 22,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": "Some extra stuff included in this diff in the workflows - can we remove those?"
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6957,
     "branch_name": "fix/vault-rounding-staging",
     "title": "fix: Add rounding to Vault invariants (#6217)",
@@ -1687,91 +1730,6 @@
       {
         "user": "shawnxie999",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6687,
-    "branch_name": "no_publish_private_docs",
-    "title": "ci: Only publish docs in public repos",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nPublishing docs requires artifact storage, which might be exhausted in private repos.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that ",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-30T16:35:58Z",
-    "merged_at": "2026-03-30T17:38:13Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6648,
-    "branch_name": "chore/clang-tidy-checks-performance",
-    "title": "chore: Enable remaining clang-tidy `performance` checks",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR enables the following clang-tidy checks:\r\n- performance-faster-string-find\r\n- performance-for-range-copy\r\n- performance-inefficient-vector-operation\r\n- performance-move-const-arg\r\n- performance-no-automatic-move\r\n\r\n### API Impact\r\n\r\nNo impact.\r\n",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-25T14:09:23Z",
-    "merged_at": "2026-03-30T17:25:55Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 5,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6648?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `91.17647%` with `6 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`3a477e4`](https://app.codecov.io/gh/XRPLF/rippled/commit/3a477e4d0189454303ea82bac98048b4591909ff?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-03-25T17:02:58Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-03-26T00:44:37Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-03-27T01:14:44Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-03-30T15:46:30Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-03-30T16:39:22Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
