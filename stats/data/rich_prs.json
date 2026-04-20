@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 6965,
+    "branch_name": "check_pr_desc",
+    "title": "ci: Add workflow to check PR description has been filled",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nLet's check that adding a comment here changes nothing\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nWe check that the PR description (ignoring HTML/MD comments) is not the same as in the base branch, so people should fill in the description.\r\nThis should also be made a required check.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or n",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-17T17:27:57Z",
+    "merged_at": "2026-04-20T12:30:35Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "mathbunnyru",
+        "body": "Works well - I checked that it fails with no changes or changes only inside comments and passes when the description is filled.",
+        "created_at": "2026-04-17T17:32:27Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "vlntb",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6715,
     "branch_name": "del_cred2",
     "title": "Stop tx processing if failed to delete expired credentials",
@@ -1701,34 +1737,6 @@
     "reviews": [
       {
         "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6683,
-    "branch_name": "remove-func",
-    "title": "remove dead functions due to integration",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be bac",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-27T21:14:29Z",
-    "merged_at": "2026-03-30T20:37:55Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6683?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 80.1%. Comparing base ([`2c94e21`](https://app.codecov.io/gh/XRPLF/rippled/commit/2c94e213c209a82cbb6412d943641766ad5a3ffe?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-27T21:43:18Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "shawnxie999",
         "state": "APPROVED",
         "body": ""
       }
