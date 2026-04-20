@@ -1,19 +1,471 @@
 {
-  "generated_at": "2026-04-20T13:31:59.091118+00:00",
+  "generated_at": "2026-04-20T14:32:55.814446+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 230,
   "total_contributors": 76,
   "branches": [
     {
-      "name": "pratik/otel-phase1c-rpc-integration",
+      "name": "pratik/otel-phase2-rpc-tracing",
       "last_commit": {
-        "hash": "f7262842",
+        "hash": "6d5ffd30",
         "author": "Pratik Mankawde",
         "email": "3397372+pratikmankawde@users.noreply.github.com",
-        "date": "2026-04-20T13:29:32+00:00",
-        "message": "docs(telemetry): replace text hierarchy with ASCII box diagrams"
+        "date": "2026-04-20T14:22:06+00:00",
+        "message": "fix(telemetry): align TelemetryConfig tests with current API"
       },
       "commits": [
+        {
+          "hash": "6d5ffd30",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T14:22:06+00:00",
+          "message": "fix(telemetry): align TelemetryConfig tests with current API"
+        },
+        {
+          "hash": "83ec2b09",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T14:20:33+00:00",
+          "message": "docs(telemetry): update Phase2 task list to reflect actual implementation"
+        },
+        {
+          "hash": "b928d93f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T14:09:52+00:00",
+          "message": "feat(telemetry): add RPC trace filters and SpanGuard unit tests"
+        },
+        {
+          "hash": "c1c17337",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T14:02:35+00:00",
+          "message": "feat(telemetry): add node health attributes to RPC spans (Task 2.8)"
+        },
+        {
+          "hash": "c5e61056",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T14:02:11+00:00",
+          "message": "docs(telemetry): add Phase 2-5 task lists and appendix update"
+        },
+        {
+          "hash": "c60a34ae",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T13:47:55+00:00",
+          "message": "fix(telemetry): pass name_ through CallData::clone()"
+        },
+        {
+          "hash": "a23beb02",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T13:47:25+00:00",
+          "message": "feat(telemetry): instrument missing critical/medium RPC span paths"
+        },
+        {
+          "hash": "f7262842",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T13:29:32+00:00",
+          "message": "docs(telemetry): replace text hierarchy with ASCII box diagrams"
+        },
+        {
+          "hash": "9ab85701",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:23:23+00:00",
+          "message": "docs(telemetry): replace Jaeger references with Tempo in Phase 2-5 task lists"
+        },
+        {
+          "hash": "8f2507a9",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T11:11:13+00:00",
+          "message": "feat(telemetry): add node health attributes to RPC spans (Task 2.8)"
+        },
+        {
+          "hash": "befffc57",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-30T14:12:33+00:00",
+          "message": "docs: add Task 2.8 RPC span attribute enrichment for external dashboard parity"
+        },
+        {
+          "hash": "945faac7",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:14+00:00",
+          "message": "Phase 2: RPC tracing - span macros, attributes, WebSocket, command spans"
+        },
+        {
+          "hash": "c8b1686c",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:06+00:00",
+          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
+        },
+        {
+          "hash": "ba92ccad",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:06+00:00",
+          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
+        },
+        {
+          "hash": "012e4539",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:12+00:00",
+          "message": "Phase 1c: RPC integration - ServerHandler tracing, telemetry config wiring"
+        },
+        {
+          "hash": "79b95c8c",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:06+00:00",
+          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
+        },
+        {
+          "hash": "34d0f40e",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:06+00:00",
+          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
+        },
+        {
+          "hash": "84211344",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:17:02+00:00",
+          "message": "refactor(telemetry): remove Jaeger service, exporter, and datasource"
+        },
+        {
+          "hash": "a7470615",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:06+00:00",
+          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
+        },
+        {
+          "hash": "33b09d29",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:22:34+00:00",
+          "message": "docs(telemetry): replace Jaeger with Tempo in architecture diagram"
+        },
+        {
+          "hash": "f1358420",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-24T19:11:12+00:00",
+          "message": "docs: correct OTel overhead estimates against SDK benchmarks"
+        },
+        {
+          "hash": "a9bc525f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-24T16:26:03+00:00",
+          "message": "moved presentation.md file"
+        },
+        {
+          "hash": "5c9102bd",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-17T15:00:19+00:00",
+          "message": "Remove effort estimates from implementation phases document"
+        },
+        {
+          "hash": "c556f347",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-12T22:08:13+00:00",
+          "message": "Add Phase 4a implementation status to plan docs"
+        },
+        {
+          "hash": "2fb61244",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-09T18:00:20+00:00",
+          "message": "Appendix: add 00-tracing-fundamentals.md and POC_taskList.md to document index"
+        },
+        {
+          "hash": "e482b56f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-02-26T16:17:00+00:00",
+          "message": "Phase 1a: OpenTelemetry plan documentation"
+        },
+        {
+          "hash": "de671863",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T14:09:57+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
+        },
+        {
+          "hash": "e0cabb9f",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-03-30T13:57:32+00:00",
+          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
+        },
+        {
+          "hash": "3d9c545f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-27T18:52:18+00:00",
+          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
+        },
+        {
+          "hash": "9b944ee8",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-27T18:35:42+00:00",
+          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
+        },
+        {
+          "hash": "509677ab",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T14:11:37+00:00",
+          "message": "ci: Don't publish docs on release branches (#6673)"
+        },
+        {
+          "hash": "addc1e8e",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-26T14:11:16+00:00",
+          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
+        },
+        {
+          "hash": "faf69da4",
+          "author": "Valentin Balaschenko",
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "date": "2026-03-26T14:10:51+00:00",
+          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
+        },
+        {
+          "hash": "76e3b4fb",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-26T12:40:26+00:00",
+          "message": "fix: Improve loan invariant message (#6668)"
+        },
+        {
+          "hash": "e8bdbf97",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T12:37:37+00:00",
+          "message": "ci: Upload artifacts only in public repositories (#6670)"
+        },
+        {
+          "hash": "2c765f6e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-26T00:18:17+00:00",
+          "message": "ci: Add conflicting-pr workflow (#6656)"
+        },
+        {
+          "hash": "a9269fa8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T23:55:50+00:00",
+          "message": "chore: Add more AI tools to .gitignore (#6658)"
+        },
+        {
+          "hash": "15fd9fea",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T23:54:49+00:00",
+          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
+        },
+        {
+          "hash": "b9d07730",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-03-25T23:54:33+00:00",
+          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
+        },
+        {
+          "hash": "85b65c8e",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T18:22:50+00:00",
+          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
+        },
+        {
+          "hash": "8f182e82",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-25T16:32:45+00:00",
+          "message": "refactor: Modularise ledger (#6536)"
+        },
+        {
+          "hash": "cd78569d",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T16:06:31+00:00",
+          "message": "chore: Use unpatched version of soci (#6649)"
+        },
+        {
+          "hash": "2c7af360",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-03-25T16:02:14+00:00",
+          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
+        },
+        {
+          "hash": "403fd7c6",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-25T14:28:28+00:00",
+          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
+        },
+        {
+          "hash": "dfed0481",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T14:25:33+00:00",
+          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
+        },
+        {
+          "hash": "0dc0c8e9",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-03-25T14:24:10+00:00",
+          "message": "docs: Update LICENSE.md year to present (#6636)"
+        },
+        {
+          "hash": "0510ee47",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-25T10:44:14+00:00",
+          "message": "chore: Update some external dependencies (#6642)"
+        },
+        {
+          "hash": "589c9c69",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-03-24T23:18:41+00:00",
+          "message": "chore: Update external dependencies due to upstream merge (#6630)"
+        },
+        {
+          "hash": "4096623a",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-03-24T23:00:41+00:00",
+          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
+        },
+        {
+          "hash": "dda16208",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-03-24T21:18:03+00:00",
+          "message": "docs: Add note about `clang-tidy` installation (#6634)"
+        }
+      ],
+      "contributor_count": 15,
+      "contributors": [
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        }
+      ],
+      "ai_category": {
+        "amendment": "OpenTelemetry",
+        "type": "Feature",
+        "confidence": 0.9,
+        "source": "ai_kimi"
+      }
+    },
+    {
+      "name": "pratik/otel-phase1c-rpc-integration",
+      "last_commit": {
+        "hash": "c60a34ae",
+        "author": "Pratik Mankawde",
+        "email": "3397372+pratikmankawde@users.noreply.github.com",
+        "date": "2026-04-20T13:47:55+00:00",
+        "message": "fix(telemetry): pass name_ through CallData::clone()"
+      },
+      "commits": [
+        {
+          "hash": "c60a34ae",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T13:47:55+00:00",
+          "message": "fix(telemetry): pass name_ through CallData::clone()"
+        },
+        {
+          "hash": "a23beb02",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T13:47:25+00:00",
+          "message": "feat(telemetry): instrument missing critical/medium RPC span paths"
+        },
+        {
+          "hash": "f7262842",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-20T13:29:32+00:00",
+          "message": "docs(telemetry): replace text hierarchy with ASCII box diagrams"
+        },
         {
           "hash": "f7262842",
           "author": "Pratik Mankawde",
@@ -342,30 +794,9 @@
           "email": "yqian@ripple.com",
           "date": "2026-04-02T20:48:35+00:00",
           "message": "docs: Add explanatory comment to checkFee (#6631)"
-        },
-        {
-          "hash": "6d9ed125",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-02T20:48:00+00:00",
-          "message": "fix: Decouple reserve from fee in delegate payment (#6568)"
-        },
-        {
-          "hash": "02fa55df",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-01T19:31:45+00:00",
-          "message": "fix: Check trustline limits for share-denominated vault withdrawals (#6645)"
-        },
-        {
-          "hash": "6e245220",
-          "author": "Valentin Balaschenko",
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "date": "2026-04-01T16:56:45+00:00",
-          "message": "fix: Remove fatal assertion on Linux thread name truncation  (#6690)"
         }
       ],
-      "contributor_count": 16,
+      "contributor_count": 15,
       "contributors": [
         {
           "email": "3397372+pratikmankawde@users.noreply.github.com",
@@ -26101,437 +26532,6 @@
       "ai_category": {
         "amendment": "OpenTelemetry",
         "type": "Documentation",
-        "confidence": 0.9,
-        "source": "ai_kimi"
-      }
-    },
-    {
-      "name": "pratik/otel-phase2-rpc-tracing",
-      "last_commit": {
-        "hash": "9ab85701",
-        "author": "Pratik Mankawde",
-        "email": "3397372+pratikmankawde@users.noreply.github.com",
-        "date": "2026-03-31T21:23:23+00:00",
-        "message": "docs(telemetry): replace Jaeger references with Tempo in Phase 2-5 task lists"
-      },
-      "commits": [
-        {
-          "hash": "9ab85701",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:23:23+00:00",
-          "message": "docs(telemetry): replace Jaeger references with Tempo in Phase 2-5 task lists"
-        },
-        {
-          "hash": "8f2507a9",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T11:11:13+00:00",
-          "message": "feat(telemetry): add node health attributes to RPC spans (Task 2.8)"
-        },
-        {
-          "hash": "befffc57",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-30T14:12:33+00:00",
-          "message": "docs: add Task 2.8 RPC span attribute enrichment for external dashboard parity"
-        },
-        {
-          "hash": "945faac7",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:14+00:00",
-          "message": "Phase 2: RPC tracing - span macros, attributes, WebSocket, command spans"
-        },
-        {
-          "hash": "c8b1686c",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:06+00:00",
-          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
-        },
-        {
-          "hash": "ba92ccad",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:06+00:00",
-          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
-        },
-        {
-          "hash": "012e4539",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:12+00:00",
-          "message": "Phase 1c: RPC integration - ServerHandler tracing, telemetry config wiring"
-        },
-        {
-          "hash": "79b95c8c",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:06+00:00",
-          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
-        },
-        {
-          "hash": "34d0f40e",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:06+00:00",
-          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
-        },
-        {
-          "hash": "84211344",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:17:02+00:00",
-          "message": "refactor(telemetry): remove Jaeger service, exporter, and datasource"
-        },
-        {
-          "hash": "a7470615",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:06+00:00",
-          "message": "Phase 1b: Telemetry core infrastructure - CMake, Conan, SpanGuard, config"
-        },
-        {
-          "hash": "33b09d29",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:22:34+00:00",
-          "message": "docs(telemetry): replace Jaeger with Tempo in architecture diagram"
-        },
-        {
-          "hash": "f1358420",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-24T19:11:12+00:00",
-          "message": "docs: correct OTel overhead estimates against SDK benchmarks"
-        },
-        {
-          "hash": "a9bc525f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-24T16:26:03+00:00",
-          "message": "moved presentation.md file"
-        },
-        {
-          "hash": "5c9102bd",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-17T15:00:19+00:00",
-          "message": "Remove effort estimates from implementation phases document"
-        },
-        {
-          "hash": "c556f347",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-12T22:08:13+00:00",
-          "message": "Add Phase 4a implementation status to plan docs"
-        },
-        {
-          "hash": "2fb61244",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-09T18:00:20+00:00",
-          "message": "Appendix: add 00-tracing-fundamentals.md and POC_taskList.md to document index"
-        },
-        {
-          "hash": "e482b56f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-02-26T16:17:00+00:00",
-          "message": "Phase 1a: OpenTelemetry plan documentation"
-        },
-        {
-          "hash": "de671863",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T14:09:57+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/deploy-pages from 4.0.5 to 5.0.0 (#6684)"
-        },
-        {
-          "hash": "e0cabb9f",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-30T13:57:32+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.3 to 6.0.0 (#6685)"
-        },
-        {
-          "hash": "3d9c545f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-27T18:52:18+00:00",
-          "message": "fix: Guard Coro::resume() against completed coroutines (#6608)"
-        },
-        {
-          "hash": "9b944ee8",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-27T18:35:42+00:00",
-          "message": "refactor: Split LoanInvariant into LoanBrokerInvariant and LoanInvariant (#6674)"
-        },
-        {
-          "hash": "509677ab",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T14:11:37+00:00",
-          "message": "ci: Don't publish docs on release branches (#6673)"
-        },
-        {
-          "hash": "addc1e8e",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-26T14:11:16+00:00",
-          "message": "refactor: Make function naming in ServiceRegistry consistent (#6390)"
-        },
-        {
-          "hash": "faf69da4",
-          "author": "Valentin Balaschenko",
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "date": "2026-03-26T14:10:51+00:00",
-          "message": "chore: Shorten job names to stay within Linux 15-char thread limit (#6669)"
-        },
-        {
-          "hash": "76e3b4fb",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-26T12:40:26+00:00",
-          "message": "fix: Improve loan invariant message (#6668)"
-        },
-        {
-          "hash": "e8bdbf97",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T12:37:37+00:00",
-          "message": "ci: Upload artifacts only in public repositories (#6670)"
-        },
-        {
-          "hash": "2c765f6e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-26T00:18:17+00:00",
-          "message": "ci: Add conflicting-pr workflow (#6656)"
-        },
-        {
-          "hash": "a9269fa8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T23:55:50+00:00",
-          "message": "chore: Add more AI tools to .gitignore (#6658)"
-        },
-        {
-          "hash": "15fd9fea",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T23:54:49+00:00",
-          "message": "chore: Show warning message if user may need to connect to VPN (#6619)"
-        },
-        {
-          "hash": "b9d07730",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-03-25T23:54:33+00:00",
-          "message": "feat: Add placeholder amendment for assorted bug fixes (#6652)"
-        },
-        {
-          "hash": "85b65c8e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T18:22:50+00:00",
-          "message": "chore: Update sqlite3->3.51.0, protobuf->6.33.5, openssl->3.6.1, grpc->1.78.1 (#6653)"
-        },
-        {
-          "hash": "8f182e82",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-25T16:32:45+00:00",
-          "message": "refactor: Modularise ledger (#6536)"
-        },
-        {
-          "hash": "cd78569d",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T16:06:31+00:00",
-          "message": "chore: Use unpatched version of soci (#6649)"
-        },
-        {
-          "hash": "2c7af360",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-25T16:02:14+00:00",
-          "message": "fix: Remove unused/unreachable `transactor` code (#6612)"
-        },
-        {
-          "hash": "403fd7c6",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-25T14:28:28+00:00",
-          "message": "fix: More clang-tidy issues found after merging to develop (#6640)"
-        },
-        {
-          "hash": "dfed0481",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T14:25:33+00:00",
-          "message": "docs: Rewrite conan docs for custom recipes (#6647)"
-        },
-        {
-          "hash": "0dc0c8e9",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-03-25T14:24:10+00:00",
-          "message": "docs: Update LICENSE.md year to present (#6636)"
-        },
-        {
-          "hash": "0510ee47",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-25T10:44:14+00:00",
-          "message": "chore: Update some external dependencies (#6642)"
-        },
-        {
-          "hash": "589c9c69",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-03-24T23:18:41+00:00",
-          "message": "chore: Update external dependencies due to upstream merge (#6630)"
-        },
-        {
-          "hash": "4096623a",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-03-24T23:00:41+00:00",
-          "message": "chore: Remove the forward declarations that cause build errors when unity build is enabled (#6633)"
-        },
-        {
-          "hash": "dda16208",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T21:18:03+00:00",
-          "message": "docs: Add note about `clang-tidy` installation (#6634)"
-        },
-        {
-          "hash": "85a4015a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:57+00:00",
-          "message": "fix: Assorted Permissioned Domain fixes (#6587)"
-        },
-        {
-          "hash": "f7bb4018",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T18:53:49+00:00",
-          "message": "fix: Assorted Vault fixes (#6607)"
-        },
-        {
-          "hash": "0eedefbf",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-03-24T15:42:12+00:00",
-          "message": "refactor: Enable more clang-tidy readability checks (#6595)"
-        },
-        {
-          "hash": "8b986e4a",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-24T10:20:32+00:00",
-          "message": "refactor: Improve imports to only call the needed helpers (#6624)"
-        },
-        {
-          "hash": "dcfcdab1",
-          "author": "Olek",
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "date": "2026-03-23T18:29:34+00:00",
-          "message": "fix: Remove superfluous view update from credentials (#6545)"
-        },
-        {
-          "hash": "e0dbe903",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-23T15:39:58+00:00",
-          "message": "refactor: Move ledger entry helper functions from View.h/View.cpp to dedicated helper files (#6453)"
-        },
-        {
-          "hash": "c463d0ff",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-03-23T14:04:22+00:00",
-          "message": "ci: [DEPENDABOT] bump codecov/codecov-action from 5.5.2 to 5.5.3 (#6615)"
-        },
-        {
-          "hash": "be1cc48d",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-03-22T18:08:18+00:00",
-          "message": "fix: Assorted Oracle fixes (#6570)"
-        }
-      ],
-      "contributor_count": 16,
-      "contributors": [
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "name": "Valentin Balaschenko"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "name": "Olek"
-        },
-        {
-          "email": "legleux@users.noreply.github.com",
-          "name": "Michael Legleux"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "name": "Copilot"
-        },
-        {
-          "email": "git@tequ.dev",
-          "name": "tequ"
-        },
-        {
-          "email": "brok@incorrekt.com",
-          "name": "Bronek Kozicki"
-        }
-      ],
-      "ai_category": {
-        "amendment": "OpenTelemetry",
-        "type": "Feature",
         "confidence": 0.9,
         "source": "ai_kimi"
       }
@@ -97798,7 +97798,7 @@
   "contributors": [
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 227,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -98031,7 +98031,7 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 223,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -98260,7 +98260,7 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "pratik/otel-phase9-metric-gap-fill",
       "commits": 215,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -98481,7 +98481,7 @@
     },
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "pratik/otel-phase9-metric-gap-fill",
       "commits": 212,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -98699,7 +98699,7 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 204,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -98909,7 +98909,7 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "dangell7/batch-v1",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 182,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -99097,7 +99097,7 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 157,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -99176,6 +99176,7 @@
         "pratik/otel-phase1a-plan-docs",
         "pratik/otel-phase1b-telemetry-infra",
         "pratik/otel-phase1c-rpc-integration",
+        "pratik/otel-phase2-rpc-tracing",
         "pratik/sanitizers-demo",
         "pratik/use_boost_coroutine2",
         "q73zhao/release-2.4.0-perf-investigation",
@@ -99260,7 +99261,7 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "dangell7/batch-v1",
+      "name": "ximinez/acquireAsyncDispatch",
       "commits": 144,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99410,8 +99411,8 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
-      "commits": 139,
+      "name": "vlntb/fix-peer-disconnects-ping",
+      "commits": 137,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -99469,7 +99470,6 @@
         "mvadari/rearch/token-holder",
         "mvadari/rearch/token-refactor",
         "mvadari/refactor-tec-deletions",
-        "origin",
         "pratik/AutomatedHarness",
         "pratik/Fix-ubsan-flagged-issues",
         "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
@@ -99482,7 +99482,6 @@
         "pratik/openssl-3.6.0-alpha-performance-test",
         "pratik/openssl_111_perf_test",
         "pratik/openssl_354_test",
-        "pratik/otel-phase1c-rpc-integration",
         "pratik/otel-phase2-rpc-tracing",
         "pratik/otel-phase3-tx-tracing",
         "pratik/otel-phase4-consensus-tracing",
@@ -99557,7 +99556,7 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "pratik/otel-phase9-metric-gap-fill",
       "commits": 136,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99699,7 +99698,7 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "dangell7/batch-v1",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 135,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -99840,7 +99839,7 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "pratik/otel-phase9-metric-gap-fill",
       "commits": 129,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99975,7 +99974,7 @@
     },
     {
       "email": "brok@incorrekt.com",
-      "name": "a1q123456/modularise-jtx",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 117,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100100,7 +100099,7 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "dangell7/batch-v1",
+      "name": "pratik/otel-phase9-metric-gap-fill",
       "commits": 106,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -100212,8 +100211,8 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
-      "commits": 100,
+      "name": "copilot/add-ctid-to-ledger-response",
+      "commits": 99,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -100258,7 +100257,6 @@
         "mvadari/ammdeposit-blank",
         "mvadari/rearch/token-holder",
         "mvadari/rearch/token-refactor",
-        "origin",
         "pratik/AutomatedHarness",
         "pratik/Fix-ubsan-flagged-issues",
         "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
@@ -100320,7 +100318,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 81,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100409,8 +100407,8 @@
     },
     {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "dangell7/batch-v1",
-      "commits": 77,
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
+      "commits": 76,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -100436,7 +100434,6 @@
         "mvadari/move-more-helpers",
         "mvadari/rearch/token-holder",
         "mvadari/rearch/token-refactor",
-        "origin",
         "pratik/Add_checks_db_objects",
         "pratik/Fix-ubsan-flagged-issues",
         "pratik/Fix_asan_lsan_flagged_issues",
@@ -100494,7 +100491,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "vlntb/inbound-ledgers-cache",
+      "name": "revert-5510-a1q123456/add-new-macro",
       "commits": 60,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -100562,7 +100559,7 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "vvysokikh1/fix-positive-balance-trustline-pay-no-reserve",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 58,
       "branches": [
         "a1q123456/new-jtx",
@@ -100587,6 +100584,7 @@
         "pratik/otel-phase1a-plan-docs",
         "pratik/otel-phase1b-telemetry-infra",
         "pratik/otel-phase1c-rpc-integration",
+        "pratik/otel-phase2-rpc-tracing",
         "pratik/use_boost_coroutine2",
         "ripple/confidential-devnet",
         "tapanito/invariant-architecture",
@@ -100626,7 +100624,7 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "release",
+      "name": "release-3.1",
       "commits": 57,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100691,7 +100689,7 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "a1q123456/minor-cleanup-for-network-ops",
+      "name": "ripple/wasmi-host-functions",
       "commits": 54,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -100719,6 +100717,7 @@
         "pratik/otel-phase1a-plan-docs",
         "pratik/otel-phase1b-telemetry-infra",
         "pratik/otel-phase1c-rpc-integration",
+        "pratik/otel-phase2-rpc-tracing",
         "ripple/attackathon-april-2026",
         "ripple/confidential-transfer",
         "ripple/se/fees",
@@ -100751,7 +100750,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "release",
+      "name": "revert-5510-a1q123456/add-new-macro",
       "commits": 51,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100810,7 +100809,7 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "a1q123456/minor-cleanup-for-network-ops",
+      "name": "ripple/wasmi-host-functions",
       "commits": 47,
       "branches": [
         "a1q123456/minor-cleanup-for-network-ops",
@@ -100833,6 +100832,7 @@
         "pratik/otel-phase1a-plan-docs",
         "pratik/otel-phase1b-telemetry-infra",
         "pratik/otel-phase1c-rpc-integration",
+        "pratik/otel-phase2-rpc-tracing",
         "ripple/attackathon-april-2026",
         "ripple/confidential-transfer",
         "ripple/se/fees",
@@ -100863,7 +100863,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "gregtatcam/bugs/ripd-4340",
       "commits": 30,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -100901,7 +100901,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "release-3.1",
+      "name": "ripple/wasmi-host-functions",
       "commits": 28,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -100937,7 +100937,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
       "commits": 26,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -100971,7 +100971,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "release",
+      "name": "ximinez/test-nudb",
       "commits": 26,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101005,7 +101005,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "a1q123456/modularise-jtx",
+      "name": "release-3.1",
       "commits": 23,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -101036,7 +101036,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "vvysokikh1/fix-positive-balance-trustline-pay-no-reserve",
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
       "commits": 22,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -101066,7 +101066,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "a1q123456/fix-worker-memory-ordering-issue-on-arm",
       "commits": 21,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -101095,7 +101095,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "release-3.1",
       "commits": 19,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -101122,7 +101122,7 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "tapanito/invariant-architecture",
       "commits": 19,
       "branches": [
         "bthomee/ripplerpc",
@@ -101149,7 +101149,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "a1q123456/fix-worker-memory-ordering-issue-on-arm",
       "commits": 19,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -101176,7 +101176,7 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "tapanito/breaking-loan",
+      "name": "ci/use-new-macos-runners",
       "commits": 19,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -101203,7 +101203,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "release",
+      "name": "a1q123456/structured-logs-support-performance-test-4",
       "commits": 17,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101228,7 +101228,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "pratik/Fix_asan_lsan_flagged_issues",
+      "name": "pratik/Add_checks_db_objects",
       "commits": 16,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -101252,7 +101252,7 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
+      "name": "pratik/std-coro/migrate-test-code",
       "commits": 15,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -101275,7 +101275,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "pratik/Fix_asan_lsan_flagged_issues",
+      "name": "ximinez/number_asan",
       "commits": 15,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -101341,7 +101341,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "vlntb/inbound-ledgers-cache",
+      "name": "revert-5510-a1q123456/add-new-macro",
       "commits": 13,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -101362,7 +101362,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "pratik/openssl_354_test",
+      "name": "ripple/wamr",
       "commits": 12,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -101382,7 +101382,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "pratik/openssl_354_test",
+      "name": "ripple/wamr",
       "commits": 11,
       "branches": [
         "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
@@ -101401,7 +101401,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "a1q123456/fix-windows-runner-build-dep-speed-test",
+      "name": "vlntb/mem-leak-ledger-history",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -101418,7 +101418,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "a1q123456/fix-windows-runner-build-dep-speed-test",
+      "name": "vlntb/mem-leak-ledger-history",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -101468,7 +101468,7 @@
     },
     {
       "email": "vvysokikh@gmail.com",
-      "name": "tapanito/staging-fix-vault-clawback-clamp",
+      "name": "release-3.1",
       "commits": 7,
       "branches": [
         "release",
@@ -101512,7 +101512,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "vlntb/inbound-ledgers-cache",
+      "name": "hotfix2.5.1",
       "commits": 5,
       "branches": [
         "a1q123456/windows-test",
@@ -101525,7 +101525,7 @@
     },
     {
       "email": "brettmollin@users.noreply.github.com",
-      "name": "tapanito/experiment/squelch",
+      "name": "vlntb/number-of-sweeps",
       "commits": 5,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -101551,7 +101551,7 @@
     },
     {
       "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
+      "name": "gregtatcam/bugs/ripd-4340",
       "commits": 4,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -101574,7 +101574,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -101585,7 +101585,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -101596,7 +101596,7 @@
     },
     {
       "email": "shawnxie920@gmail.com",
-      "name": "ripple/confidential-transfer",
+      "name": "ripple/confidential-devnet",
       "commits": 2,
       "branches": [
         "ripple/confidential-devnet",
@@ -101616,7 +101616,7 @@
     },
     {
       "email": "jfreeman08@gmail.com",
-      "name": "hooks",
+      "name": "sidechain",
       "commits": 2,
       "branches": [
         "hooks",
