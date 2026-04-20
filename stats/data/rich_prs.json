@@ -1,5 +1,109 @@
 [
   {
+    "pr_number": 6712,
+    "branch_name": "fix-mutable",
+    "title": "fix: Disallow MPTClearRequireAuth if is set",
+    "body": "- If domain exists, issuer MUST never clear the `RequireAuth` flag for MPT.\r\n- some `XRPL_ASSERT` should not replaced by returning tefINTERNAL to avoid node crash when new features added in the future.\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking cha",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-02T18:50:05Z",
+    "merged_at": "2026-04-20T21:47:12Z",
+    "labels": [
+      "Ready to merge",
+      "AI Triage"
+    ],
+    "comments_count": 9,
+    "comments": [
+      {
+        "user": "lmaisons",
+        "body": "For the sake of the less initiated: What happens now when the assert fires? How does the client percieve the current behaviour?\r\n\r\nI guess I half-expected this to be so far into \"undefined\" that tefINTERNAL would be the first version the client was aware of.",
+        "created_at": "2026-04-02T19:17:21Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "> For the sake of the less initiated: What happens now when the assert fires? How does the client percieve the current behaviour?\r\n> \r\n> I guess I half-expected this to be so far into \"undefined\" that tefINTERNAL would be the first version the client was aware of.\r\n\r\nAsserts only fire in debug builds. In release builds (which is what people run in production), it does nothing.",
+        "created_at": "2026-04-02T19:21:53Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6712?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.8%. Comparing base ([`852fbe9`](https://app.codecov.io/gh/XRPLF/rippled/commit/852fbe955d3edd487b81d2c52caae978709fc218?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-02T20:03:25Z"
+      },
+      {
+        "user": "yinyiqian1",
+        "body": "> Changing the asserts to returning `tefINTERNAL` requires an amendment.\r\n\r\n@mvadari Just added\r\n",
+        "created_at": "2026-04-02T21:21:59Z"
+      },
+      {
+        "user": "yinyiqian1",
+        "body": "@mvadari @lmaisons Could you help review this PR when you are free? Thanks!",
+        "created_at": "2026-04-08T18:51:35Z"
+      }
+    ],
+    "reviews_count": 8,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "CHANGES_REQUESTED",
+        "body": "Changing the asserts to returning `tefINTERNAL` requires an amendment."
+      },
+      {
+        "user": "vlntb",
+        "state": "APPROVED",
+        "body": "LGTM"
+      },
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 6958,
+    "branch_name": "pd_inv2",
+    "title": "fix: Improve invariant check for Permissioned Domains (#6134)",
+    "body": "## High Level Overview of Change\r\nAdd more checks to permissioned domains invariant. \r\nOriginal [PR #6134](https://github.com/XRPLF/rippled/pull/6134)\r\n\r\n",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-16T14:21:46Z",
+    "merged_at": "2026-04-20T21:27:42Z",
+    "labels": [],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6958?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 79.5%. Comparing base ([`673af42`](https://app.codecov.io/gh/XRPLF/rippled/commit/673af427f43283fc4b707ac7b4c4ed8b6ee355a7?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-16T14:48:58Z"
+      },
+      {
+        "user": "ximinez",
+        "body": "/ai-review",
+        "created_at": "2026-04-17T17:17:19Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": "As far as I can tell, the only differences between this PR and #6134 are related to formatting."
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "LGTM\n\n*Review by Claude Opus 4.6* \u00b7 Prompt: V15\n\n<!-- review-fingerprint:b2cfceb065e00ce0 -->"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR introduces a new amendment-gated fix (`fixPermissionedDomainInvariant`) to tighten Permissioned Domain invariant enforcement, ensuring Permissioned Domain ledger entr"
+      }
+    ]
+  },
+  {
     "pr_number": 6512,
     "branch_name": "hf_review",
     "title": "Review fixes",
@@ -1760,86 +1864,5 @@
     "comments": [],
     "reviews_count": 0,
     "reviews": []
-  },
-  {
-    "pr_number": 6698,
-    "branch_name": "chore/clang-tidy-coreguidelines",
-    "title": "chore: Enable clang-tidy `coreguidelines` checks",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables the following checks on all header and cpp files:\r\n\r\n- `cppcoreguidelines-init-variables`\r\n- `cppcoreguidelines-misleading-capture-default-by-value`\r\n- `cppcoreguidelines-pro-type-member-init`\r\n- `cppcoreguidelines-rvalue-reference-param-not-moved`\r\n- `cppcoreguidelines-use-default-member-init`\r\n- `cppcoreguidelines-virtual-class-destructor`\r\n\r\n### API Impact\r\n\r\nNo impact.",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-01T00:10:20Z",
-    "merged_at": "2026-04-01T16:12:31Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6698?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `88.40580%` with `8 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`ae21f53`](https://app.codecov.io/gh/XRPLF/rippled/commit/ae21f53e4d7a0a2932270876f8d4d1c0e3629383?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-04-01T00:34:03Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6702,
-    "branch_name": "better_storage_detection",
-    "title": "ci: Allow uploading artifacts for XRPLF org",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nNow we're able to use storage in the whole `XRPLF` org.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or depend",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-01T09:54:02Z",
-    "merged_at": "2026-04-01T13:56:12Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6702?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`a9afd2c`](https://app.codecov.io/gh/XRPLF/rippled/commit/a9afd2c11655ff3b46ac363fa52f96a21689e9f6?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-04-01T10:24:30Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
   }
 ]
