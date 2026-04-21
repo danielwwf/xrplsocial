@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6990,
+    "branch_name": "chore/clang-tidy-ci-fix",
+    "title": "chore: Add -fix to clang-tidy invocation",
+    "body": "## High Level Overview of Change\r\n\r\nStarts running clang-tidy with `-fix` so that the produced diff has a chance to contain anything.\r\n\r\n### API Impact\r\n\r\nNo impact.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-21T18:35:11Z",
+    "merged_at": "2026-04-21T19:32:50Z",
+    "labels": [
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6990?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.8%. Comparing base ([`ce3951b`](https://app.codecov.io/gh/XRPLF/rippled/commit/ce3951bbb3a1167d95f89abf3bb9c371b2ae4b48?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-21T19:00:57Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR updates the reusable clang-tidy GitHub Actions workflow to apply suggested fixes directly during CI runs, enabling the generated `git diff` artifact to include actual"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6975,
     "branch_name": "chore/clang-tidy-modernize",
     "title": "chore: Enable clang-tidy modernize checks",
@@ -1850,107 +1890,6 @@
       {
         "user": "bthomee",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6631,
-    "branch_name": "fix-payer",
-    "title": "docs: Add explanatory comment to checkFee",
-    "body": "Add explanatory comment to checkFee to avoid false alarm detection.\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libx",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-24T16:29:52Z",
-    "merged_at": "2026-04-02T21:14:27Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6631?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`8b986e4`](https://app.codecov.io/gh/XRPLF/rippled/commit/8b986e4ab0bceae1310f10ee43bcbce35034f4c6?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-24T16:45:35Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "@yinyiqian1 ready to merge?",
-        "created_at": "2026-03-31T19:10:18Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "shawnxie999",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
-        "body": "The PR title should be fixed"
-      }
-    ]
-  },
-  {
-    "pr_number": 6568,
-    "branch_name": "fix-delegate-fee",
-    "title": "fix: Decouple reserve from fee in delegate payment",
-    "body": "In `Payment.cpp::doApply()`, calculating `mmm` should consider when the payer is not the account_.\r\n- if payer is the account_: `mmm = std::max(reserve, ctx_.tx.getFieldAmount(sfFee).xrp())`\r\n- if payer is the delegatee: `mmm = reserve`\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fiel",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-17T21:46:14Z",
-    "merged_at": "2026-04-02T21:04:47Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 5,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6568?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`02fa55d`](https://app.codecov.io/gh/XRPLF/rippled/commit/02fa55df8d13be61d2d66e5c1905a0883d404d7d?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-17T22:15:30Z"
-      },
-      {
-        "user": "yinyiqian1",
-        "body": "> Where did we decide on whether delegates are allowed to dip below reserve to pay fees?\r\n\r\nOnce it passes the check in `Transactor::checkFee`, we no longer explicitly check it.\r\nWhen it enters `Transactor::payFee()`, we just call `sle->setFieldAmount(sfBalance, sle->getFieldAmount(sfBalance) - feePaid);` without any reserve check.\r\nThis is the reason that we allow it dip below reserve for delegated account as well.\r\n\r\n\r\n(The `tecUNFUNDED_PAYMENT` check is just for the delegator, because the del",
-        "created_at": "2026-03-26T15:48:58Z"
-      },
-      {
-        "user": "yinyiqian1",
-        "body": "@mvadari I just updated the tests and refactored a little bit.",
-        "created_at": "2026-03-26T16:30:45Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-03-31T17:50:04Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-03-31T17:58:12Z"
-      }
-    ],
-    "reviews_count": 18,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
