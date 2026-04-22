@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 6680,
+    "branch_name": "chore/pre-commit-clang-tidy",
+    "title": "chore: Optionally run clang-tidy via pre-commit",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nAs the list of enabled clang-tidy checks grows it's becoming more and more important to easily run clang-tidy locally before pushing a change to the repo. This PR makes it a bit more streamlined. There may be some issues with it that we will have to iron out but it's hard to tell what they are until we try to use it on multiple environments.\r\n\r\nOverall clang-tidy is too expensive to always run on pre-commit so it ONLY runs if you set the `tidy` env variable (e.g. `TIDY=1 git commit ...`).\r\nThe script then only runs if `run-clang-tidy` or `run-clang-tidy-21` is available in $PATH.\r\nIt also attempts to detect your build directory. The common choices are `build` and `.build` but could be extended further.\r\n\r\nWIP: Documentation and more testing needed\r\nAnother thing that would be great to figure out is how we can detect .cpp files that depend on headers we may have changed in the commit. clang-tidy does nothing if you pass it just the header.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\nNo impact.\r\n",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-27T16:48:57Z",
+    "merged_at": "2026-04-22T15:27:05Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6680?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.5%. Comparing base ([`7c7c189`](https://app.codecov.io/gh/XRPLF/rippled/commit/7c7c1894b917e8ec09c6833a3b9614f7e2303dd7?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-21T23:28:34Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": "A few minor suggestions, feel free to ignore"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6994,
     "branch_name": "add_bashate",
     "title": "style: Add bashate pre-commit hook to unify bash style",
