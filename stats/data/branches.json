@@ -1,107 +1,26 @@
 {
-  "generated_at": "2026-04-22T11:24:17.625100+00:00",
+  "generated_at": "2026-04-22T12:15:48.078706+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 235,
   "total_contributors": 77,
   "branches": [
     {
-      "name": "pratik/fix-msvc-crtdbg-boost-context-build-issue-on-windows",
-      "last_commit": {
-        "hash": "a8947e01",
-        "author": "Pratik Mankawde",
-        "email": "3397372+pratikmankawde@users.noreply.github.com",
-        "date": "2026-04-22T11:21:22+00:00",
-        "message": "fix: Narrow Boost.Coroutine2 include in JobQueue.h for MSVC Debug builds"
-      },
-      "commits": [
-        {
-          "hash": "a8947e01",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-22T11:21:22+00:00",
-          "message": "fix: Narrow Boost.Coroutine2 include in JobQueue.h for MSVC Debug builds"
-        }
-      ],
-      "contributor_count": 17,
-      "contributors": [
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Zhiyuan Wang"
-        },
-        {
-          "email": "chuanshanjida@outlook.com",
-          "name": "chuanshanjida"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "ed@ripple.com",
-          "name": "Ed Hennis"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "name": "Valentin Balaschenko"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Bug Fix",
-        "confidence": 0.6,
-        "source": "keyword_match"
-      }
-    },
-    {
       "name": "tapanito/transaction-invariant",
       "last_commit": {
-        "hash": "3f569f4c",
+        "hash": "03654495",
         "author": "Vito",
         "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-04-22T10:42:46+00:00",
-        "message": "chore: Add more direct includes flagged by include-cleaner"
+        "date": "2026-04-22T11:43:39+00:00",
+        "message": "chore: Mark conditionally-used includes with IWYU pragma keep"
       },
       "commits": [
+        {
+          "hash": "03654495",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-22T11:43:39+00:00",
+          "message": "chore: Mark conditionally-used includes with IWYU pragma keep"
+        },
         {
           "hash": "3f569f4c",
           "author": "Vito",
@@ -444,13 +363,6 @@
           "email": "mvadari@ripple.com",
           "date": "2026-04-03T15:16:50+00:00",
           "message": "fix: Change variable signedness and correctly handle `std::optional` (#6657)"
-        },
-        {
-          "hash": "81555d54",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-02T23:46:17+00:00",
-          "message": "refactor: Reorganize RPC handler files (#6628)"
         }
       ],
       "contributor_count": 16,
@@ -521,6 +433,108 @@
         "type": "Unknown",
         "confidence": 0,
         "source": "fallback"
+      }
+    },
+    {
+      "name": "pratik/fix-msvc-crtdbg-boost-context-build-issue-on-windows",
+      "last_commit": {
+        "hash": "b863f04e",
+        "author": "Pratik Mankawde",
+        "email": "3397372+pratikmankawde@users.noreply.github.com",
+        "date": "2026-04-22T11:37:26+00:00",
+        "message": "ci: Re-enable _CRTDBG_MAP_ALLOC for Windows Debug CI builds"
+      },
+      "commits": [
+        {
+          "hash": "b863f04e",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-22T11:37:26+00:00",
+          "message": "ci: Re-enable _CRTDBG_MAP_ALLOC for Windows Debug CI builds"
+        },
+        {
+          "hash": "a8947e01",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-22T11:21:22+00:00",
+          "message": "fix: Narrow Boost.Coroutine2 include in JobQueue.h for MSVC Debug builds"
+        },
+        {
+          "hash": "a8947e01",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-22T11:21:22+00:00",
+          "message": "fix: Narrow Boost.Coroutine2 include in JobQueue.h for MSVC Debug builds"
+        }
+      ],
+      "contributor_count": 17,
+      "contributors": [
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "chuanshanjida@outlook.com",
+          "name": "chuanshanjida"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Bug Fix",
+        "confidence": 0.6,
+        "source": "keyword_match"
       }
     },
     {
@@ -99572,7 +99586,7 @@
   "contributors": [
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 232,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -99810,7 +99824,7 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 228,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100044,7 +100058,7 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 220,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100270,7 +100284,7 @@
     },
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 217,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100493,7 +100507,7 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 209,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100708,7 +100722,7 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "tapanito/poc-vault-valuation",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 180,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100760,7 +100774,6 @@
         "dangell7/fix-token-escrow",
         "gh-readonly-queue/develop/pr-6984-ce3951bbb3a1167d95f89abf3bb9c371b2ae4b48",
         "gh-readonly-queue/develop/pr-6990-45d4aacb53682afbf617f90bd9691b5eb136a2ef",
-        "gregtatcam/mpt/assorted-fixes-dev",
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "hooks",
         "hotfix2.5.1",
@@ -100895,7 +100908,7 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "tapanito/poc-vault-valuation",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 169,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101070,7 +101083,7 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "a1q123456/windows-test",
       "commits": 149,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -101225,7 +101238,7 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 141,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -101372,7 +101385,7 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "pratik/AutomatedHarness",
       "commits": 140,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101518,7 +101531,7 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 132,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -101658,7 +101671,7 @@
     },
     {
       "email": "brok@incorrekt.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "a1q123456/structured-logs-support-performance-test",
       "commits": 114,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -101780,7 +101793,7 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "pratik/AutomatedHarness",
       "commits": 111,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -101897,7 +101910,7 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 106,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -102011,7 +102024,7 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "a1q123456/structured-logs-support-performance-test",
       "commits": 95,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -102114,7 +102127,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "vlntb/accounts-growth-combined",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 81,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -102203,7 +102216,7 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "ximinez/loanpay-fee-overflow-develop",
+      "name": "pratik/fix-msvc-crtdbg-boost-context-build-issue-on-windows",
       "commits": 71,
       "branches": [
         "a1q123456/new-jtx",
@@ -102280,7 +102293,7 @@
     },
     {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "copilot/add-ctid-to-ledger-response",
       "commits": 71,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -102359,7 +102372,7 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "ximinez/loanpay-fee-overflow-develop",
+      "name": "pratik/fix-msvc-crtdbg-boost-context-build-issue-on-windows",
       "commits": 64,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -102429,7 +102442,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "vlntb/shamap-structure-tracking",
+      "name": "a1q123456/windows-test",
       "commits": 60,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -102497,7 +102510,7 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "vlntb/shamap-structure-tracking",
+      "name": "a1q123456/structured-logs-support-performance-test",
       "commits": 57,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -102562,7 +102575,7 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "ximinez/loanpay-fee-overflow-develop",
+      "name": "pratik/fix-msvc-crtdbg-boost-context-build-issue-on-windows",
       "commits": 56,
       "branches": [
         "a1q123456/minor-cleanup-for-network-ops",
@@ -102624,7 +102637,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "Bronek/add-build-selected-commit",
+      "name": "a1q123456/structured-logs-support-performance-test-7",
       "commits": 51,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -102683,7 +102696,7 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "ximinez/loanpay-fee-overflow-develop",
+      "name": "pratik/fix-msvc-crtdbg-boost-context-build-issue-on-windows",
       "commits": 31,
       "branches": [
         "a1q123456/remove-empty-taker",
@@ -102720,7 +102733,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "vlntb/shamap-structure-tracking",
+      "name": "ximinez/lending-number-stnumber-deadend",
       "commits": 30,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -102758,7 +102771,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "tapanito/staging-fix-vault-clawback-clamp",
+      "name": "xrplf/smart-contracts",
       "commits": 29,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -102795,7 +102808,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "pratik/Move-includes-to-cpp-files",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 26,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -102829,7 +102842,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "Bronek/add-build-selected-commit",
+      "name": "a1q123456/structured-logs-support-performance-test-7",
       "commits": 26,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -102863,7 +102876,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "vlntb/shamap-structure-tracking",
+      "name": "ximinez/lending-number-stnumber-deadend",
       "commits": 23,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -102894,7 +102907,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "pratik/Move-includes-to-cpp-files",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 22,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -102924,7 +102937,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "pratik/Move-includes-to-cpp-files",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 21,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -102953,7 +102966,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "vlntb/shamap-structure-tracking",
+      "name": "bthomee/matrix",
       "commits": 19,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -102980,7 +102993,7 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "copilot/add-ctid-to-ledger-response",
       "commits": 19,
       "branches": [
         "bthomee/ripplerpc",
@@ -103007,7 +103020,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "pratik/Move-includes-to-cpp-files",
+      "name": "vlntb/number-perf-experiments-3",
       "commits": 19,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -103034,7 +103047,7 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "vlntb/anotate-tagged-cache-sweeps",
+      "name": "a1q123456/structured-logs-support-performance-test",
       "commits": 19,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -103061,7 +103074,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "Bronek/add-build-selected-commit",
+      "name": "a1q123456/structured-logs-support-performance-test-7",
       "commits": 17,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -103086,7 +103099,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "ripple/wasmi-perf-test",
       "commits": 16,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -103110,7 +103123,7 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "pratik/Swtich-to-std-coroutines",
       "commits": 15,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -103133,7 +103146,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "vlntb/grpc-fd-guard",
       "commits": 15,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -103156,7 +103169,7 @@
     },
     {
       "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "tapanito/tx-restructure",
+      "name": "ripple/staging-313",
       "commits": 14,
       "branches": [
         "bthomee/ripplerpc",
@@ -103199,7 +103212,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "hotfix2.5.1",
+      "name": "a1q123456/test-blake3",
       "commits": 13,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -103220,7 +103233,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "ripple/wamr",
+      "name": "ximinez/lending-number-stnumber-deadend",
       "commits": 12,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -103240,7 +103253,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "ripple/wamr",
+      "name": "ximinez/lending-number-stnumber-deadend",
       "commits": 11,
       "branches": [
         "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
@@ -103259,7 +103272,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "a1q123456/rust-integration",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -103276,7 +103289,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "a1q123456/rust-integration",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -103293,7 +103306,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "vlntb/anotate-tagged-cache-sweeps",
+      "name": "dangell/loans",
       "commits": 9,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -103310,7 +103323,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "ximinez/lending-XLS-66-archive-2",
+      "name": "vlntb/transport-traces",
       "commits": 8,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -103326,7 +103339,7 @@
     },
     {
       "email": "vvysokikh@gmail.com",
-      "name": "tapanito/staging-fix-vault-clawback-clamp",
+      "name": "release-3.0",
       "commits": 7,
       "branches": [
         "release",
@@ -103341,7 +103354,7 @@
     },
     {
       "email": "zinger777@gmail.com",
-      "name": "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
+      "name": "release-3.0",
       "commits": 7,
       "branches": [
         "a1q123456/fix-windows-runner-build-dep-speed-test",
@@ -103356,7 +103369,7 @@
     },
     {
       "email": "Tokeiito@users.noreply.github.com",
-      "name": "vlntb/remove-node-hash",
+      "name": "vlntb/transport-traces",
       "commits": 6,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -103369,20 +103382,8 @@
       "last_active": "2025-02-20T17:23:27+00:00"
     },
     {
-      "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
-      "commits": 5,
-      "branches": [
-        "gregtatcam/bugs/ripd-4340",
-        "gregtatcam/lending-protocol/refactor-payment",
-        "gregtatcam/mpt/assorted-fixes-dev",
-        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2"
-      ],
-      "last_active": "2025-11-15T15:29:58+00:00"
-    },
-    {
       "email": "mankins@gmail.com",
-      "name": "hotfix2.5.1",
+      "name": "a1q123456/windows-test",
       "commits": 5,
       "branches": [
         "a1q123456/windows-test",
@@ -103395,7 +103396,7 @@
     },
     {
       "email": "brettmollin@users.noreply.github.com",
-      "name": "vlntb/number-of-sweeps",
+      "name": "tapanito/experiment/squelch",
       "commits": 5,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -103408,7 +103409,7 @@
     },
     {
       "email": "120398799+cindyyan317@users.noreply.github.com",
-      "name": "vlntb/remove-node-hash",
+      "name": "vlntb/transport-traces",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -103420,8 +103421,20 @@
       "last_active": "2025-03-25T14:24:58+00:00"
     },
     {
+      "email": "gtsipenyuk@ripple.com",
+      "name": "gregtatcam/lending-protocol/refactor-payment",
+      "commits": 4,
+      "branches": [
+        "gregtatcam/bugs/ripd-4340",
+        "gregtatcam/lending-protocol/refactor-payment",
+        "gregtatcam/mpt/assorted-fixes-dev",
+        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2"
+      ],
+      "last_active": "2025-11-15T15:29:58+00:00"
+    },
+    {
       "email": "mathbunnyru@gmail.com",
-      "name": "ximinez/invariant-bugfix-313",
+      "name": "ripple/staging-313",
       "commits": 3,
       "branches": [
         "ripple/staging-313",
@@ -103432,7 +103445,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -103443,7 +103456,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -103454,7 +103467,7 @@
     },
     {
       "email": "shawnxie920@gmail.com",
-      "name": "ripple/confidential-devnet",
+      "name": "ripple/confidential-transfer",
       "commits": 2,
       "branches": [
         "ripple/confidential-devnet",
@@ -103464,7 +103477,7 @@
     },
     {
       "email": "pwang200@gmail.com",
-      "name": "sidechain",
+      "name": "ripple/smart-escrow-srlabs",
       "commits": 2,
       "branches": [
         "ripple/smart-escrow-srlabs",
@@ -103474,7 +103487,7 @@
     },
     {
       "email": "jfreeman08@gmail.com",
-      "name": "sidechain",
+      "name": "hooks",
       "commits": 2,
       "branches": [
         "hooks",
