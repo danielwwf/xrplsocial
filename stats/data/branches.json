@@ -1,19 +1,1302 @@
 {
-  "generated_at": "2026-04-24T18:12:17.950204+00:00",
+  "generated_at": "2026-04-24T19:17:55.440214+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 227,
   "total_contributors": 78,
   "branches": [
     {
-      "name": "copilot/refactor-replace-boost-filesystem",
+      "name": "pratik/otel-phase10-workload-validation",
       "last_commit": {
-        "hash": "5e6d8a46",
-        "author": "copilot-swe-agent[bot]",
-        "email": "198982749+Copilot@users.noreply.github.com",
-        "date": "2026-04-24T17:59:58+00:00",
-        "message": "Merge remote-tracking branch 'origin/develop' into copilot/refactor-replace-boost-filesystem"
+        "hash": "dc13e9d6",
+        "author": "Pratik Mankawde",
+        "email": "3397372+pratikmankawde@users.noreply.github.com",
+        "date": "2026-04-24T19:08:52+00:00",
+        "message": "fix: populate baseline from CI run, remove dead rpc_methods metrics"
       },
       "commits": [
+        {
+          "hash": "dc13e9d6",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-24T19:08:52+00:00",
+          "message": "fix: populate baseline from CI run, remove dead rpc_methods metrics"
+        },
+        {
+          "hash": "f11ebc12",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-24T18:42:20+00:00",
+          "message": "fix: StatsDGauge dirty init + tx_submitter sequence drift in CI"
+        },
+        {
+          "hash": "577d1f8a",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-24T18:36:15+00:00",
+          "message": "fix: address review findings in regression gate"
+        },
+        {
+          "hash": "df79d5e7",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-24T17:53:44+00:00",
+          "message": "feat: add OTel-driven regression gate for Phase 10 telemetry validation"
+        },
+        {
+          "hash": "8583343f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-01T10:02:03+00:00",
+          "message": "fix(telemetry): restore Loki, StatsD, filelog configs lost in rebase"
+        },
+        {
+          "hash": "7e149f77",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:35:04+00:00",
+          "message": "refactor(telemetry): remove residual Jaeger references across chain"
+        },
+        {
+          "hash": "a142a700",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:19:03+00:00",
+          "message": "refactor(telemetry): migrate Phase 10 validation from Jaeger to Tempo native API"
+        },
+        {
+          "hash": "a0eeb8eb",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T19:15:46+00:00",
+          "message": "fix(telemetry): fix Windows WinSock.h header ordering in MetricsRegistry test"
+        },
+        {
+          "hash": "f4d327fd",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T18:42:43+00:00",
+          "message": "fix(telemetry): fix CI linker errors, check-rename, and docs build"
+        },
+        {
+          "hash": "ff1502f9",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T18:29:12+00:00",
+          "message": "feat(telemetry): add workload orchestrator with phased load profiles"
+        },
+        {
+          "hash": "ecf10310",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T17:43:39+00:00",
+          "message": "fix(telemetry): fix CI failures in MetricsRegistry test, levelization, and dashboard titles"
+        },
+        {
+          "hash": "e1f30c1a",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T14:31:53+00:00",
+          "message": "docs: update data-collection-reference and presentation for external dashboard parity"
+        },
+        {
+          "hash": "e63ca4c4",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T12:46:52+00:00",
+          "message": "fix(telemetry): fix dashboard UID and add parity attributes to expected_spans"
+        },
+        {
+          "hash": "711ae431",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T11:07:55+00:00",
+          "message": "feat(telemetry): add external dashboard parity validation checks (Task 10.8)"
+        },
+        {
+          "hash": "898d05de",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-30T14:42:57+00:00",
+          "message": "docs: add Tasks 11.12-11.13 for external dashboard parity alerts and docs"
+        },
+        {
+          "hash": "5de8c520",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:24:15+00:00",
+          "message": "Phase 10: Workload validation - synthetic load generation and telemetry checks"
+        },
+        {
+          "hash": "06444385",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:57+00:00",
+          "message": "Phase 8: Log-trace correlation with Loki and filelog receiver"
+        },
+        {
+          "hash": "d8c586b2",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:48+00:00",
+          "message": "Phase 7: Native OTel metrics migration"
+        },
+        {
+          "hash": "8cca4ec7",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:42+00:00",
+          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
+        },
+        {
+          "hash": "38fca631",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:21:27+00:00",
+          "message": "docs(telemetry): replace Jaeger references in Phase 10 task list"
+        },
+        {
+          "hash": "5f139e12",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T15:40:46+00:00",
+          "message": "feat(telemetry): add 7-day agreement window to validation_agreement gauge"
+        },
+        {
+          "hash": "1defb211",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T15:24:26+00:00",
+          "message": "fix(telemetry): fix ServiceRegistry API names and transaction rate computation"
+        },
+        {
+          "hash": "350e398a",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T14:29:17+00:00",
+          "message": "feat(telemetry): wire ValidationTracker to MetricsRegistry and consensus hooks"
+        },
+        {
+          "hash": "92607805",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T13:04:57+00:00",
+          "message": "feat(telemetry): add validationsChecked recording hook in recvValidation"
+        },
+        {
+          "hash": "45ffe8e2",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T13:03:19+00:00",
+          "message": "fix(telemetry): add missing counters, fix dashboard metric name, clean dead code"
+        },
+        {
+          "hash": "b0e0d593",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T12:50:00+00:00",
+          "message": "fix(telemetry): fix metric labels and add missing parity gauge values"
+        },
+        {
+          "hash": "50e6b14c",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T12:07:56+00:00",
+          "message": "feat(telemetry): add external dashboard parity gauges and counters to MetricsRegistry"
+        },
+        {
+          "hash": "b9235471",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T11:28:54+00:00",
+          "message": "feat(telemetry): add validator health, peer quality dashboards and ledger economy panels (Tasks 9.11-9.13)"
+        },
+        {
+          "hash": "81298ceb",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-30T14:37:45+00:00",
+          "message": "docs: add external dashboard parity tasks and metric reference for Phase 9"
+        },
+        {
+          "hash": "936c7398",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-25T17:47:16+00:00",
+          "message": "docs: update Phase 9 docs and dashboard for push_metrics.py parity gauges"
+        },
+        {
+          "hash": "d426f498",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-25T17:23:51+00:00",
+          "message": "feat(telemetry): add push_metrics.py parity gauges to MetricsRegistry"
+        },
+        {
+          "hash": "892fee63",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:23:06+00:00",
+          "message": "Phase 9: Metric gap fill - nodestore, cache, TxQ, load factor dashboards"
+        },
+        {
+          "hash": "facc111c",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:57+00:00",
+          "message": "Phase 8: Log-trace correlation with Loki and filelog receiver"
+        },
+        {
+          "hash": "5ec9f3f3",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:48+00:00",
+          "message": "Phase 7: Native OTel metrics migration"
+        },
+        {
+          "hash": "8f364ed6",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:42+00:00",
+          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
+        },
+        {
+          "hash": "30c430ae",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:20:22+00:00",
+          "message": "docs(telemetry): replace Jaeger references in Phase 8 docs and runbook"
+        },
+        {
+          "hash": "fdec3ce5",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:57+00:00",
+          "message": "Phase 8: Log-trace correlation with Loki and filelog receiver"
+        },
+        {
+          "hash": "aa062ecd",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:48+00:00",
+          "message": "Phase 7: Native OTel metrics migration"
+        },
+        {
+          "hash": "0e15f955",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:42+00:00",
+          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
+        },
+        {
+          "hash": "eca887c6",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T15:38:21+00:00",
+          "message": "feat(telemetry): add 7-day validation agreement window to ValidationTracker"
+        },
+        {
+          "hash": "f51976f6",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T13:04:02+00:00",
+          "message": "test(telemetry): add ValidationTracker unit tests"
+        },
+        {
+          "hash": "1f2a36b3",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T12:43:57+00:00",
+          "message": "fix(telemetry): fix ValidationTracker grace period boundary and hard trim"
+        },
+        {
+          "hash": "8365f7dd",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T11:35:30+00:00",
+          "message": "feat(telemetry): add ValidationTracker for validation agreement tracking (Task 7.8)"
+        },
+        {
+          "hash": "391b8f91",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-30T14:24:37+00:00",
+          "message": "docs: add Tasks 7.9-7.16 for external dashboard parity metrics"
+        },
+        {
+          "hash": "2f7064ac",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:48+00:00",
+          "message": "Phase 7: Native OTel metrics migration"
+        },
+        {
+          "hash": "1ef234de",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T21:19:16+00:00",
+          "message": "docs(telemetry): replace Jaeger with Tempo in data collection reference"
+        },
+        {
+          "hash": "a37cf748",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-30T14:22:19+00:00",
+          "message": "docs: add peerDisconnectsCharges metric to data collection reference"
+        },
+        {
+          "hash": "21192e9b",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-20T17:22:42+00:00",
+          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
+        },
+        {
+          "hash": "2a2c9dc5",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T15:06:46+00:00",
+          "message": "fix: remove non-existent CanonicalTXSet.h include from BuildLedger.cpp"
+        },
+        {
+          "hash": "67238155",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-03-31T11:16:53+00:00",
+          "message": "feat(telemetry): add validation attributes to peer.validation.receive span (Task 4.8)"
+        }
+      ],
+      "contributor_count": 9,
+      "contributors": [
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Unknown",
+        "confidence": 0,
+        "source": "fallback"
+      }
+    },
+    {
+      "name": "ripple/confidential-transfer",
+      "last_commit": {
+        "hash": "8457b91b",
+        "author": "yinyiqian1",
+        "email": "yqian@ripple.com",
+        "date": "2026-04-24T19:03:26+00:00",
+        "message": "Test inconsistent C1 for ConfidentialMPTSend (#7017)"
+      },
+      "commits": [
+        {
+          "hash": "8457b91b",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-24T19:03:26+00:00",
+          "message": "Test inconsistent C1 for ConfidentialMPTSend (#7017)"
+        },
+        {
+          "hash": "4520de22",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T16:24:22+00:00",
+          "message": "Merge pull request #7002 from yinyiqian1/merge-ct2"
+        },
+        {
+          "hash": "b0386622",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T05:19:27+00:00",
+          "message": "fix clang-tidy"
+        },
+        {
+          "hash": "c53d6aca",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T05:05:20+00:00",
+          "message": "resolve conflicts"
+        },
+        {
+          "hash": "be8de20a",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T04:41:44+00:00",
+          "message": "Merge branch 'develop' into merge-ct2"
+        },
+        {
+          "hash": "235547f4",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T03:57:01+00:00",
+          "message": "Revert \"Merge develop into ConfidentialTransfer (#6987)\" (#7001)"
+        },
+        {
+          "hash": "1e73f3f3",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T03:34:03+00:00",
+          "message": "Merge develop into ConfidentialTransfer (#6987)"
+        },
+        {
+          "hash": "b41cbb08",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T22:20:14+00:00",
+          "message": "chore: Add pre-commit hook to fix include style (#6995)"
+        },
+        {
+          "hash": "2b65b740",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-22T21:07:31+00:00",
+          "message": "Add destination tag to ConfidentialMPTSend (#6988)"
+        },
+        {
+          "hash": "bd1b1262",
+          "author": "pdp2121",
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "date": "2026-04-22T20:10:52+00:00",
+          "message": "feat: Add `--definitions` flag and artifact (#6858)"
+        },
+        {
+          "hash": "1c6cdc65",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-22T17:42:15+00:00",
+          "message": "fix: More clang-tidy issues (#6992)"
+        },
+        {
+          "hash": "4ab20770",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T15:06:36+00:00",
+          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
+        },
+        {
+          "hash": "2e307329",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-22T14:41:19+00:00",
+          "message": "refactor: Add transaction-specific invariant checking (#6551)"
+        },
+        {
+          "hash": "3429845c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-22T14:26:02+00:00",
+          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
+        },
+        {
+          "hash": "7c7c1894",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T19:00:00+00:00",
+          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
+        },
+        {
+          "hash": "45d4aacb",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-21T18:15:58+00:00",
+          "message": "chore: Remove empty Taker.h (#6984)"
+        },
+        {
+          "hash": "ce3951bb",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T15:32:51+00:00",
+          "message": "chore: Enable clang-tidy modernize checks (#6975)"
+        },
+        {
+          "hash": "ab887f50",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-21T14:22:33+00:00",
+          "message": "ci: Upload clang-tidy git diff (#6983)"
+        },
+        {
+          "hash": "ea023121",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T12:14:07+00:00",
+          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
+        },
+        {
+          "hash": "4b198cd5",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-20T21:25:52+00:00",
+          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
+        },
+        {
+          "hash": "f08121de",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-20T17:31:09+00:00",
+          "message": "Address coding style comments (#6966)"
+        },
+        {
+          "hash": "726f20c8",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-20T17:12:14+00:00",
+          "message": "feat: Add GRPC TLS support (#6374)"
+        },
+        {
+          "hash": "96643bb0",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-20T17:10:28+00:00",
+          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
+        },
+        {
+          "hash": "e8381824",
+          "author": "chuanshanjida",
+          "email": "chuanshanjida@outlook.com",
+          "date": "2026-04-20T16:56:03+00:00",
+          "message": "chore: Remove repetitive word in multiple files (#6978)"
+        },
+        {
+          "hash": "852fbe95",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-20T12:12:58+00:00",
+          "message": "ci: Add workflow to check PR description has been filled (#6965)"
+        },
+        {
+          "hash": "b33d0a04",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-20T11:20:42+00:00",
+          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
+        },
+        {
+          "hash": "653a383f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-17T16:43:49+00:00",
+          "message": "chore: Enable clang-tidy include cleaner (#6947)"
+        },
+        {
+          "hash": "affe5835",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-04-17T14:19:58+00:00",
+          "message": "fix: Change AMMClawback return code to tecNO_PERMISSION (#6946)"
+        },
+        {
+          "hash": "ef2642f8",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-17T14:02:02+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/upload-pages-artifact from 4.0.0 to 5.0.0 (#6927)"
+        },
+        {
+          "hash": "b2038163",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-17T14:01:56+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/upload-artifact from 7.0.0 to 7.0.1 (#6928)"
+        },
+        {
+          "hash": "f1a5ba43",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-17T13:30:52+00:00",
+          "message": "chore: Enable clang-tidy readability checks (#6930)"
+        },
+        {
+          "hash": "09778f2f",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-16T21:51:31+00:00",
+          "message": "Support compact AND-composed sigma proof (#6859)"
+        },
+        {
+          "hash": "4a73be49",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-16T17:12:00+00:00",
+          "message": "fix: Fix unity build for book step (#6942)"
+        },
+        {
+          "hash": "d52d7355",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-04-15T18:50:49+00:00",
+          "message": "chore: Move codegen venv setup into build stage (#6617)"
+        },
+        {
+          "hash": "6a0ce467",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-14T20:24:21+00:00",
+          "message": "chore: Enable most clang-tidy bugprone checks (#6929)"
+        },
+        {
+          "hash": "2f029a21",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-04-14T17:14:24+00:00",
+          "message": "refactor: Improve exception handling (#6540) (#6735)"
+        },
+        {
+          "hash": "61fbde3a",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-13T23:18:10+00:00",
+          "message": "refactor: Remove unused notTooManyOffers function from NFTokenUtils (#6737)"
+        },
+        {
+          "hash": "5229ff5a",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-10T17:42:59+00:00",
+          "message": "fix: fix pipeline failures (#6850)"
+        },
+        {
+          "hash": "e2e537b3",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-04-10T14:38:46+00:00",
+          "message": "fix: Change `Tuning::bookOffers` minimum limit to 1 (#6812)"
+        },
+        {
+          "hash": "a8732500",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-10T10:12:52+00:00",
+          "message": "chore: Make pre-commit line ending conversions work on Windows (#6832) (#6833)"
+        },
+        {
+          "hash": "6a8016f2",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-09T15:54:29+00:00",
+          "message": "Merge develop into confidential-transfer"
+        },
+        {
+          "hash": "5d38603f",
+          "author": "Shawn Xie",
+          "email": "shawnxie920@gmail.com",
+          "date": "2026-04-09T15:22:31+00:00",
+          "message": "fix compile and test failure"
+        },
+        {
+          "hash": "6f4fddc1",
+          "author": "Shawn Xie",
+          "email": "shawnxie920@gmail.com",
+          "date": "2026-04-09T15:05:31+00:00",
+          "message": "Merge remote-tracking branch 'upstream/develop' into ct-merge-mpt-dex"
+        },
+        {
+          "hash": "4ae17f19",
+          "author": "Peter Chen",
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "date": "2026-04-09T14:49:10+00:00",
+          "message": "Add JS fields required for Clio mpt_holder_api (#6810)"
+        },
+        {
+          "hash": "56c9d1d4",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-04-08T20:56:19+00:00",
+          "message": "fix: Add description for `terLOCKED` error (#6811)"
+        },
+        {
+          "hash": "d52dd29d",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-08T20:22:19+00:00",
+          "message": "fix: Address AI reviewer comments for Permission Delegation (#6675)"
+        },
+        {
+          "hash": "36c80569",
+          "author": "Peter Chen",
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "date": "2026-04-08T18:45:11+00:00",
+          "message": "add batch tests (#6598)"
+        },
+        {
+          "hash": "7793b5f1",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-08T17:38:33+00:00",
+          "message": "refactor: Combine `AMMHelpers` and `AMMUtils` (#6733)"
+        },
+        {
+          "hash": "5bd7ce1d",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-08T17:20:59+00:00",
+          "message": "Add tests for confidential delegation with tickets (#6808)"
+        },
+        {
+          "hash": "dfcad691",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-04-08T16:17:37+00:00",
+          "message": "feat: Add MPT support to DEX (#5285)"
+        }
+      ],
+      "contributor_count": 19,
+      "contributors": [
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "name": "Shawn Xie"
+        },
+        {
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "name": "pdp2121"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "chuanshanjida@outlook.com",
+          "name": "chuanshanjida"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Confidential Transfers",
+        "type": "Feature",
+        "confidence": 0.9,
+        "source": "ai_kimi"
+      }
+    },
+    {
+      "name": "bthomee/node_depth",
+      "last_commit": {
+        "hash": "5b5ad09c",
+        "author": "Bart",
+        "email": "11445373+bthomee@users.noreply.github.com",
+        "date": "2026-04-24T18:44:42+00:00",
+        "message": "Merge branch 'develop' into bthomee/node_depth"
+      },
+      "commits": [
+        {
+          "hash": "5b5ad09c",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-24T18:44:42+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "2405a335",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-24T13:52:39+00:00",
+          "message": "Add [[nodiscard]] to getNodeFat"
+        },
+        {
+          "hash": "70562201",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-04-24T13:47:14+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "ae5f5cb9",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-24T13:45:03+00:00",
+          "message": "Use emplace_back instead of push_back"
+        },
+        {
+          "hash": "cde8f17b",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-24T13:26:37+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "9ae29612",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:23:43+00:00",
+          "message": "fix: Fix flaky CI tests (#7005)"
+        },
+        {
+          "hash": "82abf2a8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:15:12+00:00",
+          "message": "docs: Update bug bounty information (#7006)"
+        },
+        {
+          "hash": "7cfa5d46",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:56:50+00:00",
+          "message": "fix: Make assorted Payments fixes (#6585)"
+        },
+        {
+          "hash": "248cb296",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:06:26+00:00",
+          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
+        },
+        {
+          "hash": "c8fb69ee",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-24T02:02:21+00:00",
+          "message": "Address Copilot feedback"
+        },
+        {
+          "hash": "430f770f",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-24T01:52:19+00:00",
+          "message": "Apply clang-tidy diff"
+        },
+        {
+          "hash": "44590a70",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-24T01:15:01+00:00",
+          "message": "Review feedback"
+        },
+        {
+          "hash": "1934c316",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-23T22:46:24+00:00",
+          "message": "Update levelization"
+        },
+        {
+          "hash": "fd2a8b58",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-23T22:43:59+00:00",
+          "message": "Apply clang-tidy diff"
+        },
+        {
+          "hash": "012144c1",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-23T22:30:19+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "8e2d9496",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-23T22:01:01+00:00",
+          "message": "Review feedback"
+        },
+        {
+          "hash": "7a449ede",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T17:59:49+00:00",
+          "message": "refactor: Clean up NetworkOPs (#6575)"
+        },
+        {
+          "hash": "19da2581",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-23T16:21:01+00:00",
+          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
+        },
+        {
+          "hash": "7cd50385",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T13:59:23+00:00",
+          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
+        },
+        {
+          "hash": "b781018f",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-23T11:50:55+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "b41cbb08",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T22:20:14+00:00",
+          "message": "chore: Add pre-commit hook to fix include style (#6995)"
+        },
+        {
+          "hash": "bd1b1262",
+          "author": "pdp2121",
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "date": "2026-04-22T20:10:52+00:00",
+          "message": "feat: Add `--definitions` flag and artifact (#6858)"
+        },
+        {
+          "hash": "1c6cdc65",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-22T17:42:15+00:00",
+          "message": "fix: More clang-tidy issues (#6992)"
+        },
+        {
+          "hash": "4ab20770",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T15:06:36+00:00",
+          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
+        },
+        {
+          "hash": "2e307329",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-22T14:41:19+00:00",
+          "message": "refactor: Add transaction-specific invariant checking (#6551)"
+        },
+        {
+          "hash": "3429845c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-22T14:26:02+00:00",
+          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
+        },
+        {
+          "hash": "d867c9b2",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T22:29:50+00:00",
+          "message": "Address Copilot feedback"
+        },
+        {
+          "hash": "7749ed84",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T22:03:32+00:00",
+          "message": "Address Copilot feedback"
+        },
+        {
+          "hash": "4d01cac5",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T22:00:07+00:00",
+          "message": "Update levelization"
+        },
+        {
+          "hash": "98e1ad2d",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T21:42:21+00:00",
+          "message": "Add more clang-tidy fixes"
+        },
+        {
+          "hash": "342171bf",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T21:06:15+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "fe74f48e",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T20:29:19+00:00",
+          "message": "Add more clang-tidy fixes"
+        },
+        {
+          "hash": "7c7c1894",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T19:00:00+00:00",
+          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
+        },
+        {
+          "hash": "d6e05cf5",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T18:28:40+00:00",
+          "message": "Add more clang-tidy fixes"
+        },
+        {
+          "hash": "45d4aacb",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-21T18:15:58+00:00",
+          "message": "chore: Remove empty Taker.h (#6984)"
+        },
+        {
+          "hash": "e31419aa",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T18:08:02+00:00",
+          "message": "Address Copilot feedback"
+        },
+        {
+          "hash": "05b4c67b",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T17:58:12+00:00",
+          "message": "Restore invalid clang-tidy fix"
+        },
+        {
+          "hash": "25244761",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T17:26:25+00:00",
+          "message": "Update levelization"
+        },
+        {
+          "hash": "8007788d",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-21T17:25:58+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "ce3951bb",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T15:32:51+00:00",
+          "message": "chore: Enable clang-tidy modernize checks (#6975)"
+        },
+        {
+          "hash": "ab887f50",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-21T14:22:33+00:00",
+          "message": "ci: Upload clang-tidy git diff (#6983)"
+        },
+        {
+          "hash": "ea023121",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T12:14:07+00:00",
+          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
+        },
+        {
+          "hash": "4b198cd5",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-20T21:25:52+00:00",
+          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
+        },
+        {
+          "hash": "726f20c8",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-20T17:12:14+00:00",
+          "message": "feat: Add GRPC TLS support (#6374)"
+        },
+        {
+          "hash": "96643bb0",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-20T17:10:28+00:00",
+          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
+        },
+        {
+          "hash": "e8381824",
+          "author": "chuanshanjida",
+          "email": "chuanshanjida@outlook.com",
+          "date": "2026-04-20T16:56:03+00:00",
+          "message": "chore: Remove repetitive word in multiple files (#6978)"
+        },
+        {
+          "hash": "809395a5",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-04-20T15:21:40+00:00",
+          "message": "Merge branch 'develop' into bthomee/node_depth"
+        },
+        {
+          "hash": "852fbe95",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-20T12:12:58+00:00",
+          "message": "ci: Add workflow to check PR description has been filled (#6965)"
+        },
+        {
+          "hash": "b33d0a04",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-20T11:20:42+00:00",
+          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
+        },
+        {
+          "hash": "653a383f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-17T16:43:49+00:00",
+          "message": "chore: Enable clang-tidy include cleaner (#6947)"
+        }
+      ],
+      "contributor_count": 17,
+      "contributors": [
+        {
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "name": "pdp2121"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "chuanshanjida@outlook.com",
+          "name": "chuanshanjida"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Feature",
+        "confidence": 0.75,
+        "source": "ai_kimi"
+      }
+    },
+    {
+      "name": "copilot/refactor-replace-boost-filesystem",
+      "last_commit": {
+        "hash": "9a221d12",
+        "author": "copilot-swe-agent[bot]",
+        "email": "198982749+Copilot@users.noreply.github.com",
+        "date": "2026-04-24T18:42:23+00:00",
+        "message": "Address code review feedback: retry loop, comment cleanup, error code improvements"
+      },
+      "commits": [
+        {
+          "hash": "9a221d12",
+          "author": "copilot-swe-agent[bot]",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "date": "2026-04-24T18:42:23+00:00",
+          "message": "Address code review feedback: retry loop, comment cleanup, error code improvements"
+        },
+        {
+          "hash": "5e6d8a46",
+          "author": "copilot-swe-agent[bot]",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "date": "2026-04-24T17:59:58+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into copilot/refactor-replace-boost-filesystem"
+        },
         {
           "hash": "5e6d8a46",
           "author": "copilot-swe-agent[bot]",
@@ -349,20 +1632,6 @@
           "email": "96991820+Kassaking7@users.noreply.github.com",
           "date": "2026-04-13T23:18:10+00:00",
           "message": "refactor: Remove unused notTooManyOffers function from NFTokenUtils (#6737)"
-        },
-        {
-          "hash": "e2e537b3",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-04-10T14:38:46+00:00",
-          "message": "fix: Change `Tuning::bookOffers` minimum limit to 1 (#6812)"
-        },
-        {
-          "hash": "a8732500",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-10T10:12:52+00:00",
-          "message": "chore: Make pre-commit line ending conversions work on Windows (#6832) (#6833)"
         }
       ],
       "contributor_count": 18,
@@ -433,413 +1702,6 @@
         "type": "Refactor",
         "confidence": 0.7,
         "source": "keyword_match"
-      }
-    },
-    {
-      "name": "pratik/otel-phase10-workload-validation",
-      "last_commit": {
-        "hash": "df79d5e7",
-        "author": "Pratik Mankawde",
-        "email": "3397372+pratikmankawde@users.noreply.github.com",
-        "date": "2026-04-24T17:53:44+00:00",
-        "message": "feat: add OTel-driven regression gate for Phase 10 telemetry validation"
-      },
-      "commits": [
-        {
-          "hash": "df79d5e7",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-24T17:53:44+00:00",
-          "message": "feat: add OTel-driven regression gate for Phase 10 telemetry validation"
-        },
-        {
-          "hash": "8583343f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-01T10:02:03+00:00",
-          "message": "fix(telemetry): restore Loki, StatsD, filelog configs lost in rebase"
-        },
-        {
-          "hash": "7e149f77",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:35:04+00:00",
-          "message": "refactor(telemetry): remove residual Jaeger references across chain"
-        },
-        {
-          "hash": "a142a700",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:19:03+00:00",
-          "message": "refactor(telemetry): migrate Phase 10 validation from Jaeger to Tempo native API"
-        },
-        {
-          "hash": "a0eeb8eb",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T19:15:46+00:00",
-          "message": "fix(telemetry): fix Windows WinSock.h header ordering in MetricsRegistry test"
-        },
-        {
-          "hash": "f4d327fd",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T18:42:43+00:00",
-          "message": "fix(telemetry): fix CI linker errors, check-rename, and docs build"
-        },
-        {
-          "hash": "ff1502f9",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T18:29:12+00:00",
-          "message": "feat(telemetry): add workload orchestrator with phased load profiles"
-        },
-        {
-          "hash": "ecf10310",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T17:43:39+00:00",
-          "message": "fix(telemetry): fix CI failures in MetricsRegistry test, levelization, and dashboard titles"
-        },
-        {
-          "hash": "e1f30c1a",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T14:31:53+00:00",
-          "message": "docs: update data-collection-reference and presentation for external dashboard parity"
-        },
-        {
-          "hash": "e63ca4c4",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T12:46:52+00:00",
-          "message": "fix(telemetry): fix dashboard UID and add parity attributes to expected_spans"
-        },
-        {
-          "hash": "711ae431",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T11:07:55+00:00",
-          "message": "feat(telemetry): add external dashboard parity validation checks (Task 10.8)"
-        },
-        {
-          "hash": "898d05de",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-30T14:42:57+00:00",
-          "message": "docs: add Tasks 11.12-11.13 for external dashboard parity alerts and docs"
-        },
-        {
-          "hash": "5de8c520",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:24:15+00:00",
-          "message": "Phase 10: Workload validation - synthetic load generation and telemetry checks"
-        },
-        {
-          "hash": "06444385",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:57+00:00",
-          "message": "Phase 8: Log-trace correlation with Loki and filelog receiver"
-        },
-        {
-          "hash": "d8c586b2",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:48+00:00",
-          "message": "Phase 7: Native OTel metrics migration"
-        },
-        {
-          "hash": "8cca4ec7",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:42+00:00",
-          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
-        },
-        {
-          "hash": "38fca631",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:21:27+00:00",
-          "message": "docs(telemetry): replace Jaeger references in Phase 10 task list"
-        },
-        {
-          "hash": "5f139e12",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T15:40:46+00:00",
-          "message": "feat(telemetry): add 7-day agreement window to validation_agreement gauge"
-        },
-        {
-          "hash": "1defb211",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T15:24:26+00:00",
-          "message": "fix(telemetry): fix ServiceRegistry API names and transaction rate computation"
-        },
-        {
-          "hash": "350e398a",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T14:29:17+00:00",
-          "message": "feat(telemetry): wire ValidationTracker to MetricsRegistry and consensus hooks"
-        },
-        {
-          "hash": "92607805",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T13:04:57+00:00",
-          "message": "feat(telemetry): add validationsChecked recording hook in recvValidation"
-        },
-        {
-          "hash": "45ffe8e2",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T13:03:19+00:00",
-          "message": "fix(telemetry): add missing counters, fix dashboard metric name, clean dead code"
-        },
-        {
-          "hash": "b0e0d593",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T12:50:00+00:00",
-          "message": "fix(telemetry): fix metric labels and add missing parity gauge values"
-        },
-        {
-          "hash": "50e6b14c",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T12:07:56+00:00",
-          "message": "feat(telemetry): add external dashboard parity gauges and counters to MetricsRegistry"
-        },
-        {
-          "hash": "b9235471",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T11:28:54+00:00",
-          "message": "feat(telemetry): add validator health, peer quality dashboards and ledger economy panels (Tasks 9.11-9.13)"
-        },
-        {
-          "hash": "81298ceb",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-30T14:37:45+00:00",
-          "message": "docs: add external dashboard parity tasks and metric reference for Phase 9"
-        },
-        {
-          "hash": "936c7398",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-25T17:47:16+00:00",
-          "message": "docs: update Phase 9 docs and dashboard for push_metrics.py parity gauges"
-        },
-        {
-          "hash": "d426f498",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-25T17:23:51+00:00",
-          "message": "feat(telemetry): add push_metrics.py parity gauges to MetricsRegistry"
-        },
-        {
-          "hash": "892fee63",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:23:06+00:00",
-          "message": "Phase 9: Metric gap fill - nodestore, cache, TxQ, load factor dashboards"
-        },
-        {
-          "hash": "facc111c",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:57+00:00",
-          "message": "Phase 8: Log-trace correlation with Loki and filelog receiver"
-        },
-        {
-          "hash": "5ec9f3f3",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:48+00:00",
-          "message": "Phase 7: Native OTel metrics migration"
-        },
-        {
-          "hash": "8f364ed6",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:42+00:00",
-          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
-        },
-        {
-          "hash": "30c430ae",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:20:22+00:00",
-          "message": "docs(telemetry): replace Jaeger references in Phase 8 docs and runbook"
-        },
-        {
-          "hash": "fdec3ce5",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:57+00:00",
-          "message": "Phase 8: Log-trace correlation with Loki and filelog receiver"
-        },
-        {
-          "hash": "aa062ecd",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:48+00:00",
-          "message": "Phase 7: Native OTel metrics migration"
-        },
-        {
-          "hash": "0e15f955",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:42+00:00",
-          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
-        },
-        {
-          "hash": "eca887c6",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T15:38:21+00:00",
-          "message": "feat(telemetry): add 7-day validation agreement window to ValidationTracker"
-        },
-        {
-          "hash": "f51976f6",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T13:04:02+00:00",
-          "message": "test(telemetry): add ValidationTracker unit tests"
-        },
-        {
-          "hash": "1f2a36b3",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T12:43:57+00:00",
-          "message": "fix(telemetry): fix ValidationTracker grace period boundary and hard trim"
-        },
-        {
-          "hash": "8365f7dd",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T11:35:30+00:00",
-          "message": "feat(telemetry): add ValidationTracker for validation agreement tracking (Task 7.8)"
-        },
-        {
-          "hash": "391b8f91",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-30T14:24:37+00:00",
-          "message": "docs: add Tasks 7.9-7.16 for external dashboard parity metrics"
-        },
-        {
-          "hash": "2f7064ac",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:48+00:00",
-          "message": "Phase 7: Native OTel metrics migration"
-        },
-        {
-          "hash": "1ef234de",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:19:16+00:00",
-          "message": "docs(telemetry): replace Jaeger with Tempo in data collection reference"
-        },
-        {
-          "hash": "a37cf748",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-30T14:22:19+00:00",
-          "message": "docs: add peerDisconnectsCharges metric to data collection reference"
-        },
-        {
-          "hash": "21192e9b",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:42+00:00",
-          "message": "Phase 6: StatsD metrics integration into telemetry pipeline"
-        },
-        {
-          "hash": "2a2c9dc5",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T15:06:46+00:00",
-          "message": "fix: remove non-existent CanonicalTXSet.h include from BuildLedger.cpp"
-        },
-        {
-          "hash": "67238155",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T11:16:53+00:00",
-          "message": "feat(telemetry): add validation attributes to peer.validation.receive span (Task 4.8)"
-        },
-        {
-          "hash": "7e559131",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-20T17:22:37+00:00",
-          "message": "Phase 5b: Ledger, peer, and tx spans with expanded Grafana dashboards"
-        },
-        {
-          "hash": "87ed778e",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T21:27:06+00:00",
-          "message": "refactor(telemetry): migrate integration test and docs from Jaeger to Tempo API"
-        },
-        {
-          "hash": "d0ff8280",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-03-31T15:39:20+00:00",
-          "message": "fix: use docker/telemetry/data/ for runtime data and add .gitignore"
-        }
-      ],
-      "contributor_count": 9,
-      "contributors": [
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "name": "Valentin Balaschenko"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Unknown",
-        "confidence": 0,
-        "source": "fallback"
       }
     },
     {
@@ -2563,437 +3425,6 @@
         "amendment": "Testing & CI",
         "type": "Bug Fix",
         "confidence": 0.85,
-        "source": "ai_kimi"
-      }
-    },
-    {
-      "name": "bthomee/node_depth",
-      "last_commit": {
-        "hash": "2405a335",
-        "author": "Bart",
-        "email": "11445373+bthomee@users.noreply.github.com",
-        "date": "2026-04-24T13:52:39+00:00",
-        "message": "Add [[nodiscard]] to getNodeFat"
-      },
-      "commits": [
-        {
-          "hash": "2405a335",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-24T13:52:39+00:00",
-          "message": "Add [[nodiscard]] to getNodeFat"
-        },
-        {
-          "hash": "70562201",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-04-24T13:47:14+00:00",
-          "message": "Merge branch 'develop' into bthomee/node_depth"
-        },
-        {
-          "hash": "ae5f5cb9",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-24T13:45:03+00:00",
-          "message": "Use emplace_back instead of push_back"
-        },
-        {
-          "hash": "cde8f17b",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-24T13:26:37+00:00",
-          "message": "Merge branch 'develop' into bthomee/node_depth"
-        },
-        {
-          "hash": "9ae29612",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:23:43+00:00",
-          "message": "fix: Fix flaky CI tests (#7005)"
-        },
-        {
-          "hash": "82abf2a8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:15:12+00:00",
-          "message": "docs: Update bug bounty information (#7006)"
-        },
-        {
-          "hash": "7cfa5d46",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:56:50+00:00",
-          "message": "fix: Make assorted Payments fixes (#6585)"
-        },
-        {
-          "hash": "248cb296",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:06:26+00:00",
-          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
-        },
-        {
-          "hash": "c8fb69ee",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-24T02:02:21+00:00",
-          "message": "Address Copilot feedback"
-        },
-        {
-          "hash": "430f770f",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-24T01:52:19+00:00",
-          "message": "Apply clang-tidy diff"
-        },
-        {
-          "hash": "44590a70",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-24T01:15:01+00:00",
-          "message": "Review feedback"
-        },
-        {
-          "hash": "1934c316",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-23T22:46:24+00:00",
-          "message": "Update levelization"
-        },
-        {
-          "hash": "fd2a8b58",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-23T22:43:59+00:00",
-          "message": "Apply clang-tidy diff"
-        },
-        {
-          "hash": "012144c1",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-23T22:30:19+00:00",
-          "message": "Merge branch 'develop' into bthomee/node_depth"
-        },
-        {
-          "hash": "8e2d9496",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-23T22:01:01+00:00",
-          "message": "Review feedback"
-        },
-        {
-          "hash": "7a449ede",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T17:59:49+00:00",
-          "message": "refactor: Clean up NetworkOPs (#6575)"
-        },
-        {
-          "hash": "19da2581",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-23T16:21:01+00:00",
-          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
-        },
-        {
-          "hash": "7cd50385",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T13:59:23+00:00",
-          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
-        },
-        {
-          "hash": "b781018f",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-23T11:50:55+00:00",
-          "message": "Merge branch 'develop' into bthomee/node_depth"
-        },
-        {
-          "hash": "b41cbb08",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T22:20:14+00:00",
-          "message": "chore: Add pre-commit hook to fix include style (#6995)"
-        },
-        {
-          "hash": "bd1b1262",
-          "author": "pdp2121",
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "date": "2026-04-22T20:10:52+00:00",
-          "message": "feat: Add `--definitions` flag and artifact (#6858)"
-        },
-        {
-          "hash": "1c6cdc65",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-22T17:42:15+00:00",
-          "message": "fix: More clang-tidy issues (#6992)"
-        },
-        {
-          "hash": "4ab20770",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T15:06:36+00:00",
-          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
-        },
-        {
-          "hash": "2e307329",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-22T14:41:19+00:00",
-          "message": "refactor: Add transaction-specific invariant checking (#6551)"
-        },
-        {
-          "hash": "3429845c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-22T14:26:02+00:00",
-          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
-        },
-        {
-          "hash": "d867c9b2",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T22:29:50+00:00",
-          "message": "Address Copilot feedback"
-        },
-        {
-          "hash": "7749ed84",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T22:03:32+00:00",
-          "message": "Address Copilot feedback"
-        },
-        {
-          "hash": "4d01cac5",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T22:00:07+00:00",
-          "message": "Update levelization"
-        },
-        {
-          "hash": "98e1ad2d",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T21:42:21+00:00",
-          "message": "Add more clang-tidy fixes"
-        },
-        {
-          "hash": "342171bf",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T21:06:15+00:00",
-          "message": "Merge branch 'develop' into bthomee/node_depth"
-        },
-        {
-          "hash": "fe74f48e",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T20:29:19+00:00",
-          "message": "Add more clang-tidy fixes"
-        },
-        {
-          "hash": "7c7c1894",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T19:00:00+00:00",
-          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
-        },
-        {
-          "hash": "d6e05cf5",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T18:28:40+00:00",
-          "message": "Add more clang-tidy fixes"
-        },
-        {
-          "hash": "45d4aacb",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-21T18:15:58+00:00",
-          "message": "chore: Remove empty Taker.h (#6984)"
-        },
-        {
-          "hash": "e31419aa",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T18:08:02+00:00",
-          "message": "Address Copilot feedback"
-        },
-        {
-          "hash": "05b4c67b",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T17:58:12+00:00",
-          "message": "Restore invalid clang-tidy fix"
-        },
-        {
-          "hash": "25244761",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T17:26:25+00:00",
-          "message": "Update levelization"
-        },
-        {
-          "hash": "8007788d",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-21T17:25:58+00:00",
-          "message": "Merge branch 'develop' into bthomee/node_depth"
-        },
-        {
-          "hash": "ce3951bb",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T15:32:51+00:00",
-          "message": "chore: Enable clang-tidy modernize checks (#6975)"
-        },
-        {
-          "hash": "ab887f50",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-21T14:22:33+00:00",
-          "message": "ci: Upload clang-tidy git diff (#6983)"
-        },
-        {
-          "hash": "ea023121",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T12:14:07+00:00",
-          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
-        },
-        {
-          "hash": "4b198cd5",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T21:25:52+00:00",
-          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
-        },
-        {
-          "hash": "726f20c8",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-20T17:12:14+00:00",
-          "message": "feat: Add GRPC TLS support (#6374)"
-        },
-        {
-          "hash": "96643bb0",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-20T17:10:28+00:00",
-          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
-        },
-        {
-          "hash": "e8381824",
-          "author": "chuanshanjida",
-          "email": "chuanshanjida@outlook.com",
-          "date": "2026-04-20T16:56:03+00:00",
-          "message": "chore: Remove repetitive word in multiple files (#6978)"
-        },
-        {
-          "hash": "809395a5",
-          "author": "Bart",
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "date": "2026-04-20T15:21:40+00:00",
-          "message": "Merge branch 'develop' into bthomee/node_depth"
-        },
-        {
-          "hash": "852fbe95",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-20T12:12:58+00:00",
-          "message": "ci: Add workflow to check PR description has been filled (#6965)"
-        },
-        {
-          "hash": "b33d0a04",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-20T11:20:42+00:00",
-          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
-        },
-        {
-          "hash": "653a383f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-17T16:43:49+00:00",
-          "message": "chore: Enable clang-tidy include cleaner (#6947)"
-        },
-        {
-          "hash": "affe5835",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-17T14:19:58+00:00",
-          "message": "fix: Change AMMClawback return code to tecNO_PERMISSION (#6946)"
-        }
-      ],
-      "contributor_count": 17,
-      "contributors": [
-        {
-          "email": "11445373+bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "name": "pdp2121"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Zhiyuan Wang"
-        },
-        {
-          "email": "chuanshanjida@outlook.com",
-          "name": "chuanshanjida"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        },
-        {
-          "email": "ed@ripple.com",
-          "name": "Ed Hennis"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Feature",
-        "confidence": 0.75,
         "source": "ai_kimi"
       }
     },
@@ -10748,437 +11179,6 @@
         "amendment": "Other",
         "type": "Refactor",
         "confidence": 0.7,
-        "source": "ai_kimi"
-      }
-    },
-    {
-      "name": "ripple/confidential-transfer",
-      "last_commit": {
-        "hash": "4520de22",
-        "author": "yinyiqian1",
-        "email": "yqian@ripple.com",
-        "date": "2026-04-23T16:24:22+00:00",
-        "message": "Merge pull request #7002 from yinyiqian1/merge-ct2"
-      },
-      "commits": [
-        {
-          "hash": "4520de22",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T16:24:22+00:00",
-          "message": "Merge pull request #7002 from yinyiqian1/merge-ct2"
-        },
-        {
-          "hash": "b0386622",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T05:19:27+00:00",
-          "message": "fix clang-tidy"
-        },
-        {
-          "hash": "c53d6aca",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T05:05:20+00:00",
-          "message": "resolve conflicts"
-        },
-        {
-          "hash": "be8de20a",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T04:41:44+00:00",
-          "message": "Merge branch 'develop' into merge-ct2"
-        },
-        {
-          "hash": "235547f4",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T03:57:01+00:00",
-          "message": "Revert \"Merge develop into ConfidentialTransfer (#6987)\" (#7001)"
-        },
-        {
-          "hash": "1e73f3f3",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T03:34:03+00:00",
-          "message": "Merge develop into ConfidentialTransfer (#6987)"
-        },
-        {
-          "hash": "b41cbb08",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T22:20:14+00:00",
-          "message": "chore: Add pre-commit hook to fix include style (#6995)"
-        },
-        {
-          "hash": "2b65b740",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-22T21:07:31+00:00",
-          "message": "Add destination tag to ConfidentialMPTSend (#6988)"
-        },
-        {
-          "hash": "bd1b1262",
-          "author": "pdp2121",
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "date": "2026-04-22T20:10:52+00:00",
-          "message": "feat: Add `--definitions` flag and artifact (#6858)"
-        },
-        {
-          "hash": "1c6cdc65",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-22T17:42:15+00:00",
-          "message": "fix: More clang-tidy issues (#6992)"
-        },
-        {
-          "hash": "4ab20770",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T15:06:36+00:00",
-          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
-        },
-        {
-          "hash": "2e307329",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-22T14:41:19+00:00",
-          "message": "refactor: Add transaction-specific invariant checking (#6551)"
-        },
-        {
-          "hash": "3429845c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-22T14:26:02+00:00",
-          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
-        },
-        {
-          "hash": "7c7c1894",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T19:00:00+00:00",
-          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
-        },
-        {
-          "hash": "45d4aacb",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-21T18:15:58+00:00",
-          "message": "chore: Remove empty Taker.h (#6984)"
-        },
-        {
-          "hash": "ce3951bb",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T15:32:51+00:00",
-          "message": "chore: Enable clang-tidy modernize checks (#6975)"
-        },
-        {
-          "hash": "ab887f50",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-21T14:22:33+00:00",
-          "message": "ci: Upload clang-tidy git diff (#6983)"
-        },
-        {
-          "hash": "ea023121",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T12:14:07+00:00",
-          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
-        },
-        {
-          "hash": "4b198cd5",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T21:25:52+00:00",
-          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
-        },
-        {
-          "hash": "f08121de",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T17:31:09+00:00",
-          "message": "Address coding style comments (#6966)"
-        },
-        {
-          "hash": "726f20c8",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-20T17:12:14+00:00",
-          "message": "feat: Add GRPC TLS support (#6374)"
-        },
-        {
-          "hash": "96643bb0",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-20T17:10:28+00:00",
-          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
-        },
-        {
-          "hash": "e8381824",
-          "author": "chuanshanjida",
-          "email": "chuanshanjida@outlook.com",
-          "date": "2026-04-20T16:56:03+00:00",
-          "message": "chore: Remove repetitive word in multiple files (#6978)"
-        },
-        {
-          "hash": "852fbe95",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-20T12:12:58+00:00",
-          "message": "ci: Add workflow to check PR description has been filled (#6965)"
-        },
-        {
-          "hash": "b33d0a04",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-20T11:20:42+00:00",
-          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
-        },
-        {
-          "hash": "653a383f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-17T16:43:49+00:00",
-          "message": "chore: Enable clang-tidy include cleaner (#6947)"
-        },
-        {
-          "hash": "affe5835",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-17T14:19:58+00:00",
-          "message": "fix: Change AMMClawback return code to tecNO_PERMISSION (#6946)"
-        },
-        {
-          "hash": "ef2642f8",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-17T14:02:02+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/upload-pages-artifact from 4.0.0 to 5.0.0 (#6927)"
-        },
-        {
-          "hash": "b2038163",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-17T14:01:56+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/upload-artifact from 7.0.0 to 7.0.1 (#6928)"
-        },
-        {
-          "hash": "f1a5ba43",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-17T13:30:52+00:00",
-          "message": "chore: Enable clang-tidy readability checks (#6930)"
-        },
-        {
-          "hash": "09778f2f",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-16T21:51:31+00:00",
-          "message": "Support compact AND-composed sigma proof (#6859)"
-        },
-        {
-          "hash": "4a73be49",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-16T17:12:00+00:00",
-          "message": "fix: Fix unity build for book step (#6942)"
-        },
-        {
-          "hash": "d52d7355",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-04-15T18:50:49+00:00",
-          "message": "chore: Move codegen venv setup into build stage (#6617)"
-        },
-        {
-          "hash": "6a0ce467",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-14T20:24:21+00:00",
-          "message": "chore: Enable most clang-tidy bugprone checks (#6929)"
-        },
-        {
-          "hash": "2f029a21",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-04-14T17:14:24+00:00",
-          "message": "refactor: Improve exception handling (#6540) (#6735)"
-        },
-        {
-          "hash": "61fbde3a",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-13T23:18:10+00:00",
-          "message": "refactor: Remove unused notTooManyOffers function from NFTokenUtils (#6737)"
-        },
-        {
-          "hash": "5229ff5a",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-10T17:42:59+00:00",
-          "message": "fix: fix pipeline failures (#6850)"
-        },
-        {
-          "hash": "e2e537b3",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-04-10T14:38:46+00:00",
-          "message": "fix: Change `Tuning::bookOffers` minimum limit to 1 (#6812)"
-        },
-        {
-          "hash": "a8732500",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-10T10:12:52+00:00",
-          "message": "chore: Make pre-commit line ending conversions work on Windows (#6832) (#6833)"
-        },
-        {
-          "hash": "6a8016f2",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-09T15:54:29+00:00",
-          "message": "Merge develop into confidential-transfer"
-        },
-        {
-          "hash": "5d38603f",
-          "author": "Shawn Xie",
-          "email": "shawnxie920@gmail.com",
-          "date": "2026-04-09T15:22:31+00:00",
-          "message": "fix compile and test failure"
-        },
-        {
-          "hash": "6f4fddc1",
-          "author": "Shawn Xie",
-          "email": "shawnxie920@gmail.com",
-          "date": "2026-04-09T15:05:31+00:00",
-          "message": "Merge remote-tracking branch 'upstream/develop' into ct-merge-mpt-dex"
-        },
-        {
-          "hash": "4ae17f19",
-          "author": "Peter Chen",
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "date": "2026-04-09T14:49:10+00:00",
-          "message": "Add JS fields required for Clio mpt_holder_api (#6810)"
-        },
-        {
-          "hash": "56c9d1d4",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-08T20:56:19+00:00",
-          "message": "fix: Add description for `terLOCKED` error (#6811)"
-        },
-        {
-          "hash": "d52dd29d",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-08T20:22:19+00:00",
-          "message": "fix: Address AI reviewer comments for Permission Delegation (#6675)"
-        },
-        {
-          "hash": "36c80569",
-          "author": "Peter Chen",
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "date": "2026-04-08T18:45:11+00:00",
-          "message": "add batch tests (#6598)"
-        },
-        {
-          "hash": "7793b5f1",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-08T17:38:33+00:00",
-          "message": "refactor: Combine `AMMHelpers` and `AMMUtils` (#6733)"
-        },
-        {
-          "hash": "5bd7ce1d",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-08T17:20:59+00:00",
-          "message": "Add tests for confidential delegation with tickets (#6808)"
-        },
-        {
-          "hash": "dfcad691",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-08T16:17:37+00:00",
-          "message": "feat: Add MPT support to DEX (#5285)"
-        },
-        {
-          "hash": "0d7bf694",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-07T21:45:26+00:00",
-          "message": "Add delegation tests for Confidential Transfers (#6729)"
-        }
-      ],
-      "contributor_count": 19,
-      "contributors": [
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "name": "Shawn Xie"
-        },
-        {
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "name": "pdp2121"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Zhiyuan Wang"
-        },
-        {
-          "email": "chuanshanjida@outlook.com",
-          "name": "chuanshanjida"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "ed@ripple.com",
-          "name": "Ed Hennis"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Confidential Transfers",
-        "type": "Feature",
-        "confidence": 0.9,
         "source": "ai_kimi"
       }
     },
@@ -97493,7 +97493,7 @@
   "contributors": [
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 225,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -97723,8 +97723,8 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 221,
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "commits": 222,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -97949,8 +97949,8 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 215,
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "commits": 216,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -98169,8 +98169,8 @@
     },
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 212,
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "commits": 213,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -98386,8 +98386,8 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 203,
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "commits": 204,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -98594,8 +98594,8 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 168,
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "commits": 169,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -98769,8 +98769,8 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 153,
+      "name": "a1q123456/fix-job-queue-stop",
+      "commits": 154,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/default-cover-optimisation",
@@ -98800,6 +98800,7 @@
         "a1q123456/test-xxhash-signle-shot-hash",
         "bthomee/cmake_ci",
         "bthomee/iops",
+        "bthomee/node_depth",
         "bthomee/ripplerpc",
         "ci/a1q123456-attempt-to-fix-ci",
         "ci/use-new-macos-runners",
@@ -98830,7 +98831,6 @@
         "mvadari/ammdeposit-blank",
         "mvadari/fix-bad-cast",
         "mvadari/rearch/token",
-        "origin",
         "pratik/Add_checks_db_objects",
         "pratik/AutomatedHarness",
         "pratik/Fix_asan_lsan_flagged_issues",
@@ -98861,6 +98861,7 @@
         "revert-5510-a1q123456/add-new-macro",
         "ripple/attackathon-april-2026",
         "ripple/confidential-devnet",
+        "ripple/confidential-transfer",
         "ripple/permission-delegation-devnet",
         "ripple/se/fees",
         "ripple/se/supported",
@@ -98929,8 +98930,8 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "ximinez/lending-sendmulti",
-      "commits": 144,
+      "name": "ripple/se/supported",
+      "commits": 145,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99079,8 +99080,8 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "ximinez/lending-sendmulti",
-      "commits": 134,
+      "name": "ripple/se/supported",
+      "commits": 135,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -99218,8 +99219,8 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 128,
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "commits": 130,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99236,6 +99237,7 @@
         "bthomee/iops",
         "bthomee/macos",
         "bthomee/matrix",
+        "bthomee/node_depth",
         "copilot/add-augmented-submit-fields",
         "copilot/apply-asfdisallowincomingtrustline",
         "copilot/convert-boost-to-std-string-view",
@@ -99300,6 +99302,7 @@
         "pratik/use_boost_coroutine2",
         "release-3.2",
         "ripple/attackathon-april-2026",
+        "ripple/confidential-transfer",
         "ripple/permission-delegation-devnet",
         "ripple/se/fees",
         "ripple/se/supported",
@@ -99352,7 +99355,7 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "dangell7/fix-token-escrow",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 122,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99482,7 +99485,7 @@
     },
     {
       "email": "brok@incorrekt.com",
-      "name": "dangell7/canonical-tx-tests",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 109,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -99599,8 +99602,8 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "ximinez/lending-sendmulti",
-      "commits": 107,
+      "name": "vlntb/grpc-fd-guard",
+      "commits": 108,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -99711,8 +99714,8 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
-      "commits": 95,
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "commits": 94,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -99743,7 +99746,6 @@
         "legleux/test_gl",
         "legleux/trigger_runner",
         "mvadari/fix-bad-cast",
-        "origin",
         "pratik/Add_checks_db_objects",
         "pratik/Fix_Sanitizer_flagged_issues",
         "pratik/Fix_asan_lsan_flagged_issues",
@@ -99814,7 +99816,7 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "dangell7/canonical-tx-tests",
+      "name": "mvadari/rearch/token-refactor",
       "commits": 87,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -99909,7 +99911,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "dangell7/canonical-tx-tests",
+      "name": "a1q123456/fix-job-queue-stop",
       "commits": 81,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -99998,8 +100000,8 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "pratik/Swtich-to-std-coroutines",
-      "commits": 74,
+      "name": "pratik/test-tsan-and-gcc14-asan",
+      "commits": 75,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/new-jtx",
@@ -100078,7 +100080,7 @@
     },
     {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "copilot/add-augmented-submit-fields",
+      "name": "tapanito/vault-bugfixes",
       "commits": 65,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -100150,8 +100152,8 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "pratik/Swtich-to-std-coroutines",
-      "commits": 64,
+      "name": "pratik/test-tsan-and-gcc14-asan",
+      "commits": 65,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/migrate-some-tests",
@@ -100220,7 +100222,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "ci/a1q123456-attempt-to-fix-ci",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 60,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -100288,8 +100290,8 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "ci/a1q123456-attempt-to-fix-ci",
-      "commits": 56,
+      "name": "vlntb/tagged-cache-stats",
+      "commits": 57,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -100352,8 +100354,8 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "pratik/Swtich-to-std-coroutines",
-      "commits": 54,
+      "name": "pratik/test-tsan-and-gcc14-asan",
+      "commits": 55,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/new-jtx",
@@ -100412,7 +100414,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "a1q123456/rust-integration",
+      "name": "vlntb/tagged-cache-stats",
       "commits": 51,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100471,8 +100473,8 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "pratik/Swtich-to-std-coroutines",
-      "commits": 36,
+      "name": "pratik/test-tsan-and-gcc14-asan",
+      "commits": 37,
       "branches": [
         "a1q123456/add-spdlog",
         "bthomee/node_depth",
@@ -100513,8 +100515,8 @@
     },
     {
       "email": "71317875+pdp2121@users.noreply.github.com",
-      "name": "ximinez/lending-sendmulti",
-      "commits": 30,
+      "name": "pratik/test-tsan-and-gcc14-asan",
+      "commits": 31,
       "branches": [
         "a1q123456/add-spdlog",
         "bthomee/node_depth",
@@ -100549,7 +100551,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "copilot/add-augmented-submit-fields",
+      "name": "ripple/wasmi",
       "commits": 29,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -100585,7 +100587,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "vlntb/RIPD-4307-fix-err-tecNOPERMISSION",
+      "name": "a1q123456/modularise-transactors",
       "commits": 29,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -100622,7 +100624,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "a1q123456/rust-integration",
+      "name": "vlntb/tagged-cache-stats",
       "commits": 26,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100656,7 +100658,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
+      "name": "a1q123456/modularise-transactors",
       "commits": 24,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -100688,7 +100690,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "tapanito/staging-lending-assorted-fixes",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 23,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -100719,7 +100721,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
+      "name": "a1q123456/fix-job-queue-stop",
       "commits": 22,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -100749,7 +100751,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "tapanito/lending-remove-liquidation-rate",
+      "name": "a1q123456/modularise-transactors",
       "commits": 21,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -100778,7 +100780,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "tapanito/staging-lending-assorted-fixes",
+      "name": "a1q123456/modularise-transactors",
       "commits": 19,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -100805,7 +100807,7 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "pratik/AutomatedHarness",
+      "name": "pratik/Add_checks_db_objects",
       "commits": 19,
       "branches": [
         "bthomee/ripplerpc",
@@ -100832,7 +100834,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "tapanito/lending-remove-liquidation-rate",
+      "name": "a1q123456/modularise-transactors",
       "commits": 19,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -100859,7 +100861,7 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "ci/a1q123456-attempt-to-fix-ci",
+      "name": "vlntb/tagged-cache-stats",
       "commits": 19,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -100886,7 +100888,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "a1q123456/rust-integration",
+      "name": "vlntb/tagged-cache-stats",
       "commits": 17,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -100911,7 +100913,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "vlntb/grpc-fd-guard",
+      "name": "ximinez/number_asan",
       "commits": 16,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -100935,7 +100937,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "vlntb/grpc-fd-guard",
+      "name": "tapanito/poc-vault-valuation",
       "commits": 15,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -100958,7 +100960,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "a1q123456/windows-test",
+      "name": "revert-5510-a1q123456/add-new-macro",
       "commits": 13,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -100978,8 +100980,47 @@
       "last_active": "2025-02-20T17:23:27+00:00"
     },
     {
+      "email": "11445373+bthomee@users.noreply.github.com",
+      "name": "copilot/sub-pr-5439",
+      "commits": 12,
+      "branches": [
+        "bthomee/cmake_ci",
+        "bthomee/iops",
+        "bthomee/macos",
+        "bthomee/matrix",
+        "bthomee/node_depth",
+        "bthomee/ripplerpc",
+        "ci/a1q123456-attempt-to-fix-ci",
+        "ci/a1q123456-test-ci",
+        "copilot/sub-pr-5439",
+        "release-3.2",
+        "ripple/staging-313"
+      ],
+      "last_active": "2025-07-22T16:18:26+00:00"
+    },
+    {
+      "email": "34582813+PeterChen13579@users.noreply.github.com",
+      "name": "tapanito/poc-vault-valuation",
+      "commits": 12,
+      "branches": [
+        "bthomee/ripplerpc",
+        "copilot/add-ctid-to-ledger-response",
+        "legleux/debian",
+        "legleux/fix-vkt-missing",
+        "mvadari/ammdeposit-blank",
+        "pratik/AutomatedHarness",
+        "ripple/confidential-devnet",
+        "ripple/confidential-transfer",
+        "ripple/staging-313",
+        "tapanito/invariant-architecture",
+        "tapanito/poc-vault-valuation",
+        "tapanito/tx-restructure"
+      ],
+      "last_active": "2026-02-19T08:43:57+00:00"
+    },
+    {
       "email": "tsinglua@outlook.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "pratik/std-coro/tsan-fixes",
       "commits": 12,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -100998,46 +101039,8 @@
       "last_active": "2026-03-09T18:56:06+00:00"
     },
     {
-      "email": "11445373+bthomee@users.noreply.github.com",
-      "name": "ci/a1q123456-attempt-to-fix-ci",
-      "commits": 11,
-      "branches": [
-        "bthomee/cmake_ci",
-        "bthomee/iops",
-        "bthomee/macos",
-        "bthomee/matrix",
-        "bthomee/node_depth",
-        "bthomee/ripplerpc",
-        "ci/a1q123456-attempt-to-fix-ci",
-        "ci/a1q123456-test-ci",
-        "copilot/sub-pr-5439",
-        "release-3.2",
-        "ripple/staging-313"
-      ],
-      "last_active": "2025-07-22T16:18:26+00:00"
-    },
-    {
-      "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "pratik/AutomatedHarness",
-      "commits": 11,
-      "branches": [
-        "bthomee/ripplerpc",
-        "copilot/add-ctid-to-ledger-response",
-        "legleux/debian",
-        "legleux/fix-vkt-missing",
-        "mvadari/ammdeposit-blank",
-        "pratik/AutomatedHarness",
-        "ripple/confidential-devnet",
-        "ripple/staging-313",
-        "tapanito/invariant-architecture",
-        "tapanito/poc-vault-valuation",
-        "tapanito/tx-restructure"
-      ],
-      "last_active": "2026-02-19T08:43:57+00:00"
-    },
-    {
       "email": "pratikmankawde@gmail.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "ripple/wamr-host-functions",
       "commits": 11,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -101056,7 +101059,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "ripple/wamr-host-functions",
       "commits": 10,
       "branches": [
         "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
@@ -101074,7 +101077,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "a1q123456/rust-integration",
+      "name": "bthomee/cmake_ci",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -101091,7 +101094,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "a1q123456/rust-integration",
+      "name": "a1q123456/fix-job-queue-stop-2",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -101108,7 +101111,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "ci/a1q123456-attempt-to-fix-ci",
+      "name": "a1q123456/remove-const-cast-from-tagged-cache-2",
       "commits": 9,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -101125,7 +101128,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/job-queue-latency",
       "commits": 8,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -101141,7 +101144,7 @@
     },
     {
       "email": "vvysokikh@gmail.com",
-      "name": "vvysokikh1/simplify-apply-manifest",
+      "name": "release-3.0",
       "commits": 7,
       "branches": [
         "release",
@@ -101156,7 +101159,7 @@
     },
     {
       "email": "zinger777@gmail.com",
-      "name": "zhang/groth16",
+      "name": "release-3.0",
       "commits": 6,
       "branches": [
         "a1q123456/fix-windows-runner-build-dep-speed-test",
@@ -101170,7 +101173,7 @@
     },
     {
       "email": "Tokeiito@users.noreply.github.com",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "q73zhao/release-2.4.0-perf-investigation",
       "commits": 6,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -101184,7 +101187,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "a1q123456/windows-test",
+      "name": "ci/windows-test",
       "commits": 5,
       "branches": [
         "a1q123456/windows-test",
@@ -101197,7 +101200,7 @@
     },
     {
       "email": "brettmollin@users.noreply.github.com",
-      "name": "a1q123456/test-xxhash-original-hash",
+      "name": "vlntb/job-queue-latency",
       "commits": 5,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -101210,7 +101213,7 @@
     },
     {
       "email": "120398799+cindyyan317@users.noreply.github.com",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -101235,7 +101238,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "q73zhao/release-2.4.0-perf-investigation",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -101246,7 +101249,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "q73zhao/release-2.4.0-perf-investigation",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -101254,6 +101257,16 @@
         "vlntb/RIPD-2525-taggedcache-single-threaded"
       ],
       "last_active": "2025-02-20T17:23:27+00:00"
+    },
+    {
+      "email": "shawnxie920@gmail.com",
+      "name": "ripple/confidential-transfer",
+      "commits": 2,
+      "branches": [
+        "ripple/confidential-devnet",
+        "ripple/confidential-transfer"
+      ],
+      "last_active": "2026-03-17T17:00:25+00:00"
     },
     {
       "email": "pwang200@gmail.com",
@@ -101292,15 +101305,6 @@
         "ripple/attackathon-april-2026"
       ],
       "last_active": "2026-04-11T00:42:23+00:00"
-    },
-    {
-      "email": "shawnxie920@gmail.com",
-      "name": "ripple/confidential-devnet",
-      "commits": 1,
-      "branches": [
-        "ripple/confidential-devnet"
-      ],
-      "last_active": "2026-03-17T17:00:25+00:00"
     },
     {
       "email": "354723+pwang200@users.noreply.github.com",
