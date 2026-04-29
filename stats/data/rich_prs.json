@@ -1,5 +1,55 @@
 [
   {
+    "pr_number": 7031,
+    "branch_name": "chore/clang-tidy-21-checks",
+    "title": "chore: Enable clang-tidy v21 new checks",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR enables several checks that are new to clang-tidy 21:\r\n-  bugprone-capturing-this-in-member-variable\r\n-  bugprone-misleading-setter-of-reference\r\n-  cppcoreguidelines-use-enum-class\r\n-  modernize-use-scoped-lock\r\n-  readability-ambiguous-smartptr-reset-call\r\n\r\n### API Impact\r\n\r\nNo impact.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-27T16:06:17Z",
+    "merged_at": "2026-04-29T15:54:32Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7031?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `72.91221%` with `253 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`46b997b`](https://app.codecov.io/gh/XRPLF/rippled/commit/46b997b774b27a1260a8085586c9d33fcdbf9c6e?dropdown=coverage&el=desc&utm_medium=r",
+        "created_at": "2026-04-27T17:39:03Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-27T21:20:47Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-29T14:45:20Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR updates the codebase to comply with (and therefore enable) several new clang-tidy v21 checks by adjusting enum usage, lock types, and a few ambiguous API calls.\n\n**Ch"
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6999,
     "branch_name": "ct-extensive-tests-clean",
     "title": "Add ZKP and ciphertext malleability tests",
