@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T16:18:23.699546+00:00",
+  "generated_at": "2026-05-01T17:20:56.492124+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 237,
   "total_contributors": 79,
@@ -7,13 +7,34 @@
     {
       "name": "tapanito/vault-associate-assets",
       "last_commit": {
-        "hash": "d084a292",
+        "hash": "421a57b3",
         "author": "Vito",
         "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-05-01T16:12:32+00:00",
-        "message": "chore: Tighten precision-loss fix follow-ups"
+        "date": "2026-05-01T17:11:25+00:00",
+        "message": "chore: Rename misleading minScale local in equalAtAssetScale"
       },
       "commits": [
+        {
+          "hash": "421a57b3",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-01T17:11:25+00:00",
+          "message": "chore: Rename misleading minScale local in equalAtAssetScale"
+        },
+        {
+          "hash": "27bafa89",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-01T16:54:01+00:00",
+          "message": "chore: Address clang-tidy findings on firstNonzero and tests"
+        },
+        {
+          "hash": "d084a292",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-01T16:12:32+00:00",
+          "message": "chore: Tighten precision-loss fix follow-ups"
+        },
         {
           "hash": "d084a292",
           "author": "Vito",
@@ -342,27 +363,6 @@
           "email": "bthomee@users.noreply.github.com",
           "date": "2026-04-10T14:38:46+00:00",
           "message": "fix: Change `Tuning::bookOffers` minimum limit to 1 (#6812)"
-        },
-        {
-          "hash": "a8732500",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-10T10:12:52+00:00",
-          "message": "chore: Make pre-commit line ending conversions work on Windows (#6832) (#6833)"
-        },
-        {
-          "hash": "56c9d1d4",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-08T20:56:19+00:00",
-          "message": "fix: Add description for `terLOCKED` error (#6811)"
-        },
-        {
-          "hash": "d52dd29d",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-08T20:22:19+00:00",
-          "message": "fix: Address AI reviewer comments for Permission Delegation (#6675)"
         }
       ],
       "contributor_count": 16,
@@ -433,6 +433,1299 @@
         "type": "Refactor",
         "confidence": 0.7,
         "source": "keyword_match"
+      }
+    },
+    {
+      "name": "ximinez/loanpay-assertion-develop",
+      "last_commit": {
+        "hash": "49d3805e",
+        "author": "Ed Hennis",
+        "email": "ed@ripple.com",
+        "date": "2026-05-01T16:54:40+00:00",
+        "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+      },
+      "commits": [
+        {
+          "hash": "49d3805e",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-05-01T16:54:40+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "b78af09e",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-30T20:28:06+00:00",
+          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "4e064f57",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-28T20:54:10+00:00",
+          "message": "Fix clang-tidy: const correctness"
+        },
+        {
+          "hash": "fee6f2c8",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-28T20:23:22+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "46b997b7",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-28T14:16:10+00:00",
+          "message": "feat: Create new transaction testing framework `TxTest` (#6537)"
+        },
+        {
+          "hash": "147da573",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-28T10:22:32+00:00",
+          "message": "feat: Add cleanup amendment for 3.2.0 (#7037)"
+        },
+        {
+          "hash": "35471125",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-27T20:34:16+00:00",
+          "message": "fix: Fix ubsan flagged issues (#6151)"
+        },
+        {
+          "hash": "b37f1a08",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-27T04:19:11+00:00",
+          "message": "Fix build error: missing XRPL_ASSERT params"
+        },
+        {
+          "hash": "44e438b2",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-25T18:43:53+00:00",
+          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "4dc923dc",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-24T17:19:30+00:00",
+          "message": "chore: Enable clang-tidy modernize-use-nodiscard check (#7015)"
+        },
+        {
+          "hash": "158df539",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-24T16:47:16+00:00",
+          "message": "fix: Resolve MSVC Debug build failure in JobQueue.h; re-enable _CRTDBG_MAP_ALLOC in CI (#6993)"
+        },
+        {
+          "hash": "a6bd9251",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-24T16:35:10+00:00",
+          "message": "docs: Update hybrid offer invariant comment (#7007)"
+        },
+        {
+          "hash": "9ae29612",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:23:43+00:00",
+          "message": "fix: Fix flaky CI tests (#7005)"
+        },
+        {
+          "hash": "82abf2a8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:15:12+00:00",
+          "message": "docs: Update bug bounty information (#7006)"
+        },
+        {
+          "hash": "7cfa5d46",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:56:50+00:00",
+          "message": "fix: Make assorted Payments fixes (#6585)"
+        },
+        {
+          "hash": "248cb296",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:06:26+00:00",
+          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
+        },
+        {
+          "hash": "8efafbe9",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-23T19:55:54+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "7a449ede",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T17:59:49+00:00",
+          "message": "refactor: Clean up NetworkOPs (#6575)"
+        },
+        {
+          "hash": "19da2581",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-23T16:21:01+00:00",
+          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
+        },
+        {
+          "hash": "7cd50385",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T13:59:23+00:00",
+          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
+        },
+        {
+          "hash": "2c6ad964",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-23T04:04:37+00:00",
+          "message": "Address AI code review: check rounding mode"
+        },
+        {
+          "hash": "9d8cede4",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-23T04:00:31+00:00",
+          "message": "Update src/test/app/Loan_test.cpp"
+        },
+        {
+          "hash": "2a019fde",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-23T03:39:34+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "b41cbb08",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T22:20:14+00:00",
+          "message": "chore: Add pre-commit hook to fix include style (#6995)"
+        },
+        {
+          "hash": "bd1b1262",
+          "author": "pdp2121",
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "date": "2026-04-22T20:10:52+00:00",
+          "message": "feat: Add `--definitions` flag and artifact (#6858)"
+        },
+        {
+          "hash": "934e431a",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-22T18:48:59+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "1c6cdc65",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-22T17:42:15+00:00",
+          "message": "fix: More clang-tidy issues (#6992)"
+        },
+        {
+          "hash": "168b4dff",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-22T17:31:53+00:00",
+          "message": "Address AI review feedback: Avoid null derefs in test"
+        },
+        {
+          "hash": "1a97a6b2",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-22T17:26:07+00:00",
+          "message": "Apply suggestions from AI code review"
+        },
+        {
+          "hash": "ec1faeff",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-22T17:07:55+00:00",
+          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "4ab20770",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T15:06:36+00:00",
+          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
+        },
+        {
+          "hash": "2e307329",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-22T14:41:19+00:00",
+          "message": "refactor: Add transaction-specific invariant checking (#6551)"
+        },
+        {
+          "hash": "3429845c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-22T14:26:02+00:00",
+          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
+        },
+        {
+          "hash": "94327d04",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-21T23:33:26+00:00",
+          "message": "clang-tidy fixes: Use std::ranges::minmax_element"
+        },
+        {
+          "hash": "afe8614d",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-21T22:48:16+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "3b1b5ef5",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-21T19:04:10+00:00",
+          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "7c7c1894",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T19:00:00+00:00",
+          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
+        },
+        {
+          "hash": "45d4aacb",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-21T18:15:58+00:00",
+          "message": "chore: Remove empty Taker.h (#6984)"
+        },
+        {
+          "hash": "ce3951bb",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T15:32:51+00:00",
+          "message": "chore: Enable clang-tidy modernize checks (#6975)"
+        },
+        {
+          "hash": "ab887f50",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-21T14:22:33+00:00",
+          "message": "ci: Upload clang-tidy git diff (#6983)"
+        },
+        {
+          "hash": "ea023121",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T12:14:07+00:00",
+          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
+        },
+        {
+          "hash": "c22b38dd",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-20T21:49:31+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "4b198cd5",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-20T21:25:52+00:00",
+          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
+        },
+        {
+          "hash": "60984c19",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-20T19:44:48+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "726f20c8",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-20T17:12:14+00:00",
+          "message": "feat: Add GRPC TLS support (#6374)"
+        },
+        {
+          "hash": "96643bb0",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-20T17:10:28+00:00",
+          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
+        },
+        {
+          "hash": "e8381824",
+          "author": "chuanshanjida",
+          "email": "chuanshanjida@outlook.com",
+          "date": "2026-04-20T16:56:03+00:00",
+          "message": "chore: Remove repetitive word in multiple files (#6978)"
+        },
+        {
+          "hash": "068d8458",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-20T15:38:29+00:00",
+          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
+        },
+        {
+          "hash": "852fbe95",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-20T12:12:58+00:00",
+          "message": "ci: Add workflow to check PR description has been filled (#6965)"
+        },
+        {
+          "hash": "b33d0a04",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-20T11:20:42+00:00",
+          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
+        }
+      ],
+      "contributor_count": 16,
+      "contributors": [
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "name": "pdp2121"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "chuanshanjida@outlook.com",
+          "name": "chuanshanjida"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Unknown",
+        "confidence": 0,
+        "source": "fallback"
+      }
+    },
+    {
+      "name": "ximinez/online-delete-gaps",
+      "last_commit": {
+        "hash": "ecb5604d",
+        "author": "Ed Hennis",
+        "email": "ed@ripple.com",
+        "date": "2026-05-01T16:54:31+00:00",
+        "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+      },
+      "commits": [
+        {
+          "hash": "ecb5604d",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-05-01T16:54:31+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "c4527e7b",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-30T18:30:36+00:00",
+          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "778e2b3c",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-28T20:44:14+00:00",
+          "message": "Fix clang-tidy: missing include"
+        },
+        {
+          "hash": "295d03ae",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-28T20:23:08+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "46b997b7",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-28T14:16:10+00:00",
+          "message": "feat: Create new transaction testing framework `TxTest` (#6537)"
+        },
+        {
+          "hash": "147da573",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-28T10:22:32+00:00",
+          "message": "feat: Add cleanup amendment for 3.2.0 (#7037)"
+        },
+        {
+          "hash": "35471125",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-27T20:34:16+00:00",
+          "message": "fix: Fix ubsan flagged issues (#6151)"
+        },
+        {
+          "hash": "9262c2e6",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-25T18:41:57+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "4dc923dc",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-24T17:19:30+00:00",
+          "message": "chore: Enable clang-tidy modernize-use-nodiscard check (#7015)"
+        },
+        {
+          "hash": "158df539",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-24T16:47:16+00:00",
+          "message": "fix: Resolve MSVC Debug build failure in JobQueue.h; re-enable _CRTDBG_MAP_ALLOC in CI (#6993)"
+        },
+        {
+          "hash": "a6bd9251",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-24T16:35:10+00:00",
+          "message": "docs: Update hybrid offer invariant comment (#7007)"
+        },
+        {
+          "hash": "9ae29612",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:23:43+00:00",
+          "message": "fix: Fix flaky CI tests (#7005)"
+        },
+        {
+          "hash": "82abf2a8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:15:12+00:00",
+          "message": "docs: Update bug bounty information (#7006)"
+        },
+        {
+          "hash": "7cfa5d46",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:56:50+00:00",
+          "message": "fix: Make assorted Payments fixes (#6585)"
+        },
+        {
+          "hash": "248cb296",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:06:26+00:00",
+          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
+        },
+        {
+          "hash": "b385a41a",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-23T19:55:43+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "7a449ede",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T17:59:49+00:00",
+          "message": "refactor: Clean up NetworkOPs (#6575)"
+        },
+        {
+          "hash": "19da2581",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-23T16:21:01+00:00",
+          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
+        },
+        {
+          "hash": "7cd50385",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T13:59:23+00:00",
+          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
+        },
+        {
+          "hash": "4eb97260",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-23T03:39:00+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "b41cbb08",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T22:20:14+00:00",
+          "message": "chore: Add pre-commit hook to fix include style (#6995)"
+        },
+        {
+          "hash": "bd1b1262",
+          "author": "pdp2121",
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "date": "2026-04-22T20:10:52+00:00",
+          "message": "feat: Add `--definitions` flag and artifact (#6858)"
+        },
+        {
+          "hash": "28a38ef1",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-22T18:48:51+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "1c6cdc65",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-22T17:42:15+00:00",
+          "message": "fix: More clang-tidy issues (#6992)"
+        },
+        {
+          "hash": "39f9380b",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-22T15:36:03+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "4ab20770",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T15:06:36+00:00",
+          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
+        },
+        {
+          "hash": "2e307329",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-22T14:41:19+00:00",
+          "message": "refactor: Add transaction-specific invariant checking (#6551)"
+        },
+        {
+          "hash": "3429845c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-22T14:26:02+00:00",
+          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
+        },
+        {
+          "hash": "239fcace",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-21T23:30:05+00:00",
+          "message": "clang-tidy fix: Use std::to_string for std::uint32_t"
+        },
+        {
+          "hash": "8ab86f00",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-21T22:47:53+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "7c7c1894",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T19:00:00+00:00",
+          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
+        },
+        {
+          "hash": "d4b58a74",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-21T18:37:52+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "45d4aacb",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-21T18:15:58+00:00",
+          "message": "chore: Remove empty Taker.h (#6984)"
+        },
+        {
+          "hash": "ce3951bb",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T15:32:51+00:00",
+          "message": "chore: Enable clang-tidy modernize checks (#6975)"
+        },
+        {
+          "hash": "ff900591",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-21T14:40:45+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "ab887f50",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-21T14:22:33+00:00",
+          "message": "ci: Upload clang-tidy git diff (#6983)"
+        },
+        {
+          "hash": "ea023121",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T12:14:07+00:00",
+          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
+        },
+        {
+          "hash": "a5b7471a",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-20T21:49:20+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "4b198cd5",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-20T21:25:52+00:00",
+          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
+        },
+        {
+          "hash": "e0734986",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-20T19:44:37+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "726f20c8",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-20T17:12:14+00:00",
+          "message": "feat: Add GRPC TLS support (#6374)"
+        },
+        {
+          "hash": "96643bb0",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-20T17:10:28+00:00",
+          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
+        },
+        {
+          "hash": "e8381824",
+          "author": "chuanshanjida",
+          "email": "chuanshanjida@outlook.com",
+          "date": "2026-04-20T16:56:03+00:00",
+          "message": "chore: Remove repetitive word in multiple files (#6978)"
+        },
+        {
+          "hash": "8440f479",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-20T15:37:54+00:00",
+          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "852fbe95",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-20T12:12:58+00:00",
+          "message": "ci: Add workflow to check PR description has been filled (#6965)"
+        },
+        {
+          "hash": "b33d0a04",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-20T11:20:42+00:00",
+          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
+        },
+        {
+          "hash": "ac390622",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-17T21:27:12+00:00",
+          "message": "Fix clang-tidy issues"
+        },
+        {
+          "hash": "5d807f0d",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-17T19:23:33+00:00",
+          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/online-delete-gaps"
+        },
+        {
+          "hash": "653a383f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-17T16:43:49+00:00",
+          "message": "chore: Enable clang-tidy include cleaner (#6947)"
+        },
+        {
+          "hash": "affe5835",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-04-17T14:19:58+00:00",
+          "message": "fix: Change AMMClawback return code to tecNO_PERMISSION (#6946)"
+        }
+      ],
+      "contributor_count": 15,
+      "contributors": [
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "name": "pdp2121"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "chuanshanjida@outlook.com",
+          "name": "chuanshanjida"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Refactor",
+        "confidence": 0.7,
+        "source": "ai_kimi"
+      }
+    },
+    {
+      "name": "ripple/confidential-transfer",
+      "last_commit": {
+        "hash": "9a62a1e4",
+        "author": "Shawn Xie",
+        "email": "35279399+shawnxie999@users.noreply.github.com",
+        "date": "2026-05-01T16:25:01+00:00",
+        "message": "fix: add credential amendment check and more refactoring (#7041)"
+      },
+      "commits": [
+        {
+          "hash": "9a62a1e4",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-05-01T16:25:01+00:00",
+          "message": "fix: add credential amendment check and more refactoring (#7041)"
+        },
+        {
+          "hash": "cc58844d",
+          "author": "Peter Chen",
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "date": "2026-04-30T19:12:06+00:00",
+          "message": "Merge pull request #7048 from PeterChen13579/add_defensive_checks"
+        },
+        {
+          "hash": "58337c61",
+          "author": "Peter Chen",
+          "email": "ychen@ripple.com",
+          "date": "2026-04-30T18:36:19+00:00",
+          "message": "Fix comments"
+        },
+        {
+          "hash": "9bfd78e2",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-28T15:25:40+00:00",
+          "message": "Add ZKP and ciphertext malleability tests (#6999)"
+        },
+        {
+          "hash": "5a643b1a",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-27T18:36:54+00:00",
+          "message": "fix: assorted safety checks (#7030)"
+        },
+        {
+          "hash": "8457b91b",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-24T19:03:26+00:00",
+          "message": "Test inconsistent C1 for ConfidentialMPTSend (#7017)"
+        },
+        {
+          "hash": "4520de22",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T16:24:22+00:00",
+          "message": "Merge pull request #7002 from yinyiqian1/merge-ct2"
+        },
+        {
+          "hash": "b0386622",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T05:19:27+00:00",
+          "message": "fix clang-tidy"
+        },
+        {
+          "hash": "c53d6aca",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T05:05:20+00:00",
+          "message": "resolve conflicts"
+        },
+        {
+          "hash": "be8de20a",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T04:41:44+00:00",
+          "message": "Merge branch 'develop' into merge-ct2"
+        },
+        {
+          "hash": "235547f4",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T03:57:01+00:00",
+          "message": "Revert \"Merge develop into ConfidentialTransfer (#6987)\" (#7001)"
+        },
+        {
+          "hash": "1e73f3f3",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-23T03:34:03+00:00",
+          "message": "Merge develop into ConfidentialTransfer (#6987)"
+        },
+        {
+          "hash": "b41cbb08",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T22:20:14+00:00",
+          "message": "chore: Add pre-commit hook to fix include style (#6995)"
+        },
+        {
+          "hash": "2b65b740",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-22T21:07:31+00:00",
+          "message": "Add destination tag to ConfidentialMPTSend (#6988)"
+        },
+        {
+          "hash": "bd1b1262",
+          "author": "pdp2121",
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "date": "2026-04-22T20:10:52+00:00",
+          "message": "feat: Add `--definitions` flag and artifact (#6858)"
+        },
+        {
+          "hash": "1c6cdc65",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-22T17:42:15+00:00",
+          "message": "fix: More clang-tidy issues (#6992)"
+        },
+        {
+          "hash": "4ab20770",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T15:06:36+00:00",
+          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
+        },
+        {
+          "hash": "2e307329",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-22T14:41:19+00:00",
+          "message": "refactor: Add transaction-specific invariant checking (#6551)"
+        },
+        {
+          "hash": "3429845c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-22T14:26:02+00:00",
+          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
+        },
+        {
+          "hash": "7c7c1894",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T19:00:00+00:00",
+          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
+        },
+        {
+          "hash": "45d4aacb",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-21T18:15:58+00:00",
+          "message": "chore: Remove empty Taker.h (#6984)"
+        },
+        {
+          "hash": "ce3951bb",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T15:32:51+00:00",
+          "message": "chore: Enable clang-tidy modernize checks (#6975)"
+        },
+        {
+          "hash": "ab887f50",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-21T14:22:33+00:00",
+          "message": "ci: Upload clang-tidy git diff (#6983)"
+        },
+        {
+          "hash": "ea023121",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T12:14:07+00:00",
+          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
+        },
+        {
+          "hash": "4b198cd5",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-20T21:25:52+00:00",
+          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
+        },
+        {
+          "hash": "f08121de",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-20T17:31:09+00:00",
+          "message": "Address coding style comments (#6966)"
+        },
+        {
+          "hash": "726f20c8",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-20T17:12:14+00:00",
+          "message": "feat: Add GRPC TLS support (#6374)"
+        },
+        {
+          "hash": "96643bb0",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-20T17:10:28+00:00",
+          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
+        },
+        {
+          "hash": "e8381824",
+          "author": "chuanshanjida",
+          "email": "chuanshanjida@outlook.com",
+          "date": "2026-04-20T16:56:03+00:00",
+          "message": "chore: Remove repetitive word in multiple files (#6978)"
+        },
+        {
+          "hash": "852fbe95",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-20T12:12:58+00:00",
+          "message": "ci: Add workflow to check PR description has been filled (#6965)"
+        },
+        {
+          "hash": "b33d0a04",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-20T11:20:42+00:00",
+          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
+        },
+        {
+          "hash": "653a383f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-17T16:43:49+00:00",
+          "message": "chore: Enable clang-tidy include cleaner (#6947)"
+        },
+        {
+          "hash": "affe5835",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-04-17T14:19:58+00:00",
+          "message": "fix: Change AMMClawback return code to tecNO_PERMISSION (#6946)"
+        },
+        {
+          "hash": "ef2642f8",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-17T14:02:02+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/upload-pages-artifact from 4.0.0 to 5.0.0 (#6927)"
+        },
+        {
+          "hash": "b2038163",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-04-17T14:01:56+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/upload-artifact from 7.0.0 to 7.0.1 (#6928)"
+        },
+        {
+          "hash": "f1a5ba43",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-17T13:30:52+00:00",
+          "message": "chore: Enable clang-tidy readability checks (#6930)"
+        },
+        {
+          "hash": "09778f2f",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-04-16T21:51:31+00:00",
+          "message": "Support compact AND-composed sigma proof (#6859)"
+        },
+        {
+          "hash": "4a73be49",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-16T17:12:00+00:00",
+          "message": "fix: Fix unity build for book step (#6942)"
+        },
+        {
+          "hash": "d52d7355",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-04-15T18:50:49+00:00",
+          "message": "chore: Move codegen venv setup into build stage (#6617)"
+        },
+        {
+          "hash": "6a0ce467",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-14T20:24:21+00:00",
+          "message": "chore: Enable most clang-tidy bugprone checks (#6929)"
+        },
+        {
+          "hash": "2f029a21",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-04-14T17:14:24+00:00",
+          "message": "refactor: Improve exception handling (#6540) (#6735)"
+        },
+        {
+          "hash": "61fbde3a",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-13T23:18:10+00:00",
+          "message": "refactor: Remove unused notTooManyOffers function from NFTokenUtils (#6737)"
+        },
+        {
+          "hash": "5229ff5a",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-10T17:42:59+00:00",
+          "message": "fix: fix pipeline failures (#6850)"
+        },
+        {
+          "hash": "e2e537b3",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-04-10T14:38:46+00:00",
+          "message": "fix: Change `Tuning::bookOffers` minimum limit to 1 (#6812)"
+        },
+        {
+          "hash": "a8732500",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-04-10T10:12:52+00:00",
+          "message": "chore: Make pre-commit line ending conversions work on Windows (#6832) (#6833)"
+        },
+        {
+          "hash": "6a8016f2",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-04-09T15:54:29+00:00",
+          "message": "Merge develop into confidential-transfer"
+        },
+        {
+          "hash": "5d38603f",
+          "author": "Shawn Xie",
+          "email": "shawnxie920@gmail.com",
+          "date": "2026-04-09T15:22:31+00:00",
+          "message": "fix compile and test failure"
+        },
+        {
+          "hash": "6f4fddc1",
+          "author": "Shawn Xie",
+          "email": "shawnxie920@gmail.com",
+          "date": "2026-04-09T15:05:31+00:00",
+          "message": "Merge remote-tracking branch 'upstream/develop' into ct-merge-mpt-dex"
+        },
+        {
+          "hash": "4ae17f19",
+          "author": "Peter Chen",
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "date": "2026-04-09T14:49:10+00:00",
+          "message": "Add JS fields required for Clio mpt_holder_api (#6810)"
+        },
+        {
+          "hash": "56c9d1d4",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-04-08T20:56:19+00:00",
+          "message": "fix: Add description for `terLOCKED` error (#6811)"
+        }
+      ],
+      "contributor_count": 20,
+      "contributors": [
+        {
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "name": "Shawn Xie"
+        },
+        {
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "name": "Peter Chen"
+        },
+        {
+          "email": "ychen@ripple.com",
+          "name": "Peter Chen"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "name": "pdp2121"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "chuanshanjida@outlook.com",
+          "name": "chuanshanjida"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Confidential Transfers",
+        "type": "Feature",
+        "confidence": 0.9,
+        "source": "ai_kimi"
       }
     },
     {
@@ -2160,437 +3453,6 @@
       }
     },
     {
-      "name": "ximinez/loanpay-assertion-develop",
-      "last_commit": {
-        "hash": "b78af09e",
-        "author": "Ed Hennis",
-        "email": "ed@ripple.com",
-        "date": "2026-04-30T20:28:06+00:00",
-        "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
-      },
-      "commits": [
-        {
-          "hash": "b78af09e",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-30T20:28:06+00:00",
-          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "4e064f57",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-28T20:54:10+00:00",
-          "message": "Fix clang-tidy: const correctness"
-        },
-        {
-          "hash": "fee6f2c8",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-28T20:23:22+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "46b997b7",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-28T14:16:10+00:00",
-          "message": "feat: Create new transaction testing framework `TxTest` (#6537)"
-        },
-        {
-          "hash": "147da573",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-28T10:22:32+00:00",
-          "message": "feat: Add cleanup amendment for 3.2.0 (#7037)"
-        },
-        {
-          "hash": "35471125",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-27T20:34:16+00:00",
-          "message": "fix: Fix ubsan flagged issues (#6151)"
-        },
-        {
-          "hash": "b37f1a08",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-27T04:19:11+00:00",
-          "message": "Fix build error: missing XRPL_ASSERT params"
-        },
-        {
-          "hash": "44e438b2",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-25T18:43:53+00:00",
-          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "4dc923dc",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-24T17:19:30+00:00",
-          "message": "chore: Enable clang-tidy modernize-use-nodiscard check (#7015)"
-        },
-        {
-          "hash": "158df539",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-24T16:47:16+00:00",
-          "message": "fix: Resolve MSVC Debug build failure in JobQueue.h; re-enable _CRTDBG_MAP_ALLOC in CI (#6993)"
-        },
-        {
-          "hash": "a6bd9251",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-24T16:35:10+00:00",
-          "message": "docs: Update hybrid offer invariant comment (#7007)"
-        },
-        {
-          "hash": "9ae29612",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:23:43+00:00",
-          "message": "fix: Fix flaky CI tests (#7005)"
-        },
-        {
-          "hash": "82abf2a8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:15:12+00:00",
-          "message": "docs: Update bug bounty information (#7006)"
-        },
-        {
-          "hash": "7cfa5d46",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:56:50+00:00",
-          "message": "fix: Make assorted Payments fixes (#6585)"
-        },
-        {
-          "hash": "248cb296",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:06:26+00:00",
-          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
-        },
-        {
-          "hash": "8efafbe9",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-23T19:55:54+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "7a449ede",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T17:59:49+00:00",
-          "message": "refactor: Clean up NetworkOPs (#6575)"
-        },
-        {
-          "hash": "19da2581",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-23T16:21:01+00:00",
-          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
-        },
-        {
-          "hash": "7cd50385",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T13:59:23+00:00",
-          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
-        },
-        {
-          "hash": "2c6ad964",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-23T04:04:37+00:00",
-          "message": "Address AI code review: check rounding mode"
-        },
-        {
-          "hash": "9d8cede4",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-23T04:00:31+00:00",
-          "message": "Update src/test/app/Loan_test.cpp"
-        },
-        {
-          "hash": "2a019fde",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-23T03:39:34+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "b41cbb08",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T22:20:14+00:00",
-          "message": "chore: Add pre-commit hook to fix include style (#6995)"
-        },
-        {
-          "hash": "bd1b1262",
-          "author": "pdp2121",
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "date": "2026-04-22T20:10:52+00:00",
-          "message": "feat: Add `--definitions` flag and artifact (#6858)"
-        },
-        {
-          "hash": "934e431a",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-22T18:48:59+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "1c6cdc65",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-22T17:42:15+00:00",
-          "message": "fix: More clang-tidy issues (#6992)"
-        },
-        {
-          "hash": "168b4dff",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-22T17:31:53+00:00",
-          "message": "Address AI review feedback: Avoid null derefs in test"
-        },
-        {
-          "hash": "1a97a6b2",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-22T17:26:07+00:00",
-          "message": "Apply suggestions from AI code review"
-        },
-        {
-          "hash": "ec1faeff",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-22T17:07:55+00:00",
-          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "4ab20770",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T15:06:36+00:00",
-          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
-        },
-        {
-          "hash": "2e307329",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-22T14:41:19+00:00",
-          "message": "refactor: Add transaction-specific invariant checking (#6551)"
-        },
-        {
-          "hash": "3429845c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-22T14:26:02+00:00",
-          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
-        },
-        {
-          "hash": "94327d04",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-21T23:33:26+00:00",
-          "message": "clang-tidy fixes: Use std::ranges::minmax_element"
-        },
-        {
-          "hash": "afe8614d",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-21T22:48:16+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "3b1b5ef5",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-21T19:04:10+00:00",
-          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "7c7c1894",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T19:00:00+00:00",
-          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
-        },
-        {
-          "hash": "45d4aacb",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-21T18:15:58+00:00",
-          "message": "chore: Remove empty Taker.h (#6984)"
-        },
-        {
-          "hash": "ce3951bb",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T15:32:51+00:00",
-          "message": "chore: Enable clang-tidy modernize checks (#6975)"
-        },
-        {
-          "hash": "ab887f50",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-21T14:22:33+00:00",
-          "message": "ci: Upload clang-tidy git diff (#6983)"
-        },
-        {
-          "hash": "ea023121",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T12:14:07+00:00",
-          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
-        },
-        {
-          "hash": "c22b38dd",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-20T21:49:31+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "4b198cd5",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T21:25:52+00:00",
-          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
-        },
-        {
-          "hash": "60984c19",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-20T19:44:48+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "726f20c8",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-20T17:12:14+00:00",
-          "message": "feat: Add GRPC TLS support (#6374)"
-        },
-        {
-          "hash": "96643bb0",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-20T17:10:28+00:00",
-          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
-        },
-        {
-          "hash": "e8381824",
-          "author": "chuanshanjida",
-          "email": "chuanshanjida@outlook.com",
-          "date": "2026-04-20T16:56:03+00:00",
-          "message": "chore: Remove repetitive word in multiple files (#6978)"
-        },
-        {
-          "hash": "068d8458",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-20T15:38:29+00:00",
-          "message": "Merge branch 'develop' into ximinez/loanpay-assertion-develop"
-        },
-        {
-          "hash": "852fbe95",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-20T12:12:58+00:00",
-          "message": "ci: Add workflow to check PR description has been filled (#6965)"
-        },
-        {
-          "hash": "b33d0a04",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-20T11:20:42+00:00",
-          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
-        },
-        {
-          "hash": "4304b3ac",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-17T22:05:28+00:00",
-          "message": "Fix clang-tidy issues"
-        }
-      ],
-      "contributor_count": 16,
-      "contributors": [
-        {
-          "email": "ed@ripple.com",
-          "name": "Ed Hennis"
-        },
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Zhiyuan Wang"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "name": "pdp2121"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "chuanshanjida@outlook.com",
-          "name": "chuanshanjida"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Unknown",
-        "confidence": 0,
-        "source": "fallback"
-      }
-    },
-    {
       "name": "mvadari/fix-naming",
       "last_commit": {
         "hash": "83bdf861",
@@ -3180,437 +4042,6 @@
       }
     },
     {
-      "name": "ripple/confidential-transfer",
-      "last_commit": {
-        "hash": "cc58844d",
-        "author": "Peter Chen",
-        "email": "34582813+PeterChen13579@users.noreply.github.com",
-        "date": "2026-04-30T19:12:06+00:00",
-        "message": "Merge pull request #7048 from PeterChen13579/add_defensive_checks"
-      },
-      "commits": [
-        {
-          "hash": "cc58844d",
-          "author": "Peter Chen",
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "date": "2026-04-30T19:12:06+00:00",
-          "message": "Merge pull request #7048 from PeterChen13579/add_defensive_checks"
-        },
-        {
-          "hash": "58337c61",
-          "author": "Peter Chen",
-          "email": "ychen@ripple.com",
-          "date": "2026-04-30T18:36:19+00:00",
-          "message": "Fix comments"
-        },
-        {
-          "hash": "9bfd78e2",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-28T15:25:40+00:00",
-          "message": "Add ZKP and ciphertext malleability tests (#6999)"
-        },
-        {
-          "hash": "5a643b1a",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-27T18:36:54+00:00",
-          "message": "fix: assorted safety checks (#7030)"
-        },
-        {
-          "hash": "8457b91b",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-24T19:03:26+00:00",
-          "message": "Test inconsistent C1 for ConfidentialMPTSend (#7017)"
-        },
-        {
-          "hash": "4520de22",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T16:24:22+00:00",
-          "message": "Merge pull request #7002 from yinyiqian1/merge-ct2"
-        },
-        {
-          "hash": "b0386622",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T05:19:27+00:00",
-          "message": "fix clang-tidy"
-        },
-        {
-          "hash": "c53d6aca",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T05:05:20+00:00",
-          "message": "resolve conflicts"
-        },
-        {
-          "hash": "be8de20a",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T04:41:44+00:00",
-          "message": "Merge branch 'develop' into merge-ct2"
-        },
-        {
-          "hash": "235547f4",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T03:57:01+00:00",
-          "message": "Revert \"Merge develop into ConfidentialTransfer (#6987)\" (#7001)"
-        },
-        {
-          "hash": "1e73f3f3",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-23T03:34:03+00:00",
-          "message": "Merge develop into ConfidentialTransfer (#6987)"
-        },
-        {
-          "hash": "b41cbb08",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T22:20:14+00:00",
-          "message": "chore: Add pre-commit hook to fix include style (#6995)"
-        },
-        {
-          "hash": "2b65b740",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-22T21:07:31+00:00",
-          "message": "Add destination tag to ConfidentialMPTSend (#6988)"
-        },
-        {
-          "hash": "bd1b1262",
-          "author": "pdp2121",
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "date": "2026-04-22T20:10:52+00:00",
-          "message": "feat: Add `--definitions` flag and artifact (#6858)"
-        },
-        {
-          "hash": "1c6cdc65",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-22T17:42:15+00:00",
-          "message": "fix: More clang-tidy issues (#6992)"
-        },
-        {
-          "hash": "4ab20770",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T15:06:36+00:00",
-          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
-        },
-        {
-          "hash": "2e307329",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-22T14:41:19+00:00",
-          "message": "refactor: Add transaction-specific invariant checking (#6551)"
-        },
-        {
-          "hash": "3429845c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-22T14:26:02+00:00",
-          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
-        },
-        {
-          "hash": "7c7c1894",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T19:00:00+00:00",
-          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
-        },
-        {
-          "hash": "45d4aacb",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-21T18:15:58+00:00",
-          "message": "chore: Remove empty Taker.h (#6984)"
-        },
-        {
-          "hash": "ce3951bb",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T15:32:51+00:00",
-          "message": "chore: Enable clang-tidy modernize checks (#6975)"
-        },
-        {
-          "hash": "ab887f50",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-21T14:22:33+00:00",
-          "message": "ci: Upload clang-tidy git diff (#6983)"
-        },
-        {
-          "hash": "ea023121",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T12:14:07+00:00",
-          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
-        },
-        {
-          "hash": "4b198cd5",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T21:25:52+00:00",
-          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
-        },
-        {
-          "hash": "f08121de",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T17:31:09+00:00",
-          "message": "Address coding style comments (#6966)"
-        },
-        {
-          "hash": "726f20c8",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-20T17:12:14+00:00",
-          "message": "feat: Add GRPC TLS support (#6374)"
-        },
-        {
-          "hash": "96643bb0",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-20T17:10:28+00:00",
-          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
-        },
-        {
-          "hash": "e8381824",
-          "author": "chuanshanjida",
-          "email": "chuanshanjida@outlook.com",
-          "date": "2026-04-20T16:56:03+00:00",
-          "message": "chore: Remove repetitive word in multiple files (#6978)"
-        },
-        {
-          "hash": "852fbe95",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-20T12:12:58+00:00",
-          "message": "ci: Add workflow to check PR description has been filled (#6965)"
-        },
-        {
-          "hash": "b33d0a04",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-20T11:20:42+00:00",
-          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
-        },
-        {
-          "hash": "653a383f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-17T16:43:49+00:00",
-          "message": "chore: Enable clang-tidy include cleaner (#6947)"
-        },
-        {
-          "hash": "affe5835",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-17T14:19:58+00:00",
-          "message": "fix: Change AMMClawback return code to tecNO_PERMISSION (#6946)"
-        },
-        {
-          "hash": "ef2642f8",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-17T14:02:02+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/upload-pages-artifact from 4.0.0 to 5.0.0 (#6927)"
-        },
-        {
-          "hash": "b2038163",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-17T14:01:56+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/upload-artifact from 7.0.0 to 7.0.1 (#6928)"
-        },
-        {
-          "hash": "f1a5ba43",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-17T13:30:52+00:00",
-          "message": "chore: Enable clang-tidy readability checks (#6930)"
-        },
-        {
-          "hash": "09778f2f",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-16T21:51:31+00:00",
-          "message": "Support compact AND-composed sigma proof (#6859)"
-        },
-        {
-          "hash": "4a73be49",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-16T17:12:00+00:00",
-          "message": "fix: Fix unity build for book step (#6942)"
-        },
-        {
-          "hash": "d52d7355",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-04-15T18:50:49+00:00",
-          "message": "chore: Move codegen venv setup into build stage (#6617)"
-        },
-        {
-          "hash": "6a0ce467",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-14T20:24:21+00:00",
-          "message": "chore: Enable most clang-tidy bugprone checks (#6929)"
-        },
-        {
-          "hash": "2f029a21",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-04-14T17:14:24+00:00",
-          "message": "refactor: Improve exception handling (#6540) (#6735)"
-        },
-        {
-          "hash": "61fbde3a",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-13T23:18:10+00:00",
-          "message": "refactor: Remove unused notTooManyOffers function from NFTokenUtils (#6737)"
-        },
-        {
-          "hash": "5229ff5a",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-10T17:42:59+00:00",
-          "message": "fix: fix pipeline failures (#6850)"
-        },
-        {
-          "hash": "e2e537b3",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-04-10T14:38:46+00:00",
-          "message": "fix: Change `Tuning::bookOffers` minimum limit to 1 (#6812)"
-        },
-        {
-          "hash": "a8732500",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-10T10:12:52+00:00",
-          "message": "chore: Make pre-commit line ending conversions work on Windows (#6832) (#6833)"
-        },
-        {
-          "hash": "6a8016f2",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-04-09T15:54:29+00:00",
-          "message": "Merge develop into confidential-transfer"
-        },
-        {
-          "hash": "5d38603f",
-          "author": "Shawn Xie",
-          "email": "shawnxie920@gmail.com",
-          "date": "2026-04-09T15:22:31+00:00",
-          "message": "fix compile and test failure"
-        },
-        {
-          "hash": "6f4fddc1",
-          "author": "Shawn Xie",
-          "email": "shawnxie920@gmail.com",
-          "date": "2026-04-09T15:05:31+00:00",
-          "message": "Merge remote-tracking branch 'upstream/develop' into ct-merge-mpt-dex"
-        },
-        {
-          "hash": "4ae17f19",
-          "author": "Peter Chen",
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "date": "2026-04-09T14:49:10+00:00",
-          "message": "Add JS fields required for Clio mpt_holder_api (#6810)"
-        },
-        {
-          "hash": "56c9d1d4",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-08T20:56:19+00:00",
-          "message": "fix: Add description for `terLOCKED` error (#6811)"
-        },
-        {
-          "hash": "d52dd29d",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-08T20:22:19+00:00",
-          "message": "fix: Address AI reviewer comments for Permission Delegation (#6675)"
-        }
-      ],
-      "contributor_count": 20,
-      "contributors": [
-        {
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "name": "Peter Chen"
-        },
-        {
-          "email": "ychen@ripple.com",
-          "name": "Peter Chen"
-        },
-        {
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "name": "Shawn Xie"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "name": "pdp2121"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Zhiyuan Wang"
-        },
-        {
-          "email": "chuanshanjida@outlook.com",
-          "name": "chuanshanjida"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Confidential Transfers",
-        "type": "Feature",
-        "confidence": 0.9,
-        "source": "ai_kimi"
-      }
-    },
-    {
       "name": "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
       "last_commit": {
         "hash": "beaebd79",
@@ -4039,437 +4470,6 @@
         "type": "Feature",
         "confidence": 0.9,
         "source": "keyword_match"
-      }
-    },
-    {
-      "name": "ximinez/online-delete-gaps",
-      "last_commit": {
-        "hash": "c4527e7b",
-        "author": "Ed Hennis",
-        "email": "ed@ripple.com",
-        "date": "2026-04-30T18:30:36+00:00",
-        "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/online-delete-gaps"
-      },
-      "commits": [
-        {
-          "hash": "c4527e7b",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-30T18:30:36+00:00",
-          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "778e2b3c",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-28T20:44:14+00:00",
-          "message": "Fix clang-tidy: missing include"
-        },
-        {
-          "hash": "295d03ae",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-28T20:23:08+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "46b997b7",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-28T14:16:10+00:00",
-          "message": "feat: Create new transaction testing framework `TxTest` (#6537)"
-        },
-        {
-          "hash": "147da573",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-28T10:22:32+00:00",
-          "message": "feat: Add cleanup amendment for 3.2.0 (#7037)"
-        },
-        {
-          "hash": "35471125",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-27T20:34:16+00:00",
-          "message": "fix: Fix ubsan flagged issues (#6151)"
-        },
-        {
-          "hash": "9262c2e6",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-25T18:41:57+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "4dc923dc",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-24T17:19:30+00:00",
-          "message": "chore: Enable clang-tidy modernize-use-nodiscard check (#7015)"
-        },
-        {
-          "hash": "158df539",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-24T16:47:16+00:00",
-          "message": "fix: Resolve MSVC Debug build failure in JobQueue.h; re-enable _CRTDBG_MAP_ALLOC in CI (#6993)"
-        },
-        {
-          "hash": "a6bd9251",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-24T16:35:10+00:00",
-          "message": "docs: Update hybrid offer invariant comment (#7007)"
-        },
-        {
-          "hash": "9ae29612",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:23:43+00:00",
-          "message": "fix: Fix flaky CI tests (#7005)"
-        },
-        {
-          "hash": "82abf2a8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:15:12+00:00",
-          "message": "docs: Update bug bounty information (#7006)"
-        },
-        {
-          "hash": "7cfa5d46",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:56:50+00:00",
-          "message": "fix: Make assorted Payments fixes (#6585)"
-        },
-        {
-          "hash": "248cb296",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:06:26+00:00",
-          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
-        },
-        {
-          "hash": "b385a41a",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-23T19:55:43+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "7a449ede",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T17:59:49+00:00",
-          "message": "refactor: Clean up NetworkOPs (#6575)"
-        },
-        {
-          "hash": "19da2581",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-23T16:21:01+00:00",
-          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
-        },
-        {
-          "hash": "7cd50385",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T13:59:23+00:00",
-          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
-        },
-        {
-          "hash": "4eb97260",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-23T03:39:00+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "b41cbb08",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T22:20:14+00:00",
-          "message": "chore: Add pre-commit hook to fix include style (#6995)"
-        },
-        {
-          "hash": "bd1b1262",
-          "author": "pdp2121",
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "date": "2026-04-22T20:10:52+00:00",
-          "message": "feat: Add `--definitions` flag and artifact (#6858)"
-        },
-        {
-          "hash": "28a38ef1",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-22T18:48:51+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "1c6cdc65",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-22T17:42:15+00:00",
-          "message": "fix: More clang-tidy issues (#6992)"
-        },
-        {
-          "hash": "39f9380b",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-22T15:36:03+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "4ab20770",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T15:06:36+00:00",
-          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
-        },
-        {
-          "hash": "2e307329",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-22T14:41:19+00:00",
-          "message": "refactor: Add transaction-specific invariant checking (#6551)"
-        },
-        {
-          "hash": "3429845c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-22T14:26:02+00:00",
-          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
-        },
-        {
-          "hash": "239fcace",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-21T23:30:05+00:00",
-          "message": "clang-tidy fix: Use std::to_string for std::uint32_t"
-        },
-        {
-          "hash": "8ab86f00",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-21T22:47:53+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "7c7c1894",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T19:00:00+00:00",
-          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
-        },
-        {
-          "hash": "d4b58a74",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-21T18:37:52+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "45d4aacb",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-21T18:15:58+00:00",
-          "message": "chore: Remove empty Taker.h (#6984)"
-        },
-        {
-          "hash": "ce3951bb",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T15:32:51+00:00",
-          "message": "chore: Enable clang-tidy modernize checks (#6975)"
-        },
-        {
-          "hash": "ff900591",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-21T14:40:45+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "ab887f50",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-21T14:22:33+00:00",
-          "message": "ci: Upload clang-tidy git diff (#6983)"
-        },
-        {
-          "hash": "ea023121",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T12:14:07+00:00",
-          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
-        },
-        {
-          "hash": "a5b7471a",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-20T21:49:20+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "4b198cd5",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T21:25:52+00:00",
-          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
-        },
-        {
-          "hash": "e0734986",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-20T19:44:37+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "726f20c8",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-20T17:12:14+00:00",
-          "message": "feat: Add GRPC TLS support (#6374)"
-        },
-        {
-          "hash": "96643bb0",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-20T17:10:28+00:00",
-          "message": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant (#6716)"
-        },
-        {
-          "hash": "e8381824",
-          "author": "chuanshanjida",
-          "email": "chuanshanjida@outlook.com",
-          "date": "2026-04-20T16:56:03+00:00",
-          "message": "chore: Remove repetitive word in multiple files (#6978)"
-        },
-        {
-          "hash": "8440f479",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-20T15:37:54+00:00",
-          "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "852fbe95",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-20T12:12:58+00:00",
-          "message": "ci: Add workflow to check PR description has been filled (#6965)"
-        },
-        {
-          "hash": "b33d0a04",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-20T11:20:42+00:00",
-          "message": "ci: [DEPENDABOT] Bump tj-actions/changed-files from 47.0.5 to 47.0.6 (#6973)"
-        },
-        {
-          "hash": "ac390622",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-17T21:27:12+00:00",
-          "message": "Fix clang-tidy issues"
-        },
-        {
-          "hash": "5d807f0d",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-04-17T19:23:33+00:00",
-          "message": "Merge remote-tracking branch 'XRPLF/develop' into ximinez/online-delete-gaps"
-        },
-        {
-          "hash": "653a383f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-17T16:43:49+00:00",
-          "message": "chore: Enable clang-tidy include cleaner (#6947)"
-        },
-        {
-          "hash": "affe5835",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-04-17T14:19:58+00:00",
-          "message": "fix: Change AMMClawback return code to tecNO_PERMISSION (#6946)"
-        },
-        {
-          "hash": "ef2642f8",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-04-17T14:02:02+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/upload-pages-artifact from 4.0.0 to 5.0.0 (#6927)"
-        }
-      ],
-      "contributor_count": 15,
-      "contributors": [
-        {
-          "email": "ed@ripple.com",
-          "name": "Ed Hennis"
-        },
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito Tumas"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Zhiyuan Wang"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "name": "pdp2121"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "chuanshanjida@outlook.com",
-          "name": "chuanshanjida"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Refactor",
-        "confidence": 0.7,
-        "source": "ai_kimi"
       }
     },
     {
@@ -101198,8 +101198,8 @@
   "contributors": [
     {
       "email": "mvadari@ripple.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
-      "commits": 224,
+      "name": "ci/windows-test",
+      "commits": 226,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -101428,8 +101428,8 @@
     },
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
-      "commits": 223,
+      "name": "ci/windows-test",
+      "commits": 225,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -101556,6 +101556,7 @@
         "revert-5510-a1q123456/add-new-macro",
         "ripple/attackathon-april-2026",
         "ripple/confidential-devnet",
+        "ripple/confidential-transfer",
         "ripple/permission-delegation-devnet",
         "ripple/se/fees",
         "ripple/se/supported",
@@ -101657,8 +101658,8 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
-      "commits": 217,
+      "name": "ci/windows-test",
+      "commits": 219,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -101880,8 +101881,8 @@
     },
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
-      "commits": 214,
+      "name": "ci/windows-test",
+      "commits": 216,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -102100,8 +102101,8 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "dangell/relay",
-      "commits": 207,
+      "name": "ci/windows-test",
+      "commits": 209,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -102313,8 +102314,8 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
-      "commits": 163,
+      "name": "ximinez/lending-XLS-66-archive-2",
+      "commits": 165,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -102398,6 +102399,7 @@
         "release-3.0",
         "release-3.1",
         "revert-5510-a1q123456/add-new-macro",
+        "ripple/confidential-transfer",
         "ripple/permission-delegation-devnet",
         "ripple/smart-escrow-srlabs",
         "ripple/smart-escrow2",
@@ -102482,8 +102484,8 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
-      "commits": 149,
+      "name": "ci/windows-test",
+      "commits": 151,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -102637,8 +102639,8 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "pratik/otel-phase7-native-metrics",
-      "commits": 142,
+      "name": "pratik/AutomatedHarness",
+      "commits": 144,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -102726,6 +102728,7 @@
         "pratik/use_boost_coroutine2",
         "release-3.2",
         "ripple/attackathon-april-2026",
+        "ripple/confidential-transfer",
         "ripple/permission-delegation-devnet",
         "ripple/se/fees",
         "ripple/se/supported",
@@ -102785,8 +102788,8 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "tapanito/refactor/peerimp-socket",
-      "commits": 138,
+      "name": "legleux/fix-vkt-missing",
+      "commits": 140,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -102929,8 +102932,8 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "dangell/relay",
-      "commits": 136,
+      "name": "ximinez/lending-XLS-66-archive-2",
+      "commits": 137,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/default-cover-optimisation",
@@ -102944,7 +102947,6 @@
         "a1q123456/refactor-code-generation-process",
         "a1q123456/remove-const-cast-from-tagged-cache",
         "a1q123456/remove-const-cast-from-tagged-cache-2",
-        "a1q123456/spd-log-from-clio",
         "a1q123456/strongly-typed-ledger-objects-demo",
         "a1q123456/structured-logs-support",
         "a1q123456/structured-logs-support-performance-test",
@@ -103005,6 +103007,7 @@
         "revert-5510-a1q123456/add-new-macro",
         "ripple/attackathon-april-2026",
         "ripple/confidential-devnet",
+        "ripple/confidential-transfer",
         "ripple/permission-delegation-devnet",
         "ripple/se/fees",
         "ripple/se/supported",
@@ -103064,6 +103067,7 @@
         "vvysokikh1/simplify-apply-manifest",
         "ximinez/assetsmaximum-wip",
         "ximinez/lending-XLS-66-archive-2",
+        "ximinez/loanpay-assertion-develop",
         "ximinez/number_asan",
         "ximinez/test-nudb",
         "xrplf/smart-contracts",
@@ -103073,7 +103077,7 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "ci/windows-test",
       "commits": 115,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -103196,8 +103200,8 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "mvadari/fix-bad-cast",
-      "commits": 108,
+      "name": "legleux/fix-vkt-missing",
+      "commits": 110,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -103310,7 +103314,7 @@
     },
     {
       "email": "brok@incorrekt.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "ci/windows-test",
       "commits": 108,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -103426,8 +103430,8 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "mvadari/fix-bad-cast",
-      "commits": 83,
+      "name": "legleux/fix-vkt-missing",
+      "commits": 85,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/spd-log-from-clio",
@@ -103515,7 +103519,7 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "ximinez/lending-number-fixapi",
+      "name": "vvysokikh1/fix-positive-balance-trustline-pay-no-reserve",
       "commits": 82,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -103605,7 +103609,7 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "dangell/relay",
+      "name": "legleux/fix-vkt-missing",
       "commits": 82,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -103695,7 +103699,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "dangell/relay",
+      "name": "ci/windows-test",
       "commits": 81,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -103784,8 +103788,8 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "ximinez/directory",
-      "commits": 73,
+      "name": "ximinez/emptydirectoryinvariant",
+      "commits": 75,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/migrate-some-tests",
@@ -103863,8 +103867,8 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "ximinez/directory",
-      "commits": 66,
+      "name": "ximinez/emptydirectoryinvariant",
+      "commits": 68,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/spd-log-from-clio",
@@ -103935,7 +103939,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "hotfix2.5.1",
+      "name": "ci/windows-test",
       "commits": 60,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -104003,7 +104007,7 @@
     },
     {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "release-3.2",
       "commits": 59,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -104070,8 +104074,8 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "hotfix2.5.1",
-      "commits": 56,
+      "name": "ci/windows-test",
+      "commits": 57,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -104134,8 +104138,8 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "ximinez/directory",
-      "commits": 53,
+      "name": "ximinez/emptydirectoryinvariant",
+      "commits": 55,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/spd-log-from-clio",
@@ -104193,8 +104197,8 @@
     },
     {
       "email": "71317875+pdp2121@users.noreply.github.com",
-      "name": "ximinez/directory",
-      "commits": 51,
+      "name": "ximinez/emptydirectoryinvariant",
+      "commits": 53,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/spd-log-from-clio",
@@ -104250,7 +104254,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "hotfix2.5.1",
+      "name": "legleux/art_upload",
       "commits": 51,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -104309,7 +104313,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "ripple/wamr-host-functions",
+      "name": "hooks",
       "commits": 30,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -104347,7 +104351,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "ripple/smart-escrow2",
       "commits": 29,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -104384,7 +104388,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "tapanito/refactor/peerimp-socket",
+      "name": "ci/windows-test",
       "commits": 26,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -104450,7 +104454,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "ripple/smart-escrow2",
       "commits": 23,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -104481,7 +104485,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "legleux/art_upload",
+      "name": "copilot/sub-pr-5439",
       "commits": 22,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -104540,7 +104544,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "ripple/smart-escrow-srlabs",
+      "name": "ripple/smart-escrow2",
       "commits": 19,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -104567,7 +104571,7 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "tapanito/poc-vault-valuation",
+      "name": "legleux/fix-vkt-missing",
       "commits": 19,
       "branches": [
         "bthomee/ripplerpc",
@@ -104594,7 +104598,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "a1q123456/fix-job-queue-stop",
+      "name": "vlntb/number-perf-experiments",
       "commits": 19,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -104621,7 +104625,7 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "dangell/relay",
+      "name": "a1q123456/structured-logs-support-performance-test-6",
       "commits": 19,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -104648,7 +104652,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-6",
+      "name": "tapanito/feature/shutdown-handshake",
       "commits": 17,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -104673,7 +104677,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
       "commits": 16,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -104697,7 +104701,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
       "commits": 15,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -104719,8 +104723,28 @@
       "last_active": "2026-02-17T10:50:47+00:00"
     },
     {
+      "email": "34582813+PeterChen13579@users.noreply.github.com",
+      "name": "ripple/confidential-transfer",
+      "commits": 13,
+      "branches": [
+        "bthomee/ripplerpc",
+        "copilot/add-ctid-to-ledger-response",
+        "legleux/debian",
+        "legleux/fix-vkt-missing",
+        "mvadari/ammdeposit-blank",
+        "pratik/AutomatedHarness",
+        "ripple/confidential-devnet",
+        "ripple/confidential-transfer",
+        "ripple/staging-313",
+        "tapanito/invariant-architecture",
+        "tapanito/poc-vault-valuation",
+        "tapanito/tx-restructure"
+      ],
+      "last_active": "2026-02-19T08:43:57+00:00"
+    },
+    {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "hotfix2.5.1",
+      "name": "ci/windows-test",
       "commits": 13,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -104740,28 +104764,8 @@
       "last_active": "2025-02-20T17:23:27+00:00"
     },
     {
-      "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "ripple/staging-313",
-      "commits": 12,
-      "branches": [
-        "bthomee/ripplerpc",
-        "copilot/add-ctid-to-ledger-response",
-        "legleux/debian",
-        "legleux/fix-vkt-missing",
-        "mvadari/ammdeposit-blank",
-        "pratik/AutomatedHarness",
-        "ripple/confidential-devnet",
-        "ripple/confidential-transfer",
-        "ripple/staging-313",
-        "tapanito/invariant-architecture",
-        "tapanito/poc-vault-valuation",
-        "tapanito/tx-restructure"
-      ],
-      "last_active": "2026-02-19T08:43:57+00:00"
-    },
-    {
       "email": "11445373+bthomee@users.noreply.github.com",
-      "name": "release-3.2",
+      "name": "bthomee/iops",
       "commits": 12,
       "branches": [
         "bthomee/cmake_ci",
@@ -104781,7 +104785,7 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "tapanito/vault-bugfixes",
       "commits": 12,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -104801,7 +104805,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "vlntb/taggedcache-lock-per-partition-v2",
       "commits": 11,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -104820,7 +104824,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
+      "name": "ripple/wamr",
       "commits": 10,
       "branches": [
         "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
@@ -104838,7 +104842,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "vlntb/mem-leak-ledger-history",
+      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -104855,7 +104859,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "vlntb/mem-leak-ledger-history",
+      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -104872,7 +104876,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "tapanito/feature/enhanced-squelching",
+      "name": "dangell/loans",
       "commits": 9,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -104905,7 +104909,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "vlntb/number-of-sweeps",
+      "name": "vlntb/transport-traces",
       "commits": 8,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -104921,7 +104925,7 @@
     },
     {
       "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
+      "name": "gregtatcam/lending-protocol/refactor-payment",
       "commits": 6,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -104949,7 +104953,7 @@
     },
     {
       "email": "Tokeiito@users.noreply.github.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/transport-traces",
       "commits": 6,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -104963,7 +104967,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "hotfix2.5.1",
+      "name": "ci/windows-test",
       "commits": 5,
       "branches": [
         "a1q123456/windows-test",
@@ -104976,7 +104980,7 @@
     },
     {
       "email": "brettmollin@users.noreply.github.com",
-      "name": "vlntb/number-of-sweeps",
+      "name": "vlntb/job-queue-latency",
       "commits": 5,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -104989,7 +104993,7 @@
     },
     {
       "email": "120398799+cindyyan317@users.noreply.github.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/transport-traces",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -105002,7 +105006,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "q73zhao/release-2.4.0-perf-investigation",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -105013,7 +105017,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "q73zhao/release-2.4.0-perf-investigation",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -105021,6 +105025,15 @@
         "vlntb/RIPD-2525-taggedcache-single-threaded"
       ],
       "last_active": "2025-02-20T17:23:27+00:00"
+    },
+    {
+      "email": "ychen@ripple.com",
+      "name": "ripple/confidential-transfer",
+      "commits": 2,
+      "branches": [
+        "ripple/confidential-transfer"
+      ],
+      "last_active": "2026-04-30T19:12:06+00:00"
     },
     {
       "email": "354723+pwang200@users.noreply.github.com",
@@ -105033,8 +105046,18 @@
       "last_active": "2025-12-19T22:11:28+00:00"
     },
     {
+      "email": "shawnxie920@gmail.com",
+      "name": "ripple/confidential-devnet",
+      "commits": 2,
+      "branches": [
+        "ripple/confidential-devnet",
+        "ripple/confidential-transfer"
+      ],
+      "last_active": "2026-03-17T17:00:25+00:00"
+    },
+    {
       "email": "pwang200@gmail.com",
-      "name": "ripple/smart-escrow-srlabs",
+      "name": "sidechain",
       "commits": 2,
       "branches": [
         "ripple/smart-escrow-srlabs",
@@ -105044,22 +105067,13 @@
     },
     {
       "email": "jfreeman08@gmail.com",
-      "name": "hooks",
+      "name": "sidechain",
       "commits": 2,
       "branches": [
         "hooks",
         "sidechain"
       ],
       "last_active": "2022-04-09T20:24:18+00:00"
-    },
-    {
-      "email": "ychen@ripple.com",
-      "name": "ripple/confidential-transfer",
-      "commits": 1,
-      "branches": [
-        "ripple/confidential-transfer"
-      ],
-      "last_active": "2026-04-30T19:12:06+00:00"
     },
     {
       "email": "mathbunnyru@gmail.com",
@@ -105078,15 +105092,6 @@
         "ripple/attackathon-april-2026"
       ],
       "last_active": "2026-04-11T00:42:23+00:00"
-    },
-    {
-      "email": "shawnxie920@gmail.com",
-      "name": "ripple/confidential-devnet",
-      "commits": 1,
-      "branches": [
-        "ripple/confidential-devnet"
-      ],
-      "last_active": "2026-03-17T17:00:25+00:00"
     },
     {
       "email": "zhu@ripple.com",
