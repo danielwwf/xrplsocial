@@ -1,5 +1,55 @@
 [
   {
+    "pr_number": 6571,
+    "branch_name": "refactor/naming-variables-style",
+    "title": "refactor: Enable clang-tidy `readability-identifier-naming` check",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR enables clang-tidy `readability-identifier-naming` changing a lot of code in the process.\r\nMany places are hard to fix so NOLINTs were added strategically. \r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### API Impact\r\n \r\nNo impact.\r\n",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-03-17T22:41:57Z",
+    "merged_at": "2026-05-03T11:04:57Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6571?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `90.40912%` with `143 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`182d844`](https://app.codecov.io/gh/XRPLF/rippled/commit/182d844996ff56201a63318542c646da05c2593d?dropdown=coverage&el=desc&utm_medium=r",
+        "created_at": "2026-03-24T20:58:15Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-03-26T00:44:24Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-01T12:31:27Z"
+      }
+    ],
+    "reviews_count": 19,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "Copilot wasn't able to review this pull request because it exceeds the maximum number of files (300). Try reducing the number of changed files and requesting a review from Copilot again."
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "Copilot wasn't able to review this pull request because it exceeds the maximum number of files (300). Try reducing the number of changed files and requesting a review from Copilot again."
+      }
+    ]
+  },
+  {
     "pr_number": 7041,
     "branch_name": "ct-cred-check",
     "title": "fix: add credential amendment check and more refactoring",
@@ -1702,46 +1752,6 @@
         "user": "mathbunnyru",
         "state": "COMMENTED",
         "body": "A few comments, nothing major"
-      }
-    ]
-  },
-  {
-    "pr_number": 6929,
-    "branch_name": "chore/clang-tidy-bugprone2",
-    "title": "chore: Enable most clang-tidy bugprone checks",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR enables the following clang-tidy checks:\r\n- bugprone-crtp-constructor-accessibility\r\n- bugprone-empty-catch\r\n- bugprone-forward-declaration-namespace\r\n- bugprone-macro-parentheses\r\n- bugprone-multi-level-implicit-pointer-conversion\r\n- bugprone-reserved-identifier\r\n- bugprone-return-const-ref-from-parameter\r\n- bugprone-sizeof-expression\r\n- bugprone-switch-missing-default-case\r\n- bugprone-inaccurate-erase\r\n- bugprone-inc-dec-in-conditions\r\n- bugprone-incorrect-enable-if\r\n- bugprone-incorrect-roundings\r\n- bugprone-infinite-loop\r\n- bugprone-integer-division\r\n\r\n### Context of Change\r\n\r\nFixing remaining clang-tidy checks after adding headers to the list of checked files.\r\n\r\n### API Impact\r\n\r\nNo impact.",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-13T12:06:45Z",
-    "merged_at": "2026-04-14T20:54:39Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6929?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `80.00000%` with `4 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.6%. Comparing base ([`61fbde3`](https://app.codecov.io/gh/XRPLF/rippled/commit/61fbde3a7130289d597df712568140e3c5cc52e6?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-04-13T12:37:56Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": "Nothing major, a few comments"
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
