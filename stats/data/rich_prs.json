@@ -1,5 +1,40 @@
 [
   {
+    "pr_number": 7066,
+    "branch_name": "chore/clang-tidy-ignore-rev",
+    "title": "chore: Ignore identifier-naming update in git blame",
+    "body": "## High Level Overview of Change\r\n\r\nIn #6571 we changed most of the files in the project (identifier naming). This PR adds that commit git-blame-ignore-revs such that it does not pollute git's history in git blame and preserves the original authors instead.\r\n\r\n### API Impact\r\n\r\nNo impact.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-03T16:43:56Z",
+    "merged_at": "2026-05-03T22:08:08Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nAdds the large-scale identifier renaming commit from #6571 to the repository\u2019s `.git-blame-ignore-revs` so that `git blame` can ignore it and preserve original authorship sig"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": "Copilot's suggestion looks valid, so please apply it."
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 6571,
     "branch_name": "refactor/naming-variables-style",
     "title": "refactor: Enable clang-tidy `readability-identifier-naming` check",
