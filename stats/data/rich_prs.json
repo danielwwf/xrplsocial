@@ -1,5 +1,56 @@
 [
   {
+    "pr_number": 7062,
+    "branch_name": "new_clang_tidy_workflow",
+    "title": "ci: Rewrite clang-tidy workflow(s) in a reusable manner",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThere are multiple improvements in this implementation:\r\n- `determine-tidy-files.yml` is moved to XRPLF/actions. The reason I kept it a workflow and not an action - there is no way in GitHub to break execution of steps and return early. So, if it were an action, every subsequent step would have been `if: need_to_run`.\r\n- We only have one workflow to call, with sane params, instead of 2, so it's much easier to follow what's going on\r\n- That workflow is divided better into jobs and steps. For example, instead of one huge chunk of issue creation, there are now several parts\r\n- Jobs now only have minimal permissions, that's why actual issue creation is separate\r\n- Artifacts are uploaded without a zip (it makes it easier to work with them locally)\r\n\r\nSo, from the perspective of workflows, it's a rewrite.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this fea",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-01T17:35:22Z",
+    "merged_at": "2026-05-04T13:23:33Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7062?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`8490206`](https://app.codecov.io/gh/XRPLF/rippled/commit/8490206228a6413d41449a01d092ef3ab3b5e1d5?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-01T20:24:19Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-03T11:09:57Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-04T10:42:35Z"
+      }
+    ],
+    "reviews_count": 21,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nReworks the clang-tidy CI implementation to use a single reusable workflow with a dedicated reusable \u201cdetermine changed files\u201d workflow and a separate job for issue creation,"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 5 out of 5 changed files in this pull request and generated 4 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*.instr"
+      }
+    ]
+  },
+  {
     "pr_number": 7066,
     "branch_name": "chore/clang-tidy-ignore-rev",
     "title": "chore: Ignore identifier-naming update in git blame",
@@ -1727,66 +1778,6 @@
         "user": "yinyiqian1",
         "state": "COMMENTED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6617,
-    "branch_name": "Speed_up_compilation",
-    "title": "chore: Move codegen venv setup into build stage",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR moves python venv setup into build stage. Also move venv setup into python code so venv is created only when generation is needed.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nPython venv setup is relatively slow so moving it into build stage helps build system to do something else in parallel while python dependencies are being downloaded. \r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.ht",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-23T14:37:04Z",
-    "merged_at": "2026-04-15T19:08:54Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 7,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6617?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.4%. Comparing base ([`6e24522`](https://app.codecov.io/gh/XRPLF/rippled/commit/6e2452207d59a64179800e0a1bfb581fde7111b6?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-03-24T12:04:23Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "I think there're a couple of things we can do\r\n1) remove the macro files from the reconfigure dependency list so that we don't reconfigure automatically after the macro files get changed\r\n2) generate a stamp file on the first time when we configure (when the file does not exist) to say we don't need to regenerate\r\n3) when we build the project, we check if the stamp file is up to date, call the scripts and update the stamp file if not\r\n\r\nBecause currently, cmake still regenerates even if we touch",
-        "created_at": "2026-03-24T18:09:16Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "I'm just thinking, does it make sense to call list_output each time when we run cmake? \r\n\r\nI think what we expect is:\r\n1) if the macro files haven't been updated - we don't regenerate\r\n2) if the macro files have been updated by git - we don't regenerate\r\n3) if the macro files have been modified by the current develop - we generate\r\n\r\nbut what we're doing currently is:\r\n1) if the macro files haven't been updated - we don't regenerate\r\n2) if the macro files have been updated - we reconfigure, call",
-        "created_at": "2026-03-25T13:33:07Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-03-26T00:44:29Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-01T16:17:50Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "a1q123456",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "kuznetsss",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": "A few comments, nothing major"
       }
     ]
   }
