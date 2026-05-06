@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 7084,
+    "branch_name": "wow_new_deps",
+    "title": "chore: Update zlib to 1.3.2, sqlite to 3.53.0, libarchive to 3.8.7, jemalloc to 5.3.1, boost to 1.91.0",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThe title says it all.\r\nWe're not using cobalt, and it was giving a conan error.\r\nLet's not build it, shouldn't be a problem.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-06T16:07:55Z",
+    "merged_at": "2026-05-06T18:05:32Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7084?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`fcae50a`](https://app.codecov.io/gh/XRPLF/rippled/commit/fcae50a487f8164e2c19665dcd02c0155a07a649?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-06T16:36:40Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nUpdates the project\u2019s Conan-managed third-party dependencies to newer upstream versions and disables building Boost.Cobalt to avoid Conan build issues, keeping the dependency"
+      }
+    ]
+  },
+  {
     "pr_number": 7081,
     "branch_name": "update_deps3",
     "title": "chore: Update conan.lock",
@@ -1926,61 +1962,6 @@
       {
         "user": "a1q123456",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6947,
-    "branch_name": "chore/clang-tidy-includes",
-    "title": "chore: Enable clang-tidy include cleaner",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR enables the misc-include-cleaner check which automatically keeps the includes tidy.\r\n\r\nAs a bonus this PR also fixes clang-format to automatically detect and place the main include first, without having to add extra '//' markers to separate them.\r\n\r\n### Context of Change\r\n\r\nFixing clang-tidy for all source.\r\n\r\n### API Impact\r\n\r\nNo impact.",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-14T21:20:24Z",
-    "merged_at": "2026-04-17T17:05:48Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-14T21:33:28Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-14T22:47:41Z"
-      },
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6947?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `0%` with `3 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.6%. Comparing base ([`f1a5ba4`](https://app.codecov.io/gh/XRPLF/rippled/commit/f1a5ba43adcb74ce039749ac80ad10ed88df74ea?dropdown=coverage&el=desc&utm_medium=referral&u",
-        "created_at": "2026-04-15T04:22:04Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "Stripped out `#include` related changes and this PR looks good in general. Just left a small question, happy to approve once we try and see if removing `IWYU pragma: keep` works for standard library includes.\r\n\r\n\r\nAttaching the script here:\r\n\r\n\r\n```python\r\n#!/usr/bin/env python3\r\n\"\"\"Strip #include-related changes from a unified diff file.\r\nIdentifies contiguous change blocks and drops them if they are include-related.\r\nA block is include-related if ALL changes are #include/#pragma once, blanks, ",
-        "created_at": "2026-04-16T15:33:16Z"
-      }
-    ],
-    "reviews_count": 9,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
