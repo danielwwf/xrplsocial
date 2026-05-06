@@ -1,5 +1,63 @@
 [
   {
+    "pr_number": 6382,
+    "branch_name": "update-default-owner-base-fee",
+    "title": "chore: Update default values of base and owner reserve to 1/0.2",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\n-->\r\n\r\nUpdated the old base reserve 10 XRP and owner reserve 2 XRP to the current network levels 1 XRP and 0.2 XRP respectively.\r\n\r\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [x] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / Web",
+    "user": "xVet",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-18T16:25:25Z",
+    "merged_at": "2026-05-06T12:05:02Z",
+    "labels": [],
+    "comments_count": 11,
+    "comments": [
+      {
+        "user": "xVet",
+        "body": "> Should also change the sample config\r\n\r\ndone",
+        "created_at": "2026-02-18T16:52:57Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "@xVet would you be able to fix the test failures? A quick scan shows two issues:\r\n\r\nFailure to build on some distros:\r\n```\r\n/__w/rippled/rippled/src/xrpld/core/Config.h:56:29: error: implicit conversion from 'double' to 'value_type' (aka 'long') changes value from 0.2 to 0 [-Werror,-Wliteral-conversion]\r\n   56 |     XRPAmount owner_reserve{0.2 * DROPS_PER_XRP};\r\n      |                             ^~~ ~\r\n```\r\n\r\nFailure to test on other distros:\r\n```\r\nxrpld: /__w/rippled/rippled/src/libxrpl/tx/Tr",
+        "created_at": "2026-03-08T16:33:59Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
+        "created_at": "2026-04-29T22:30:41Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "@xVet it looks like the adjustment results in a test failure:\r\n\r\n```\r\n17> #52 failed: apply (/__w/rippled/rippled/src/test/rpc/AccountTx_test.cpp:777): Got temBAD_AMOUNT (Malformed: Bad amount.); Expected tecNO_DST_INSUF_XRP (Destination does not exist. Too little XRP sent to create it.)\r\n```\r\n\r\nThe relevant code is here:\r\n```\r\n// All it takes is a large enough XRP payment to resurrect\r\n// becky's account.  Try too small a payment.\r\nenv(pay(alice, becky, drops(env.current()->fees().accountReserv",
+        "created_at": "2026-04-30T10:35:05Z"
+      },
+      {
+        "user": "xVet",
+        "body": "> @xVet it looks like the adjustment results in a test failure:\n> \n> \n> \n> ```\n> \n> 17> #52 failed: apply (/__w/rippled/rippled/src/test/rpc/AccountTx_test.cpp:777): Got temBAD_AMOUNT (Malformed: Bad amount.); Expected tecNO_DST_INSUF_XRP (Destination does not exist. Too little XRP sent to create it.)\n> \n> ```\n> \n> \n> \n> The relevant code is here:\n> \n> ```\n> \n> // All it takes is a large enough XRP payment to resurrect\n> \n> // becky's account.  Try too small a payment.\n> \n> env(pay(alice, becky,",
+        "created_at": "2026-04-30T16:22:26Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": "Should also change the sample config"
+      },
+      {
+        "user": "xVet",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7058,
     "branch_name": "san_flags",
     "title": "chore: Do not duplicate sanitizer flags",
@@ -1881,84 +1939,6 @@
       },
       {
         "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6930,
-    "branch_name": "chore/clang-tidy-readability2",
-    "title": "chore: Enable clang-tidy readability checks",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR enables the following clang-tidy checks:\r\n- readability-avoid-nested-conditional-operator\r\n- readability-avoid-return-with-void-value\r\n- readability-braces-around-statements\r\n- readability-const-return-type\r\n- readability-container-size-empty\r\n- readability-convert-member-functions-to-static\r\n- readability-else-after-return\r\n- readability-enum-initial-value\r\n- readability-implicit-bool-conversion\r\n- readability-make-member-function-const\r\n- readability-math-missing-parentheses\r\n- readability-non-const-parameter\r\n- readability-redundant-casting\r\n- readability-redundant-inline-specifier\r\n- readability-redundant-member-init\r\n- readability-simplify-boolean-expr\r\n- readability-static-definition-in-anonymous-namespace\r\n- readability-suspicious-call-argument\r\n\r\n### Context of Change\r\n\r\nFix clang-tidy for all source.\r\n\r\n### API Impact\r\n\r\nNo impact.",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-13T16:50:05Z",
-    "merged_at": "2026-04-17T13:55:16Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6930?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `92.30769%` with `12 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.6%. Comparing base ([`4a73be4`](https://app.codecov.io/gh/XRPLF/rippled/commit/4a73be499d69d7f4157e2dff1f1b775a65962d6f?dropdown=coverage&el=desc&utm_medium=re",
-        "created_at": "2026-04-13T21:36:57Z"
-      }
-    ],
-    "reviews_count": 24,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6859,
-    "branch_name": "mpt-compact-proof",
-    "title": "Support compact AND-composed sigma proof",
-    "body": "This PR is to integrate the new changes from `mpt-crypto` SDK `mpt_utility`:\r\n\r\nThe `mpt_utility` SDK change can be found here: https://github.com/XRPLF/mpt-crypto/pull/24\r\n\r\nFor reference, the updated proof sizes per transaction are:\r\n\r\n`ConfidentialMPTConvert`: 64 byte.\r\n`ConfidentialMPTSend`: 192 byte compact sigma + 754 byte bullet proof = 946 byte.\r\n`ConfidentialMPTConvertBack`: 128 byte compact sigma + 688 byte bullet proof = 816 byte\r\n`ConfidentialMPTClawback`: 64 byte.\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in ",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-10T22:20:31Z",
-    "merged_at": "2026-04-16T21:51:31Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6859?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.8%. Comparing base ([`5d38603`](https://app.codecov.io/gh/XRPLF/rippled/commit/5d38603f9090ae4bff6d6b27a34f052998910195?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-04-14T16:04:50Z"
-      }
-    ],
-    "reviews_count": 4,
-    "reviews": [
-      {
-        "user": "shawnxie999",
-        "state": "APPROVED",
-        "body": "LGTM"
-      },
-      {
-        "user": "PeterChen13579",
-        "state": "APPROVED",
-        "body": "LGTM \ud83d\udc4d "
-      },
-      {
-        "user": "yinyiqian1",
         "state": "COMMENTED",
         "body": ""
       }
