@@ -1,5 +1,53 @@
 [
   {
+    "pr_number": 7063,
+    "branch_name": "ct-fee",
+    "title": "Increase confidential transactions fee",
+    "body": "\r\nConfidential MPT Transaction (single-signed) : 10 drops \u00d7 10\r\nConfidential MPT Transaction (multi-signed) : 10 drops \u00d7 (10 + Number of Signatures Provided)\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should o",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-01T17:37:29Z",
+    "merged_at": "2026-05-06T21:15:40Z",
+    "labels": [],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7063?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.4%. Comparing base ([`b831b66`](https://app.codecov.io/gh/XRPLF/rippled/commit/b831b661edd518319d216f69eab762465ab7a6ff?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-01T18:10:55Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-05T00:47:38Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-06T17:48:45Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "PeterChen13579",
+        "state": "APPROVED",
+        "body": "LGTM"
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7084,
     "branch_name": "wow_new_deps",
     "title": "chore: Update zlib to 1.3.2, sqlite to 3.53.0, libarchive to 3.8.7, jemalloc to 5.3.1, boost to 1.91.0",
@@ -1927,41 +1975,6 @@
       {
         "user": "mvadari",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6957,
-    "branch_name": "fix/vault-rounding-staging",
-    "title": "fix: Add rounding to Vault invariants (#6217)",
-    "body": "## High Level Overview of Change\r\n\r\nThis is the second PR, targeting staging for 3.1.3, for https://github.com/XRPLF/rippled/pull/6955\r\n\r\nThe original PR was built on top of a refactoring that is not available in 3.1.3 staging branch.. so we are backporting the code into the infra existing in 3.1.3.",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-16T13:58:24Z",
-    "merged_at": "2026-04-17T21:11:41Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6957?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `96.73203%` with `5 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 79.5%. Comparing base ([`eefa1d0`](https://app.codecov.io/gh/XRPLF/rippled/commit/eefa1d03bfd16f13c62c217db4f3ed2ae4040296?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-04-16T14:26:09Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "pratikmankawde",
-        "state": "APPROVED",
-        "body": "LGTM"
-      },
-      {
-        "user": "a1q123456",
-        "state": "APPROVED",
         "body": ""
       }
     ]
