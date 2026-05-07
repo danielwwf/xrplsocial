@@ -1,5 +1,130 @@
 [
   {
+    "pr_number": 7096,
+    "branch_name": "cleanup_tidy_config",
+    "title": "style: Make .clang-tidy style a bit more consistent with Clio",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThe diff with Clio becomes more clear and it's quite evident we haven't forgotten any checks here or there:\r\n\r\n```diff\r\n140d139\r\n<   readability-inconsistent-declaration-parameter-name,\r\n152d150\r\n<   readability-static-accessed-through-instance,\r\n156a155,158\r\n> # ---\r\n> # readability-inconsistent-declaration-parameter-name, # in this codebase this check will break a lot of arg names\r\n> # readability-static-accessed-through-instance,        # this check is probably unnecessary. it makes the code less readable\r\n> # ---\r\n162c164\r\n<   misc-include-cleaner.IgnoreHeaders: '.*/(detail|impl)/.*;.*(expected|unexpected).*;.*ranges_lower_bound\\.h;time.h;stdlib.h;__chrono/.*;fmt/chrono.h;boost/uuid/uuid_hash.hpp'\r\n---\r\n>   misc-include-cleaner.IgnoreHeaders: \".*/(detail|impl)/.*;.*fwd\\\\.h(pp)?;time.h;stdlib.h;sqlite3.h;netinet/in\\\\.h;sys/resource\\\\.h;sys/sysinfo\\\\.h;linux/sysinfo\\\\.h;__chrono/.*;bits/.*;_abort\\\\.h;boost/uuid/uuid_hash.hpp;boost/beast/core/flat_buffer\\\\.hpp;boost/beast/http/field\\\\.hpp;boost/beast/http/dynamic_body\\\\.hpp;boost/beast/http/message\\\\.hpp;boost/beast/http/read\\\\.hpp;boost/beast/http/write\\\\.hpp;openssl/obj_mac\\\\.h\"\r\n197c199\r\n<   readability-identifier-naming.FunctionIgnoredRegexp: \".*tag_invoke.*\"\r\n---\r\n>   readability-identifier-naming.GlobalFunctionIgnoredRegexp: \"^(to_string|hash_append|tuple_hash)$\"\r\n199c201,202\r\n< HeaderFilterR",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-07T16:38:45Z",
+    "merged_at": "2026-05-07T17:41:15Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7096?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`af89854`](https://app.codecov.io/gh/XRPLF/rippled/commit/af89854a4367942d258006d739a3cb7be749cd63?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-07T16:56:04Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nUpdates the repository\u2019s `.clang-tidy` configuration to better align its style/organization with Clio, without changing the effective set of configured options.\n\n**Changes:**"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7092,
+    "branch_name": "chore/clang-tidy-fix-bad-renames",
+    "title": "chore: More fixes for bad renames",
+    "body": "## High Level Overview of Change\r\n\r\nFollow up to #7091 fixing more findings.\r\nAlso renames \"Io\" to \"IO\" in some cases where it makes sense.\r\n\r\n### API Impact\r\n\r\nNo impact.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-07T13:34:26Z",
+    "merged_at": "2026-05-07T17:24:51Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7092?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `84.00000%` with `12 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`d67e061`](https://app.codecov.io/gh/XRPLF/rippled/commit/d67e06102a1aa4432e37bdc976b7c8c62f24acb2?dropdown=coverage&el=desc&utm_medium=re",
+        "created_at": "2026-05-07T14:05:38Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nFollow-up cleanup to revert/standardize a set of prior \u201cbad renames\u201d by aligning identifiers (and many diagnostic/assert strings) with the current function/type names, includ"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7053,
+    "branch_name": "rm_float",
+    "title": "Remove some float hostfunctions",
+    "body": "## High Level Overview of Change\r\n\r\nflotSet -> floatFromMantExp\r\nfloatToMantisaaAndExponent -> floatToMantExp\r\nremove floatAbs\r\nremove floatNegate\r\nremove floatLog\r\n",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-29T17:08:16Z",
+    "merged_at": "2026-05-07T16:33:22Z",
+    "labels": [],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7053?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `94.28571%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`ce2586c`](https://app.codecov.io/gh/XRPLF/rippled/commit/ce2586c0395301d094b7d7cf51b491f64e10c451?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-04-29T18:19:33Z"
+      },
+      {
+        "user": "pwang200",
+        "body": "I think we agreed to use `float_from_m_e` and `float_to_m_e` for shorter names. https://github.com/XRPLF/XRPL-Standards/pull/504/changes#r3095427267",
+        "created_at": "2026-04-30T01:37:06Z"
+      },
+      {
+        "user": "oleks-rip",
+        "body": "> I think we agreed to use `float_from_m_e` and `float_to_m_e` for shorter names. https://github.com/XRPLF/XRPL-Standards/pull/504/changes#r3095427267\r\n\r\nrenamed 829de995e083c8c",
+        "created_at": "2026-04-30T18:37:57Z"
+      }
+    ],
+    "reviews_count": 18,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7085,
     "branch_name": "ct_deposit_preauth",
     "title": "refactor and check deposit preauth before ZK proof",
@@ -1820,184 +1945,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "## Pull request overview\n\nThis PR introduces a new amendment-gated fix (`fixPermissionedDomainInvariant`) to tighten Permissioned Domain invariant enforcement, ensuring Permissioned Domain ledger entr"
-      }
-    ]
-  },
-  {
-    "pr_number": 6512,
-    "branch_name": "hf_review",
-    "title": "Review fixes",
-    "body": "## High Level Overview of Change\r\nReview fixes for ripple/wasmi-host-functions branch\r\n\r\n\r\n\r\n### Type of Change\r\n\r\n\r\n- [X] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [ ] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [ ] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-03-09T18:03:33Z",
-    "merged_at": "2026-04-20T18:03:40Z",
-    "labels": [],
-    "comments_count": 5,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6512?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `85.71429%` with `7 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`8cc2169`](https://app.codecov.io/gh/XRPLF/rippled/commit/8cc21699399fbaf105bf26e7372a76bed8135c26?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-03-09T18:47:18Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-03T01:37:24Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-03T02:31:58Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-08T00:19:34Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-08T00:32:37Z"
-      }
-    ],
-    "reviews_count": 22,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6716,
-    "branch_name": "DEFI-612",
-    "title": "fix: Check for empty `sfAdditionalBooks` array in hybrid offer invariant",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\nFix for Hybrid offer invariant does not catch empty sfAdditionalBooks array: https://github.com/XRPLF/rippled/issues/6590\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `l",
-    "user": "Kassaking7",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-03T00:00:28Z",
-    "merged_at": "2026-04-20T17:40:43Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 8,
-    "comments": [
-      {
-        "user": "Kassaking7",
-        "body": "Got it. Shall I go with `fixSecurity3_1_3` ?",
-        "created_at": "2026-04-03T00:11:55Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "> Got it. Shall I go with `fixSecurity3_1_3` ?\n\nYes",
-        "created_at": "2026-04-03T00:14:38Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-06T23:02:45Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
-        "created_at": "2026-04-07T17:50:12Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-07T17:50:21Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "CHANGES_REQUESTED",
-        "body": "This change has to be amendment gated."
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6374,
-    "branch_name": "feature/grpc-tls",
-    "title": "feat: Add GRPC TLS support",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nThis PR enhances the gRPC server with optional TLS and mTLS support.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### Type of Change\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n-->\r\n\r\n- [ ] Bug fix (non-breaking change which fixes an issue)\r\n- [x] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Refactor (non-breaking change that only restructures code)\r\n- [ ] Performance (increase or change in throughput and/or latency)\r\n- [x] Tests (you added tests for code that already exists, or your new feature included in this PR)\r\n- [x] Documentation update\r\n- [ ] Chore (no impact to binary, e.g. `.gitignore`, formatting, dropping support for older tooling)\r\n- [ ] Release\r\n\r\n#",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-02-17T12:10:26Z",
-    "merged_at": "2026-04-20T17:40:43Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 6,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6374?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `94.18605%` with `5 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 81.8%. Comparing base ([`653a383`](https://app.codecov.io/gh/XRPLF/rippled/commit/653a383ff5baaa6d2e6d16cd9310c2fd9201a8b2?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-02-17T14:15:23Z"
-      },
-      {
-        "user": "a1q123456",
-        "body": "How will nodes connect to peers after this change? If a UNL node adds ssl certs but refuses to share them, then I assume no one will be able to connect to it?",
-        "created_at": "2026-03-16T11:01:06Z"
-      },
-      {
-        "user": "godexsoft",
-        "body": "> How will nodes connect to peers after this change? If a UNL node adds ssl certs but refuses to share them, then I assume no one will be able to connect to it?\r\n\r\nI may be misunderstanding your question. This is only for gRPC connections, is gRPC what UNL uses in the first place?\r\nIn any case, if the certificate is legit, clients should be able to validate it. If it's self-signed then the client of course would need to have the correct chain setup to recognize this server cert. Can you explain ",
-        "created_at": "2026-03-16T16:03:54Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "/ai-review",
-        "created_at": "2026-03-20T15:21:36Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-17T17:08:11Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nAdds optional TLS configuration to the gRPC server and updates tests/docs to support TLS/mTLS scenarios.\n\n**Changes:**\n- Parse `ssl_cert`/`ssl_key`/`ssl_chain` from `[port_gr"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 7 out of 7 changed files in this pull request and generated 5 comments.\n\n\n<details>\n<summary>Comments suppressed due to low confidence (1)</summary>\n\n**src/x"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 7 out of 7 changed files in this pull request and generated 2 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instr"
       }
     ]
   }
