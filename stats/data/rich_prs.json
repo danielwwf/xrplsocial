@@ -1,5 +1,60 @@
 [
   {
+    "pr_number": 6996,
+    "branch_name": "DEFI-648",
+    "title": "fix: Prevent stale AuthAccounts from persisting after `tfTwoAssetIfEmpty` re-initialization",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nWhen an AMM pool is emptied and re-initialized via a `tfTwoAssetIfEmpty` deposit, `initializeFeeAuctionVote()` resets the auction slot fields (`sfAccount`, `sfExpiration`, `sfPrice`, `sfDiscountedFee`) but does not clear `sfAuthAccounts`. Stale authorized accounts from the previous auction slot holder persist and get discounted trading fees (TradingFee/10) without the new depositor's knowledge or consent.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/",
+    "user": "Kassaking7",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-22T17:07:17Z",
+    "merged_at": "2026-05-09T15:10:26Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6996?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`af89854`](https://app.codecov.io/gh/XRPLF/rippled/commit/af89854a4367942d258006d739a3cb7be749cd63?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-22T17:34:44Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-28T11:03:42Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-28T16:08:31Z"
+      },
+      {
+        "user": "yinyiqian1",
+        "body": "/ai-review\r\n",
+        "created_at": "2026-04-28T16:32:20Z"
+      }
+    ],
+    "reviews_count": 12,
+    "reviews": [
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7096,
     "branch_name": "cleanup_tidy_config",
     "title": "style: Make .clang-tidy style a bit more consistent with Clio",
@@ -1840,67 +1895,6 @@
       {
         "user": "ximinez",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6712,
-    "branch_name": "fix-mutable",
-    "title": "fix: Disallow MPTClearRequireAuth if is set",
-    "body": "- If domain exists, issuer MUST never clear the `RequireAuth` flag for MPT.\r\n- some `XRPL_ASSERT` should not replaced by returning tefINTERNAL to avoid node crash when new features added in the future.\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking cha",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-02T18:50:05Z",
-    "merged_at": "2026-04-20T21:47:12Z",
-    "labels": [
-      "Ready to merge",
-      "AI Triage"
-    ],
-    "comments_count": 9,
-    "comments": [
-      {
-        "user": "lmaisons",
-        "body": "For the sake of the less initiated: What happens now when the assert fires? How does the client percieve the current behaviour?\r\n\r\nI guess I half-expected this to be so far into \"undefined\" that tefINTERNAL would be the first version the client was aware of.",
-        "created_at": "2026-04-02T19:17:21Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "> For the sake of the less initiated: What happens now when the assert fires? How does the client percieve the current behaviour?\r\n> \r\n> I guess I half-expected this to be so far into \"undefined\" that tefINTERNAL would be the first version the client was aware of.\r\n\r\nAsserts only fire in debug builds. In release builds (which is what people run in production), it does nothing.",
-        "created_at": "2026-04-02T19:21:53Z"
-      },
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6712?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.8%. Comparing base ([`852fbe9`](https://app.codecov.io/gh/XRPLF/rippled/commit/852fbe955d3edd487b81d2c52caae978709fc218?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-04-02T20:03:25Z"
-      },
-      {
-        "user": "yinyiqian1",
-        "body": "> Changing the asserts to returning `tefINTERNAL` requires an amendment.\r\n\r\n@mvadari Just added\r\n",
-        "created_at": "2026-04-02T21:21:59Z"
-      },
-      {
-        "user": "yinyiqian1",
-        "body": "@mvadari @lmaisons Could you help review this PR when you are free? Thanks!",
-        "created_at": "2026-04-08T18:51:35Z"
-      }
-    ],
-    "reviews_count": 8,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "CHANGES_REQUESTED",
-        "body": "Changing the asserts to returning `tefINTERNAL` requires an amendment."
-      },
-      {
-        "user": "vlntb",
-        "state": "APPROVED",
-        "body": "LGTM"
-      },
-      {
-        "user": "mvadari",
-        "state": "APPROVED",
         "body": ""
       }
     ]
