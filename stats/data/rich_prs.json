@@ -1,5 +1,124 @@
 [
   {
+    "pr_number": 7104,
+    "branch_name": "Move_unhex",
+    "title": "refactor: Move unhex lookup table out of function",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR moves unhex lookup table out of function to improve readability.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `l",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-11T14:13:00Z",
+    "merged_at": "2026-05-13T18:27:02Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7104?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`c8b42a7`](https://app.codecov.io/gh/XRPLF/rippled/commit/c8b42a7f4839b5b8c41df7ab3373fa1b5fc50da8?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-11T15:05:56Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "@kuznetsss is this ready to merge? If you could create a follow-up PR with the suggested fixes by Copilot, to the extent they are valid, that would be appreciated.",
+        "created_at": "2026-05-13T12:45:26Z"
+      }
+    ],
+    "reviews_count": 5,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nRefactors the hex-decoding helper in `StringUtilities.h` by moving the hex character lookup table out of `strUnHex()` into a shared, header-level constant to improve readabil"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "Copilot comments make sense but I recommend tackling them in a separate follow up PR."
+      },
+      {
+        "user": "vvysokikh1",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7102,
+    "branch_name": "Check_network_id_in_sign_for",
+    "title": "fix: Check network ID in `transactionSignFor`",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nThis PR adds NetworkID field validation to `sign_for` RPC.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [x] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or depende",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-11T13:56:19Z",
+    "merged_at": "2026-05-13T17:34:51Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7102?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `52.63158%` with `9 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`6340c98`](https://app.codecov.io/gh/XRPLF/rippled/commit/6340c986c90b85ec9c2bf1c00de297299978f185?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-05-11T14:37:18Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nAdds NetworkID validation to the `sign_for` RPC path so callers can\u2019t generate multi-signature payloads for the wrong network, and adjusts `Expected::error()` to support movi"
+      },
+      {
+        "user": "vvysokikh1",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "a1q123456",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7083,
+    "branch_name": "nix_docker",
+    "title": "feat: Implement nix-based Dockerfile for CI",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nI implement nixos-packages build Docker images.\r\n\r\nThis allows us to have the following:\r\n- Modern compilers (gcc / clang)\r\n- unified declaration of tools/packages required for development/building/testing of `rippled`\r\n- No Docker Images duplication depending on the OS and/or versions\r\n- And the Dockerfile will be stored here, since it'll be less frequently updated and easier to support\r\n\r\nAll that being said, we use `libc` of the oldest distro we support.\r\n`ubuntu:20.04` had `libc 2.31`, so we have to:\r\n- build this `libc` version\r\n- build `gcc` with this `libc`\r\n- and `libstdc++` as well\r\n\r\nThis allows us to build binaries compatible with old OS, but have all the features of the modern compilers.\r\n\r\nCurrent limitations (not going to be addressed in this PR, but will be resolved in the future):\r\n- only `linux/amd64`\r\n- only `gcc-15` (`clang` will be added later)\r\n- not yet tested if rippled is capable of being built in this image, but tools are verified to be working (i.e. we run `cmake --version` in the image)\r\n\r\nThe base builder image ends up being the same (nixos), so it gets rebuilt every time.\r\nBut let's not worry about it too much - it won't be updated very often, so it shouldn't be too much of a problem.\r\nAnd it's all in parallel, so we should be good too.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the ",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-06T16:04:58Z",
+    "merged_at": "2026-05-13T16:19:48Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 12,
+    "reviews": [
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7103,
     "branch_name": "Improve_rpc_variable_naming",
     "title": "refactor: Improve RPC variable naming and handling",
