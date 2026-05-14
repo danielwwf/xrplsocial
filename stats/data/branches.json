@@ -1,19 +1,545 @@
 {
-  "generated_at": "2026-05-14T11:08:08.447651+00:00",
+  "generated_at": "2026-05-14T13:24:16.774834+00:00",
   "repo": "XRPLF/rippled",
-  "total_branches": 249,
+  "total_branches": 251,
   "total_contributors": 82,
   "branches": [
     {
-      "name": "a1q123456/add-verify-endpoints",
+      "name": "tapanito/vault-invariant-bugfix",
       "last_commit": {
-        "hash": "658b5682",
-        "author": "JCW",
-        "email": "a1q123456@users.noreply.github.com",
-        "date": "2026-05-14T10:41:17+00:00",
-        "message": "Remove unrelated changes"
+        "hash": "9942d1dd",
+        "author": "Vito",
+        "email": "5780819+Tapanito@users.noreply.github.com",
+        "date": "2026-05-14T13:16:26+00:00",
+        "message": "refactor: Use minScale for vaultPseudoDeltaAssets in withdrawal path"
       },
       "commits": [
+        {
+          "hash": "9942d1dd",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T13:16:26+00:00",
+          "message": "refactor: Use minScale for vaultPseudoDeltaAssets in withdrawal path"
+        },
+        {
+          "hash": "52270add",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T13:15:54+00:00",
+          "message": "fix: Remove dead setup in testVaultDepositCanonicalizeToZero"
+        },
+        {
+          "hash": "d6e740de",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T12:05:10+00:00",
+          "message": "fix: remove noexcept from isZeroAtScale"
+        },
+        {
+          "hash": "a7f7a018",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T12:03:12+00:00",
+          "message": "fix: Address review comments on vault invariant tests and comments"
+        },
+        {
+          "hash": "1c5bf1f5",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T11:40:09+00:00",
+          "message": "chore: remove redundant check"
+        },
+        {
+          "hash": "e74f8e68",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T11:33:03+00:00",
+          "message": "test: additional unit-tests"
+        },
+        {
+          "hash": "695ca1f3",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T11:22:44+00:00",
+          "message": "refactor: Flatten JLOG strings and consolidate scale-helper comment in VaultInvariant"
+        },
+        {
+          "hash": "450e795a",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T11:19:18+00:00",
+          "message": "fix: Fix VaultWithdraw/Deposit IOU scale-boundary invariant false positives"
+        }
+      ],
+      "contributor_count": 20,
+      "contributors": [
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito"
+        },
+        {
+          "email": "legleux@users.noreply.github.com",
+          "name": "Michael Legleux"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "rmanukyan@ripple.com",
+          "name": "rrmanukyan"
+        },
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "brok@incorrekt.com",
+          "name": "Bronek Kozicki"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "109047316+xVet@users.noreply.github.com",
+          "name": "Vet"
+        },
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Bug Fix",
+        "confidence": 0.7,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "pratik/otel-phase9-metric-gap-fill",
+      "last_commit": {
+        "hash": "53e1ff82",
+        "author": "Pratik Mankawde",
+        "email": "3397372+pratikmankawde@users.noreply.github.com",
+        "date": "2026-05-14T13:01:46+00:00",
+        "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+      },
+      "commits": [
+        {
+          "hash": "53e1ff82",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T13:01:46+00:00",
+          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+        },
+        {
+          "hash": "8df3ea1b",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T13:01:41+00:00",
+          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+        },
+        {
+          "hash": "5a6882f1",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T13:01:36+00:00",
+          "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+        },
+        {
+          "hash": "b449db04",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T13:01:12+00:00",
+          "message": "fix(telemetry): align spanmetrics dimensions, Tempo tags, and dashboard queries with C++ attribute names"
+        },
+        {
+          "hash": "9babfff3",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:59:19+00:00",
+          "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+        },
+        {
+          "hash": "68b32ed0",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:59:14+00:00",
+          "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+        },
+        {
+          "hash": "61ab5c6f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:59:08+00:00",
+          "message": "fix(telemetry): align Tempo consensus search tags with C++ attribute names"
+        },
+        {
+          "hash": "837f7e7b",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:58:38+00:00",
+          "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+        },
+        {
+          "hash": "b3920355",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:58:31+00:00",
+          "message": "fix(telemetry): align Tempo TX search tags with C++ attribute names"
+        },
+        {
+          "hash": "450004eb",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:58:19+00:00",
+          "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+        },
+        {
+          "hash": "6f403fdd",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:58:13+00:00",
+          "message": "fix(telemetry): align Tempo search tags with C++ span attribute names"
+        },
+        {
+          "hash": "5dc4ae8f",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:49:59+00:00",
+          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+        },
+        {
+          "hash": "690841e9",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:49:51+00:00",
+          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+        },
+        {
+          "hash": "7d61a4a0",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T12:32:55+00:00",
+          "message": "feat(telemetry): add missing Phase 9 metric panels to dashboards"
+        },
+        {
+          "hash": "93caaba5",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-14T11:33:18+00:00",
+          "message": "fix(telemetry): recover Phase 6 dashboard panels lost during statsd\u2192system rename"
+        },
+        {
+          "hash": "02fe8382",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T18:00:36+00:00",
+          "message": "auto refresh at 5seconds"
+        },
+        {
+          "hash": "20477e54",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T17:49:21+00:00",
+          "message": "validator path changes"
+        },
+        {
+          "hash": "f0c6227c",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T17:42:57+00:00",
+          "message": "added config for devnet test run"
+        },
+        {
+          "hash": "ddca4a98",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T17:13:19+00:00",
+          "message": "fix(telemetry): address clang-tidy CI failures on phase9"
+        },
+        {
+          "hash": "3131d990",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:54+00:00",
+          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+        },
+        {
+          "hash": "829094df",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:52+00:00",
+          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+        },
+        {
+          "hash": "9554e388",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:50+00:00",
+          "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+        },
+        {
+          "hash": "fe7cb33b",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:47+00:00",
+          "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+        },
+        {
+          "hash": "f5cf4155",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:45+00:00",
+          "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+        },
+        {
+          "hash": "ea30adeb",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:43+00:00",
+          "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+        },
+        {
+          "hash": "9bc2e4ab",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:32+00:00",
+          "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+        },
+        {
+          "hash": "7b9e0bc3",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:53:19+00:00",
+          "message": "fix(telemetry): remove unused includes from RPCHandler after node-health attr removal"
+        },
+        {
+          "hash": "b4e4b575",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:45:14+00:00",
+          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+        },
+        {
+          "hash": "6dd43765",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:45:03+00:00",
+          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+        },
+        {
+          "hash": "cbf38994",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:44:49+00:00",
+          "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+        },
+        {
+          "hash": "b05e650b",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:42:30+00:00",
+          "message": "docs(telemetry): update 09-data-collection-reference + Phase5 integration test list for simplified attr naming"
+        },
+        {
+          "hash": "57175ab1",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:37:37+00:00",
+          "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+        },
+        {
+          "hash": "d44a0aa3",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:37:27+00:00",
+          "message": "docs(telemetry): update Phase5 task list for simplified attr naming"
+        },
+        {
+          "hash": "522fe562",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:36:34+00:00",
+          "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+        },
+        {
+          "hash": "74510236",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:36:22+00:00",
+          "message": "docs(telemetry): update Phase4 task list for simplified consensus attr naming"
+        },
+        {
+          "hash": "19d9c44c",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:31:35+00:00",
+          "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+        },
+        {
+          "hash": "5c14b574",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:31:22+00:00",
+          "message": "docs(telemetry): update Phase3 task list for simplified tx/txq attr naming"
+        },
+        {
+          "hash": "c875944e",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:29:32+00:00",
+          "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+        },
+        {
+          "hash": "2430032e",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:29:20+00:00",
+          "message": "docs(telemetry): update Phase2 task list + design docs for attr rename"
+        },
+        {
+          "hash": "0f63d149",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:28:07+00:00",
+          "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+        },
+        {
+          "hash": "faaec003",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:27:55+00:00",
+          "message": "docs(telemetry): update plan docs for simplified RPC/gRPC attr naming"
+        },
+        {
+          "hash": "495d5bd8",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:17:12+00:00",
+          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+        },
+        {
+          "hash": "6cd910f0",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:17:05+00:00",
+          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+        },
+        {
+          "hash": "5cd71ed1",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:16:50+00:00",
+          "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+        },
+        {
+          "hash": "9e27120a",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:16:30+00:00",
+          "message": "refactor(telemetry): simplify ledger/peer attr naming on phase-6, update dashboards"
+        },
+        {
+          "hash": "e60efd4d",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:10:46+00:00",
+          "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+        },
+        {
+          "hash": "c48f5ed6",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:08:48+00:00",
+          "message": "docs(telemetry): update runbook attr names for simplified naming convention"
+        },
+        {
+          "hash": "c9fe4b1a",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:04:27+00:00",
+          "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+        },
+        {
+          "hash": "46d1012a",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:04:16+00:00",
+          "message": "refactor(telemetry): simplify consensus attr naming on phase-4 \u2014 drop xrpl.consensus. prefix"
+        },
+        {
+          "hash": "7eeddd3a",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-05-13T15:01:13+00:00",
+          "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+        }
+      ],
+      "contributor_count": 1,
+      "contributors": [
+        {
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "name": "Pratik Mankawde"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Documentation",
+        "confidence": 0.7,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "a1q123456/add-verify-endpoints",
+      "last_commit": {
+        "hash": "9d1307a0",
+        "author": "JCW",
+        "email": "a1q123456@users.noreply.github.com",
+        "date": "2026-05-14T12:50:58+00:00",
+        "message": "Fix tests"
+      },
+      "commits": [
+        {
+          "hash": "9d1307a0",
+          "author": "JCW",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-05-14T12:50:58+00:00",
+          "message": "Fix tests"
+        },
+        {
+          "hash": "658b5682",
+          "author": "JCW",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-05-14T10:41:17+00:00",
+          "message": "Remove unrelated changes"
+        },
         {
           "hash": "658b5682",
           "author": "JCW",
@@ -118,6 +644,525 @@
         "type": "Unknown",
         "confidence": 0,
         "source": "fallback"
+      }
+    },
+    {
+      "name": "a1q123456/fix-numeric-overflow",
+      "last_commit": {
+        "hash": "7e739e3b",
+        "author": "JCW",
+        "email": "a1q123456@users.noreply.github.com",
+        "date": "2026-05-14T12:48:56+00:00",
+        "message": "Fix the off-by-one error"
+      },
+      "commits": [
+        {
+          "hash": "7e739e3b",
+          "author": "JCW",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-05-14T12:48:56+00:00",
+          "message": "Fix the off-by-one error"
+        }
+      ],
+      "contributor_count": 22,
+      "contributors": [
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "JCW"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "legleux@users.noreply.github.com",
+          "name": "Michael Legleux"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "lmaisons@ripple.com",
+          "name": "Luc des Trois Maisons"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "rmanukyan@ripple.com",
+          "name": "rrmanukyan"
+        },
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "brok@incorrekt.com",
+          "name": "Bronek Kozicki"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Bug Fix",
+        "confidence": 0.6,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "tapanito/lending-partial-principle",
+      "last_commit": {
+        "hash": "b3cf728c",
+        "author": "Vito",
+        "email": "5780819+Tapanito@users.noreply.github.com",
+        "date": "2026-05-14T12:16:34+00:00",
+        "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-partial-principle"
+      },
+      "commits": [
+        {
+          "hash": "b3cf728c",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-14T12:16:34+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-partial-principle"
+        },
+        {
+          "hash": "356a0366",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-13T10:54:45+00:00",
+          "message": "test: Address PR review feedback"
+        },
+        {
+          "hash": "3a07ffa1",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-07T11:54:35+00:00",
+          "message": "test: Address PR review feedback"
+        },
+        {
+          "hash": "52ebfd10",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-06T10:31:21+00:00",
+          "message": "fix: clang-tidy local-constant naming"
+        },
+        {
+          "hash": "65773995",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-06T10:28:55+00:00",
+          "message": "test: Address PR review feedback"
+        },
+        {
+          "hash": "57c03e46",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-04T15:05:37+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-partial-principle"
+        },
+        {
+          "hash": "d0500738",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-05-04T12:51:07+00:00",
+          "message": "ci: Rewrite clang-tidy workflow(s) in a reusable manner (#7062)"
+        },
+        {
+          "hash": "84902062",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-05-03T21:42:44+00:00",
+          "message": "chore: Ignore identifier-naming update in git blame (#7066)"
+        },
+        {
+          "hash": "8995564e",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-05-03T10:31:53+00:00",
+          "message": "refactor: Enable clang-tidy `readability-identifier-naming` check (#6571)"
+        },
+        {
+          "hash": "c7ed64c9",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-01T10:42:06+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-partial-principle"
+        },
+        {
+          "hash": "182d8449",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-05-01T09:50:00+00:00",
+          "message": "refactor: Revert certain `Throw`s by `LogicError`s (#7036)"
+        },
+        {
+          "hash": "37b895b6",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-05-01T09:44:52+00:00",
+          "message": "ci: Rename print-env -> print-build-env (#7061)"
+        },
+        {
+          "hash": "5d5cab43",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-05-01T09:42:29+00:00",
+          "message": "test: Run Loan suite with and without fixCleanup3_2_0"
+        },
+        {
+          "hash": "c6053f5d",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-30T13:33:33+00:00",
+          "message": "fix: Gate -mcmodel flags to x86_64 in sanitizer builds (#7049)"
+        },
+        {
+          "hash": "31180f94",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-30T13:05:09+00:00",
+          "message": "fix: Prevents overwriting a bool value in an invariant (#6609)"
+        },
+        {
+          "hash": "6407f0fa",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-30T10:36:12+00:00",
+          "message": "fix: Address code review comments regarding `boost::coroutine2` (#6977)"
+        },
+        {
+          "hash": "4d0ea8ae",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-04-30T10:22:11+00:00",
+          "message": "refactor: Apply various minor improvements and corrections (#7045)"
+        },
+        {
+          "hash": "276c137c",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-30T08:13:38+00:00",
+          "message": "address AI feedback"
+        },
+        {
+          "hash": "d6f0ddb0",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-30T08:02:55+00:00",
+          "message": "fix: clang-tidy"
+        },
+        {
+          "hash": "dbd646bd",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-29T18:17:01+00:00",
+          "message": "fix: Store `Delegate` object in delegating and authorized account directories for proper deletion (#6681)"
+        },
+        {
+          "hash": "6ae090ba",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-29T18:14:16+00:00",
+          "message": "ci: Use print-env from XRPLF/actions (#7052)"
+        },
+        {
+          "hash": "7be98d95",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-29T18:05:34+00:00",
+          "message": "fix: Make assorted RPC fixes (#6529)"
+        },
+        {
+          "hash": "71bb9daf",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-29T17:14:13+00:00",
+          "message": "test: Inline edge-test fixture; fix clang-tidy auto+ternary deduction"
+        },
+        {
+          "hash": "373061fe",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-29T16:41:17+00:00",
+          "message": "test: Deduplicate dual-rounding edge tests via shared fixture"
+        },
+        {
+          "hash": "336ee27e",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-29T16:02:42+00:00",
+          "message": "fix: Avoid principal-zeroing in non-final loan payments at coarse scale"
+        },
+        {
+          "hash": "f7275b7a",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-29T15:17:35+00:00",
+          "message": "chore: Enable clang-tidy v21 new checks (#7031)"
+        },
+        {
+          "hash": "46b997b7",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-28T14:16:10+00:00",
+          "message": "feat: Create new transaction testing framework `TxTest` (#6537)"
+        },
+        {
+          "hash": "147da573",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-28T10:22:32+00:00",
+          "message": "feat: Add cleanup amendment for 3.2.0 (#7037)"
+        },
+        {
+          "hash": "35471125",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-27T20:34:16+00:00",
+          "message": "fix: Fix ubsan flagged issues (#6151)"
+        },
+        {
+          "hash": "4dc923dc",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-24T17:19:30+00:00",
+          "message": "chore: Enable clang-tidy modernize-use-nodiscard check (#7015)"
+        },
+        {
+          "hash": "158df539",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-04-24T16:47:16+00:00",
+          "message": "fix: Resolve MSVC Debug build failure in JobQueue.h; re-enable _CRTDBG_MAP_ALLOC in CI (#6993)"
+        },
+        {
+          "hash": "a6bd9251",
+          "author": "Zhiyuan Wang",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-04-24T16:35:10+00:00",
+          "message": "docs: Update hybrid offer invariant comment (#7007)"
+        },
+        {
+          "hash": "9ae29612",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:23:43+00:00",
+          "message": "fix: Fix flaky CI tests (#7005)"
+        },
+        {
+          "hash": "82abf2a8",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T13:15:12+00:00",
+          "message": "docs: Update bug bounty information (#7006)"
+        },
+        {
+          "hash": "7cfa5d46",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:56:50+00:00",
+          "message": "fix: Make assorted Payments fixes (#6585)"
+        },
+        {
+          "hash": "248cb296",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-24T12:06:26+00:00",
+          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
+        },
+        {
+          "hash": "7a449ede",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T17:59:49+00:00",
+          "message": "refactor: Clean up NetworkOPs (#6575)"
+        },
+        {
+          "hash": "19da2581",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-23T16:21:01+00:00",
+          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
+        },
+        {
+          "hash": "7cd50385",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-23T13:59:23+00:00",
+          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
+        },
+        {
+          "hash": "b41cbb08",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T22:20:14+00:00",
+          "message": "chore: Add pre-commit hook to fix include style (#6995)"
+        },
+        {
+          "hash": "bd1b1262",
+          "author": "pdp2121",
+          "email": "71317875+pdp2121@users.noreply.github.com",
+          "date": "2026-04-22T20:10:52+00:00",
+          "message": "feat: Add `--definitions` flag and artifact (#6858)"
+        },
+        {
+          "hash": "1c6cdc65",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-04-22T17:42:15+00:00",
+          "message": "fix: More clang-tidy issues (#6992)"
+        },
+        {
+          "hash": "4ab20770",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-22T15:06:36+00:00",
+          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
+        },
+        {
+          "hash": "2e307329",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-04-22T14:41:19+00:00",
+          "message": "refactor: Add transaction-specific invariant checking (#6551)"
+        },
+        {
+          "hash": "3429845c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-22T14:26:02+00:00",
+          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
+        },
+        {
+          "hash": "7c7c1894",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T19:00:00+00:00",
+          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
+        },
+        {
+          "hash": "45d4aacb",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-04-21T18:15:58+00:00",
+          "message": "chore: Remove empty Taker.h (#6984)"
+        },
+        {
+          "hash": "ce3951bb",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T15:32:51+00:00",
+          "message": "chore: Enable clang-tidy modernize checks (#6975)"
+        },
+        {
+          "hash": "ab887f50",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-04-21T14:22:33+00:00",
+          "message": "ci: Upload clang-tidy git diff (#6983)"
+        },
+        {
+          "hash": "ea023121",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-04-21T12:14:07+00:00",
+          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
+        }
+      ],
+      "contributor_count": 22,
+      "contributors": [
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "legleux@users.noreply.github.com",
+          "name": "Michael Legleux"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "lmaisons@ripple.com",
+          "name": "Luc des Trois Maisons"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "13349202+vlntb@users.noreply.github.com",
+          "name": "Valentin Balaschenko"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "rmanukyan@ripple.com",
+          "name": "rrmanukyan"
+        },
+        {
+          "email": "ed@ripple.com",
+          "name": "Ed Hennis"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Zhiyuan Wang"
+        },
+        {
+          "email": "brok@incorrekt.com",
+          "name": "Bronek Kozicki"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Lending",
+        "type": "Feature",
+        "confidence": 0.8,
+        "source": "keyword_match"
       }
     },
     {
@@ -8105,381 +9150,6 @@
         "type": "Unknown",
         "confidence": 0,
         "source": "fallback"
-      }
-    },
-    {
-      "name": "pratik/otel-phase9-metric-gap-fill",
-      "last_commit": {
-        "hash": "02fe8382",
-        "author": "Pratik Mankawde",
-        "email": "3397372+pratikmankawde@users.noreply.github.com",
-        "date": "2026-05-13T18:00:36+00:00",
-        "message": "auto refresh at 5seconds"
-      },
-      "commits": [
-        {
-          "hash": "02fe8382",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T18:00:36+00:00",
-          "message": "auto refresh at 5seconds"
-        },
-        {
-          "hash": "20477e54",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T17:49:21+00:00",
-          "message": "validator path changes"
-        },
-        {
-          "hash": "f0c6227c",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T17:42:57+00:00",
-          "message": "added config for devnet test run"
-        },
-        {
-          "hash": "ddca4a98",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T17:13:19+00:00",
-          "message": "fix(telemetry): address clang-tidy CI failures on phase9"
-        },
-        {
-          "hash": "3131d990",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:54+00:00",
-          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-        },
-        {
-          "hash": "829094df",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:52+00:00",
-          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-        },
-        {
-          "hash": "9554e388",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:50+00:00",
-          "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-        },
-        {
-          "hash": "fe7cb33b",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:47+00:00",
-          "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-        },
-        {
-          "hash": "f5cf4155",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:45+00:00",
-          "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-        },
-        {
-          "hash": "ea30adeb",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:43+00:00",
-          "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-        },
-        {
-          "hash": "9bc2e4ab",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:32+00:00",
-          "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-        },
-        {
-          "hash": "7b9e0bc3",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:53:19+00:00",
-          "message": "fix(telemetry): remove unused includes from RPCHandler after node-health attr removal"
-        },
-        {
-          "hash": "b4e4b575",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:45:14+00:00",
-          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-        },
-        {
-          "hash": "6dd43765",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:45:03+00:00",
-          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-        },
-        {
-          "hash": "cbf38994",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:44:49+00:00",
-          "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-        },
-        {
-          "hash": "b05e650b",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:42:30+00:00",
-          "message": "docs(telemetry): update 09-data-collection-reference + Phase5 integration test list for simplified attr naming"
-        },
-        {
-          "hash": "57175ab1",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:37:37+00:00",
-          "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-        },
-        {
-          "hash": "d44a0aa3",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:37:27+00:00",
-          "message": "docs(telemetry): update Phase5 task list for simplified attr naming"
-        },
-        {
-          "hash": "522fe562",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:36:34+00:00",
-          "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-        },
-        {
-          "hash": "74510236",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:36:22+00:00",
-          "message": "docs(telemetry): update Phase4 task list for simplified consensus attr naming"
-        },
-        {
-          "hash": "19d9c44c",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:31:35+00:00",
-          "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-        },
-        {
-          "hash": "5c14b574",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:31:22+00:00",
-          "message": "docs(telemetry): update Phase3 task list for simplified tx/txq attr naming"
-        },
-        {
-          "hash": "c875944e",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:29:32+00:00",
-          "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-        },
-        {
-          "hash": "2430032e",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:29:20+00:00",
-          "message": "docs(telemetry): update Phase2 task list + design docs for attr rename"
-        },
-        {
-          "hash": "0f63d149",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:28:07+00:00",
-          "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-        },
-        {
-          "hash": "faaec003",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:27:55+00:00",
-          "message": "docs(telemetry): update plan docs for simplified RPC/gRPC attr naming"
-        },
-        {
-          "hash": "495d5bd8",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:17:12+00:00",
-          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-        },
-        {
-          "hash": "6cd910f0",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:17:05+00:00",
-          "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-        },
-        {
-          "hash": "5cd71ed1",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:16:50+00:00",
-          "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-        },
-        {
-          "hash": "9e27120a",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:16:30+00:00",
-          "message": "refactor(telemetry): simplify ledger/peer attr naming on phase-6, update dashboards"
-        },
-        {
-          "hash": "e60efd4d",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:10:46+00:00",
-          "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-        },
-        {
-          "hash": "c48f5ed6",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:08:48+00:00",
-          "message": "docs(telemetry): update runbook attr names for simplified naming convention"
-        },
-        {
-          "hash": "c9fe4b1a",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:04:27+00:00",
-          "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-        },
-        {
-          "hash": "46d1012a",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:04:16+00:00",
-          "message": "refactor(telemetry): simplify consensus attr naming on phase-4 \u2014 drop xrpl.consensus. prefix"
-        },
-        {
-          "hash": "7eeddd3a",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:01:13+00:00",
-          "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-        },
-        {
-          "hash": "e339ba1f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T15:01:00+00:00",
-          "message": "refactor(telemetry): simplify tx/txq attr naming on phase-3 \u2014 drop xrpl.<domain>. prefix"
-        },
-        {
-          "hash": "ac1b01b4",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T14:57:45+00:00",
-          "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-        },
-        {
-          "hash": "497dd007",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T14:57:36+00:00",
-          "message": "refactor(telemetry): simplify attr naming on phase-2 \u2014 drop xrpl.pathfind. prefix"
-        },
-        {
-          "hash": "0d845149",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T14:55:39+00:00",
-          "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-        },
-        {
-          "hash": "7a854cca",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T14:54:13+00:00",
-          "message": "refactor(telemetry): simplify attr naming on phase-1c \u2014 drop xrpl.<domain>. prefix"
-        },
-        {
-          "hash": "56016159",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T13:59:00+00:00",
-          "message": "fix(telemetry): align Phase 9 dashboards and integration-test with xrpld_ metric prefix"
-        },
-        {
-          "hash": "580ee5ed",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T13:40:58+00:00",
-          "message": "fix(telemetry): StatsD gauge and io_latency first-sample emit"
-        },
-        {
-          "hash": "937d11d7",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T13:40:57+00:00",
-          "message": "fix(telemetry): default tx span attrs on receive path"
-        },
-        {
-          "hash": "4cbb1be5",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T13:11:16+00:00",
-          "message": "fix(telemetry): CI Werror \u2014 registry .get() and unused fields"
-        },
-        {
-          "hash": "db04120f",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T11:24:00+00:00",
-          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-        },
-        {
-          "hash": "3c4d51a4",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T11:23:17+00:00",
-          "message": "refactor(telemetry): split registerAsyncGauges; record RPC end in OTel"
-        },
-        {
-          "hash": "fac32879",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T11:16:41+00:00",
-          "message": "fix(telemetry): use .batches for Tempo trace lookup in integration test"
-        },
-        {
-          "hash": "25d2dae7",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T11:12:59+00:00",
-          "message": "fix(tests): align MockServiceRegistry overrides with ServiceRegistry interface"
-        },
-        {
-          "hash": "47e83c4e",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T11:12:38+00:00",
-          "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-        },
-        {
-          "hash": "4bbe28cb",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-05-13T11:11:52+00:00",
-          "message": "fix(consensus): restore DisputedTx getYays/getNays accessors"
-        }
-      ],
-      "contributor_count": 1,
-      "contributors": [
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Documentation",
-        "confidence": 0.7,
-        "source": "keyword_match"
       }
     },
     {
@@ -17577,437 +18247,6 @@
         "amendment": "Other",
         "type": "Refactor",
         "confidence": 0.7,
-        "source": "keyword_match"
-      }
-    },
-    {
-      "name": "tapanito/lending-partial-principle",
-      "last_commit": {
-        "hash": "356a0366",
-        "author": "Vito",
-        "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-05-13T10:54:45+00:00",
-        "message": "test: Address PR review feedback"
-      },
-      "commits": [
-        {
-          "hash": "356a0366",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-05-13T10:54:45+00:00",
-          "message": "test: Address PR review feedback"
-        },
-        {
-          "hash": "3a07ffa1",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-05-07T11:54:35+00:00",
-          "message": "test: Address PR review feedback"
-        },
-        {
-          "hash": "52ebfd10",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-05-06T10:31:21+00:00",
-          "message": "fix: clang-tidy local-constant naming"
-        },
-        {
-          "hash": "65773995",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-05-06T10:28:55+00:00",
-          "message": "test: Address PR review feedback"
-        },
-        {
-          "hash": "57c03e46",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-05-04T15:05:37+00:00",
-          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-partial-principle"
-        },
-        {
-          "hash": "d0500738",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-05-04T12:51:07+00:00",
-          "message": "ci: Rewrite clang-tidy workflow(s) in a reusable manner (#7062)"
-        },
-        {
-          "hash": "84902062",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-05-03T21:42:44+00:00",
-          "message": "chore: Ignore identifier-naming update in git blame (#7066)"
-        },
-        {
-          "hash": "8995564e",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-05-03T10:31:53+00:00",
-          "message": "refactor: Enable clang-tidy `readability-identifier-naming` check (#6571)"
-        },
-        {
-          "hash": "c7ed64c9",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-05-01T10:42:06+00:00",
-          "message": "Merge remote-tracking branch 'origin/develop' into tapanito/lending-partial-principle"
-        },
-        {
-          "hash": "182d8449",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-05-01T09:50:00+00:00",
-          "message": "refactor: Revert certain `Throw`s by `LogicError`s (#7036)"
-        },
-        {
-          "hash": "37b895b6",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-05-01T09:44:52+00:00",
-          "message": "ci: Rename print-env -> print-build-env (#7061)"
-        },
-        {
-          "hash": "5d5cab43",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-05-01T09:42:29+00:00",
-          "message": "test: Run Loan suite with and without fixCleanup3_2_0"
-        },
-        {
-          "hash": "c6053f5d",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-30T13:33:33+00:00",
-          "message": "fix: Gate -mcmodel flags to x86_64 in sanitizer builds (#7049)"
-        },
-        {
-          "hash": "31180f94",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-30T13:05:09+00:00",
-          "message": "fix: Prevents overwriting a bool value in an invariant (#6609)"
-        },
-        {
-          "hash": "6407f0fa",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-30T10:36:12+00:00",
-          "message": "fix: Address code review comments regarding `boost::coroutine2` (#6977)"
-        },
-        {
-          "hash": "4d0ea8ae",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-04-30T10:22:11+00:00",
-          "message": "refactor: Apply various minor improvements and corrections (#7045)"
-        },
-        {
-          "hash": "276c137c",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-30T08:13:38+00:00",
-          "message": "address AI feedback"
-        },
-        {
-          "hash": "d6f0ddb0",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-30T08:02:55+00:00",
-          "message": "fix: clang-tidy"
-        },
-        {
-          "hash": "dbd646bd",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-29T18:17:01+00:00",
-          "message": "fix: Store `Delegate` object in delegating and authorized account directories for proper deletion (#6681)"
-        },
-        {
-          "hash": "6ae090ba",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-29T18:14:16+00:00",
-          "message": "ci: Use print-env from XRPLF/actions (#7052)"
-        },
-        {
-          "hash": "7be98d95",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-29T18:05:34+00:00",
-          "message": "fix: Make assorted RPC fixes (#6529)"
-        },
-        {
-          "hash": "71bb9daf",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-29T17:14:13+00:00",
-          "message": "test: Inline edge-test fixture; fix clang-tidy auto+ternary deduction"
-        },
-        {
-          "hash": "373061fe",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-29T16:41:17+00:00",
-          "message": "test: Deduplicate dual-rounding edge tests via shared fixture"
-        },
-        {
-          "hash": "336ee27e",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-29T16:02:42+00:00",
-          "message": "fix: Avoid principal-zeroing in non-final loan payments at coarse scale"
-        },
-        {
-          "hash": "f7275b7a",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-29T15:17:35+00:00",
-          "message": "chore: Enable clang-tidy v21 new checks (#7031)"
-        },
-        {
-          "hash": "46b997b7",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-28T14:16:10+00:00",
-          "message": "feat: Create new transaction testing framework `TxTest` (#6537)"
-        },
-        {
-          "hash": "147da573",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-28T10:22:32+00:00",
-          "message": "feat: Add cleanup amendment for 3.2.0 (#7037)"
-        },
-        {
-          "hash": "35471125",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-27T20:34:16+00:00",
-          "message": "fix: Fix ubsan flagged issues (#6151)"
-        },
-        {
-          "hash": "4dc923dc",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-24T17:19:30+00:00",
-          "message": "chore: Enable clang-tidy modernize-use-nodiscard check (#7015)"
-        },
-        {
-          "hash": "158df539",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-04-24T16:47:16+00:00",
-          "message": "fix: Resolve MSVC Debug build failure in JobQueue.h; re-enable _CRTDBG_MAP_ALLOC in CI (#6993)"
-        },
-        {
-          "hash": "a6bd9251",
-          "author": "Zhiyuan Wang",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-04-24T16:35:10+00:00",
-          "message": "docs: Update hybrid offer invariant comment (#7007)"
-        },
-        {
-          "hash": "9ae29612",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:23:43+00:00",
-          "message": "fix: Fix flaky CI tests (#7005)"
-        },
-        {
-          "hash": "82abf2a8",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T13:15:12+00:00",
-          "message": "docs: Update bug bounty information (#7006)"
-        },
-        {
-          "hash": "7cfa5d46",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:56:50+00:00",
-          "message": "fix: Make assorted Payments fixes (#6585)"
-        },
-        {
-          "hash": "248cb296",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-24T12:06:26+00:00",
-          "message": "refactor: Move `LendingHelpers` into `libxrpl/ledger/helpers` (#6638)"
-        },
-        {
-          "hash": "7a449ede",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T17:59:49+00:00",
-          "message": "refactor: Clean up NetworkOPs (#6575)"
-        },
-        {
-          "hash": "19da2581",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-23T16:21:01+00:00",
-          "message": "fix: Remaining clang-tidy unchecked optionals (#6979)"
-        },
-        {
-          "hash": "7cd50385",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-23T13:59:23+00:00",
-          "message": "refactor: Remove seq from TMGetObjectByHash (#6976)"
-        },
-        {
-          "hash": "b41cbb08",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T22:20:14+00:00",
-          "message": "chore: Add pre-commit hook to fix include style (#6995)"
-        },
-        {
-          "hash": "bd1b1262",
-          "author": "pdp2121",
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "date": "2026-04-22T20:10:52+00:00",
-          "message": "feat: Add `--definitions` flag and artifact (#6858)"
-        },
-        {
-          "hash": "1c6cdc65",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-04-22T17:42:15+00:00",
-          "message": "fix: More clang-tidy issues (#6992)"
-        },
-        {
-          "hash": "4ab20770",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-22T15:06:36+00:00",
-          "message": "chore: Optionally run clang-tidy via pre-commit (#6680)"
-        },
-        {
-          "hash": "2e307329",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-04-22T14:41:19+00:00",
-          "message": "refactor: Add transaction-specific invariant checking (#6551)"
-        },
-        {
-          "hash": "3429845c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-22T14:26:02+00:00",
-          "message": "style: Add bashate pre-commit hook to unify bash style (#6994)"
-        },
-        {
-          "hash": "7c7c1894",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T19:00:00+00:00",
-          "message": "chore: Add -fix to clang-tidy invocation (#6990)"
-        },
-        {
-          "hash": "45d4aacb",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-04-21T18:15:58+00:00",
-          "message": "chore: Remove empty Taker.h (#6984)"
-        },
-        {
-          "hash": "ce3951bb",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T15:32:51+00:00",
-          "message": "chore: Enable clang-tidy modernize checks (#6975)"
-        },
-        {
-          "hash": "ab887f50",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-04-21T14:22:33+00:00",
-          "message": "ci: Upload clang-tidy git diff (#6983)"
-        },
-        {
-          "hash": "ea023121",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-04-21T12:14:07+00:00",
-          "message": "fix: Add rounding to Vault invariants (#6217) (#6955)"
-        },
-        {
-          "hash": "4b198cd5",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-04-20T21:25:52+00:00",
-          "message": "fix: Disallow MPTClearRequireAuth if is set (#6712)"
-        }
-      ],
-      "contributor_count": 16,
-      "contributors": [
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "name": "Pratik Mankawde"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Zhiyuan Wang"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "71317875+pdp2121@users.noreply.github.com",
-          "name": "pdp2121"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "chuanshanjida@outlook.com",
-          "name": "chuanshanjida"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        },
-        {
-          "email": "ed@ripple.com",
-          "name": "Ed Hennis"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Lending",
-        "type": "Feature",
-        "confidence": 0.8,
         "source": "keyword_match"
       }
     },
@@ -105224,8 +105463,8 @@
   "contributors": [
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 239,
+      "name": "ximinez/vault-test",
+      "commits": 238,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -105236,6 +105475,7 @@
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-job-queue-stop-2",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
@@ -105402,6 +105642,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -105466,8 +105707,8 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 238,
+      "name": "ximinez/vault-test",
+      "commits": 237,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -105478,6 +105719,7 @@
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-job-queue-stop-2",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
@@ -105644,6 +105886,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -105707,8 +105950,8 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 233,
+      "name": "ximinez/vault-test",
+      "commits": 232,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -105719,6 +105962,7 @@
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-job-queue-stop-2",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
@@ -105886,6 +106130,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -105943,8 +106188,8 @@
     },
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 229,
+      "name": "ximinez/vault-test",
+      "commits": 228,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -105955,6 +106200,7 @@
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-job-queue-stop-2",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
@@ -106118,6 +106364,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -106175,8 +106422,8 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 220,
+      "name": "ximinez/vault-test",
+      "commits": 219,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -106187,6 +106434,7 @@
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-job-queue-stop-2",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
@@ -106342,6 +106590,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -106398,8 +106647,8 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 173,
+      "name": "ximinez/vault-test",
+      "commits": 172,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -106408,6 +106657,7 @@
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-job-queue-stop-2",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
@@ -106506,7 +106756,6 @@
         "tapanito/invariant-architecture",
         "tapanito/lending-common-prefix",
         "tapanito/lending-fix-data-field",
-        "tapanito/lending-mpt-can-transfer",
         "tapanito/lending-overpayment",
         "tapanito/lending-partial-principle",
         "tapanito/lending-remove-liquidation-rate",
@@ -106518,6 +106767,7 @@
         "tapanito/tx-restructure",
         "tapanito/unit-tests",
         "tapanito/vault-associate-assets",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-stuck-depositor",
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -106575,8 +106825,8 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 161,
+      "name": "ximinez/vault-test",
+      "commits": 160,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-verify-endpoints",
@@ -106584,6 +106834,7 @@
         "a1q123456/fix-crash-in-shamap",
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-job-queue-stop-2",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
         "a1q123456/investigate-subcribe-test",
@@ -106673,8 +106924,8 @@
         "tapanito/lending-fix-amendment",
         "tapanito/lending-fix-data-field",
         "tapanito/lending-impairment",
-        "tapanito/lending-mpt-can-transfer",
         "tapanito/lending-overpayment",
+        "tapanito/lending-partial-principle",
         "tapanito/lending-remove-liquidation-rate",
         "tapanito/loan-broker-set",
         "tapanito/poc-vault-valuation",
@@ -106741,8 +106992,8 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
-      "commits": 154,
+      "name": "ximinez/vault-test",
+      "commits": 153,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/add-spdlog",
@@ -106752,6 +107003,7 @@
         "a1q123456/fix-crash-in-shamap",
         "a1q123456/fix-job-queue-stop-2",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/migrate-some-tests",
         "a1q123456/refactor-code-generation-process",
@@ -106859,6 +107111,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -106898,14 +107151,15 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "pratik/openssl-3.6.0-alpha-performance-test",
-      "commits": 145,
+      "name": "ximinez/vault-test",
+      "commits": 146,
       "branches": [
         "a1q123456/add-verify-endpoints",
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
         "a1q123456/investigate-subcribe-test",
@@ -106991,6 +107245,7 @@
         "tapanito/lending-fix-data-field",
         "tapanito/lending-impairment",
         "tapanito/lending-overpayment",
+        "tapanito/lending-partial-principle",
         "tapanito/lending-remove-liquidation-rate",
         "tapanito/loan-broker-set",
         "tapanito/poc-vault-valuation",
@@ -106999,6 +107254,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-share-pricing",
         "vlntb/RIPD-2536-taggedcache-expire-now",
         "vlntb/accounts-growth-combined",
@@ -107047,15 +107303,161 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
+      "email": "brok@incorrekt.com",
+      "name": "ximinez/vault-test",
+      "commits": 138,
+      "branches": [
+        "Bronek/add-build-selected-commit",
+        "a1q123456/add-verify-endpoints",
+        "a1q123456/adding-perimissioned-domain-to-lending",
+        "a1q123456/default-cover-optimisation",
+        "a1q123456/fix-crash-in-shamap",
+        "a1q123456/fix-job-queue-stop-2",
+        "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
+        "a1q123456/fix-rounding-in-loan-pay",
+        "a1q123456/fix-windows-runner-build-dep-speed-test",
+        "a1q123456/modularise-jtx",
+        "a1q123456/refactor-code-generation-process",
+        "a1q123456/remove-const-cast-from-tagged-cache",
+        "a1q123456/remove-const-cast-from-tagged-cache-2",
+        "a1q123456/rust-integration",
+        "a1q123456/strongly-typed-ledger-objects",
+        "a1q123456/strongly-typed-ledger-objects-demo",
+        "a1q123456/structured-logs-support",
+        "a1q123456/structured-logs-support-performance-test",
+        "a1q123456/structured-logs-support-performance-test-2",
+        "a1q123456/structured-logs-support-performance-test-3",
+        "a1q123456/structured-logs-support-performance-test-4",
+        "a1q123456/structured-logs-support-performance-test-6",
+        "a1q123456/structured-logs-support-performance-test-7",
+        "a1q123456/structured-logs-support-performance-test-7-2",
+        "a1q123456/structured-logs-support-performance-test-final",
+        "a1q123456/support-lending-in-batch",
+        "a1q123456/test-xxhash-original-hash",
+        "a1q123456/test-xxhash-signle-shot-hash",
+        "a1q123456/use-new-macos-runners",
+        "a1q123456/windows-test",
+        "bthomee/cmake_ci",
+        "bthomee/config",
+        "bthomee/consolidate",
+        "bthomee/macos",
+        "bthomee/matrix",
+        "bthomee/node_depth",
+        "ci/a1q123456-attempt-to-fix-ci",
+        "ci/a1q123456-test-ci",
+        "ci/use-new-macos-runners",
+        "ci/windows-test",
+        "copilot/convert-boost-to-std-string-view",
+        "copilot/remove-non-canonical-fields",
+        "dangell/loans",
+        "dangell/relay",
+        "dangell/smart-contracts",
+        "dangell7/canonical-tx-tests",
+        "dangell7/fix-token-escrow",
+        "dangell7/subscriptions",
+        "gregtatcam/bugs/ripd-4340",
+        "gregtatcam/lending-protocol/refactor-payment",
+        "hooks",
+        "hotfix2.5.1",
+        "legleux/linux-packages",
+        "mvadari/rearch/token-holder",
+        "mvadari/rearch/token-refactor",
+        "mvadari/rpc-framework",
+        "origin",
+        "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+        "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
+        "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
+        "pratik/openssl-3.6.0-alpha-performance-test",
+        "pratik/openssl_111_perf_test",
+        "pratik/openssl_354_test",
+        "pratik/std-coro/add-coroutine-primitives",
+        "pratik/std-coro/cleanup-boost-coroutine",
+        "pratik/std-coro/migrate-entry-points",
+        "pratik/std-coro/migrate-test-code",
+        "pratik/std-coro/tsan-fixes",
+        "q73zhao/release-2.4.0-perf-investigation",
+        "release",
+        "release-3.0",
+        "revert-5510-a1q123456/add-new-macro",
+        "ripple/smart-escrow-srlabs",
+        "ripple/smart-escrow2",
+        "ripple/wamr",
+        "ripple/wamr-host-functions",
+        "tapanito/breaking-loan",
+        "tapanito/experiment/squelch",
+        "tapanito/feature/enhanced-squelching",
+        "tapanito/feature/shutdown-handshake",
+        "tapanito/lending-fix-amendment",
+        "tapanito/lending-impairment",
+        "tapanito/lending-overpayment",
+        "tapanito/lending-partial-principle",
+        "tapanito/loan-broker-set",
+        "tapanito/refactor/peerimp-socket",
+        "tapanito/staging-fix-vault-clawback-clamp",
+        "tapanito/staging-lending-assorted-fixes",
+        "tapanito/vault-associate-assets",
+        "tapanito/vault-block-deposit",
+        "tapanito/vault-bugfixes",
+        "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
+        "tapanito/vault-share-pricing",
+        "tapanito/vault-stuck-depositor",
+        "vlntb/RIPD-2446-getNodeFat-error",
+        "vlntb/RIPD-2525-taggedcache-single-threaded",
+        "vlntb/RIPD-2536-taggedcache-expire-now",
+        "vlntb/accounts-growth-combined",
+        "vlntb/anotate-tagged-cache-sweeps",
+        "vlntb/boundaries-from-murat",
+        "vlntb/fix-peer-disconnects-ping",
+        "vlntb/inbound-ledgers-cache",
+        "vlntb/job-queue-latency",
+        "vlntb/mem-leak-ledger-history",
+        "vlntb/mem-leak-ledger-history-3",
+        "vlntb/move-taggedcache-lock-base",
+        "vlntb/number-of-sweeps",
+        "vlntb/refactore-barrier-semaphore",
+        "vlntb/remove-node-hash",
+        "vlntb/shamap-structure-tracking",
+        "vlntb/tagged-cache-stats",
+        "vlntb/taggedcache-lock-per-partition-v2",
+        "vlntb/transport-traces",
+        "ximinez/acquireAsyncDispatch",
+        "ximinez/directory",
+        "ximinez/emptydirectoryinvariant",
+        "ximinez/fix-getledger",
+        "ximinez/fix/validator-cache",
+        "ximinez/lending-XLS-66-archive",
+        "ximinez/lending-XLS-66-archive-2",
+        "ximinez/lending-number-explicit-deadend",
+        "ximinez/lending-number-fixapi",
+        "ximinez/lending-number-stnumber-deadend",
+        "ximinez/lending-rebased",
+        "ximinez/lending-sendmulti",
+        "ximinez/lending-shortages",
+        "ximinez/number-fix-maxrepcusp",
+        "ximinez/number-maxint-range",
+        "ximinez/number-perf",
+        "ximinez/online-delete-gaps",
+        "ximinez/online-delete-lastrotated",
+        "ximinez/sync-script",
+        "ximinez/test-nudb",
+        "ximinez/vault-test",
+        "zhang/groth16"
+      ],
+      "last_active": "2024-12-20T16:56:02+00:00"
+    },
+    {
       "email": "yqian@ripple.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
-      "commits": 142,
+      "name": "a1q123456/remove-const-cast-from-tagged-cache",
+      "commits": 138,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/add-verify-endpoints",
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
         "a1q123456/fix-crash-in-shamap",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-windows-runner-build-dep-speed-test",
         "a1q123456/migrate-some-tests",
@@ -107093,10 +107495,6 @@
         "dangell/relay",
         "dangell7/batch-v1",
         "dangell7/canonical-tx-tests",
-        "dangell7/docs",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow",
         "dangell7/perf-overlay-nodestore-payment-ws",
@@ -107157,7 +107555,6 @@
         "tapanito/lending-fix-amendment",
         "tapanito/lending-impairment",
         "tapanito/lending-mpt-can-transfer",
-        "tapanito/lending-overpayment",
         "tapanito/lending-partial-principle",
         "tapanito/loan-broker-set",
         "tapanito/transactor-invariant-pt2",
@@ -107165,6 +107562,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
         "vlntb/RIPD-2536-taggedcache-expire-now",
@@ -107195,155 +107593,9 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
-      "email": "brok@incorrekt.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 139,
-      "branches": [
-        "Bronek/add-build-selected-commit",
-        "a1q123456/add-verify-endpoints",
-        "a1q123456/adding-perimissioned-domain-to-lending",
-        "a1q123456/default-cover-optimisation",
-        "a1q123456/fix-crash-in-shamap",
-        "a1q123456/fix-job-queue-stop-2",
-        "a1q123456/fix-loanbrokerdelete-preclaim",
-        "a1q123456/fix-rounding-in-loan-pay",
-        "a1q123456/fix-windows-runner-build-dep-speed-test",
-        "a1q123456/modularise-jtx",
-        "a1q123456/refactor-code-generation-process",
-        "a1q123456/remove-const-cast-from-tagged-cache",
-        "a1q123456/remove-const-cast-from-tagged-cache-2",
-        "a1q123456/rust-integration",
-        "a1q123456/strongly-typed-ledger-objects",
-        "a1q123456/strongly-typed-ledger-objects-demo",
-        "a1q123456/structured-logs-support",
-        "a1q123456/structured-logs-support-performance-test",
-        "a1q123456/structured-logs-support-performance-test-2",
-        "a1q123456/structured-logs-support-performance-test-3",
-        "a1q123456/structured-logs-support-performance-test-4",
-        "a1q123456/structured-logs-support-performance-test-6",
-        "a1q123456/structured-logs-support-performance-test-7",
-        "a1q123456/structured-logs-support-performance-test-7-2",
-        "a1q123456/structured-logs-support-performance-test-final",
-        "a1q123456/support-lending-in-batch",
-        "a1q123456/test-xxhash-original-hash",
-        "a1q123456/test-xxhash-signle-shot-hash",
-        "a1q123456/use-new-macos-runners",
-        "a1q123456/windows-test",
-        "bthomee/cmake_ci",
-        "bthomee/config",
-        "bthomee/consolidate",
-        "bthomee/macos",
-        "bthomee/matrix",
-        "bthomee/node_depth",
-        "ci/a1q123456-attempt-to-fix-ci",
-        "ci/a1q123456-test-ci",
-        "ci/use-new-macos-runners",
-        "ci/windows-test",
-        "copilot/convert-boost-to-std-string-view",
-        "copilot/remove-non-canonical-fields",
-        "dangell/loans",
-        "dangell/relay",
-        "dangell/smart-contracts",
-        "dangell7/canonical-tx-tests",
-        "dangell7/docs",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
-        "dangell7/fix-token-escrow",
-        "dangell7/subscriptions",
-        "gregtatcam/bugs/ripd-4340",
-        "gregtatcam/lending-protocol/refactor-payment",
-        "hooks",
-        "hotfix2.5.1",
-        "legleux/linux-packages",
-        "mvadari/rearch/token-holder",
-        "mvadari/rearch/token-refactor",
-        "mvadari/rpc-framework",
-        "origin",
-        "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
-        "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
-        "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
-        "pratik/openssl-3.6.0-alpha-performance-test",
-        "pratik/openssl_111_perf_test",
-        "pratik/openssl_354_test",
-        "pratik/std-coro/add-coroutine-primitives",
-        "pratik/std-coro/cleanup-boost-coroutine",
-        "pratik/std-coro/migrate-entry-points",
-        "pratik/std-coro/migrate-test-code",
-        "pratik/std-coro/tsan-fixes",
-        "q73zhao/release-2.4.0-perf-investigation",
-        "release",
-        "release-3.0",
-        "revert-5510-a1q123456/add-new-macro",
-        "ripple/smart-escrow-srlabs",
-        "ripple/smart-escrow2",
-        "ripple/wamr",
-        "ripple/wamr-host-functions",
-        "tapanito/breaking-loan",
-        "tapanito/experiment/squelch",
-        "tapanito/feature/enhanced-squelching",
-        "tapanito/feature/shutdown-handshake",
-        "tapanito/lending-fix-amendment",
-        "tapanito/lending-impairment",
-        "tapanito/lending-overpayment",
-        "tapanito/loan-broker-set",
-        "tapanito/refactor/peerimp-socket",
-        "tapanito/staging-fix-vault-clawback-clamp",
-        "tapanito/staging-lending-assorted-fixes",
-        "tapanito/vault-associate-assets",
-        "tapanito/vault-block-deposit",
-        "tapanito/vault-bugfixes",
-        "tapanito/vault-donation",
-        "tapanito/vault-share-pricing",
-        "tapanito/vault-stuck-depositor",
-        "vlntb/RIPD-2446-getNodeFat-error",
-        "vlntb/RIPD-2525-taggedcache-single-threaded",
-        "vlntb/RIPD-2536-taggedcache-expire-now",
-        "vlntb/accounts-growth-combined",
-        "vlntb/anotate-tagged-cache-sweeps",
-        "vlntb/boundaries-from-murat",
-        "vlntb/fix-peer-disconnects-ping",
-        "vlntb/inbound-ledgers-cache",
-        "vlntb/job-queue-latency",
-        "vlntb/mem-leak-ledger-history",
-        "vlntb/mem-leak-ledger-history-3",
-        "vlntb/move-taggedcache-lock-base",
-        "vlntb/number-of-sweeps",
-        "vlntb/refactore-barrier-semaphore",
-        "vlntb/remove-node-hash",
-        "vlntb/shamap-structure-tracking",
-        "vlntb/tagged-cache-stats",
-        "vlntb/taggedcache-lock-per-partition-v2",
-        "vlntb/transport-traces",
-        "ximinez/acquireAsyncDispatch",
-        "ximinez/directory",
-        "ximinez/emptydirectoryinvariant",
-        "ximinez/fix-getledger",
-        "ximinez/fix/validator-cache",
-        "ximinez/lending-XLS-66-archive",
-        "ximinez/lending-XLS-66-archive-2",
-        "ximinez/lending-number-explicit-deadend",
-        "ximinez/lending-number-fixapi",
-        "ximinez/lending-number-stnumber-deadend",
-        "ximinez/lending-rebased",
-        "ximinez/lending-sendmulti",
-        "ximinez/lending-shortages",
-        "ximinez/number-fix-maxrepcusp",
-        "ximinez/number-maxint-range",
-        "ximinez/number-perf",
-        "ximinez/online-delete-gaps",
-        "ximinez/online-delete-lastrotated",
-        "ximinez/sync-script",
-        "ximinez/test-nudb",
-        "ximinez/vault-test",
-        "zhang/groth16"
-      ],
-      "last_active": "2024-12-20T16:56:02+00:00"
-    },
-    {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "pratik/otel-phase9-metric-gap-fill",
-      "commits": 134,
+      "name": "a1q123456/remove-const-cast-from-tagged-cache",
+      "commits": 131,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/add-verify-endpoints",
@@ -107351,6 +107603,7 @@
         "a1q123456/default-cover-optimisation",
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
         "a1q123456/investigate-subcribe-test",
@@ -107378,10 +107631,6 @@
         "dangell/smart-contracts",
         "dangell7/add-claude",
         "dangell7/batch-v1",
-        "dangell7/docs",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow",
         "dangell7/perf-overlay-nodestore-payment-ws",
@@ -107449,7 +107698,6 @@
         "tapanito/lending-fix-data-field",
         "tapanito/lending-impairment",
         "tapanito/lending-mpt-can-transfer",
-        "tapanito/lending-overpayment",
         "tapanito/lending-partial-principle",
         "tapanito/lending-remove-liquidation-rate",
         "tapanito/loan-broker-set",
@@ -107459,6 +107707,7 @@
         "tapanito/vault-block-deposit",
         "tapanito/vault-bugfixes",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -107482,14 +107731,15 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "dangell7/fix-token-escrow-v2",
-      "commits": 120,
+      "name": "ximinez/vault-test",
+      "commits": 121,
       "branches": [
         "a1q123456/add-verify-endpoints",
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
         "a1q123456/fix-job-queue-stop",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/fix-worker-memory-ordering-issue-on-arm",
         "a1q123456/investigate-subcribe-test",
@@ -107564,11 +107814,13 @@
         "tapanito/lending-fix-amendment",
         "tapanito/lending-impairment",
         "tapanito/lending-overpayment",
+        "tapanito/lending-partial-principle",
         "tapanito/lending-remove-liquidation-rate",
         "tapanito/loan-broker-set",
         "tapanito/vault-associate-assets",
         "tapanito/vault-block-deposit",
         "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "tapanito/vault-share-pricing",
         "tapanito/vault-stuck-depositor",
@@ -107607,12 +107859,13 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
-      "commits": 92,
+      "name": "ximinez/vault-test",
+      "commits": 91,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/add-verify-endpoints",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/spd-log-from-clio",
         "bthomee/b5",
         "bthomee/consolidate",
@@ -107670,6 +107923,7 @@
         "tapanito/unit-tests",
         "tapanito/vault-associate-assets",
         "tapanito/vault-bugfixes",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-invariant-tests",
         "vlntb/RIPD-2446-getNodeFat-error",
         "vlntb/RIPD-2525-taggedcache-single-threaded",
@@ -107701,105 +107955,9 @@
       "last_active": "2025-03-25T14:24:58+00:00"
     },
     {
-      "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
-      "commits": 90,
-      "branches": [
-        "a1q123456/add-spdlog",
-        "a1q123456/add-verify-endpoints",
-        "a1q123456/adding-perimissioned-domain-to-lending",
-        "a1q123456/default-cover-optimisation",
-        "a1q123456/refactor-code-generation-process",
-        "a1q123456/remove-const-cast-from-tagged-cache",
-        "a1q123456/spd-log-from-clio",
-        "a1q123456/support-lending-in-batch",
-        "bthomee/iops",
-        "bthomee/ripplerpc",
-        "copilot/add-augmented-submit-fields",
-        "copilot/add-ctid-to-ledger-response",
-        "copilot/apply-asfdisallowincomingtrustline",
-        "copilot/convert-boost-to-std-string-view",
-        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
-        "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
-        "copilot/fix-vetoed-type-error",
-        "copilot/refactor-replace-boost-filesystem",
-        "copilot/remove-non-canonical-fields",
-        "copilot/update-visitentry-after-parameter",
-        "dangell7/batch-v1",
-        "dangell7/docs",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
-        "dangell7/fix-pathfinder-dedup",
-        "dangell7/perf-overlay-nodestore-payment-ws",
-        "dangell7/trace",
-        "gregtatcam/mpt/assorted-fixes-dev",
-        "gregtatcam/mpt/assorted-fixes-dev-1",
-        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
-        "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
-        "mvadari/ammdeposit-blank",
-        "mvadari/constant-field-invariant",
-        "mvadari/fix-bad-cast",
-        "mvadari/fix-naming",
-        "mvadari/rearch/account",
-        "mvadari/rearch/token",
-        "mvadari/rearch/token-holder",
-        "mvadari/rearch/token-refactor",
-        "mvadari/refactor-tec-deletions",
-        "pratik/Add_checks_db_objects",
-        "pratik/AutomatedHarness",
-        "pratik/OpenTelemetry_and_DistributedTracing_planning",
-        "pratik/Retire_fixUniversalNumber_amendment",
-        "pratik/Swtich-to-std-coroutines",
-        "pratik/otel-phase1a-plan-docs",
-        "pratik/otel-phase1b-telemetry-infra",
-        "pratik/otel-phase1c-rpc-integration",
-        "pratik/otel-phase2-rpc-tracing",
-        "pratik/otel-phase5b-spans",
-        "pratik/std-coro/add-coroutine-primitives",
-        "pratik/std-coro/cleanup-boost-coroutine",
-        "pratik/std-coro/migrate-entry-points",
-        "pratik/std-coro/migrate-test-code",
-        "pratik/std-coro/tsan-fixes",
-        "pratik/test-tsan-and-gcc14-asan",
-        "release-3.2",
-        "ripple/attackathon-april-2026",
-        "ripple/confidential-devnet",
-        "ripple/se/fees",
-        "ripple/se/supported",
-        "ripple/smart-escrow",
-        "ripple/wasmi",
-        "ripple/wasmi-host-functions",
-        "tapanito/invariant-architecture",
-        "tapanito/lending-common-prefix",
-        "tapanito/lending-fix-amendment",
-        "tapanito/lending-impairment",
-        "tapanito/lending-mpt-can-transfer",
-        "tapanito/lending-overpayment",
-        "tapanito/lending-partial-principle",
-        "tapanito/loan-broker-set",
-        "tapanito/poc-vault-valuation",
-        "tapanito/transactor-invariant-pt2",
-        "tapanito/tx-restructure",
-        "tapanito/unit-tests",
-        "tapanito/vault-block-deposit",
-        "tapanito/vault-bugfixes",
-        "tapanito/vault-donation",
-        "tapanito/vault-invariant-tests",
-        "tapanito/vault-share-pricing",
-        "vlntb/boundaries-idea-from-murat",
-        "vlntb/grpc-fd-guard",
-        "vlntb/macoas-build-md-update",
-        "vvysokikh1/txq-test-amendment-resilience",
-        "ximinez/assetsmaximum-wip",
-        "xrplf/smart-contracts"
-      ],
-      "last_active": "2026-02-24T11:24:39+00:00"
-    },
-    {
       "email": "dangell@transia.co",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
-      "commits": 89,
+      "name": "release",
+      "commits": 87,
       "branches": [
         "Bronek/add-build-selected-commit",
         "a1q123456/fix-crash-in-shamap",
@@ -107892,13 +108050,107 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
-      "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "name": "a1q123456/remove-const-cast-from-tagged-cache",
       "commits": 86,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/add-verify-endpoints",
+        "a1q123456/adding-perimissioned-domain-to-lending",
+        "a1q123456/default-cover-optimisation",
+        "a1q123456/fix-numeric-overflow",
+        "a1q123456/refactor-code-generation-process",
+        "a1q123456/remove-const-cast-from-tagged-cache",
+        "a1q123456/spd-log-from-clio",
+        "a1q123456/support-lending-in-batch",
+        "bthomee/iops",
+        "bthomee/ripplerpc",
+        "copilot/add-augmented-submit-fields",
+        "copilot/add-ctid-to-ledger-response",
+        "copilot/apply-asfdisallowincomingtrustline",
+        "copilot/convert-boost-to-std-string-view",
+        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+        "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
+        "copilot/fix-vetoed-type-error",
+        "copilot/refactor-replace-boost-filesystem",
+        "copilot/remove-non-canonical-fields",
+        "copilot/update-visitentry-after-parameter",
+        "dangell7/batch-v1",
+        "dangell7/fix-pathfinder-dedup",
+        "dangell7/perf-overlay-nodestore-payment-ws",
+        "dangell7/trace",
+        "gregtatcam/mpt/assorted-fixes-dev",
+        "gregtatcam/mpt/assorted-fixes-dev-1",
+        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
+        "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
+        "mvadari/ammdeposit-blank",
+        "mvadari/constant-field-invariant",
+        "mvadari/fix-bad-cast",
+        "mvadari/fix-naming",
+        "mvadari/rearch/account",
+        "mvadari/rearch/token",
+        "mvadari/rearch/token-holder",
+        "mvadari/rearch/token-refactor",
+        "mvadari/refactor-tec-deletions",
+        "pratik/Add_checks_db_objects",
+        "pratik/AutomatedHarness",
+        "pratik/OpenTelemetry_and_DistributedTracing_planning",
+        "pratik/Retire_fixUniversalNumber_amendment",
+        "pratik/Swtich-to-std-coroutines",
+        "pratik/otel-phase1a-plan-docs",
+        "pratik/otel-phase1b-telemetry-infra",
+        "pratik/otel-phase1c-rpc-integration",
+        "pratik/otel-phase2-rpc-tracing",
+        "pratik/otel-phase5b-spans",
+        "pratik/std-coro/add-coroutine-primitives",
+        "pratik/std-coro/cleanup-boost-coroutine",
+        "pratik/std-coro/migrate-entry-points",
+        "pratik/std-coro/migrate-test-code",
+        "pratik/std-coro/tsan-fixes",
+        "pratik/test-tsan-and-gcc14-asan",
+        "release-3.2",
+        "ripple/attackathon-april-2026",
+        "ripple/confidential-devnet",
+        "ripple/se/fees",
+        "ripple/se/supported",
+        "ripple/smart-escrow",
+        "ripple/wasmi",
+        "ripple/wasmi-host-functions",
+        "tapanito/invariant-architecture",
+        "tapanito/lending-common-prefix",
+        "tapanito/lending-fix-amendment",
+        "tapanito/lending-impairment",
+        "tapanito/lending-mpt-can-transfer",
+        "tapanito/lending-partial-principle",
+        "tapanito/loan-broker-set",
+        "tapanito/poc-vault-valuation",
+        "tapanito/transactor-invariant-pt2",
+        "tapanito/tx-restructure",
+        "tapanito/unit-tests",
+        "tapanito/vault-block-deposit",
+        "tapanito/vault-bugfixes",
+        "tapanito/vault-donation",
+        "tapanito/vault-invariant-bugfix",
+        "tapanito/vault-invariant-tests",
+        "tapanito/vault-share-pricing",
+        "vlntb/boundaries-idea-from-murat",
+        "vlntb/grpc-fd-guard",
+        "vlntb/macoas-build-md-update",
+        "vvysokikh1/txq-test-amendment-resilience",
+        "ximinez/assetsmaximum-wip",
+        "xrplf/smart-contracts"
+      ],
+      "last_active": "2026-02-24T11:24:39+00:00"
+    },
+    {
+      "email": "96991820+Kassaking7@users.noreply.github.com",
+      "name": "ximinez/vault-test",
+      "commits": 85,
+      "branches": [
+        "a1q123456/add-spdlog",
+        "a1q123456/add-verify-endpoints",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/spd-log-from-clio",
         "bthomee/b5",
@@ -107959,6 +108211,7 @@
         "tapanito/transactor-invariant-pt2",
         "tapanito/unit-tests",
         "tapanito/vault-associate-assets",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-stuck-depositor",
         "vlntb/boundaries-idea-from-murat",
         "vlntb/macoas-build-md-update",
@@ -107982,7 +108235,7 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
+      "name": "a1q123456/remove-const-cast-from-tagged-cache",
       "commits": 78,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -108067,75 +108320,8 @@
       "last_active": "2025-02-20T17:23:27+00:00"
     },
     {
-      "email": "gregtatcam@users.noreply.github.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
-      "commits": 61,
-      "branches": [
-        "a1q123456/add-spdlog",
-        "a1q123456/add-verify-endpoints",
-        "a1q123456/migrate-some-tests",
-        "a1q123456/spd-log-from-clio",
-        "a1q123456/test-blake3",
-        "a1q123456/windows-test",
-        "ci/windows-test",
-        "copilot/apply-asfdisallowincomingtrustline",
-        "copilot/update-visitentry-after-parameter",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
-        "dangell7/fix-pathfinder-dedup",
-        "dangell7/perf-overlay-nodestore-payment-ws",
-        "dangell7/trace",
-        "gregtatcam/lending-protocol/refactor-payment",
-        "gregtatcam/mpt/assorted-fixes-dev",
-        "gregtatcam/mpt/assorted-fixes-dev-1",
-        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
-        "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
-        "hooks",
-        "hotfix2.5.1",
-        "mvadari/constant-field-invariant",
-        "mvadari/fix-bad-cast",
-        "mvadari/fix-naming",
-        "mvadari/rearch/account",
-        "mvadari/rearch/token",
-        "mvadari/refactor-tec-deletions",
-        "pratik/Retire_fixUniversalNumber_amendment",
-        "pratik/Swtich-to-std-coroutines",
-        "pratik/otel-phase1a-plan-docs",
-        "pratik/otel-phase1b-telemetry-infra",
-        "pratik/otel-phase1c-rpc-integration",
-        "pratik/otel-phase2-rpc-tracing",
-        "pratik/test-tsan-and-gcc14-asan",
-        "release-3.2",
-        "ripple/attackathon-april-2026",
-        "ripple/se/fees",
-        "ripple/se/supported",
-        "ripple/smart-escrow",
-        "ripple/wasmi",
-        "ripple/wasmi-host-functions",
-        "ripple/wasmi-host-functions-getNFT-cost",
-        "ripple/wasmi-host-functions-warning-msg",
-        "tapanito/lending-common-prefix",
-        "tapanito/lending-mpt-can-transfer",
-        "tapanito/lending-overpayment",
-        "tapanito/lending-partial-principle",
-        "tapanito/transactor-invariant-pt2",
-        "tapanito/unit-tests",
-        "vlntb/RIPD-4257-fix-tecFROZEN",
-        "vlntb/accounts-growth-combined",
-        "vlntb/boundaries-idea-from-murat",
-        "vlntb/inbound-ledgers-cache",
-        "vlntb/lock-contention-analysis",
-        "vlntb/macoas-build-md-update",
-        "vvysokikh1/txq-test-amendment-resilience",
-        "ximinez/lending-rebased"
-      ],
-      "last_active": "2024-12-20T16:56:02+00:00"
-    },
-    {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "ci/a1q123456-test-ci",
+      "name": "tapanito/breaking-loan",
       "commits": 59,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -108201,8 +108387,73 @@
       "last_active": "2025-02-20T17:23:27+00:00"
     },
     {
+      "email": "gregtatcam@users.noreply.github.com",
+      "name": "vlntb/boundaries-idea-from-murat",
+      "commits": 58,
+      "branches": [
+        "a1q123456/add-spdlog",
+        "a1q123456/add-verify-endpoints",
+        "a1q123456/fix-numeric-overflow",
+        "a1q123456/migrate-some-tests",
+        "a1q123456/spd-log-from-clio",
+        "a1q123456/test-blake3",
+        "a1q123456/windows-test",
+        "ci/windows-test",
+        "copilot/apply-asfdisallowincomingtrustline",
+        "copilot/update-visitentry-after-parameter",
+        "dangell7/fix-pathfinder-dedup",
+        "dangell7/perf-overlay-nodestore-payment-ws",
+        "dangell7/trace",
+        "gregtatcam/lending-protocol/refactor-payment",
+        "gregtatcam/mpt/assorted-fixes-dev",
+        "gregtatcam/mpt/assorted-fixes-dev-1",
+        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
+        "gregtatcam/mpt/fix-stissue-serialization",
+        "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
+        "hooks",
+        "hotfix2.5.1",
+        "mvadari/constant-field-invariant",
+        "mvadari/fix-bad-cast",
+        "mvadari/fix-naming",
+        "mvadari/rearch/account",
+        "mvadari/rearch/token",
+        "mvadari/refactor-tec-deletions",
+        "pratik/Retire_fixUniversalNumber_amendment",
+        "pratik/Swtich-to-std-coroutines",
+        "pratik/otel-phase1a-plan-docs",
+        "pratik/otel-phase1b-telemetry-infra",
+        "pratik/otel-phase1c-rpc-integration",
+        "pratik/otel-phase2-rpc-tracing",
+        "pratik/test-tsan-and-gcc14-asan",
+        "release-3.2",
+        "ripple/attackathon-april-2026",
+        "ripple/se/fees",
+        "ripple/se/supported",
+        "ripple/smart-escrow",
+        "ripple/wasmi",
+        "ripple/wasmi-host-functions",
+        "ripple/wasmi-host-functions-getNFT-cost",
+        "ripple/wasmi-host-functions-warning-msg",
+        "tapanito/lending-common-prefix",
+        "tapanito/lending-mpt-can-transfer",
+        "tapanito/lending-partial-principle",
+        "tapanito/transactor-invariant-pt2",
+        "tapanito/unit-tests",
+        "tapanito/vault-invariant-bugfix",
+        "vlntb/RIPD-4257-fix-tecFROZEN",
+        "vlntb/accounts-growth-combined",
+        "vlntb/boundaries-idea-from-murat",
+        "vlntb/inbound-ledgers-cache",
+        "vlntb/lock-contention-analysis",
+        "vlntb/macoas-build-md-update",
+        "vvysokikh1/txq-test-amendment-resilience",
+        "ximinez/lending-rebased"
+      ],
+      "last_active": "2024-12-20T16:56:02+00:00"
+    },
+    {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "pratik/std-coro/cleanup-boost-coroutine",
+      "name": "copilot/apply-asfdisallowincomingtrustline",
       "commits": 57,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -108267,7 +108518,7 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "ci/a1q123456-test-ci",
+      "name": "tapanito/breaking-loan",
       "commits": 55,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -108330,7 +108581,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "ci/a1q123456-test-ci",
+      "name": "dangell7/canonical-tx-tests",
       "commits": 47,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -108385,21 +108636,18 @@
     },
     {
       "email": "71317875+pdp2121@users.noreply.github.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
-      "commits": 44,
+      "name": "vlntb/boundaries-idea-from-murat",
+      "commits": 40,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/add-verify-endpoints",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/spd-log-from-clio",
         "bthomee/config",
         "bthomee/node_depth",
         "copilot/refactor-replace-boost-filesystem",
         "copilot/update-visitentry-after-parameter",
-        "dangell7/docs",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow",
         "dangell7/perf-overlay-nodestore-payment-ws",
@@ -108423,10 +108671,10 @@
         "ripple/wasmi",
         "tapanito/lending-common-prefix",
         "tapanito/lending-mpt-can-transfer",
-        "tapanito/lending-overpayment",
         "tapanito/lending-partial-principle",
         "tapanito/transactor-invariant-pt2",
         "tapanito/unit-tests",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-stuck-depositor",
         "vlntb/boundaries-idea-from-murat",
         "vvysokikh1/txq-test-amendment-resilience"
@@ -108435,19 +108683,16 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "pratik/test-tsan-and-gcc14-asan",
-      "commits": 43,
+      "name": "vlntb/boundaries-idea-from-murat",
+      "commits": 39,
       "branches": [
         "a1q123456/add-spdlog",
         "a1q123456/add-verify-endpoints",
+        "a1q123456/fix-numeric-overflow",
         "a1q123456/fix-rounding-in-loan-pay",
         "a1q123456/spd-log-from-clio",
         "copilot/refactor-replace-boost-filesystem",
         "copilot/update-visitentry-after-parameter",
-        "dangell7/docs",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/perf-overlay-nodestore-payment-ws",
         "dangell7/trace",
@@ -108471,10 +108716,10 @@
         "ripple/wasmi",
         "tapanito/lending-common-prefix",
         "tapanito/lending-mpt-can-transfer",
-        "tapanito/lending-overpayment",
         "tapanito/lending-partial-principle",
         "tapanito/transactor-invariant-pt2",
         "tapanito/unit-tests",
+        "tapanito/vault-invariant-bugfix",
         "tapanito/vault-stuck-depositor",
         "vlntb/boundaries-idea-from-murat",
         "vlntb/macoas-build-md-update",
@@ -108484,11 +108729,12 @@
     },
     {
       "email": "rmanukyan@ripple.com",
-      "name": "origin",
-      "commits": 35,
+      "name": "ximinez/vault-test",
+      "commits": 36,
       "branches": [
         "a1q123456/add-verify-endpoints",
         "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
         "bthomee/b5",
         "bthomee/consolidate",
         "dangell7/docs",
@@ -108504,7 +108750,9 @@
         "release-3.1",
         "staging/320",
         "tapanito/lending-overpayment",
+        "tapanito/lending-partial-principle",
         "tapanito/vault-associate-assets",
+        "tapanito/vault-invariant-bugfix",
         "ximinez/acquireAsyncDispatch",
         "ximinez/directory",
         "ximinez/emptydirectoryinvariant",
@@ -108524,7 +108772,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "tapanito/staging-fix-vault-clawback-clamp",
+      "name": "mvadari/fix-bad-cast",
       "commits": 31,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -108599,43 +108847,8 @@
       "last_active": "2025-08-07T21:04:07+00:00"
     },
     {
-      "email": "109047316+xVet@users.noreply.github.com",
-      "name": "copilot/update-visitentry-after-parameter",
-      "commits": 28,
-      "branches": [
-        "a1q123456/add-verify-endpoints",
-        "a1q123456/fix-loanbrokerdelete-preclaim",
-        "a1q123456/fix-rounding-in-loan-pay",
-        "a1q123456/spd-log-from-clio",
-        "bthomee/config",
-        "bthomee/node_depth",
-        "copilot/refactor-replace-boost-filesystem",
-        "copilot/update-visitentry-after-parameter",
-        "dangell7/docs",
-        "dangell7/docs-full",
-        "dangell7/docs-infra",
-        "dangell7/docs-test",
-        "dangell7/fix-token-escrow",
-        "mvadari/constant-field-invariant",
-        "tapanito/lending-mpt-can-transfer",
-        "tapanito/lending-overpayment",
-        "tapanito/vault-associate-assets",
-        "tapanito/vault-stuck-depositor",
-        "ximinez/directory",
-        "ximinez/emptydirectoryinvariant",
-        "ximinez/lending-sendmulti",
-        "ximinez/lending-shortages",
-        "ximinez/number-maxint-range",
-        "ximinez/number-perf",
-        "ximinez/online-delete-lastrotated",
-        "ximinez/sync-script",
-        "ximinez/vault-test"
-      ],
-      "last_active": "2026-05-06T16:42:38+00:00"
-    },
-    {
       "email": "github.public@intelliot.com",
-      "name": "a1q123456/structured-logs-support-performance-test-2",
+      "name": "dangell7/canonical-tx-tests",
       "commits": 26,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -108666,6 +108879,39 @@
         "ximinez/test-nudb"
       ],
       "last_active": "2024-12-20T16:56:02+00:00"
+    },
+    {
+      "email": "109047316+xVet@users.noreply.github.com",
+      "name": "tapanito/lending-mpt-can-transfer",
+      "commits": 25,
+      "branches": [
+        "a1q123456/add-verify-endpoints",
+        "a1q123456/fix-loanbrokerdelete-preclaim",
+        "a1q123456/fix-numeric-overflow",
+        "a1q123456/fix-rounding-in-loan-pay",
+        "a1q123456/spd-log-from-clio",
+        "bthomee/config",
+        "bthomee/node_depth",
+        "copilot/refactor-replace-boost-filesystem",
+        "copilot/update-visitentry-after-parameter",
+        "dangell7/fix-token-escrow",
+        "mvadari/constant-field-invariant",
+        "tapanito/lending-mpt-can-transfer",
+        "tapanito/lending-partial-principle",
+        "tapanito/vault-associate-assets",
+        "tapanito/vault-invariant-bugfix",
+        "tapanito/vault-stuck-depositor",
+        "ximinez/directory",
+        "ximinez/emptydirectoryinvariant",
+        "ximinez/lending-sendmulti",
+        "ximinez/lending-shortages",
+        "ximinez/number-maxint-range",
+        "ximinez/number-perf",
+        "ximinez/online-delete-lastrotated",
+        "ximinez/sync-script",
+        "ximinez/vault-test"
+      ],
+      "last_active": "2026-05-06T16:42:38+00:00"
     },
     {
       "email": "hustrust@outlook.com",
@@ -108699,10 +108945,11 @@
     },
     {
       "email": "lmaisons@ripple.com",
-      "name": "dangell7/docs-full",
+      "name": "dangell7/docs",
       "commits": 21,
       "branches": [
         "a1q123456/add-verify-endpoints",
+        "a1q123456/fix-numeric-overflow",
         "bthomee/b5",
         "bthomee/consolidate",
         "dangell7/docs",
@@ -108715,6 +108962,7 @@
         "origin",
         "staging/320",
         "tapanito/lending-overpayment",
+        "tapanito/lending-partial-principle",
         "ximinez/acquireAsyncDispatch",
         "ximinez/fix-getledger",
         "ximinez/fix/validator-cache",
@@ -108725,7 +108973,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "copilot/sub-pr-5439",
       "commits": 21,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -108754,7 +109002,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "copilot/sub-pr-5439",
       "commits": 20,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -108782,7 +109030,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "copilot/sub-pr-5439",
       "commits": 19,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -108809,7 +109057,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "vlntb/RIPD-4257-fix-tecFROZEN",
       "commits": 19,
       "branches": [
         "a1q123456/fix-job-queue-stop",
@@ -108836,7 +109084,7 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "ci/a1q123456-test-ci",
+      "name": "tapanito/breaking-loan",
       "commits": 19,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -108863,7 +109111,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "a1q123456/modularise-jtx",
+      "name": "tapanito/staging-lending-assorted-fixes",
       "commits": 18,
       "branches": [
         "a1q123456/modularise-jtx",
@@ -108889,7 +109137,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "a1q123456/structured-logs-support-performance-test-7",
+      "name": "a1q123456/structured-logs-support-performance-test-final",
       "commits": 17,
       "branches": [
         "Bronek/add-build-selected-commit",
@@ -108914,7 +109162,7 @@
     },
     {
       "email": "11445373+bthomee@users.noreply.github.com",
-      "name": "ci/a1q123456-test-ci",
+      "name": "release-3.1",
       "commits": 15,
       "branches": [
         "bthomee/b5",
@@ -108937,7 +109185,7 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "mvadari/ammdeposit-blank",
+      "name": "tapanito/poc-vault-valuation",
       "commits": 15,
       "branches": [
         "bthomee/ripplerpc",
@@ -108960,7 +109208,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
+      "name": "tapanito/poc-vault-valuation",
       "commits": 13,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -108981,7 +109229,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "legleux/art_upload",
+      "name": "ximinez/number_asan",
       "commits": 13,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -109002,7 +109250,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "ci/windows-test",
+      "name": "hotfix2.5.1",
       "commits": 13,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -109023,7 +109271,7 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "pratik/std-coro/add-coroutine-primitives",
       "commits": 12,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -109043,7 +109291,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "ripple/wamr-host-functions",
+      "name": "ripple/wamr",
       "commits": 11,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -109062,7 +109310,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "tapanito/breaking-loan",
+      "name": "release-3.1",
       "commits": 10,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -109080,7 +109328,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "ripple/wamr-host-functions",
+      "name": "ripple/wamr",
       "commits": 10,
       "branches": [
         "pratik/Remove-fixRemoveNFTokenAutoTrustLine-amendment",
@@ -109098,7 +109346,7 @@
     },
     {
       "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "mvadari/ammdeposit-blank",
+      "name": "tapanito/poc-vault-valuation",
       "commits": 9,
       "branches": [
         "bthomee/ripplerpc",
@@ -109115,7 +109363,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "dangell7/subscriptions",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -109132,7 +109380,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "dangell7/subscriptions",
       "commits": 9,
       "branches": [
         "a1q123456/fix-crash-in-shamap",
@@ -109149,7 +109397,7 @@
     },
     {
       "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/mpt/fix-stissue-serialization",
+      "name": "gregtatcam/lending-protocol/refactor-payment",
       "commits": 8,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -109165,7 +109413,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "a1q123456/test-xxhash-original-hash",
+      "name": "vlntb/job-queue-latency",
       "commits": 8,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -109196,7 +109444,7 @@
     },
     {
       "email": "zinger777@gmail.com",
-      "name": "release-3.0",
+      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
       "commits": 6,
       "branches": [
         "a1q123456/fix-windows-runner-build-dep-speed-test",
@@ -109224,7 +109472,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "ci/windows-test",
+      "name": "hotfix2.5.1",
       "commits": 5,
       "branches": [
         "a1q123456/windows-test",
@@ -109237,7 +109485,7 @@
     },
     {
       "email": "brettmollin@users.noreply.github.com",
-      "name": "a1q123456/test-xxhash-original-hash",
+      "name": "a1q123456/test-xxhash-signle-shot-hash",
       "commits": 5,
       "branches": [
         "a1q123456/test-xxhash-original-hash",
@@ -109250,7 +109498,7 @@
     },
     {
       "email": "120398799+cindyyan317@users.noreply.github.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/transport-traces",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -109263,7 +109511,7 @@
     },
     {
       "email": "pwang200@gmail.com",
-      "name": "ripple/wasmi-host-functions-warning-msg",
+      "name": "ripple/wasmi-host-functions-getNFT-cost",
       "commits": 4,
       "branches": [
         "ripple/smart-escrow-srlabs",
@@ -109275,7 +109523,7 @@
     },
     {
       "email": "354723+pwang200@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions-warning-msg",
+      "name": "ripple/smart-escrow-srlabs",
       "commits": 4,
       "branches": [
         "ripple/smart-escrow-srlabs",
@@ -109287,7 +109535,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
@@ -109298,7 +109546,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 3,
       "branches": [
         "q73zhao/release-2.4.0-perf-investigation",
