@@ -1,5 +1,65 @@
 [
   {
+    "pr_number": 7120,
+    "branch_name": "refactor/clang-tidy-rename-statics",
+    "title": "refactor: Rename static constants",
+    "body": "## High Level Overview of Change\r\n\r\nIn #6571 we merged clang-tidy's `readability-identifier-naming` check but used `kALL_CAPS` for statics and global constants. This style did not receive too much love and `kCamelCase` is here to replace it.\n\nOther than the renames this PR also reorders 'static constexpr Type' and adds static to missing constexpr constants that can be made static. \r\n\r\n### API Impact\r\n\r\nNo impact.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-12T01:10:27Z",
+    "merged_at": "2026-05-15T15:58:29Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 6,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7120?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `92.89617%` with `78 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`028f0cb`](https://app.codecov.io/gh/XRPLF/rippled/commit/028f0cb5da67175cb7ae9cf632502fe27d94525e?dropdown=coverage&el=desc&utm_medium=re",
+        "created_at": "2026-05-12T01:50:54Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-12T20:01:27Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-14T01:47:42Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "> While we're doing this, let's also unify the order in which we declare `static`, `constexpr` and type or `auto` to be: `static constexpr type|auto`\r\n> \r\n> It's easy to fix via replace, I suppose, and touches exactly the same lines, so better be done here.\r\n\r\nI initially thought this would be a separate PR later but i agree we may as well do it here.",
+        "created_at": "2026-05-14T17:33:11Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-15T14:23:34Z"
+      }
+    ],
+    "reviews_count": 14,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": "While we're doing this, let's also unify the order in which we declare `static`, `constexpr` and type or `auto` to be: `static constexpr type|auto`\n\nIt's easy to fix via replace, I suppose, and touche"
+      },
+      {
+        "user": "ximinez",
+        "state": "DISMISSED",
+        "body": "I used Copilot to help find changes that aren't just renames, and it found these. "
+      },
+      {
+        "user": "ximinez",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7276,
     "branch_name": "add_amm_pseudo_account_with_confidential_transfer",
     "title": "add amm pseudo account test with confidential Transfer",
@@ -1904,64 +1964,6 @@
       {
         "user": "bthomee",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6999,
-    "branch_name": "ct-extensive-tests-clean",
-    "title": "Add ZKP and ciphertext malleability tests",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be bac",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-22T21:29:55Z",
-    "merged_at": "2026-04-28T15:25:41Z",
-    "labels": [],
-    "comments_count": 7,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6999?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`b038662`](https://app.codecov.io/gh/XRPLF/rippled/commit/b0386622cad367da19620a179bbef9429d0ba11a?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-04-22T22:45:27Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-23T03:34:20Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-23T03:57:14Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-23T16:24:40Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-24T15:11:06Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "PeterChen13579",
-        "state": "CHANGES_REQUESTED",
-        "body": "A couple of minor things"
-      },
-      {
-        "user": "PeterChen13579",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
