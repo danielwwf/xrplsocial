@@ -1,5 +1,66 @@
 [
   {
+    "pr_number": 6848,
+    "branch_name": "fix/default-peering-stanza-2459",
+    "title": "fix: Set default peering port to 2459",
+    "body": "only leave the correct default in place 2459 and not 51235 \r\n\r\nforce the default port, the backwards compatibility is still present  higher up in the config default file. This just forces lazy operators across.\r\n\r\ndefault port was giving back in 2019 https://github.com/XRPLF/rippled/issues/3037\r\n\r\nthe definition is still provided higher up in the file \r\n\r\n```\r\n#   One address or domain name per line is allowed. A port may be specified\r\n#   after adding a space to the address. If a port is not specified, the default\r\n#   port of 2459 will be used. Many servers still use the legacy port of 51235.\r\n#   To connect to such servers, you must specify the port number. The ordering\r\n#   of entries does not generally matter.\r\n```\r\n\r\nfixes issue https://github.com/XRPLF/rippled/issues/6847",
+    "user": "shortthefomo",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-10T01:25:52Z",
+    "merged_at": "2026-05-19T06:41:40Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 8,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
+        "created_at": "2026-04-10T01:26:07Z"
+      },
+      {
+        "user": "legleux",
+        "body": "This is long overdue.",
+        "created_at": "2026-04-10T03:05:22Z"
+      },
+      {
+        "user": "legleux",
+        "body": "@bthomee how do you feel about the convention of leaving default items in config files commented out?",
+        "created_at": "2026-04-10T19:46:58Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "> @bthomee how do you feel about the convention of leaving default items in config files commented out?\r\n\r\nThat sounds reasonable to me, in principle. However, do we have any mechanism in place to guarantee that the values we *think* are the default (as stated in the config file) are actually the default (as executed by the code)?",
+        "created_at": "2026-04-14T22:16:25Z"
+      },
+      {
+        "user": "shortthefomo",
+        "body": "> That sounds reasonable to me, in principle. However, do we have any mechanism in place to guarantee that the values we _think_ are the default (as stated in the config file) are actually the default (as executed by the code)?\r\n\r\nThe [port_peer] section is purely user-configured \u2014 there's no fallback to DEFAULT_PEER_PORT if [port] is omitted (it would just fail to parse). The 2459 default only kicks in for [ips]/[ips_fixed] entries and the connect RPC when no port is specified.\r\n\r\nBy that view ",
+        "created_at": "2026-04-17T03:09:47Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "legleux",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nUpdates the example xrpld configuration to use the IANA-registered XRPL peering port (2459) as the default listening port, aligning the sample config with current network exp"
+      }
+    ]
+  },
+  {
     "pr_number": 7279,
     "branch_name": "ct-delegate-batch",
     "title": "Add Batch + Delegation + Confidential tests",
