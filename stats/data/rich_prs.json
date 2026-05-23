@@ -1306,41 +1306,5 @@
         "body": ""
       }
     ]
-  },
-  {
-    "pr_number": 7096,
-    "branch_name": "cleanup_tidy_config",
-    "title": "style: Make .clang-tidy style a bit more consistent with Clio",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThe diff with Clio becomes more clear and it's quite evident we haven't forgotten any checks here or there:\r\n\r\n```diff\r\n140d139\r\n<   readability-inconsistent-declaration-parameter-name,\r\n152d150\r\n<   readability-static-accessed-through-instance,\r\n156a155,158\r\n> # ---\r\n> # readability-inconsistent-declaration-parameter-name, # in this codebase this check will break a lot of arg names\r\n> # readability-static-accessed-through-instance,        # this check is probably unnecessary. it makes the code less readable\r\n> # ---\r\n162c164\r\n<   misc-include-cleaner.IgnoreHeaders: '.*/(detail|impl)/.*;.*(expected|unexpected).*;.*ranges_lower_bound\\.h;time.h;stdlib.h;__chrono/.*;fmt/chrono.h;boost/uuid/uuid_hash.hpp'\r\n---\r\n>   misc-include-cleaner.IgnoreHeaders: \".*/(detail|impl)/.*;.*fwd\\\\.h(pp)?;time.h;stdlib.h;sqlite3.h;netinet/in\\\\.h;sys/resource\\\\.h;sys/sysinfo\\\\.h;linux/sysinfo\\\\.h;__chrono/.*;bits/.*;_abort\\\\.h;boost/uuid/uuid_hash.hpp;boost/beast/core/flat_buffer\\\\.hpp;boost/beast/http/field\\\\.hpp;boost/beast/http/dynamic_body\\\\.hpp;boost/beast/http/message\\\\.hpp;boost/beast/http/read\\\\.hpp;boost/beast/http/write\\\\.hpp;openssl/obj_mac\\\\.h\"\r\n197c199\r\n<   readability-identifier-naming.FunctionIgnoredRegexp: \".*tag_invoke.*\"\r\n---\r\n>   readability-identifier-naming.GlobalFunctionIgnoredRegexp: \"^(to_string|hash_append|tuple_hash)$\"\r\n199c201,202\r\n< HeaderFilterR",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-07T16:38:45Z",
-    "merged_at": "2026-05-07T17:41:15Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7096?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`af89854`](https://app.codecov.io/gh/XRPLF/rippled/commit/af89854a4367942d258006d739a3cb7be749cd63?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-07T16:56:04Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nUpdates the repository\u2019s `.clang-tidy` configuration to better align its style/organization with Clio, without changing the effective set of configured options.\n\n**Changes:**"
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
   }
 ]
