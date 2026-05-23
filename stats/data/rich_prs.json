@@ -169,6 +169,116 @@
     ]
   },
   {
+    "pr_number": 7118,
+    "branch_name": "fix-domain-invar",
+    "title": "fix: Update pDEX invariant firing under a valid offer deletion",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n`ValidPermissionedDEX` incorrectly fired `tecINVARIANT_FAILED` when a domain `OfferCreate` (with `sfDomainID`) used `sfOfferSequence` to atomically cancel the submitter's existing regular (non-domain) offer. Fixed behind the existing `fixCleanup3_2_0` amendment.\r\n\r\n\r\nIn `ApplyStateTable::visit`, an `Action::erase` still passes the stored SLE as `after` (non-null). `visitEntry` flagged any non-domain `ltOFFER` in `after` as a \"regular offer\", so deleting one set `regularOffers_ = true`, causing the invariant to reject the transaction.\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  *",
+    "user": "shawnxie999",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-11T20:59:49Z",
+    "merged_at": "2026-05-20T22:24:39Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7118?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`93ac1aa`](https://app.codecov.io/gh/XRPLF/rippled/commit/93ac1aa7aa23f801b0840a87804a6d755c944623?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-11T21:24:20Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-13T10:06:47Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-20T16:18:13Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "@PeterChen13579 @shawnxie999 is this ready to merge?",
+        "created_at": "2026-05-20T21:05:03Z"
+      }
+    ],
+    "reviews_count": 5,
+    "reviews": [
+      {
+        "user": "yinyiqian1",
+        "state": "APPROVED",
+        "body": "LGTM"
+      },
+      {
+        "user": "Kassaking7",
+        "state": "APPROVED",
+        "body": "LGTM"
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": "Please resolve the conflicts, and let me know if this PR is ready to merge."
+      }
+    ]
+  },
+  {
+    "pr_number": 7064,
+    "branch_name": "fix-perm-multisign",
+    "title": "fix: Fix multisign and signfor to check for delegate",
+    "body": "In multisign and signfor operations, an account is not permitted to sign its own transaction. \r\nSimilarly, in a delegation transaction, the `sfDelegate` cannot sign the transaction it is submitting on behalf of another account.\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-01T18:02:09Z",
+    "merged_at": "2026-05-20T21:01:32Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7064?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`93ac1aa`](https://app.codecov.io/gh/XRPLF/rippled/commit/93ac1aa7aa23f801b0840a87804a6d755c944623?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-01T18:30:17Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-03T11:09:58Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "We recently merged a refactor to `develop` that enables clang-tidy's `readability-identifier-naming`. Your branch now has heavy conflicts that are largely mechanical. Below is a workflow that aligns your branch's naming with develop _before_ merging, which should minimize the merge conflicts.\n\n## One-time setup\n\nIf you don't already have clang-tidy working in your env, on macOS:\n\n```bash\nbrew install llvm@21\n# Follow brew's hint to put $(brew --prefix llvm@21)/bin on PATH so run-clang-tidy is fo",
+        "created_at": "2026-05-04T14:23:02Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-07T18:27:52Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "PeterChen13579",
+        "state": "CHANGES_REQUESTED",
+        "body": "Minor comments"
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "APPROVED",
+        "body": "\ud83d\udc4d "
+      }
+    ]
+  },
+  {
     "pr_number": 7293,
     "branch_name": "run_reusable_package_pub",
     "title": "ci: Only run reusable package in public repos",
@@ -446,6 +556,64 @@
     ]
   },
   {
+    "pr_number": 7016,
+    "branch_name": "313_fixes",
+    "title": "fix: Backport Permissioned Domains fixes",
+    "body": "## High Level Overview of Change\r\n\r\nSome fixes for Permissioned Domains that where applied to staging-3.1.3 but not present in develop\r\n",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-24T15:03:27Z",
+    "merged_at": "2026-05-13T19:46:21Z",
+    "labels": [],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7016?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`551f3c3`](https://app.codecov.io/gh/XRPLF/rippled/commit/551f3c3b9622e6d8afb49ed1afe44b490bd55d16?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-04-24T15:21:44Z"
+      },
+      {
+        "user": "vlntb",
+        "body": "Worth calling out in the PR description that withFix_ and withFeature_ were identical before this change \u2014 that's the actual substantive fix here.",
+        "created_at": "2026-05-01T15:10:25Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-03T11:09:44Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "We recently merged a refactor to `develop` that enables clang-tidy's `readability-identifier-naming`. Your branch now has heavy conflicts that are largely mechanical. Below is a workflow that aligns your branch's naming with develop _before_ merging, which should minimize the merge conflicts.\n\n## One-time setup\n\nIf you don't already have clang-tidy working in your env, on macOS:\n\n```bash\nbrew install llvm@21\n# Follow brew's hint to put $(brew --prefix llvm@21)/bin on PATH so run-clang-tidy is fo",
+        "created_at": "2026-05-04T14:23:45Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-05T16:56:52Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "vlntb",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7104,
     "branch_name": "Move_unhex",
     "title": "refactor: Move unhex lookup table out of function",
@@ -688,6 +856,41 @@
       {
         "user": "vlntb",
         "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7129,
+    "branch_name": "pd_sequ_pdev",
+    "title": "fix: Use transaction sequence numbers in permissioned domains",
+    "body": "Use transaction proxy sequence number in permissioned domains",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-12T16:44:17Z",
+    "merged_at": "2026-05-12T21:41:20Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7129?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`aa55392`](https://app.codecov.io/gh/XRPLF/rippled/commit/aa553924530a62ba9511ff332031aa035a314647?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-12T17:04:07Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
         "body": ""
       }
     ]
