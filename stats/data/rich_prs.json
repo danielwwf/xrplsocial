@@ -1,5 +1,50 @@
 [
   {
+    "pr_number": 7308,
+    "branch_name": "nix_immrovements",
+    "title": "ci: Add clang to nix images",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nThis:\r\n- renames hardcoded versions to make updates easier and naming consistent\r\n- adds clang\r\n- makes it work with asan/ubsan/tsan\r\n- supports multi-arch images\r\n- tests both compilers work with sanitizers and produce expected errors\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new field",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-21T16:42:25Z",
+    "merged_at": "2026-05-26T16:18:26Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7308?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`3547a93`](https://app.codecov.io/gh/XRPLF/rippled/commit/3547a9335f148fa85c0e23831612fb3f872e9b04?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-21T21:37:30Z"
+      },
+      {
+        "user": "mathbunnyru",
+        "body": "For now, I'm only running sanitizers on ubuntu image.\r\nI'll take a look later if we can make them work on other distros as well.\r\nBut this can be merged now, and it will greatly simplify further experiments.",
+        "created_at": "2026-05-26T14:08:02Z"
+      }
+    ],
+    "reviews_count": 13,
+    "reviews": [
+      {
+        "user": "kuznetsss",
+        "state": "APPROVED",
+        "body": "\ud83d\udc4d "
+      },
+      {
+        "user": "semgrep-companion-app[bot]",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nUpdates the Nix-based CI Docker images to include Clang alongside GCC, ensure sanitizer toolchains work correctly against a pinned glibc, and publish multi-arch images via Gi"
+      }
+    ]
+  },
+  {
     "pr_number": 7312,
     "branch_name": "skip_deleted_book_directory",
     "title": "fix: Skip deleted book directories and non-root modifications in `ValidBookDirectory` invariant",
@@ -1166,41 +1211,6 @@
         "user": "bthomee",
         "state": "COMMENTED",
         "body": ""
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7108,
-    "branch_name": "a1q123456/upgrade-mako",
-    "title": "chore: Upgrade mako version",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR upgrades mako to a later version to avoid the security vulnerability.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nMako 1.2 has a know vulnerability issue https://github.com/advisories/GHSA-v973-fxgf-6xhp, which is addressed by 1.2.2.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking chan",
-    "user": "a1q123456",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-11T14:38:07Z",
-    "merged_at": "2026-05-11T16:57:03Z",
-    "labels": [
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7108?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`779b49c`](https://app.codecov.io/gh/XRPLF/rippled/commit/779b49cd9311f6d5d530815e24d2d52d50302c26?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-11T14:58:49Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "No issues.\n\n*Review by Claude Opus 4.6* \u00b7 Prompt: V15\n\n<!-- review-fingerprint:3e50ff0d54148fd1 -->"
       },
       {
         "user": "bthomee",
