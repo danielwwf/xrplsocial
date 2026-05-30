@@ -950,38 +950,5 @@
         "body": ""
       }
     ]
-  },
-  {
-    "pr_number": 7147,
-    "branch_name": "legleux/conan-global-retry",
-    "title": "ci: Add Conan retry",
-    "body": "## High Level Overview of Change\r\n\r\nBumps Conan's download retry settings so that transient upstream failures ([occasionally 502s from GitHub](https://github.com/XRPLF/rippled/actions/runs/25591406423/job/75129649449#step:10:1522) when a recipe's `source()` step fetches an archive) no longer fail the \"Build dependencies\" step on the first hiccup.\r\n\r\nAdds to `global.conf`\r\n- `tools.files.download:retry=5` (default: 2)\r\n- `tools.files.download:retry_wait=10` (default: 1 second)\r\n\r\n## Context of Change\r\n\r\nThe `xrplf` Conan remote at `conan.ripplex.io` mirrors recipes and prebuilt binaries but does **not** mirror upstream source archives. Whenever `conan install --build=missing` encounters a `package_id` that has no prebuilt (new compiler, new sanitizer profile, new option combination), Conan falls back to building from source, which fetches the tarball directly from the recipe's upstream URL. GitHub's archive host has been returning intermittent 502s, which currently fail the job immediately on the second attempt.\r\n\r\n\r\n## Future Tasks\r\n\r\nIt is possible to mirror the source to Artifactory also if we want and configure `core.sources:download_urls` to point there.",
-    "user": "legleux",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-13T18:32:50Z",
-    "merged_at": "2026-05-13T20:09:57Z",
-    "labels": [],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7147?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`aa5e4ff`](https://app.codecov.io/gh/XRPLF/rippled/commit/aa5e4ff89f1871c02c96b7f97ab7fa7d13274281?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-13T18:55:39Z"
-      },
-      {
-        "user": "mathbunnyru",
-        "body": "Nice, thanks!",
-        "created_at": "2026-05-14T09:05:59Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
   }
 ]
