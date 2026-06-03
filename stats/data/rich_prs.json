@@ -1,5 +1,36 @@
 [
   {
+    "pr_number": 7400,
+    "branch_name": "fix_clang_asan",
+    "title": "ci: Fix clang asan include dirs in nix images, add curl & gnupg",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n`clang++ -fsanitize=address` will fail to find `<sanitizer/lsan_interface.h>` header, which prevents abseil from compiling.\r\nI add this header to the include path, and also test it.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, bre",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-03T20:53:44Z",
+    "merged_at": "2026-06-03T22:54:11Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7400?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.4%. Comparing base ([`e5cf1a0`](https://app.codecov.io/gh/XRPLF/rippled/commit/e5cf1a0985ee27e5519fa5de1d0a664c57b73d1a?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-06-03T22:05:27Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7391,
     "branch_name": "fix-zero-nft-id",
     "title": "fix: Add zero NFT Offer ID check for NFTokenCancelOffer",
@@ -901,37 +932,6 @@
         "user": "PeterChen13579",
         "state": "APPROVED",
         "body": "\ud83d\udc4d "
-      }
-    ]
-  },
-  {
-    "pr_number": 7293,
-    "branch_name": "run_reusable_package_pub",
-    "title": "ci: Only run reusable package in public repos",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nWe upload only in public repos, so we can only run this workflow in public repos (at least for now)\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (an",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-19T12:42:21Z",
-    "merged_at": "2026-05-19T14:06:30Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7293?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`1e45d36`](https://app.codecov.io/gh/XRPLF/rippled/commit/1e45d363c56e45ac46f4a7c9295f916193bd4100?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-19T13:01:43Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
       }
     ]
   }
