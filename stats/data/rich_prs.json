@@ -1,5 +1,55 @@
 [
   {
+    "pr_number": 7327,
+    "branch_name": "single_test_bin",
+    "title": "build: Create single test binary xrpl_tests",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nNote: this doesn't change in any way integrated tests.\r\nInstead of having multiple binaries we'll only have 1.\r\nAnd we'll put this binary in the build directory and run it directly.\r\nAnd we remove duplicated `main.cpp` files and only have one.\r\n\r\n`xrpl_add_test` has been inlined, most targets are no longer needed, so the code was hugely simplifed.\r\n\r\nAlso, we keep it possible to launch via `ctest`, but it discovers individulat gtest tests correctly now.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to yo",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-26T17:07:16Z",
+    "merged_at": "2026-06-05T20:01:19Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7327?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`6571f75`](https://app.codecov.io/gh/XRPLF/rippled/commit/6571f75d399e3e237fbcb1ddfe23adbe3d98286c?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-05-26T17:28:28Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-27T20:06:31Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-05-28T10:14:58Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR consolidates the libxrpl gtest-based test suites into a single `xrpl_tests` binary while preserving CTest discovery for individual gtest cases.\n\n**Changes:**\n- Adds a"
+      },
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7416,
     "branch_name": "FromConfTransfer",
     "title": "Revert \"Merge develop into confidential MPT\" ",
@@ -1019,41 +1069,6 @@
         "state": "APPROVED",
         "body": ""
       },
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7302,
-    "branch_name": "ricky122-5/update-docs-build-md",
-    "title": "docs: Add --parallel flag to cmake build commands in BUILD.md",
-    "body": "\r\n\r\n## High Level Overview of Change\r\n\r\nAdded the `--parallel N` flag to the `cmake --build` commands in BUILD.md to document how to speed up builds using parallel jobs.\r\n\r\n### Context of Change\r\n\r\nThe build documentation didn't mention the `--parallel` flag, which is a common way to significantly reduce build times. This is a documentation-only change with no code impact.\r\n\r\n### API Impact\r\n\r\nNo impact. Only a documentation change.\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)",
-    "user": "ricky122-5",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-20T19:38:37Z",
-    "merged_at": "2026-05-21T07:09:22Z",
-    "labels": [
-      "Trivial"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "github-actions[bot]",
-        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
-        "created_at": "2026-05-20T19:38:49Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "@ricky122-5 please fix the pre-commit issues and then let us know if it's ready to be merged",
-        "created_at": "2026-05-20T20:00:10Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
       {
         "user": "mathbunnyru",
         "state": "APPROVED",
