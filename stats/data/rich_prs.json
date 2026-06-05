@@ -1,5 +1,51 @@
 [
   {
+    "pr_number": 7408,
+    "branch_name": "more_nix",
+    "title": "ci: Refactor build-related nix / docker / workflows",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis:\r\n- Updates most images to use nix-based versions\r\n- Moves files around, so it's easier to tell what they belong to\r\n- Creates a workflow to build packaging images (the images themselves will only be used after this PR is merged and images are pushed)\r\n- Creates a reusable workflow, which would build images for 2 archs and then merge it to a single one\r\n\r\nWhat images are left, will be done separately:\r\n- pre-commit - has some libatomic issues\r\n- clang-tidy, it updates from 21 to 22, and there are lots of changes\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHA",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-05T07:24:46Z",
+    "merged_at": "2026-06-05T18:03:18Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7408?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`8abe82e`](https://app.codecov.io/gh/XRPLF/rippled/commit/8abe82eefa2357777af075d252ea8613f2948ae6?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-06-05T08:06:54Z"
+      },
+      {
+        "user": "mathbunnyru",
+        "body": "> Not for this PR, but should the `publish-docs` workflow be renamed to `build-publish-docs`? Or, should other workflows be renamed to not include `build` in their names? Building is usually a prerequisite for the action we're really interested in, whether pushing, publishing, or merging.\r\n> \r\n> Separately, the `reusable-build-docker-image` workflow file also pushes, which is not reflected in the name. Similarly, the `reusable-build-merge-docker-images` does what it advertised, but the workflow ",
+        "created_at": "2026-06-05T14:10:38Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "semgrep-companion-app[bot]",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7384,
     "branch_name": "merge_develop_into_confidentialMPT",
     "title": "Merge develop into confidential MPT",
@@ -1042,102 +1088,6 @@
         "user": "gregtatcam",
         "state": "APPROVED",
         "body": "\ud83d\udc4d LGTM\n\nI left two minor comments for your consideration."
-      }
-    ]
-  },
-  {
-    "pr_number": 7290,
-    "branch_name": "chore/clang-tidy-rename-identifiers2",
-    "title": "style: More clang-tidy identifier renaming",
-    "body": "## High Level Overview of Change\r\n\r\n@kuznetsss  noticed that some member variables are still misaligned with our configuration. Turns out clang-tidy does not respect the `readability-identifier-naming.MemberCase: camelBack` correctly and requires few extra lines for public/protected/private members when suffix is setup for those.\r\n\r\n### API Impact\r\n\r\nNo impact.",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-18T19:24:01Z",
-    "merged_at": "2026-05-20T22:53:37Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7290?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `73.85943%` with `212 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`1e45d36`](https://app.codecov.io/gh/XRPLF/rippled/commit/1e45d363c56e45ac46f4a7c9295f916193bd4100?dropdown=coverage&el=desc&utm_medium=r",
-        "created_at": "2026-05-18T19:55:22Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR updates identifier naming to align the codebase with clang-tidy\u2019s `readability-identifier-naming` configuration (including adding explicit Public/Protected/Private me"
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": "1. This is probably `style`\n2. Could you make similar changes in Clio"
-      }
-    ]
-  },
-  {
-    "pr_number": 7118,
-    "branch_name": "fix-domain-invar",
-    "title": "fix: Update pDEX invariant firing under a valid offer deletion",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n`ValidPermissionedDEX` incorrectly fired `tecINVARIANT_FAILED` when a domain `OfferCreate` (with `sfDomainID`) used `sfOfferSequence` to atomically cancel the submitter's existing regular (non-domain) offer. Fixed behind the existing `fixCleanup3_2_0` amendment.\r\n\r\n\r\nIn `ApplyStateTable::visit`, an `Action::erase` still passes the stored SLE as `after` (non-null). `visitEntry` flagged any non-domain `ltOFFER` in `after` as a \"regular offer\", so deleting one set `regularOffers_ = true`, causing the invariant to reject the transaction.\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  *",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-11T20:59:49Z",
-    "merged_at": "2026-05-20T22:24:39Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7118?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.1%. Comparing base ([`93ac1aa`](https://app.codecov.io/gh/XRPLF/rippled/commit/93ac1aa7aa23f801b0840a87804a6d755c944623?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-11T21:24:20Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-05-13T10:06:47Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-05-20T16:18:13Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@PeterChen13579 @shawnxie999 is this ready to merge?",
-        "created_at": "2026-05-20T21:05:03Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "yinyiqian1",
-        "state": "APPROVED",
-        "body": "LGTM"
-      },
-      {
-        "user": "Kassaking7",
-        "state": "APPROVED",
-        "body": "LGTM"
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": "Please resolve the conflicts, and let me know if this PR is ready to merge."
       }
     ]
   }
