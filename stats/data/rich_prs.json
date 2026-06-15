@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 7538,
+    "branch_name": "add_build_analyzer",
+    "title": "build: Add ClangBuildAnalyzer to Nix",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nWe need it in Clio CI, to analyze why builds might be slow.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or de",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-15T13:13:05Z",
+    "merged_at": "2026-06-15T20:10:29Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "mathbunnyru",
+        "body": "> It seems like this dependency will be only used temporarily until the source of the Clio build times has been identified, or is there a benefit to keeping this dependency around for longer?\r\n> \r\n> If the former, it is possible to add dependencies into the NixOS image in the Clio pipeline until the root cause has been found?\r\n\r\nBuild time reduction is not the goal, but the journey.\r\n\r\nNew code is being added, include paths changed and so on.\r\nIf at some point we notice slower builds or would wo",
+        "created_at": "2026-06-15T16:15:17Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7538?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`f5985e7`](https://app.codecov.io/gh/XRPLF/rippled/commit/f5985e73ecce0de85eae73e54405d62fa16a091b?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-06-15T18:25:00Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": "It seems like this dependency will be only used temporarily until the source of the Clio build times has been identified, or is there a benefit to keeping this dependency around for longer?\r\n\r\nIf the "
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7540,
     "branch_name": "mergeDevelop",
     "title": "Merge latest develop into Confidential MPT",
@@ -1200,84 +1241,6 @@
       {
         "user": "mathbunnyru",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7362,
-    "branch_name": "fix-zero-domain",
-    "title": "fix: Add zero domainID check for permissionedDomain",
-    "body": "Because `Ledger::read()` asserts on zero keys, `view.read(keylet::permissionedDomain(domainID))` must only be called with a non-zero `domainID`. This PR adds guarded validation for zero `DomainID` in `OfferCreate` and `Payment`, plus a defensive check in `permissioned_dex::accountInDomain()`.\r\nAlthough the asserts are only triggered in debug build, it is still worth adding the defensive check.\r\n\r\n- Add preflight checks for `OfferCreate` and `Payment` so a zero `DomainID` returns `temMALFORMED`.\r\n- Add check in `permissioned_dex::accountInDomain()` to avoid constructing a zero-key `PermissionedDomain` keylet.\r\n- The changes are guarded by `fixCleanup3_2_0`\r\n\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-29T18:16:41Z",
-    "merged_at": "2026-05-30T00:55:40Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7362?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.4%. Comparing base ([`2f3558c`](https://app.codecov.io/gh/XRPLF/rippled/commit/2f3558c610ee3d446b1c68a003442e63d4abbdf5?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-29T19:05:18Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@yinyiqian1 is this ready to merge?",
-        "created_at": "2026-05-30T00:01:44Z"
-      },
-      {
-        "user": "yinyiqian1",
-        "body": "> @yinyiqian1 is this ready to merge?\r\n\r\nYes. Thanks for reminding. Just added the label",
-        "created_at": "2026-05-30T00:11:37Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR hardens Permissioned DEX DomainID handling to prevent `Ledger::read()` from being called with a zero key (which triggers `UNREACHABLE` in assert-enabled builds). It a"
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7365,
-    "branch_name": "test_fixes",
-    "title": "Fix HF tests",
-    "body": "## High Level Overview of Change\r\n\r\nSome typo fixes.\r\n\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-29T19:48:30Z",
-    "merged_at": "2026-05-29T21:49:03Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7365?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.5%. Comparing base ([`d85bf72`](https://app.codecov.io/gh/XRPLF/rippled/commit/d85bf722ea2acf0a080ad2bcf1f9dc56e0586b47?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-29T20:09:26Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "pwang200",
-        "state": "APPROVED",
         "body": ""
       }
     ]
