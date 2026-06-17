@@ -1,5 +1,97 @@
 [
   {
+    "pr_number": 7443,
+    "branch_name": "legleux/release-assert-off",
+    "title": "ci: Disable assertions on Release builds",
+    "body": "This probably shouldn't just be blanket `assert=ON` if `Release`. Not sure why this was ever set here like this. We should probably make assertion builds its own config as with the sanitizer builds.\r\n ",
+    "user": "legleux",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-10T04:00:17Z",
+    "merged_at": "2026-06-17T15:23:53Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 6,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7443?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`1f359f7`](https://app.codecov.io/gh/XRPLF/rippled/commit/1f359f719cbf475e6c010ad0fcf5b4044c6768d1?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-06-10T04:21:29Z"
+      },
+      {
+        "user": "legleux",
+        "body": "Rebasing after https://github.com/XRPLF/rippled/pull/7446 is merged.",
+        "created_at": "2026-06-10T16:21:38Z"
+      },
+      {
+        "user": "legleux",
+        "body": "> Can we maybe only disable asserts for Release builds, which would actually be packaged, but keep it for other Release builds?\r\n@mathbunnyru @bthomee \r\n\r\nQE and Platform should absolutely be able to test and deploy assert-enabled builds, but I do not think those builds should share the `xrpld` package name.\r\n\r\nAn assert-enabled binary has a different runtime contract: it may terminate on an internal assertion in places where the normal release binary would continue running or return an error. B",
+        "created_at": "2026-06-12T00:01:08Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "@legleux I like that idea. Instead of (or in addition to) using suffixes, would pushing them to a separate channel in the debian and rpm repositories also be a good idea? Instead of dumping them all into the `unstable` channel, we'd have separate `assertion` and `sanitizer` channels for instance.",
+        "created_at": "2026-06-12T11:09:15Z"
+      },
+      {
+        "user": "legleux",
+        "body": "> ... would pushing them to a separate channel in the debian and rpm repositories also be a good idea? Instead of dumping them all into the `unstable` channel, we'd have separate `assertion` and `sanitizer` channels for instance.\r\n\r\nI do think that's ideal and more typical of how they're used however you'd still get the possibility of putting something like this in your sources list:\r\n\r\n```\r\ndeb https://repos.ripple.com/repos/rippled-deb noble develop dev-assert dev-sanitizer\r\n```\r\n\r\nsuch that i",
+        "created_at": "2026-06-16T06:58:38Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": "The build is failing though, please fix it.\n\nAlso, if you want it to be included to 3.2.0, you need to make this change on top of staging branch"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": "Can we maybe only disable asserts for Release builds, which would actually be packaged, but keep it for other Release builds?"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7566,
+    "branch_name": "add_graphviz",
+    "title": "build: Add graphviz to Nix images",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nIt is needed by `doxygen` to produce Graph visualizations.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dep",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-17T11:26:26Z",
+    "merged_at": "2026-06-17T15:20:35Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7566?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`5de4344`](https://app.codecov.io/gh/XRPLF/rippled/commit/5de434436e339bfdd91b31319ca87ff8329a3465?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-06-17T11:50:02Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7563,
     "branch_name": "tiny_tidy",
     "title": "ci: Make clang-tidy workflow adjustments to stay in sync with Clio",
@@ -1237,99 +1329,6 @@
       {
         "user": "bthomee",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7383,
-    "branch_name": "trans_cleanup",
-    "title": "Cleanup and some refactoring",
-    "body": "## High Level Overview of Change\r\n\r\nCleanup and some refactoring:\r\n- Move from void* to HostFunction reference\r\n- Put runtime into base Hostfunction class\r\n- Switch from struct to classes\r\n- Divide Params helper into WasmParamsHelper and WasmInmportHelper",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-02T16:20:17Z",
-    "merged_at": "2026-06-03T01:15:58Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7383?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.62846%` with `6 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.5%. Comparing base ([`63fff4b`](https://app.codecov.io/gh/XRPLF/rippled/commit/63fff4b518f0eaaf25721ab23af8b6acb78671f0?dropdown=coverage&el=desc&utm_medium=ref",
-        "created_at": "2026-06-02T16:55:28Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "pwang200",
-        "state": "APPROVED",
-        "body": "Thanks for the cleanup and refactoring! \n\nThe name of the new file is confusing to me because the name does not seem to match what's in it. Please consider changing it, like WasmParamsHelper.h \u2192 WasmC"
-      }
-    ]
-  },
-  {
-    "pr_number": 7390,
-    "branch_name": "update_flake",
-    "title": "chore: Update flake.lock to allow conan with clang-22 support",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nThe title says it all\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer pro",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-02T20:42:21Z",
-    "merged_at": "2026-06-03T00:48:43Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 0,
-    "comments": [],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7376,
-    "branch_name": "nix_everywhere",
-    "title": "ci: Patch binaries in nix-based images and test in every distro",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThe Docker CI image now proves binaries actually run correctly on every supported Linux distro except NixOS (vanilla distro + sanitizer libs).\r\nI use a dedicated clean-image tester stage, so we don't even pollute the final image.\r\n\r\nThe only exception - `tsan-g++` is not run in arm debian, I added a comment how to make it run during runtime, but it's probably not worth trying to make it work during build time.\r\n\r\nI also added an `install-sanitizer-libs.sh` script - it will be useful for local development as well, when someone wants to build with sanitizers.\r\n\r\nThe run script for files is modified to run all binaries and, in the end, tell which failed.\r\n\r\nHope this works \ud83d\ude42 \r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If the",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-01T20:06:47Z",
-    "merged_at": "2026-06-02T14:25:24Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "mathbunnyru",
-        "body": "Copilot went crazy and each comment was written 6 times",
-        "created_at": "2026-06-01T21:03:52Z"
-      }
-    ],
-    "reviews_count": 10,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR updates the Nix-based Docker CI image build to (a) patch compiled ELF test binaries to use the target distro\u2019s dynamic loader path and (b) execute those binaries in a"
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
