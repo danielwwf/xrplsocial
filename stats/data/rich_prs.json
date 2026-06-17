@@ -1,5 +1,43 @@
 [
   {
+    "pr_number": 7535,
+    "branch_name": "re-randomize",
+    "title": "Re-randomize after each send",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n\r\n- Add receiver-side ciphertext re-randomization for ConfidentialMPTSend\r\n1. The destination encrypted amount is re-randomized by adding Enc_dest(0; e)\r\n2. The issuer-encrypted mirror amount is also re-randomized by adding Enc_issuer(0; e)\r\n- Added rerandomizeCiphertext  in ConfidentialTransfer.cpp to encrypt zero and homomorphically adds it to an existing ciphertext.\r\n- Added test testSendRerandomizesRecipientInboxAgainstMergeCancellation to test the attack senario described in TOB-RIPCTXR-5.\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the c",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-12T16:46:19Z",
+    "merged_at": "2026-06-17T01:11:42Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7535?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `93.33333%` with `1 line` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`9854b3e`](https://app.codecov.io/gh/XRPLF/rippled/commit/9854b3efc2fe81ba4085b1a682fd799ffbe3f602?dropdown=coverage&el=desc&utm_medium=refe",
+        "created_at": "2026-06-12T21:42:41Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "shawnxie999",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7561,
     "branch_name": "add_git_lfs",
     "title": "build: Add git-lfs to Nix images",
