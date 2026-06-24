@@ -1,5 +1,55 @@
 [
   {
+    "pr_number": 7427,
+    "branch_name": "use_tidy22_features",
+    "title": "chore: Use clang-tidy v22 new features",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nWent over this list: https://releases.llvm.org/22.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html#new-checks and enabled new checks\r\n\r\nThere are just a few `// NOLINTNEXTLINE(readability-redundant-typename): typename required by MSVC`, because MSVC requires it for default type in class declaration\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-08T13:20:52Z",
+    "merged_at": "2026-06-24T19:32:59Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7427?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `95.83333%` with `1 line` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`6736ab3`](https://app.codecov.io/gh/XRPLF/rippled/commit/6736ab39df871bbb49107c0af8a2821fc3afebaf?dropdown=coverage&el=desc&utm_medium=refe",
+        "created_at": "2026-06-08T14:42:04Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-06-17T13:56:40Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-06-23T15:35:49Z"
+      }
+    ],
+    "reviews_count": 10,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "CHANGES_REQUESTED",
+        "body": "Few small nits and suggestions."
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7609,
     "branch_name": "fix_review",
     "title": "fix: Address review comments",
@@ -1445,73 +1495,6 @@
       {
         "user": "bthomee",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7446,
-    "branch_name": "fix/assert-off-lending-helpers",
-    "title": "fix: Add [[maybe_unused]] to fix320Enabled for assert=OFF builds",
-    "body": "## Summary\n\n- `fix320Enabled` in `LendingHelpers.cpp:816` is used only as the condition in `XRPL_ASSERT_IF`\n- With `assert=OFF`, `XRPL_ASSERT_IF` expands to nothing \u2192 `fix320Enabled` is unused \u2192 `-Werror=unused-variable` fails the build\n- With `assert=ON` (GitHub Actions default), the macro expands normally \u2192 no warning\n- Fix: add `[[maybe_unused]]` to suppress the warning when `assert=OFF`\n\n## Root cause\n\nIntroduced by #7378 (\"refactor: Introduce XRPL_ASSERT_IF for amendment-gated assertions\"). GitHub Actions hardcodes `-Dassert=ON` in `generate.py`, so the bug was not caught before merge. Any build system that compiles Release with `assert=OFF` will hit this failure.\n\n## Test plan\n\n- [x] Verified fix compiles cleanly in a Release build with `assert=OFF`\n- [ ] CI green\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-    "user": "shichengripple001",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-10T14:05:21Z",
-    "merged_at": "2026-06-10T18:12:11Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7446?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`dd0b675`](https://app.codecov.io/gh/XRPLF/rippled/commit/dd0b6754d4c33d906d54f317dcc9f4da800488ec?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-06-10T14:34:56Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "Tapanito",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7444,
-    "branch_name": "add_nix_gh",
-    "title": "ci: Add `gh` and `file` to nix packages",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nIn this repo, `gh` is already used in `on-pr.yml` to `Notify Clio`.\r\nSince it hasn't been triggered yet in new images, it didn't fail, but `gh` is a must-have when using GitHub.\r\n\r\n`file` is needed for `cpack`, which is used in Clio.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-10T12:45:22Z",
-    "merged_at": "2026-06-10T16:07:18Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7444?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`8a4bf2d`](https://app.codecov.io/gh/XRPLF/rippled/commit/8a4bf2dee60e4082b584c1702eabf93225f8da40?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-06-10T13:06:38Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
         "body": ""
       }
     ]
