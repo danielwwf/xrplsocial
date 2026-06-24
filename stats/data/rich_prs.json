@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 7539,
+    "branch_name": "add_patch_nix_binary",
+    "title": "build: Patch nix binaries in CMake",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nI want our image to always produce the expected binary and not require external patching.\r\nThis would also mean that if someone builds locally in the CI image, they will not forget to patch the binary.\r\n\r\n### Context of Change\r\n\r\nIn Clio, we package using cpack, and when I wanted to start using our images, I had to do it this way; otherwise, we would pack an unpatched binary.\r\nAnd I think it's a good idea here as well, so backporting this change.\r\n\r\nAlso, on aarch64, libatomic is needed - we patch the binary now, and gtest discovery runs it right after it. libatomic was linked dynamically, which caused some issues. Instead, linking it statically explicitly simplifies the workflow.\r\n\r\n`SANITIZERS_ENABLED` is moved to `CompilationEnv`, to make it easier to use in other modules.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-15T13:51:49Z",
+    "merged_at": "2026-06-24T15:18:18Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7539?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`5a2c82f`](https://app.codecov.io/gh/XRPLF/rippled/commit/5a2c82f699f1d5036f572d771e7be597ba80f896?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-06-15T14:31:21Z"
+      }
+    ],
+    "reviews_count": 8,
+    "reviews": [
+      {
+        "user": "depthfirst-app[bot]",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage1: "
+      }
+    ]
+  },
+  {
     "pr_number": 7600,
     "branch_name": "check_more_deps",
     "title": "chore: Check more tools to be available",
