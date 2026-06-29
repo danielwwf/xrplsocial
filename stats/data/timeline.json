@@ -1,5 +1,54 @@
 [
   {
+    "hash": "09538967",
+    "author": "Denis Angell",
+    "branch": "dangell7/batch-v1",
+    "date": "2026-06-29T22:15:15+00:00",
+    "message": "fix: refactor checkBatchSign & checkSign"
+  },
+  {
+    "hash": "4395da1f",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/sponsor/apply-view-context",
+    "date": "2026-06-29T21:59:36+00:00",
+    "message": "cmon clang-tidy gimme a break"
+  },
+  {
+    "hash": "7c1109ef",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/sponsor/cir-apply",
+    "date": "2026-06-29T21:40:09+00:00",
+    "message": "Merge branch 'xrplf/sponsor' into mvadari/sponsor/cir-apply"
+  },
+  {
+    "hash": "ad4abab4",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/sponsor/apply-view-context",
+    "date": "2026-06-29T21:39:51+00:00",
+    "message": "Merge branch 'xrplf/sponsor' of https://github.com/XRPLF/rippled into mvadari/sponsor/apply-view-context"
+  },
+  {
+    "hash": "13aff69e",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/sponsor/apply-view-context",
+    "date": "2026-06-29T21:38:35+00:00",
+    "message": "missed one"
+  },
+  {
+    "hash": "f005879d",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/sponsor/apply-view-context",
+    "date": "2026-06-29T21:35:01+00:00",
+    "message": "fix build issues"
+  },
+  {
+    "hash": "b8ae7a28",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/sponsor/apply-view-context",
+    "date": "2026-06-29T21:21:58+00:00",
+    "message": "use reference in helper functions"
+  },
+  {
     "hash": "b8ae7a28",
     "author": "Mayukha Vadari",
     "branch": "mvadari/sponsor/apply-view-context",
@@ -65,13 +114,6 @@
   {
     "hash": "35e1a6ef",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/sponsor/cut-scope",
-    "date": "2026-06-29T20:04:38+00:00",
-    "message": "refactor: Move reserve checks from preclaim to doApply where relevant (#7607)"
-  },
-  {
-    "hash": "35e1a6ef",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/sponsor/apply-view-context",
     "date": "2026-06-29T20:04:38+00:00",
     "message": "refactor: Move reserve checks from preclaim to doApply where relevant (#7607)"
@@ -89,6 +131,20 @@
     "branch": "mvadari/sponsor/cir-apply",
     "date": "2026-06-29T20:04:38+00:00",
     "message": "refactor: Move reserve checks from preclaim to doApply where relevant (#7607)"
+  },
+  {
+    "hash": "35e1a6ef",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/sponsor/cut-scope",
+    "date": "2026-06-29T20:04:38+00:00",
+    "message": "refactor: Move reserve checks from preclaim to doApply where relevant (#7607)"
+  },
+  {
+    "hash": "ec663195",
+    "author": "Denis Angell",
+    "branch": "dangell7/batch-v1",
+    "date": "2026-06-29T19:45:01+00:00",
+    "message": "fix: confidential transfer tests"
   },
   {
     "hash": "13ff9263",
@@ -191,13 +247,6 @@
   {
     "hash": "5029c08f",
     "author": "Zhiyuan Wang",
-    "branch": "mvadari/sponsor/cut-scope",
-    "date": "2026-06-29T18:08:47+00:00",
-    "message": "fix: bunch of fixes on RPC (#7557)"
-  },
-  {
-    "hash": "5029c08f",
-    "author": "Zhiyuan Wang",
     "branch": "mvadari/sponsor/apply-view-context",
     "date": "2026-06-29T18:08:47+00:00",
     "message": "fix: bunch of fixes on RPC (#7557)"
@@ -206,6 +255,13 @@
     "hash": "5029c08f",
     "author": "Zhiyuan Wang",
     "branch": "xrplf/sponsor",
+    "date": "2026-06-29T18:08:47+00:00",
+    "message": "fix: bunch of fixes on RPC (#7557)"
+  },
+  {
+    "hash": "5029c08f",
+    "author": "Zhiyuan Wang",
+    "branch": "mvadari/sponsor/cut-scope",
     "date": "2026-06-29T18:08:47+00:00",
     "message": "fix: bunch of fixes on RPC (#7557)"
   },
@@ -289,14 +345,14 @@
   {
     "hash": "132ced7d",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/sponsor/cut-scope",
+    "branch": "mvadari/sponsor/apply-view-context",
     "date": "2026-06-29T15:43:51+00:00",
     "message": "fix: 2 free token exception is not applicable for sponsor (#7644)"
   },
   {
     "hash": "132ced7d",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/sponsor/apply-view-context",
+    "branch": "mvadari/sponsor/transfer",
     "date": "2026-06-29T15:43:51+00:00",
     "message": "fix: 2 free token exception is not applicable for sponsor (#7644)"
   },
@@ -310,7 +366,7 @@
   {
     "hash": "132ced7d",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/sponsor/transfer",
+    "branch": "mvadari/sponsor/cut-scope",
     "date": "2026-06-29T15:43:51+00:00",
     "message": "fix: 2 free token exception is not applicable for sponsor (#7644)"
   },
@@ -3440,62 +3496,6 @@
     "hash": "2ab43b6f",
     "author": "Timothy Banks",
     "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-06-26T10:31:16+00:00",
-    "message": "refactor: Retire NFTokenReserve fix (#7367)"
-  },
-  {
-    "hash": "2ab43b6f",
-    "author": "Timothy Banks",
-    "branch": "pratik/otel-phase1b-telemetry-infra",
     "date": "2026-06-26T10:31:16+00:00",
     "message": "refactor: Retire NFTokenReserve fix (#7367)"
   }
