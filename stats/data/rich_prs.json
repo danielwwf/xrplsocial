@@ -1,5 +1,55 @@
 [
   {
+    "pr_number": 7643,
+    "branch_name": "all_bugprone",
+    "title": "chore: Enable most bugprone checks",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis enables most `bugrpone-` checks, except where it might be difficult to fix, and they probably better be addressed one by one.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_versi",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-26T10:25:29Z",
+    "merged_at": "2026-06-29T14:08:28Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7643?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `75.00000%` with `10 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`768d760`](https://app.codecov.io/gh/XRPLF/rippled/commit/768d7603b1633d5d9a83801f04de789640882385?dropdown=coverage&el=desc&utm_medium=re",
+        "created_at": "2026-06-26T11:38:34Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-06-26T12:12:48Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-06-26T12:29:14Z"
+      }
+    ],
+    "reviews_count": 16,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR updates the repository\u2019s `.clang-tidy` configuration to enable most `bugprone-*` checks and applies a set of small refactors / annotations across core code and tests "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7584,
     "branch_name": "fix-granular-payment-new",
     "title": "fix: Use trustline balance direction to validate IOU PaymentMint/PaymentBurn",
@@ -1600,67 +1650,6 @@
       {
         "user": "mvadari",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7443,
-    "branch_name": "legleux/release-assert-off",
-    "title": "ci: Disable assertions on Release builds",
-    "body": "This probably shouldn't just be blanket `assert=ON` if `Release`. Not sure why this was ever set here like this. We should probably make assertion builds its own config as with the sanitizer builds.\r\n ",
-    "user": "legleux",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-10T04:00:17Z",
-    "merged_at": "2026-06-17T15:23:53Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 6,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7443?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`1f359f7`](https://app.codecov.io/gh/XRPLF/rippled/commit/1f359f719cbf475e6c010ad0fcf5b4044c6768d1?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-06-10T04:21:29Z"
-      },
-      {
-        "user": "legleux",
-        "body": "Rebasing after https://github.com/XRPLF/rippled/pull/7446 is merged.",
-        "created_at": "2026-06-10T16:21:38Z"
-      },
-      {
-        "user": "legleux",
-        "body": "> Can we maybe only disable asserts for Release builds, which would actually be packaged, but keep it for other Release builds?\r\n@mathbunnyru @bthomee \r\n\r\nQE and Platform should absolutely be able to test and deploy assert-enabled builds, but I do not think those builds should share the `xrpld` package name.\r\n\r\nAn assert-enabled binary has a different runtime contract: it may terminate on an internal assertion in places where the normal release binary would continue running or return an error. B",
-        "created_at": "2026-06-12T00:01:08Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@legleux I like that idea. Instead of (or in addition to) using suffixes, would pushing them to a separate channel in the debian and rpm repositories also be a good idea? Instead of dumping them all into the `unstable` channel, we'd have separate `assertion` and `sanitizer` channels for instance.",
-        "created_at": "2026-06-12T11:09:15Z"
-      },
-      {
-        "user": "legleux",
-        "body": "> ... would pushing them to a separate channel in the debian and rpm repositories also be a good idea? Instead of dumping them all into the `unstable` channel, we'd have separate `assertion` and `sanitizer` channels for instance.\r\n\r\nI do think that's ideal and more typical of how they're used however you'd still get the possibility of putting something like this in your sources list:\r\n\r\n```\r\ndeb https://repos.ripple.com/repos/rippled-deb noble develop dev-assert dev-sanitizer\r\n```\r\n\r\nsuch that i",
-        "created_at": "2026-06-16T06:58:38Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "CHANGES_REQUESTED",
-        "body": "The build is failing though, please fix it.\n\nAlso, if you want it to be included to 3.2.0, you need to make this change on top of staging branch"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": "Can we maybe only disable asserts for Release builds, which would actually be packaged, but keep it for other Release builds?"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "CHANGES_REQUESTED",
         "body": ""
       }
     ]
