@@ -1808,45 +1808,5 @@
         "body": ""
       }
     ]
-  },
-  {
-    "pr_number": 7439,
-    "branch_name": "dynamic_mpt_new",
-    "title": "feat: Remove clear mutable flags for DynamicMPT XLS-94",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nSpec change: https://github.com/XRPLF/XRPL-Standards/pull/562\r\nWe're getting rid of the clear flags for dynamic MPTs. Flags that are marked mutable at issuance can still be turned on by the issuer, but they will become immutable immediately after they are set.\r\n\r\n### Context of Change\r\n\r\n- TxFlags.h: Remove clear mutable flags\r\n- MPTokenIssuanceSet.cpp: Remove clear mutable flags related logic\r\n- Tests:\r\n1.  Affect tests related to dynamic mpt in MPToken_test.cpp\r\n2. Affect existing tests relying on the clear flags.\r\n\r\n**The following tests are removed.**\r\nBefore: create with mpt transferrable and then `ClearCanTransfer` and then test deposit/withdraw\r\nAfter: case removed because creation fails when mpt non-transferrable.\r\n\r\n`Vault_test`:\r\n- testcase(\"MPT non-transferable: block deposit, allow withdraw\")\r\n- testcase(\"MPT non-transferable: pre-fixCleanup3_2_0 withdraw blocked\")\r\n- testcase(\"MPT non-transferable: vault shares inherit restriction\")\r\n- testcase(\"MPT non-transferable: pre-fixCleanup3_2_0 share transfer succeeds\")\r\n\r\n`Loan_test`:\r\n- testcase(\"CoverDeposit blocked, CoverWithdraw allowed when CanTransfer cleared\")\r\n- testcase(\"L",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-09T19:36:25Z",
-    "merged_at": "2026-06-22T18:20:11Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7439?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 81.9%. Comparing base ([`225ed20`](https://app.codecov.io/gh/XRPLF/rippled/commit/225ed204ad101527c19f1f3c9a32fda1bd28761b?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-06-12T00:34:39Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "gregtatcam",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
   }
 ]
