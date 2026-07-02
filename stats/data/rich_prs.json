@@ -1,5 +1,60 @@
 [
   {
+    "pr_number": 7670,
+    "branch_name": "verify_headers",
+    "title": "build: Add verify-headers target to cleanup headers",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nOur clang-tidy setup only work on cpp files, but Copilot, clangd and IDEs complaint a lot, when a header is missing some include or has something which shouldn't be there.\r\n\r\nThis:\r\n- Adds a header self-containment check (`-Dverify_headers=ON`) & the build target (documented in `BUILD.md`)\r\n- New `cmake/verify_headers.cmake` + wiring in `add_module.cmake`/`XrplCore.cmake`/`XrplSettings.cmake` \u2014 compiles every header **directly** as its own TU (forcing it to be treated as C++ code using `-xc++`), so the compiler catches non-self-contained headers and clang-tidy's `misc-include-cleaner` can analyze each header. Covers all headers.\r\n- CI `reusable-clang-tidy.yml`: enables the option and adds `include` to the lint `TARGETS`.\r\n- Removes `BOOST_VERSION` check - technically it was incorrect, because it might have been done before first boost include, which would make it invalid. All the statements where for really old boost, which we no longer support.\r\n- Disables boost includes manipulation - it doesn't seem to work too well. Previously some headers were disabled, but it's easier for now to disable all of them\r\n\r\nThis should also slightly improve compilation time, because final TUs will now only include the things that are definitely needed.\r\n\r\nPartially inspired by https://github.com/XRPLF/rippled/pull/7634\r\nCopilot left 3 comments, and they're technical",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-30T11:45:51Z",
+    "merged_at": "2026-07-01T23:43:51Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7670?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`c53aafa`](https://app.codecov.io/gh/XRPLF/rippled/commit/c53aafa6bfeb8591532c770cfcc59abf5f156a2f?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-06-30T12:31:16Z"
+      },
+      {
+        "user": "mathbunnyru",
+        "body": "> That's a lot \ud83d\udd22 Please ask Opus to verify this does not break anything and does not do anything sus \ud83d\udc4d\r\n\r\nReview: `verify_headers` branch\r\n\r\n**Verdict: it does what's advertised, doesn't break anything, and I found nothing suspicious.** The change is overwhelmingly mechanical and the small non-mechanical parts are all behavior-preserving. A few items reach slightly beyond the PR description \u2014 worth surfacing, none are blockers.\r\n\r\n### What I verified\r\n\r\n**Scope is exactly as described.** 662 fil",
+        "created_at": "2026-06-30T19:12:38Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-07-01T13:20:24Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-07-01T13:33:54Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": "That's a lot \ud83d\udd22 \nPlease ask Opus to verify this does not break anything and does not do anything sus \ud83d\udc4d "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7676,
     "branch_name": "change_func_names",
     "title": "Rename adjustOwnerCount and adjustOwnerCountObj",
@@ -1680,66 +1735,6 @@
         "user": "TimothyBanks",
         "state": "COMMENTED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6853,
-    "branch_name": "DEFI-628",
-    "title": "fix: AMM Quality Leak into Domain BookStep for Permissioned DEX",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nWhen a domain-restricted order book has an AMM pool for the same asset pair, the `BookStep` quality estimation functions (e.g., `qualityUpperBound`) incorrectly include AMM liquidity in their calculations, even though AMM liquidity cannot be consumed in domain transactions. This makes strand quality estimates too optimistic for domain paths, potentially causing suboptimal path selection in multi-path payments.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\nAdd a check in `getAMMOffer()` to return `std::nullopt` when the book is domain-restricted\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the",
-    "user": "Kassaking7",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-04-10T15:16:57Z",
-    "merged_at": "2026-06-24T13:14:21Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 5,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6853?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`cee1574`](https://app.codecov.io/gh/XRPLF/rippled/commit/cee157485e1e08181a37afc579bdd6f8fabf263e?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-04-10T15:41:35Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-28T11:03:40Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-29T17:29:17Z"
-      },
-      {
-        "user": "Kassaking7",
-        "body": "/ai-review",
-        "created_at": "2026-04-29T17:29:50Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@yinyiqian1 you requested changes - can you please approve once the changes have been satisfactorily made?",
-        "created_at": "2026-06-22T17:02:52Z"
-      }
-    ],
-    "reviews_count": 8,
-    "reviews": [
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "No issues.\n\n*Review by Claude Opus 4.6* \u00b7 Prompt: V15\n\n<!-- review-fingerprint:25fae9410902ed40 -->"
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "PeterChen13579",
-        "state": "APPROVED",
-        "body": "\ud83d\udc4d "
       }
     ]
   }
