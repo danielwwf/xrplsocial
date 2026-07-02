@@ -1,5 +1,27 @@
 [
   {
+    "pr_number": 7700,
+    "branch_name": "merge_develop_in_sponsor",
+    "title": "chore: Merge develop to sponsor",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nConflicts were only in 4 files, only for headers, and were easy to resolve.\r\nclang-tidy include related issues are fixed as well (small last commit).\r\n\r\nAll conflicts resolved and staged. Summary:\r\n\r\n- **`EscrowHelpers.h`** / **`Transactor.h`** \u2014 include-list conflicts (our `SponsorHelpers.h` vs develop's header-cleanup additions). Merged as a sorted union of both sides.\r\n- **`Oracle.h`** \u2014 kept develop's added `test/jtx/Env.h`.\r\n- **`src/test/jtx.h`** \u2014 develop deleted this umbrella \"include everything\" header as part of its header cleanup. Nothing references it anymore (verified with grep), so I accepted the deletion (`git rm`). Our branch's only changes to it were the `Oracle.h`/`sponsor.h` entries, which are moot now that the umbrella is gone.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-02T10:24:58Z",
+    "merged_at": "2026-07-02T11:31:44Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7700?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.5%. Comparing base ([`1c9168b`](https://app.codecov.io/gh/XRPLF/rippled/commit/1c9168b29fd3e59e0c4c19f487f2041b17cf2ec6?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-07-02T11:16:59Z"
+      }
+    ],
+    "reviews_count": 0,
+    "reviews": []
+  },
+  {
     "pr_number": 7670,
     "branch_name": "verify_headers",
     "title": "build: Add verify-headers target to cleanup headers",
@@ -1690,51 +1712,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": ":rage1: "
-      }
-    ]
-  },
-  {
-    "pr_number": 7324,
-    "branch_name": "amminfo_missing_type_validation",
-    "title": "fix: Additional RPC validation checks on ammRpcInfo account and amm_account fields.",
-    "body": "\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nThis change set is to address issue [6786](https://github.com/XRPLF/rippled/issues/6786).  There is currently a minor gap in the RPC validation logic when invoking the `amm_info` RPC method.  Specifically, the account and amm_account fields should be checked if they are strings before accessing them as strings as this will cause an unexpected exception to occur.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/de",
-    "user": "TimothyBanks",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-05-26T12:14:08Z",
-    "merged_at": "2026-06-24T13:22:31Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7324?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.0%. Comparing base ([`dd0b675`](https://app.codecov.io/gh/XRPLF/rippled/commit/dd0b6754d4c33d906d54f317dcc9f4da800488ec?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-05-28T13:25:24Z"
-      },
-      {
-        "user": "TimothyBanks",
-        "body": "@a1q123456 @mathbunnyru Please take another look.",
-        "created_at": "2026-06-10T17:58:17Z"
-      }
-    ],
-    "reviews_count": 13,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR addresses issue #6786 by adding `isString()` type checks before calling `asString()` on the `amm_account` and `account` JSON fields in the `amm_info` RPC handler. Pre"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
