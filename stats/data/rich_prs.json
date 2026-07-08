@@ -1,5 +1,60 @@
 [
   {
+    "pr_number": 7766,
+    "branch_name": "cleanup-detail",
+    "title": "refactor: combine reassign/create in SponsorshipTransfer doApply",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be bac",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-08T20:16:24Z",
+    "merged_at": "2026-07-08T21:54:31Z",
+    "labels": [],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7766?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `91.30435%` with `2 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.5%. Comparing base ([`63209d4`](https://app.codecov.io/gh/XRPLF/rippled/commit/63209d4d778fb29822e6a884509985278fbec6a3?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2026-07-08T21:25:45Z"
+      },
+      {
+        "user": "yinyiqian1",
+        "body": "merging because many build tests passed, to save some time.",
+        "created_at": "2026-07-08T21:54:15Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "Kassaking7",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7708,
+    "branch_name": "ripple/pr/fees-sfield-rename",
+    "title": "refactor: Rename sfield names, sfExtensionComputeLimit -> sfGasLimit, sfExtensionSizeLimit -> sfBytecodeSizeLimit",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\nRenames sfExtensionComputeLimit -> sfGasLimit, sfExtensionSizeLimit -> sfBytecodeSizeLimit.\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [x] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [x] `libxrpl` change (any change",
+    "user": "ricky122-5",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-02T19:27:24Z",
+    "merged_at": "2026-07-08T20:26:58Z",
+    "labels": [],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7756,
     "branch_name": "Add_envrc",
     "title": "chore: Add .envrc for automatic devshell switch by direnv",
@@ -2056,44 +2111,6 @@
       },
       {
         "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7557,
-    "branch_name": "DEFI-881",
-    "title": "fix: bunch of fixes on RPC",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nFix account_objects(sponsored=...) misattributes object-level fields \r\n\r\nFix simulate underprices sponsor-multisigned transactions\r\n\r\nFix simulate RPC Node Crash via Malformed SponsorSignature Field\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (",
-    "user": "Kassaking7",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-16T18:47:26Z",
-    "merged_at": "2026-06-29T18:08:47Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7557?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.2%. Comparing base ([`03d4e30`](https://app.codecov.io/gh/XRPLF/rippled/commit/03d4e3037838eebcb364b71935a2ce0241cbafe5?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-06-16T19:27:02Z"
-      }
-    ],
-    "reviews_count": 19,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
         "state": "COMMENTED",
         "body": ""
       }
