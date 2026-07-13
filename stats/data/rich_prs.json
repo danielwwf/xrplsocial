@@ -1,5 +1,95 @@
 [
   {
+    "pr_number": 7800,
+    "branch_name": "multiple_tidy_hook",
+    "title": "chore: Run clang_tidy_check with `pass_filenames: false` from pre-commit",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis restores part of the behaviour changed in https://github.com/XRPLF/rippled/pull/7670.\r\nBut I implemented it more simply - `subprocess.check_output` is called with `text=True` and a filter for files.\r\nAlso, pathlib.Path is used directly where possible\r\n\r\n**Next section explains why there is deduplication**\r\n\r\n## Why deduplication is needed\r\n\r\n`run-clang-tidy` lints each translation unit independently and, with `--fix`,\r\napplies every fix immediately. The `add_module` build isolates each module's\r\nheaders behind a per-module symlink directory (`build/modules/<module>/\u2026`), so a\r\nsingle header file is reachable through more than one path: its own\r\n`verify_headers` TU sees it at the real source path (`include/xrpl/\u2026/Foo.h`),\r\nwhile every `.cpp` that includes it sees it through the module symlink\r\n(`build/modules/\u2026/Foo.h`).\r\n\r\nWhen such a header is edited alongside a source file that includes it, both paths\r\nend up in the same lint run. `clang-apply-replacements` deduplicates identical\r\nfixes only by their **literal** path string \u2014 it treats the source path and the\r\nsymlink path as two different files \u2014 so it applies the *same* fix once per path.\r\nBecause both paths resolve to one physical file, the edit lands twice and\r\ncorrupts the header (e.g. `if (a) { {`).\r\n\r\nThe hook therefore exports fixes instead of applying them, rewrites every\r\n`FilePath` t",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-13T17:32:56Z",
+    "merged_at": "2026-07-13T19:59:57Z",
+    "labels": [
+      "Trivial"
+    ],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR updates the clang-tidy pre-commit hook to run a single `run-clang-tidy` invocation over all staged C/C++ files (instead of letting pre-commit shard files across paral"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage1: :rage1: "
+      }
+    ]
+  },
+  {
+    "pr_number": 6126,
+    "branch_name": "add_delegate_filter",
+    "title": "feat: Add delegate filter param for account_tx RPC",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nThis PR adds the ability to filter account_tx results based on transaction delegation. This is useful for scenarios where one account (the delegatee) signs and submits a transaction on behalf of another account (the delegator).\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\nNew Request Parameter:\r\n\r\n\"delegate\": {\r\n     \"delegate_filter\": \"actor\" or \"authorizer\",\r\n     \"counter_party\": \"account_address\" \r\n}\r\n\r\nExample: If User A submits a transaction to C on behalf of B:\r\nUser B (The account holder) can query with delegate_filter: \"actor\" to find transactions signed by others (like User A where A acted on behalf of B).\r\nUser A (The signer) can query with delegate_filter: \"authorizer\" to find transactions they signed for others (like User B, since B authorized A to act on their behalf).\r\nThe counter_party field can be used in either case to filter by a specific valid address\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or des",
+    "user": "PeterChen13579",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2025-12-08T21:11:13Z",
+    "merged_at": "2026-07-13T19:26:57Z",
+    "labels": [
+      "Ready to merge",
+      "API Change"
+    ],
+    "comments_count": 16,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6126?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `95.34884%` with `4 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.6%. Comparing base ([`2b4d067`](https://app.codecov.io/gh/XRPLF/rippled/commit/2b4d067acebabe97d46e00dd42d6eae369fe3654?dropdown=coverage&el=desc&utm_medium=ref",
+        "created_at": "2025-12-08T23:14:29Z"
+      },
+      {
+        "user": "kuznetsss",
+        "body": "A few suggestions to the new API:\r\n\r\n- don't duplicate `delegate` in filter: \r\n```\r\n\"delegate\": {\r\n  \"filter\": \"delegatee\" or \"delegator\",\r\n  \"counter_party\": \"account_address\"\r\n}\r\n```\r\n\r\n- maybe use `role` instead of `filter`?\r\n\r\n- I remember we had some other naming ideas for `delegator` and `delegatee`, did you decide that these one are the best?",
+        "created_at": "2026-01-05T13:52:17Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-03-26T00:44:00Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-02T15:08:47Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-03T00:05:34Z"
+      }
+    ],
+    "reviews_count": 19,
+    "reviews": [
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nAdds a new `delegate` request parameter to the `account_tx` RPC to filter results based on delegated transaction signing (delegator vs delegatee scenarios).\n\n**Changes:**\n- I"
+      }
+    ]
+  },
+  {
     "pr_number": 7799,
     "branch_name": "mvadari/indexes-jss",
     "title": "refactor: Move `jss.h` `include` out of `Indexes.h`",
