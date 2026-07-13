@@ -1,5 +1,50 @@
 [
   {
+    "pr_number": 7776,
+    "branch_name": "doxygen_style_comments",
+    "title": "style: Unify style for all Doxygen comments",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nBrings documentation comments into a single, consistent house style. This is a\r\nformatting-only change \u2014 no code and no comment wording was altered (verified:\r\nevery diff hunk is comment-only, and comment text is preserved verbatim aside\r\nfrom the tag conversions below).\r\n\r\n- **One block style.** Converted `///` comment blocks and `/*!` (Qt-style)\r\n  blocks to `/** \u2026 */`, so all Doxygen comments use a single form.\r\n- **Canonical block layout.** `/**` and the closing `*/` each sit alone on\r\n  their own line; every content line is prefixed with ` * `; bare-indented\r\n  continuation lines (the old \"aligned text\" style) now carry the ` * ` prefix.\r\n- **Briefs and openers.** Moved same-line briefs/descriptions\r\n  (`/** @brief \u2026`, `/** text \u2026`) off the opener line, and expanded single-line\r\n  `/** text */` comments to multi-line blocks.\r\n- **Command style.** Converted backslash-style Doxygen commands (`\\brief`,\r\n  `\\param`, \u2026) to the `@`-form used everywhere else.\r\n- **Prose labels.** Replaced prose `Returns:` / `Throws:` function-doc labels\r\n  with `@return` / `@throws` (the house convention).\r\n- **Indentation cleanup.** Flattened spurious leading indentation on comment\r\n  bodies while preserving the relative indentation of embedded `@code` samples,\r\n  lists, and hanging `@param` continuations.\r\n- **Scope markers stay compact.** Bare section/group markers",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-09T18:41:14Z",
+    "merged_at": "2026-07-13T11:10:28Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7776?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.6%. Comparing base ([`8306ac7`](https://app.codecov.io/gh/XRPLF/rippled/commit/8306ac7710d86bdfd26a84597fc7769afbd3f539?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-07-09T20:16:44Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-07-10T22:48:14Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-07-11T09:40:09Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "Too much to review - checked by random sampling. In any case this is better than before"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7350,
     "branch_name": "xrplf/sponsor",
     "title": "feat: XLS-68: Sponsor, #5887 continuation ",
