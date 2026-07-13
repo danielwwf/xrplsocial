@@ -1,5 +1,74 @@
 [
   {
+    "pr_number": 7795,
+    "branch_name": "test_check_doxygen_style",
+    "title": "test: Add tests for check doxygen style",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThere is a chance that this script doesn't work for all the cases, so let's add tests to check it does everything correctly as is.\r\nIt isn't checked in CI, but this is more to help local development.\r\nAt some point, script is unlikely to change much.\r\n\r\n- **Added a test suite** (`bin/pre-commit/test_check_doxygen_style.py`, 35 tests) \u2014 one per rule category plus edge cases (empty file, unclosed block, markers, mid-line plain blocks) and regressions; runs standalone (`./\u2026test_\u2026.py`) or under `pytest`.\r\n- **New check `qt-block-member`** \u2014 flags `/*!<` (Qt block member-after) \u2192 `///<`, closing the gap next to the existing `//!<` and `/**<` checks.\r\n- **Single-pass command-spelling suggestions** \u2014 a `CANONICAL_COMMAND` map (single source of truth) so `\\sa` \u2192 `@see` and `\\returns` \u2192 `@return` are suggested directly, instead of needing a second run.\r\n- **Refactor: `check_source(text)` extracted from `check_file(path)`** \u2014 the analyzer now works on in-memory strings, so tests skip the temp-file round-trip.\r\n- **Minor cleanups** \u2014 clearer helper docstrings, `/*!<` added to the member-after doc note, and the summary line reads `\"doxygen-style violation(s)\"`.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link i",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-13T14:30:10Z",
+    "merged_at": "2026-07-13T15:18:26Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "Copilot wasn't able to review any files in this pull request.\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop?filename=.github/instructions/*.instructions.md\" class=\"Link--inTextBlock\" target=\"_blank\" "
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "Copilot wasn't able to review any files in this pull request.\n\n\n"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage3: "
+      }
+    ]
+  },
+  {
+    "pr_number": 7794,
+    "branch_name": "check_doxygen_style",
+    "title": "style: Add pre-commit hook to check doxygen style",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis is a continuation of https://github.com/XRPLF/rippled/pull/7776\r\nIt's a pre-commit hook to validate all doxygen comments.\r\n\r\nNote: this script won't work in all possible situations, because it's a regex parser.\r\nFor example, it won't work if someone puts a doxygen inside a string this script will still check this place (and will likely fail), but there are 0 such cases right now in this repo.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/ri",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-13T11:36:13Z",
+    "merged_at": "2026-07-13T14:01:23Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 0,
+    "comments": [],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "Good stuff :rage2: "
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nAdds a new local pre-commit hook to enforce the repository\u2019s unified Doxygen \u201chouse style\u201d across C/C++ files, continuing the documentation-style unification work from #7776."
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7776,
     "branch_name": "doxygen_style_comments",
     "title": "style: Unify style for all Doxygen comments",
@@ -2129,46 +2198,6 @@
         "user": "pratikmankawde",
         "state": "COMMENTED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7593,
-    "branch_name": "test_incorrect_key",
-    "title": "test: Add tests for TMProofPathResponse and TMReplayDeltaResponse invalid hash/key sizes",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThe change was implemented in 3.1.3, so let's add a test for it.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` ",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-22T17:29:12Z",
-    "merged_at": "2026-07-01T15:29:34Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7593?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`ecf7f80`](https://app.codecov.io/gh/XRPLF/rippled/commit/ecf7f805c90538e177470febb0a3a5b989c60620?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
-        "created_at": "2026-06-22T17:54:40Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "DISMISSED",
-        "body": "Approving but there is a question :rage2: "
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage1: "
       }
     ]
   }
