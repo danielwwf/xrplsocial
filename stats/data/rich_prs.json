@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 7799,
+    "branch_name": "mvadari/indexes-jss",
+    "title": "refactor: Move `jss.h` `include` out of `Indexes.h`",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR refactors `kDirectAccountKeylets` in `Indexes.h` - it moves the instantiation from the `.h` file to the `.cpp` file, which allows us to pull `jss.h` out of the list of imports in `Indexes.h`, which should improve compile time.\r\n\r\nThere is no functionality change here.\r\n\r\n### Context of Change\r\n\r\nGeneral code cleanup/improving compile time\r\n\r\n### API Impact\r\n\r\nN/A",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-13T16:54:40Z",
+    "merged_at": "2026-07-13T18:14:28Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7799?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.6%. Comparing base ([`2b4d067`](https://app.codecov.io/gh/XRPLF/rippled/commit/2b4d067acebabe97d46e00dd42d6eae369fe3654?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-07-13T17:33:36Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues.\n\n*Review by Claude Sonnet 4.6* \u00b7 Prompt: V15\n\n<!-- review-fingerprint:e7913a35df6c2ca4 -->"
+      },
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": "Code is moved unmodified. As long as it builds correctly everywhere, it's good."
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7795,
     "branch_name": "test_check_doxygen_style",
     "title": "test: Add tests for check doxygen style",
