@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 7812,
+    "branch_name": "fix_other_labels",
+    "title": "ci: Fix workflow launch on matrix-unrelated labels",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nFix workflow launch so matrix-unrelated labels can no longer hide or drop a PR's build. Decisions are now driven purely by the current label set, and a single concurrency group guarantees one authoritative run per ref.\r\n\r\n## High Level Overview of Change\r\n\r\n- **Concurrency:** collapsed to a single per-ref group with `cancel-in-progress`, so any newer run (push or label change) supersedes the in-progress one. Removes the coexisting-run window where a fast do-nothing run could mask a real build's checks.\r\n- **Decisions from the current label set only:** dropped all `github.event.action` / `github.event.label.name` logic.\r\n  - *Run at all?* \u2014 `should-run` runs unless the PR is a draft without `DraftRunCI`/`Full CI build`.\r\n  - *Minimal or full?* \u2014 full matrix when `Ready to merge`/`Full CI build` is present, minimal otherwise.\r\n- **Trade-off:** an unrelated label now cancels/re-triggers the build rather than doing nothing \u2014 the deliberate cost of never masking real results\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was th",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-15T17:26:32Z",
+    "merged_at": "2026-07-15T18:56:12Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "mathbunnyru",
+        "body": "On this PR creation (with no labels) minimal matrix started: https://github.com/XRPLF/rippled/actions/runs/29436505165/job/87424525101?pr=7812\r\n\r\nThen I applied matrix-unrelated label (Trivial)\r\nThe previous run was canceled, and new minimal matrix has started: https://github.com/XRPLF/rippled/actions/runs/29436619031/job/87424881972?pr=7812\r\n\r\nThen I applied matrix-related label (Ready to merge)\r\nThe previous run was canceled, and new full matrix has started: https://github.com/XRPLF/rippled/ac",
+        "created_at": "2026-07-15T17:33:05Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7812?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 82.8%. Comparing base ([`a24e543`](https://app.codecov.io/gh/XRPLF/rippled/commit/a24e543af3b1aaa25803835bae54df2b1a743349?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&",
+        "created_at": "2026-07-15T17:58:19Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR adjusts the PR CI workflow\u2019s concurrency and gating logic so label events can\u2019t accidentally suppress or \u201chide\u201d the authoritative build for a PR. It does this by maki"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7763,
     "branch_name": "fix/rotation-missing-node",
     "title": "fix: Re-store nodes missing from both backends during online_delete rotation",
