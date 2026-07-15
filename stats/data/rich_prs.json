@@ -1,5 +1,60 @@
 [
   {
+    "pr_number": 7763,
+    "branch_name": "fix/rotation-missing-node",
+    "title": "fix: Re-store nodes missing from both backends during online_delete rotation",
+    "body": "## High Level Overview of Change\n\nFixes a silent durability gap in online delete: a node that is still referenced by the validated state map, but whose only on-disk copy was deleted with a previously rotated-out backend, is never rewritten to disk. The fix has two small, independent layers:\n\n1. **Prevention** \u2014 during the rotation window (cache freshening through the backend swap), an ordinary read served by the archive backend is copied forward into the writable backend (`DatabaseRotatingImp::fetchNodeObject`). Today only `duplicate == true` fetches do this; a node fetched from the soon-to-be-deleted archive *after* the freshen snapshot would otherwise survive only in RAM once the archive is dropped.\n2. **Repair** \u2014 the rotation copy walk (`SHAMapStoreImp::copyNode`) detects a walked node that misses in **both** backends and re-serializes the in-memory body into the writable backend, restoring the invariant that every node reachable from the validated ledger exists on disk.\n\nBoth layers mirror existing store patterns (`duplicate` copy-forward and `SHAMap::writeNode` serialize-then-store respectively); each logs on occurrence so operators can see the recovery happen.\n\n## Context of Change\n\n### Symptom\n\nAffected nodes kept dropping in and out of sync with the network. Log analysis tied the desyncs to two surfaces of one condition:\n\n1. **Ledger close**: transactions failed to apply against a missing state-tree node (`SHAMapMissingNode`); the locally built ledger diverged from the network-validated one, taking minutes to recover, repeatedly.\n2. **Online delete**: the rotation copy walk halted on the same missing nodes, producing a repeated rotation-abort loop \u2014 online delete never completed and disk usage grew, while the continued rotation retries kept the node under load pressure, flapping in and out of sync until a full resync or node reversion.\n\n### Root cause\n\nVerified step by step against the code:\n\n1. The NodeStore is a flat, content-addressed store keyed by node",
+    "user": "sophiax851",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-08T16:53:13Z",
+    "merged_at": "2026-07-15T00:18:35Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
+        "created_at": "2026-07-08T16:53:22Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7763?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `60.00000%` with `10 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.8%. Comparing base ([`cda63d0`](https://app.codecov.io/gh/XRPLF/rippled/commit/cda63d00a29ef7fd42f88d7296655bf951410ca0?dropdown=coverage&el=desc&utm_medium=re",
+        "created_at": "2026-07-08T18:50:14Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-07-08T21:36:31Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-07-08T21:39:02Z"
+      }
+    ],
+    "reviews_count": 11,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR addresses a durability gap in online-delete backend rotation: when a node is reachable from the validated in-memory state map but has been deleted from disk due to an"
+      },
+      {
+        "user": "ximinez",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "sophiax851",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7801,
     "branch_name": "DEFI-965",
     "title": "fix: Add amendment sponsor for AccountRootsDeletedClean",
