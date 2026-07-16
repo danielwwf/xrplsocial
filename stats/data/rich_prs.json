@@ -2203,43 +2203,5 @@
         "body": ""
       }
     ]
-  },
-  {
-    "pr_number": 7683,
-    "branch_name": "cleanup_sponsorshiptransfer",
-    "title": "fix  SponsorshipTransfer preflight",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n\r\n1. sfSponsor presence is not checked explicitly for tfSponsorshipCreate / tfSponsorshipReassign, even though the spec requires Sponsor to be included.\r\n2. For tfSponsorshipEnd, we should disallow sfSponsorFlags entirely. This path only ends reserve sponsorship by removing the target account/object\u2019s sponsor field, so sfSponsorFlags isn't meaningful. The current code only rejects spfSponsorReserve, which still allows spfSponsorFee even though it's meaningless.\r\n3. Cleanup and tests coverage\r\n4. Make comments make more sense\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-07-01T00:39:07Z",
-    "merged_at": "2026-07-02T19:54:04Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7683?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `96.55172%` with `1 line` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.5%. Comparing base ([`494391b`](https://app.codecov.io/gh/XRPLF/rippled/commit/494391b4ab77bc6b70a9c5adcdfece2fa8c0970a?dropdown=coverage&el=desc&utm_medium=refe",
-        "created_at": "2026-07-01T01:26:58Z"
-      }
-    ],
-    "reviews_count": 10,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
   }
 ]
