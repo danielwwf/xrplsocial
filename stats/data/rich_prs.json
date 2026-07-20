@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 7831,
+    "branch_name": "pre-commit-image",
+    "title": "ci: Build separate pre-commit docker image",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis is a minimal image to be able to run all our pre-commit hooks.\r\n\r\nI checked it works building image in my fork and testing it here: https://github.com/XRPLF/rippled/pull/7610\r\nWhen this PR gets merged, I'll update the mentioned PR to use the newly built image.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-20T17:04:30Z",
+    "merged_at": "2026-07-20T18:28:42Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7831?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-07-20T17:36:27Z"
+      }
+    ],
+    "reviews_count": 5,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage1: "
+      },
+      {
+        "user": "depthfirst-app[bot]",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7797,
     "branch_name": "ripple/pr/smart-escrow-ter-rename",
     "title": "refactor: SField and TER code renames",
@@ -2133,46 +2174,6 @@
         "user": "mathbunnyru",
         "state": "COMMENTED",
         "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7711,
-    "branch_name": "modernize-avoid-bind",
-    "title": "chore: Enable modernize-avoid-bind",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n- Enabled `modernize-avoid-bind`** clang-tidy check (dropped its suppression in `.clang-tidy`).\r\n- **Replaced all `std::bind`/`std::bind_front` with lambdas** across the codebase, using concrete parameter types/names (from the callee/asio-handler signatures) instead of the auto-fix's `auto&& pH1` placeholders; removed now-unused `<functional>` includes.\r\n- **Fixed bugs the auto-fix introduced** \u2014 broken variadic-template pack captures (`thread.h`, `OverlayImpl.h`), wrong async completion-handler arity (`BaseWSPeer`/`WorkBase`/`HTTPClient`/`ConnectAttempt`/\u2026), a base-class name-hiding call (`WorkBase::onConnect`), and an incompatible lambda ternary (`Logic_test`).\r\n- **Revived the dead `FetchPack_test`** into a working, enabled test covering the `SHAMapSyncFilter`-based fetch-pack round trip.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, pl",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-07-02T21:10:50Z",
-    "merged_at": "2026-07-03T11:41:09Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7711?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `57.57576%` with `84 lines` in your changes missing coverage. Please review.\n:white_check_mark: Project coverage is 82.3%. Comparing base ([`7ba1d76`](https://app.codecov.io/gh/XRPLF/rippled/commit/7ba1d76d0543c94e74df3c634b11448b293cdaf8?dropdown=coverage&el=desc&utm_medium=re",
-        "created_at": "2026-07-02T22:07:12Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nEnables the `modernize-avoid-bind` clang-tidy check and updates the codebase to avoid `std::bind` by switching to explicit lambdas (mostly around Boost.Asio handlers), along "
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": "Looks like a useful change \ud83d\udc4d Noted one unrelated block of code to be explained."
       },
       {
         "user": "mathbunnyru",
