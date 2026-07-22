@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 7837,
+    "branch_name": "Use_rust-overlay_in_CI",
+    "title": "ci: Use rust-overlay to bring Rust into nix",
+    "body": "## High Level Overview of Change\r\n\r\nThe Nix CI image and dev shell now get their Rust toolchain from [`oxalica/rust-overlay`](https://github.com/oxalica/rust-overlay), pinned by the repo's existing `rust-toolchain.toml`, instead of the bare `nixpkgs` `cargo` / `rustc` / `clippy` / `rustfmt` packages. This makes `rust-toolchain.toml` the single source of truth for the Rust version across every environment (nix and the rustup-based non-nix runners), and fixes a `wasmi` build failure in the nix images. A proc-macro smoke test is added to the image build so this class of failure is caught at image-build time.\r\n\r\n### Context of Change\r\n\r\nBuilding the in-repo `wasmi/1.0.9` Conan package from source in the `nix-*` images failed (see #5999) while compiling its C-API crate:\r\n\r\n    error[E0463]: can't find crate for `wasmi_c_api_macros`\r\n\r\n`wasmi_c_api_macros` is a **proc-macro** crate. It compiled fine \u2014 the failure is `rustc` being unable to *load* the proc-macro dylib at compile time. A proc-macro is the one Rust artifact type that links `libstd-*.so` dynamically; the RPATH that makes `libstd` resolvable is injected by nixpkgs' cc-wrapper via `NIX_LDFLAGS`, which is only set inside a Nix stdenv. The `wasmi` cargo build runs *outside* a stdenv (Conan \u2192 CMake `ExternalProject` \u2192 `cargo`), so the proc-macro dylib had no path to `libstd` and `rustc` couldn't load it. This slipped past the image's existing Rust sanity check because that check only builds executables, which statically link std.\r\n\r\nSourcing the toolchain from `rust-overlay` (the upstream Rust binaries, delivered from the Nix store) resolves proc-macro dylib loading without a stdenv, and \u2014 because it reads `rust-toolchain.toml` via `rust-bin.fromRustupToolchainFile` \u2014 also removes the version drift between `nixpkgs-unstable` and the pinned `1.95` toolchain the non-nix runners already use.\r\n\r\nAlternatives considered:\r\n\r\n- **`LD_LIBRARY_PATH=$(rustc --print sysroot)/lib` shim** around the cargo build \u2014 fixes the sym",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-21T13:38:32Z",
+    "merged_at": "2026-07-22T14:48:48Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7837?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-07-21T17:39:24Z"
+      }
+    ],
+    "reviews_count": 18,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nUpdates the repo\u2019s Nix-based CI image and dev shell to use `oxalica/rust-overlay` for Rust, so `rust-toolchain.toml` becomes the single source of truth for the Rust version a"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": "While I'm not a Rust or Nix expert yet, this looks good from what I can tell."
+      },
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7838,
     "branch_name": "Use_new_pre-commit_image",
     "title": "ci: Update pre-commit image",
