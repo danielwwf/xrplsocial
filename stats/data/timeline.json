@@ -1,5 +1,1342 @@
 [
   {
+    "hash": "bc6455b8",
+    "author": "Timothy Banks",
+    "branch": "smart-escrow/perf-test",
+    "date": "2026-07-23T14:12:39+00:00",
+    "message": "Merge branch 'ripple/smart-escrow' into smart-escrow/perf-test"
+  },
+  {
+    "hash": "025e25ee",
+    "author": "Timothy Banks",
+    "branch": "smart-escrow/versioning",
+    "date": "2026-07-23T14:12:13+00:00",
+    "message": "Merge branch 'ripple/smart-escrow' into smart-escrow/versioning"
+  },
+  {
+    "hash": "95df24e3",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T14:05:50+00:00",
+    "message": "Merge branch 'pratik/otel-phase10-workload-validation' into pratik/perf-test-otel-on"
+  },
+  {
+    "hash": "ca97c98b",
+    "author": "TimothyBanks",
+    "branch": "smart-escrow/perf-test",
+    "date": "2026-07-23T13:39:41+00:00",
+    "message": "feat: Add some performance tests for escrow wasm functions"
+  },
+  {
+    "hash": "5eed34d1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:26:08+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
+  },
+  {
+    "hash": "5eed34d1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:26:08+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
+  },
+  {
+    "hash": "dc9e38b4",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "dc9e38b4",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "dc9e38b4",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "29df9c4e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "6656780e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "ccba9fc1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "ccba9fc1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "6656780e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "ccba9fc1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "29df9c4e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "6656780e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "ccba9fc1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "29df9c4e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "6656780e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "ccba9fc1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "29df9c4e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "6656780e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "ccba9fc1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:56+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "b6ba1a75",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "b6ba1a75",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "b6ba1a75",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "b6ba1a75",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "b6ba1a75",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "b6ba1a75",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "b6ba1a75",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "9ee75bba",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "435252d8",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:55+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase1c-rpc-integration",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase2-rpc-tracing",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase2-rpc-tracing",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "55790980",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "17866bcc",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:25:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase1b-telemetry-infra",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase1c-rpc-integration",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase2-rpc-tracing",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "7a19cb6d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:24:43+00:00",
+    "message": "docs(telemetry): update SpanGuard model \u2014 coro-aware scopes, ScopedActivation, drop removed rootSpan/detached"
+  },
+  {
+    "hash": "11e5454a",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:10:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
+  },
+  {
+    "hash": "11e5454a",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:10:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
+  },
+  {
+    "hash": "18eab816",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:09:18+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at ledger.acquire site"
+  },
+  {
+    "hash": "18eab816",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:09:18+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at ledger.acquire site"
+  },
+  {
+    "hash": "18eab816",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:09:18+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at ledger.acquire site"
+  },
+  {
+    "hash": "d66e0c7f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:08:03+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "d66e0c7f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:08:03+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "d66e0c7f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:08:03+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "01872501",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:08:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "01872501",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:08:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "01872501",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:08:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "01872501",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:08:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "b2f5f65b",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:08:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "b2f5f65b",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:08:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "b2f5f65b",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:08:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "b2f5f65b",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:08:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "b2f5f65b",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:08:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "4975a380",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:07:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "4975a380",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:07:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "4975a380",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:07:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "4975a380",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:07:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "4975a380",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:07:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "4975a380",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:07:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "f2c05345",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:07:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "f2c05345",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:07:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "f2c05345",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:07:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "f2c05345",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:07:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "f2c05345",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:07:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "f2c05345",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:07:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "f2c05345",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:07:57+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "88c83e6f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:07:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "a2c50245",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:07:11+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at consensus accept site"
+  },
+  {
+    "hash": "f547c80f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:05:37+00:00",
+    "message": "fix(telemetry): mirror second-scale histogram buckets into Alloy config"
+  },
+  {
+    "hash": "f547c80f",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:05:37+00:00",
+    "message": "fix(telemetry): mirror second-scale histogram buckets into Alloy config"
+  },
+  {
+    "hash": "0c8701c4",
+    "author": "Vito",
+    "branch": "tapanito/invariant-improvement",
+    "date": "2026-07-23T13:04:06+00:00",
+    "message": "clang-tidy"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "9f5a0950",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T13:02:15+00:00",
+    "message": "refactor(telemetry): use activateIfLive helper at tx activation sites"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "34dfc4ed",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T12:59:05+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "8fddbe84",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T12:59:02+00:00",
+    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase2-rpc-tracing",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "842f994d",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T12:59:01+00:00",
+    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase1c-rpc-integration",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase2-rpc-tracing",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "be785195",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T12:58:58+00:00",
+    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
+  },
+  {
+    "hash": "c8a366f8",
+    "author": "Vito",
+    "branch": "tapanito/invariant-improvement",
+    "date": "2026-07-23T12:55:37+00:00",
+    "message": "Merge remote-tracking branch 'origin/develop' into tapanito/invariant-improvement"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase1b-telemetry-infra",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase1c-rpc-integration",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase2-rpc-tracing",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase3-tx-tracing",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase4-consensus-tracing",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase5-docs-deployment",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase6-statsd",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "c209829c",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-07-23T12:50:16+00:00",
+    "message": "refactor(telemetry): no-alloc GetCurrent hot path, activateIfLive helper, non-copyable storage, accurate drop-counter doc"
+  },
+  {
+    "hash": "74cfb358",
+    "author": "Sergey Kuznetsov",
+    "branch": "origin",
+    "date": "2026-07-23T11:21:49+00:00",
+    "message": "ci: Update CI image (#7850)"
+  },
+  {
     "hash": "74cfb358",
     "author": "Sergey Kuznetsov",
     "branch": "origin",
@@ -289,14 +1626,14 @@
   {
     "hash": "12ed5065",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/test-title-action",
+    "branch": "origin",
     "date": "2026-07-22T18:50:10+00:00",
     "message": "chore: Clean up grammar in PR template (#7846)"
   },
   {
     "hash": "12ed5065",
     "author": "Mayukha Vadari",
-    "branch": "origin",
+    "branch": "mvadari/test-title-action",
     "date": "2026-07-22T18:50:10+00:00",
     "message": "chore: Clean up grammar in PR template (#7846)"
   },
@@ -366,6 +1703,13 @@
   {
     "hash": "3122de86",
     "author": "Ayaz Salikhov",
+    "branch": "origin",
+    "date": "2026-07-22T17:04:02+00:00",
+    "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
+  },
+  {
+    "hash": "3122de86",
+    "author": "Ayaz Salikhov",
     "branch": "ximinez/number-exponents",
     "date": "2026-07-22T17:04:02+00:00",
     "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
@@ -395,13 +1739,6 @@
     "hash": "3122de86",
     "author": "Ayaz Salikhov",
     "branch": "mvadari/test-title-action",
-    "date": "2026-07-22T17:04:02+00:00",
-    "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
-  },
-  {
-    "hash": "3122de86",
-    "author": "Ayaz Salikhov",
-    "branch": "origin",
     "date": "2026-07-22T17:04:02+00:00",
     "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
   },
@@ -989,6 +2326,13 @@
   {
     "hash": "7edf39e6",
     "author": "Sergey Kuznetsov",
+    "branch": "origin",
+    "date": "2026-07-22T14:00:17+00:00",
+    "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
+  },
+  {
+    "hash": "7edf39e6",
+    "author": "Sergey Kuznetsov",
     "branch": "ximinez/number-exponents",
     "date": "2026-07-22T14:00:17+00:00",
     "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
@@ -1018,13 +2362,6 @@
     "hash": "7edf39e6",
     "author": "Sergey Kuznetsov",
     "branch": "mvadari/test-title-action",
-    "date": "2026-07-22T14:00:17+00:00",
-    "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
-  },
-  {
-    "hash": "7edf39e6",
-    "author": "Sergey Kuznetsov",
-    "branch": "origin",
     "date": "2026-07-22T14:00:17+00:00",
     "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
   },
@@ -2161,1342 +3498,5 @@
     "branch": "tapanito/feature/enhanced-squelching",
     "date": "2026-07-22T12:02:55+00:00",
     "message": "Merge branch 'develop' into tapanito/feature/enhanced-squelching"
-  },
-  {
-    "hash": "2ccd94be",
-    "author": "Vito",
-    "branch": "tapanito/feature/enhanced-squelching",
-    "date": "2026-07-22T11:04:28+00:00",
-    "message": "Merge branch 'develop' into tapanito/feature/enhanced-squelching"
-  },
-  {
-    "hash": "209ee243",
-    "author": "Vito",
-    "branch": "tapanito/lending-cash-basis",
-    "date": "2026-07-22T10:58:37+00:00",
-    "message": "fix: Address PR review comments on LEVersion naming"
-  },
-  {
-    "hash": "f78bc433",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-22T09:58:55+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "f78bc433",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-22T09:58:55+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "eec3062c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-22T09:58:50+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-  },
-  {
-    "hash": "eec3062c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-22T09:58:50+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-  },
-  {
-    "hash": "eec3062c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-22T09:58:50+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-  },
-  {
-    "hash": "7bdc14ee",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-22T09:58:35+00:00",
-    "message": "docs(telemetry): 09-doc \u2014 deterministic roots are true roots; rootSpan->freshRoot"
-  },
-  {
-    "hash": "7bdc14ee",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-22T09:58:35+00:00",
-    "message": "docs(telemetry): 09-doc \u2014 deterministic roots are true roots; rootSpan->freshRoot"
-  },
-  {
-    "hash": "7bdc14ee",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-22T09:58:35+00:00",
-    "message": "docs(telemetry): 09-doc \u2014 deterministic roots are true roots; rootSpan->freshRoot"
-  },
-  {
-    "hash": "7bdc14ee",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-22T09:58:35+00:00",
-    "message": "docs(telemetry): 09-doc \u2014 deterministic roots are true roots; rootSpan->freshRoot"
-  },
-  {
-    "hash": "a63a3268",
-    "author": "Vito Tumas",
-    "branch": "tapanito/lending-cash-basis",
-    "date": "2026-07-22T09:58:32+00:00",
-    "message": "Merge branch 'develop' into tapanito/lending-cash-basis"
-  },
-  {
-    "hash": "fac3dfcc",
-    "author": "Vito",
-    "branch": "tapanito/lending-cash-basis",
-    "date": "2026-07-22T09:58:17+00:00",
-    "message": "fix: VaultVersion"
-  },
-  {
-    "hash": "9725f5b4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-22T09:56:47+00:00",
-    "message": "fix(telemetry): phase-6 peer.proposal/validation.receive use ScopedSpanGuard::freshRoot"
-  },
-  {
-    "hash": "9725f5b4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-22T09:56:47+00:00",
-    "message": "fix(telemetry): phase-6 peer.proposal/validation.receive use ScopedSpanGuard::freshRoot"
-  },
-  {
-    "hash": "9725f5b4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-22T09:56:47+00:00",
-    "message": "fix(telemetry): phase-6 peer.proposal/validation.receive use ScopedSpanGuard::freshRoot"
-  },
-  {
-    "hash": "9725f5b4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-22T09:56:47+00:00",
-    "message": "fix(telemetry): phase-6 peer.proposal/validation.receive use ScopedSpanGuard::freshRoot"
-  },
-  {
-    "hash": "6c21cc4a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-22T09:53:58+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "6c21cc4a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-22T09:53:58+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "6c21cc4a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-22T09:53:58+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "6c21cc4a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-22T09:53:58+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "d60fc44a",
-    "author": "Timur Yalymov",
-    "branch": "FN-68-loanpay-impaired-late-bypass",
-    "date": "2026-07-22T09:18:49+00:00",
-    "message": "Merge branch 'develop' into FN-68-loanpay-impaired-late-bypass"
-  },
-  {
-    "hash": "9fe30f93",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/mpt/audit-attackathon-fixes-2",
-    "date": "2026-07-21T23:39:01+00:00",
-    "message": "Address reviewer's feedback"
-  },
-  {
-    "hash": "b3141d91",
-    "author": "Ed Hennis",
-    "branch": "ximinez/directory",
-    "date": "2026-07-21T23:29:00+00:00",
-    "message": "Merge branch 'develop' into ximinez/directory"
-  },
-  {
-    "hash": "a99c2e6a",
-    "author": "Ed Hennis",
-    "branch": "ximinez/emptydirectoryinvariant",
-    "date": "2026-07-21T23:28:51+00:00",
-    "message": "Merge branch 'develop' into ximinez/emptydirectoryinvariant"
-  },
-  {
-    "hash": "c67e41d7",
-    "author": "Mayukha Vadari",
-    "branch": "copilot/add-ctid-to-ledger-response",
-    "date": "2026-07-21T22:43:08+00:00",
-    "message": "fix clang-tidy"
-  },
-  {
-    "hash": "a1ac0a31",
-    "author": "Mayukha Vadari",
-    "branch": "copilot/add-augmented-submit-fields",
-    "date": "2026-07-21T22:41:28+00:00",
-    "message": "fix changelog"
-  },
-  {
-    "hash": "1368a1cd",
-    "author": "Mayukha Vadari",
-    "branch": "copilot/add-augmented-submit-fields",
-    "date": "2026-07-21T22:40:38+00:00",
-    "message": "fix clang-tidy"
-  },
-  {
-    "hash": "91724750",
-    "author": "Mayukha Vadari",
-    "branch": "copilot/add-augmented-submit-fields",
-    "date": "2026-07-21T22:38:48+00:00",
-    "message": "fix build issues"
-  },
-  {
-    "hash": "8763260b",
-    "author": "Mayukha Vadari",
-    "branch": "copilot/add-ctid-to-ledger-response",
-    "date": "2026-07-21T22:24:25+00:00",
-    "message": "Merge branch 'develop' of https://github.com/XRPLF/rippled into copilot/add-ctid-to-ledger-response"
-  },
-  {
-    "hash": "293d3441",
-    "author": "Mayukha Vadari",
-    "branch": "copilot/apply-asfdisallowincomingtrustline",
-    "date": "2026-07-21T22:20:09+00:00",
-    "message": "Merge branch 'develop' of https://github.com/XRPLF/rippled into copilot/apply-asfdisallowincomingtrustline"
-  },
-  {
-    "hash": "8febef67",
-    "author": "Mayukha Vadari",
-    "branch": "copilot/add-augmented-submit-fields",
-    "date": "2026-07-21T21:59:01+00:00",
-    "message": "Merge branch 'develop' into copilot/add-augmented-submit-fields"
-  },
-  {
-    "hash": "69afcd9c",
-    "author": "Ed Hennis",
-    "branch": "ximinez/parse-guard",
-    "date": "2026-07-21T21:23:40+00:00",
-    "message": "AI review feedback: init vars in ctor to shut AI up"
-  },
-  {
-    "hash": "b2d6f06a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-21T21:14:36+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "b2d6f06a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T21:14:36+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "b2d6f06a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T21:14:36+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "b2d6f06a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T21:14:36+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "b2d6f06a",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T21:14:36+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "7fc145eb",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-21T21:09:36+00:00",
-    "message": "refactor(telemetry): consensus + peer-receive spans use spanContext()/freshRoot, drop detach"
-  },
-  {
-    "hash": "7fc145eb",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T21:09:36+00:00",
-    "message": "refactor(telemetry): consensus + peer-receive spans use spanContext()/freshRoot, drop detach"
-  },
-  {
-    "hash": "7fc145eb",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T21:09:36+00:00",
-    "message": "refactor(telemetry): consensus + peer-receive spans use spanContext()/freshRoot, drop detach"
-  },
-  {
-    "hash": "7fc145eb",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T21:09:36+00:00",
-    "message": "refactor(telemetry): consensus + peer-receive spans use spanContext()/freshRoot, drop detach"
-  },
-  {
-    "hash": "7fc145eb",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T21:09:36+00:00",
-    "message": "refactor(telemetry): consensus + peer-receive spans use spanContext()/freshRoot, drop detach"
-  },
-  {
-    "hash": "7fc145eb",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T21:09:36+00:00",
-    "message": "refactor(telemetry): consensus + peer-receive spans use spanContext()/freshRoot, drop detach"
-  },
-  {
-    "hash": "cc7585c0",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "cc7585c0",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "30ee25a2",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "cc7585c0",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "30ee25a2",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "cc7585c0",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "30ee25a2",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "cc7585c0",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "30ee25a2",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "cc7585c0",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "30ee25a2",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "cc7585c0",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:57:35+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "64a3c931",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:57:22+00:00",
-    "message": "test(telemetry): SpanGuardFactory uses spanContext() (captureContext renamed)"
-  },
-  {
-    "hash": "64a3c931",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:57:22+00:00",
-    "message": "test(telemetry): SpanGuardFactory uses spanContext() (captureContext renamed)"
-  },
-  {
-    "hash": "64a3c931",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:57:22+00:00",
-    "message": "test(telemetry): SpanGuardFactory uses spanContext() (captureContext renamed)"
-  },
-  {
-    "hash": "64a3c931",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:57:22+00:00",
-    "message": "test(telemetry): SpanGuardFactory uses spanContext() (captureContext renamed)"
-  },
-  {
-    "hash": "64a3c931",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:57:22+00:00",
-    "message": "test(telemetry): SpanGuardFactory uses spanContext() (captureContext renamed)"
-  },
-  {
-    "hash": "64a3c931",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T20:57:22+00:00",
-    "message": "test(telemetry): SpanGuardFactory uses spanContext() (captureContext renamed)"
-  },
-  {
-    "hash": "64a3c931",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:57:22+00:00",
-    "message": "test(telemetry): SpanGuardFactory uses spanContext() (captureContext renamed)"
-  },
-  {
-    "hash": "e2eba09f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:55:25+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "e2eba09f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:55:25+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "e2eba09f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:55:25+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "e2eba09f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:55:25+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "e2eba09f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:55:25+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "81805b51",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:55:21+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "81805b51",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:55:21+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "81805b51",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:55:21+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "81805b51",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:55:21+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "81805b51",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:55:21+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "81805b51",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:55:21+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "3d2542dc",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:54:05+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "3d2542dc",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:54:05+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "3d2542dc",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:54:05+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "3d2542dc",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:54:05+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "3d2542dc",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:54:05+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "3d2542dc",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T20:54:05+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "3d2542dc",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:54:05+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "c9fb16e6",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-07-21T20:53:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "0e7ca13c",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1b-telemetry-infra",
-    "date": "2026-07-21T20:47:01+00:00",
-    "message": "refactor(telemetry): split context capture into spanContext() (own span) + threadLocalContext() (current)"
-  },
-  {
-    "hash": "cba6c69d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "b4db8d07",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "cba6c69d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "b4db8d07",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "8a5c8063",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "ec5cd97d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "cba6c69d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "b4db8d07",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "8a5c8063",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "ec5cd97d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "cba6c69d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "b4db8d07",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "8a5c8063",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "ec5cd97d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "cba6c69d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "b4db8d07",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "8a5c8063",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "ec5cd97d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "8a5c8063",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "ec5cd97d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "b4db8d07",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "8a5c8063",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "ec5cd97d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "ec5cd97d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-07-21T20:07:24+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "97e6586f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1b-telemetry-infra",
-    "date": "2026-07-21T20:07:20+00:00",
-    "message": "fix(telemetry): captureContext() captures the guard's own span, not ambient"
-  },
-  {
-    "hash": "fbb79d73",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:43:10+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "fbb79d73",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T19:43:10+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "fbb79d73",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T19:43:10+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "fbb79d73",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:43:10+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "3dbcec57",
-    "author": "Ed Hennis",
-    "branch": "ximinez/online-delete-gaps2",
-    "date": "2026-07-21T19:40:19+00:00",
-    "message": "logging"
-  },
-  {
-    "hash": "bb49b02d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "6d6d9eb8",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "bb49b02d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "6d6d9eb8",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "bb49b02d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "bb49b02d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "6d6d9eb8",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "6d6d9eb8",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "bb49b02d",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "6d6d9eb8",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T19:39:42+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "0c2457ed",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:39:41+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "0c2457ed",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T19:39:41+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "0c2457ed",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:39:41+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "0c2457ed",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T19:39:41+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "0c2457ed",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T19:39:41+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "0c2457ed",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-07-21T19:39:41+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
-  },
-  {
-    "hash": "f6f0e722",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:39:29+00:00",
-    "message": "docs(telemetry): DeterministicIdGenerator is active via hashSpan, not dormant"
-  },
-  {
-    "hash": "f6f0e722",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T19:39:29+00:00",
-    "message": "docs(telemetry): DeterministicIdGenerator is active via hashSpan, not dormant"
-  },
-  {
-    "hash": "f6f0e722",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:39:29+00:00",
-    "message": "docs(telemetry): DeterministicIdGenerator is active via hashSpan, not dormant"
-  },
-  {
-    "hash": "f6f0e722",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T19:39:29+00:00",
-    "message": "docs(telemetry): DeterministicIdGenerator is active via hashSpan, not dormant"
-  },
-  {
-    "hash": "f6f0e722",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T19:39:29+00:00",
-    "message": "docs(telemetry): DeterministicIdGenerator is active via hashSpan, not dormant"
-  },
-  {
-    "hash": "f6f0e722",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-07-21T19:39:29+00:00",
-    "message": "docs(telemetry): DeterministicIdGenerator is active via hashSpan, not dormant"
-  },
-  {
-    "hash": "f6f0e722",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1b-telemetry-infra",
-    "date": "2026-07-21T19:39:29+00:00",
-    "message": "docs(telemetry): DeterministicIdGenerator is active via hashSpan, not dormant"
-  },
-  {
-    "hash": "91a5747b",
-    "author": "Mayukha Vadari",
-    "branch": "ripple/se/hf-merge-july",
-    "date": "2026-07-21T19:16:33+00:00",
-    "message": "Merge branch 'ripple/wasmi-host-functions' into ripple/se/hf-merge-july"
-  },
-  {
-    "hash": "deecae0f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:15:31+00:00",
-    "message": "refactor(telemetry): tx spans thread-free (no detach); txq spans scoped for nesting"
-  },
-  {
-    "hash": "deecae0f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T19:15:31+00:00",
-    "message": "refactor(telemetry): tx spans thread-free (no detach); txq spans scoped for nesting"
-  },
-  {
-    "hash": "deecae0f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:15:31+00:00",
-    "message": "refactor(telemetry): tx spans thread-free (no detach); txq spans scoped for nesting"
-  },
-  {
-    "hash": "deecae0f",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T19:15:31+00:00",
-    "message": "refactor(telemetry): tx spans thread-free (no detach); txq spans scoped for nesting"
-  },
-  {
-    "hash": "bc892f0b",
-    "author": "Mayukha Vadari",
-    "branch": "ripple/se/hf-merge-july",
-    "date": "2026-07-21T19:12:36+00:00",
-    "message": "feat: Change function name from `finish` to `escrow_finish` (#7840)"
-  },
-  {
-    "hash": "bc892f0b",
-    "author": "Mayukha Vadari",
-    "branch": "ripple/wasmi-host-functions",
-    "date": "2026-07-21T19:12:36+00:00",
-    "message": "feat: Change function name from `finish` to `escrow_finish` (#7840)"
-  },
-  {
-    "hash": "d63d5bd4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:10:10+00:00",
-    "message": "fix(telemetry): hashSpan standalone spans are true roots via DeterministicIdGenerator"
-  },
-  {
-    "hash": "d63d5bd4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-07-21T19:10:10+00:00",
-    "message": "fix(telemetry): hashSpan standalone spans are true roots via DeterministicIdGenerator"
-  },
-  {
-    "hash": "d63d5bd4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:10:10+00:00",
-    "message": "fix(telemetry): hashSpan standalone spans are true roots via DeterministicIdGenerator"
-  },
-  {
-    "hash": "d63d5bd4",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T19:10:10+00:00",
-    "message": "fix(telemetry): hashSpan standalone spans are true roots via DeterministicIdGenerator"
-  },
-  {
-    "hash": "14d3d5ba",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T19:01:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "14d3d5ba",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T19:01:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "14d3d5ba",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T19:01:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase2-rpc-tracing' into pratik/otel-phase3-tx-tracing"
-  },
-  {
-    "hash": "56ba9e3a",
-    "author": "Luc des Trois Maisons",
-    "branch": "lmaisons/fix-iterator-conformance",
-    "date": "2026-07-21T18:54:24+00:00",
-    "message": "fix: add missing value_type to JSON iterators"
-  },
-  {
-    "hash": "e4d02904",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T18:25:12+00:00",
-    "message": "test(telemetry): rewrite SpanGuard/ScopedSpanGuard + deterministic-root tests; fix RipplePathFind"
-  },
-  {
-    "hash": "e4d02904",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T18:25:12+00:00",
-    "message": "test(telemetry): rewrite SpanGuard/ScopedSpanGuard + deterministic-root tests; fix RipplePathFind"
-  },
-  {
-    "hash": "e4d02904",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T18:25:12+00:00",
-    "message": "test(telemetry): rewrite SpanGuard/ScopedSpanGuard + deterministic-root tests; fix RipplePathFind"
-  },
-  {
-    "hash": "e4d02904",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T18:25:12+00:00",
-    "message": "test(telemetry): rewrite SpanGuard/ScopedSpanGuard + deterministic-root tests; fix RipplePathFind"
-  },
-  {
-    "hash": "974bd343",
-    "author": "Ed Hennis",
-    "branch": "ximinez/number-exponents",
-    "date": "2026-07-21T18:10:17+00:00",
-    "message": "Merge branch 'develop' into ximinez/number-exponents"
-  },
-  {
-    "hash": "19393e12",
-    "author": "Ed Hennis",
-    "branch": "ximinez/parse-guard",
-    "date": "2026-07-21T18:10:12+00:00",
-    "message": "Merge branch 'develop' into ximinez/parse-guard"
-  },
-  {
-    "hash": "5e90caa4",
-    "author": "Ed Hennis",
-    "branch": "ximinez/assetsmaximum-wip",
-    "date": "2026-07-21T18:10:08+00:00",
-    "message": "Merge branch 'develop' into ximinez/assetsmaximum-wip"
-  },
-  {
-    "hash": "53dc3b40",
-    "author": "Ed Hennis",
-    "branch": "ximinez/online-delete-gaps",
-    "date": "2026-07-21T18:10:04+00:00",
-    "message": "Merge branch 'develop' into ximinez/online-delete-gaps"
-  },
-  {
-    "hash": "c7b3271e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T17:50:49+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "c7b3271e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T17:50:49+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "c7b3271e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T17:50:49+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "c7b3271e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T17:50:49+00:00",
-    "message": "Merge branch 'pratik/otel-phase1c-rpc-integration' into pratik/otel-phase2-rpc-tracing"
-  },
-  {
-    "hash": "4f68c976",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T17:47:55+00:00",
-    "message": "fix(telemetry): root RPC entry spans so each request is its own trace"
-  },
-  {
-    "hash": "4f68c976",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-07-21T17:47:55+00:00",
-    "message": "fix(telemetry): root RPC entry spans so each request is its own trace"
-  },
-  {
-    "hash": "4f68c976",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase2-rpc-tracing",
-    "date": "2026-07-21T17:47:55+00:00",
-    "message": "fix(telemetry): root RPC entry spans so each request is its own trace"
-  },
-  {
-    "hash": "4f68c976",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase3-tx-tracing",
-    "date": "2026-07-21T17:47:55+00:00",
-    "message": "fix(telemetry): root RPC entry spans so each request is its own trace"
-  },
-  {
-    "hash": "4f68c976",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase1c-rpc-integration",
-    "date": "2026-07-21T17:47:55+00:00",
-    "message": "fix(telemetry): root RPC entry spans so each request is its own trace"
-  },
-  {
-    "hash": "d2d11459",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-07-21T17:43:26+00:00",
-    "message": "Merge branch 'pratik/otel-phase1b-telemetry-infra' into pratik/otel-phase1c-rpc-integration"
   }
 ]
