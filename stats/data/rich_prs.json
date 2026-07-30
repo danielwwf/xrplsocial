@@ -1,5 +1,50 @@
 [
   {
+    "pr_number": 7884,
+    "branch_name": "chore/gtest-migration-followups-1",
+    "title": "chore: Gtest migration followups first pass",
+    "body": "## High Level Overview of Change\r\n\r\nFollow-up PR that resolves review comments left open on seven already-merged\r\ntest-migration PRs: #7136, #7133, #7054, #7046, #7317, #7304, #7292.\r\n\r\nThose PRs were merged with a number of \"let's push this to the next PR\" / \"keep this\r\nconvo open\" threads. This audits all 72 unresolved threads across them and clears the\r\nones that are mechanical, plus one real bug.\r\n\r\n**39 review threads can be resolved from this PR** \u2014 33 fixed in code, 6 answered\r\nwithout a code change (see *Deliberately not changed* below).\r\n\r\nTest, benchmark and build files only. **No production code is touched.**\r\n\r\n### Context of Change\r\n\r\nThe bulk is grouped into four mechanical sweeps rather than 15 scattered follow-ups,\r\nbecause the same feedback recurred across PRs:\r\n\r\n| Theme | What | Threads |\r\n| --- | --- | --- |\r\n| `std::size_t` loop counters | 40 of 48 signed counters under `src/tests/libxrpl` + `src/benchmarks` | [7136.14](https://github.com/XRPLF/rippled/pull/7136#discussion_r3420483135), [7133.14](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412276986), [7317.19](https://github.com/XRPLF/rippled/pull/7317#discussion_r3589563409) |\r\n| Magic numbers | extracted to named `constexpr` in `resource/Logic.cpp`, `shamap/SHAMap.cpp`, `shamap/SHAMapSync.cpp`, `benchmarks/Backend.cpp` | [7133.5](https://github.com/XRPLF/rippled/pull/7133#discussion_r3329269627), [7133.16](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412328137), [7133.17](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412337436), [7133.18](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412342815), [7317.15](https://github.com/XRPLF/rippled/pull/7317#discussion_r3589527872) |\r\n| `std::to_array` | replaced sized `std::array<\u2026, N>{{\u2026}}` and raw C arrays | [7136.6](https://github.com/XRPLF/rippled/pull/7136#discussion_r3420090614), [7136.7](https://github.com/XRPLF/rippled/pull/7136#discussion_r3420105514) |\r\n| `ranges` | `ranges::iota`, `ranges::shuffle`,",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-28T14:32:51Z",
+    "merged_at": "2026-07-30T23:37:54Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7884?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `0%` with `20 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/7884?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPL",
+        "created_at": "2026-07-28T15:01:04Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "> I'm not a fan of `auto i = 0uz`, in my opinion `size_t i = 0` is as short, but doesn't make you remember what `uz` is, and the type is evident\r\n\r\nI'm totally on the opposite side in regards to that :) i don't like to spell out types everywhere and `uz` is a standard way to use `auto` in such places.",
+        "created_at": "2026-07-29T13:52:54Z"
+      }
+    ],
+    "reviews_count": 18,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": "I'm not a fan of `auto i = 0uz`, in my opinion `size_t i = 0` is as short, but doesn't make you remember what `uz` is, and the type is evident"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7917,
     "branch_name": "run_coverage_first",
     "title": "ci: Run coverage first in CI",
