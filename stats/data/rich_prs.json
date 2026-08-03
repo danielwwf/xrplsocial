@@ -1,5 +1,65 @@
 [
   {
+    "pr_number": 7717,
+    "branch_name": "issue-7511-null-account-objects-read",
+    "title": "fix: Add null check for account object reads",
+    "body": "## High Level Overview of Change\r\n\r\nAdds a defensive null check when `account_objects` reads ledger objects referenced by an account owner directory.\r\n\r\n`ReadView::read` documents that it may return `nullptr` if the key is not present or the type does not match. The previous code dereferenced the returned pointer before checking it, which could crash if the directory contained an unreadable or missing object.\r\n\r\nThis change skips unreadable directory entries before accessing the SLE.\r\n\r\nFixes #7511\r\n\r\n### Context of Change\r\n\r\nOwner directories should normally reference valid ledger objects, but corrupted or inconsistent ledger state can leave a dangling directory entry. In that case, `ledger.read(keylet::child(*iter))` can return `nullptr`.\r\n\r\nThe `account_objects` handler previously used the returned pointer immediately through `sleNode->getType()` and `sleNode->getJson(...)` without checking it first. This change makes the code more defensive and avoids dereferencing a null pointer.",
+    "user": "BraedonKlock",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-03T14:56:22Z",
+    "merged_at": "2026-08-03T21:53:49Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 9,
+    "comments": [
+      {
+        "user": "ximinez",
+        "body": "Hi @BraedonKlock. Thank you for your contributions! We really appreciate them. At this point, we ask that you hold off on submitting any more until we've had a chance to review the current batch. There is a not insignificant engineer overhead for each review, and it may take some time to get caught up. Too many PRs can make that harder. When we've gotten down to 3 open or fewer, feel free to create more!\r\n\r\nIn the meantime, you can open \"Draft\" PRs so that changes will be ready to go once we're ",
+        "created_at": "2026-07-06T23:55:15Z"
+      },
+      {
+        "user": "BraedonKlock",
+        "body": "Thank you @ximinez  for the clarification! I really appreciate the feedback. I completely understand. I'll hold off on opening additional ready for review PRs until my open count is down to three or fewer. In the meantime, I'll continue working locally and use draft PRs if appropriate. Thanks again!",
+        "created_at": "2026-07-07T00:49:56Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-07-10T22:46:08Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-07-11T11:26:37Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7717?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-03T16:08:39Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "BraedonKlock",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "DISMISSED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7884,
     "branch_name": "chore/gtest-migration-followups-1",
     "title": "chore: Gtest migration followups first pass",
