@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 7990,
+    "branch_name": "mvadari/cpp23-todos",
+    "title": "refactor: Act on TODOs that are unblocked by C++23",
+    "body": "## High Level Overview of Change\n\nResolves six `TODO` / `FIXME` comments that were each waiting on a newer language standard or compiler. All of them are unblocked today, so this acts on them and deletes the comments. No behavior changes.\n\n| Site | What it was waiting for |\n| --- | --- |\n| `FeeVoteImpl.cpp` | structured bindings capturable in a lambda |\n| `Invariants_test.cpp` | same |\n| `ProtocolVersion.cpp` | `std::is_sorted` in a `constexpr` context |\n| `ErrorCodes.cpp` | `consteval` |\n| `TestHelpers.h` | a standard library shipping `<ranges>` |\n| `ServerDefinitions.cpp` | `std::string::contains` |\n\n### Context of Change\n\n`CMakeLists.txt` has set `CMAKE_CXX_STANDARD` to 23 for a while now, and `cmake/XrplSanity.cmake` already requires clang 16 or GCC 12 at minimum. The comments were written when neither was true, and nothing has swept them up since.\n\nDetails, in the order they appear in the diff:\n\n- **`ErrorCodes.cpp`** \u2014 `sortErrorInfos` is only ever called at compile time, to initialise `kSortedErrorInfos`. It is now `consteval` rather than `constexpr`, which makes that a guarantee instead of a convention.\n- **`Invariants_test.cpp` / `FeeVoteImpl.cpp`** \u2014 both carried a TODO pointing at [llvm/llvm-project#48582](https://github.com/llvm/llvm-project/issues/48582), a bug that prevented capturing a structured binding in a lambda. It was [fixed in LLVM 16](https://github.com/llvm/llvm-project/commit/127bf44385424891eb04cff8e52d3f157fc2cb7c), which is now the minimum, so both loops use structured bindings and drop the hand-unpacked locals.\n- **`ProtocolVersion.cpp`** \u2014 a 17-line `constexpr` lambda inside a `static_assert`, hand-rolling a sortedness check, described in its own comment as an \"ugly construct\". Replaced with `std::ranges::adjacent_find` over `std::ranges::greater_equal`: finding no adjacent pair where the first element is not less than the second proves the list is strictly ascending, which also proves it holds no duplicates. The \"at least one protocol\"",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-10T15:30:16Z",
+    "merged_at": "2026-08-10T17:39:04Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7990?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-10T15:56:45Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR removes several stale TODO/FIXME workarounds and refactors code to use C++23/modern standard library features that are now guaranteed by the project toolchain, while "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7985,
     "branch_name": "build_docs_again",
     "title": "docs: Rearrange & simplify build/nix/environment docs",
