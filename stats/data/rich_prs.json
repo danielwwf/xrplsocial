@@ -1,5 +1,56 @@
 [
   {
+    "pr_number": 7995,
+    "branch_name": "mvadari/std-trim-tolower",
+    "title": "refactor: Replace Boost trim and to_lower with libxrpl helpers",
+    "body": "## High Level Overview of Change\n\nReimplements `xrpl::trimWhitespace` without Boost, adds a matching `xrpl::toLower`, and routes the 15 scattered `boost::trim` / `boost::algorithm::trim_copy` / `boost::to_lower` call sites through them. Drops `<boost/algorithm/string/trim.hpp>` and `<boost/algorithm/string/case_conv.hpp>` from ten translation units.\n\n### Context of Change\n\n`trimWhitespace` already existed in `StringUtilities.h`, but it was itself a one-line wrapper around `boost::trim`:\n\n```cpp\nstd::string\ntrimWhitespace(std::string str)\n{\n    boost::trim(str);\n    return str;\n}\n```\n\nMeanwhile eleven other call sites reached for `boost::trim` or `boost::algorithm::trim_copy` directly instead of using the helper that was right there. So this is as much about consolidating on the existing helper as it is about dropping Boost \u2014 after this change there is one implementation of \"trim a string\" in the codebase instead of a helper plus eleven direct Boost calls.\n\n`toLower` is added alongside it for symmetry, replacing the four `boost::to_lower` call sites (config parsing, URL scheme normalisation, `can_delete`, and the `account_info` gravatar hash).\n\nBoth helpers spell the ASCII rules out explicitly (`constexpr isAsciiSpace` and `toAsciiLower`) so the result depends only on the input.\n\n> **Correction.** An earlier revision of this PR used `std::isspace` / `std::tolower`, and this section claimed both those and Boost's defaults were locale-free. That was wrong in both directions, as @mathbunnyru pointed out: `boost::trim`'s default overload takes `std::locale()` (the C++ global locale), and `std::isspace` consults the C locale. rippled sets neither, so both resolve to the classic locale and behavior on `develop` is unchanged either way \u2014 but the explicit ASCII version removes the hazard rather than moving it, so that is what landed.\n\nTwo uses are deliberately left on Boost:\n\n- **`src/libxrpl/beast/net/IPEndpoint.cpp`** uses `boost::trim_copy`. Routing it through `StringUtil",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-10T15:31:06Z",
+    "merged_at": "2026-08-11T18:53:57Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7995?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `90.90909%` with `2 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/7995?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-08-10T16:06:08Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-08-10T18:34:01Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-10T19:23:35Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7981,
     "branch_name": "fix/gcc14",
     "title": "build: Fix GCC 14 compilation",
@@ -1856,46 +1907,6 @@
       },
       {
         "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7387,
-    "branch_name": "DEFI-831",
-    "title": "fix: Update PermissionedDEX invariant domain tracking for valid offer replacement",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis change updates the Permissioned DEX invariant to ignore deleted domain offers when validating the transaction\u2019s active DomainID under `fixCleanup3_4_0`.\r\n\r\nPreviously, replacing a Permissioned DEX offer from Domain A with a new offer in Domain B could incorrectly trip `tecINVARIANT_FAILED`, because the invariant still tracked the deleted Domain A offer and compared it against the new transaction\u2019s Domain B. With this change, deleted domain entries are excluded from the post-amendment domain set, while the legacy behavior is preserved before `fixCleanup3_4_0`\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/bl",
-    "user": "Kassaking7",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-02T18:03:36Z",
-    "merged_at": "2026-07-23T22:23:19Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7387?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-06-02T18:25:01Z"
-      }
-    ],
-    "reviews_count": 8,
-    "reviews": [
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
         "state": "COMMENTED",
         "body": ""
       }
