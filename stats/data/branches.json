@@ -1,9 +1,871 @@
 {
-  "generated_at": "2026-08-12T07:03:17.479031+00:00",
+  "generated_at": "2026-08-12T08:58:12.736304+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 276,
   "total_contributors": 102,
   "branches": [
+    {
+      "name": "tapanito/fix-loanbatch-cover-rate",
+      "last_commit": {
+        "hash": "b088edd8",
+        "author": "Vito Tumas",
+        "email": "5780819+Tapanito@users.noreply.github.com",
+        "date": "2026-08-12T08:27:06+00:00",
+        "message": "Merge branch 'develop' into tapanito/fix-loanbatch-cover-rate"
+      },
+      "commits": [
+        {
+          "hash": "b088edd8",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-12T08:27:06+00:00",
+          "message": "Merge branch 'develop' into tapanito/fix-loanbatch-cover-rate"
+        },
+        {
+          "hash": "302e0408",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-06T16:34:21+00:00",
+          "message": "test: Fix LoanBatch broker cover rates and schedule overflow"
+        },
+        {
+          "hash": "cb425647",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-06T13:25:28+00:00",
+          "message": "ci: Generate protocol_autogen only once in CI (#7918)"
+        },
+        {
+          "hash": "5bf24c40",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-06T11:04:41+00:00",
+          "message": "ci: Use a separate benchmark filter (#7919)"
+        },
+        {
+          "hash": "8d7524f0",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-08-05T17:54:44+00:00",
+          "message": "fix: Use consistent endianness serializing MPT STIssue sequence (#7429)"
+        },
+        {
+          "hash": "41d6bb5f",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-04T23:27:23+00:00",
+          "message": "build: Fix build on macOS 15 and Nix environment (#7953)"
+        },
+        {
+          "hash": "a75488e5",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-04T16:17:41+00:00",
+          "message": "docs: Add a fix for `command not found: nix` on macOS (#7951)"
+        },
+        {
+          "hash": "c3ee6020",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-04T15:43:59+00:00",
+          "message": "test: Split Loan_test.cpp into topical suites (#7864)"
+        },
+        {
+          "hash": "e0de716e",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-04T13:49:18+00:00",
+          "message": "fix: Watch nix/*.nix files for direnv cache invalidation (#7948)"
+        },
+        {
+          "hash": "06488c13",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-08-04T13:46:55+00:00",
+          "message": "chore: Rename CamelCase namespaces to snake_case (#7933)"
+        },
+        {
+          "hash": "b8451ffa",
+          "author": "Luc des Trois Maisons",
+          "email": "lmaisons@ripple.com",
+          "date": "2026-08-03T21:17:23+00:00",
+          "message": "fix: Add missing value_type to JSON iterators (#7907)"
+        },
+        {
+          "hash": "765babb2",
+          "author": "Timur Yalymov",
+          "email": "36795566+tyalymov@users.noreply.github.com",
+          "date": "2026-08-03T21:11:33+00:00",
+          "message": "fix: Add VaultInvariant check that lossUnrealized is non-negative (#7863)"
+        },
+        {
+          "hash": "97f35add",
+          "author": "Braedon Klock",
+          "email": "braedonk@hotmail.com",
+          "date": "2026-08-03T21:08:42+00:00",
+          "message": "fix: Add null check for account object reads (#7717)"
+        },
+        {
+          "hash": "ecdd457f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-30T23:04:38+00:00",
+          "message": "chore: Gtest migration followups first pass (#7884)"
+        },
+        {
+          "hash": "85e73cbd",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-30T19:28:31+00:00",
+          "message": "ci: Run coverage first in CI (#7917)"
+        },
+        {
+          "hash": "21cd6154",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-07-30T15:02:05+00:00",
+          "message": "perf: Replace node ID by depth in `TMLedgerNode` (#6353)"
+        },
+        {
+          "hash": "3c0659d2",
+          "author": "Olek",
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "date": "2026-07-30T12:18:33+00:00",
+          "message": "test: Add confidential mpt bulletproof tests (#7816)"
+        },
+        {
+          "hash": "53250654",
+          "author": "Copilot",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "date": "2026-07-30T12:17:32+00:00",
+          "message": "fix: Apply asfDisallowIncomingTrustline blocker to OfferCreate (#6307)"
+        },
+        {
+          "hash": "8a5eded4",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-07-30T11:55:39+00:00",
+          "message": "feat: Implement LoanBroker cash-basis accounting (#7817)"
+        },
+        {
+          "hash": "6ddad549",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-29T22:54:46+00:00",
+          "message": "chore: Move lexical cast tests to gtest (#7873)"
+        },
+        {
+          "hash": "86832edc",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-27T18:48:53+00:00",
+          "message": "chore: Move semantic version tests to gtest (#7872)"
+        },
+        {
+          "hash": "ff7fff2c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-27T18:39:53+00:00",
+          "message": "style: Make clang-tidy format files using clang-format rules (#7880)"
+        },
+        {
+          "hash": "2db631c9",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-07-27T17:42:07+00:00",
+          "message": "ci: Change `server_definitions` upload config name (#7878)"
+        },
+        {
+          "hash": "6c9c7f05",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-27T16:34:53+00:00",
+          "message": "chore: Trivial gtest migrations (#7865)"
+        },
+        {
+          "hash": "9466ecb5",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-27T14:32:53+00:00",
+          "message": "ci: Group github-actions dependabot updates (#7876)"
+        },
+        {
+          "hash": "e0aa50c4",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-27T14:18:01+00:00",
+          "message": "ci: Update CI image and prepare-runner action (#7874)"
+        },
+        {
+          "hash": "29120dfc",
+          "author": "Andrzej Budzanowski",
+          "email": "andrzej.budzanowski@neti-soft.com",
+          "date": "2026-07-27T13:00:14+00:00",
+          "message": "test: Migrate `nodestore` tests from Beast to GTest (#7292)"
+        },
+        {
+          "hash": "20801d98",
+          "author": "Andrzej Budzanowski",
+          "email": "andrzej.budzanowski@neti-soft.com",
+          "date": "2026-07-27T11:58:15+00:00",
+          "message": "test: Improve the server status test to not race and randomly fail (#7304)"
+        },
+        {
+          "hash": "b878818e",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-07-27T09:55:01+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/checkout from 7.0.0 to 7.0.1 (#7871)"
+        },
+        {
+          "hash": "fecfc0cf",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-24T17:30:20+00:00",
+          "message": "chore: Fix clang version in devshell (#7860)"
+        },
+        {
+          "hash": "ea0a6904",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-24T15:52:45+00:00",
+          "message": "chore: Verify tooling version for Nix-managed environments (#7862)"
+        },
+        {
+          "hash": "29d74142",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-24T14:59:24+00:00",
+          "message": "build: Pat\u0441h binary in local Linux nix environment (#7859)"
+        },
+        {
+          "hash": "9afa1cf4",
+          "author": "Kassaking7",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-07-23T21:40:21+00:00",
+          "message": "fix: Update PermissionedDEX invariant domain tracking for valid offer replacement (#7387)"
+        },
+        {
+          "hash": "7908aec2",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-07-23T21:39:11+00:00",
+          "message": "feat: Check default fields are not default when serializing (#6267)"
+        },
+        {
+          "hash": "4c0180b3",
+          "author": "Marek Foss",
+          "email": "marek.foss@neti-soft.com",
+          "date": "2026-07-23T21:38:21+00:00",
+          "message": "test: Migrate csf and xrpld-consensus Beast non-JTx tests to GTest (#7046)"
+        },
+        {
+          "hash": "4acccfed",
+          "author": "Marek Foss",
+          "email": "marek.foss@neti-soft.com",
+          "date": "2026-07-23T21:00:06+00:00",
+          "message": "test: Modularize Peerfinder component and migrate Peerfinder tests from Beast to GTest and GMock (#7054)"
+        },
+        {
+          "hash": "b89d75a2",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-07-23T20:57:00+00:00",
+          "message": "test: Add an RAII class to manage the env.parseFailureExpected flag (#7669)"
+        },
+        {
+          "hash": "40cdf49d",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-23T19:05:24+00:00",
+          "message": "build: Use custom libc in a devshell by default (#7852)"
+        },
+        {
+          "hash": "38c54c3f",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-07-23T18:50:59+00:00",
+          "message": "feat: Add fixCleanup3_4_0 amendment (no functionality yet) (#7854)"
+        },
+        {
+          "hash": "95e1ffea",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-23T16:49:44+00:00",
+          "message": "ci: Add llvm-tools-preview to rust toolchain (#7853)"
+        },
+        {
+          "hash": "74cfb358",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-23T11:21:49+00:00",
+          "message": "ci: Update CI image (#7850)"
+        },
+        {
+          "hash": "0072ced9",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-23T10:22:18+00:00",
+          "message": "ci: Update XRPLF/actions (#7849)"
+        },
+        {
+          "hash": "12ed5065",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-07-22T18:50:10+00:00",
+          "message": "chore: Clean up grammar in PR template (#7846)"
+        },
+        {
+          "hash": "3122de86",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-22T17:04:02+00:00",
+          "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
+        },
+        {
+          "hash": "7edf39e6",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-22T14:00:17+00:00",
+          "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
+        },
+        {
+          "hash": "ba01b05f",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-07-21T16:04:45+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/setup-python from 6.3.0 to 7.0.0 (#7830)"
+        },
+        {
+          "hash": "c414e187",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-21T15:37:47+00:00",
+          "message": "ci: Update pre-commit image (#7838)"
+        },
+        {
+          "hash": "f56b79f0",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-21T13:39:37+00:00",
+          "message": "ci: Add cargo to pre-commit image (#7835)"
+        },
+        {
+          "hash": "4918f3bb",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-21T13:38:26+00:00",
+          "message": "chore: Add doxygen in pre-commit image (#7836)"
+        },
+        {
+          "hash": "ee0a3dfa",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-07-21T13:14:40+00:00",
+          "message": "ci: Improve test debuggability (#7619)"
+        }
+      ],
+      "contributor_count": 27,
+      "contributors": [
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "102049210+klemenfn@users.noreply.github.com",
+          "name": "klemenfn"
+        },
+        {
+          "email": "109832400+luisfernandomendozav@users.noreply.github.com",
+          "name": "luisfernandomendozav"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "21219765+ckeshava@users.noreply.github.com",
+          "name": "Chenna Keshava B S"
+        },
+        {
+          "email": "bryanjiang168@gmail.com",
+          "name": "Bryan"
+        },
+        {
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "name": "Peter Chen"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Kassaking7"
+        },
+        {
+          "email": "braedonk@hotmail.com",
+          "name": "Braedon Klock"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "mvanhorn@users.noreply.github.com",
+          "name": "Matt Van Horn"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Testing",
+        "confidence": 0.7,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "tapanito/bugfix-loan-pay-fn-67",
+      "last_commit": {
+        "hash": "0d0b3258",
+        "author": "Vito Tumas",
+        "email": "5780819+Tapanito@users.noreply.github.com",
+        "date": "2026-08-12T08:24:44+00:00",
+        "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
+      },
+      "commits": [
+        {
+          "hash": "0d0b3258",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-12T08:24:44+00:00",
+          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
+        },
+        {
+          "hash": "8a594bd9",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-06T09:38:47+00:00",
+          "message": "Merge remote-tracking branch 'origin/tapanito/bugfix-loan-pay-fn-67' into tapanito/bugfix-loan-pay-fn-67"
+        },
+        {
+          "hash": "cfe6a88d",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-06T08:34:32+00:00",
+          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
+        },
+        {
+          "hash": "8d7524f0",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-08-05T17:54:44+00:00",
+          "message": "fix: Use consistent endianness serializing MPT STIssue sequence (#7429)"
+        },
+        {
+          "hash": "41d6bb5f",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-04T23:27:23+00:00",
+          "message": "build: Fix build on macOS 15 and Nix environment (#7953)"
+        },
+        {
+          "hash": "a75488e5",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-04T16:17:41+00:00",
+          "message": "docs: Add a fix for `command not found: nix` on macOS (#7951)"
+        },
+        {
+          "hash": "c3ee6020",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-04T15:43:59+00:00",
+          "message": "test: Split Loan_test.cpp into topical suites (#7864)"
+        },
+        {
+          "hash": "e0de716e",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-04T13:49:18+00:00",
+          "message": "fix: Watch nix/*.nix files for direnv cache invalidation (#7948)"
+        },
+        {
+          "hash": "06488c13",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-08-04T13:46:55+00:00",
+          "message": "chore: Rename CamelCase namespaces to snake_case (#7933)"
+        },
+        {
+          "hash": "b8451ffa",
+          "author": "Luc des Trois Maisons",
+          "email": "lmaisons@ripple.com",
+          "date": "2026-08-03T21:17:23+00:00",
+          "message": "fix: Add missing value_type to JSON iterators (#7907)"
+        },
+        {
+          "hash": "765babb2",
+          "author": "Timur Yalymov",
+          "email": "36795566+tyalymov@users.noreply.github.com",
+          "date": "2026-08-03T21:11:33+00:00",
+          "message": "fix: Add VaultInvariant check that lossUnrealized is non-negative (#7863)"
+        },
+        {
+          "hash": "97f35add",
+          "author": "Braedon Klock",
+          "email": "braedonk@hotmail.com",
+          "date": "2026-08-03T21:08:42+00:00",
+          "message": "fix: Add null check for account object reads (#7717)"
+        },
+        {
+          "hash": "ecdd457f",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-30T23:04:38+00:00",
+          "message": "chore: Gtest migration followups first pass (#7884)"
+        },
+        {
+          "hash": "85e73cbd",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-30T19:28:31+00:00",
+          "message": "ci: Run coverage first in CI (#7917)"
+        },
+        {
+          "hash": "21cd6154",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-07-30T15:02:05+00:00",
+          "message": "perf: Replace node ID by depth in `TMLedgerNode` (#6353)"
+        },
+        {
+          "hash": "3c0659d2",
+          "author": "Olek",
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "date": "2026-07-30T12:18:33+00:00",
+          "message": "test: Add confidential mpt bulletproof tests (#7816)"
+        },
+        {
+          "hash": "53250654",
+          "author": "Copilot",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "date": "2026-07-30T12:17:32+00:00",
+          "message": "fix: Apply asfDisallowIncomingTrustline blocker to OfferCreate (#6307)"
+        },
+        {
+          "hash": "8a5eded4",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-07-30T11:55:39+00:00",
+          "message": "feat: Implement LoanBroker cash-basis accounting (#7817)"
+        },
+        {
+          "hash": "6ddad549",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-29T22:54:46+00:00",
+          "message": "chore: Move lexical cast tests to gtest (#7873)"
+        },
+        {
+          "hash": "9edbb1c5",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-07-29T15:13:06+00:00",
+          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
+        },
+        {
+          "hash": "8b104a83",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-07-29T11:31:34+00:00",
+          "message": "fix: Resolve clang-tidy findings in LoanPay changes"
+        },
+        {
+          "hash": "86832edc",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-27T18:48:53+00:00",
+          "message": "chore: Move semantic version tests to gtest (#7872)"
+        },
+        {
+          "hash": "ff7fff2c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-27T18:39:53+00:00",
+          "message": "style: Make clang-tidy format files using clang-format rules (#7880)"
+        },
+        {
+          "hash": "2db631c9",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-07-27T17:42:07+00:00",
+          "message": "ci: Change `server_definitions` upload config name (#7878)"
+        },
+        {
+          "hash": "6c9c7f05",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-07-27T16:34:53+00:00",
+          "message": "chore: Trivial gtest migrations (#7865)"
+        },
+        {
+          "hash": "9466ecb5",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-27T14:32:53+00:00",
+          "message": "ci: Group github-actions dependabot updates (#7876)"
+        },
+        {
+          "hash": "e0aa50c4",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-27T14:18:01+00:00",
+          "message": "ci: Update CI image and prepare-runner action (#7874)"
+        },
+        {
+          "hash": "8b8cda3c",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-07-27T13:33:23+00:00",
+          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
+        },
+        {
+          "hash": "29120dfc",
+          "author": "Andrzej Budzanowski",
+          "email": "andrzej.budzanowski@neti-soft.com",
+          "date": "2026-07-27T13:00:14+00:00",
+          "message": "test: Migrate `nodestore` tests from Beast to GTest (#7292)"
+        },
+        {
+          "hash": "20801d98",
+          "author": "Andrzej Budzanowski",
+          "email": "andrzej.budzanowski@neti-soft.com",
+          "date": "2026-07-27T11:58:15+00:00",
+          "message": "test: Improve the server status test to not race and randomly fail (#7304)"
+        },
+        {
+          "hash": "b878818e",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-07-27T09:55:01+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/checkout from 7.0.0 to 7.0.1 (#7871)"
+        },
+        {
+          "hash": "fecfc0cf",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-24T17:30:20+00:00",
+          "message": "chore: Fix clang version in devshell (#7860)"
+        },
+        {
+          "hash": "ea0a6904",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-24T15:52:45+00:00",
+          "message": "chore: Verify tooling version for Nix-managed environments (#7862)"
+        },
+        {
+          "hash": "29d74142",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-24T14:59:24+00:00",
+          "message": "build: Pat\u0441h binary in local Linux nix environment (#7859)"
+        },
+        {
+          "hash": "9afa1cf4",
+          "author": "Kassaking7",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-07-23T21:40:21+00:00",
+          "message": "fix: Update PermissionedDEX invariant domain tracking for valid offer replacement (#7387)"
+        },
+        {
+          "hash": "7908aec2",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-07-23T21:39:11+00:00",
+          "message": "feat: Check default fields are not default when serializing (#6267)"
+        },
+        {
+          "hash": "4c0180b3",
+          "author": "Marek Foss",
+          "email": "marek.foss@neti-soft.com",
+          "date": "2026-07-23T21:38:21+00:00",
+          "message": "test: Migrate csf and xrpld-consensus Beast non-JTx tests to GTest (#7046)"
+        },
+        {
+          "hash": "4acccfed",
+          "author": "Marek Foss",
+          "email": "marek.foss@neti-soft.com",
+          "date": "2026-07-23T21:00:06+00:00",
+          "message": "test: Modularize Peerfinder component and migrate Peerfinder tests from Beast to GTest and GMock (#7054)"
+        },
+        {
+          "hash": "b89d75a2",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-07-23T20:57:00+00:00",
+          "message": "test: Add an RAII class to manage the env.parseFailureExpected flag (#7669)"
+        },
+        {
+          "hash": "40cdf49d",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-23T19:05:24+00:00",
+          "message": "build: Use custom libc in a devshell by default (#7852)"
+        },
+        {
+          "hash": "38c54c3f",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-07-23T18:50:59+00:00",
+          "message": "feat: Add fixCleanup3_4_0 amendment (no functionality yet) (#7854)"
+        },
+        {
+          "hash": "95e1ffea",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-23T16:49:44+00:00",
+          "message": "ci: Add llvm-tools-preview to rust toolchain (#7853)"
+        },
+        {
+          "hash": "74cfb358",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-23T11:21:49+00:00",
+          "message": "ci: Update CI image (#7850)"
+        },
+        {
+          "hash": "0072ced9",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-23T10:22:18+00:00",
+          "message": "ci: Update XRPLF/actions (#7849)"
+        },
+        {
+          "hash": "12ed5065",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-07-22T18:50:10+00:00",
+          "message": "chore: Clean up grammar in PR template (#7846)"
+        },
+        {
+          "hash": "3122de86",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-07-22T17:04:02+00:00",
+          "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
+        },
+        {
+          "hash": "43e98eff",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-07-22T16:01:50+00:00",
+          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
+        },
+        {
+          "hash": "bad77604",
+          "author": "Vito",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-07-22T15:52:38+00:00",
+          "message": "fix: Conserve funds correctly when LoanPay fee payee is below reserve"
+        },
+        {
+          "hash": "7edf39e6",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-07-22T14:00:17+00:00",
+          "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
+        },
+        {
+          "hash": "ba01b05f",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-07-21T16:04:45+00:00",
+          "message": "ci: [DEPENDABOT] bump actions/setup-python from 6.3.0 to 7.0.0 (#7830)"
+        }
+      ],
+      "contributor_count": 27,
+      "contributors": [
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "102049210+klemenfn@users.noreply.github.com",
+          "name": "klemenfn"
+        },
+        {
+          "email": "109832400+luisfernandomendozav@users.noreply.github.com",
+          "name": "luisfernandomendozav"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "21219765+ckeshava@users.noreply.github.com",
+          "name": "Chenna Keshava B S"
+        },
+        {
+          "email": "bryanjiang168@gmail.com",
+          "name": "Bryan"
+        },
+        {
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "name": "Peter Chen"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Kassaking7"
+        },
+        {
+          "email": "braedonk@hotmail.com",
+          "name": "Braedon Klock"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "mvanhorn@users.noreply.github.com",
+          "name": "Matt Van Horn"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Bug Fix",
+        "confidence": 0.7,
+        "source": "keyword_match"
+      }
+    },
     {
       "name": "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
       "last_commit": {
@@ -14,6 +876,13 @@
         "message": "style: satisfy clang-tidy in SyntheticFields and NFToken test"
       },
       "commits": [
+        {
+          "hash": "54780fd9",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@gmail.com",
+          "date": "2026-08-12T04:03:20+00:00",
+          "message": "style: satisfy clang-tidy in SyntheticFields and NFToken test"
+        },
         {
           "hash": "54780fd9",
           "author": "Mayukha Vadari",
@@ -356,13 +1225,6 @@
           "email": "34582813+PeterChen13579@users.noreply.github.com",
           "date": "2026-07-15T23:47:22+00:00",
           "message": "chore: Update mpt-crypto-lib to 0.4.0-rc4 (#7813)"
-        },
-        {
-          "hash": "433e5f68",
-          "author": "Vlad",
-          "email": "129996061+vvysokikh1@users.noreply.github.com",
-          "date": "2026-07-15T22:08:45+00:00",
-          "message": "fix: Reject zero CheckID in CheckCancel and CheckCash (#7685)"
         }
       ],
       "contributor_count": 28,
@@ -28094,437 +28956,6 @@
       }
     },
     {
-      "name": "tapanito/fix-loanbatch-cover-rate",
-      "last_commit": {
-        "hash": "302e0408",
-        "author": "Vito",
-        "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-08-06T16:34:21+00:00",
-        "message": "test: Fix LoanBatch broker cover rates and schedule overflow"
-      },
-      "commits": [
-        {
-          "hash": "302e0408",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-06T16:34:21+00:00",
-          "message": "test: Fix LoanBatch broker cover rates and schedule overflow"
-        },
-        {
-          "hash": "cb425647",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T13:25:28+00:00",
-          "message": "ci: Generate protocol_autogen only once in CI (#7918)"
-        },
-        {
-          "hash": "5bf24c40",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T11:04:41+00:00",
-          "message": "ci: Use a separate benchmark filter (#7919)"
-        },
-        {
-          "hash": "8d7524f0",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-08-05T17:54:44+00:00",
-          "message": "fix: Use consistent endianness serializing MPT STIssue sequence (#7429)"
-        },
-        {
-          "hash": "41d6bb5f",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-04T23:27:23+00:00",
-          "message": "build: Fix build on macOS 15 and Nix environment (#7953)"
-        },
-        {
-          "hash": "a75488e5",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-04T16:17:41+00:00",
-          "message": "docs: Add a fix for `command not found: nix` on macOS (#7951)"
-        },
-        {
-          "hash": "c3ee6020",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T15:43:59+00:00",
-          "message": "test: Split Loan_test.cpp into topical suites (#7864)"
-        },
-        {
-          "hash": "e0de716e",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T13:49:18+00:00",
-          "message": "fix: Watch nix/*.nix files for direnv cache invalidation (#7948)"
-        },
-        {
-          "hash": "06488c13",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-08-04T13:46:55+00:00",
-          "message": "chore: Rename CamelCase namespaces to snake_case (#7933)"
-        },
-        {
-          "hash": "b8451ffa",
-          "author": "Luc des Trois Maisons",
-          "email": "lmaisons@ripple.com",
-          "date": "2026-08-03T21:17:23+00:00",
-          "message": "fix: Add missing value_type to JSON iterators (#7907)"
-        },
-        {
-          "hash": "765babb2",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-08-03T21:11:33+00:00",
-          "message": "fix: Add VaultInvariant check that lossUnrealized is non-negative (#7863)"
-        },
-        {
-          "hash": "97f35add",
-          "author": "Braedon Klock",
-          "email": "braedonk@hotmail.com",
-          "date": "2026-08-03T21:08:42+00:00",
-          "message": "fix: Add null check for account object reads (#7717)"
-        },
-        {
-          "hash": "ecdd457f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-30T23:04:38+00:00",
-          "message": "chore: Gtest migration followups first pass (#7884)"
-        },
-        {
-          "hash": "85e73cbd",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-30T19:28:31+00:00",
-          "message": "ci: Run coverage first in CI (#7917)"
-        },
-        {
-          "hash": "21cd6154",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-07-30T15:02:05+00:00",
-          "message": "perf: Replace node ID by depth in `TMLedgerNode` (#6353)"
-        },
-        {
-          "hash": "3c0659d2",
-          "author": "Olek",
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "date": "2026-07-30T12:18:33+00:00",
-          "message": "test: Add confidential mpt bulletproof tests (#7816)"
-        },
-        {
-          "hash": "53250654",
-          "author": "Copilot",
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "date": "2026-07-30T12:17:32+00:00",
-          "message": "fix: Apply asfDisallowIncomingTrustline blocker to OfferCreate (#6307)"
-        },
-        {
-          "hash": "8a5eded4",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-30T11:55:39+00:00",
-          "message": "feat: Implement LoanBroker cash-basis accounting (#7817)"
-        },
-        {
-          "hash": "6ddad549",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-29T22:54:46+00:00",
-          "message": "chore: Move lexical cast tests to gtest (#7873)"
-        },
-        {
-          "hash": "86832edc",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-27T18:48:53+00:00",
-          "message": "chore: Move semantic version tests to gtest (#7872)"
-        },
-        {
-          "hash": "ff7fff2c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-27T18:39:53+00:00",
-          "message": "style: Make clang-tidy format files using clang-format rules (#7880)"
-        },
-        {
-          "hash": "2db631c9",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-07-27T17:42:07+00:00",
-          "message": "ci: Change `server_definitions` upload config name (#7878)"
-        },
-        {
-          "hash": "6c9c7f05",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-27T16:34:53+00:00",
-          "message": "chore: Trivial gtest migrations (#7865)"
-        },
-        {
-          "hash": "9466ecb5",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-27T14:32:53+00:00",
-          "message": "ci: Group github-actions dependabot updates (#7876)"
-        },
-        {
-          "hash": "e0aa50c4",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-27T14:18:01+00:00",
-          "message": "ci: Update CI image and prepare-runner action (#7874)"
-        },
-        {
-          "hash": "29120dfc",
-          "author": "Andrzej Budzanowski",
-          "email": "andrzej.budzanowski@neti-soft.com",
-          "date": "2026-07-27T13:00:14+00:00",
-          "message": "test: Migrate `nodestore` tests from Beast to GTest (#7292)"
-        },
-        {
-          "hash": "20801d98",
-          "author": "Andrzej Budzanowski",
-          "email": "andrzej.budzanowski@neti-soft.com",
-          "date": "2026-07-27T11:58:15+00:00",
-          "message": "test: Improve the server status test to not race and randomly fail (#7304)"
-        },
-        {
-          "hash": "b878818e",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-07-27T09:55:01+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/checkout from 7.0.0 to 7.0.1 (#7871)"
-        },
-        {
-          "hash": "fecfc0cf",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-24T17:30:20+00:00",
-          "message": "chore: Fix clang version in devshell (#7860)"
-        },
-        {
-          "hash": "ea0a6904",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-24T15:52:45+00:00",
-          "message": "chore: Verify tooling version for Nix-managed environments (#7862)"
-        },
-        {
-          "hash": "29d74142",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-24T14:59:24+00:00",
-          "message": "build: Pat\u0441h binary in local Linux nix environment (#7859)"
-        },
-        {
-          "hash": "9afa1cf4",
-          "author": "Kassaking7",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-07-23T21:40:21+00:00",
-          "message": "fix: Update PermissionedDEX invariant domain tracking for valid offer replacement (#7387)"
-        },
-        {
-          "hash": "7908aec2",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-07-23T21:39:11+00:00",
-          "message": "feat: Check default fields are not default when serializing (#6267)"
-        },
-        {
-          "hash": "4c0180b3",
-          "author": "Marek Foss",
-          "email": "marek.foss@neti-soft.com",
-          "date": "2026-07-23T21:38:21+00:00",
-          "message": "test: Migrate csf and xrpld-consensus Beast non-JTx tests to GTest (#7046)"
-        },
-        {
-          "hash": "4acccfed",
-          "author": "Marek Foss",
-          "email": "marek.foss@neti-soft.com",
-          "date": "2026-07-23T21:00:06+00:00",
-          "message": "test: Modularize Peerfinder component and migrate Peerfinder tests from Beast to GTest and GMock (#7054)"
-        },
-        {
-          "hash": "b89d75a2",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-07-23T20:57:00+00:00",
-          "message": "test: Add an RAII class to manage the env.parseFailureExpected flag (#7669)"
-        },
-        {
-          "hash": "40cdf49d",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-23T19:05:24+00:00",
-          "message": "build: Use custom libc in a devshell by default (#7852)"
-        },
-        {
-          "hash": "38c54c3f",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-07-23T18:50:59+00:00",
-          "message": "feat: Add fixCleanup3_4_0 amendment (no functionality yet) (#7854)"
-        },
-        {
-          "hash": "95e1ffea",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-23T16:49:44+00:00",
-          "message": "ci: Add llvm-tools-preview to rust toolchain (#7853)"
-        },
-        {
-          "hash": "74cfb358",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-23T11:21:49+00:00",
-          "message": "ci: Update CI image (#7850)"
-        },
-        {
-          "hash": "0072ced9",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-23T10:22:18+00:00",
-          "message": "ci: Update XRPLF/actions (#7849)"
-        },
-        {
-          "hash": "12ed5065",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-07-22T18:50:10+00:00",
-          "message": "chore: Clean up grammar in PR template (#7846)"
-        },
-        {
-          "hash": "3122de86",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-22T17:04:02+00:00",
-          "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
-        },
-        {
-          "hash": "7edf39e6",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-22T14:00:17+00:00",
-          "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
-        },
-        {
-          "hash": "ba01b05f",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-07-21T16:04:45+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/setup-python from 6.3.0 to 7.0.0 (#7830)"
-        },
-        {
-          "hash": "c414e187",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-21T15:37:47+00:00",
-          "message": "ci: Update pre-commit image (#7838)"
-        },
-        {
-          "hash": "f56b79f0",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-21T13:39:37+00:00",
-          "message": "ci: Add cargo to pre-commit image (#7835)"
-        },
-        {
-          "hash": "4918f3bb",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-21T13:38:26+00:00",
-          "message": "chore: Add doxygen in pre-commit image (#7836)"
-        },
-        {
-          "hash": "ee0a3dfa",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-07-21T13:14:40+00:00",
-          "message": "ci: Improve test debuggability (#7619)"
-        },
-        {
-          "hash": "042c9660",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-07-20T21:06:24+00:00",
-          "message": "chore: Add CODEOWNERS for CI-related changes (#7832)"
-        }
-      ],
-      "contributor_count": 22,
-      "contributors": [
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "lmaisons@ripple.com",
-          "name": "Luc des Trois Maisons"
-        },
-        {
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "name": "Timur Yalymov"
-        },
-        {
-          "email": "braedonk@hotmail.com",
-          "name": "Braedon Klock"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "name": "Olek"
-        },
-        {
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "name": "Copilot"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        },
-        {
-          "email": "andrzej.budzanowski@neti-soft.com",
-          "name": "Andrzej Budzanowski"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Kassaking7"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Testing",
-        "confidence": 0.7,
-        "source": "keyword_match"
-      }
-    },
-    {
       "name": "tapanito/lending-bugfix",
       "last_commit": {
         "hash": "84c50352",
@@ -28952,437 +29383,6 @@
         "amendment": "Lending",
         "type": "Feature",
         "confidence": 0.8,
-        "source": "keyword_match"
-      }
-    },
-    {
-      "name": "tapanito/bugfix-loan-pay-fn-67",
-      "last_commit": {
-        "hash": "8a594bd9",
-        "author": "Vito",
-        "email": "5780819+Tapanito@users.noreply.github.com",
-        "date": "2026-08-06T09:38:47+00:00",
-        "message": "Merge remote-tracking branch 'origin/tapanito/bugfix-loan-pay-fn-67' into tapanito/bugfix-loan-pay-fn-67"
-      },
-      "commits": [
-        {
-          "hash": "8a594bd9",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-06T09:38:47+00:00",
-          "message": "Merge remote-tracking branch 'origin/tapanito/bugfix-loan-pay-fn-67' into tapanito/bugfix-loan-pay-fn-67"
-        },
-        {
-          "hash": "cfe6a88d",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-06T08:34:32+00:00",
-          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
-        },
-        {
-          "hash": "8d7524f0",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-08-05T17:54:44+00:00",
-          "message": "fix: Use consistent endianness serializing MPT STIssue sequence (#7429)"
-        },
-        {
-          "hash": "41d6bb5f",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-04T23:27:23+00:00",
-          "message": "build: Fix build on macOS 15 and Nix environment (#7953)"
-        },
-        {
-          "hash": "a75488e5",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-04T16:17:41+00:00",
-          "message": "docs: Add a fix for `command not found: nix` on macOS (#7951)"
-        },
-        {
-          "hash": "c3ee6020",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T15:43:59+00:00",
-          "message": "test: Split Loan_test.cpp into topical suites (#7864)"
-        },
-        {
-          "hash": "e0de716e",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T13:49:18+00:00",
-          "message": "fix: Watch nix/*.nix files for direnv cache invalidation (#7948)"
-        },
-        {
-          "hash": "06488c13",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-08-04T13:46:55+00:00",
-          "message": "chore: Rename CamelCase namespaces to snake_case (#7933)"
-        },
-        {
-          "hash": "b8451ffa",
-          "author": "Luc des Trois Maisons",
-          "email": "lmaisons@ripple.com",
-          "date": "2026-08-03T21:17:23+00:00",
-          "message": "fix: Add missing value_type to JSON iterators (#7907)"
-        },
-        {
-          "hash": "765babb2",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-08-03T21:11:33+00:00",
-          "message": "fix: Add VaultInvariant check that lossUnrealized is non-negative (#7863)"
-        },
-        {
-          "hash": "97f35add",
-          "author": "Braedon Klock",
-          "email": "braedonk@hotmail.com",
-          "date": "2026-08-03T21:08:42+00:00",
-          "message": "fix: Add null check for account object reads (#7717)"
-        },
-        {
-          "hash": "ecdd457f",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-30T23:04:38+00:00",
-          "message": "chore: Gtest migration followups first pass (#7884)"
-        },
-        {
-          "hash": "85e73cbd",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-30T19:28:31+00:00",
-          "message": "ci: Run coverage first in CI (#7917)"
-        },
-        {
-          "hash": "21cd6154",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-07-30T15:02:05+00:00",
-          "message": "perf: Replace node ID by depth in `TMLedgerNode` (#6353)"
-        },
-        {
-          "hash": "3c0659d2",
-          "author": "Olek",
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "date": "2026-07-30T12:18:33+00:00",
-          "message": "test: Add confidential mpt bulletproof tests (#7816)"
-        },
-        {
-          "hash": "53250654",
-          "author": "Copilot",
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "date": "2026-07-30T12:17:32+00:00",
-          "message": "fix: Apply asfDisallowIncomingTrustline blocker to OfferCreate (#6307)"
-        },
-        {
-          "hash": "8a5eded4",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-30T11:55:39+00:00",
-          "message": "feat: Implement LoanBroker cash-basis accounting (#7817)"
-        },
-        {
-          "hash": "6ddad549",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-29T22:54:46+00:00",
-          "message": "chore: Move lexical cast tests to gtest (#7873)"
-        },
-        {
-          "hash": "9edbb1c5",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-29T15:13:06+00:00",
-          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
-        },
-        {
-          "hash": "8b104a83",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-29T11:31:34+00:00",
-          "message": "fix: Resolve clang-tidy findings in LoanPay changes"
-        },
-        {
-          "hash": "86832edc",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-27T18:48:53+00:00",
-          "message": "chore: Move semantic version tests to gtest (#7872)"
-        },
-        {
-          "hash": "ff7fff2c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-27T18:39:53+00:00",
-          "message": "style: Make clang-tidy format files using clang-format rules (#7880)"
-        },
-        {
-          "hash": "2db631c9",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-07-27T17:42:07+00:00",
-          "message": "ci: Change `server_definitions` upload config name (#7878)"
-        },
-        {
-          "hash": "6c9c7f05",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-27T16:34:53+00:00",
-          "message": "chore: Trivial gtest migrations (#7865)"
-        },
-        {
-          "hash": "9466ecb5",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-27T14:32:53+00:00",
-          "message": "ci: Group github-actions dependabot updates (#7876)"
-        },
-        {
-          "hash": "e0aa50c4",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-27T14:18:01+00:00",
-          "message": "ci: Update CI image and prepare-runner action (#7874)"
-        },
-        {
-          "hash": "8b8cda3c",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-27T13:33:23+00:00",
-          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
-        },
-        {
-          "hash": "29120dfc",
-          "author": "Andrzej Budzanowski",
-          "email": "andrzej.budzanowski@neti-soft.com",
-          "date": "2026-07-27T13:00:14+00:00",
-          "message": "test: Migrate `nodestore` tests from Beast to GTest (#7292)"
-        },
-        {
-          "hash": "20801d98",
-          "author": "Andrzej Budzanowski",
-          "email": "andrzej.budzanowski@neti-soft.com",
-          "date": "2026-07-27T11:58:15+00:00",
-          "message": "test: Improve the server status test to not race and randomly fail (#7304)"
-        },
-        {
-          "hash": "b878818e",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-07-27T09:55:01+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/checkout from 7.0.0 to 7.0.1 (#7871)"
-        },
-        {
-          "hash": "fecfc0cf",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-24T17:30:20+00:00",
-          "message": "chore: Fix clang version in devshell (#7860)"
-        },
-        {
-          "hash": "ea0a6904",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-24T15:52:45+00:00",
-          "message": "chore: Verify tooling version for Nix-managed environments (#7862)"
-        },
-        {
-          "hash": "29d74142",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-24T14:59:24+00:00",
-          "message": "build: Pat\u0441h binary in local Linux nix environment (#7859)"
-        },
-        {
-          "hash": "9afa1cf4",
-          "author": "Kassaking7",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-07-23T21:40:21+00:00",
-          "message": "fix: Update PermissionedDEX invariant domain tracking for valid offer replacement (#7387)"
-        },
-        {
-          "hash": "7908aec2",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-07-23T21:39:11+00:00",
-          "message": "feat: Check default fields are not default when serializing (#6267)"
-        },
-        {
-          "hash": "4c0180b3",
-          "author": "Marek Foss",
-          "email": "marek.foss@neti-soft.com",
-          "date": "2026-07-23T21:38:21+00:00",
-          "message": "test: Migrate csf and xrpld-consensus Beast non-JTx tests to GTest (#7046)"
-        },
-        {
-          "hash": "4acccfed",
-          "author": "Marek Foss",
-          "email": "marek.foss@neti-soft.com",
-          "date": "2026-07-23T21:00:06+00:00",
-          "message": "test: Modularize Peerfinder component and migrate Peerfinder tests from Beast to GTest and GMock (#7054)"
-        },
-        {
-          "hash": "b89d75a2",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-07-23T20:57:00+00:00",
-          "message": "test: Add an RAII class to manage the env.parseFailureExpected flag (#7669)"
-        },
-        {
-          "hash": "40cdf49d",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-23T19:05:24+00:00",
-          "message": "build: Use custom libc in a devshell by default (#7852)"
-        },
-        {
-          "hash": "38c54c3f",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-07-23T18:50:59+00:00",
-          "message": "feat: Add fixCleanup3_4_0 amendment (no functionality yet) (#7854)"
-        },
-        {
-          "hash": "95e1ffea",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-23T16:49:44+00:00",
-          "message": "ci: Add llvm-tools-preview to rust toolchain (#7853)"
-        },
-        {
-          "hash": "74cfb358",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-23T11:21:49+00:00",
-          "message": "ci: Update CI image (#7850)"
-        },
-        {
-          "hash": "0072ced9",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-23T10:22:18+00:00",
-          "message": "ci: Update XRPLF/actions (#7849)"
-        },
-        {
-          "hash": "12ed5065",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-07-22T18:50:10+00:00",
-          "message": "chore: Clean up grammar in PR template (#7846)"
-        },
-        {
-          "hash": "3122de86",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-22T17:04:02+00:00",
-          "message": "build: Create versioned compiler/tooling symlinks in nix environments (#7844)"
-        },
-        {
-          "hash": "43e98eff",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-22T16:01:50+00:00",
-          "message": "Merge branch 'develop' into tapanito/bugfix-loan-pay-fn-67"
-        },
-        {
-          "hash": "bad77604",
-          "author": "Vito",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-22T15:52:38+00:00",
-          "message": "fix: Conserve funds correctly when LoanPay fee payee is below reserve"
-        },
-        {
-          "hash": "7edf39e6",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-22T14:00:17+00:00",
-          "message": "ci: Use rust-overlay to bring Rust into nix (#7837)"
-        },
-        {
-          "hash": "ba01b05f",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-07-21T16:04:45+00:00",
-          "message": "ci: [DEPENDABOT] bump actions/setup-python from 6.3.0 to 7.0.0 (#7830)"
-        },
-        {
-          "hash": "c414e187",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-07-21T15:37:47+00:00",
-          "message": "ci: Update pre-commit image (#7838)"
-        }
-      ],
-      "contributor_count": 22,
-      "contributors": [
-        {
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "name": "Vito"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "lmaisons@ripple.com",
-          "name": "Luc des Trois Maisons"
-        },
-        {
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "name": "Timur Yalymov"
-        },
-        {
-          "email": "braedonk@hotmail.com",
-          "name": "Braedon Klock"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "115580134+oleks-rip@users.noreply.github.com",
-          "name": "Olek"
-        },
-        {
-          "email": "198982749+Copilot@users.noreply.github.com",
-          "name": "Copilot"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        },
-        {
-          "email": "andrzej.budzanowski@neti-soft.com",
-          "name": "Andrzej Budzanowski"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Kassaking7"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Bug Fix",
-        "confidence": 0.7,
         "source": "keyword_match"
       }
     },
@@ -117458,7 +117458,7 @@
     {
       "email": "mathbunnyru@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 263,
+      "commits": 265,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -117728,7 +117728,7 @@
     {
       "email": "bthomee@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 243,
+      "commits": 245,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -117978,8 +117978,8 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
-      "commits": 231,
+      "name": "pratik/ranged-normalize-number-at-construction",
+      "commits": 233,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -118217,7 +118217,7 @@
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 219,
+      "commits": 221,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -118444,7 +118444,7 @@
     {
       "email": "ed@ripple.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 193,
+      "commits": 195,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -118557,8 +118557,10 @@
         "smart-escrow/versioning",
         "staging/3.3.x",
         "supported_audit_aug26",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/const-invariants",
         "tapanito/feature/enhanced-squelching",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/invariant-architecture",
         "tapanito/lending-impairment",
         "tapanito/lending-protocol-rounding",
@@ -118644,7 +118646,7 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
       "commits": 158,
       "branches": [
         "a1q123456/add-loan-invariants",
@@ -118811,7 +118813,7 @@
     {
       "email": "akremer@ripple.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 152,
+      "commits": 154,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -118969,8 +118971,8 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
-      "commits": 152,
+      "name": "pratik/ranged-normalize-number-at-construction",
+      "commits": 154,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/add-loan-invariants",
@@ -119129,7 +119131,7 @@
     {
       "email": "gregtatcam@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 144,
+      "commits": 146,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -119280,7 +119282,7 @@
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 136,
+      "commits": 138,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -119381,7 +119383,9 @@
         "ripple/wasmi-perf-test",
         "staging/3.3.x",
         "supported_audit_aug26",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/const-invariants",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/loan-broker-set",
         "tapanito/unit-tests",
         "tapanito/vault-add-assets-helper",
@@ -119423,8 +119427,8 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "gh-readonly-queue/develop/pr-7995-a3147740f2f610f0810a6e4eb56aa7cbe4c5cc12",
-      "commits": 129,
+      "name": "ripple/wamr-host-functions",
+      "commits": 131,
       "branches": [
         "a1q123456/add-loan-invariants",
         "a1q123456/add-term-vault",
@@ -119503,8 +119507,10 @@
         "ripple/smart-escrow2",
         "ripple/wamr",
         "ripple/wamr-host-functions",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/const-invariants",
         "tapanito/fix-lending-cross-scale",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/invariant-improvement",
         "tapanito/loan-broker-set",
         "tapanito/unit-tests",
@@ -119560,7 +119566,7 @@
     {
       "email": "13349202+vlntb@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 125,
+      "commits": 127,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -119628,7 +119634,9 @@
         "ripple/permission-delegation-devnet",
         "ripple/wasmi-perf-test",
         "staging/3.3.x",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/const-invariants",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/invariant-architecture",
         "tapanito/unit-tests",
         "tapanito/vault-add-assets-helper",
@@ -119692,8 +119700,8 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "smart-escrow/perf-test",
-      "commits": 119,
+      "name": "pratik/ranged-normalize-number-at-construction",
+      "commits": 121,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -119819,8 +119827,8 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
-      "commits": 112,
+      "name": "pratik/ranged-normalize-number-at-construction",
+      "commits": 114,
       "branches": [
         "a1q123456/add-loan-invariants",
         "a1q123456/add-term-vault",
@@ -119938,7 +119946,7 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
+      "name": "dangell7/docs-ai",
       "commits": 106,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -120053,7 +120061,7 @@
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 103,
+      "commits": 105,
       "branches": [
         "a1q123456/support-lending-in-batch",
         "bthomee/iops",
@@ -120163,8 +120171,8 @@
     },
     {
       "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "smart-escrow/perf-test",
-      "commits": 96,
+      "name": "pratik/ranged-normalize-number-at-construction",
+      "commits": 98,
       "branches": [
         "a1q123456/add-loan-invariants",
         "a1q123456/add-term-vault",
@@ -120226,9 +120234,11 @@
         "ripple/lending-protocol-fv",
         "smart-escrow/perf-test",
         "staging/3.3.x",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/const-invariants",
         "tapanito/feature/enhanced-squelching",
         "tapanito/fix-lending-cross-scale",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/invariant-architecture",
         "tapanito/invariant-improvement",
         "tapanito/lending-impairment",
@@ -120266,7 +120276,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "smart-escrow/perf-test",
+      "name": "pratik/ranged-normalize-number-at-construction",
       "commits": 92,
       "branches": [
         "a1q123456/fix-autogen",
@@ -120367,7 +120377,7 @@
     {
       "email": "braedonk@hotmail.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 74,
+      "commits": 76,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "a1q123456/add-loan-invariants",
@@ -120447,8 +120457,8 @@
     },
     {
       "email": "andrzej.budzanowski@neti-soft.com",
-      "name": "smart-escrow/perf-test",
-      "commits": 74,
+      "name": "pratik/ranged-normalize-number-at-construction",
+      "commits": 76,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/fix-autogen",
@@ -120530,7 +120540,7 @@
     {
       "email": "198982749+Copilot@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 66,
+      "commits": 68,
       "branches": [
         "a1q123456/support-lending-in-batch",
         "bthomee/iops",
@@ -120604,7 +120614,7 @@
     {
       "email": "lmaisons@ripple.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 66,
+      "commits": 68,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "bthomee/shamap-stack-01-unsigned-int-branch-ops",
@@ -120677,7 +120687,7 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "lmaisons/stub-send-proof",
+      "name": "ripple/wamr-host-functions",
       "commits": 66,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -120751,7 +120761,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "smart-escrow/perf-test",
+      "name": "pratik/ranged-normalize-number-at-construction",
       "commits": 66,
       "branches": [
         "a1q123456/fix-autogen",
@@ -120826,7 +120836,7 @@
     {
       "email": "36795566+tyalymov@users.noreply.github.com",
       "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 63,
+      "commits": 65,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -120895,8 +120905,66 @@
       "last_active": "2026-07-29T10:25:31+00:00"
     },
     {
+      "email": "asalikhov@ripple.com",
+      "name": "tapanito/invariant-architecture",
+      "commits": 50,
+      "branches": [
+        "FN-36-credential_pins_pseudo_account",
+        "Wasm-vm-redesign-host-functions",
+        "bthomee/shamap-stack-01-unsigned-int-branch-ops",
+        "bthomee/shamap-stack-02-shamapnodeid-isprefixof",
+        "bthomee/shamap-stack-03-reject-inner-node-leaf-depth",
+        "bthomee/shamap-stack-04-clamp-selectbranch-depth",
+        "bthomee/shamap-stack-05-derive-traversal-node-ids",
+        "bthomee/shamap-stack-06-unify-upper-lower-bound",
+        "bthomee/shamap-stack-07-nodepathstack-fail-closed",
+        "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+        "bthomee/shamap-stack-09-visit-differences-tests",
+        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+        "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
+        "gregtatcam/mpt/audit-attackathon-fixes",
+        "mathbunnyru/apple_clang_21",
+        "mvadari/account-info-flag-assert",
+        "mvadari/sponsor-end",
+        "pratik/Add_checks_db_objects",
+        "pratik/AutomatedHarness",
+        "pratik/Fix_asan_lsan_flagged_issues",
+        "pratik/OpenTelemetry_and_DistributedTracing_planning",
+        "ripple/confidential-devnet",
+        "ripple/se/fees",
+        "ripple/se/supported",
+        "ripple/se/wasmi-tests",
+        "ripple/smart-escrow",
+        "ripple/wasmi",
+        "ripple/wasmi-host-functions",
+        "supported_audit_aug26",
+        "tapanito/bugfix-loan-pay-fn-67",
+        "tapanito/fix-loanbatch-cover-rate",
+        "tapanito/invariant-architecture",
+        "tapanito/invariant-improvement",
+        "tapanito/vault-add-assets-helper",
+        "tapanito/vault-invariant-tests",
+        "tapanito/vault-rounding-trustline-dust",
+        "tialymov/FN-23-loan_default_freeze_guard",
+        "tialymov/FN-24-erased_sle_associate_asset",
+        "tialymov/FN-69-withdraw_destination_domain_check",
+        "tialymov/FN-82-private_vault_dex_domain_regression_tests",
+        "vlntb/grpc-fd-guard",
+        "vvysokikh/sponsor-bug-repros",
+        "ximinez/lending-shortages",
+        "ximinez/number-exponents",
+        "ximinez/number_asan",
+        "ximinez/online-delete-gaps",
+        "ximinez/online-delete-gaps2",
+        "xrplf/smart-contracts",
+        "xrplf/sponsor",
+        "xrplf/sponsor-supported"
+      ],
+      "last_active": "2026-02-23T16:41:39+00:00"
+    },
+    {
       "email": "brok@incorrekt.com",
-      "name": "a1q123456/support-lending-in-batch",
+      "name": "ripple/wamr-host-functions",
       "commits": 50,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -120953,65 +121021,9 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
-      "email": "asalikhov@ripple.com",
-      "name": "bthomee/shamap-stack-09-visit-differences-tests",
-      "commits": 48,
-      "branches": [
-        "FN-36-credential_pins_pseudo_account",
-        "Wasm-vm-redesign-host-functions",
-        "bthomee/shamap-stack-01-unsigned-int-branch-ops",
-        "bthomee/shamap-stack-02-shamapnodeid-isprefixof",
-        "bthomee/shamap-stack-03-reject-inner-node-leaf-depth",
-        "bthomee/shamap-stack-04-clamp-selectbranch-depth",
-        "bthomee/shamap-stack-05-derive-traversal-node-ids",
-        "bthomee/shamap-stack-06-unify-upper-lower-bound",
-        "bthomee/shamap-stack-07-nodepathstack-fail-closed",
-        "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-        "bthomee/shamap-stack-09-visit-differences-tests",
-        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
-        "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
-        "gregtatcam/mpt/audit-attackathon-fixes",
-        "mathbunnyru/apple_clang_21",
-        "mvadari/account-info-flag-assert",
-        "mvadari/sponsor-end",
-        "pratik/Add_checks_db_objects",
-        "pratik/AutomatedHarness",
-        "pratik/Fix_asan_lsan_flagged_issues",
-        "pratik/OpenTelemetry_and_DistributedTracing_planning",
-        "ripple/confidential-devnet",
-        "ripple/se/fees",
-        "ripple/se/supported",
-        "ripple/se/wasmi-tests",
-        "ripple/smart-escrow",
-        "ripple/wasmi",
-        "ripple/wasmi-host-functions",
-        "supported_audit_aug26",
-        "tapanito/invariant-architecture",
-        "tapanito/invariant-improvement",
-        "tapanito/vault-add-assets-helper",
-        "tapanito/vault-invariant-tests",
-        "tapanito/vault-rounding-trustline-dust",
-        "tialymov/FN-23-loan_default_freeze_guard",
-        "tialymov/FN-24-erased_sle_associate_asset",
-        "tialymov/FN-69-withdraw_destination_domain_check",
-        "tialymov/FN-82-private_vault_dex_domain_regression_tests",
-        "vlntb/grpc-fd-guard",
-        "vvysokikh/sponsor-bug-repros",
-        "ximinez/lending-shortages",
-        "ximinez/number-exponents",
-        "ximinez/number_asan",
-        "ximinez/online-delete-gaps",
-        "ximinez/online-delete-gaps2",
-        "xrplf/smart-contracts",
-        "xrplf/sponsor",
-        "xrplf/sponsor-supported"
-      ],
-      "last_active": "2026-02-23T16:41:39+00:00"
-    },
-    {
       "email": "mvanhorn@users.noreply.github.com",
-      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
-      "commits": 46,
+      "name": "copilot/add-augmented-submit-fields",
+      "commits": 48,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -121043,7 +121055,9 @@
         "ripple/wasmi",
         "ripple/wasmi-host-functions",
         "supported_audit_aug26",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/fix-lending-cross-scale",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/invariant-improvement",
         "tapanito/vault-add-assets-helper",
         "tapanito/vault-rounding-trustline-dust",
@@ -121063,7 +121077,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "mvadari/sponsor/ai-tests",
+      "name": "copilot/add-augmented-submit-fields",
       "commits": 42,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -121112,8 +121126,8 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
-      "commits": 36,
+      "name": "copilot/add-augmented-submit-fields",
+      "commits": 38,
       "branches": [
         "a1q123456/add-loan-invariants",
         "a1q123456/add-term-vault",
@@ -121139,7 +121153,9 @@
         "mvadari/rearch/init",
         "mvadari/refactor-tx-settings",
         "origin",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/fix-lending-cross-scale",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/invariant-improvement",
         "vlntb/anotate-tagged-cache-sweeps",
         "vlntb/mem-leak-ledger-history-3",
@@ -121155,8 +121171,8 @@
     },
     {
       "email": "marek.foss@neti-soft.com",
-      "name": "mvadari/sponsor/ai-tests",
-      "commits": 33,
+      "name": "pratik/ranged-normalize-number-at-construction",
+      "commits": 35,
       "branches": [
         "a1q123456/split-loan-set-and-loan-accept-implementation",
         "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
@@ -121178,6 +121194,8 @@
         "pratik/std-coro/tsan-fixes",
         "ripple/cosign",
         "ripple/lending-protocol-fv",
+        "tapanito/bugfix-loan-pay-fn-67",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/lending-impairment",
         "tapanito/lending-protocol-rounding",
         "tapanito/transactor-invariant-pt2",
@@ -121196,8 +121214,8 @@
     },
     {
       "email": "bryanjiang168@gmail.com",
-      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
-      "commits": 29,
+      "name": "copilot/add-augmented-submit-fields",
+      "commits": 31,
       "branches": [
         "a1q123456/add-loan-invariants",
         "a1q123456/add-term-vault",
@@ -121219,7 +121237,9 @@
         "mvadari/rearch/init",
         "mvadari/refactor-tx-settings",
         "origin",
+        "tapanito/bugfix-loan-pay-fn-67",
         "tapanito/fix-lending-cross-scale",
+        "tapanito/fix-loanbatch-cover-rate",
         "tapanito/invariant-improvement",
         "vlntb/mem-leak-ledger-history-3",
         "ximinez/failure-invariant",
@@ -121231,8 +121251,76 @@
       "last_active": "2026-08-11T01:37:07+00:00"
     },
     {
+      "email": "102049210+klemenfn@users.noreply.github.com",
+      "name": "copilot/add-augmented-submit-fields",
+      "commits": 27,
+      "branches": [
+        "a1q123456/add-loan-invariants",
+        "a1q123456/add-term-vault",
+        "bthomee/protocol",
+        "bthomee/rpc-method-name-constants",
+        "copilot/add-augmented-submit-fields",
+        "copilot/add-ctid-to-ledger-response",
+        "copilot/convert-boost-to-std-string-view",
+        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+        "copilot/fix-vetoed-type-error",
+        "copilot/refactor-replace-boost-filesystem",
+        "gh-readonly-queue/develop/pr-7299-6ca2fb84d4da09d01af6d1f233147374599aa440",
+        "gh-readonly-queue/develop/pr-7995-a3147740f2f610f0810a6e4eb56aa7cbe4c5cc12",
+        "gregtatcam/mpt/audit-attackathon-fixes-1",
+        "gregtatcam/mpt/extend-mptlock-check",
+        "gregtatcam/mpt/mpt-invariants-gate-update",
+        "gregtatcam/mpt/optimize-freeze-checks",
+        "gregtatcam/mpt/transferable-lptokens",
+        "mvadari/rearch/init",
+        "mvadari/refactor-tx-settings",
+        "origin",
+        "tapanito/bugfix-loan-pay-fn-67",
+        "tapanito/fix-lending-cross-scale",
+        "tapanito/fix-loanbatch-cover-rate",
+        "vlntb/mem-leak-ledger-history-3",
+        "ximinez/failure-invariant",
+        "ximinez/txrefactor"
+      ],
+      "last_active": "2026-08-11T13:24:56+00:00"
+    },
+    {
+      "email": "109832400+luisfernandomendozav@users.noreply.github.com",
+      "name": "copilot/add-augmented-submit-fields",
+      "commits": 27,
+      "branches": [
+        "a1q123456/add-loan-invariants",
+        "a1q123456/add-term-vault",
+        "bthomee/protocol",
+        "bthomee/rpc-method-name-constants",
+        "copilot/add-augmented-submit-fields",
+        "copilot/add-ctid-to-ledger-response",
+        "copilot/convert-boost-to-std-string-view",
+        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+        "copilot/fix-vetoed-type-error",
+        "copilot/refactor-replace-boost-filesystem",
+        "gh-readonly-queue/develop/pr-7299-6ca2fb84d4da09d01af6d1f233147374599aa440",
+        "gh-readonly-queue/develop/pr-7995-a3147740f2f610f0810a6e4eb56aa7cbe4c5cc12",
+        "gregtatcam/mpt/audit-attackathon-fixes-1",
+        "gregtatcam/mpt/extend-mptlock-check",
+        "gregtatcam/mpt/mpt-invariants-gate-update",
+        "gregtatcam/mpt/optimize-freeze-checks",
+        "gregtatcam/mpt/transferable-lptokens",
+        "mvadari/rearch/init",
+        "mvadari/refactor-tx-settings",
+        "origin",
+        "tapanito/bugfix-loan-pay-fn-67",
+        "tapanito/fix-lending-cross-scale",
+        "tapanito/fix-loanbatch-cover-rate",
+        "vlntb/mem-leak-ledger-history-3",
+        "ximinez/failure-invariant",
+        "ximinez/txrefactor"
+      ],
+      "last_active": "2026-08-11T13:24:56+00:00"
+    },
+    {
       "email": "106177003+sophiax851@users.noreply.github.com",
-      "name": "mvadari/sponsor/ai-tests",
+      "name": "pratik/ranged-normalize-number-at-construction",
       "commits": 26,
       "branches": [
         "a1q123456/fix-autogen",
@@ -121266,7 +121354,7 @@
     },
     {
       "email": "67663680+ricky122-5@users.noreply.github.com",
-      "name": "smart-escrow/perf-test",
+      "name": "gh-readonly-queue/develop/pr-7331-7da643d8648959f83d5d6a7d5d3a869171dbf1ca",
       "commits": 26,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -121299,72 +121387,8 @@
       "last_active": "2026-05-26T15:03:38+00:00"
     },
     {
-      "email": "102049210+klemenfn@users.noreply.github.com",
-      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
-      "commits": 25,
-      "branches": [
-        "a1q123456/add-loan-invariants",
-        "a1q123456/add-term-vault",
-        "bthomee/protocol",
-        "bthomee/rpc-method-name-constants",
-        "copilot/add-augmented-submit-fields",
-        "copilot/add-ctid-to-ledger-response",
-        "copilot/convert-boost-to-std-string-view",
-        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
-        "copilot/fix-vetoed-type-error",
-        "copilot/refactor-replace-boost-filesystem",
-        "gh-readonly-queue/develop/pr-7299-6ca2fb84d4da09d01af6d1f233147374599aa440",
-        "gh-readonly-queue/develop/pr-7995-a3147740f2f610f0810a6e4eb56aa7cbe4c5cc12",
-        "gregtatcam/mpt/audit-attackathon-fixes-1",
-        "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/mpt-invariants-gate-update",
-        "gregtatcam/mpt/optimize-freeze-checks",
-        "gregtatcam/mpt/transferable-lptokens",
-        "mvadari/rearch/init",
-        "mvadari/refactor-tx-settings",
-        "origin",
-        "tapanito/fix-lending-cross-scale",
-        "vlntb/mem-leak-ledger-history-3",
-        "ximinez/failure-invariant",
-        "ximinez/txrefactor"
-      ],
-      "last_active": "2026-08-11T13:24:56+00:00"
-    },
-    {
-      "email": "109832400+luisfernandomendozav@users.noreply.github.com",
-      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
-      "commits": 25,
-      "branches": [
-        "a1q123456/add-loan-invariants",
-        "a1q123456/add-term-vault",
-        "bthomee/protocol",
-        "bthomee/rpc-method-name-constants",
-        "copilot/add-augmented-submit-fields",
-        "copilot/add-ctid-to-ledger-response",
-        "copilot/convert-boost-to-std-string-view",
-        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
-        "copilot/fix-vetoed-type-error",
-        "copilot/refactor-replace-boost-filesystem",
-        "gh-readonly-queue/develop/pr-7299-6ca2fb84d4da09d01af6d1f233147374599aa440",
-        "gh-readonly-queue/develop/pr-7995-a3147740f2f610f0810a6e4eb56aa7cbe4c5cc12",
-        "gregtatcam/mpt/audit-attackathon-fixes-1",
-        "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/mpt-invariants-gate-update",
-        "gregtatcam/mpt/optimize-freeze-checks",
-        "gregtatcam/mpt/transferable-lptokens",
-        "mvadari/rearch/init",
-        "mvadari/refactor-tx-settings",
-        "origin",
-        "tapanito/fix-lending-cross-scale",
-        "vlntb/mem-leak-ledger-history-3",
-        "ximinez/failure-invariant",
-        "ximinez/txrefactor"
-      ],
-      "last_active": "2026-08-11T13:24:56+00:00"
-    },
-    {
       "email": "git@tequ.dev",
-      "name": "a1q123456/support-lending-in-batch",
+      "name": "tapanito/invariant-architecture",
       "commits": 24,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -121396,7 +121420,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "vlntb/shamap-structure-tracking",
+      "name": "ripple/wamr-host-functions",
       "commits": 22,
       "branches": [
         "dangell/smart-contracts",
@@ -121426,7 +121450,7 @@
     },
     {
       "email": "tbanks@ripple.com",
-      "name": "smart-escrow/perf-test",
+      "name": "mvadari/asf-macro",
       "commits": 20,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -121454,7 +121478,7 @@
     },
     {
       "email": "11445373+bthomee@users.noreply.github.com",
-      "name": "bthomee/shamap-stack-09-visit-differences-tests",
+      "name": "bthomee/shamap-stack-06-unify-upper-lower-bound",
       "commits": 18,
       "branches": [
         "bthomee/cmake_ci",
@@ -121480,7 +121504,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "ximinez/lending-number-stnumber-deadend",
+      "name": "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
       "commits": 18,
       "branches": [
         "dangell/smart-contracts",
@@ -121506,7 +121530,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "vlntb/inbound-ledgers-cache",
+      "name": "release-2.5",
       "commits": 18,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -121532,7 +121556,7 @@
     },
     {
       "email": "timothyaaronbanks@gmail.com",
-      "name": "staging/3.3.x",
+      "name": "mvadari/remove-xcb",
       "commits": 14,
       "branches": [
         "bthomee/golang_protos",
@@ -121554,7 +121578,7 @@
     },
     {
       "email": "solunolab@outlook.com",
-      "name": "mvadari/constant-field-invariant",
+      "name": "a1q123456/migrate-account-amendment-table-test",
       "commits": 14,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -121576,7 +121600,7 @@
     },
     {
       "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "name": "gregtatcam/mpt/transferable-lptokens",
       "commits": 12,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -121596,7 +121620,7 @@
     },
     {
       "email": "pwang200@gmail.com",
-      "name": "ripple/se/wasmi-tests",
+      "name": "ripple/se/supported",
       "commits": 11,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -121634,7 +121658,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "ximinez/number_asan",
+      "name": "vlntb/grpc-fd-guard",
       "commits": 11,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -121653,7 +121677,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "vlntb/boundaries-from-murat",
+      "name": "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
       "commits": 11,
       "branches": [
         "dangell/smart-contracts",
@@ -121672,7 +121696,7 @@
     },
     {
       "email": "354723+pwang200@users.noreply.github.com",
-      "name": "ripple/se/wasmi-tests",
+      "name": "ripple/se/supported",
       "commits": 10,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -121690,7 +121714,7 @@
     },
     {
       "email": "rmanukyan@ripple.com",
-      "name": "release-3.1",
+      "name": "dangell7/docs-test",
       "commits": 10,
       "branches": [
         "dangell7/docs",
@@ -121708,7 +121732,7 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "mvadari/fix-bad-cast",
+      "name": "pratik/test-tsan-and-gcc14-asan",
       "commits": 10,
       "branches": [
         "dangell7/fix-pathfinder-dedup",
@@ -121726,7 +121750,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "vlntb/number-perf-experiments-1",
+      "name": "vvysokikh1/simplify-apply-manifest",
       "commits": 10,
       "branches": [
         "copilot/sub-pr-5439",
@@ -121744,7 +121768,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "ximinez/lending-number-stnumber-deadend",
+      "name": "pratik/Fix_Sanitizer_flagged_issues",
       "commits": 10,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -121762,7 +121786,7 @@
     },
     {
       "email": "71317875+pdp2121@users.noreply.github.com",
-      "name": "mvadari/fix-bad-cast",
+      "name": "pratik/test-tsan-and-gcc14-asan",
       "commits": 9,
       "branches": [
         "dangell7/fix-pathfinder-dedup",
@@ -121779,7 +121803,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments-1",
+      "name": "vvysokikh1/simplify-apply-manifest",
       "commits": 9,
       "branches": [
         "copilot/sub-pr-5439",
@@ -121796,7 +121820,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "ximinez/lending-number-stnumber-deadend",
+      "name": "pratik/openssl_111_perf_test",
       "commits": 9,
       "branches": [
         "pratik/openssl-3.6.0-alpha-performance-test",
@@ -121813,7 +121837,7 @@
     },
     {
       "email": "97218929+shichengripple001@users.noreply.github.com",
-      "name": "mvadari/invariant-perf",
+      "name": "a1q123456/migrate-account-amendment-table-test",
       "commits": 8,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -121829,7 +121853,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "vlntb/inbound-ledgers-cache",
+      "name": "release-2.5",
       "commits": 8,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -121845,7 +121869,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "vlntb/number-perf-experiments-1",
+      "name": "vvysokikh1/simplify-apply-manifest",
       "commits": 7,
       "branches": [
         "copilot/sub-pr-5439",
@@ -121860,7 +121884,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "vlntb/number-perf-experiments-1",
+      "name": "pratik/Fix_Sanitizer_flagged_issues",
       "commits": 7,
       "branches": [
         "dangell/smart-contracts",
@@ -121875,7 +121899,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "hooks",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 7,
       "branches": [
         "ci/windows-test",
@@ -121890,7 +121914,7 @@
     },
     {
       "email": "vvysokikh@gmail.com",
-      "name": "vvysokikh1/txq-test-amendment-resilience",
+      "name": "vvysokikh1/simplify-apply-manifest",
       "commits": 6,
       "branches": [
         "release-3.0",
@@ -121904,7 +121928,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "release-3.1",
+      "name": "dangell/relay",
       "commits": 6,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -121918,7 +121942,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/transport-traces",
       "commits": 6,
       "branches": [
         "vlntb/fix-peer-disconnects-ping",
@@ -121932,7 +121956,7 @@
     },
     {
       "email": "yalymov.tm@gmail.com",
-      "name": "FN-36-credential_pins_pseudo_account",
+      "name": "tialymov/FN-69-withdraw_destination_domain_check",
       "commits": 5,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -121945,7 +121969,7 @@
     },
     {
       "email": "120398799+cindyyan317@users.noreply.github.com",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -121958,7 +121982,7 @@
     },
     {
       "email": "Tokeiito@users.noreply.github.com",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -121971,7 +121995,7 @@
     },
     {
       "email": "zinger777@gmail.com",
-      "name": "release-3.0",
+      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
       "commits": 4,
       "branches": [
         "bthomee/cmake_ci",
@@ -121983,7 +122007,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "bthomee/cmake_ci",
+      "name": "dangell7/subscriptions",
       "commits": 4,
       "branches": [
         "bthomee/cmake_ci",
@@ -121995,7 +122019,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "release-2.5",
+      "name": "vlntb/inbound-ledgers-cache",
       "commits": 4,
       "branches": [
         "ci/windows-test",
@@ -122018,7 +122042,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "dangell7/subscriptions",
       "commits": 3,
       "branches": [
         "dangell7/subscriptions",
@@ -122029,7 +122053,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "vlntb/tagged-cache-stats",
+      "name": "dangell7/subscriptions",
       "commits": 3,
       "branches": [
         "dangell7/subscriptions",
@@ -122040,7 +122064,7 @@
     },
     {
       "email": "yinyi_qian@alumni.brown.edu",
-      "name": "staging/3.3.x",
+      "name": "mvadari/sponsor-add",
       "commits": 2,
       "branches": [
         "mvadari/sponsor-add",
@@ -122050,7 +122074,7 @@
     },
     {
       "email": "151025147+dangell8@users.noreply.github.com",
-      "name": "dangell7/token-paychan-clawback",
+      "name": "token-paychan",
       "commits": 2,
       "branches": [
         "dangell7/token-paychan-clawback",
@@ -122080,7 +122104,7 @@
     },
     {
       "email": "box4wangjing@outlook.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
+      "name": "pratik/openssl-3.6.2-performance-test",
       "commits": 2,
       "branches": [
         "pratik/openssl-3.5.6-performance-test",
@@ -122090,7 +122114,7 @@
     },
     {
       "email": "508629+shortthefomo@users.noreply.github.com",
-      "name": "ximinez/sync-script",
+      "name": "dangell7/fix-token-escrow-v2",
       "commits": 2,
       "branches": [
         "dangell7/fix-token-escrow-v2",
@@ -122100,7 +122124,7 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "mvadari/rearch/token-holder",
+      "name": "mvadari/rearch/token-refactor",
       "commits": 2,
       "branches": [
         "mvadari/rearch/token-holder",
@@ -122110,7 +122134,7 @@
     },
     {
       "email": "brettmollin@users.noreply.github.com",
-      "name": "vlntb/number-of-sweeps",
+      "name": "vlntb/job-queue-latency",
       "commits": 2,
       "branches": [
         "vlntb/job-queue-latency",
@@ -122120,7 +122144,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 2,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122130,7 +122154,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 2,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
