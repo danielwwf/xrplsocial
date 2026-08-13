@@ -1635,41 +1635,5 @@
         "body": ""
       }
     ]
-  },
-  {
-    "pr_number": 7880,
-    "branch_name": "tidy_format",
-    "title": "style: Make clang-tidy format files using clang-format rules",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n## Problem\r\n\r\n`clang-tidy` inserts its fixes as raw text: `--format-style` defaults to `none`, so a fix\r\nlike `readability-braces-around-statements` produces LLVM-style attached braces and an\r\nunindented closing brace. The `clang-format` hook then rewrites them into the project's\r\nstyle, so every auto-fixed file gets touched twice and CI's uploaded clang-tidy diff shows\r\ncode that does not match what would actually be committed.\r\n\r\n## Change\r\n\r\nPoint every clang-tidy fix path at `.clang-format`:\r\n\r\n- `.clang-tidy` \u2014 `FormatStyle: file`, for `clang-tidy --fix` run directly or from an editor.\r\n- `bin/pre-commit/clang_tidy_check.py` \u2014 `clang-apply-replacements --format --style=file`.\r\n  `FormatStyle` does not reach this path: with `-export-fixes` clang-tidy never applies\r\n  anything, and formatting happens when the replacements are applied.\r\n- `.github/workflows/reusable-clang-tidy.yml` \u2014 `run-clang-tidy -fix -format`. Same reason:\r\n  `run-clang-tidy -fix` shells out to `clang-apply-replacements` internally.\r\n- `CONTRIBUTING.md` \u2014 documented `-fix -format` in the manual invocation.\r\n\r\n### Testing\r\n\r\nA torture TU was built inside a real file (`src/libxrpl/basics/mulDiv.cpp`), starting\r\nclang-format clean so any post-tidy difference is attributable to the tidy step alone. It\r\ntriggers 19 fixes across 9 checks, including structural ones (`readability-else-after-return`,\r",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-07-27T17:49:38Z",
-    "merged_at": "2026-07-27T19:13:58Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7880?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-07-27T18:12:23Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR aligns all clang-tidy \u201cauto-fix\u201d paths (manual invocation, pre-commit hook, and CI) to format fixes using the repository\u2019s `.clang-format`, reducing churn where clang"
-      }
-    ]
   }
 ]
