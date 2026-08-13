@@ -1,5 +1,53 @@
 [
   {
+    "pr_number": 7960,
+    "branch_name": "allow-key-update",
+    "title": "feat: Enable key rotation in MPTokenIssuanceSet",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n\r\nPre-ConfidentialKeyRotation, `MPTokenIssuanceSet` rejects any attempt to modify an existing `IssuerEncryptionKey`/`AuditorEncryptionKey`, and an auditor key can never be provided without the issuer key (`temMALFORMED` in preflight).\r\n\r\nPost-ConfidentialKeyRotation:\r\n1.  allow late-registering auditor key after issuance key already registered on ledger\r\n2. prevent registering auditor key if issuance key is not already registered or not being registered in the same tx\r\n3. allow late-registering auditor key even if COA > 0\r\n4. allow rotating issuer key even if it already exists on ledger\r\n5. allow rotating auditor key even if it already exists on ledger\r\n6. allow rotating even if COA > 0\r\n\r\n\r\nEpoch:\r\n1. when not opt-in confidential, epoch absent\r\n2. first time register key: epoch keeps absent, matching issuances whose keys were registered before the ConfidentialKeyRotation amendment.\r\n3. rotating key: epoch + 1\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, ",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-05T20:34:22Z",
+    "merged_at": "2026-08-13T22:27:51Z",
+    "labels": [],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7960?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-11T16:58:19Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-08-11T18:21:28Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-11T18:34:04Z"
+      }
+    ],
+    "reviews_count": 8,
+    "reviews": [
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8024,
     "branch_name": "curl_packaging",
     "title": "build: Add curl to packaging images",
