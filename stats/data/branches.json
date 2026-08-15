@@ -1,450 +1,26 @@
 {
-  "generated_at": "2026-08-15T14:11:46.095238+00:00",
+  "generated_at": "2026-08-15T15:09:52.985909+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 277,
   "total_contributors": 102,
   "branches": [
     {
-      "name": "gregtatcam/mpt/extend-mptlock-check",
-      "last_commit": {
-        "hash": "8f985615",
-        "author": "Gregory Tsipenyuk",
-        "email": "gtsipenyuk@ripple.com",
-        "date": "2026-08-15T14:02:59+00:00",
-        "message": "Address Copilot feedback - update comments"
-      },
-      "commits": [
-        {
-          "hash": "8f985615",
-          "author": "Gregory Tsipenyuk",
-          "email": "gtsipenyuk@ripple.com",
-          "date": "2026-08-15T14:02:59+00:00",
-          "message": "Address Copilot feedback - update comments"
-        },
-        {
-          "hash": "e2a401ab",
-          "author": "Gregory Tsipenyuk",
-          "email": "gtsipenyuk@ripple.com",
-          "date": "2026-08-14T19:12:01+00:00",
-          "message": "Update comments"
-        },
-        {
-          "hash": "6098450b",
-          "author": "Gregory Tsipenyuk",
-          "email": "gtsipenyuk@ripple.com",
-          "date": "2026-08-13T15:00:21+00:00",
-          "message": "Add 'SAV off, fixCleanup3_4_0 on' case that proves the guard now fires independent of SAV"
-        },
-        {
-          "hash": "1977b755",
-          "author": "Gregory Tsipenyuk",
-          "email": "gtsipenyuk@ripple.com",
-          "date": "2026-08-13T14:49:33+00:00",
-          "message": "Fix dangling/locked MPToken deletion"
-        },
-        {
-          "hash": "8b052d3a",
-          "author": "Gregory Tsipenyuk",
-          "email": "gtsipenyuk@ripple.com",
-          "date": "2026-08-11T22:47:27+00:00",
-          "message": "Merge branch 'develop' into gregtatcam/mpt/extend-mptlock-check"
-        },
-        {
-          "hash": "26cc683e",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-08-11T18:15:51+00:00",
-          "message": "fix: Assorted MPT/DEX fixes (#7299)"
-        },
-        {
-          "hash": "6ca2fb84",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-11T18:15:35+00:00",
-          "message": "refactor: Replace Boost trim and to_lower with libxrpl helpers (#7995)"
-        },
-        {
-          "hash": "f3d1a2b2",
-          "author": "Gregory Tsipenyuk",
-          "email": "gtsipenyuk@ripple.com",
-          "date": "2026-08-11T16:32:29+00:00",
-          "message": "Extend locked-MPToken unauthorize check to fixCleanup3_4_0"
-        },
-        {
-          "hash": "a3147740",
-          "author": "klemenfn",
-          "email": "102049210+klemenfn@users.noreply.github.com",
-          "date": "2026-08-11T13:24:56+00:00",
-          "message": "build: Fix GCC 14 compilation (#7981)"
-        },
-        {
-          "hash": "d43e5aca",
-          "author": "luisfernandomendozav",
-          "email": "109832400+luisfernandomendozav@users.noreply.github.com",
-          "date": "2026-08-11T13:23:07+00:00",
-          "message": "fix: Validate account/ident type in gateway_balances (#7655)"
-        },
-        {
-          "hash": "c74724a7",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-11T12:44:01+00:00",
-          "message": "build: Reimagine linker warnings in different scenarios (#7974)"
-        },
-        {
-          "hash": "0a572833",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-08-11T12:38:40+00:00",
-          "message": "chore: Gtest migration followups second pass (#7888)"
-        },
-        {
-          "hash": "63994312",
-          "author": "Chenna Keshava B S",
-          "email": "21219765+ckeshava@users.noreply.github.com",
-          "date": "2026-08-11T00:49:02+00:00",
-          "message": "fix: Validate buy/sell flag in nft RPC input (#7725)"
-        },
-        {
-          "hash": "909cc5bb",
-          "author": "Bryan",
-          "email": "bryanjiang168@gmail.com",
-          "date": "2026-08-10T21:37:53+00:00",
-          "message": "fix: Prevent silent zero AMM clawbacks due to integer MPT rounding (#7704)"
-        },
-        {
-          "hash": "6f5de906",
-          "author": "Peter Chen",
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "date": "2026-08-10T21:37:38+00:00",
-          "message": "chore: Mark unreachable branches in Confidential Transfer with UNREACHABLE (#7903)"
-        },
-        {
-          "hash": "60291c3e",
-          "author": "Kassaking7",
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "date": "2026-08-10T21:34:28+00:00",
-          "message": "fix: Allow OverrideFreeze to bypass individual/deep freeze on AMM trust lines (#6959)"
-        },
-        {
-          "hash": "4173f7e4",
-          "author": "Braedon Klock",
-          "email": "braedonk@hotmail.com",
-          "date": "2026-08-10T21:30:06+00:00",
-          "message": "fix: Validate account_lines peer field type (#7728)"
-        },
-        {
-          "hash": "9c292fbe",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-10T17:49:29+00:00",
-          "message": "build: Install conan configuration/profiles inside Nix devshell (#7997)"
-        },
-        {
-          "hash": "b19c3c64",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-08-10T17:47:16+00:00",
-          "message": "fix: Add zero keylet check in credential (#7971)"
-        },
-        {
-          "hash": "a0e1e578",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-10T17:23:02+00:00",
-          "message": "refactor: Remove operator!= overloads that C++20 synthesizes (#7994)"
-        },
-        {
-          "hash": "07aa97fd",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-10T17:22:40+00:00",
-          "message": "test: Use std::string::starts_with/ends_with instead of Boost (#7992)"
-        },
-        {
-          "hash": "4f881956",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-10T17:18:22+00:00",
-          "message": "fix: Assorted cleanup fixes (#7988)"
-        },
-        {
-          "hash": "6580b200",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-10T17:10:18+00:00",
-          "message": "refactor: Replace boost::lexical_cast with existing alternatives (#7991)"
-        },
-        {
-          "hash": "2967f1f0",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-10T17:06:29+00:00",
-          "message": "chore: Remove unreferenced legacy documents (#7989)"
-        },
-        {
-          "hash": "71e972cb",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-10T17:05:18+00:00",
-          "message": "refactor: Act on TODOs that are unblocked by C++23 (#7990)"
-        },
-        {
-          "hash": "a24caaa6",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-10T15:00:30+00:00",
-          "message": "docs: Rearrange & simplify build/nix/environment docs (#7985)"
-        },
-        {
-          "hash": "07b9c59b",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-10T13:08:15+00:00",
-          "message": "build: Remove protobuf dependencies from Nix (#7984)"
-        },
-        {
-          "hash": "63d8772f",
-          "author": "Sergey Kuznetsov",
-          "email": "skuznetsov@ripple.com",
-          "date": "2026-08-10T11:58:49+00:00",
-          "message": "chore: Remove corrosion from nix (#7982)"
-        },
-        {
-          "hash": "94bccb3a",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-08-07T21:53:54+00:00",
-          "message": "fix: Fix MPT/DEX Audit/Attackathon reports (Phase 2) (#7537)"
-        },
-        {
-          "hash": "0fb92c31",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-08-07T21:29:11+00:00",
-          "message": "refactor: Use SeqProxy instead of uint32 for all sequence-based keylets (#7890)"
-        },
-        {
-          "hash": "798e889e",
-          "author": "Matt Van Horn",
-          "email": "mvanhorn@users.noreply.github.com",
-          "date": "2026-08-07T20:24:45+00:00",
-          "message": "fix: Deduplicate oracle entries in get_aggregate_price RPC (#6586)"
-        },
-        {
-          "hash": "abf5511d",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-08-07T19:41:23+00:00",
-          "message": "fix: Correct sign-check wording in lending protocol messages (#7913)"
-        },
-        {
-          "hash": "a0e78b28",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-07T16:56:46+00:00",
-          "message": "chore: Bump version to 3.4.0-b0 (#7976)"
-        },
-        {
-          "hash": "9859e5ce",
-          "author": "Ayaz Salikhov",
-          "email": "asalikhov@ripple.com",
-          "date": "2026-08-07T15:00:25+00:00",
-          "message": "Merge remote-tracking branch 'upstream/release/3.3.x' into mathbunnyru/merge-3.3.0-to-develop"
-        },
-        {
-          "hash": "00a178fb",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T16:34:39+00:00",
-          "message": "chore: Bump version to 3.3.0"
-        },
-        {
-          "hash": "cb425647",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T13:25:28+00:00",
-          "message": "ci: Generate protocol_autogen only once in CI (#7918)"
-        },
-        {
-          "hash": "5bf24c40",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T11:04:41+00:00",
-          "message": "ci: Use a separate benchmark filter (#7919)"
-        },
-        {
-          "hash": "8d7524f0",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-08-05T17:54:44+00:00",
-          "message": "fix: Use consistent endianness serializing MPT STIssue sequence (#7429)"
-        },
-        {
-          "hash": "41d6bb5f",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-04T23:27:23+00:00",
-          "message": "build: Fix build on macOS 15 and Nix environment (#7953)"
-        },
-        {
-          "hash": "39c8c293",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-08-04T21:11:00+00:00",
-          "message": "chore: Bump version to 3.3.0-rc7"
-        },
-        {
-          "hash": "54cfdda0",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-08-04T21:08:43+00:00",
-          "message": "fix: Increase manifest protocol message size cap and fix manifests relay"
-        },
-        {
-          "hash": "15d08770",
-          "author": "Ed Hennis",
-          "email": "ed@ripple.com",
-          "date": "2026-08-04T17:28:52+00:00",
-          "message": "Merge branch 'release/3.2.x' into ximinez/merge-321-to-330"
-        },
-        {
-          "hash": "a75488e5",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-04T16:17:41+00:00",
-          "message": "docs: Add a fix for `command not found: nix` on macOS (#7951)"
-        },
-        {
-          "hash": "c3ee6020",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T15:43:59+00:00",
-          "message": "test: Split Loan_test.cpp into topical suites (#7864)"
-        },
-        {
-          "hash": "e0de716e",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T13:49:18+00:00",
-          "message": "fix: Watch nix/*.nix files for direnv cache invalidation (#7948)"
-        },
-        {
-          "hash": "06488c13",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-08-04T13:46:55+00:00",
-          "message": "chore: Rename CamelCase namespaces to snake_case (#7933)"
-        },
-        {
-          "hash": "b8451ffa",
-          "author": "Luc des Trois Maisons",
-          "email": "lmaisons@ripple.com",
-          "date": "2026-08-03T21:17:23+00:00",
-          "message": "fix: Add missing value_type to JSON iterators (#7907)"
-        },
-        {
-          "hash": "765babb2",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-08-03T21:11:33+00:00",
-          "message": "fix: Add VaultInvariant check that lossUnrealized is non-negative (#7863)"
-        },
-        {
-          "hash": "97f35add",
-          "author": "Braedon Klock",
-          "email": "braedonk@hotmail.com",
-          "date": "2026-08-03T21:08:42+00:00",
-          "message": "fix: Add null check for account object reads (#7717)"
-        },
-        {
-          "hash": "8461ded0",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-08-03T16:00:11+00:00",
-          "message": "fix: Cap untrusted manifests per message and drop oversized ones"
-        }
-      ],
-      "contributor_count": 28,
-      "contributors": [
-        {
-          "email": "gtsipenyuk@ripple.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "102049210+klemenfn@users.noreply.github.com",
-          "name": "klemenfn"
-        },
-        {
-          "email": "109832400+luisfernandomendozav@users.noreply.github.com",
-          "name": "luisfernandomendozav"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "21219765+ckeshava@users.noreply.github.com",
-          "name": "Chenna Keshava B S"
-        },
-        {
-          "email": "bryanjiang168@gmail.com",
-          "name": "Bryan"
-        },
-        {
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "name": "Peter Chen"
-        },
-        {
-          "email": "96991820+Kassaking7@users.noreply.github.com",
-          "name": "Kassaking7"
-        },
-        {
-          "email": "braedonk@hotmail.com",
-          "name": "Braedon Klock"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "skuznetsov@ripple.com",
-          "name": "Sergey Kuznetsov"
-        },
-        {
-          "email": "mvanhorn@users.noreply.github.com",
-          "name": "Matt Van Horn"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Multi-Purpose Tokens",
-        "type": "Feature",
-        "confidence": 0.9,
-        "source": "keyword_match"
-      }
-    },
-    {
       "name": "pratik/otel-phase10-workload-validation",
       "last_commit": {
-        "hash": "040a75dc",
+        "hash": "b7167e55",
         "author": "Pratik Mankawde",
         "email": "3397372+pratikmankawde@users.noreply.github.com",
-        "date": "2026-08-15T13:38:26+00:00",
-        "message": "ci(telemetry): report why a node stopped instead of waiting on a corpse"
+        "date": "2026-08-15T15:01:16+00:00",
+        "message": "fix(telemetry): emit valid JSON for sub-1 TPS, and stop double-reporting a span"
       },
       "commits": [
+        {
+          "hash": "b7167e55",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-08-15T15:01:16+00:00",
+          "message": "fix(telemetry): emit valid JSON for sub-1 TPS, and stop double-reporting a span"
+        },
         {
           "hash": "040a75dc",
           "author": "Pratik Mankawde",
@@ -787,13 +363,6 @@
           "email": "3397372+pratikmankawde@users.noreply.github.com",
           "date": "2026-08-07T11:54:25+00:00",
           "message": "fix(telemetry): stop repeating panels stranding their neighbours"
-        },
-        {
-          "hash": "bd07a681",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-08-07T11:39:41+00:00",
-          "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
         }
       ],
       "contributor_count": 1,
@@ -808,6 +377,437 @@
         "type": "Unknown",
         "confidence": 0,
         "source": "fallback"
+      }
+    },
+    {
+      "name": "gregtatcam/mpt/extend-mptlock-check",
+      "last_commit": {
+        "hash": "8f985615",
+        "author": "Gregory Tsipenyuk",
+        "email": "gtsipenyuk@ripple.com",
+        "date": "2026-08-15T14:02:59+00:00",
+        "message": "Address Copilot feedback - update comments"
+      },
+      "commits": [
+        {
+          "hash": "8f985615",
+          "author": "Gregory Tsipenyuk",
+          "email": "gtsipenyuk@ripple.com",
+          "date": "2026-08-15T14:02:59+00:00",
+          "message": "Address Copilot feedback - update comments"
+        },
+        {
+          "hash": "8f985615",
+          "author": "Gregory Tsipenyuk",
+          "email": "gtsipenyuk@ripple.com",
+          "date": "2026-08-15T14:02:59+00:00",
+          "message": "Address Copilot feedback - update comments"
+        },
+        {
+          "hash": "e2a401ab",
+          "author": "Gregory Tsipenyuk",
+          "email": "gtsipenyuk@ripple.com",
+          "date": "2026-08-14T19:12:01+00:00",
+          "message": "Update comments"
+        },
+        {
+          "hash": "6098450b",
+          "author": "Gregory Tsipenyuk",
+          "email": "gtsipenyuk@ripple.com",
+          "date": "2026-08-13T15:00:21+00:00",
+          "message": "Add 'SAV off, fixCleanup3_4_0 on' case that proves the guard now fires independent of SAV"
+        },
+        {
+          "hash": "1977b755",
+          "author": "Gregory Tsipenyuk",
+          "email": "gtsipenyuk@ripple.com",
+          "date": "2026-08-13T14:49:33+00:00",
+          "message": "Fix dangling/locked MPToken deletion"
+        },
+        {
+          "hash": "8b052d3a",
+          "author": "Gregory Tsipenyuk",
+          "email": "gtsipenyuk@ripple.com",
+          "date": "2026-08-11T22:47:27+00:00",
+          "message": "Merge branch 'develop' into gregtatcam/mpt/extend-mptlock-check"
+        },
+        {
+          "hash": "26cc683e",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-08-11T18:15:51+00:00",
+          "message": "fix: Assorted MPT/DEX fixes (#7299)"
+        },
+        {
+          "hash": "6ca2fb84",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-11T18:15:35+00:00",
+          "message": "refactor: Replace Boost trim and to_lower with libxrpl helpers (#7995)"
+        },
+        {
+          "hash": "f3d1a2b2",
+          "author": "Gregory Tsipenyuk",
+          "email": "gtsipenyuk@ripple.com",
+          "date": "2026-08-11T16:32:29+00:00",
+          "message": "Extend locked-MPToken unauthorize check to fixCleanup3_4_0"
+        },
+        {
+          "hash": "a3147740",
+          "author": "klemenfn",
+          "email": "102049210+klemenfn@users.noreply.github.com",
+          "date": "2026-08-11T13:24:56+00:00",
+          "message": "build: Fix GCC 14 compilation (#7981)"
+        },
+        {
+          "hash": "d43e5aca",
+          "author": "luisfernandomendozav",
+          "email": "109832400+luisfernandomendozav@users.noreply.github.com",
+          "date": "2026-08-11T13:23:07+00:00",
+          "message": "fix: Validate account/ident type in gateway_balances (#7655)"
+        },
+        {
+          "hash": "c74724a7",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-11T12:44:01+00:00",
+          "message": "build: Reimagine linker warnings in different scenarios (#7974)"
+        },
+        {
+          "hash": "0a572833",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-08-11T12:38:40+00:00",
+          "message": "chore: Gtest migration followups second pass (#7888)"
+        },
+        {
+          "hash": "63994312",
+          "author": "Chenna Keshava B S",
+          "email": "21219765+ckeshava@users.noreply.github.com",
+          "date": "2026-08-11T00:49:02+00:00",
+          "message": "fix: Validate buy/sell flag in nft RPC input (#7725)"
+        },
+        {
+          "hash": "909cc5bb",
+          "author": "Bryan",
+          "email": "bryanjiang168@gmail.com",
+          "date": "2026-08-10T21:37:53+00:00",
+          "message": "fix: Prevent silent zero AMM clawbacks due to integer MPT rounding (#7704)"
+        },
+        {
+          "hash": "6f5de906",
+          "author": "Peter Chen",
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "date": "2026-08-10T21:37:38+00:00",
+          "message": "chore: Mark unreachable branches in Confidential Transfer with UNREACHABLE (#7903)"
+        },
+        {
+          "hash": "60291c3e",
+          "author": "Kassaking7",
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "date": "2026-08-10T21:34:28+00:00",
+          "message": "fix: Allow OverrideFreeze to bypass individual/deep freeze on AMM trust lines (#6959)"
+        },
+        {
+          "hash": "4173f7e4",
+          "author": "Braedon Klock",
+          "email": "braedonk@hotmail.com",
+          "date": "2026-08-10T21:30:06+00:00",
+          "message": "fix: Validate account_lines peer field type (#7728)"
+        },
+        {
+          "hash": "9c292fbe",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-10T17:49:29+00:00",
+          "message": "build: Install conan configuration/profiles inside Nix devshell (#7997)"
+        },
+        {
+          "hash": "b19c3c64",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-08-10T17:47:16+00:00",
+          "message": "fix: Add zero keylet check in credential (#7971)"
+        },
+        {
+          "hash": "a0e1e578",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-10T17:23:02+00:00",
+          "message": "refactor: Remove operator!= overloads that C++20 synthesizes (#7994)"
+        },
+        {
+          "hash": "07aa97fd",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-10T17:22:40+00:00",
+          "message": "test: Use std::string::starts_with/ends_with instead of Boost (#7992)"
+        },
+        {
+          "hash": "4f881956",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-10T17:18:22+00:00",
+          "message": "fix: Assorted cleanup fixes (#7988)"
+        },
+        {
+          "hash": "6580b200",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-10T17:10:18+00:00",
+          "message": "refactor: Replace boost::lexical_cast with existing alternatives (#7991)"
+        },
+        {
+          "hash": "2967f1f0",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-10T17:06:29+00:00",
+          "message": "chore: Remove unreferenced legacy documents (#7989)"
+        },
+        {
+          "hash": "71e972cb",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-10T17:05:18+00:00",
+          "message": "refactor: Act on TODOs that are unblocked by C++23 (#7990)"
+        },
+        {
+          "hash": "a24caaa6",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-10T15:00:30+00:00",
+          "message": "docs: Rearrange & simplify build/nix/environment docs (#7985)"
+        },
+        {
+          "hash": "07b9c59b",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-10T13:08:15+00:00",
+          "message": "build: Remove protobuf dependencies from Nix (#7984)"
+        },
+        {
+          "hash": "63d8772f",
+          "author": "Sergey Kuznetsov",
+          "email": "skuznetsov@ripple.com",
+          "date": "2026-08-10T11:58:49+00:00",
+          "message": "chore: Remove corrosion from nix (#7982)"
+        },
+        {
+          "hash": "94bccb3a",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-08-07T21:53:54+00:00",
+          "message": "fix: Fix MPT/DEX Audit/Attackathon reports (Phase 2) (#7537)"
+        },
+        {
+          "hash": "0fb92c31",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-08-07T21:29:11+00:00",
+          "message": "refactor: Use SeqProxy instead of uint32 for all sequence-based keylets (#7890)"
+        },
+        {
+          "hash": "798e889e",
+          "author": "Matt Van Horn",
+          "email": "mvanhorn@users.noreply.github.com",
+          "date": "2026-08-07T20:24:45+00:00",
+          "message": "fix: Deduplicate oracle entries in get_aggregate_price RPC (#6586)"
+        },
+        {
+          "hash": "abf5511d",
+          "author": "Timur Yalymov",
+          "email": "36795566+tyalymov@users.noreply.github.com",
+          "date": "2026-08-07T19:41:23+00:00",
+          "message": "fix: Correct sign-check wording in lending protocol messages (#7913)"
+        },
+        {
+          "hash": "a0e78b28",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-07T16:56:46+00:00",
+          "message": "chore: Bump version to 3.4.0-b0 (#7976)"
+        },
+        {
+          "hash": "9859e5ce",
+          "author": "Ayaz Salikhov",
+          "email": "asalikhov@ripple.com",
+          "date": "2026-08-07T15:00:25+00:00",
+          "message": "Merge remote-tracking branch 'upstream/release/3.3.x' into mathbunnyru/merge-3.3.0-to-develop"
+        },
+        {
+          "hash": "00a178fb",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-06T16:34:39+00:00",
+          "message": "chore: Bump version to 3.3.0"
+        },
+        {
+          "hash": "cb425647",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-06T13:25:28+00:00",
+          "message": "ci: Generate protocol_autogen only once in CI (#7918)"
+        },
+        {
+          "hash": "5bf24c40",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-06T11:04:41+00:00",
+          "message": "ci: Use a separate benchmark filter (#7919)"
+        },
+        {
+          "hash": "8d7524f0",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-08-05T17:54:44+00:00",
+          "message": "fix: Use consistent endianness serializing MPT STIssue sequence (#7429)"
+        },
+        {
+          "hash": "41d6bb5f",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-04T23:27:23+00:00",
+          "message": "build: Fix build on macOS 15 and Nix environment (#7953)"
+        },
+        {
+          "hash": "39c8c293",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-08-04T21:11:00+00:00",
+          "message": "chore: Bump version to 3.3.0-rc7"
+        },
+        {
+          "hash": "54cfdda0",
+          "author": "Pratik Mankawde",
+          "email": "3397372+pratikmankawde@users.noreply.github.com",
+          "date": "2026-08-04T21:08:43+00:00",
+          "message": "fix: Increase manifest protocol message size cap and fix manifests relay"
+        },
+        {
+          "hash": "15d08770",
+          "author": "Ed Hennis",
+          "email": "ed@ripple.com",
+          "date": "2026-08-04T17:28:52+00:00",
+          "message": "Merge branch 'release/3.2.x' into ximinez/merge-321-to-330"
+        },
+        {
+          "hash": "a75488e5",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-08-04T16:17:41+00:00",
+          "message": "docs: Add a fix for `command not found: nix` on macOS (#7951)"
+        },
+        {
+          "hash": "c3ee6020",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-04T15:43:59+00:00",
+          "message": "test: Split Loan_test.cpp into topical suites (#7864)"
+        },
+        {
+          "hash": "e0de716e",
+          "author": "Vito Tumas",
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "date": "2026-08-04T13:49:18+00:00",
+          "message": "fix: Watch nix/*.nix files for direnv cache invalidation (#7948)"
+        },
+        {
+          "hash": "06488c13",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-08-04T13:46:55+00:00",
+          "message": "chore: Rename CamelCase namespaces to snake_case (#7933)"
+        },
+        {
+          "hash": "b8451ffa",
+          "author": "Luc des Trois Maisons",
+          "email": "lmaisons@ripple.com",
+          "date": "2026-08-03T21:17:23+00:00",
+          "message": "fix: Add missing value_type to JSON iterators (#7907)"
+        },
+        {
+          "hash": "765babb2",
+          "author": "Timur Yalymov",
+          "email": "36795566+tyalymov@users.noreply.github.com",
+          "date": "2026-08-03T21:11:33+00:00",
+          "message": "fix: Add VaultInvariant check that lossUnrealized is non-negative (#7863)"
+        },
+        {
+          "hash": "97f35add",
+          "author": "Braedon Klock",
+          "email": "braedonk@hotmail.com",
+          "date": "2026-08-03T21:08:42+00:00",
+          "message": "fix: Add null check for account object reads (#7717)"
+        }
+      ],
+      "contributor_count": 28,
+      "contributors": [
+        {
+          "email": "gtsipenyuk@ripple.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "102049210+klemenfn@users.noreply.github.com",
+          "name": "klemenfn"
+        },
+        {
+          "email": "109832400+luisfernandomendozav@users.noreply.github.com",
+          "name": "luisfernandomendozav"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "21219765+ckeshava@users.noreply.github.com",
+          "name": "Chenna Keshava B S"
+        },
+        {
+          "email": "bryanjiang168@gmail.com",
+          "name": "Bryan"
+        },
+        {
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "name": "Peter Chen"
+        },
+        {
+          "email": "96991820+Kassaking7@users.noreply.github.com",
+          "name": "Kassaking7"
+        },
+        {
+          "email": "braedonk@hotmail.com",
+          "name": "Braedon Klock"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "skuznetsov@ripple.com",
+          "name": "Sergey Kuznetsov"
+        },
+        {
+          "email": "mvanhorn@users.noreply.github.com",
+          "name": "Matt Van Horn"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Multi-Purpose Tokens",
+        "type": "Feature",
+        "confidence": 0.9,
+        "source": "keyword_match"
       }
     },
     {
@@ -117868,8 +117868,8 @@
   "contributors": [
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "gregtatcam/bugs/ripd-4340",
-      "commits": 264,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 263,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -118138,8 +118138,8 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 238,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 237,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -118383,8 +118383,8 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 234,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 233,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -118623,8 +118623,8 @@
     },
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 228,
+      "name": "ripple/wasmi",
+      "commits": 227,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -118692,7 +118692,6 @@
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "gregtatcam/mpt/extend-mptlock-check",
         "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
         "kuznetsss/wasm-vm-redesign",
         "lmaisons/fix-iterator-conformance",
@@ -118859,8 +118858,8 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 185,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 184,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "a1q123456/add-loan-invariants",
@@ -119051,8 +119050,8 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "gregtatcam/bugs/ripd-4340",
-      "commits": 183,
+      "name": "ripple/wasmi",
+      "commits": 182,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -119103,7 +119102,6 @@
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "gregtatcam/mpt/extend-mptlock-check",
         "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "hooks",
         "kuznetsss/wasm-vm-redesign",
         "lmaisons/fix-iterator-conformance",
@@ -119242,8 +119240,8 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 161,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 160,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -119409,8 +119407,8 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 151,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 150,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -119566,8 +119564,8 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 147,
+      "name": "ripple/lending-protocol-fv",
+      "commits": 146,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -119719,8 +119717,8 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "tapanito/lending-impairment",
-      "commits": 123,
+      "name": "ripple/wasmi",
+      "commits": 122,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/add-loan-invariants",
@@ -119755,7 +119753,6 @@
         "gregtatcam/mpt/audit-attackathon-fixes-1",
         "gregtatcam/mpt/extend-mptlock-check",
         "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "gregtatcam/mpt/transferable-lptokens",
         "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
         "kuznetsss/wasm-vm-redesign",
@@ -119849,8 +119846,8 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 121,
+      "name": "tapanito/vault-set-invariants",
+      "commits": 120,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -119892,7 +119889,6 @@
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "gregtatcam/mpt/extend-mptlock-check",
         "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "hooks",
         "mathbunnyru/new_conan_remote",
         "mvadari/apply-context-view",
@@ -119978,8 +119974,8 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 111,
+      "name": "tapanito/vault-set-invariants",
+      "commits": 110,
       "branches": [
         "a1q123456/add-loan-invariants",
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -120008,7 +120004,6 @@
         "gregtatcam/mpt/audit-attackathon-fixes-1",
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "gregtatcam/mpt/transferable-lptokens",
         "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
         "hooks",
@@ -120096,8 +120091,8 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "tapanito/lending-impairment",
-      "commits": 110,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 109,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "a1q123456/add-loan-invariants",
@@ -120134,7 +120129,6 @@
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "gregtatcam/mpt/extend-mptlock-check",
         "gregtatcam/mpt/mpt-invariants-gate-update",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "gregtatcam/mpt/transferable-lptokens",
         "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
         "lmaisons/fix-iterator-conformance",
@@ -120213,8 +120207,8 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 108,
+      "name": "tapanito/vault-set-invariants",
+      "commits": 107,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/default-cover-optimisation",
@@ -120247,7 +120241,6 @@
         "gh-readonly-queue/develop/pr-7331-7da643d8648959f83d5d6a7d5d3a869171dbf1ca",
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
         "mathbunnyru/apple_clang_21",
         "mathbunnyru/new_conan_remote",
@@ -120329,8 +120322,8 @@
     },
     {
       "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
-      "commits": 105,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 104,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "a1q123456/add-loan-invariants",
@@ -120440,7 +120433,7 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
+      "name": "tapanito/vault-set-invariants",
       "commits": 104,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -120552,8 +120545,8 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "gregtatcam/bugs/ripd-4340",
-      "commits": 95,
+      "name": "tapanito/vault-rounding-trustline-dust",
+      "commits": 94,
       "branches": [
         "a1q123456/support-lending-in-batch",
         "bthomee/iops",
@@ -120585,7 +120578,6 @@
         "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
         "gregtatcam/mpt/extend-mptlock-check",
         "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "hooks",
         "lmaisons/fix-iterator-conformance",
         "mvadari/asf-macro",
@@ -120655,8 +120647,8 @@
     },
     {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "ripple/wasmi-perf-test",
-      "commits": 94,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 93,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "a1q123456/support-lending-in-batch",
@@ -120756,7 +120748,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "dangell7/subscriptions",
+      "name": "mvadari/asf-macro",
       "commits": 88,
       "branches": [
         "a1q123456/fix-autogen",
@@ -120852,8 +120844,8 @@
     },
     {
       "email": "36795566+tyalymov@users.noreply.github.com",
-      "name": "peng/number-guard-loop",
-      "commits": 79,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 78,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "Wasm-vm-redesign-host-functions",
@@ -120938,7 +120930,7 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "vlntb/revert-malloc-trim",
+      "name": "mvadari/remove-xcb",
       "commits": 65,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -121011,8 +121003,8 @@
     },
     {
       "email": "andrzej.budzanowski@neti-soft.com",
-      "name": "vlntb/revert-malloc-trim",
-      "commits": 65,
+      "name": "pratik/std-coro/cleanup-boost-coroutine",
+      "commits": 64,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
         "a1q123456/fix-autogen",
@@ -121036,7 +121028,6 @@
         "dangell7/token-paychan-clawback",
         "gh-readonly-queue/develop/pr-7331-7da643d8648959f83d5d6a7d5d3a869171dbf1ca",
         "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "mvadari/check-bounds",
         "mvadari/ctidy-07-26",
         "mvadari/error-message-ter",
@@ -121084,7 +121075,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "gregtatcam/bugs/ripd-4340",
+      "name": "vlntb/number-of-sweeps",
       "commits": 63,
       "branches": [
         "a1q123456/fix-autogen",
@@ -121155,8 +121146,8 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "tapanito/lending-impairment",
-      "commits": 57,
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 56,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
         "a1q123456/add-loan-invariants",
@@ -121218,8 +121209,8 @@
     },
     {
       "email": "braedonk@hotmail.com",
-      "name": "bthomee/shamap-stack-01-unsigned-int-branch-ops",
-      "commits": 56,
+      "name": "ripple/wasmi",
+      "commits": 55,
       "branches": [
         "a1q123456/add-loan-invariants",
         "bthomee/protocol",
@@ -121242,7 +121233,6 @@
         "dangell7/sponsor-reap",
         "gregtatcam/mpt/audit-attackathon-fixes-1",
         "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "gregtatcam/mpt/transferable-lptokens",
         "mvadari/rearch/init",
         "pratik/otel-phase1a-plan-docs",
@@ -121281,8 +121271,8 @@
     },
     {
       "email": "lmaisons@ripple.com",
-      "name": "bthomee/shamap-stack-01-unsigned-int-branch-ops",
-      "commits": 53,
+      "name": "gregtatcam/mpt/fix-stissue-serialization",
+      "commits": 52,
       "branches": [
         "bthomee/shamap-stack-01-unsigned-int-branch-ops",
         "bthomee/shamap-stack-02-shamapnodeid-isprefixof",
@@ -121306,7 +121296,6 @@
         "gregtatcam/mpt/assorted-fixes-dev",
         "gregtatcam/mpt/extend-mptlock-check",
         "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "lmaisons/fix-iterator-conformance",
         "lmaisons/stub-send-proof",
         "mvadari/rearch/token",
@@ -121341,176 +121330,8 @@
       "last_active": "2026-05-14T08:00:59+00:00"
     },
     {
-      "email": "102049210+klemenfn@users.noreply.github.com",
-      "name": "tapanito/lending-impairment",
-      "commits": 50,
-      "branches": [
-        "FN-36-credential_pins_pseudo_account",
-        "a1q123456/add-loan-invariants",
-        "bthomee/protocol",
-        "bthomee/rpc-method-name-constants",
-        "copilot/add-augmented-submit-fields",
-        "copilot/add-ctid-to-ledger-response",
-        "copilot/convert-boost-to-std-string-view",
-        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
-        "copilot/fix-vetoed-type-error",
-        "gh-readonly-queue/develop/pr-7432-bd87edfc75f1ff4ee8e117e05cf37f20380fba20",
-        "gh-readonly-queue/develop/pr-7996-a0074f83d35f7fec4532d48f8ad3837d1ddc311e",
-        "gregtatcam/mpt/audit-attackathon-fixes-1",
-        "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/mpt-invariants-gate-update",
-        "gregtatcam/mpt/optimize-freeze-checks",
-        "gregtatcam/mpt/transferable-lptokens",
-        "mvadari/account-info-flag-assert",
-        "mvadari/rearch/init",
-        "mvadari/refactor-tx-settings",
-        "origin",
-        "peng/number-guard-loop",
-        "pratik/fix-ledgerreplay-flaky-test",
-        "ripple/confidential-key-rotation",
-        "ripple/lending-protocol-fv",
-        "tapanito/bugfix-loan-pay-fn-67",
-        "tapanito/fix-lending-cross-scale",
-        "tapanito/invariant-improvement",
-        "tapanito/lending-bugfix",
-        "tapanito/lending-impairment",
-        "tapanito/loan-broker-set",
-        "tapanito/vault-add-assets-helper",
-        "tapanito/vault-block-deposit",
-        "tapanito/vault-donation",
-        "tapanito/vault-dust-overlay",
-        "tapanito/vault-dust-primitive",
-        "tapanito/vault-dust-sfield",
-        "tialymov/FN-23-loan_default_freeze_guard",
-        "tialymov/FN-69-withdraw_destination_domain_check",
-        "tialymov/FN-84-vault_info_error_diagnostics",
-        "tialymov/FN-85-vault_iou_require_auth",
-        "tialymov/FN-86-deposit_share_truncation_sub_ulp",
-        "vlntb/mem-leak-ledger-history-3",
-        "ximinez/failure-invariant",
-        "ximinez/number-exponents",
-        "ximinez/online-delete-gaps",
-        "ximinez/online-delete-gaps2",
-        "ximinez/txrefactor",
-        "ximinez/vault-test"
-      ],
-      "last_active": "2026-08-11T14:09:50+00:00"
-    },
-    {
-      "email": "109832400+luisfernandomendozav@users.noreply.github.com",
-      "name": "tapanito/lending-impairment",
-      "commits": 50,
-      "branches": [
-        "FN-36-credential_pins_pseudo_account",
-        "a1q123456/add-loan-invariants",
-        "bthomee/protocol",
-        "bthomee/rpc-method-name-constants",
-        "copilot/add-augmented-submit-fields",
-        "copilot/add-ctid-to-ledger-response",
-        "copilot/convert-boost-to-std-string-view",
-        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
-        "copilot/fix-vetoed-type-error",
-        "gh-readonly-queue/develop/pr-7432-bd87edfc75f1ff4ee8e117e05cf37f20380fba20",
-        "gh-readonly-queue/develop/pr-7996-a0074f83d35f7fec4532d48f8ad3837d1ddc311e",
-        "gregtatcam/mpt/audit-attackathon-fixes-1",
-        "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/mpt-invariants-gate-update",
-        "gregtatcam/mpt/optimize-freeze-checks",
-        "gregtatcam/mpt/transferable-lptokens",
-        "mvadari/account-info-flag-assert",
-        "mvadari/rearch/init",
-        "mvadari/refactor-tx-settings",
-        "origin",
-        "peng/number-guard-loop",
-        "pratik/fix-ledgerreplay-flaky-test",
-        "ripple/confidential-key-rotation",
-        "ripple/lending-protocol-fv",
-        "tapanito/bugfix-loan-pay-fn-67",
-        "tapanito/fix-lending-cross-scale",
-        "tapanito/invariant-improvement",
-        "tapanito/lending-bugfix",
-        "tapanito/lending-impairment",
-        "tapanito/loan-broker-set",
-        "tapanito/vault-add-assets-helper",
-        "tapanito/vault-block-deposit",
-        "tapanito/vault-donation",
-        "tapanito/vault-dust-overlay",
-        "tapanito/vault-dust-primitive",
-        "tapanito/vault-dust-sfield",
-        "tialymov/FN-23-loan_default_freeze_guard",
-        "tialymov/FN-69-withdraw_destination_domain_check",
-        "tialymov/FN-84-vault_info_error_diagnostics",
-        "tialymov/FN-85-vault_iou_require_auth",
-        "tialymov/FN-86-deposit_share_truncation_sub_ulp",
-        "vlntb/mem-leak-ledger-history-3",
-        "ximinez/failure-invariant",
-        "ximinez/number-exponents",
-        "ximinez/online-delete-gaps",
-        "ximinez/online-delete-gaps2",
-        "ximinez/txrefactor",
-        "ximinez/vault-test"
-      ],
-      "last_active": "2026-08-11T14:09:50+00:00"
-    },
-    {
-      "email": "bryanjiang168@gmail.com",
-      "name": "tapanito/lending-impairment",
-      "commits": 50,
-      "branches": [
-        "FN-36-credential_pins_pseudo_account",
-        "a1q123456/add-loan-invariants",
-        "bthomee/protocol",
-        "bthomee/rpc-method-name-constants",
-        "copilot/add-augmented-submit-fields",
-        "copilot/add-ctid-to-ledger-response",
-        "copilot/convert-boost-to-std-string-view",
-        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
-        "copilot/fix-vetoed-type-error",
-        "gh-readonly-queue/develop/pr-7432-bd87edfc75f1ff4ee8e117e05cf37f20380fba20",
-        "gh-readonly-queue/develop/pr-7996-a0074f83d35f7fec4532d48f8ad3837d1ddc311e",
-        "gregtatcam/mpt/audit-attackathon-fixes-1",
-        "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/mpt-invariants-gate-update",
-        "gregtatcam/mpt/optimize-freeze-checks",
-        "gregtatcam/mpt/transferable-lptokens",
-        "mvadari/account-info-flag-assert",
-        "mvadari/rearch/init",
-        "mvadari/refactor-tx-settings",
-        "origin",
-        "peng/number-guard-loop",
-        "pratik/fix-ledgerreplay-flaky-test",
-        "ripple/confidential-key-rotation",
-        "ripple/lending-protocol-fv",
-        "tapanito/bugfix-loan-pay-fn-67",
-        "tapanito/fix-lending-cross-scale",
-        "tapanito/invariant-improvement",
-        "tapanito/lending-bugfix",
-        "tapanito/lending-impairment",
-        "tapanito/loan-broker-set",
-        "tapanito/vault-add-assets-helper",
-        "tapanito/vault-block-deposit",
-        "tapanito/vault-donation",
-        "tapanito/vault-dust-overlay",
-        "tapanito/vault-dust-primitive",
-        "tapanito/vault-dust-sfield",
-        "tialymov/FN-23-loan_default_freeze_guard",
-        "tialymov/FN-69-withdraw_destination_domain_check",
-        "tialymov/FN-84-vault_info_error_diagnostics",
-        "tialymov/FN-85-vault_iou_require_auth",
-        "tialymov/FN-86-deposit_share_truncation_sub_ulp",
-        "vlntb/mem-leak-ledger-history-3",
-        "ximinez/failure-invariant",
-        "ximinez/number-exponents",
-        "ximinez/online-delete-gaps",
-        "ximinez/online-delete-gaps2",
-        "ximinez/txrefactor",
-        "ximinez/vault-test"
-      ],
-      "last_active": "2026-08-11T14:09:50+00:00"
-    },
-    {
       "email": "brok@incorrekt.com",
-      "name": "gregtatcam/bugs/ripd-4340",
+      "name": "bthomee/cmake_ci",
       "commits": 50,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -121567,8 +121388,176 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
+      "email": "102049210+klemenfn@users.noreply.github.com",
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 49,
+      "branches": [
+        "FN-36-credential_pins_pseudo_account",
+        "a1q123456/add-loan-invariants",
+        "bthomee/protocol",
+        "bthomee/rpc-method-name-constants",
+        "copilot/add-augmented-submit-fields",
+        "copilot/add-ctid-to-ledger-response",
+        "copilot/convert-boost-to-std-string-view",
+        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+        "copilot/fix-vetoed-type-error",
+        "gh-readonly-queue/develop/pr-7432-bd87edfc75f1ff4ee8e117e05cf37f20380fba20",
+        "gh-readonly-queue/develop/pr-7996-a0074f83d35f7fec4532d48f8ad3837d1ddc311e",
+        "gregtatcam/mpt/audit-attackathon-fixes-1",
+        "gregtatcam/mpt/extend-mptlock-check",
+        "gregtatcam/mpt/mpt-invariants-gate-update",
+        "gregtatcam/mpt/optimize-freeze-checks",
+        "gregtatcam/mpt/transferable-lptokens",
+        "mvadari/account-info-flag-assert",
+        "mvadari/rearch/init",
+        "mvadari/refactor-tx-settings",
+        "origin",
+        "peng/number-guard-loop",
+        "pratik/fix-ledgerreplay-flaky-test",
+        "ripple/confidential-key-rotation",
+        "ripple/lending-protocol-fv",
+        "tapanito/bugfix-loan-pay-fn-67",
+        "tapanito/fix-lending-cross-scale",
+        "tapanito/invariant-improvement",
+        "tapanito/lending-bugfix",
+        "tapanito/lending-impairment",
+        "tapanito/loan-broker-set",
+        "tapanito/vault-add-assets-helper",
+        "tapanito/vault-block-deposit",
+        "tapanito/vault-donation",
+        "tapanito/vault-dust-overlay",
+        "tapanito/vault-dust-primitive",
+        "tapanito/vault-dust-sfield",
+        "tialymov/FN-23-loan_default_freeze_guard",
+        "tialymov/FN-69-withdraw_destination_domain_check",
+        "tialymov/FN-84-vault_info_error_diagnostics",
+        "tialymov/FN-85-vault_iou_require_auth",
+        "tialymov/FN-86-deposit_share_truncation_sub_ulp",
+        "vlntb/mem-leak-ledger-history-3",
+        "ximinez/failure-invariant",
+        "ximinez/number-exponents",
+        "ximinez/online-delete-gaps",
+        "ximinez/online-delete-gaps2",
+        "ximinez/txrefactor",
+        "ximinez/vault-test"
+      ],
+      "last_active": "2026-08-11T14:09:50+00:00"
+    },
+    {
+      "email": "109832400+luisfernandomendozav@users.noreply.github.com",
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 49,
+      "branches": [
+        "FN-36-credential_pins_pseudo_account",
+        "a1q123456/add-loan-invariants",
+        "bthomee/protocol",
+        "bthomee/rpc-method-name-constants",
+        "copilot/add-augmented-submit-fields",
+        "copilot/add-ctid-to-ledger-response",
+        "copilot/convert-boost-to-std-string-view",
+        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+        "copilot/fix-vetoed-type-error",
+        "gh-readonly-queue/develop/pr-7432-bd87edfc75f1ff4ee8e117e05cf37f20380fba20",
+        "gh-readonly-queue/develop/pr-7996-a0074f83d35f7fec4532d48f8ad3837d1ddc311e",
+        "gregtatcam/mpt/audit-attackathon-fixes-1",
+        "gregtatcam/mpt/extend-mptlock-check",
+        "gregtatcam/mpt/mpt-invariants-gate-update",
+        "gregtatcam/mpt/optimize-freeze-checks",
+        "gregtatcam/mpt/transferable-lptokens",
+        "mvadari/account-info-flag-assert",
+        "mvadari/rearch/init",
+        "mvadari/refactor-tx-settings",
+        "origin",
+        "peng/number-guard-loop",
+        "pratik/fix-ledgerreplay-flaky-test",
+        "ripple/confidential-key-rotation",
+        "ripple/lending-protocol-fv",
+        "tapanito/bugfix-loan-pay-fn-67",
+        "tapanito/fix-lending-cross-scale",
+        "tapanito/invariant-improvement",
+        "tapanito/lending-bugfix",
+        "tapanito/lending-impairment",
+        "tapanito/loan-broker-set",
+        "tapanito/vault-add-assets-helper",
+        "tapanito/vault-block-deposit",
+        "tapanito/vault-donation",
+        "tapanito/vault-dust-overlay",
+        "tapanito/vault-dust-primitive",
+        "tapanito/vault-dust-sfield",
+        "tialymov/FN-23-loan_default_freeze_guard",
+        "tialymov/FN-69-withdraw_destination_domain_check",
+        "tialymov/FN-84-vault_info_error_diagnostics",
+        "tialymov/FN-85-vault_iou_require_auth",
+        "tialymov/FN-86-deposit_share_truncation_sub_ulp",
+        "vlntb/mem-leak-ledger-history-3",
+        "ximinez/failure-invariant",
+        "ximinez/number-exponents",
+        "ximinez/online-delete-gaps",
+        "ximinez/online-delete-gaps2",
+        "ximinez/txrefactor",
+        "ximinez/vault-test"
+      ],
+      "last_active": "2026-08-11T14:09:50+00:00"
+    },
+    {
+      "email": "bryanjiang168@gmail.com",
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 49,
+      "branches": [
+        "FN-36-credential_pins_pseudo_account",
+        "a1q123456/add-loan-invariants",
+        "bthomee/protocol",
+        "bthomee/rpc-method-name-constants",
+        "copilot/add-augmented-submit-fields",
+        "copilot/add-ctid-to-ledger-response",
+        "copilot/convert-boost-to-std-string-view",
+        "copilot/fix-5adea215-d850-4ab8-a595-b04e63e948a6",
+        "copilot/fix-vetoed-type-error",
+        "gh-readonly-queue/develop/pr-7432-bd87edfc75f1ff4ee8e117e05cf37f20380fba20",
+        "gh-readonly-queue/develop/pr-7996-a0074f83d35f7fec4532d48f8ad3837d1ddc311e",
+        "gregtatcam/mpt/audit-attackathon-fixes-1",
+        "gregtatcam/mpt/extend-mptlock-check",
+        "gregtatcam/mpt/mpt-invariants-gate-update",
+        "gregtatcam/mpt/optimize-freeze-checks",
+        "gregtatcam/mpt/transferable-lptokens",
+        "mvadari/account-info-flag-assert",
+        "mvadari/rearch/init",
+        "mvadari/refactor-tx-settings",
+        "origin",
+        "peng/number-guard-loop",
+        "pratik/fix-ledgerreplay-flaky-test",
+        "ripple/confidential-key-rotation",
+        "ripple/lending-protocol-fv",
+        "tapanito/bugfix-loan-pay-fn-67",
+        "tapanito/fix-lending-cross-scale",
+        "tapanito/invariant-improvement",
+        "tapanito/lending-bugfix",
+        "tapanito/lending-impairment",
+        "tapanito/loan-broker-set",
+        "tapanito/vault-add-assets-helper",
+        "tapanito/vault-block-deposit",
+        "tapanito/vault-donation",
+        "tapanito/vault-dust-overlay",
+        "tapanito/vault-dust-primitive",
+        "tapanito/vault-dust-sfield",
+        "tialymov/FN-23-loan_default_freeze_guard",
+        "tialymov/FN-69-withdraw_destination_domain_check",
+        "tialymov/FN-84-vault_info_error_diagnostics",
+        "tialymov/FN-85-vault_iou_require_auth",
+        "tialymov/FN-86-deposit_share_truncation_sub_ulp",
+        "vlntb/mem-leak-ledger-history-3",
+        "ximinez/failure-invariant",
+        "ximinez/number-exponents",
+        "ximinez/online-delete-gaps",
+        "ximinez/online-delete-gaps2",
+        "ximinez/txrefactor",
+        "ximinez/vault-test"
+      ],
+      "last_active": "2026-08-11T14:09:50+00:00"
+    },
+    {
       "email": "mvadari@gmail.com",
-      "name": "mvadari/invariant-perf",
+      "name": "mvadari/remove-xcb",
       "commits": 39,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -121615,8 +121604,8 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "audit_wasm_vm_rust",
-      "commits": 39,
+      "name": "ripple/wasmi",
+      "commits": 38,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "audit_wasm_vm_rust",
@@ -121631,7 +121620,6 @@
         "bthomee/shamap-stack-09-visit-differences-tests",
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
         "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "kuznetsss/wasm-vm-redesign",
         "mathbunnyru/apple_clang_21",
         "pratik/Add_checks_db_objects",
@@ -121662,14 +121650,13 @@
     },
     {
       "email": "marek.foss@neti-soft.com",
-      "name": "pratik/std-coro/migrate-test-code",
-      "commits": 29,
+      "name": "mvadari/remove-xcb",
+      "commits": 28,
       "branches": [
         "a1q123456/split-loan-set-and-loan-accept-implementation",
         "dangell7/shamap-shed-subtrees",
         "dangell7/token-paychan-clawback",
         "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "mvadari/asf-macro",
         "mvadari/check-bounds",
         "mvadari/ctidy-07-26",
@@ -121699,8 +121686,8 @@
     },
     {
       "email": "mvanhorn@users.noreply.github.com",
-      "name": "audit_wasm_vm_rust",
-      "commits": 27,
+      "name": "ripple/wasmi",
+      "commits": 26,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/add-loan-invariants",
@@ -121708,7 +121695,6 @@
         "bthomee/protocol",
         "gregtatcam/mpt/audit-attackathon-fixes-1",
         "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/optimize-freeze-checks",
         "gregtatcam/mpt/transferable-lptokens",
         "kuznetsss/wasm-vm-redesign",
         "mvadari/rearch/init",
@@ -121733,7 +121719,7 @@
     },
     {
       "email": "67663680+ricky122-5@users.noreply.github.com",
-      "name": "vlntb/revert-malloc-trim",
+      "name": "tapanito/vault-set-invariants",
       "commits": 26,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -121767,7 +121753,7 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "mvadari/rearch/token-holder",
+      "name": "bthomee/cmake_ci",
       "commits": 24,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -121799,7 +121785,7 @@
     },
     {
       "email": "106177003+sophiax851@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-test-code",
+      "name": "pratik/std-coro/cleanup-boost-coroutine",
       "commits": 23,
       "branches": [
         "a1q123456/fix-autogen",
@@ -121830,7 +121816,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "gregtatcam/bugs/ripd-4340",
+      "name": "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
       "commits": 22,
       "branches": [
         "dangell/smart-contracts",
@@ -121860,7 +121846,7 @@
     },
     {
       "email": "tbanks@ripple.com",
-      "name": "audit_wasm_vm_rust",
+      "name": "mvadari/remove-xcb",
       "commits": 20,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -121888,7 +121874,7 @@
     },
     {
       "email": "11445373+bthomee@users.noreply.github.com",
-      "name": "bthomee/shamap-stack-01-unsigned-int-branch-ops",
+      "name": "bthomee/cmake_ci",
       "commits": 18,
       "branches": [
         "bthomee/cmake_ci",
@@ -121940,7 +121926,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "vlntb/accounts-growth-combined",
+      "name": "vlntb/number-of-sweeps",
       "commits": 18,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -121966,7 +121952,7 @@
     },
     {
       "email": "pwang200@gmail.com",
-      "name": "audit_wasm_vm_rust",
+      "name": "ripple/wasmi",
       "commits": 14,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -121987,27 +121973,8 @@
       "last_active": "2022-04-09T20:24:18+00:00"
     },
     {
-      "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/bugs/ripd-4340",
-      "commits": 13,
-      "branches": [
-        "gregtatcam/bugs/ripd-4340",
-        "gregtatcam/lending-protocol/refactor-payment",
-        "gregtatcam/mpt/assorted-fixes-dev",
-        "gregtatcam/mpt/audit-attackathon-fixes-1",
-        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
-        "gregtatcam/mpt/extend-mptlock-check",
-        "gregtatcam/mpt/fix-stissue-serialization",
-        "gregtatcam/mpt/mpt-invariants-gate-update",
-        "gregtatcam/mpt/optimize-freeze-checks",
-        "gregtatcam/mpt/transferable-lptokens",
-        "gregtatcam/mpt/vault-pseudo-frozen-optimizaton"
-      ],
-      "last_active": "2025-11-15T15:29:58+00:00"
-    },
-    {
       "email": "timothyaaronbanks@gmail.com",
-      "name": "vlntb/pratik-openssl-performance-test",
+      "name": "mvadari/remove-xcb",
       "commits": 13,
       "branches": [
         "bthomee/golang_protos",
@@ -122027,8 +121994,27 @@
       "last_active": "2026-06-25T12:40:06+00:00"
     },
     {
+      "email": "gtsipenyuk@ripple.com",
+      "name": "gregtatcam/mpt/mpt-invariants-gate-update",
+      "commits": 12,
+      "branches": [
+        "gregtatcam/bugs/ripd-4340",
+        "gregtatcam/lending-protocol/refactor-payment",
+        "gregtatcam/mpt/assorted-fixes-dev",
+        "gregtatcam/mpt/audit-attackathon-fixes-1",
+        "gregtatcam/mpt/dex-unit-tests-disabled-mptv2",
+        "gregtatcam/mpt/extend-mptlock-check",
+        "gregtatcam/mpt/fix-stissue-serialization",
+        "gregtatcam/mpt/mpt-invariants-gate-update",
+        "gregtatcam/mpt/optimize-freeze-checks",
+        "gregtatcam/mpt/transferable-lptokens",
+        "gregtatcam/mpt/vault-pseudo-frozen-optimizaton"
+      ],
+      "last_active": "2025-11-15T15:29:58+00:00"
+    },
+    {
       "email": "354723+pwang200@users.noreply.github.com",
-      "name": "audit_wasm_vm_rust",
+      "name": "supported_audit_aug26",
       "commits": 12,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -122048,7 +122034,7 @@
     },
     {
       "email": "solunolab@outlook.com",
-      "name": "mathbunnyru/new_conan_remote",
+      "name": "mathbunnyru/apple_clang_21",
       "commits": 12,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -122068,7 +122054,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "pratik/Fix_asan_lsan_flagged_issues",
+      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
       "commits": 11,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -122087,7 +122073,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "pratik/Fix_asan_lsan_flagged_issues",
+      "name": "ripple/permission-delegation-devnet",
       "commits": 11,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -122125,7 +122111,7 @@
     },
     {
       "email": "rmanukyan@ripple.com",
-      "name": "dangell7/docs-test",
+      "name": "gregtatcam/mpt/fix-stissue-serialization",
       "commits": 10,
       "branches": [
         "dangell7/docs",
@@ -122143,7 +122129,7 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "vlntb/boundaries-idea-from-murat",
+      "name": "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
       "commits": 10,
       "branches": [
         "dangell7/fix-pathfinder-dedup",
@@ -122161,7 +122147,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
       "commits": 10,
       "branches": [
         "copilot/sub-pr-5439",
@@ -122179,7 +122165,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "zhang/groth16",
+      "name": "pratik/Fix_Sanitizer_flagged_issues",
       "commits": 10,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -122197,7 +122183,7 @@
     },
     {
       "email": "71317875+pdp2121@users.noreply.github.com",
-      "name": "vlntb/boundaries-idea-from-murat",
+      "name": "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
       "commits": 9,
       "branches": [
         "dangell7/fix-pathfinder-dedup",
@@ -122214,7 +122200,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
       "commits": 9,
       "branches": [
         "copilot/sub-pr-5439",
@@ -122231,7 +122217,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "zhang/groth16",
+      "name": "ximinez/lending-number-explicit-deadend",
       "commits": 9,
       "branches": [
         "pratik/openssl-3.6.0-alpha-performance-test",
@@ -122248,7 +122234,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
+      "name": "a1q123456/migrate-some-tests",
       "commits": 8,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -122264,7 +122250,7 @@
     },
     {
       "email": "97218929+shichengripple001@users.noreply.github.com",
-      "name": "mvadari/invariant-perf",
+      "name": "a1q123456/migrate-account-amendment-table-test",
       "commits": 7,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -122279,7 +122265,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "copilot/sub-pr-5439",
       "commits": 7,
       "branches": [
         "copilot/sub-pr-5439",
@@ -122294,7 +122280,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "vlntb/number-perf-experiments-3",
+      "name": "dangell/smart-contracts",
       "commits": 7,
       "branches": [
         "dangell/smart-contracts",
@@ -122324,7 +122310,7 @@
     },
     {
       "email": "yalymov.tm@gmail.com",
-      "name": "tialymov/FN-23-loan_default_freeze_guard",
+      "name": "ripple/lending-protocol-fv",
       "commits": 6,
       "branches": [
         "ripple/lending-protocol-fv",
@@ -122338,7 +122324,7 @@
     },
     {
       "email": "vvysokikh@gmail.com",
-      "name": "vvysokikh/number-spaceship-operator",
+      "name": "vvysokikh1/txq-test-amendment-resilience",
       "commits": 6,
       "branches": [
         "release-3.0",
@@ -122352,7 +122338,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "a1q123456/remove-const-cast-from-tagged-cache-2",
+      "name": "dangell/relay",
       "commits": 6,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -122366,7 +122352,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/number-of-sweeps",
       "commits": 6,
       "branches": [
         "vlntb/fix-peer-disconnects-ping",
@@ -122380,7 +122366,7 @@
     },
     {
       "email": "120398799+cindyyan317@users.noreply.github.com",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/remove-node-hash",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122393,7 +122379,7 @@
     },
     {
       "email": "Tokeiito@users.noreply.github.com",
-      "name": "vlntb/fix-peer-disconnects-ping",
+      "name": "vlntb/remove-node-hash",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122406,7 +122392,7 @@
     },
     {
       "email": "zinger777@gmail.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "bthomee/cmake_ci",
       "commits": 4,
       "branches": [
         "bthomee/cmake_ci",
@@ -122418,7 +122404,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
+      "name": "bthomee/cmake_ci",
       "commits": 4,
       "branches": [
         "bthomee/cmake_ci",
@@ -122430,7 +122416,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "vlntb/accounts-growth-combined",
+      "name": "ci/windows-test",
       "commits": 4,
       "branches": [
         "ci/windows-test",
@@ -122442,7 +122428,7 @@
     },
     {
       "email": "shawnxie@live.ca",
-      "name": "lmaisons/stub-send-proof",
+      "name": "ripple/confidential-transfer",
       "commits": 3,
       "branches": [
         "lmaisons/stub-send-proof",
@@ -122475,7 +122461,7 @@
     },
     {
       "email": "yinyi_qian@alumni.brown.edu",
-      "name": "staging/3.3.x",
+      "name": "mvadari/sponsor-add",
       "commits": 2,
       "branches": [
         "mvadari/sponsor-add",
@@ -122485,7 +122471,7 @@
     },
     {
       "email": "151025147+dangell8@users.noreply.github.com",
-      "name": "dangell7/token-paychan-clawback",
+      "name": "token-paychan",
       "commits": 2,
       "branches": [
         "dangell7/token-paychan-clawback",
@@ -122495,7 +122481,7 @@
     },
     {
       "email": "1830604455@qq.com",
-      "name": "xrplf/sponsor",
+      "name": "xrplf/sponsor-supported",
       "commits": 2,
       "branches": [
         "xrplf/sponsor",
@@ -122505,7 +122491,7 @@
     },
     {
       "email": "ychen@ripple.com",
-      "name": "lmaisons/stub-send-proof",
+      "name": "ripple/confidential-transfer",
       "commits": 2,
       "branches": [
         "lmaisons/stub-send-proof",
@@ -122515,7 +122501,7 @@
     },
     {
       "email": "box4wangjing@outlook.com",
-      "name": "pratik/openssl-3.5.6-performance-test",
+      "name": "pratik/openssl-3.6.2-performance-test",
       "commits": 2,
       "branches": [
         "pratik/openssl-3.5.6-performance-test",
@@ -122525,7 +122511,7 @@
     },
     {
       "email": "508629+shortthefomo@users.noreply.github.com",
-      "name": "dangell7/fix-token-escrow-v2",
+      "name": "ximinez/sync-script",
       "commits": 2,
       "branches": [
         "dangell7/fix-token-escrow-v2",
@@ -122555,7 +122541,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 2,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122565,7 +122551,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
+      "name": "vlntb/RIPD-2446-getNodeFat-error",
       "commits": 2,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
