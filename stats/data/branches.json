@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T21:10:15.051854+00:00",
+  "generated_at": "2026-08-16T22:08:59.123901+00:00",
   "repo": "XRPLF/rippled",
   "total_branches": 277,
   "total_contributors": 102,
@@ -14,6 +14,13 @@
         "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
       },
       "commits": [
+        {
+          "hash": "d168cb1c",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-16T13:28:21+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
+        },
         {
           "hash": "d168cb1c",
           "author": "Bart",
@@ -356,13 +363,6 @@
           "email": "akremer@ripple.com",
           "date": "2026-07-27T16:34:53+00:00",
           "message": "chore: Trivial gtest migrations (#7865)"
-        },
-        {
-          "hash": "9466ecb5",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-07-27T14:32:53+00:00",
-          "message": "ci: Group github-actions dependabot updates (#7876)"
         }
       ],
       "contributor_count": 29,
@@ -39606,14 +39606,14 @@
           "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
         },
         {
-          "hash": "88b76d0f",
+          "hash": "773db0ec",
           "author": "Bart",
           "email": "11445373+bthomee@users.noreply.github.com",
           "date": "2026-08-02T01:48:41+00:00",
           "message": "refactor: Unify `upperBound` and `lowerBound` into `boundHelper`"
         },
         {
-          "hash": "2d62d23e",
+          "hash": "6682bd89",
           "author": "Bart",
           "email": "11445373+bthomee@users.noreply.github.com",
           "date": "2026-08-02T01:43:34+00:00",
@@ -39981,6 +39981,41 @@
           "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
         },
         {
+          "hash": "6682bd89",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:43:34+00:00",
+          "message": "fix: Derive traversal node IDs from the branch actually descended"
+        },
+        {
+          "hash": "3b2a1160",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:35:54+00:00",
+          "message": "fix: Clamp the depth used to index selectBranch's key byte"
+        },
+        {
+          "hash": "30e254d4",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:35:08+00:00",
+          "message": "fix: Reject an inner node claimed at leaf depth in `verifyProofPath`"
+        },
+        {
+          "hash": "766a2274",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:34:05+00:00",
+          "message": "refactor: Add `SHAMapNodeID::isPrefixOf`"
+        },
+        {
+          "hash": "d168cb1c",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-16T13:28:21+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
+        },
+        {
           "hash": "2d62d23e",
           "author": "Bart",
           "email": "11445373+bthomee@users.noreply.github.com",
@@ -40014,41 +40049,6 @@
           "email": "11445373+bthomee@users.noreply.github.com",
           "date": "2026-07-30T23:00:27+00:00",
           "message": "refactor: Use unsigned int for branch-related operations"
-        },
-        {
-          "hash": "9859e5ce",
-          "author": "Ayaz Salikhov",
-          "email": "asalikhov@ripple.com",
-          "date": "2026-08-07T15:00:25+00:00",
-          "message": "Merge remote-tracking branch 'upstream/release/3.3.x' into mathbunnyru/merge-3.3.0-to-develop"
-        },
-        {
-          "hash": "00a178fb",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T16:34:39+00:00",
-          "message": "chore: Bump version to 3.3.0"
-        },
-        {
-          "hash": "cb425647",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T13:25:28+00:00",
-          "message": "ci: Generate protocol_autogen only once in CI (#7918)"
-        },
-        {
-          "hash": "5bf24c40",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-08-06T11:04:41+00:00",
-          "message": "ci: Use a separate benchmark filter (#7919)"
-        },
-        {
-          "hash": "8d7524f0",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-08-05T17:54:44+00:00",
-          "message": "fix: Use consistent endianness serializing MPT STIssue sequence (#7429)"
         }
       ],
       "contributor_count": 29,
@@ -40131,6 +40131,34 @@
         "message": "fix: Clamp the depth used to index selectBranch's key byte"
       },
       "commits": [
+        {
+          "hash": "3b2a1160",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:35:54+00:00",
+          "message": "fix: Clamp the depth used to index selectBranch's key byte"
+        },
+        {
+          "hash": "30e254d4",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:35:08+00:00",
+          "message": "fix: Reject an inner node claimed at leaf depth in `verifyProofPath`"
+        },
+        {
+          "hash": "766a2274",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:34:05+00:00",
+          "message": "refactor: Add `SHAMapNodeID::isPrefixOf`"
+        },
+        {
+          "hash": "d168cb1c",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-16T13:28:21+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
+        },
         {
           "hash": "3b2a1160",
           "author": "Bart",
@@ -40452,34 +40480,6 @@
           "email": "mathbunnyru@users.noreply.github.com",
           "date": "2026-08-04T16:17:41+00:00",
           "message": "docs: Add a fix for `command not found: nix` on macOS (#7951)"
-        },
-        {
-          "hash": "c3ee6020",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T15:43:59+00:00",
-          "message": "test: Split Loan_test.cpp into topical suites (#7864)"
-        },
-        {
-          "hash": "e0de716e",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-08-04T13:49:18+00:00",
-          "message": "fix: Watch nix/*.nix files for direnv cache invalidation (#7948)"
-        },
-        {
-          "hash": "06488c13",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-08-04T13:46:55+00:00",
-          "message": "chore: Rename CamelCase namespaces to snake_case (#7933)"
-        },
-        {
-          "hash": "b8451ffa",
-          "author": "Luc des Trois Maisons",
-          "email": "lmaisons@ripple.com",
-          "date": "2026-08-03T21:17:23+00:00",
-          "message": "fix: Add missing value_type to JSON iterators (#7907)"
         }
       ],
       "contributor_count": 29,
@@ -40562,6 +40562,27 @@
         "message": "fix: Reject an inner node claimed at leaf depth in `verifyProofPath`"
       },
       "commits": [
+        {
+          "hash": "30e254d4",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:35:08+00:00",
+          "message": "fix: Reject an inner node claimed at leaf depth in `verifyProofPath`"
+        },
+        {
+          "hash": "766a2274",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:34:05+00:00",
+          "message": "refactor: Add `SHAMapNodeID::isPrefixOf`"
+        },
+        {
+          "hash": "d168cb1c",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-16T13:28:21+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
+        },
         {
           "hash": "30e254d4",
           "author": "Bart",
@@ -40890,27 +40911,6 @@
           "email": "13349202+vlntb@users.noreply.github.com",
           "date": "2026-07-31T20:18:28+00:00",
           "message": "fix: Cap untrusted manifests per message and drop oversized ones"
-        },
-        {
-          "hash": "0cce5a06",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-07-16T20:21:56+00:00",
-          "message": "fix: Reject oversized validator manifest before decoding"
-        },
-        {
-          "hash": "32a9cc40",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-07-23T20:27:45+00:00",
-          "message": "fix: Reduce untrusted manifest cache cap to 100"
-        },
-        {
-          "hash": "587505ef",
-          "author": "Pratik Mankawde",
-          "email": "3397372+pratikmankawde@users.noreply.github.com",
-          "date": "2026-07-17T18:07:57+00:00",
-          "message": "fix: Bound untrusted manifest cache"
         }
       ],
       "contributor_count": 29,
@@ -40993,6 +40993,20 @@
         "message": "refactor: Add `SHAMapNodeID::isPrefixOf`"
       },
       "commits": [
+        {
+          "hash": "766a2274",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-02T01:34:05+00:00",
+          "message": "refactor: Add `SHAMapNodeID::isPrefixOf`"
+        },
+        {
+          "hash": "d168cb1c",
+          "author": "Bart",
+          "email": "11445373+bthomee@users.noreply.github.com",
+          "date": "2026-08-16T13:28:21+00:00",
+          "message": "Merge remote-tracking branch 'origin/develop' into bthomee/shamap-stack-01-unsigned-int-branch-ops"
+        },
         {
           "hash": "766a2274",
           "author": "Bart",
@@ -41328,20 +41342,6 @@
           "email": "198982749+Copilot@users.noreply.github.com",
           "date": "2026-07-30T12:17:32+00:00",
           "message": "fix: Apply asfDisallowIncomingTrustline blocker to OfferCreate (#6307)"
-        },
-        {
-          "hash": "8a5eded4",
-          "author": "Vito Tumas",
-          "email": "5780819+Tapanito@users.noreply.github.com",
-          "date": "2026-07-30T11:55:39+00:00",
-          "message": "feat: Implement LoanBroker cash-basis accounting (#7817)"
-        },
-        {
-          "hash": "6ddad549",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-07-29T22:54:46+00:00",
-          "message": "chore: Move lexical cast tests to gtest (#7873)"
         }
       ],
       "contributor_count": 29,
@@ -117868,7 +117868,7 @@
   "contributors": [
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 271,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -118138,7 +118138,7 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 250,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -118387,7 +118387,7 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 245,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -118631,7 +118631,7 @@
     },
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "pratik/otel-phase7-native-metrics",
       "commits": 235,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -118865,7 +118865,7 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "ci/use-new-macos-runners",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 202,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -119066,7 +119066,7 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "vlntb/malformed-no-permission-fix",
       "commits": 190,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -119255,7 +119255,7 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 168,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -119422,7 +119422,7 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 158,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -119579,7 +119579,7 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "pratik/otel-phase7-native-metrics",
       "commits": 153,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -119731,7 +119731,7 @@
     },
     {
       "email": "skuznetsov@ripple.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "dangell7/docs",
       "commits": 130,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -119869,7 +119869,7 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "ci/use-new-macos-runners",
+      "name": "vlntb/malformed-no-permission-fix",
       "commits": 119,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -119996,7 +119996,7 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "ci/use-new-macos-runners",
+      "name": "vlntb/refactore-barrier-semaphore",
       "commits": 118,
       "branches": [
         "a1q123456/add-loan-invariants",
@@ -120122,7 +120122,7 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "tapanito/vault-donation",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 117,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -120247,7 +120247,7 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "mvadari/remove-xcb",
+      "name": "vlntb/malformed-no-permission-fix",
       "commits": 115,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -120370,7 +120370,7 @@
     },
     {
       "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "tapanito/vault-donation",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 112,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -120490,7 +120490,7 @@
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "ci/use-new-macos-runners",
+      "name": "vlntb/malformed-no-permission-fix",
       "commits": 104,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -120602,7 +120602,7 @@
     },
     {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "tapanito/vault-donation",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 101,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -120702,7 +120702,7 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "mvadari/remove-xcb",
+      "name": "pratik/otel-phase7-native-metrics",
       "commits": 93,
       "branches": [
         "a1q123456/support-lending-in-batch",
@@ -120803,7 +120803,7 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "ci/use-new-macos-runners",
+      "name": "dangell7/docs",
       "commits": 88,
       "branches": [
         "a1q123456/fix-autogen",
@@ -120899,7 +120899,7 @@
     },
     {
       "email": "36795566+tyalymov@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 86,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -120984,7 +120984,7 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "ximinez/online-delete-gaps",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 73,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -121056,7 +121056,7 @@
     },
     {
       "email": "andrzej.budzanowski@neti-soft.com",
-      "name": "pratik/std-coro/migrate-entry-points",
+      "name": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
       "commits": 72,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -121136,7 +121136,7 @@
     },
     {
       "email": "102049210+klemenfn@users.noreply.github.com",
-      "name": "ximinez/online-delete-gaps",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 66,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -121201,7 +121201,7 @@
     },
     {
       "email": "109832400+luisfernandomendozav@users.noreply.github.com",
-      "name": "ximinez/online-delete-gaps",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 66,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -121266,7 +121266,7 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "ripple/confidential-devnet",
+      "name": "a1q123456/adding-perimissioned-domain-to-lending",
       "commits": 65,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -121339,7 +121339,7 @@
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-entry-points",
+      "name": "gregtatcam/bugs/ripd-4340",
       "commits": 63,
       "branches": [
         "a1q123456/fix-autogen",
@@ -121410,7 +121410,7 @@
     },
     {
       "email": "bryanjiang168@gmail.com",
-      "name": "ximinez/online-delete-gaps",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 57,
       "branches": [
         "FN-36-credential_pins_pseudo_account",
@@ -121475,7 +121475,7 @@
     },
     {
       "email": "braedonk@hotmail.com",
-      "name": "gregtatcam/mpt/audit-attackathon-fixes-1",
+      "name": "tapanito/vault-dust-overlay",
       "commits": 54,
       "branches": [
         "a1q123456/add-loan-invariants",
@@ -121537,7 +121537,7 @@
     },
     {
       "email": "lmaisons@ripple.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
       "commits": 51,
       "branches": [
         "bthomee/shamap-stack-01-unsigned-int-branch-ops",
@@ -121596,7 +121596,7 @@
     },
     {
       "email": "brok@incorrekt.com",
-      "name": "ci/use-new-macos-runners",
+      "name": "gregtatcam/bugs/ripd-4340",
       "commits": 50,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -121654,7 +121654,7 @@
     },
     {
       "email": "mvadari@gmail.com",
-      "name": "mvadari/remove-xcb",
+      "name": "xrplf/smart-contracts",
       "commits": 39,
       "branches": [
         "copilot/add-augmented-submit-fields",
@@ -121701,7 +121701,7 @@
     },
     {
       "email": "asalikhov@ripple.com",
-      "name": "pratik/Add_checks_db_objects",
+      "name": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
       "commits": 37,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -121746,7 +121746,7 @@
     },
     {
       "email": "mvanhorn@users.noreply.github.com",
-      "name": "ripple/wasmi-host-functions",
+      "name": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
       "commits": 34,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -121788,7 +121788,7 @@
     },
     {
       "email": "marek.foss@neti-soft.com",
-      "name": "pratik/std-coro/migrate-entry-points",
+      "name": "bthomee/shamap-stack-03-reject-inner-node-leaf-depth",
       "commits": 33,
       "branches": [
         "a1q123456/split-loan-set-and-loan-accept-implementation",
@@ -121829,7 +121829,7 @@
     },
     {
       "email": "11445373+bthomee@users.noreply.github.com",
-      "name": "bthomee/shamap-stack-02-shamapnodeid-isprefixof",
+      "name": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
       "commits": 27,
       "branches": [
         "bthomee/cmake_ci",
@@ -121855,7 +121855,7 @@
     },
     {
       "email": "67663680+ricky122-5@users.noreply.github.com",
-      "name": "smart-escrow/perf-test",
+      "name": "a1q123456/adding-perimissioned-domain-to-lending",
       "commits": 26,
       "branches": [
         "a1q123456/adding-perimissioned-domain-to-lending",
@@ -121889,7 +121889,7 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "ripple/confidential-devnet",
+      "name": "vlntb/refactore-barrier-semaphore",
       "commits": 24,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -121921,7 +121921,7 @@
     },
     {
       "email": "106177003+sophiax851@users.noreply.github.com",
-      "name": "pratik/std-coro/migrate-entry-points",
+      "name": "lmaisons/fix-iterator-conformance",
       "commits": 23,
       "branches": [
         "a1q123456/fix-autogen",
@@ -121952,7 +121952,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "gregtatcam/bugs/ripd-4340",
       "commits": 22,
       "branches": [
         "dangell/smart-contracts",
@@ -121982,7 +121982,7 @@
     },
     {
       "email": "tbanks@ripple.com",
-      "name": "mvadari/remove-xcb",
+      "name": "vlntb/pratik-openssl-performance-test",
       "commits": 20,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -122010,7 +122010,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "name": "release-3.0",
       "commits": 18,
       "branches": [
         "dangell/smart-contracts",
@@ -122036,7 +122036,7 @@
     },
     {
       "email": "mlegleux@ripple.com",
-      "name": "a1q123456/migrate-some-tests",
+      "name": "vlntb/lock-contention-analysis",
       "commits": 18,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -122062,7 +122062,7 @@
     },
     {
       "email": "pwang200@gmail.com",
-      "name": "ripple/se/wasmi-tests",
+      "name": "ripple/wasmi",
       "commits": 14,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -122084,7 +122084,7 @@
     },
     {
       "email": "timothyaaronbanks@gmail.com",
-      "name": "mvadari/remove-xcb",
+      "name": "vvysokikh/sponsor-bug-repros",
       "commits": 13,
       "branches": [
         "bthomee/golang_protos",
@@ -122105,7 +122105,7 @@
     },
     {
       "email": "354723+pwang200@users.noreply.github.com",
-      "name": "ripple/se/wasmi-tests",
+      "name": "ripple/wasmi-host-functions",
       "commits": 12,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -122145,7 +122145,7 @@
     },
     {
       "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
+      "name": "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
       "commits": 11,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -122164,7 +122164,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
+      "name": "vvysokikh1/fix-positive-balance-trustline-pay-no-reserve",
       "commits": 11,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -122183,7 +122183,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "pratik/Reduce-recursion-to-iterative-loop",
+      "name": "ripple/permission-delegation-devnet",
       "commits": 11,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -122202,7 +122202,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
+      "name": "release-3.0",
       "commits": 11,
       "branches": [
         "dangell/smart-contracts",
@@ -122221,7 +122221,7 @@
     },
     {
       "email": "rmanukyan@ripple.com",
-      "name": "vlntb/release-3.2-no-malloc-trim",
+      "name": "mvadari/rearch/token",
       "commits": 10,
       "branches": [
         "dangell7/docs",
@@ -122239,7 +122239,7 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "mvadari/fix-bad-cast",
+      "name": "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
       "commits": 10,
       "branches": [
         "dangell7/fix-pathfinder-dedup",
@@ -122257,7 +122257,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "ripple/permission-delegation-devnet",
+      "name": "vlntb/number-perf-experiments-2",
       "commits": 10,
       "branches": [
         "copilot/sub-pr-5439",
@@ -122275,7 +122275,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "ximinez/lending-number-explicit-deadend",
+      "name": "pratik/openssl-3.6.0-alpha-performance-test",
       "commits": 10,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -122293,7 +122293,7 @@
     },
     {
       "email": "71317875+pdp2121@users.noreply.github.com",
-      "name": "mvadari/fix-bad-cast",
+      "name": "gregtatcam/mpt/vault-pseudo-frozen-optimizaton",
       "commits": 9,
       "branches": [
         "dangell7/fix-pathfinder-dedup",
@@ -122310,7 +122310,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/number-perf-experiments-2",
       "commits": 9,
       "branches": [
         "copilot/sub-pr-5439",
@@ -122327,7 +122327,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "ximinez/lending-number-explicit-deadend",
+      "name": "pratik/openssl-3.6.0-alpha-performance-test",
       "commits": 9,
       "branches": [
         "pratik/openssl-3.6.0-alpha-performance-test",
@@ -122344,7 +122344,7 @@
     },
     {
       "email": "mtrippled@users.noreply.github.com",
-      "name": "a1q123456/migrate-some-tests",
+      "name": "vlntb/lock-contention-analysis",
       "commits": 8,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -122360,7 +122360,7 @@
     },
     {
       "email": "97218929+shichengripple001@users.noreply.github.com",
-      "name": "tapanito/vault-share-pricing",
+      "name": "a1q123456/default-cover-optimisation",
       "commits": 7,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -122375,7 +122375,7 @@
     },
     {
       "email": "oncecell@outlook.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/number-perf-experiments-2",
       "commits": 7,
       "branches": [
         "copilot/sub-pr-5439",
@@ -122390,7 +122390,7 @@
     },
     {
       "email": "liuyueyangxmu@outlook.com",
-      "name": "vlntb/number-perf-experiments",
+      "name": "vlntb/number-perf-experiments-2",
       "commits": 7,
       "branches": [
         "dangell/smart-contracts",
@@ -122405,7 +122405,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "hooks",
+      "name": "vlntb/tagged-cache-stats",
       "commits": 7,
       "branches": [
         "ci/windows-test",
@@ -122420,7 +122420,7 @@
     },
     {
       "email": "yalymov.tm@gmail.com",
-      "name": "tialymov/FN-84-vault_info_error_diagnostics",
+      "name": "tialymov/FN-85-vault_iou_require_auth",
       "commits": 6,
       "branches": [
         "ripple/lending-protocol-fv",
@@ -122434,7 +122434,7 @@
     },
     {
       "email": "vvysokikh@gmail.com",
-      "name": "vvysokikh/number-spaceship-operator",
+      "name": "vvysokikh/sponsor-bug-repros",
       "commits": 6,
       "branches": [
         "release-3.0",
@@ -122448,7 +122448,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "ci/use-new-macos-runners",
+      "name": "dangell/relay",
       "commits": 6,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -122462,7 +122462,7 @@
     },
     {
       "email": "w.wind@ipublications.net",
-      "name": "vlntb/remove-node-hash",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 6,
       "branches": [
         "vlntb/fix-peer-disconnects-ping",
@@ -122476,7 +122476,7 @@
     },
     {
       "email": "120398799+cindyyan317@users.noreply.github.com",
-      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122489,7 +122489,7 @@
     },
     {
       "email": "Tokeiito@users.noreply.github.com",
-      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
+      "name": "vlntb/fix-peer-disconnects-ping",
       "commits": 5,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122514,7 +122514,7 @@
     },
     {
       "email": "vpn2843@protonmail.com",
-      "name": "vlntb/mem-leak-ledger-history",
+      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
       "commits": 4,
       "branches": [
         "bthomee/cmake_ci",
@@ -122526,7 +122526,7 @@
     },
     {
       "email": "mankins@gmail.com",
-      "name": "release-2.5",
+      "name": "vlntb/inbound-ledgers-cache",
       "commits": 4,
       "branches": [
         "ci/windows-test",
@@ -122549,7 +122549,7 @@
     },
     {
       "email": "tzchenxixi@icloud.com",
-      "name": "vlntb/mem-leak-ledger-history",
+      "name": "vlntb/RIPD-2536-taggedcache-expire-now",
       "commits": 3,
       "branches": [
         "dangell7/subscriptions",
@@ -122560,7 +122560,7 @@
     },
     {
       "email": "40630611+Afformativ@users.noreply.github.com",
-      "name": "ximinez/test-nudb",
+      "name": "vlntb/tagged-cache-stats",
       "commits": 3,
       "branches": [
         "dangell7/subscriptions",
@@ -122571,7 +122571,7 @@
     },
     {
       "email": "yinyi_qian@alumni.brown.edu",
-      "name": "staging/3.3.x",
+      "name": "mvadari/sponsor-add",
       "commits": 2,
       "branches": [
         "mvadari/sponsor-add",
@@ -122621,7 +122621,7 @@
     },
     {
       "email": "508629+shortthefomo@users.noreply.github.com",
-      "name": "dangell7/fix-token-escrow-v2",
+      "name": "ximinez/sync-script",
       "commits": 2,
       "branches": [
         "dangell7/fix-token-escrow-v2",
@@ -122631,7 +122631,7 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "mvadari/rearch/token-refactor",
+      "name": "mvadari/rearch/token-holder",
       "commits": 2,
       "branches": [
         "mvadari/rearch/token-holder",
@@ -122651,7 +122651,7 @@
     },
     {
       "email": "31336310+code0xff@users.noreply.github.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 2,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122661,7 +122661,7 @@
     },
     {
       "email": "donovanhide@gmail.com",
-      "name": "vlntb/RIPD-2446-getNodeFat-error",
+      "name": "vlntb/RIPD-2525-taggedcache-single-threaded",
       "commits": 2,
       "branches": [
         "vlntb/RIPD-2446-getNodeFat-error",
@@ -122671,7 +122671,7 @@
     },
     {
       "email": "jfreeman08@gmail.com",
-      "name": "hooks",
+      "name": "sidechain",
       "commits": 2,
       "branches": [
         "hooks",
