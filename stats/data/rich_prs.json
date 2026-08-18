@@ -1,5 +1,55 @@
 [
   {
+    "pr_number": 7749,
+    "branch_name": "fix-3-4",
+    "title": "fix: Fix assorted NFT and pDEX bugs",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n- **NFT Validation Enhancements**:\r\n  - Added checks against `badAsset()` within `NFTokenHelpers.cpp` and `NFTokenAcceptOffer.cpp`. This correctly rejects fake-XRP amounts (IOUs using the \"XRP\" currency code) with a `temBAD_CURRENCY` error during preflight rather than letting them proceed to later validation stages.\r\n- **Issuer Global Freeze Bypass**:\r\n  - Addressed an issue where an IOU issuer that has set a global freeze on their own currency could not create an NFToken offer denominated in that currency. With the `fixCleanup3_4_0` amendment, the issuer is no longer subject to their own global freeze when the offer is denominated in their own IOU (e.g., to receive their own transfer fees).\r\n- **Defensive Domain Checks**:\r\n  - Added a defensive verification in `OfferStream.cpp` to ensure the offer domain exactly matches the book domain, throwing `tecINTERNAL` if a mismatch occurs.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than ",
+    "user": "shawnxie999",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-07T18:33:33Z",
+    "merged_at": "2026-08-18T18:29:26Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7749?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-07-07T19:29:16Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-07-10T22:48:12Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-10T20:26:49Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "PeterChen13579",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8031,
     "branch_name": "publish_package",
     "title": "chore: Publish debian/rpm packages from GitHub directly",
@@ -1579,107 +1629,6 @@
       {
         "user": "bthomee",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7933,
-    "branch_name": "chore/gtest-migration-followups-rename-namespace",
-    "title": "chore: Rename CamelCase namespaces to snake_case",
-    "body": "## High Level Overview of Change\r\n\r\nInitially a follow up for gtest migration where `NodeStore` etc. were spotted and suggested to style correctly as per `CONTRIBUTING.md` (lowercase namespaces).\r\n\r\n### Context of Change\r\n\r\nGtest migrations.\r\n\r\n### API Impact\r\n\r\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n\r\nNot breaking any RPC methods so nothing major. \r\nClio may need to use new namespace here and there on next recompile.",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-03T12:10:10Z",
-    "merged_at": "2026-08-04T14:19:24Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7933?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `70.72121%` with `272 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/7933?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_t",
-        "created_at": "2026-08-03T12:43:20Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR standardizes namespace naming across the codebase by renaming CamelCase namespaces to snake_case (e.g., `xrpl::RPC` \u2192 `xrpl::rpc`, `xrpl::Resource` \u2192 `xrpl::resource`"
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7717,
-    "branch_name": "issue-7511-null-account-objects-read",
-    "title": "fix: Add null check for account object reads",
-    "body": "## High Level Overview of Change\r\n\r\nAdds a defensive null check when `account_objects` reads ledger objects referenced by an account owner directory.\r\n\r\n`ReadView::read` documents that it may return `nullptr` if the key is not present or the type does not match. The previous code dereferenced the returned pointer before checking it, which could crash if the directory contained an unreadable or missing object.\r\n\r\nThis change skips unreadable directory entries before accessing the SLE.\r\n\r\nFixes #7511\r\n\r\n### Context of Change\r\n\r\nOwner directories should normally reference valid ledger objects, but corrupted or inconsistent ledger state can leave a dangling directory entry. In that case, `ledger.read(keylet::child(*iter))` can return `nullptr`.\r\n\r\nThe `account_objects` handler previously used the returned pointer immediately through `sleNode->getType()` and `sleNode->getJson(...)` without checking it first. This change makes the code more defensive and avoids dereferencing a null pointer.",
-    "user": "BraedonKlock",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-07-03T14:56:22Z",
-    "merged_at": "2026-08-03T21:53:49Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 9,
-    "comments": [
-      {
-        "user": "ximinez",
-        "body": "Hi @BraedonKlock. Thank you for your contributions! We really appreciate them. At this point, we ask that you hold off on submitting any more until we've had a chance to review the current batch. There is a not insignificant engineer overhead for each review, and it may take some time to get caught up. Too many PRs can make that harder. When we've gotten down to 3 open or fewer, feel free to create more!\r\n\r\nIn the meantime, you can open \"Draft\" PRs so that changes will be ready to go once we're ",
-        "created_at": "2026-07-06T23:55:15Z"
-      },
-      {
-        "user": "BraedonKlock",
-        "body": "Thank you @ximinez  for the clarification! I really appreciate the feedback. I completely understand. I'll hold off on opening additional ready for review PRs until my open count is down to three or fewer. In the meantime, I'll continue working locally and use draft PRs if appropriate. Thanks again!",
-        "created_at": "2026-07-07T00:49:56Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-07-10T22:46:08Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-07-11T11:26:37Z"
-      },
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7717?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-03T16:08:39Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "BraedonKlock",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "DISMISSED",
         "body": ""
       }
     ]
