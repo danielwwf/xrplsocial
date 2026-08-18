@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 8031,
+    "branch_name": "publish_package",
+    "title": "chore: Publish debian/rpm packages from GitHub directly",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nTitle says it all.\r\n\r\nNote: this PR is about \"publishing\" packages, not about producing more packages and covering all the needs.\r\nSo, out of scope:\r\n- updating docs how to install these packages\r\n- making it work in every possible scenario, because we don't have yet gathered enough feedback when building & publishing packages is needed, except for cases already done\r\n- dealing with keys\r\n- refactoring build_pkg.sh where not needed\r\n- getting rid of version file\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to ",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-14T12:47:49Z",
+    "merged_at": "2026-08-18T15:29:13Z",
+    "labels": [
+      "Ready to merge",
+      "Full CI build"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8031?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-14T13:09:41Z"
+      }
+    ],
+    "reviews_count": 24,
+    "reviews": [
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8034,
     "branch_name": "merge-keyrotate-develop",
     "title": "Merge develop",
@@ -1639,51 +1680,6 @@
       {
         "user": "mvadari",
         "state": "DISMISSED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7884,
-    "branch_name": "chore/gtest-migration-followups-1",
-    "title": "chore: Gtest migration followups first pass",
-    "body": "## High Level Overview of Change\r\n\r\nFollow-up PR that resolves review comments left open on seven already-merged\r\ntest-migration PRs: #7136, #7133, #7054, #7046, #7317, #7304, #7292.\r\n\r\nThose PRs were merged with a number of \"let's push this to the next PR\" / \"keep this\r\nconvo open\" threads. This audits all 72 unresolved threads across them and clears the\r\nones that are mechanical, plus one real bug.\r\n\r\n**39 review threads can be resolved from this PR** \u2014 33 fixed in code, 6 answered\r\nwithout a code change (see *Deliberately not changed* below).\r\n\r\nTest, benchmark and build files only. **No production code is touched.**\r\n\r\n### Context of Change\r\n\r\nThe bulk is grouped into four mechanical sweeps rather than 15 scattered follow-ups,\r\nbecause the same feedback recurred across PRs:\r\n\r\n| Theme | What | Threads |\r\n| --- | --- | --- |\r\n| `std::size_t` loop counters | 40 of 48 signed counters under `src/tests/libxrpl` + `src/benchmarks` | [7136.14](https://github.com/XRPLF/rippled/pull/7136#discussion_r3420483135), [7133.14](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412276986), [7317.19](https://github.com/XRPLF/rippled/pull/7317#discussion_r3589563409) |\r\n| Magic numbers | extracted to named `constexpr` in `resource/Logic.cpp`, `shamap/SHAMap.cpp`, `shamap/SHAMapSync.cpp`, `benchmarks/Backend.cpp` | [7133.5](https://github.com/XRPLF/rippled/pull/7133#discussion_r3329269627), [7133.16](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412328137), [7133.17](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412337436), [7133.18](https://github.com/XRPLF/rippled/pull/7133#discussion_r3412342815), [7317.15](https://github.com/XRPLF/rippled/pull/7317#discussion_r3589527872) |\r\n| `std::to_array` | replaced sized `std::array<\u2026, N>{{\u2026}}` and raw C arrays | [7136.6](https://github.com/XRPLF/rippled/pull/7136#discussion_r3420090614), [7136.7](https://github.com/XRPLF/rippled/pull/7136#discussion_r3420105514) |\r\n| `ranges` | `ranges::iota`, `ranges::shuffle`,",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-07-28T14:32:51Z",
-    "merged_at": "2026-07-30T23:37:54Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7884?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `0%` with `20 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/7884?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPL",
-        "created_at": "2026-07-28T15:01:04Z"
-      },
-      {
-        "user": "godexsoft",
-        "body": "> I'm not a fan of `auto i = 0uz`, in my opinion `size_t i = 0` is as short, but doesn't make you remember what `uz` is, and the type is evident\r\n\r\nI'm totally on the opposite side in regards to that :) i don't like to spell out types everywhere and `uz` is a standard way to use `auto` in such places.",
-        "created_at": "2026-07-29T13:52:54Z"
-      }
-    ],
-    "reviews_count": 18,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": "I'm not a fan of `auto i = 0uz`, in my opinion `size_t i = 0` is as short, but doesn't make you remember what `uz` is, and the type is evident"
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
