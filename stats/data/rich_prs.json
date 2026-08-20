@@ -1,5 +1,67 @@
 [
   {
+    "pr_number": 8066,
+    "branch_name": "fix_yum_docs",
+    "title": "docs: Fix yum installation baseurl",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nI checked locally - now new docs work well for yum too\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of ",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-20T15:57:42Z",
+    "merged_at": "2026-08-20T17:01:25Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8066?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-20T16:02:16Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage2: "
+      }
+    ]
+  },
+  {
+    "pr_number": 8063,
+    "branch_name": "Save_to_rust_cache_only_in_develop",
+    "title": "ci: Save cargo cache only from develop by default",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\nSave cargo cache only from develop everywhere.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-20T13:31:29Z",
+    "merged_at": "2026-08-20T16:33:03Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8063?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-20T13:33:36Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7107,
     "branch_name": "fix-sav-cred",
     "title": "fix: Check credential for LoanBrokerCoverWithdraw and VaultWithdraw",
@@ -1450,196 +1512,6 @@
       {
         "user": "yinyiqian1",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7994,
-    "branch_name": "mvadari/cpp20-operator-rewriting",
-    "title": "refactor: Remove operator!= overloads that C++20 synthesizes",
-    "body": "## High Level Overview of Change\n\nRemoves 40 `operator!=` overloads across 37 files that do nothing but negate the neighbouring `operator==`. Since C++20 the compiler synthesizes these. Also collapses `SHAMapNodeID`'s four relational operators into one `operator<=>`, resolving a `FIXME-C++20` there.\n\nNet effect is 355 lines deleted for 10 added, with no behavior change.\n\n### Context of Change\n\nSince C++20, when the compiler sees `a != b` and finds no viable `operator!=`, it rewrites the expression as `!(a == b)`. It will also consider reversed operands, so a single `operator==` covers `a != b`, `b != a`, `a == b` and `b == a`. That makes a hand-written `operator!=` whose entire body is `return !(lhs == rhs);` dead weight \u2014 it has to be kept in sync with `operator==` by hand, and it is one more thing to write for every new comparable type.\n\n**Every removal in this PR is verified by the compiler.** If the rewrite were not viable for some type \u2014 an inaccessible `operator==`, a mismatched signature, an ambiguity introduced by the reversed candidate \u2014 the call sites would fail to compile rather than silently change meaning. That is the main reason I'd argue this is low-risk despite the file count.\n\nMost of the removals were literally `return !(lhs == rhs);`. Four were spelled differently but are the same predicate:\n\n| Site | Body | Its `operator==` |\n| --- | --- | --- |\n| `STBase::operator!=` | `getSType() != t.getSType() \\|\\| !isEquivalent(t)` | `getSType() == t.getSType() && isEquivalent(t)` |\n| `STArray::operator!=` | `v_ != s.v_` | `v_ == s.v_` |\n| `Serializer::operator!=` | `v.data_ != data_` | `v.data_ == data_` |\n| `SharedIntrusive::operator!=(nullptr_t)` | `get() != nullptr` | `get() == nullptr` |\n\n`STBase` is a De Morgan expansion; the other three negate exactly the member comparison their `operator==` affirms.\n\n#### `SHAMapNodeID`\n\nThis one is a rewrite rather than a deletion. It carried:\n\n```cpp\n// FIXME-C++20: use spaceship and operator synthesis\n```\n\nand fiv",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-10T15:31:04Z",
-    "merged_at": "2026-08-10T18:30:16Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7994?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-10T16:10:27Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR refactors comparison operators across the codebase by removing redundant `operator!=` overloads that only negate `operator==`, relying on the C++20 rewrite/synthesis "
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7992,
-    "branch_name": "mvadari/std-starts-ends-with",
-    "title": "test: Use std::string::starts_with/ends_with instead of Boost",
-    "body": "## High Level Overview of Change\n\nReplaces 26 uses of `boost::starts_with` / `boost::ends_with` with the `std::string` and `std::string_view` member functions, and drops `<boost/algorithm/string/predicate.hpp>` from three of the four files. All call sites are in test code.\n\n### Context of Change\n\n`boost::starts_with` and `boost::ends_with` predate C++20. Since then both `std::string` and `std::string_view` have provided `starts_with` and `ends_with` as members, with the same semantics.\n\nEvery operand at these call sites is already a `std::string` or a `std::string_view` \u2014 `TrustedPublisherServer.h` uses `std::string_view const path = req.target()`, and the rest are `std::string` \u2014 so the substitution is direct rather than a rewrite:\n\n```cpp\n// before\nif (boost::starts_with(path, \"/validators2\"))\n// after\nif (path.starts_with(\"/validators2\"))\n```\n\n`ServerStatus_test.cpp` keeps its `predicate.hpp` include because it still calls `boost::iequals`, which has no standard equivalent. (A case-insensitive comparison helper would be a reasonable follow-up, but it needs a home in `StringUtilities` and a decision about locale handling, so it doesn't belong in a substitution-only change.)\n\nFiles touched:\n\n| File | Sites |\n| --- | --- |\n| `src/test/jtx/TrustedPublisherServer.h` | 15 |\n| `src/test/server/ServerStatus_test.cpp` | 6 |\n| `src/test/rpc/NoRippleCheck_test.cpp` | 4 |\n| `src/test/core/SociDB_test.cpp` | 1 |\n\n### API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\nTest code only. No production or header changes.\n\n## Test Plan\n\n`xrpl.rpc.NoRippleCheck`, `xrpl.app.ValidatorSite` and the SociDB tests pass (3 suites, 95 cases, 4,584 tests, 0 failures). `ValidatorSite` is th",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-10T15:30:19Z",
-    "merged_at": "2026-08-10T18:13:44Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7992?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-10T16:01:57Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR modernizes test-only string prefix/suffix checks by replacing `boost::starts_with` / `boost::ends_with` with the C++20+ standard library `std::string` / `std::string_"
-      }
-    ]
-  },
-  {
-    "pr_number": 7991,
-    "branch_name": "mvadari/replace-lexical-cast",
-    "title": "refactor: Replace boost::lexical_cast with existing alternatives",
-    "body": "## High Level Overview of Change\n\nRemoves `boost::lexical_cast` from six translation units, replacing each use with something the codebase already has:\n\n- Number-to-string conversions become `std::to_string`.\n- The three account RPC handlers that parse a pagination marker use the existing `xrpl::toUInt64` helper.\n\n### Context of Change\n\n`boost::lexical_cast` is doing two different jobs here, and neither needs Boost.\n\n**Number to string.** `beast/unit_test/suite.h`, `beast/unit_test/reporter.h` and `test/unit_test/multi_runner.cpp` each used `boost::lexical_cast<std::string>` on an `int` or a `chrono` count. `std::to_string` is exactly equivalent for these types. The two beast headers are pulled into every legacy test translation unit, so dropping `<boost/lexical_cast.hpp>` from them removes the header from a very wide fan-out.\n\n**String to number.** `account_lines`, `account_channels` and `account_offers` each parsed the start hint out of the pagination marker like this:\n\n```cpp\ntry\n{\n    startHint = boost::lexical_cast<std::uint64_t>(value);\n}\ncatch (boost::bad_lexical_cast&)\n{\n    return rpcError(RpcInvalidParams);\n}\n```\n\n`xrpl::toUInt64` in `StringUtilities.h` already does this without exceptions, and is what the rest of the codebase reaches for. The three copies of the try/catch collapse to:\n\n```cpp\nauto const hint = toUInt64(value);\nif (!hint)\n    return rpcError(RpcInvalidParams);\nstartHint = *hint;\n```\n\nThe stale comment above each block (\"the latter using boost lexical cast\") is updated to say what it actually does.\n\n### API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\n`libxrpl` box is ticked because two public headers change: `include/xrpl/beast/unit_t",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-10T15:30:18Z",
-    "merged_at": "2026-08-10T17:56:55Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7991?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-10T16:01:30Z"
-      }
-    ],
-    "reviews_count": 5,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR removes remaining uses of `boost::lexical_cast` in a handful of high-fanout test headers and three account RPC handlers, replacing them with standard-library conversi"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": "Minor styling comment, otherwise LGTM"
-      }
-    ]
-  },
-  {
-    "pr_number": 7989,
-    "branch_name": "mvadari/remove-stale-docs",
-    "title": "chore: Remove unreferenced legacy documents",
-    "body": "## High Level Overview of Change\n\nDeletes two documents from `docs/` that nothing references:\n\n- `docs/sample_chart.doc`\n- `docs/NodeStoreRefactoringCaseStudy.pdf` (385 KB)\n\n### Context of Change\n\nBoth files were last modified in January 2018. Neither is referenced from any other documentation, build file, or source file, and neither is reachable from the Doxygen build or the published docs site. The case study describes a NodeStore refactor that has long since landed.\n\nRemoving them drops 385 KB of binary content from every clone of the repository.\n\n### API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\nNo code changes.\n\n## Test Plan\n\nNo tests needed; this is a documentation-only deletion. Verified with a repository-wide grep that neither filename appears anywhere outside the files themselves, including `docs/Doxyfile` and `.cspell.config.yaml`.\n",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-10T15:29:34Z",
-    "merged_at": "2026-08-10T17:50:12Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7989?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-10T17:00:14Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nRemoves two legacy, unreferenced documentation artifacts from `docs/` to reduce repository size and eliminate stale content that is not part of the published docs/Doxygen out"
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7990,
-    "branch_name": "mvadari/cpp23-todos",
-    "title": "refactor: Act on TODOs that are unblocked by C++23",
-    "body": "## High Level Overview of Change\n\nResolves six `TODO` / `FIXME` comments that were each waiting on a newer language standard or compiler. All of them are unblocked today, so this acts on them and deletes the comments. No behavior changes.\n\n| Site | What it was waiting for |\n| --- | --- |\n| `FeeVoteImpl.cpp` | structured bindings capturable in a lambda |\n| `Invariants_test.cpp` | same |\n| `ProtocolVersion.cpp` | `std::is_sorted` in a `constexpr` context |\n| `ErrorCodes.cpp` | `consteval` |\n| `TestHelpers.h` | a standard library shipping `<ranges>` |\n| `ServerDefinitions.cpp` | `std::string::contains` |\n\n### Context of Change\n\n`CMakeLists.txt` has set `CMAKE_CXX_STANDARD` to 23 for a while now, and `cmake/XrplSanity.cmake` already requires clang 16 or GCC 12 at minimum. The comments were written when neither was true, and nothing has swept them up since.\n\nDetails, in the order they appear in the diff:\n\n- **`ErrorCodes.cpp`** \u2014 `sortErrorInfos` is only ever called at compile time, to initialise `kSortedErrorInfos`. It is now `consteval` rather than `constexpr`, which makes that a guarantee instead of a convention.\n- **`Invariants_test.cpp` / `FeeVoteImpl.cpp`** \u2014 both carried a TODO pointing at [llvm/llvm-project#48582](https://github.com/llvm/llvm-project/issues/48582), a bug that prevented capturing a structured binding in a lambda. It was [fixed in LLVM 16](https://github.com/llvm/llvm-project/commit/127bf44385424891eb04cff8e52d3f157fc2cb7c), which is now the minimum, so both loops use structured bindings and drop the hand-unpacked locals.\n- **`ProtocolVersion.cpp`** \u2014 a 17-line `constexpr` lambda inside a `static_assert`, hand-rolling a sortedness check, described in its own comment as an \"ugly construct\". Replaced with `std::ranges::adjacent_find` over `std::ranges::greater_equal`: finding no adjacent pair where the first element is not less than the second proves the list is strictly ascending, which also proves it holds no duplicates. The \"at least one protocol\"",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-10T15:30:16Z",
-    "merged_at": "2026-08-10T17:39:04Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7990?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-10T15:56:45Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR removes several stale TODO/FIXME workarounds and refactors code to use C++23/modern standard library features that are now guaranteed by the project toolchain, while "
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
         "body": ""
       }
     ]
