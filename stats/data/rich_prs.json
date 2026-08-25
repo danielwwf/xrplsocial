@@ -1,5 +1,36 @@
 [
   {
+    "pr_number": 8100,
+    "branch_name": "a1q123456/make-std-hash-specialisations-non-explicit",
+    "title": "fix: Remove `explicit` from std/boost hash specialisation default constructors",
+    "body": "## High Level Overview of Change\r\n\r\nRemove the `explicit` keyword from the defaulted default constructor of five `std::hash<T>` / `boost::hash<T>` specialisations in `libxrpl`:\r\n\r\n- `std::hash<xrpl::MPTID>` (`include/xrpl/protocol/MPTIssue.h`)\r\n- `std::hash<xrpl::MPTIssue>`, `std::hash<xrpl::Asset>` (`include/xrpl/protocol/Book.h`)\r\n- `boost::hash<xrpl::MPTIssue>`, `boost::hash<xrpl::Asset>` (`include/xrpl/protocol/Book.h`)\r\n- `boost::hash<::beast::ip::Address>` (`include/xrpl/beast/net/IPAddress.h`)\r\n\r\nNo behavioural change; this aligns them with the convention already used by every other hash specialisation in the codebase (`std::hash<xrpl::uint256>`, `std::hash<xrpl::Currency>`, `std::hash<xrpl::NodeID>`, `std::hash<xrpl::Directory>`, `std::hash<xrpl::AccountID>`, and the two `std::hash<xrpl::Issue>` / `std::hash<xrpl::Book>` variants).\r\n\r\n### Context of Change\r\n\r\nBoth `std::hash<T>` and `boost::hash<T>` are required by their respective specifications to satisfy the *Hash* requirements, which include `Cpp17DefaultConstructible`. That requirement mandates the type be default-constructible in copy-initialisation contexts (i.e. `T u{};` and `T v = {};` must be well-formed), not just direct-initialisation.\r\n\r\nMarking the defaulted default constructor `explicit` violates this: it makes copy/value-initialisation ill-formed while direct-init (`T{}` as a prvalue expression, `T()` as an operand) still compiles. This is why the bug was latent -- most direct call sites `std::hash<T>{}(x)` are direct-init and work either way. It only bites when a hasher is value-initialised inside a standard/boost library internal that lives in a copy-initialisation context, for example:\r\n\r\n- libstdc++'s `_Hashtable_ebo_helper<_Hash>::_M_hash{}` inside a defaulted constructor of `_Hash_code_base`.\r\n- `std::tuple`'s primary constructor evaluating `__is_implicitly_default_constructible_v` on every element, which recursively probes each member via `requires (void(&f)(T)) { f({}); }` (copy-list-",
+    "user": "a1q123456",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-24T16:25:17Z",
+    "merged_at": "2026-08-25T14:50:25Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8100?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-24T16:52:12Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "\ud83d\udc4d "
+      }
+    ]
+  },
+  {
     "pr_number": 8105,
     "branch_name": "Upgrade-rust-toolchain",
     "title": "chore: Upgrade rust toolchain to 1.97.1",
