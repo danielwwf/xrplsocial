@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 8126,
+    "branch_name": "make_packaging_reusable",
+    "title": "build: Make packaging reusable",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n- Makes publish_pkg part of the image (so Clio can easily use this image)\r\n- Uses reusable action (which Clio will use too)\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `li",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-26T16:57:57Z",
+    "merged_at": "2026-08-26T20:15:42Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8126?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-26T17:21:58Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8125,
     "branch_name": "tapanito/enable-lp-1-1",
     "title": "feat: Enable LendingProtocolV1_1 amendment",
@@ -1017,87 +1058,6 @@
         "user": "bthomee",
         "state": "APPROVED",
         "body": "I'd prefer to use RHEL UBI images, but they only offer the `rpm-sign-libs` shared libraries, not the executable.\n\nWe can keep using the UBI image while pulling in the `rpm-sign` tool from Rocky or Alm"
-      }
-    ]
-  },
-  {
-    "pr_number": 8023,
-    "branch_name": "nix_macos",
-    "title": "build: Run nix macos builds in CI; deny nix store references",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nWe don't build nix on macOS in CI:\r\n- Something might fail to build for any new library; after all, a cutting-edge LLVM/Clang on macOS isn't the most common setup.\r\n- It's easy to accidentally break our code.\r\n- Conan packages aren't uploaded, so the initial conan install is always slow.\r\n\r\nThis PR fixes the problem.\r\nTo upload, we need to make sure that libraries/binaries aren't having anything nix-store related, this way they should be use-able with llvm clang even outside nix, and updates to nix flakes (which can easily change paths in nix store) won't break uploaded libraries.\r\n\r\nAdding the version from flake.lock to package_id isn't desirable either, because then we'd have to rebuild everything every time it updates.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant o",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-13T14:56:37Z",
-    "merged_at": "2026-08-19T00:26:53Z",
-    "labels": [
-      "Ready to merge",
-      "Full CI build"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8023?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-13T15:48:43Z"
-      }
-    ],
-    "reviews_count": 16,
-    "reviews": [
-      {
-        "user": "kuznetsss",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8044,
-    "branch_name": "sps_fee_exit",
-    "title": "fix: Enable reserve checking on ending sponsorship",
-    "body": "## High Level Overview of Change\r\n\r\nEnable reserve checking on ending sponsorship\r\n\r\n### Context of Change\r\n\r\nIt was decided that sponsorship can't be ended if sponsee doesn't have enough funds to cover the reserve requirements (or new sponsor stepping in)\r\n\r\n\r\n",
-    "user": "oleks-rip",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-17T15:56:55Z",
-    "merged_at": "2026-08-18T23:08:24Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8044?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-17T17:56:19Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "CHANGES_REQUESTED",
-        "body": ""
       }
     ]
   }
