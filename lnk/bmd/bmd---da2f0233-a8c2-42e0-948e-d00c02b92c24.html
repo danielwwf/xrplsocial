@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doginal Dogs vs Black Market Dawgs — 15 Overlay-Paare</title>
+<style>
+  :root { color-scheme: dark; }
+  body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; margin: 0; background:#111; color:#eee; }
+  main { max-width: 1500px; margin: 0 auto; padding: 24px; }
+  h1 { margin: 0 0 8px; font-size: 30px; }
+  p { color:#bbb; line-height:1.5; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap:22px; margin-top:20px; }
+  .card { background:#1a1a1a; border:1px solid #333; border-radius:14px; padding:14px; }
+  .stage { position:relative; aspect-ratio:1/1; width:100%; overflow:hidden; background:#000; image-rendering:pixelated; border-radius:10px; }
+  .stage img { position:absolute; inset:0; width:100%; height:100%; object-fit:fill; image-rendering:pixelated; }
+  .top { opacity:.5; }
+  .difference .top { opacity:1 !important; mix-blend-mode:difference; }
+  .controls { display:grid; gap:10px; margin-top:12px; }
+  input[type=range] { width:100%; }
+  button { border:1px solid #444; background:#262626; color:#eee; padding:8px 10px; border-radius:8px; cursor:pointer; }
+  button:hover { background:#303030; }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .meta { font-size:13px; color:#aaa; }
+  .sources { margin-top:28px; padding-top:18px; border-top:1px solid #333; font-size:13px; color:#999; }
+  a { color:#9cc8ff; }
+</style>
+</head>
+<body>
+<main>
+<h1>Doginal Dogs × Black Market Dawgs</h1>
+<p>Hier sind <b>15 Overlay-Paare</b>. Die <b>Doginal Dogs</b>-Probe ist jeweils die untere Ebene, die <b>Black Market Dawgs</b>-Probe die obere. Mit dem Slider änderst du die Transparenz. <b>Difference</b> zeigt Geometrie-Unterschiede, <b>Blink layers</b> schaltet schnell zwischen beiden Bildern um.</p>
+<p>Ich habe die Paare bewusst aus lokal gespeicherten, funktionierenden Samples gebaut, damit kein Pair mehr wegen externer Hotlinks kaputtgeht. Es sind zufällige Kombinationen aus den verfügbaren Samples beider Collections.</p>
+<div class="grid">
+  <section class="card">
+    <h2>Pair 1</h2>
+    <div class="stage" id="s1">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_3.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_4.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v1">50%</span><input id="r1" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s1')">Difference</button><button onclick="blink('s1')">Blink layers</button></div>
+      <div class="meta">Doginal sample 3 ↔ BMD sample 4</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 2</h2>
+    <div class="stage" id="s2">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_2.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_4.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v2">50%</span><input id="r2" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s2')">Difference</button><button onclick="blink('s2')">Blink layers</button></div>
+      <div class="meta">Doginal sample 2 ↔ BMD sample 4</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 3</h2>
+    <div class="stage" id="s3">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_1.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_3.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v3">50%</span><input id="r3" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s3')">Difference</button><button onclick="blink('s3')">Blink layers</button></div>
+      <div class="meta">Doginal sample 1 ↔ BMD sample 3</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 4</h2>
+    <div class="stage" id="s4">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_1.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_1.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v4">50%</span><input id="r4" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s4')">Difference</button><button onclick="blink('s4')">Blink layers</button></div>
+      <div class="meta">Doginal sample 1 ↔ BMD sample 1</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 5</h2>
+    <div class="stage" id="s5">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_5.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_4.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v5">50%</span><input id="r5" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s5')">Difference</button><button onclick="blink('s5')">Blink layers</button></div>
+      <div class="meta">Doginal sample 5 ↔ BMD sample 4</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 6</h2>
+    <div class="stage" id="s6">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_2.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_5.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v6">50%</span><input id="r6" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s6')">Difference</button><button onclick="blink('s6')">Blink layers</button></div>
+      <div class="meta">Doginal sample 2 ↔ BMD sample 5</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 7</h2>
+    <div class="stage" id="s7">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_2.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_3.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v7">50%</span><input id="r7" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s7')">Difference</button><button onclick="blink('s7')">Blink layers</button></div>
+      <div class="meta">Doginal sample 2 ↔ BMD sample 3</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 8</h2>
+    <div class="stage" id="s8">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_4.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_2.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v8">50%</span><input id="r8" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s8')">Difference</button><button onclick="blink('s8')">Blink layers</button></div>
+      <div class="meta">Doginal sample 4 ↔ BMD sample 2</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 9</h2>
+    <div class="stage" id="s9">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_1.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_2.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v9">50%</span><input id="r9" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s9')">Difference</button><button onclick="blink('s9')">Blink layers</button></div>
+      <div class="meta">Doginal sample 1 ↔ BMD sample 2</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 10</h2>
+    <div class="stage" id="s10">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_5.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_5.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v10">50%</span><input id="r10" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s10')">Difference</button><button onclick="blink('s10')">Blink layers</button></div>
+      <div class="meta">Doginal sample 5 ↔ BMD sample 5</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 11</h2>
+    <div class="stage" id="s11">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_1.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_4.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v11">50%</span><input id="r11" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s11')">Difference</button><button onclick="blink('s11')">Blink layers</button></div>
+      <div class="meta">Doginal sample 1 ↔ BMD sample 4</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 12</h2>
+    <div class="stage" id="s12">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_4.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_1.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v12">50%</span><input id="r12" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s12')">Difference</button><button onclick="blink('s12')">Blink layers</button></div>
+      <div class="meta">Doginal sample 4 ↔ BMD sample 1</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 13</h2>
+    <div class="stage" id="s13">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_2.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_2.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v13">50%</span><input id="r13" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s13')">Difference</button><button onclick="blink('s13')">Blink layers</button></div>
+      <div class="meta">Doginal sample 2 ↔ BMD sample 2</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 14</h2>
+    <div class="stage" id="s14">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_1.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_5.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v14">50%</span><input id="r14" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s14')">Difference</button><button onclick="blink('s14')">Blink layers</button></div>
+      <div class="meta">Doginal sample 1 ↔ BMD sample 5</div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Pair 15</h2>
+    <div class="stage" id="s15">
+      <img alt="Doginal Dogs sample" src="doginal_vs_bmd_assets/doginal_3.png">
+      <img class="top" alt="Black Market Dawgs sample" src="doginal_vs_bmd_assets/bmd_5.png">
+    </div>
+    <div class="controls">
+      <label>BMD opacity: <span id="v15">50%</span><input id="r15" type="range" min="0" max="100" value="50"></label>
+      <div class="row"><button onclick="toggleDiff('s15')">Difference</button><button onclick="blink('s15')">Blink layers</button></div>
+      <div class="meta">Doginal sample 3 ↔ BMD sample 5</div>
+    </div>
+  </section>
+</div>
+<div class="sources">
+  Lokale Vergleichsdatei. Alle Bildquellen wurden für diese Ansicht lokal eingebunden, damit die Darstellung stabil funktioniert.
+</div>
+</main>
+<script>
+function setup(n) {
+  const r = document.getElementById('r'+n);
+  const v = document.getElementById('v'+n);
+  const top = document.querySelector('#s'+n+' .top');
+  r.addEventListener('input', () => { top.style.opacity = (r.value/100); v.textContent = r.value + '%'; });
+}
+function toggleDiff(id) { document.getElementById(id).classList.toggle('difference'); }
+function blink(id) {
+  const top = document.querySelector('#'+id+' .top');
+  let state = false;
+  let c = 0;
+  const iv = setInterval(() => { state = !state; top.style.visibility = state ? 'hidden' : 'visible'; if (++c >= 8) { clearInterval(iv); top.style.visibility='visible'; } }, 220);
+}
+for (let i=1; i<=15; i++) setup(i);
+</script>
+</body>
+</html>
