@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 8165,
+    "branch_name": "packages_fixes",
+    "title": "fix: Correct and simplify Linux packaging",
+    "body": "Bug fixes:\r\n\r\n- Restore the RPM's systemd and shadow-utils dependencies. %{?systemd_requires}\r\n  and %{?sysusers_requires_compat} sat after %debug_package, which opens the\r\n  debuginfo subpackage, so both were silently dropped and the package declared\r\n  neither. On a host without systemd installed the package still installed, but\r\n  %pre and %post created no xrpld user and no /var/lib/xrpld or /var/log/xrpld.\r\n- Declare the DEB's real libc6 floor. dpkg-shlibdeps derived libc6 (>= 2.34)\r\n  from the build host's symbols file, where sysconf carries that minver, while\r\n  the binaries are built against glibc 2.31 and reference nothing above\r\n  GLIBC_2.30. That locked out distros they run on, Ubuntu 20.04 among them.\r\n  debian/rules now rewrites the bound to LIBC_MIN and fails the build if either\r\n  binary outgrows it.\r\n- Ship LICENSE.md in the DEB. It was staged and installed by the RPM, but\r\n  missing from debian/xrpld.docs, so it never reached the package.\r\n- Own /usr/share/doc/xrpld in the RPM. Installing the docs by absolute path\r\n  skips rpm's implicit ownership of the directory.\r\n- Replace %build_mtime_policy with %clamp_mtime_to_source_date_epoch. The\r\n  former is undefined on rpm 4.19 (AlmaLinux 10, the packaging image), so the\r\n  line was a no-op and the clamping came from the redhat-rpm-config default.\r\n- Make the RPM reproducible with %use_source_date_epoch_as_buildtime and a\r\n  pinned %_buildhost. Without them the header records the wall clock and the\r\n  build container's hostname, so two builds of the same commit differed. The\r\n  DEB was already byte-identical on a rebuild.\r\n- Pin the mode of /etc/xrpld with %attr, so the buildroot's umask cannot leak\r\n  a setgid bit into the recorded directory mode.\r\n- Add debian/xrpld.lintian-overrides for the deliberate /usr/local/bin/rippled\r\n  compatibility symlink, which lintian rejects under Policy 9.1.2.\r\n- Retry a 429 upload in publish_pkg.py: it is Nexus asking to slow down, not\r\n  a rejection.\r\n- Collapse the pre",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-02T19:47:45Z",
+    "merged_at": "2026-09-02T21:56:09Z",
+    "labels": [
+      "Ready to merge",
+      "Full CI build"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8165?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-02T19:50:06Z"
+      }
+    ],
+    "reviews_count": 11,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udfe1 Changes recommended\n\nThe DEB packaging rules now require `readelf` but the packaging tool installer doesn\u2019t install `binutils`, and the updated Debian copyright license identifiers aren\u2019t fully "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage1: "
+      }
+    ]
+  },
+  {
     "pr_number": 7796,
     "branch_name": "ammclawback-fixes",
     "title": "fix: Reinforce the priority of AMMClawback in case of insufficient reserves",
