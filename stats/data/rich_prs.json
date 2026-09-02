@@ -1,5 +1,125 @@
 [
   {
+    "pr_number": 7796,
+    "branch_name": "ammclawback-fixes",
+    "title": "fix: Reinforce the priority of AMMClawback in case of insufficient reserves",
+    "body": "## Summary\n\n`AMMClawback` reuses `AMMWithdraw`'s helpers to return the paired asset to the holder. When the paired asset's trustline or MPToken has to be auto-created, the holder's owner reserve was checked against `max(issuer pre-fee balance, holder current balance)` \u2014 the issuer's balance leaks into the comparison because `sfAccount` on an `AMMClawback` is the issuer. As a result the clawback failed with `tecINSUFFICIENT_RESERVE` whenever neither the issuer nor the holder could cover the extra owner reserve, even though clawback is a compliance operation that should not be blocked by a reserve requirement. A holder could also deliberately veto a clawback by deleting the paired trustline/MPToken and keeping a low spendable balance.\n\n## Fix\n\nGated behind the `fixCleanup3_4_0` amendment. A new `ReserveHandling` enum is threaded through the withdraw helpers: `AMMClawback` passes `ReserveHandling::IgnoreReserve` so the owner-reserve check is skipped, while `AMMWithdraw` passes `ReserveHandling::EnforceReserve` and its behavior is unchanged. Clawback takes precedence over the reserve requirement.\n\n## Tests\n\n`testClawbackBypassesReserve` in `AMMClawback_test` (IOU paired asset) and `AMMClawbackMPT_test` (MPT paired asset) cover both paths:\n\n- amendment enabled \u2192 the clawback succeeds and the paired holding is created for the holder, even though neither the issuer nor the holder can cover the extra owner reserve.\n- amendment disabled \u2192 legacy behavior preserved: the transaction fails with `tecINSUFFICIENT_RESERVE` and no paired holding is created.\n\nBoth tests also assert that a plain `AMMWithdraw` under the same conditions still fails with `tecINSUFFICIENT_RESERVE`, confirming the bypass is scoped to clawback.\n",
+    "user": "ckeshava",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-13T15:41:56Z",
+    "merged_at": "2026-09-02T21:20:05Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 12,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7796?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-07-13T16:22:54Z"
+      },
+      {
+        "user": "ckeshava",
+        "body": "@gregtatcam @yinyiqian1  Please review this PR and advise on the next steps.",
+        "created_at": "2026-07-13T16:30:53Z"
+      },
+      {
+        "user": "gregtatcam",
+        "body": "> @gregtatcam @yinyiqian1 Please review this PR and advise on the next steps.\r\n\r\n@ckeshava I don't think this should be \"fixed\" by failing the transaction \u2014 the current outcome is correct; it's the intent that reads unclearly.\r\nAMMClawback is a compliance recovery that deliberately works without holder cooperation: it already withdraws with IgnoreFreeze/IgnoreAuth and recreates deleted MPTokens. Gating the paired-asset return on the holder's reserve reintroduces the holder veto the design intent",
+        "created_at": "2026-07-13T17:51:43Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-07-23T19:25:38Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-10T19:13:38Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 6827,
+    "branch_name": "DEFI-625",
+    "title": "fix: PermissionedDEX (CreateOffer/Payment) never deletes expired credentials",
+    "body": "\r\n\r\n<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThe PermissionedDEX code paths (CreateOffer and Payment) check credential validity via `accountInDomain()` in PermissionedDEXHelpers.cpp, but this function uses a ReadView \u2014 making it architecturally impossible to delete expired credential SLEs from the ledger. Expired credentials persist indefinitely, locking owner reserves and causing permanent ledger bloat.\r\n\r\n### Root Cause\r\n\r\nThe XRPL uses a two-phase cleanup pattern for expired credentials:\r\n\r\n1. `preclaim()` (ReadView): identifies expired credentials, suppresses tecEXPIRED to allow doApply() to run\r\n\r\n2. `doApply()` (ApplyView): calls verifyValidDomain() \u2192 removeExpired() \u2192 deleteSLE() to actually delete the expired credential from the ledger\r\n\r\nThis pattern is correctly implemented in VaultDeposit (via enforceMPTokenAuthorization \u2192 verifyValidDomain \u2192 removeExpired). However, the PermissionedDEX paths skip this entirely:\r\n\r\n* `accountInDomain()` (PermissionedDEXHelpers.cpp:28-55) takes a ReadView const& parameter. It calls `credentials::checkExpired()` to skip expired credentials, but cannot call deleteSLE() because ReadView is immutable.\r\n\r\n* Neither `CreateOffer::doApply()` nor `Payment::doApply()` have any call to `verifyValidDomain()` or `removeExpired()` for the PermissionedDEX credential check path.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to th",
+    "user": "Kassaking7",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-04-09T15:28:45Z",
+    "merged_at": "2026-09-02T20:10:08Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 10,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6827?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-04-09T15:46:36Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-20T17:42:09Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-28T17:57:24Z"
+      },
+      {
+        "user": "Kassaking7",
+        "body": "/ai-review",
+        "created_at": "2026-04-29T17:36:51Z"
+      },
+      {
+        "user": "Kassaking7",
+        "body": "/ai-review",
+        "created_at": "2026-05-01T17:43:24Z"
+      }
+    ],
+    "reviews_count": 18,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": "This needs to be amendment gated"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues.\n\n*Review by Claude Opus 4.6* \u00b7 Prompt: V15\n\n<!-- review-fingerprint:e0f52b5143353155 -->"
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8138,
     "branch_name": "Update-ripple/smart-escrow",
     "title": "chore: Update ripple/smart escrow",
