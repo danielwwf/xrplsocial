@@ -1,5 +1,50 @@
 [
   {
+    "pr_number": 8203,
+    "branch_name": "Exclude_inline_rust_tests_from_coverage",
+    "title": "ci: Exclude Rust unit tests from code coverage",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nUpdate CI image to have nightly Rust toolchain added in #8182.\r\nExclude Rust unit tests form code coverage by:\r\n- disabling coverage for tests modules\r\n- compile Rust code for coverage using nightly toolchain\r\n\r\nAlso:\r\n- add pre-commit hook to not forget adding attributes excluding tests form coverage\r\n- remove `bin/check-tools.sh` from docker image build trigger\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* P",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-09T12:43:39Z",
+    "merged_at": "2026-09-10T12:14:44Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8203?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-09T12:46:08Z"
+      },
+      {
+        "user": "kuznetsss",
+        "body": "Tests are now excluded:\r\n<img width=\"847\" height=\"785\" alt=\"Screenshot 2026-09-09 at 13 58 39\" src=\"https://github.com/user-attachments/assets/62af25b9-9ddf-40bc-9e32-b9a9ff01fac4\" />\r\n",
+        "created_at": "2026-09-09T13:00:02Z"
+      }
+    ],
+    "reviews_count": 12,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udfe2 Approval recommended\n\nThe changes are coherent and low-risk for behavior, with only a minor tooling-probe alignment suggestion noted.\n\n<details>\n<summary>Pull request overview</summary>\n\nUpdates"
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8197,
     "branch_name": "cosign-v1-merge-develop",
     "title": "Cosign merge develop",
