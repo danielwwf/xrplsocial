@@ -1,5 +1,68 @@
 [
   {
+    "pr_number": 6303,
+    "branch_name": "nrc-transactions",
+    "title": "fix: Update `noripple_check` to exclude `transactions` field on error responses",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR updates the `noripple_check` RPC to exclude the `transactions` field on error responses. It also does some other cleanup of the file, to match modern rippled code.\r\n\r\n### Context of Change\r\n\r\nFixes #4616 \r\n\r\n### Type of Change\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n\r\n### API Impact\r\n\r\n- [x] Public API: Fix\r\n\r\n## Before / After\r\n\r\nBefore: an `rpcACT_MALFORMED` error message return would have an empty `transactions` array attached to it.\r\n\r\nAfter: Now it does not.\r\n\r\n## Test Plan\r\n\r\nAdded a test. CI passes.",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-01-30T15:13:48Z",
+    "merged_at": "2026-09-15T01:04:10Z",
+    "labels": [
+      "Ready to merge",
+      "API Change",
+      "Trivial",
+      "Added to API Changelog"
+    ],
+    "comments_count": 12,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6303?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.61905%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/6303?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
+        "created_at": "2026-01-30T16:03:12Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-03-26T00:44:09Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-27T13:52:54Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-29T19:36:49Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "We recently merged a refactor to `develop` that enables clang-tidy's `readability-identifier-naming`. Your branch now has heavy conflicts that are largely mechanical. Below is a workflow that aligns your branch's naming with develop _before_ merging, which should minimize the merge conflicts.\n\n## One-time setup\n\nIf you don't already have clang-tidy working in your env, on macOS:\n\n```bash\nbrew install llvm@21\n# Follow brew's hint to put $(brew --prefix llvm@21)/bin on PATH so run-clang-tidy is fo",
+        "created_at": "2026-05-04T14:26:03Z"
+      }
+    ],
+    "reviews_count": 23,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR fixes issue #4616 by ensuring that the `transactions` field is not included in error responses from the `noripple_check` RPC handler. Additionally, it modernizes the "
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 4 out of 4 changed files in this pull request and generated 2 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instr"
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8212,
     "branch_name": "Merge_develop",
     "title": "chore: Merge develop, fix pre-commit, update docs",
@@ -1215,42 +1278,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": "\ud83d\udc4d "
-      }
-    ]
-  },
-  {
-    "pr_number": 8105,
-    "branch_name": "Upgrade-rust-toolchain",
-    "title": "chore: Upgrade rust toolchain to 1.97.1",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n Upgrade rust toolchain to `1.97.1`. Also add `rust-src` component because rust-analyser doesn't work well in nix devshell without it.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-25T11:08:29Z",
-    "merged_at": "2026-08-25T14:17:41Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8105?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-25T11:34:47Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": ""
       }
     ]
   }
