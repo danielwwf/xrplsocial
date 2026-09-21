@@ -1,5 +1,92 @@
 [
   {
+    "pr_number": 8253,
+    "branch_name": "bthomee/rpc-null-termination-wording",
+    "title": "docs: Correct three comments about null-terminated views",
+    "body": "## High Level Overview of Change\n\nCorrect three comments that made claims a reader could not verify against\nthe code they describe. No code changes; one function parameter is\nrenamed to match its own comment.\n\n### Context of Change\n\n- `base_uint::parseHex`'s docstring said the input must be null-terminated.\n  `parseFromStringView` never reads past the view's end, so that\n  requirement was never true.\n- `PerfLog_test.cpp`'s `testCallerRangeNeedNotOutlive` comment said a build\n  without a sanitizer would let its use-after-free pass through silently.\n  It would not: the realistic outcomes are a failed assertion or a\n  Debug-mode heap-corruption abort.\n- `PerfLogImp.h`'s `Counters::rpc` comment said each key views the\n  characters of a name in `labels`. The real source is the `methodNames`\n  constructor parameter; `labels` is populated afterward from the same\n  range. The constructor parameter is renamed from `labels` to\n  `methodNames` to match the corrected comment.\n\n### API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n",
+    "user": "bthomee",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-21T09:11:00Z",
+    "merged_at": "2026-09-21T12:02:15Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8253?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-21T09:13:54Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This MR only corrects three comments to match actual code behavior and renames a constructor parameter (`labels` \u2192 `methodNames`) to match its own corrected comment. No functional/logic changes are in"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe reviewed changes are documentation corrections and a matching parameter rename with no unresolved issues.\n\n**Revie"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "\ud83d\udc4d "
+      }
+    ]
+  },
+  {
+    "pr_number": 8252,
+    "branch_name": "bthomee/rpc-f3-dead-code",
+    "title": "refactor: Remove a dead unwrap from the WebSocket success path",
+    "body": "## High Level Overview of Change\n\nRemove a dead code branch in `ServerHandler::processSession`. The branch\nunwrapped a `forwarded` member from a successful reply's `result` object,\nbut no code in the tree ever sets that member, so the branch could never\nrun.\n\n### Context of Change\n\nThe check tested `jr[jss::result].isMember(\"forwarded\")` and, if true,\nreplaced `jr` with `jr[jss::result]`. Since nothing writes a `forwarded`\nmember into any RPC result, the check was always false. Removing it drops\na non-const `result` lookup plus a map lookup on every successful\nWebSocket request, with no change to observable behavior.\n\n### API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\nNo API version can observe this removal, since no reply carrying a\n`forwarded` member ever existed.\n",
+    "user": "bthomee",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-21T09:10:48Z",
+    "merged_at": "2026-09-21T12:02:15Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8252?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-21T09:13:33Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "> Where does it happen now? I recall something similar in Clio, so i'm a bit worried we remove required functionality here.\r\n\r\nI had AI trace its usage over time. The removal is still safe per its determination.\r\n\r\n**The check reads xrpld's own result, not Clio's.** `jr[jss::result]` at ServerHandler.cpp:502 (before my change) holds the object that `RPC::doCommand` just built inside xrpld itself. The check only fires if a local handler wrote a `\"forwarded\"` key into that result. A search of the ",
+        "created_at": "2026-09-21T11:22:31Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Pure dead-code removal in ServerHandler::processSession; the diff only deletes two lines that unwrapped a never-set `forwarded` result member, with no behavioral change. No issues found.\n\n<!-- review-"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe removed branch is confirmed dead (no `\"forwarded\"` result member is set anywhere), and the remaining success/error"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "Where does it happen now? I recall something similar in Clio, so i'm a bit worried we remove required functionality here."
+      }
+    ]
+  },
+  {
     "pr_number": 8225,
     "branch_name": "Collect-errors-in-preflight",
     "title": "feat: Report all errors in wasm code check",
@@ -1207,75 +1294,6 @@
       },
       {
         "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8112,
-    "branch_name": "cosign-develop",
-    "title": "Merge develop into Cosign",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change (must be backward c",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-25T18:43:05Z",
-    "merged_at": "2026-08-25T21:08:51Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8112?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `91.34948%` with `25 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8112?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
-        "created_at": "2026-08-25T18:45:56Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "Kassaking7",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8109,
-    "branch_name": "python_packaging",
-    "title": "build: Implement packaging in Python",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nPure refactoring\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer protocol change",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-25T16:17:06Z",
-    "merged_at": "2026-08-25T20:04:31Z",
-    "labels": [
-      "Ready to merge",
-      "Full CI build"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8109?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-25T16:19:48Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR migrates the Linux packaging toolchain under `package/` from Bash scripts to Python, and updates CMake + CI wiring accordingly so builds, signing, and publishing cont"
-      },
-      {
-        "user": "depthfirst-app[bot]",
         "state": "COMMENTED",
         "body": ""
       },
