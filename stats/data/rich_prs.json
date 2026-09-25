@@ -1,5 +1,43 @@
 [
   {
+    "pr_number": 8279,
+    "branch_name": "cosign-payload-local-checks",
+    "title": "fix: run passesLocalChecks on TransactionProposalCreate payload",
+    "body": "Per On-Chain Cosigner spec XLS-0103 \u00a75.3.1 rule 2, a stored proposal must pass \"the same [stateless format] checks it would receive if submitted directly\", modulo the missing-signature exceptions the spec carves out.\r\n\r\nTransactionProposalCreate::preflight was running xrpl::preflight (the transactor's own preflight chain) on the inner payload but not passesLocalChecks, even though checkValidity runs both on a direct submission. A payload that xrpl::preflight accepts but that fails isMemoOkay / isAccountFieldOkay / invalidMPTAmountInTx / isBatchRawTransactionOkay would therefore be stored on-ledger only to be rejected as temMALFORMED at completion time \u2014 the exact statically-dead proposal the spec forbids, squatting on the target's Ticket and owner reserve until Expiration.\r\n\r\nAdd the passesLocalChecks call alongside the existing xrpl::preflight call and cover it with a regression test that stores an oversized Memos payload (no transactor preflight step bounds memo size, so this test genuinely exercises the added check).\r\n\r\n<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was ",
+    "user": "Kassaking7",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-23T22:32:58Z",
+    "merged_at": "2026-09-25T19:09:24Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8279?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-23T22:35:08Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "Kassaking7",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "shawnxie999",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8275,
     "branch_name": "mpt_src_loc",
     "title": "test: Add source location to MPTTester",
@@ -1427,37 +1465,6 @@
         "user": "mvadari",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8132,
-    "branch_name": "bump_3.4.0_b3",
-    "title": "chore: Bump version to 3.4.0-b3",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n3.4.0-b2 was unfortunately created while GitHub was unwell, so I couldn't get it to publish.\r\nLet's merge this after https://github.com/XRPLF/rippled/pull/8131 though, to get latest version of release workflows/actions.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: B",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-27T11:07:31Z",
-    "merged_at": "2026-08-27T18:00:09Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8132?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-27T11:09:27Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage1: "
       }
     ]
   }
