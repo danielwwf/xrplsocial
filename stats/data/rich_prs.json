@@ -1,5 +1,43 @@
 [
   {
+    "pr_number": 8276,
+    "branch_name": "bthomee/shamap-stack-10-derive-position-from-key",
+    "title": "refactor: Derive a node's position from its path, not a stored ID",
+    "body": "Part 10/11 of a stack. Base: part 9 (`bthomee/shamap-stack-09-visit-differences-tests`).\n\n## High Level Overview of Change\n\n`NodePathStack` stored a `SHAMapNodeID` beside every node, so a traversal path carried two answers to\n\"where does this node sit\" that could disagree. The path already answers it, so the stored ID is\nremoved and each node's depth is derived from the path's own length.\n\n## Context of Change\n\nA refactor. It responds to review feedback on #7942, which asked whether the stored ID could go away\nentirely.\n\nA SHAMap is a trie with a fan-out of 16 that does not maintain the radix merge property: adding an\nitem creates an inner node at every nibble the two keys share and never merges one away, so every\nnibble down to a leaf has an inner node of its own and entry `i` of a path sits at depth `i`. That is\nwhat makes the path's own length a complete answer, and the class docstring now says so, along with\nthe correction that this makes a SHAMap a trie rather than a radix tree.\n\n`NodePathStack` therefore holds `std::vector<SHAMapTreeNodePtr>` and offers `topDepth()`. No consumer\nwanted an ID: each wanted a depth and read the nibbles it cared about from a key it already held, so\n`selectBranch` gains a depth overload and the ID-taking one becomes a thin wrapper for the sync paths\nthat hold real IDs. `unshareNode` takes a depth, since it only ever asked `isRoot()`.\n\nWhat a path cannot derive is whether the caller descended the branches it says it did, so that much is\nstill recorded: one `uint256` of nibbles for the whole path rather than an ID per entry, and a leaf is\nstill judged against every branch recorded above it. Judging only the last nibble would accept a whole\nsubtree placed under the wrong branch, since one wrong child pointer leaves every leaf below it\nagreeing at its own final nibble.\n\nOne consequence worth noting for reviewers: the traversal no longer builds a `SHAMapNodeID` per level.\n`SHAMapNodeID` declares its own copy constructor, so it has no im",
+    "user": "bthomee",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-23T18:59:38Z",
+    "merged_at": "2026-09-27T14:41:05Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8276?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-23T19:02:35Z"
+      }
+    ],
+    "reviews_count": 5,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nPreserve the existing public library symbol and correct the structural-depth documentation.\n\n*Get a fresh assessment by"
+      },
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nNo unresolved blocking issues were identified.\n\n**Review effort:** Lite  \n**Findings:** None\n\n<details>\n<summary><stro"
+      }
+    ]
+  },
+  {
     "pr_number": 8279,
     "branch_name": "cosign-payload-local-checks",
     "title": "fix: run passesLocalChecks on TransactionProposalCreate payload",
