@@ -1,5 +1,164 @@
 [
   {
+    "pr_number": 8441,
+    "branch_name": "base_fee_range_check",
+    "title": "add range check to getBaseFee host function",
+    "body": "## High Level Overview of Change\r\nadd range check to getBaseFee host function",
+    "user": "pwang200",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-30T16:18:34Z",
+    "merged_at": "2026-09-30T16:43:16Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8441?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `66.66667%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8441?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
+        "created_at": "2026-09-30T16:23:58Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "TimothyBanks",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8328,
+    "branch_name": "fix/intrusive-ptr-leak",
+    "title": "fix: Resolve IntrusivePointer leak",
+    "body": "## High Level Overview of Change\r\n\r\nFixes a leak and a missed partial destruction when `SharedWeakUnion::convertToWeak()` converts the last strong reference to a weak one. The old code also tripped a UBSan unsigned-underflow report in `IntrusiveRefCounts::releaseWeakRef()`.\r\n\r\n## Context of Change\r\n\r\n- `addWeakReleaseStrongRef()` returned `NoOp` when converting the only strong ref. The weak ref it adds keeps the weak count above zero, so this must be `PartialDestroy`. Because of this, `partialDestructor()` never ran and the partial-destroy-started bit was never set.\r\n- `releaseWeakRef()` then took a fallback branch that was never meant to be reached. That branch subtracted `kWeakDelta` twice (the UBSan report) and passed the wrong expected values to `wait()`.\r\n- `convertToWeak()` stored the pointer that `partialDestructorFinished()` had just set to null. The union lost the object and its weak ref was never released, so the object leaked. This bug already existed; the first fix makes it the common path, so both fixes must land together.\r\n\r\nAffects `TreeNodeCache` (SHAMap nodes) through `TaggedCache::del()` and a race in `sweep()`. No change to transaction processing, so no amendment is needed.\r\n\r\nAdds `IntrusiveSharedTest.convert_last_strong_to_weak` and `IntrusiveSharedTest.multithreaded_convert_to_weak_partial_delete`. \r\n\r\n## API Impact\r\n\r\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-29T16:30:07Z",
+    "merged_at": "2026-09-30T16:29:57Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8328?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `83.33333%` with `2 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8328?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-09-29T16:32:42Z"
+      }
+    ],
+    "reviews_count": 8,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nThe changes affect concurrent intrusive-reference lifetime and destruction ordering, warranting final human review.\n\n**"
+      },
+      {
+        "user": "vlntb",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe leak and synchronization fixes are coherent and tested; the remaining documentation duplication is non-blocking.\n\n"
+      }
+    ]
+  },
+  {
+    "pr_number": 8430,
+    "branch_name": "timothybanks/revert-account-reserve-change-2",
+    "title": "fix: Rollback accountReserve and ownerReserve default settings to prior values",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nAddresses [ticket](https://ripplelabs.atlassian.net/browse/RXI-2312?atlOrigin=eyJpIjoiMTIyOTFjMzYwMTFhNGY3ZmEwOTE2NWY5MjE5YjkxMDEiLCJwIjoiaiJ9) (Detailed finding 3.6) Default fee-voting configuration can raise account reserves tenfold\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] ",
+    "user": "TimothyBanks",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-30T13:44:59Z",
+    "merged_at": "2026-09-30T16:09:02Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8430?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-30T13:47:47Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This MR rolls back the FeeSetup default accountReserve and ownerReserve values from multiplier-based expressions (10 * kDropsPerXrp, 2 * kDropsPerXrp) back to the correct hardcoded drop values (1,000,"
+      },
+      {
+        "user": "pwang200",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8177,
+    "branch_name": "chore/clang-tidy-typedef-style",
+    "title": "chore: CamelCase for typedef/using in `clang-tidy`",
+    "body": "## High Level Overview of Change\r\n\r\nEnforces CamelCase/TitleCase for typedefs and using declarations.\r\nExceptions are listed in .clang-tidy config file - names that must use snake_case for use with standard/boost facilities such as iterators.\r\n\r\n## API Impact\r\n\r\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n\r\nNo impact in terms of RPC/API but `libxrpl` consumers may have to use new names for some types like UInt256 - a mechanical update.\r\n",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-04T16:11:10Z",
+    "merged_at": "2026-09-30T15:54:08Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 12,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8177?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `91.88312%` with `25 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8177?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
+        "created_at": "2026-09-04T16:13:19Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-15T17:51:56Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-09-18T00:10:12Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-22T14:34:55Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-09-22T15:47:51Z"
+      }
+    ],
+    "reviews_count": 23,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udd35 Needs a closer look\n\nIt performs sweeping, public API-visible identifier renames across many headers and components, so it needs careful human verification of downstream impact and migration/com"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8408,
     "branch_name": "mathbunnyru/merge-3.4.0-to-develop",
     "title": "release: Merge release/3.4.x into develop",
