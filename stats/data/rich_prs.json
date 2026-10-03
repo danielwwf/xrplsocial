@@ -1,5 +1,100 @@
 [
   {
+    "pr_number": 8266,
+    "branch_name": "ConfidentialMPTHolderKeyUpdate",
+    "title": "feat: Implement Confidential mpt holder key update",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nAdds the ConfidentialMPTHolderKeyUpdate transaction, letting a confidential MPT holder to rotate or recover their ElGamal encryption key without issuer involvement:\r\n\r\n- Rotation (tfHolderKeyRotation): holder still has their current private key. They submit a new public key plus their spending/inbox balances re-encrypted under it; the key and balances update immediately.\r\n- Recovery (tfHolderKeyRecovery): holder has lost their private key. They submit only a new public key, recorded as a pending sfRecoveryKey on the MPToken; balances are left untouched until the issuer separately completes recovery.\r\n- Cancel (tfCancelRecovery): holder revokes a pending recovery request.\r\n\r\n**Note** that `TransactionProposalCreate` number is swapped in this PR so the KeyRotation transactions are grouped together in `transactions.macro`\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for ",
+    "user": "PeterChen13579",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-22T20:44:12Z",
+    "merged_at": "2026-10-02T23:38:43Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8266?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-22T20:46:26Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-28T17:07:09Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-09-29T15:59:28Z"
+      },
+      {
+        "user": "oleks-rip",
+        "body": "2 lines are uncovered by tests, according to [codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8266?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF#07bd46d7609fea9a63ff2bd2763f6bbe-R92)",
+        "created_at": "2026-09-29T17:26:53Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nRotation proof verification, recovery completion handling, and API changelog documentation remain unresolved.\n\n*Get a f"
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8209,
+    "branch_name": "defi1049-regression-tests",
+    "title": "fix: Do not block MPToken deletion on unrelated confidential balances",
+    "body": "## High Level Overview of Change\r\n\r\nThe `ValidConfidentialMPToken` invariant folded an erased MPToken's **pre-transaction** public balance into the confidential-state check, which is gated on the issuance's `sfConfidentialOutstandingAmount` (COA). Any transaction that drains an MPToken and erases it within the same `doApply` therefore failed with `tecINVARIANT_FAILED` as soon as *any unrelated holder* of the same issuance held a confidential balance.\r\n\r\nThis splits the public-balance rule out of the COA gate, gated on `fixCleanup3_5_0`.\r\n\r\n## Context of Change\r\n\r\nThe invariant recorded a single flag from two unrelated conditions:\r\n\r\n```cpp\r\nbool const hasPublicBalance = before->getFieldU64(sfMPTAmount) > 0;\r\nbool const hasEncryptedFields = /* 4-way OR over ciphertext fields */;\r\n\r\nif (hasPublicBalance || hasEncryptedFields)\r\n    changes_[id].deletedWithEncrypted = true;\r\n```\r\n\r\nTwo problems compound here:\r\n\r\n1. **Wrong snapshot.** `before` is the MPToken at the *start* of the transaction, so `hasPublicBalance` is true for every legitimate drain-then-erase. Only `after` \u2014 which `ApplyStateTable` does supply on `Action::Erase` \u2014 can express \"erased while still holding a balance\".\r\n2. **Wrong gate.** Erasing an MPToken that still holds a public balance destroys value and has nothing to do with the issuance's confidential state, yet it was gated on COA.\r\n\r\nBecause COA is issuance-wide, a single unrelated holder converting one unit was enough to block deletion of MPTokens with no confidential state at all. Affected paths include `AMMWithdraw` of an entire pool and `LoanBrokerDelete` returning cover \u2014 both operate on pseudo-account MPTokens, which can never hold ciphertext fields (a pseudo-account cannot sign `ConfidentialMPTConvert`, and `ConfidentialMPTSend::preclaim` rejects any destination that has not already converted).\r\n\r\n## Changes\r\n\r\n- The public-balance rule now lives in `ValidMPTIssuance::finalize`, gated on `fixCleanup3_5_0`: any MPToken erased with a non-zero",
+    "user": "ckeshava",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-09T21:54:43Z",
+    "merged_at": "2026-10-02T23:35:57Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8209?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-09T21:57:12Z"
+      }
+    ],
+    "reviews_count": 24,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udd35 Needs a closer look\n\nIt changes consensus-critical invariant enforcement paths (including amendment-gated behavior), so it warrants careful human validation beyond automated review.\n\n<details>\n<"
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "ckeshava",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8463,
     "branch_name": "chore/ignore-style-changes-git",
     "title": "chore: Add ignore revs for recent style changes",
@@ -247,6 +342,67 @@
       },
       {
         "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8186,
+    "branch_name": "lean4-nix",
+    "title": "feat: Add lean toolchain to nix",
+    "body": "## High Level Overview of Change\r\n\r\nAdd the [lean4](https://lean-lang.org/) toolchain to the nix development shell. This will be used by the upcoming formal verification work, and is not currently used in the build.\r\n\r\n## Context of change\r\n\r\nWe add a new development shell for formal verification containing the `Lean 4` toolchain. We use a separate shell as the tool is quite large and won't be used by most users.\r\n\r\n`check-tools` will check depending on the shell it's in using the `XRPL_DEVSHELL` env variable.\r\n\r\n## API Impact\r\n\r\nNo impact, development environment change only.\r\n\r\n---\r\n\r\n## OLD: previous approach, kept for context on previous approach\r\n\r\n```\r\n## Context of Change\r\n\r\nWe add a new `nix/lean4.nix` that fetches the `lean4 4.28.0` tarball directly.\r\n\r\nThe version is pinned in `nix/lean4.nix` for now. Once the Lean sources are in the tree it should read `formal_verification/lean-toolchain` instead, so the toolchain Nix provides and the one lake expects cannot drift apart.\r\n\r\n### Why?\r\n\r\nnixpkgs carries one `lean4` version at a time, currently 4.30.0, and we need  4.28.0. \r\n\r\nThere were a few alternatives considered that we could not use:\r\n\r\n1. override the lean `version` and `src` in the nix package: does not work because the packaging changed between 4.28 and current: nixpkgs' `mimalloc.patch` is cut against 4.30 sources and the hunk fails to apply, because Lean reformatted `CMakeLists.txt` between  the two releases. \r\n2. pinning nixpkgs to a rev when lean4 was 4.28: the toolchain is cached so this is cheap, but nixpkgs builds with `-DUSE_GITHASH=OFF` and substitutes the tag string, so `lean --githash` reports `v4.28.0` rather than the release commit `7e01a1bf5c70fc6167d49c345d3bf80596e9a79b`. Lake writes the githash into its traces, so artifacts built by a stock toolchain get discarded and (0 vs 41 modules on a test project with one prebuilt dependency). the githash fixes that, but the override is no longer cached, so becomes a 25 minute source build, pl",
+    "user": "v3lmx",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-08T08:57:34Z",
+    "merged_at": "2026-10-02T15:49:04Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 8,
+    "comments": [
+      {
+        "user": "v3lmx",
+        "body": "> 1. Can we maybe use 4.30.0? Not being able to use latest version of a tool is usually a pain in the future, when the gap will become even wider.\r\n\r\nLatest Lean4 release is 4.33, there are frequent version bumps. Using 4.30 helps us now as it's the latest in unstable, but it will be updated in the future. That means if there are ever breaking changes in Lean that break the formal verification code or proofs, that will have to be fixed as well. \r\nWe don't know exactly if that will happen, and if",
+        "created_at": "2026-09-08T11:42:26Z"
+      },
+      {
+        "user": "mathbunnyru",
+        "body": "> > 1. Can we maybe use 4.30.0? Not being able to use latest version of a tool is usually a pain in the future, when the gap will become even wider.\r\n> \r\n> Latest Lean4 release is 4.33, there are frequent version bumps. Using 4.30 helps us now as it's the latest in unstable, but it will be updated in the future. That means if there are ever breaking changes in Lean that break the formal verification code or proofs, that will have to be fixed as well. We don't know exactly if that will happen, an",
+        "created_at": "2026-09-08T12:54:23Z"
+      },
+      {
+        "user": "v3lmx",
+        "body": "> > > 1. Can we maybe use 4.30.0? Not being able to use latest version of a tool is usually a pain in the future, when the gap will become even wider.\r\n> > \r\n> > \r\n> > Latest Lean4 release is 4.33, there are frequent version bumps. Using 4.30 helps us now as it's the latest in unstable, but it will be updated in the future. That means if there are ever breaking changes in Lean that break the formal verification code or proofs, that will have to be fixed as well. We don't know exactly if that wil",
+        "created_at": "2026-09-08T14:52:46Z"
+      },
+      {
+        "user": "mathbunnyru",
+        "body": "Let's use nix-provided 4.30 for now, also let's update when this is merged: https://github.com/NixOS/nixpkgs/pull/545312",
+        "created_at": "2026-09-09T15:39:07Z"
+      },
+      {
+        "user": "v3lmx",
+        "body": "> Let's use nix-provided 4.30 for now, also let's update when this is merged: [NixOS/nixpkgs#545312](https://github.com/NixOS/nixpkgs/pull/545312)\r\n\r\nSounds good. \r\n\r\nOne remaining question about `check-tools.sh`, what about programs in the fv (non-default) shell? Should we check based on the shell name, eg.\r\n\r\n```sh\r\nif [ \"${XRPL_DEVSHELL:-}\" = \"formal-verification\" ]; then\r\n    echo\r\n    echo \"Formal verification toolchain:\"\r\n    check lean\r\n    check lake\r\nfi\r\n```",
+        "created_at": "2026-09-10T13:50:33Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "kuznetsss",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
         "state": "COMMENTED",
         "body": ""
       }
@@ -1602,51 +1758,6 @@
       {
         "user": "mvadari",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8203,
-    "branch_name": "Exclude_inline_rust_tests_from_coverage",
-    "title": "ci: Exclude Rust unit tests from code coverage",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nUpdate CI image to have nightly Rust toolchain added in #8182.\r\nExclude Rust unit tests form code coverage by:\r\n- disabling coverage for tests modules\r\n- compile Rust code for coverage using nightly toolchain\r\n\r\nAlso:\r\n- add pre-commit hook to not forget adding attributes excluding tests form coverage\r\n- remove `bin/check-tools.sh` from docker image build trigger\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* P",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-09T12:43:39Z",
-    "merged_at": "2026-09-10T12:14:44Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8203?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-09T12:46:08Z"
-      },
-      {
-        "user": "kuznetsss",
-        "body": "Tests are now excluded:\r\n<img width=\"847\" height=\"785\" alt=\"Screenshot 2026-09-09 at 13 58 39\" src=\"https://github.com/user-attachments/assets/62af25b9-9ddf-40bc-9e32-b9a9ff01fac4\" />\r\n",
-        "created_at": "2026-09-09T13:00:02Z"
-      }
-    ],
-    "reviews_count": 12,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "### \ud83d\udfe2 Approval recommended\n\nThe changes are coherent and low-risk for behavior, with only a minor tooling-probe alignment suggestion noted.\n\n<details>\n<summary>Pull request overview</summary>\n\nUpdates"
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "CHANGES_REQUESTED",
         "body": ""
       }
     ]
