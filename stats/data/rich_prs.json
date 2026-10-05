@@ -1,5 +1,152 @@
 [
   {
+    "pr_number": 8479,
+    "branch_name": "update_nix",
+    "title": "chore: Update nix flake file",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis allows us to use more modern tooling, including:\r\n- lean4 4.34.1\r\n- gcc 15.3 (instead of 15.2, so it's a minor change)\r\n- new cmake/conan versions\r\n\r\n`pkgs.stdenv.isLinux` is changed to `pkgs.stdenv.hostPlatform.isLinux` due to deprecation warning (and for macos too)\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-05T12:12:39Z",
+    "merged_at": "2026-10-05T20:00:24Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8479?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-05T12:15:09Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nThe dependency refresh still needs CI validation for Linux\u2019s custom-glibc toolchain and macOS builds.\n\n**Review effort:"
+      },
+      {
+        "user": "kuznetsss",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage1: "
+      }
+    ]
+  },
+  {
+    "pr_number": 7582,
+    "branch_name": "fix-channel-id-type-validation",
+    "title": "fix: Add string type validation for channel_id and signature",
+    "body": "## High Level Overview of Change\r\n\r\nFixes #6765\r\n\r\nAdds `isString()` type validation checks before calling `asString()` \r\non the `channel_id` parameter in `ChannelAuthorize.cpp` and on both \r\n`channel_id` and `signature` parameters in `ChannelVerify.cpp`. \r\n\r\nPreviously, non-string inputs (e.g. integers, arrays) could be \r\nsilently coerced or cause unexpected behavior. Now, invalid types \r\nreturn RpcInvalidParams immediately, consistent with the existing \r\npattern used for the `amount` field in the same handlers.",
+    "user": "harshitgupta62",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-21T11:46:09Z",
+    "merged_at": "2026-10-05T20:00:24Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 8,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
+        "created_at": "2026-06-21T11:46:18Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-30T15:56:45Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-05T11:49:26Z"
+      },
+      {
+        "user": "harshitgupta62",
+        "body": "> Please update the API changelog\r\n\r\nUpdated the API changelog, thanks!",
+        "created_at": "2026-10-05T11:51:21Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7582?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `83.33333%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/7582?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
+        "created_at": "2026-10-05T12:34:19Z"
+      }
+    ],
+    "reviews_count": 13,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "CHANGES_REQUESTED",
+        "body": "Please update the API changelog"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nAdds JSON parameter type validation to the payment channel signing/verification RPC handlers to avoid `Json::Value::asString()` coercing non-string inputs (defense-in-depth f"
+      },
+      {
+        "user": "harshitgupta62",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7993,
+    "branch_name": "mvadari/gtest-migrate-beast",
+    "title": "test: Migrate three beast suites from beast::unit_test to gtest",
+    "body": "## High Level Overview of Change\n\nMoves three test suites from the legacy `beast::unit_test` framework under `src/test` to gtest under `src/tests`, continuing the ongoing migration.\n\n| From | To | Tests |\n| --- | --- | --- |\n| `src/test/beast/xxhasher_test.cpp` | `src/tests/libxrpl/beast/xxhasher.cpp` | 10 |\n| `src/test/beast/beast_Journal_test.cpp` | `src/tests/libxrpl/beast/Journal.cpp` | 3 |\n| `src/test/beast/beast_basic_seconds_clock_test.cpp` | `src/tests/libxrpl/beast/basic_seconds_clock.cpp` | 1 |\n\n### Context of Change\n\n`src/test` still holds 250 `beast::unit_test` suites against 178 gtest files in `src/tests`, so the migration has plenty left in it. This is a small, mechanical increment that should be reviewable as a straight translation.\n\nThese three were chosen because they exercise `libxrpl` only. The gtest tree is currently `src/tests/libxrpl` with no `jtx::Env` fixture, so suites that need a running `Env` can't move until that harness exists \u2014 that's a larger, separate decision. These have no such dependency.\n\nThe assertions are unchanged; `BEAST_EXPECT(a == b)` becomes `EXPECT_EQ(a, b)` and each `testcase` becomes its own `TEST`. Two small tidies came along with the move:\n\n- The xxhasher tests repeated a `for` loop concatenating the same string 20 or 100 times in five places. That is now a `repeat()` helper, and the shared input string is a single `constexpr std::string_view`.\n- `Journal_test`'s local counting sink was named `TestSink`, which now collides conceptually with the shared `xrpl::TestSink` helper in `src/tests/libxrpl/helpers`. Renamed to `CountingSink`, and its `run()` split into one `TEST` per severity threshold so a failure names which threshold broke, plus a third `TEST` that lowers the threshold on an existing `Journal`, which the split would otherwise have lost.\n\n`src/tests/libxrpl/CMakeLists.txt` globs its module directories with `CONFIGURE_DEPENDS`, so no build file changes are needed.\n\n**Not migrated, deliberately:** `src/test/basi",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-10T15:31:01Z",
+    "merged_at": "2026-10-05T18:42:53Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7993?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-10T16:18:37Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "@godexsoft Added named constants for the seeds and repeat counts in fdbff52. I kept the expected digests as literals, since a name for each would only add indirection.",
+        "created_at": "2026-10-05T12:29:14Z"
+      }
+    ],
+    "reviews_count": 20,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nMigrates three `beast::unit_test` suites under `src/test` to GoogleTest under `src/tests/libxrpl`, continuing the ongoing test harness migration for `libxrpl`-only coverage.\n"
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mvadari",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8266,
     "branch_name": "ConfidentialMPTHolderKeyUpdate",
     "title": "feat: Implement Confidential mpt holder key update",
@@ -1555,167 +1702,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": "Where does it happen now? I recall something similar in Clio, so i'm a bit worried we remove required functionality here."
-      }
-    ]
-  },
-  {
-    "pr_number": 8225,
-    "branch_name": "Collect-errors-in-preflight",
-    "title": "feat: Report all errors in wasm code check",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nAdd `check_all()` function to wasm vm crate reporting all the findings of provided wasm code.\r\nThe `check()` functions used in xrpld stays fail fast.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\nDecided to not add a feature flag because having an extra public function doesn't affect anything. While adding makes CI and code structure more complicated.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-14T12:53:25Z",
-    "merged_at": "2026-09-16T15:03:24Z",
-    "labels": [],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8225?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-14T12:56:34Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-14T13:56:39Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-09-14T14:00:51Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "DISMISSED",
-        "body": "Looks good. Nothing blocking this from my perspective."
-      }
-    ]
-  },
-  {
-    "pr_number": 8135,
-    "branch_name": "RefactorConfidentialTransferHelpers",
-    "title": "refactor: Extract common tx-building helpers for ConfidentialMPT in MPTTester",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nfixes: https://github.com/XRPLF/rippled/issues/7630\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrp",
-    "user": "PeterChen13579",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-27T18:08:26Z",
-    "merged_at": "2026-09-15T17:47:07Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8135?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-27T18:11:28Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-14T19:05:40Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-09-15T16:21:45Z"
-      }
-    ],
-    "reviews_count": 26,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR refactors the Confidential MPT (MPToken) transaction-building logic used by `MPTTester` test utilities, reducing duplicated JSON-field/proof assembly code and making "
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "CHANGES_REQUESTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 6303,
-    "branch_name": "nrc-transactions",
-    "title": "fix: Update `noripple_check` to exclude `transactions` field on error responses",
-    "body": "## High Level Overview of Change\r\n\r\nThis PR updates the `noripple_check` RPC to exclude the `transactions` field on error responses. It also does some other cleanup of the file, to match modern rippled code.\r\n\r\n### Context of Change\r\n\r\nFixes #4616 \r\n\r\n### Type of Change\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n\r\n### API Impact\r\n\r\n- [x] Public API: Fix\r\n\r\n## Before / After\r\n\r\nBefore: an `rpcACT_MALFORMED` error message return would have an empty `transactions` array attached to it.\r\n\r\nAfter: Now it does not.\r\n\r\n## Test Plan\r\n\r\nAdded a test. CI passes.",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-01-30T15:13:48Z",
-    "merged_at": "2026-09-15T01:04:10Z",
-    "labels": [
-      "Ready to merge",
-      "API Change",
-      "Trivial",
-      "Added to API Changelog"
-    ],
-    "comments_count": 12,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6303?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.61905%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/6303?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
-        "created_at": "2026-01-30T16:03:12Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-03-26T00:44:09Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-27T13:52:54Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-04-29T19:36:49Z"
-      },
-      {
-        "user": "godexsoft",
-        "body": "We recently merged a refactor to `develop` that enables clang-tidy's `readability-identifier-naming`. Your branch now has heavy conflicts that are largely mechanical. Below is a workflow that aligns your branch's naming with develop _before_ merging, which should minimize the merge conflicts.\n\n## One-time setup\n\nIf you don't already have clang-tidy working in your env, on macOS:\n\n```bash\nbrew install llvm@21\n# Follow brew's hint to put $(brew --prefix llvm@21)/bin on PATH so run-clang-tidy is fo",
-        "created_at": "2026-05-04T14:26:03Z"
-      }
-    ],
-    "reviews_count": 23,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR fixes issue #4616 by ensuring that the `transactions` field is not included in error responses from the `noripple_check` RPC handler. Additionally, it modernizes the "
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nCopilot reviewed 4 out of 4 changed files in this pull request and generated 2 comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*.instr"
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
