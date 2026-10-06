@@ -1,5 +1,260 @@
 [
   {
+    "pr_number": 7882,
+    "branch_name": "dangell7/escrow-paychan-refactor",
+    "title": "refactor: Extract escrow lock helpers and paychan test helpers",
+    "body": "## High Level Overview of Change\n\nPulls the refactoring out of #5448 (XLS-93d Token-Enabled Payment Channels) into its own PR so it can merge ahead of the feature. Code motion only, no functional change.\n\n- Moves the escrow lock/unlock helpers from the Escrow transactors into `EscrowHelpers.h`.\n- Moves the jtx `paychan` helpers from `TestHelpers.h` into their own `test/jtx/paychan.h`, and hoists the file-local helpers from `PayChan_test.cpp` into them.\n- Moves the escrowed balance test helpers from `EscrowToken_test.cpp` into the shared jtx `TestHelpers.h`.\n\n### Context of Change\n\nSplit out of #5448 per review feedback. The token paychan transactors reuse the escrow lock/unlock helpers, so the extraction lands here first and the feature PR becomes mostly additive.\n\n### API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\n## Test Plan\n\nNo new tests, the moved code is covered by the existing suites. Ran Escrow, EscrowToken, Sponsor, PayChan, MPToken, AMM.\n",
+    "user": "dangell7",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-28T00:05:30Z",
+    "merged_at": "2026-10-06T20:35:01Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 9,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7882?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-07-28T00:50:06Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-08-07T16:00:58Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-31T16:06:07Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "@dangell7 ready to merge?",
+        "created_at": "2026-09-15T18:19:59Z"
+      },
+      {
+        "user": "dangell7",
+        "body": "@mvadari yes, ready once CI is green. clang-tidy is fixed in 40a6ebe713 and develop is merged in.",
+        "created_at": "2026-09-30T15:46:09Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "TimothyBanks",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "TimothyBanks",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "dangell7",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 7583,
+    "branch_name": "fix-vetoed-type-validation",
+    "title": "fix: Validate vetoed parameter type in feature RPC",
+    "body": "Fixes #6757\r\n\r\nAdds an isBool() type check on the `vetoed` parameter in doFeature \r\nbefore calling asBool(). Previously, sending a non-boolean value \r\n(e.g. a string or null) for `vetoed` could either throw an unhandled \r\nexception or silently coerce to false, accidentally triggering \r\nunVeto() instead of returning a proper validation error.\r\n\r\nReturns RpcInvalidParams when the type check fails, consistent \r\nwith the existing pattern in this codebase.",
+    "user": "harshitgupta62",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-21T20:31:55Z",
+    "merged_at": "2026-10-06T20:17:08Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 10,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-05T14:13:11Z"
+      },
+      {
+        "user": "harshitgupta62",
+        "body": "> Please update the API changelog and add tests\r\n\r\nUpdated the 3.5.0 API changelog and added regression coverage for non-boolean vetoed values. Thank you.",
+        "created_at": "2026-10-05T14:15:32Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-05T14:23:35Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "@harshitgupta62 thanks for your PR, is this ready to merge?",
+        "created_at": "2026-10-05T14:27:52Z"
+      },
+      {
+        "user": "harshitgupta62",
+        "body": "> @harshitgupta62 thanks for your PR, is this ready to merge?\r\n\r\nYes, it\u2019s ready to merge from my side. Thank you very much for your careful review and guidance throughout\u2014I really appreciate your help.",
+        "created_at": "2026-10-05T14:29:23Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "CHANGES_REQUESTED",
+        "body": "Please update the API changelog and add tests"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR addresses Issue #6757 by adding explicit type validation for the `vetoed` parameter in the `feature` RPC handler, preventing jsoncpp exceptions or unintended boolean "
+      },
+      {
+        "user": "harshitgupta62",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8524,
+    "branch_name": "better_retries",
+    "title": "build: Make conan retry with Conan Center's source backups",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nGNU ftp is down quite often\r\nhttps://github.com/XRPLF/xrpld-private/actions/runs/37407948434/job/112176283822\r\nAdding recommended backup, to make our conan more robust\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should on",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-06T18:18:44Z",
+    "merged_at": "2026-10-06T20:02:21Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8524?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-06T18:22:29Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage3: "
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe new setting is incompatible with the documented minimum Conan version.\n\n**Review effort:** Balanced  \n**Findings:**"
+      }
+    ]
+  },
+  {
+    "pr_number": 7979,
+    "branch_name": "txnProposalCancel",
+    "title": "Add TransactionProposalCancel for Cosign",
+    "body": "## High Level Overview of Change\r\n\r\nAdds the `TransactionProposalCancel` transaction (Cosigner Spec \u00a77, transaction type 94): deletes a `TransactionProposal` ledger entry and releases the proposer's reserve. \r\n\r\n### Context of Change\r\n\r\nThird transaction of the On-Chain Cosigner feature ([Cosigner spec](https://github.com/shawnxie999/XRPL-Standards/blob/cosign/XLS-0103-onchain-cosigner/README.md)), building on `TransactionProposalCreate` (#7887).\r\n\r\n- While a proposal is live, only its Owner (the proposer) or its target (the proposed transaction's `Account`, or the `Delegate` named in it) may cancel: `tecNO_PERMISSION` otherwise.\r\n- Once a proposal is terminal (its `Expiration` has passed, or the ledger sequence is strictly past the proposed transaction's `LastLedgerSequence`, mirroring the ordinary transactor's `tefMAX_LEDGER` rule), anyone may delete it.\r\n- A zero `ProposalID` is `temMALFORMED`; a missing entry is `tecNO_ENTRY`.\r\n- `isValidProposalTxnType` now also rejects proposing a Cancel, or any proposal transaction hidden inside a proposed Batch (XLS-0103 \u00a75.3.1).\r\n- Includes shared jtx helper `proposal::cancel` and a 19-case test suite covering authorization, terminal boundaries, Batch/multisign/sponsorship/ticket interactions, and nesting rejections.\r\n\r\n### API Impact\r\n\r\n- [x] `libxrpl` change (new amendment-gated transaction type, `featureCosign`)\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\r\n\n",
+    "user": "ckeshava",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-07T22:06:22Z",
+    "merged_at": "2026-10-06T18:00:28Z",
+    "labels": [],
+    "comments_count": 9,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7979?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-07T22:38:24Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-08-20T20:46:55Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-24T17:21:29Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-08-25T17:32:39Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-25T17:54:45Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "Kassaking7",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "ckeshava",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": "first bit of comments"
+      }
+    ]
+  },
+  {
+    "pr_number": 8520,
+    "branch_name": "update_docker_images",
+    "title": "chore: Update docker images; link Conan-built tools with a static runtime",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\nMostly update due to https://github.com/XRPLF/rippled/pull/8479\r\n\r\nSmall adjustments:\r\n- PRE_COMMIT_VERSION 4.6.0 \u2192 4.6.2\r\n- push path cleanup in the three image-build workflows\r\n\r\nUpdated software:\r\n- Python 3.13.13 \u2192 3.14.7\r\n- CMake 4.1.2 \u2192 4.4.3\r\n- Conan 2.28.1 \u2192 2.32.0\r\n- GCC 15.2.0 \u2192 15.3.0\r\n- Clang/LLVM 22.1.7 \u2192 22.1.8\r\n- Rust nightly moves to 2026-10-04\r\n\r\n**This update surfaced bugs**:\r\n1. Tools built by `conan` (like `protoc`) load libstdc++/libgcc_s from a Nix store path. The conan package ID records only `compiler.version`, so any change to gcc nix store path would fail a build. Now we build such tools with a static runtime.\r\n2. These tools were sanitised (it doesn't make sense to have a sanitised protoc binary). We don't sanitise them now.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-06T09:51:42Z",
+    "merged_at": "2026-10-06T17:19:13Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8520?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-06T09:54:23Z"
+      }
+    ],
+    "reviews_count": 15,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nNew image availability and upgraded toolchain compatibility across CI still need confirmation.\n\n**Review effort:** Bala"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nConan runtime-linkage and sanitizer changes require validation across supported Linux toolchains before human approval."
+      },
+      {
+        "user": "kuznetsss",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8521,
     "branch_name": "custom_clang_tools",
     "title": "build: Make clang-tools custom in Nix, to match what's being built",
@@ -1695,178 +1950,6 @@
       {
         "user": "ckeshava",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8228,
-    "branch_name": "se-fees-bugfix",
-    "title": "Decide the Smart Escrow fee limits from the ledger, not local configuration",
-    "body": "## The defect\r\n\r\n`gasLimit`, `bytecodeSizeLimit` and `gasPrice` are voted network parameters,\r\ncarried in `FeeSettings`. Two paths let a node's own config decide them instead.\r\n\r\n`EscrowCreate::preflight` and `EscrowFinish::preflight` read them from\r\n`ServiceRegistry::getFees()`, i.e. this node's `FeeSetup`. So two nodes with\r\ndifferent limits admit different transactions from the same ledger; voting a\r\nlimit to `0` disabled nothing; and after activation gas was nearly free, because\r\n`gasPrice` came from the ledger (absent, so `0`) while the guard that would have\r\nrefused execution read a non-zero `gasLimit` from config.\r\n\r\nSeparately, `Ledger::setup` assigned a field only when `FeeSettings` carried it,\r\nleaving an absent one at whatever `fees_` was built with \u2014 and every `Ledger` is\r\nbuilt from the local `FeeSetup`. Genesis is the exception: there, reading config\r\nis correct.\r\n\r\n## The fix\r\n\r\n`preflight` has no view, so it bounds against the protocol ceilings\r\n`kMaxGasLimit` / `kMaxBytecodeSizeLimit`; `preclaim` applies the voted values.\r\nWASM validation moves to `preclaim` too \u2014 a cached `preflight` result outlives the\r\nvote that invalidates it \u2014 and runs last, since compiling is expensive.\r\n\r\n`isBytecodeUploadDisabled` / `isBytecodeExecutionDisabled` are two rungs on\r\npurpose: zeroing `bytecodeSizeLimit` stops new uploads but leaves existing escrows\r\nfinishable. Zeroing `gasLimit` stops both.\r\n\r\n`Ledger::setup` now resolves an absent field to the protocol constants, amendment\r\ngated; `Change::initializeVMFees` writes them on activation. `getFees()` is\r\ndeleted rather than fixed \u2014 levelization already forbids `libxrpl` from reaching\r\nconfig, and this accessor was the way around it.\r\n\r\n## Test infrastructure\r\n\r\nWith `getFees()` gone there is no second fee source to sync.\r\n`TestServiceRegistry` loses `getFees`/`setFees`; `TxTest` gains `setFees(Fees)`,\r\nwhich writes into `FeeSettings` at the next `close()`.\r\n\r\n`FinishFailures.AnAllowancePastTheGasLimitIsRefused` cha",
-    "user": "pwang200",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-14T19:04:58Z",
-    "merged_at": "2026-09-22T19:34:45Z",
-    "labels": [],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8228?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `96.00000%` with `2 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8228?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
-        "created_at": "2026-09-15T02:36:35Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
-        "created_at": "2026-09-21T21:01:58Z"
-      }
-    ],
-    "reviews_count": 15,
-    "reviews": [
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8192,
-    "branch_name": "yinyi/mirror-update",
-    "title": "feat: Support ConfidentialMPTMirrorUpdate",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\nAdds the `ConfidentialMPTMirrorUpdate` transaction (type 92, gated on `featureConfidentialMPTKeyRotation`),\r\nwhich re-encrypts a holder's mirrored confidential balances under the ElGamal public keys currently registered\r\non the `MPTokenIssuance`.\r\n### Transaction shape\r\n| Field | Presence | Notes |\r\n| --- | --- | --- |\r\n| `MPTokenIssuanceID` | required | |\r\n| `Holder` | optional | Presence selects the mode: present = issuer mode, absent = holder self-migration |\r\n| `IssuerEncryptedAmount` | optional | The full re-encrypted issuer mirror |\r\n| `AuditorEncryptedAmount` | optional | The full re-encrypted auditor mirror |\r\n| `ZKProof` | required | Reserved; verification lands in a follow-up PR |\r\nAt least one of `IssuerEncryptedAmount` / `AuditorEncryptedAmount` must be present.\r\n\r\n\r\n### Supported flows\r\nIssuer mode, submitted by the issuer with `Holder` field:\r\n1. **Issuer key rotation migration** \u2014 re-encrypts the holder's `IssuerEncryptedBalance` under the issuer's new key.\r\n2. **Auditor key rotation migration** \u2014 re-encrypts the holder's `AuditorEncryptedBalance` under the auditor's new key.\r\n3. **Simultaneous rotation migration** \u2014 updates both",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-08T17:06:04Z",
-    "merged_at": "2026-09-22T18:32:10Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-09T20:44:34Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-09-15T16:36:17Z"
-      },
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8192?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-15T20:32:02Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "The ConfidentialMPTMirrorUpdate transactor's preflight/preclaim logic for mode detection, staleness checks, and epoch bookkeeping is well thought out and heavily tested. The one real gap is that ZK-pr"
-      },
-      {
-        "user": "depthfirst-app[bot]",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "### \ud83d\udfe1 Changes recommended\n\nEquality-proof verification is not implemented, and proof-length validation and required API documentation updates remain unresolved.\n\n*Get a fresh assessment by requesting "
-      }
-    ]
-  },
-  {
-    "pr_number": 8254,
-    "branch_name": "fix-sponsor",
-    "title": "fix: Check zero object id in SponsorshipTransfer preflight",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n**Severity: Low**\r\ncheck in preflight if the object id is zero.\r\nIt does not affect the product because Ledger::read will catch it anyway.\r\n\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_vers",
-    "user": "yinyiqian1",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-21T16:52:58Z",
-    "merged_at": "2026-09-22T17:45:58Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8254?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-21T16:55:42Z"
-      }
-    ],
-    "reviews_count": 8,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe validation is amendment-gated and covered for all sponsorship transfer modes.\n\n**Review effort:** Lite  \n**Finding"
-      },
-      {
-        "user": "Kassaking7",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe functional change and regression coverage are correct; only a non-blocking comment typo remains.\n\n**Review effort:"
-      }
-    ]
-  },
-  {
-    "pr_number": 8230,
-    "branch_name": "2321-Remove-unused-code",
-    "title": "refactor: Remove unused code and optimise FieldLocator",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nRemove unused methods and fields of `FieldLocator`. Optimise the code to avoid copying data.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may ",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-15T18:14:44Z",
-    "merged_at": "2026-09-21T16:21:12Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8230?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-16T11:13:44Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "APPROVED",
         "body": ""
       }
     ]
