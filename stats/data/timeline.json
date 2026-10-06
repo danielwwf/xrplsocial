@@ -1,5 +1,68 @@
 [
   {
+    "hash": "6d9a6320",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers",
+    "date": "2026-10-06T00:08:09+00:00",
+    "message": "fix: Charge a funds-limited MPT offer owner ceil(out * rate)"
+  },
+  {
+    "hash": "38a0899a",
+    "author": "Denis Angell",
+    "branch": "dangell7/validator-keys",
+    "date": "2026-10-06T00:07:32+00:00",
+    "message": "style: name the legacy config file without the old binary name"
+  },
+  {
+    "hash": "51cf1b8f",
+    "author": "Denis Angell",
+    "branch": "dangell7/validator-keys",
+    "date": "2026-10-05T23:37:42+00:00",
+    "message": "fix: address the validator-keys review on output, key path, appends and packaging"
+  },
+  {
+    "hash": "9cbf78ba",
+    "author": "yinyiqian1",
+    "branch": "origin",
+    "date": "2026-10-05T23:18:58+00:00",
+    "message": "test: Add more tests for granular permissions (#8459)"
+  },
+  {
+    "hash": "b8d8738f",
+    "author": "Timur Yalymov",
+    "branch": "origin",
+    "date": "2026-10-05T23:17:36+00:00",
+    "message": "fix: Enforce that MPT issuance flags are never cleared (#8152)"
+  },
+  {
+    "hash": "63c97e71",
+    "author": "Timur Yalymov",
+    "branch": "origin",
+    "date": "2026-10-05T23:17:26+00:00",
+    "message": "feat: Allow lending transactions in Batch (#8244)"
+  },
+  {
+    "hash": "3ac26f23",
+    "author": "Mayukha Vadari",
+    "branch": "origin",
+    "date": "2026-10-05T23:17:14+00:00",
+    "message": "feat: Add full support for all objects in `ledger_entry` (#6319)"
+  },
+  {
+    "hash": "ff9410bc",
+    "author": "Bart",
+    "branch": "origin",
+    "date": "2026-10-05T23:15:08+00:00",
+    "message": "build: Define XRPL_ASAN, XRPL_TSAN, and XRPL_UBSAN compile definitions (#8483)"
+  },
+  {
+    "hash": "71e96bba",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/smart-escrow-escrow-tx",
+    "date": "2026-10-05T19:55:28+00:00",
+    "message": "fix: Address clang-tidy findings in EscrowSmart_test"
+  },
+  {
     "hash": "71e96bba",
     "author": "Mayukha Vadari",
     "branch": "mvadari/smart-escrow-escrow-tx",
@@ -219,14 +282,14 @@
   {
     "hash": "dcd32a6f",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
+    "branch": "mvadari/rearch/accountroot-transferRate",
     "date": "2026-10-05T14:49:56+00:00",
     "message": "Document isGlobalFrozen return value"
   },
   {
     "hash": "dcd32a6f",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-transferRate",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
     "date": "2026-10-05T14:49:56+00:00",
     "message": "Document isGlobalFrozen return value"
   },
@@ -236,6 +299,20 @@
     "branch": "mvadari/rearch/accountroot-xrpLiquid",
     "date": "2026-10-05T14:49:56+00:00",
     "message": "Document isGlobalFrozen return value"
+  },
+  {
+    "hash": "95323eda",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-transferRate",
+    "date": "2026-10-05T14:49:19+00:00",
+    "message": "Document checkDestinationAndTag parameters and return value"
+  },
+  {
+    "hash": "95323eda",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
+    "date": "2026-10-05T14:49:19+00:00",
+    "message": "Document checkDestinationAndTag parameters and return value"
   },
   {
     "hash": "95323eda",
@@ -247,30 +324,9 @@
   {
     "hash": "95323eda",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
-    "date": "2026-10-05T14:49:19+00:00",
-    "message": "Document checkDestinationAndTag parameters and return value"
-  },
-  {
-    "hash": "95323eda",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-transferRate",
-    "date": "2026-10-05T14:49:19+00:00",
-    "message": "Document checkDestinationAndTag parameters and return value"
-  },
-  {
-    "hash": "95323eda",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/accountroot-xrpLiquid",
     "date": "2026-10-05T14:49:19+00:00",
     "message": "Document checkDestinationAndTag parameters and return value"
-  },
-  {
-    "hash": "e67d1d40",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
-    "date": "2026-10-05T14:49:07+00:00",
-    "message": "Document removeIfEmpty parameters"
   },
   {
     "hash": "e67d1d40",
@@ -280,11 +336,32 @@
     "message": "Document removeIfEmpty parameters"
   },
   {
+    "hash": "e67d1d40",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
+    "date": "2026-10-05T14:49:07+00:00",
+    "message": "Document removeIfEmpty parameters"
+  },
+  {
     "hash": "c6808c12",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
     "date": "2026-10-05T14:48:43+00:00",
     "message": "Document removeForAMM parameter"
+  },
+  {
+    "hash": "f27581a6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-transferRate",
+    "date": "2026-10-05T14:48:28+00:00",
+    "message": "Document createPseudoAccount parameters and return value"
+  },
+  {
+    "hash": "f27581a6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
+    "date": "2026-10-05T14:48:28+00:00",
+    "message": "Document createPseudoAccount parameters and return value"
   },
   {
     "hash": "f27581a6",
@@ -303,30 +380,9 @@
   {
     "hash": "f27581a6",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
-    "date": "2026-10-05T14:48:28+00:00",
-    "message": "Document createPseudoAccount parameters and return value"
-  },
-  {
-    "hash": "f27581a6",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-transferRate",
-    "date": "2026-10-05T14:48:28+00:00",
-    "message": "Document createPseudoAccount parameters and return value"
-  },
-  {
-    "hash": "f27581a6",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/accountroot-xrpLiquid",
     "date": "2026-10-05T14:48:28+00:00",
     "message": "Document createPseudoAccount parameters and return value"
-  },
-  {
-    "hash": "5c28ad60",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
-    "date": "2026-10-05T14:48:22+00:00",
-    "message": "Document create parameters and return value"
   },
   {
     "hash": "5c28ad60",
@@ -339,6 +395,13 @@
     "hash": "5c28ad60",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/ripplestate-trustCreate",
+    "date": "2026-10-05T14:48:22+00:00",
+    "message": "Document create parameters and return value"
+  },
+  {
+    "hash": "5c28ad60",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
     "date": "2026-10-05T14:48:22+00:00",
     "message": "Document create parameters and return value"
   },
@@ -387,16 +450,30 @@
   {
     "hash": "c8396d19",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-lockEscrowMPT",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
     "date": "2026-10-05T14:47:39+00:00",
     "message": "Document lockEscrow parameter"
   },
   {
     "hash": "c8396d19",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "branch": "mvadari/rearch/mptoken-lockEscrowMPT",
     "date": "2026-10-05T14:47:39+00:00",
     "message": "Document lockEscrow parameter"
+  },
+  {
+    "hash": "d21cf460",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-transferRate",
+    "date": "2026-10-05T14:47:38+00:00",
+    "message": "Document isPseudoAccount return value"
+  },
+  {
+    "hash": "d21cf460",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
+    "date": "2026-10-05T14:47:38+00:00",
+    "message": "Document isPseudoAccount return value"
   },
   {
     "hash": "d21cf460",
@@ -415,21 +492,7 @@
   {
     "hash": "d21cf460",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
-    "date": "2026-10-05T14:47:38+00:00",
-    "message": "Document isPseudoAccount return value"
-  },
-  {
-    "hash": "d21cf460",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/accountroot-isPseudoAccount",
-    "date": "2026-10-05T14:47:38+00:00",
-    "message": "Document isPseudoAccount return value"
-  },
-  {
-    "hash": "d21cf460",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-transferRate",
     "date": "2026-10-05T14:47:38+00:00",
     "message": "Document isPseudoAccount return value"
   },
@@ -464,13 +527,6 @@
   {
     "hash": "1f824cfc",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
-    "date": "2026-10-05T14:47:28+00:00",
-    "message": "Document removeFromLedger parameters"
-  },
-  {
-    "hash": "1f824cfc",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
     "date": "2026-10-05T14:47:28+00:00",
     "message": "Document removeFromLedger parameters"
@@ -486,6 +542,13 @@
     "hash": "1f824cfc",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/ripplestate-trustDelete",
+    "date": "2026-10-05T14:47:28+00:00",
+    "message": "Document removeFromLedger parameters"
+  },
+  {
+    "hash": "1f824cfc",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
     "date": "2026-10-05T14:47:28+00:00",
     "message": "Document removeFromLedger parameters"
   },
@@ -541,6 +604,13 @@
   {
     "hash": "8c856162",
     "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "date": "2026-10-05T14:47:01+00:00",
+    "message": "Document hasObligations return value"
+  },
+  {
+    "hash": "8c856162",
+    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptoken-lockEscrowMPT",
     "date": "2026-10-05T14:47:01+00:00",
     "message": "Document hasObligations return value"
@@ -549,13 +619,6 @@
     "hash": "8c856162",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptoken-removeEmptyHolding",
-    "date": "2026-10-05T14:47:01+00:00",
-    "message": "Document hasObligations return value"
-  },
-  {
-    "hash": "8c856162",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
     "date": "2026-10-05T14:47:01+00:00",
     "message": "Document hasObligations return value"
   },
@@ -625,16 +688,30 @@
   {
     "hash": "699f2f03",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-clawbackAmount",
+    "branch": "mvadari/rearch/vault-roundToVaultScale",
     "date": "2026-10-05T14:46:41+00:00",
     "message": "Document clawbackAmount() parameters and return value"
   },
   {
     "hash": "699f2f03",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "branch": "mvadari/rearch/vault-clawbackAmount",
     "date": "2026-10-05T14:46:41+00:00",
     "message": "Document clawbackAmount() parameters and return value"
+  },
+  {
+    "hash": "510bd230",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
+    "date": "2026-10-05T14:46:40+00:00",
+    "message": "Document isAuthorized parameters and return value"
+  },
+  {
+    "hash": "510bd230",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-trustCreate",
+    "date": "2026-10-05T14:46:40+00:00",
+    "message": "Document isAuthorized parameters and return value"
   },
   {
     "hash": "6994e386",
@@ -658,16 +735,16 @@
     "message": "Document issuerFundsToSelfIssue return value"
   },
   {
-    "hash": "6994e386",
+    "hash": "510bd230",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
+    "branch": "mvadari/rearch/ripplestate-trustDelete",
     "date": "2026-10-05T14:46:40+00:00",
-    "message": "Document issuerFundsToSelfIssue return value"
+    "message": "Document isAuthorized parameters and return value"
   },
   {
     "hash": "6994e386",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
+    "branch": "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
     "date": "2026-10-05T14:46:40+00:00",
     "message": "Document issuerFundsToSelfIssue return value"
   },
@@ -679,18 +756,11 @@
     "message": "Document issuerFundsToSelfIssue return value"
   },
   {
-    "hash": "510bd230",
+    "hash": "6994e386",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
+    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
     "date": "2026-10-05T14:46:40+00:00",
-    "message": "Document isAuthorized parameters and return value"
-  },
-  {
-    "hash": "510bd230",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
-    "date": "2026-10-05T14:46:40+00:00",
-    "message": "Document isAuthorized parameters and return value"
+    "message": "Document issuerFundsToSelfIssue return value"
   },
   {
     "hash": "510bd230",
@@ -702,16 +772,23 @@
   {
     "hash": "510bd230",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustCreate",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
     "date": "2026-10-05T14:46:40+00:00",
     "message": "Document isAuthorized parameters and return value"
   },
   {
-    "hash": "510bd230",
+    "hash": "658d04f6",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustDelete",
-    "date": "2026-10-05T14:46:40+00:00",
-    "message": "Document isAuthorized parameters and return value"
+    "branch": "mvadari/rearch/accountroot-transferRate",
+    "date": "2026-10-05T14:46:31+00:00",
+    "message": "Document confineOwnerCount parameters"
+  },
+  {
+    "hash": "658d04f6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
+    "date": "2026-10-05T14:46:31+00:00",
+    "message": "Document confineOwnerCount parameters"
   },
   {
     "hash": "658d04f6",
@@ -723,35 +800,7 @@
   {
     "hash": "658d04f6",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-checkReserve",
-    "date": "2026-10-05T14:46:31+00:00",
-    "message": "Document confineOwnerCount parameters"
-  },
-  {
-    "hash": "658d04f6",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/accountroot-createPseudoAccount",
-    "date": "2026-10-05T14:46:31+00:00",
-    "message": "Document confineOwnerCount parameters"
-  },
-  {
-    "hash": "658d04f6",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
-    "date": "2026-10-05T14:46:31+00:00",
-    "message": "Document confineOwnerCount parameters"
-  },
-  {
-    "hash": "658d04f6",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
-    "date": "2026-10-05T14:46:31+00:00",
-    "message": "Document confineOwnerCount parameters"
-  },
-  {
-    "hash": "658d04f6",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
     "date": "2026-10-05T14:46:31+00:00",
     "message": "Document confineOwnerCount parameters"
   },
@@ -772,14 +821,28 @@
   {
     "hash": "658d04f6",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-transferRate",
+    "branch": "mvadari/rearch/accountroot-xrpLiquid",
     "date": "2026-10-05T14:46:31+00:00",
     "message": "Document confineOwnerCount parameters"
   },
   {
     "hash": "658d04f6",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-xrpLiquid",
+    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
+    "date": "2026-10-05T14:46:31+00:00",
+    "message": "Document confineOwnerCount parameters"
+  },
+  {
+    "hash": "658d04f6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
+    "date": "2026-10-05T14:46:31+00:00",
+    "message": "Document confineOwnerCount parameters"
+  },
+  {
+    "hash": "658d04f6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-checkReserve",
     "date": "2026-10-05T14:46:31+00:00",
     "message": "Document confineOwnerCount parameters"
   },
@@ -787,6 +850,13 @@
     "hash": "0c5aa85b",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
+    "date": "2026-10-05T14:46:29+00:00",
+    "message": "Document isAuthorized return value"
+  },
+  {
+    "hash": "0c5aa85b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
     "date": "2026-10-05T14:46:29+00:00",
     "message": "Document isAuthorized return value"
   },
@@ -810,20 +880,6 @@
     "branch": "mvadari/rearch/mptoken-requireAuth",
     "date": "2026-10-05T14:46:29+00:00",
     "message": "Document isAuthorized return value"
-  },
-  {
-    "hash": "0c5aa85b",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
-    "date": "2026-10-05T14:46:29+00:00",
-    "message": "Document isAuthorized return value"
-  },
-  {
-    "hash": "068da5de",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T14:46:22+00:00",
-    "message": "Document canAddHolding return value"
   },
   {
     "hash": "068da5de",
@@ -856,6 +912,13 @@
   {
     "hash": "068da5de",
     "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "date": "2026-10-05T14:46:22+00:00",
+    "message": "Document canAddHolding return value"
+  },
+  {
+    "hash": "068da5de",
+    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
     "date": "2026-10-05T14:46:22+00:00",
     "message": "Document canAddHolding return value"
@@ -863,14 +926,14 @@
   {
     "hash": "068da5de",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
     "date": "2026-10-05T14:46:22+00:00",
     "message": "Document canAddHolding return value"
   },
   {
     "hash": "fa43871c",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalScale",
+    "branch": "mvadari/rearch/vault-roundToVaultScale",
     "date": "2026-10-05T14:46:19+00:00",
     "message": "Document assetsTotalScale() and minimumBrokerCover()"
   },
@@ -884,21 +947,21 @@
   {
     "hash": "fa43871c",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "branch": "mvadari/rearch/vault-assetsTotalScale",
     "date": "2026-10-05T14:46:19+00:00",
     "message": "Document assetsTotalScale() and minimumBrokerCover()"
   },
   {
     "hash": "01a21f5f",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-createMPToken",
+    "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
     "date": "2026-10-05T14:45:59+00:00",
     "message": "Document MPTokenEntry::create parameters"
   },
   {
     "hash": "01a21f5f",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
     "date": "2026-10-05T14:45:59+00:00",
     "message": "Document MPTokenEntry::create parameters"
   },
@@ -926,35 +989,14 @@
   {
     "hash": "01a21f5f",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "branch": "mvadari/rearch/mptoken-createMPToken",
     "date": "2026-10-05T14:45:59+00:00",
     "message": "Document MPTokenEntry::create parameters"
   },
   {
     "hash": "dd8da37d",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-isDeepFrozen",
-    "date": "2026-10-05T14:45:55+00:00",
-    "message": "Document isDeepFrozen return value"
-  },
-  {
-    "hash": "dd8da37d",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
-    "date": "2026-10-05T14:45:55+00:00",
-    "message": "Document isDeepFrozen return value"
-  },
-  {
-    "hash": "dd8da37d",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
-    "date": "2026-10-05T14:45:55+00:00",
-    "message": "Document isDeepFrozen return value"
-  },
-  {
-    "hash": "dd8da37d",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-requireAuth",
     "date": "2026-10-05T14:45:55+00:00",
     "message": "Document isDeepFrozen return value"
   },
@@ -973,16 +1015,30 @@
     "message": "Document isDeepFrozen return value"
   },
   {
-    "hash": "0a0c7615",
+    "hash": "dd8da37d",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
-    "date": "2026-10-05T14:45:54+00:00",
-    "message": "Document assetsTotalForWithdrawal() return value"
+    "branch": "mvadari/rearch/ripplestate-requireAuth",
+    "date": "2026-10-05T14:45:55+00:00",
+    "message": "Document isDeepFrozen return value"
+  },
+  {
+    "hash": "dd8da37d",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-isDeepFrozen",
+    "date": "2026-10-05T14:45:55+00:00",
+    "message": "Document isDeepFrozen return value"
+  },
+  {
+    "hash": "dd8da37d",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
+    "date": "2026-10-05T14:45:55+00:00",
+    "message": "Document isDeepFrozen return value"
   },
   {
     "hash": "0a0c7615",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalScale",
+    "branch": "mvadari/rearch/vault-roundToVaultScale",
     "date": "2026-10-05T14:45:54+00:00",
     "message": "Document assetsTotalForWithdrawal() return value"
   },
@@ -996,16 +1052,16 @@
   {
     "hash": "0a0c7615",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "branch": "mvadari/rearch/vault-assetsTotalScale",
     "date": "2026-10-05T14:45:54+00:00",
     "message": "Document assetsTotalForWithdrawal() return value"
   },
   {
-    "hash": "b17e613e",
+    "hash": "0a0c7615",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T14:45:53+00:00",
-    "message": "Document transferRate return value"
+    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
+    "date": "2026-10-05T14:45:54+00:00",
+    "message": "Document assetsTotalForWithdrawal() return value"
   },
   {
     "hash": "b17e613e",
@@ -1038,6 +1094,13 @@
   {
     "hash": "b17e613e",
     "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "date": "2026-10-05T14:45:53+00:00",
+    "message": "Document transferRate return value"
+  },
+  {
+    "hash": "b17e613e",
+    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
     "date": "2026-10-05T14:45:53+00:00",
     "message": "Document transferRate return value"
@@ -1045,7 +1108,7 @@
   {
     "hash": "b17e613e",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
     "date": "2026-10-05T14:45:53+00:00",
     "message": "Document transferRate return value"
   },
@@ -1080,21 +1143,7 @@
   {
     "hash": "4d30c9a7",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
-    "date": "2026-10-05T14:45:30+00:00",
-    "message": "Document phase() return value"
-  },
-  {
-    "hash": "4d30c9a7",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalScale",
-    "date": "2026-10-05T14:45:30+00:00",
-    "message": "Document phase() return value"
-  },
-  {
-    "hash": "4d30c9a7",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-clampToAssetsTotalScale",
+    "branch": "mvadari/rearch/vault-roundToVaultScale",
     "date": "2026-10-05T14:45:30+00:00",
     "message": "Document phase() return value"
   },
@@ -1108,6 +1157,20 @@
   {
     "hash": "4d30c9a7",
     "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-assetsTotalScale",
+    "date": "2026-10-05T14:45:30+00:00",
+    "message": "Document phase() return value"
+  },
+  {
+    "hash": "4d30c9a7",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
+    "date": "2026-10-05T14:45:30+00:00",
+    "message": "Document phase() return value"
+  },
+  {
+    "hash": "4d30c9a7",
+    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/vault-getVaultPhase",
     "date": "2026-10-05T14:45:30+00:00",
     "message": "Document phase() return value"
@@ -1115,23 +1178,9 @@
   {
     "hash": "4d30c9a7",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "branch": "mvadari/rearch/vault-clampToAssetsTotalScale",
     "date": "2026-10-05T14:45:30+00:00",
     "message": "Document phase() return value"
-  },
-  {
-    "hash": "8fa25ee5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
-    "date": "2026-10-05T14:45:28+00:00",
-    "message": "Document availableAmount return value"
-  },
-  {
-    "hash": "8fa25ee5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T14:45:28+00:00",
-    "message": "Document availableAmount return value"
   },
   {
     "hash": "8fa25ee5",
@@ -1164,6 +1213,13 @@
   {
     "hash": "8fa25ee5",
     "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "date": "2026-10-05T14:45:28+00:00",
+    "message": "Document availableAmount return value"
+  },
+  {
+    "hash": "8fa25ee5",
+    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
     "date": "2026-10-05T14:45:28+00:00",
     "message": "Document availableAmount return value"
@@ -1171,7 +1227,7 @@
   {
     "hash": "8fa25ee5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
     "date": "2026-10-05T14:45:28+00:00",
     "message": "Document availableAmount return value"
   },
@@ -1183,11 +1239,11 @@
     "message": "Document availableAmount return value"
   },
   {
-    "hash": "5e2e5bf4",
+    "hash": "8fa25ee5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-createMPToken",
-    "date": "2026-10-05T14:45:25+00:00",
-    "message": "Document isFrozen return value"
+    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
+    "date": "2026-10-05T14:45:28+00:00",
+    "message": "Document availableAmount return value"
   },
   {
     "hash": "5e2e5bf4",
@@ -1199,7 +1255,7 @@
   {
     "hash": "5e2e5bf4",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-isFrozen",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
     "date": "2026-10-05T14:45:25+00:00",
     "message": "Document isFrozen return value"
   },
@@ -1227,14 +1283,28 @@
   {
     "hash": "5e2e5bf4",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "branch": "mvadari/rearch/mptoken-createMPToken",
+    "date": "2026-10-05T14:45:25+00:00",
+    "message": "Document isFrozen return value"
+  },
+  {
+    "hash": "5e2e5bf4",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-isFrozen",
     "date": "2026-10-05T14:45:25+00:00",
     "message": "Document isFrozen return value"
   },
   {
     "hash": "d697b784",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-accountReserve",
+    "branch": "mvadari/rearch/accountroot-transferRate",
+    "date": "2026-10-05T14:45:24+00:00",
+    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
+  },
+  {
+    "hash": "d697b784",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
     "date": "2026-10-05T14:45:24+00:00",
     "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
   },
@@ -1248,35 +1318,7 @@
   {
     "hash": "d697b784",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-checkReserve",
-    "date": "2026-10-05T14:45:24+00:00",
-    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
-  },
-  {
-    "hash": "d697b784",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/accountroot-createPseudoAccount",
-    "date": "2026-10-05T14:45:24+00:00",
-    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
-  },
-  {
-    "hash": "d697b784",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
-    "date": "2026-10-05T14:45:24+00:00",
-    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
-  },
-  {
-    "hash": "d697b784",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
-    "date": "2026-10-05T14:45:24+00:00",
-    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
-  },
-  {
-    "hash": "d697b784",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
     "date": "2026-10-05T14:45:24+00:00",
     "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
   },
@@ -1297,7 +1339,14 @@
   {
     "hash": "d697b784",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-transferRate",
+    "branch": "mvadari/rearch/typesafe2",
+    "date": "2026-10-05T14:45:24+00:00",
+    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
+  },
+  {
+    "hash": "d697b784",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-accountReserve",
     "date": "2026-10-05T14:45:24+00:00",
     "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
   },
@@ -1311,7 +1360,21 @@
   {
     "hash": "d697b784",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/typesafe2",
+    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
+    "date": "2026-10-05T14:45:24+00:00",
+    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
+  },
+  {
+    "hash": "d697b784",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
+    "date": "2026-10-05T14:45:24+00:00",
+    "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
+  },
+  {
+    "hash": "d697b784",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-checkReserve",
     "date": "2026-10-05T14:45:24+00:00",
     "message": "Document escrowDestNotAccountResult and isPseudoAccountSle parameters and return value"
   },
@@ -1325,30 +1388,16 @@
   {
     "hash": "57da6709",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-insertToken",
+    "branch": "mvadari/rearch/nftokenpage-removeToken",
     "date": "2026-10-05T14:45:21+00:00",
     "message": "Document insertToken parameters"
   },
   {
     "hash": "57da6709",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-removeToken",
+    "branch": "mvadari/rearch/nftokenpage-insertToken",
     "date": "2026-10-05T14:45:21+00:00",
     "message": "Document insertToken parameters"
-  },
-  {
-    "hash": "0a40c8e6",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
-    "date": "2026-10-05T14:45:03+00:00",
-    "message": "Document maxAmount return value"
-  },
-  {
-    "hash": "0a40c8e6",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T14:45:03+00:00",
-    "message": "Document maxAmount return value"
   },
   {
     "hash": "0a40c8e6",
@@ -1381,13 +1430,6 @@
   {
     "hash": "0a40c8e6",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
-    "date": "2026-10-05T14:45:03+00:00",
-    "message": "Document maxAmount return value"
-  },
-  {
-    "hash": "0a40c8e6",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
     "date": "2026-10-05T14:45:03+00:00",
     "message": "Document maxAmount return value"
@@ -1395,7 +1437,14 @@
   {
     "hash": "0a40c8e6",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
+    "date": "2026-10-05T14:45:03+00:00",
+    "message": "Document maxAmount return value"
+  },
+  {
+    "hash": "0a40c8e6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
     "date": "2026-10-05T14:45:03+00:00",
     "message": "Document maxAmount return value"
   },
@@ -1407,16 +1456,51 @@
     "message": "Document maxAmount return value"
   },
   {
+    "hash": "0a40c8e6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
+    "date": "2026-10-05T14:45:03+00:00",
+    "message": "Document maxAmount return value"
+  },
+  {
+    "hash": "0a40c8e6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+    "date": "2026-10-05T14:45:03+00:00",
+    "message": "Document maxAmount return value"
+  },
+  {
     "hash": "2978330b",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-isDeepFrozen",
+    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
     "date": "2026-10-05T14:45:02+00:00",
     "message": "Document isIndividualFrozen parameters and return value"
   },
   {
     "hash": "2978330b",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-isFrozen",
+    "branch": "mvadari/rearch/ripplestate-trustCreate",
+    "date": "2026-10-05T14:45:02+00:00",
+    "message": "Document isIndividualFrozen parameters and return value"
+  },
+  {
+    "hash": "2978330b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-trustDelete",
+    "date": "2026-10-05T14:45:02+00:00",
+    "message": "Document isIndividualFrozen parameters and return value"
+  },
+  {
+    "hash": "2978330b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-requireAuth",
+    "date": "2026-10-05T14:45:02+00:00",
+    "message": "Document isIndividualFrozen parameters and return value"
+  },
+  {
+    "hash": "2978330b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-isDeepFrozen",
     "date": "2026-10-05T14:45:02+00:00",
     "message": "Document isIndividualFrozen parameters and return value"
   },
@@ -1437,84 +1521,14 @@
   {
     "hash": "2978330b",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
+    "branch": "mvadari/rearch/ripplestate-isFrozen",
     "date": "2026-10-05T14:45:02+00:00",
     "message": "Document isIndividualFrozen parameters and return value"
-  },
-  {
-    "hash": "2978330b",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-requireAuth",
-    "date": "2026-10-05T14:45:02+00:00",
-    "message": "Document isIndividualFrozen parameters and return value"
-  },
-  {
-    "hash": "2978330b",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustCreate",
-    "date": "2026-10-05T14:45:02+00:00",
-    "message": "Document isIndividualFrozen parameters and return value"
-  },
-  {
-    "hash": "2978330b",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustDelete",
-    "date": "2026-10-05T14:45:02+00:00",
-    "message": "Document isIndividualFrozen parameters and return value"
-  },
-  {
-    "hash": "48d98819",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-changeTokenURI",
-    "date": "2026-10-05T14:44:56+00:00",
-    "message": "Document findToken parameters and return value"
-  },
-  {
-    "hash": "48d98819",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-findToken",
-    "date": "2026-10-05T14:44:56+00:00",
-    "message": "Document findToken parameters and return value"
-  },
-  {
-    "hash": "48d98819",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-findTokenAndPage",
-    "date": "2026-10-05T14:44:56+00:00",
-    "message": "Document findToken parameters and return value"
-  },
-  {
-    "hash": "48d98819",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-insertToken",
-    "date": "2026-10-05T14:44:56+00:00",
-    "message": "Document findToken parameters and return value"
-  },
-  {
-    "hash": "48d98819",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-removeToken",
-    "date": "2026-10-05T14:44:56+00:00",
-    "message": "Document findToken parameters and return value"
   },
   {
     "hash": "991fff02",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
-    "date": "2026-10-05T14:44:56+00:00",
-    "message": "Document kind() return value"
-  },
-  {
-    "hash": "991fff02",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalScale",
-    "date": "2026-10-05T14:44:56+00:00",
-    "message": "Document kind() return value"
-  },
-  {
-    "hash": "991fff02",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-clampToAssetsTotalScale",
+    "branch": "mvadari/rearch/vault-roundToVaultScale",
     "date": "2026-10-05T14:44:56+00:00",
     "message": "Document kind() return value"
   },
@@ -1528,9 +1542,30 @@
   {
     "hash": "991fff02",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-getVaultKind",
+    "branch": "mvadari/rearch/vault-assetsTotalScale",
     "date": "2026-10-05T14:44:56+00:00",
     "message": "Document kind() return value"
+  },
+  {
+    "hash": "991fff02",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
+    "date": "2026-10-05T14:44:56+00:00",
+    "message": "Document kind() return value"
+  },
+  {
+    "hash": "48d98819",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-changeTokenURI",
+    "date": "2026-10-05T14:44:56+00:00",
+    "message": "Document findToken parameters and return value"
+  },
+  {
+    "hash": "48d98819",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-removeToken",
+    "date": "2026-10-05T14:44:56+00:00",
+    "message": "Document findToken parameters and return value"
   },
   {
     "hash": "991fff02",
@@ -1540,18 +1575,39 @@
     "message": "Document kind() return value"
   },
   {
+    "hash": "48d98819",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-insertToken",
+    "date": "2026-10-05T14:44:56+00:00",
+    "message": "Document findToken parameters and return value"
+  },
+  {
+    "hash": "48d98819",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-findToken",
+    "date": "2026-10-05T14:44:56+00:00",
+    "message": "Document findToken parameters and return value"
+  },
+  {
     "hash": "991fff02",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "branch": "mvadari/rearch/vault-getVaultKind",
     "date": "2026-10-05T14:44:56+00:00",
     "message": "Document kind() return value"
   },
   {
-    "hash": "b1903290",
+    "hash": "991fff02",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-createMPToken",
-    "date": "2026-10-05T14:44:53+00:00",
-    "message": "Document isIndividualFrozen return value"
+    "branch": "mvadari/rearch/vault-clampToAssetsTotalScale",
+    "date": "2026-10-05T14:44:56+00:00",
+    "message": "Document kind() return value"
+  },
+  {
+    "hash": "48d98819",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-findTokenAndPage",
+    "date": "2026-10-05T14:44:56+00:00",
+    "message": "Document findToken parameters and return value"
   },
   {
     "hash": "b1903290",
@@ -1563,14 +1619,7 @@
   {
     "hash": "b1903290",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-isFrozen",
-    "date": "2026-10-05T14:44:53+00:00",
-    "message": "Document isIndividualFrozen return value"
-  },
-  {
-    "hash": "b1903290",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-isIndividualFrozen",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
     "date": "2026-10-05T14:44:53+00:00",
     "message": "Document isIndividualFrozen return value"
   },
@@ -1598,56 +1647,28 @@
   {
     "hash": "b1903290",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "branch": "mvadari/rearch/mptoken-createMPToken",
+    "date": "2026-10-05T14:44:53+00:00",
+    "message": "Document isIndividualFrozen return value"
+  },
+  {
+    "hash": "b1903290",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-isFrozen",
+    "date": "2026-10-05T14:44:53+00:00",
+    "message": "Document isIndividualFrozen return value"
+  },
+  {
+    "hash": "b1903290",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-isIndividualFrozen",
     "date": "2026-10-05T14:44:53+00:00",
     "message": "Document isIndividualFrozen return value"
   },
   {
     "hash": "699d9b16",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-creditLimit",
-    "date": "2026-10-05T14:44:19+00:00",
-    "message": "Document creditLimit and creditBalance parameters and return value"
-  },
-  {
-    "hash": "699d9b16",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-isDeepFrozen",
-    "date": "2026-10-05T14:44:19+00:00",
-    "message": "Document creditLimit and creditBalance parameters and return value"
-  },
-  {
-    "hash": "699d9b16",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-isFrozen",
-    "date": "2026-10-05T14:44:19+00:00",
-    "message": "Document creditLimit and creditBalance parameters and return value"
-  },
-  {
-    "hash": "699d9b16",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-isIndividualFrozen",
-    "date": "2026-10-05T14:44:19+00:00",
-    "message": "Document creditLimit and creditBalance parameters and return value"
-  },
-  {
-    "hash": "699d9b16",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
-    "date": "2026-10-05T14:44:19+00:00",
-    "message": "Document creditLimit and creditBalance parameters and return value"
-  },
-  {
-    "hash": "699d9b16",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
-    "date": "2026-10-05T14:44:19+00:00",
-    "message": "Document creditLimit and creditBalance parameters and return value"
-  },
-  {
-    "hash": "699d9b16",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-requireAuth",
     "date": "2026-10-05T14:44:19+00:00",
     "message": "Document creditLimit and creditBalance parameters and return value"
   },
@@ -1666,25 +1687,53 @@
     "message": "Document creditLimit and creditBalance parameters and return value"
   },
   {
+    "hash": "699d9b16",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-requireAuth",
+    "date": "2026-10-05T14:44:19+00:00",
+    "message": "Document creditLimit and creditBalance parameters and return value"
+  },
+  {
+    "hash": "699d9b16",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-isDeepFrozen",
+    "date": "2026-10-05T14:44:19+00:00",
+    "message": "Document creditLimit and creditBalance parameters and return value"
+  },
+  {
+    "hash": "699d9b16",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-isIndividualFrozen",
+    "date": "2026-10-05T14:44:19+00:00",
+    "message": "Document creditLimit and creditBalance parameters and return value"
+  },
+  {
+    "hash": "699d9b16",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-creditLimit",
+    "date": "2026-10-05T14:44:19+00:00",
+    "message": "Document creditLimit and creditBalance parameters and return value"
+  },
+  {
+    "hash": "699d9b16",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
+    "date": "2026-10-05T14:44:19+00:00",
+    "message": "Document creditLimit and creditBalance parameters and return value"
+  },
+  {
+    "hash": "699d9b16",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-isFrozen",
+    "date": "2026-10-05T14:44:19+00:00",
+    "message": "Document creditLimit and creditBalance parameters and return value"
+  },
+  {
     "hash": "25ab9704",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/slebase-ergonomics",
     "date": "2026-10-05T14:43:34+00:00",
     "message": "refactor: Make SLE entries assignable"
-  },
-  {
-    "hash": "63751ecb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
-    "date": "2026-10-05T14:43:21+00:00",
-    "message": "Document isGlobalFrozen return value"
-  },
-  {
-    "hash": "63751ecb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T14:43:21+00:00",
-    "message": "Document isGlobalFrozen return value"
   },
   {
     "hash": "63751ecb",
@@ -1697,13 +1746,6 @@
     "hash": "63751ecb",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-canTransfer",
-    "date": "2026-10-05T14:43:21+00:00",
-    "message": "Document isGlobalFrozen return value"
-  },
-  {
-    "hash": "63751ecb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-isGlobalFrozen",
     "date": "2026-10-05T14:43:21+00:00",
     "message": "Document isGlobalFrozen return value"
   },
@@ -1724,6 +1766,13 @@
   {
     "hash": "63751ecb",
     "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "date": "2026-10-05T14:43:21+00:00",
+    "message": "Document isGlobalFrozen return value"
+  },
+  {
+    "hash": "63751ecb",
+    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
     "date": "2026-10-05T14:43:21+00:00",
     "message": "Document isGlobalFrozen return value"
@@ -1731,7 +1780,21 @@
   {
     "hash": "63751ecb",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
+    "date": "2026-10-05T14:43:21+00:00",
+    "message": "Document isGlobalFrozen return value"
+  },
+  {
+    "hash": "63751ecb",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-transferRate",
+    "date": "2026-10-05T14:43:21+00:00",
+    "message": "Document isGlobalFrozen return value"
+  },
+  {
+    "hash": "63751ecb",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
     "date": "2026-10-05T14:43:21+00:00",
     "message": "Document isGlobalFrozen return value"
   },
@@ -1745,7 +1808,7 @@
   {
     "hash": "63751ecb",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-transferRate",
+    "branch": "mvadari/rearch/mptokenissuance-isGlobalFrozen",
     "date": "2026-10-05T14:43:21+00:00",
     "message": "Document isGlobalFrozen return value"
   },
@@ -1813,65 +1876,16 @@
     "message": "fix: Avoid exception computing taker_pays_funded in getBookPage"
   },
   {
-    "hash": "269f79e5",
+    "hash": "3cca9d32",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-accountReserve",
+    "branch": "mvadari/rearch/sle-test-extern-template",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "269f79e5",
+    "hash": "b735ba80",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-checkDestinationAndTag",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "269f79e5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-checkReserve",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "269f79e5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-createPseudoAccount",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "269f79e5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "269f79e5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "269f79e5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "269f79e5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isPseudoAccount",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "269f79e5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-ownerCount",
+    "branch": "mvadari/rearch/offer-entry",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
@@ -1885,56 +1899,133 @@
   {
     "hash": "269f79e5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-xrpLiquid",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "2def8be3",
+    "hash": "269f79e5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-ammHolds",
+    "branch": "mvadari/rearch/accountroot-checkDestinationAndTag",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "2def8be3",
+    "hash": "a90a2cd5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-ammLPHolds",
+    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "2def8be3",
+    "hash": "7f0ce988",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-getTradingFee",
+    "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "2def8be3",
+    "hash": "269f79e5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-initializeFeeAuctionVote",
+    "branch": "mvadari/rearch/accountroot-createPseudoAccount",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "2def8be3",
+    "hash": "a90a2cd5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-verifyAndAdjustLPTokenBalance",
+    "branch": "mvadari/rearch/ripplestate-trustCreate",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "0872ef04",
+    "hash": "4d14f5ac",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/credential-deleteSLE",
+    "branch": "mvadari/rearch/mptokenissuance-canTrade",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "0872ef04",
+    "hash": "7f0ce988",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/credential-valid",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-canTransfer",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "7f0ce988",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-lockEscrowMPT",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "269f79e5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-isPseudoAccount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-isSoleShareholder",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "a90a2cd5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-trustDelete",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "558e381d",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/oracle-entry",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "345a870b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "7f0ce988",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-removeEmptyHolding",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "8c405396",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ticket-entry",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
@@ -1953,6 +2044,153 @@
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
+    "hash": "53984ccd",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/sponsorship-entry",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "345a870b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-clawbackAmount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "269f79e5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-ownerCount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "7f0ce988",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-requireAuth",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "345a870b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-assetsTotalScale",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "7f0ce988",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-createMPToken",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "345a870b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-transferRate",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "d6e8b9d2",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-changeTokenURI",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "d6e8b9d2",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-removeToken",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "345a870b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-getVaultPhase",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "7f0ce988",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-isFrozen",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "d6e8b9d2",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-insertToken",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "4d14f5ac",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "345a870b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-getVaultKind",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "269f79e5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-accountReserve",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "2def8be3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-ammHolds",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "0872ef04",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/credential-deleteSLE",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
     "hash": "efe43738",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/did-entry",
@@ -1967,149 +2205,9 @@
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "72dda481",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/loan-isPaymentLate",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "72dda481",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/loan-loanVaultExposure",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "dbbd8c9f",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/loanbroker-adjustLoanBrokerOwnerCount",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
     "hash": "dbbd8c9f",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/loanbroker-canApplyToBrokerCover",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "7f0ce988",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-createMPToken",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "7f0ce988",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "7f0ce988",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-isFrozen",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "7f0ce988",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-lockEscrowMPT",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "7f0ce988",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-removeEmptyHolding",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "7f0ce988",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-requireAuth",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "7f0ce988",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canTrade",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canTransfer",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-isSoleShareholder",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-maxMPTAmount",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "4d14f5ac",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-transferRate",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
@@ -2121,72 +2219,9 @@
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "d6e8b9d2",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-changeTokenURI",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "d6e8b9d2",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-insertToken",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "d6e8b9d2",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-removeToken",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "b735ba80",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/offer-entry",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "558e381d",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/oracle-entry",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
     "hash": "beae9832",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/paychannel-entry",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "a90a2cd5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "a90a2cd5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "a90a2cd5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustCreate",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "a90a2cd5",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustDelete",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
@@ -2198,37 +2233,86 @@
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "3cca9d32",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/sle-test-extern-template",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "53984ccd",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/sponsorship-entry",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "8c405396",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ticket-entry",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
     "hash": "345a870b",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
+    "branch": "mvadari/rearch/vault-getVaultVersion",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "345a870b",
+    "hash": "269f79e5",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalScale",
+    "branch": "mvadari/rearch/accountroot-xrpLiquid",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "2def8be3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-verifyAndAdjustLPTokenBalance",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "2def8be3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-initializeFeeAuctionVote",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "2def8be3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-getTradingFee",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "2def8be3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-ammLPHolds",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "269f79e5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "a90a2cd5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "269f79e5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "dbbd8c9f",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/loanbroker-adjustLoanBrokerOwnerCount",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "0872ef04",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/credential-valid",
+    "date": "2026-10-05T13:36:02+00:00",
+    "message": "Include Keylet.h in the SLEBase test"
+  },
+  {
+    "hash": "269f79e5",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-checkReserve",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
@@ -2240,100 +2324,30 @@
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "345a870b",
+    "hash": "72dda481",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-clawbackAmount",
+    "branch": "mvadari/rearch/loan-loanVaultExposure",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "345a870b",
+    "hash": "72dda481",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-getVaultKind",
+    "branch": "mvadari/rearch/loan-isPaymentLate",
     "date": "2026-10-05T13:36:02+00:00",
     "message": "Include Keylet.h in the SLEBase test"
   },
   {
-    "hash": "345a870b",
+    "hash": "611415e1",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-getVaultPhase",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "345a870b",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-getVaultVersion",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "345a870b",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-roundToVaultScale",
-    "date": "2026-10-05T13:36:02+00:00",
-    "message": "Include Keylet.h in the SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-accountReserve",
+    "branch": "mvadari/rearch/sle-test-extern-template",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "e7a8e033",
+    "hash": "bcf85e51",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-checkDestinationAndTag",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-checkReserve",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-createPseudoAccount",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-isPseudoAccount",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e7a8e033",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-ownerCount",
+    "branch": "mvadari/rearch/offer-entry",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
@@ -2347,56 +2361,133 @@
   {
     "hash": "e7a8e033",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/accountroot-xrpLiquid",
+    "branch": "mvadari/rearch/accountroot-isGlobalFrozen",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "1e188297",
+    "hash": "e7a8e033",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-ammHolds",
+    "branch": "mvadari/rearch/accountroot-checkDestinationAndTag",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "1e188297",
+    "hash": "f4066000",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-ammLPHolds",
+    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "1e188297",
+    "hash": "1b8074cb",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-getTradingFee",
+    "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "1e188297",
+    "hash": "e7a8e033",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-initializeFeeAuctionVote",
+    "branch": "mvadari/rearch/accountroot-createPseudoAccount",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "1e188297",
+    "hash": "f4066000",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/amm-verifyAndAdjustLPTokenBalance",
+    "branch": "mvadari/rearch/ripplestate-trustCreate",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "39390ad4",
+    "hash": "517a2f23",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/credential-deleteSLE",
+    "branch": "mvadari/rearch/mptokenissuance-canTrade",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "39390ad4",
+    "hash": "1b8074cb",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/credential-valid",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-canTransfer",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1b8074cb",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-lockEscrowMPT",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "e7a8e033",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-isPseudoAccount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-isSoleShareholder",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "f4066000",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-trustDelete",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "ca84b7cf",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/oracle-entry",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "03438164",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1b8074cb",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-removeEmptyHolding",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "8972740b",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ticket-entry",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
@@ -2415,6 +2506,153 @@
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
+    "hash": "e5010cb4",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/sponsorship-entry",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "03438164",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-clawbackAmount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "e7a8e033",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-ownerCount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1b8074cb",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-requireAuth",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "03438164",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-assetsTotalScale",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1b8074cb",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-createMPToken",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "03438164",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-transferRate",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "3571bfe2",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-changeTokenURI",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "3571bfe2",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-removeToken",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "03438164",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-getVaultPhase",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1b8074cb",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-isFrozen",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "3571bfe2",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/nftokenpage-insertToken",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "517a2f23",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "03438164",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/vault-getVaultKind",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "e7a8e033",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-accountReserve",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1e188297",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-ammHolds",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "39390ad4",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/credential-deleteSLE",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
     "hash": "70e648aa",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/did-entry",
@@ -2429,149 +2667,9 @@
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "7e25d8cd",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/loan-isPaymentLate",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "7e25d8cd",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/loan-loanVaultExposure",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "c0144877",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/loanbroker-adjustLoanBrokerOwnerCount",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
     "hash": "c0144877",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/loanbroker-canApplyToBrokerCover",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "1b8074cb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-createMPToken",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "1b8074cb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "1b8074cb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-isFrozen",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "1b8074cb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-lockEscrowMPT",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "1b8074cb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-removeEmptyHolding",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "1b8074cb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-requireAuth",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "1b8074cb",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canTrade",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canTransfer",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-isSoleShareholder",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-maxMPTAmount",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "517a2f23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-transferRate",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
@@ -2583,72 +2681,9 @@
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "3571bfe2",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-changeTokenURI",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "3571bfe2",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-insertToken",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "3571bfe2",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/nftokenpage-removeToken",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "bcf85e51",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/offer-entry",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "ca84b7cf",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/oracle-entry",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
     "hash": "cc7aab03",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/paychannel-entry",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "f4066000",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "f4066000",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-removeEmptyHolding",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "f4066000",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustCreate",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "f4066000",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ripplestate-trustDelete",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
@@ -2660,37 +2695,86 @@
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "611415e1",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/sle-test-extern-template",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "e5010cb4",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/sponsorship-entry",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "8972740b",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/ticket-entry",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
     "hash": "03438164",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalForWithdrawal",
+    "branch": "mvadari/rearch/vault-getVaultVersion",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "03438164",
+    "hash": "e7a8e033",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-assetsTotalScale",
+    "branch": "mvadari/rearch/accountroot-xrpLiquid",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1e188297",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-verifyAndAdjustLPTokenBalance",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1e188297",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-initializeFeeAuctionVote",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1e188297",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-getTradingFee",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "1e188297",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/amm-ammLPHolds",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "e7a8e033",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-decreaseOwnerCount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "f4066000",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/ripplestate-nftCheckTrustline",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "e7a8e033",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-increaseOwnerCount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "c0144877",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/loanbroker-adjustLoanBrokerOwnerCount",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "39390ad4",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/credential-valid",
+    "date": "2026-10-05T13:32:44+00:00",
+    "message": "test: Drop extern template declarations from SLEBase test"
+  },
+  {
+    "hash": "e7a8e033",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/accountroot-checkReserve",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
@@ -2702,37 +2786,16 @@
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "03438164",
+    "hash": "7e25d8cd",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-clawbackAmount",
+    "branch": "mvadari/rearch/loan-loanVaultExposure",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
   {
-    "hash": "03438164",
+    "hash": "7e25d8cd",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-getVaultKind",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "03438164",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-getVaultPhase",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "03438164",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-getVaultVersion",
-    "date": "2026-10-05T13:32:44+00:00",
-    "message": "test: Drop extern template declarations from SLEBase test"
-  },
-  {
-    "hash": "03438164",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/vault-roundToVaultScale",
+    "branch": "mvadari/rearch/loan-isPaymentLate",
     "date": "2026-10-05T13:32:44+00:00",
     "message": "test: Drop extern template declarations from SLEBase test"
   },
@@ -2746,20 +2809,6 @@
   {
     "hash": "aad945ff",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
-    "date": "2026-10-05T13:18:04+00:00",
-    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
-  },
-  {
-    "hash": "aad945ff",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
-    "date": "2026-10-05T13:18:04+00:00",
-    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
-  },
-  {
-    "hash": "aad945ff",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-canTrade",
     "date": "2026-10-05T13:18:04+00:00",
     "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
@@ -2768,20 +2817,6 @@
     "hash": "aad945ff",
     "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-canTransfer",
-    "date": "2026-10-05T13:18:04+00:00",
-    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
-  },
-  {
-    "hash": "aad945ff",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-entry",
-    "date": "2026-10-05T13:18:04+00:00",
-    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
-  },
-  {
-    "hash": "aad945ff",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-isGlobalFrozen",
     "date": "2026-10-05T13:18:04+00:00",
     "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
   },
@@ -2802,6 +2837,13 @@
   {
     "hash": "aad945ff",
     "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "date": "2026-10-05T13:18:04+00:00",
+    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
+  },
+  {
+    "hash": "aad945ff",
+    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
     "date": "2026-10-05T13:18:04+00:00",
     "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
@@ -2809,7 +2851,21 @@
   {
     "hash": "aad945ff",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+    "branch": "mvadari/rearch/mptokenissuance-canAddHolding",
+    "date": "2026-10-05T13:18:04+00:00",
+    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
+  },
+  {
+    "hash": "aad945ff",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-transferRate",
+    "date": "2026-10-05T13:18:04+00:00",
+    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
+  },
+  {
+    "hash": "aad945ff",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-availableMPTAmount",
     "date": "2026-10-05T13:18:04+00:00",
     "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
   },
@@ -2823,7 +2879,14 @@
   {
     "hash": "aad945ff",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptokenissuance-transferRate",
+    "branch": "mvadari/rearch/mptokenissuance-isGlobalFrozen",
+    "date": "2026-10-05T13:18:04+00:00",
+    "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
+  },
+  {
+    "hash": "aad945ff",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptokenissuance-entry",
     "date": "2026-10-05T13:18:04+00:00",
     "message": "refactor: Use MPTokenIssuanceEntry in ConfidentialMPTHolderKeyUpdate"
   },
@@ -2858,13 +2921,6 @@
   {
     "hash": "a65d5595",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-createMPToken",
-    "date": "2026-10-05T12:57:03+00:00",
-    "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
-  },
-  {
-    "hash": "a65d5595",
-    "author": "Mayukha Vadari",
     "branch": "mvadari/rearch/mptoken-deleteAMMMPToken",
     "date": "2026-10-05T12:57:03+00:00",
     "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
@@ -2872,21 +2928,7 @@
   {
     "hash": "a65d5595",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-entry",
-    "date": "2026-10-05T12:57:03+00:00",
-    "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
-  },
-  {
-    "hash": "a65d5595",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-isFrozen",
-    "date": "2026-10-05T12:57:03+00:00",
-    "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
-  },
-  {
-    "hash": "a65d5595",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-isIndividualFrozen",
+    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
     "date": "2026-10-05T12:57:03+00:00",
     "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
   },
@@ -2914,7 +2956,28 @@
   {
     "hash": "a65d5595",
     "author": "Mayukha Vadari",
-    "branch": "mvadari/rearch/mptoken-unlockEscrowMPT",
+    "branch": "mvadari/rearch/mptoken-createMPToken",
+    "date": "2026-10-05T12:57:03+00:00",
+    "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
+  },
+  {
+    "hash": "a65d5595",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-isFrozen",
+    "date": "2026-10-05T12:57:03+00:00",
+    "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
+  },
+  {
+    "hash": "a65d5595",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-isIndividualFrozen",
+    "date": "2026-10-05T12:57:03+00:00",
+    "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
+  },
+  {
+    "hash": "a65d5595",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/rearch/mptoken-entry",
     "date": "2026-10-05T12:57:03+00:00",
     "message": "refactor: Use MPTokenEntry in ConfidentialMPTHolderKeyUpdate"
   },
@@ -3082,132 +3145,6 @@
   {
     "hash": "9328c5a1",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-devbox-two-node-configs",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
-  },
-  {
-    "hash": "1feb3488",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-devbox-two-node-configs",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-  },
-  {
-    "hash": "29f4f3e7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-devbox-two-node-configs",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "9328c5a1",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
-  },
-  {
-    "hash": "1feb3488",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-  },
-  {
-    "hash": "29f4f3e7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "29f4f3e7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "1feb3488",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-  },
-  {
-    "hash": "29f4f3e7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "9328c5a1",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
-  },
-  {
-    "hash": "1feb3488",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-  },
-  {
-    "hash": "29f4f3e7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "9328c5a1",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics-freshen-fix",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
-  },
-  {
-    "hash": "1feb3488",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics-freshen-fix",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-  },
-  {
-    "hash": "29f4f3e7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics-freshen-fix",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "9328c5a1",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics-telemetry-off",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
-  },
-  {
-    "hash": "1feb3488",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics-telemetry-off",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
-  },
-  {
-    "hash": "29f4f3e7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-sync-diagnostics-telemetry-off",
-    "date": "2026-10-04T06:02:54+00:00",
-    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
-  },
-  {
-    "hash": "9328c5a1",
-    "author": "Pratik Mankawde",
     "branch": "pratik/perf-test-otel-on",
     "date": "2026-10-04T06:02:54+00:00",
     "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
@@ -3227,60 +3164,130 @@
     "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
   },
   {
-    "hash": "df18298e",
+    "hash": "9328c5a1",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-devbox-two-node-configs",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
   },
   {
-    "hash": "df18298e",
+    "hash": "1feb3488",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+    "branch": "pratik/otel-devbox-two-node-configs",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
   },
   {
-    "hash": "df18298e",
+    "hash": "29f4f3e7",
     "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+    "branch": "pratik/otel-devbox-two-node-configs",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
   },
   {
-    "hash": "df18298e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-  },
-  {
-    "hash": "df18298e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
-  },
-  {
-    "hash": "df18298e",
+    "hash": "9328c5a1",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-sync-diagnostics",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
   },
   {
-    "hash": "df18298e",
+    "hash": "1feb3488",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "29f4f3e7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "9328c5a1",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-sync-diagnostics-freshen-fix",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
   },
   {
-    "hash": "df18298e",
+    "hash": "1feb3488",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics-freshen-fix",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "29f4f3e7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics-freshen-fix",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "9328c5a1",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-sync-diagnostics-telemetry-off",
-    "date": "2026-10-04T06:02:38+00:00",
-    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
+  },
+  {
+    "hash": "1feb3488",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics-telemetry-off",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "29f4f3e7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics-telemetry-off",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "9328c5a1",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase9-metric-gap-fill' into pratik/otel-phase10-workload-validation"
+  },
+  {
+    "hash": "1feb3488",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "29f4f3e7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "29f4f3e7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
+  },
+  {
+    "hash": "1feb3488",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase8-log-correlation' into pratik/otel-phase9-metric-gap-fill"
+  },
+  {
+    "hash": "29f4f3e7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-10-04T06:02:54+00:00",
+    "message": "Merge branch 'pratik/otel-phase7-native-metrics' into pratik/otel-phase8-log-correlation"
   },
   {
     "hash": "df18298e",
@@ -3290,6 +3297,83 @@
     "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
   },
   {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-devbox-two-node-configs",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics-freshen-fix",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-sync-diagnostics-telemetry-off",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase9-metric-gap-fill",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "df18298e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase7-native-metrics",
+    "date": "2026-10-04T06:02:38+00:00",
+    "message": "Merge branch 'pratik/otel-phase6-statsd' into pratik/otel-phase7-native-metrics"
+  },
+  {
+    "hash": "d1c1d33e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "2fada437",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "7cab1dc7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/perf-test-otel-on",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
     "hash": "d1c1d33e",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-devbox-two-node-configs",
@@ -3307,132 +3391,6 @@
     "hash": "7cab1dc7",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-devbox-two-node-configs",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "d1c1d33e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "2fada437",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "7cab1dc7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase10-workload-validation",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "7cab1dc7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase4-consensus-tracing",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "2fada437",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "7cab1dc7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase5-docs-deployment",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "d1c1d33e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "2fada437",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "7cab1dc7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase6-statsd",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "d1c1d33e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "2fada437",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "7cab1dc7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase7-native-metrics",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "d1c1d33e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "2fada437",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "7cab1dc7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase8-log-correlation",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
-  },
-  {
-    "hash": "d1c1d33e",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
-  },
-  {
-    "hash": "2fada437",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
-    "date": "2026-10-04T06:00:06+00:00",
-    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
-  },
-  {
-    "hash": "7cab1dc7",
-    "author": "Pratik Mankawde",
-    "branch": "pratik/otel-phase9-metric-gap-fill",
     "date": "2026-10-04T06:00:06+00:00",
     "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
   },
@@ -3496,6 +3454,48 @@
     "hash": "7cab1dc7",
     "author": "Pratik Mankawde",
     "branch": "pratik/otel-sync-diagnostics-telemetry-off",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "d1c1d33e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "2fada437",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "7cab1dc7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase10-workload-validation",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
+  },
+  {
+    "hash": "d1c1d33e",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase5-docs-deployment' into pratik/otel-phase6-statsd"
+  },
+  {
+    "hash": "2fada437",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
+    "date": "2026-10-04T06:00:06+00:00",
+    "message": "Merge branch 'pratik/otel-phase4-consensus-tracing' into pratik/otel-phase5-docs-deployment"
+  },
+  {
+    "hash": "7cab1dc7",
+    "author": "Pratik Mankawde",
+    "branch": "pratik/otel-phase8-log-correlation",
     "date": "2026-10-04T06:00:06+00:00",
     "message": "Merge branch 'pratik/otel-phase3-tx-tracing' into pratik/otel-phase4-consensus-tracing"
   }

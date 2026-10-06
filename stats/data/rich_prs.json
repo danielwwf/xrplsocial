@@ -1,5 +1,215 @@
 [
   {
+    "pr_number": 8459,
+    "branch_name": "addtest",
+    "title": "test: Add more tests for granular permissions",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\nPreviously the granular permission check for `permissions.macro` was tested generally.\r\nNow add more specific tests to improve reliability\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_versio",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-01T14:28:58Z",
+    "merged_at": "2026-10-06T00:58:01Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8459?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-01T14:31:42Z"
+      }
+    ],
+    "reviews_count": 19,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe focused test additions correctly validate permission boundaries and preflight behavior.\n\n**Review effort:** Balanc"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nOne sponsorship test exits before reaching the intended granular permission check.\n\n**Review effort:** Balanced  \n**Fin"
+      },
+      {
+        "user": "Kassaking7",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8152,
+    "branch_name": "tialymov/FN-101-loanpay_mpt_cantransfer",
+    "title": "fix: Enforce that MPT issuance flags are never cleared",
+    "body": "## High Level Overview of Change\n\nAdds a check to the `ValidMPTIssuance` invariant, gated on `fixCleanup3_5_0`: no transaction may clear a flag on an `MPTokenIssuance`. The one exception is `lsfMPTLocked`, which `tfMPTUnlock` clears legitimately.\n\n### Context of Change\n\nAn external review of the lending code flagged `LoanPay` for moving a non-transferable MPT (the broker fee leg, borrower to broker owner) without a `lsfMPTCanTransfer` check. Triage showed the state is unreachable: the flag can be enabled after creation (`tfMPTSetCanTransfer` under DynamicMPT, set-once) but never cleared, and `VaultCreate` has refused a non-transferable asset since the first vault commit. No vault, and therefore no loan, can hold such an MPT.\n\nThat conclusion rests on one assumption: issuance flags never revert. Today only `MPTokenIssuanceSet::doApply` upholds it, by construction (flags are only ever ORed in). This PR enforces the assumption in one place, following the pattern already used for loan flags (`lsfLoanOverpayment`, `lsfLoanDefault`).\n\nEarlier commits on this branch added a transferability gate to `LoanPay` fee routing. Since the state it guarded cannot exist, those changes are reverted in favor of the invariant.\n\n### API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\nAmendment-gated consensus change: a transaction that clears an issuance flag fails with `tecINVARIANT_FAILED` once `fixCleanup3_5_0` is active. No such transaction path exists today, so the invariant only fires if a future bug introduces one.\n\n## Test Plan\n\nA direct-mutation test in `InvariantsMPT_test.cpp` creates an MPT and strips `lsfMPTCanTransfer` from the issuance inside the apply context, expecting the invariant to fail. The legal clear path for `lsfMPTLocked` keeps its coverage in the existing MPToken lock/unlock tests, which run with the amendment enabled. The pre-existing invalid-transfer invariant test used to fake a non-transferable issuance by st",
+    "user": "tyalymov",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-01T12:38:23Z",
+    "merged_at": "2026-10-06T00:58:00Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8152?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-01T12:40:35Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-02T12:48:23Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-09-02T20:26:28Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-02T23:40:59Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-05T15:56:15Z"
+      }
+    ],
+    "reviews_count": 28,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The change adds an MPT-transferability check to LoanPay's broker-fee routing, gated by fixCleanup3_4_0, so that a Dynamic MPT whose issuer clears lsfMPTCanTransfer falls back to the cover/pseudo-accou"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udfe2 Approval recommended\n\nThe change is narrowly scoped, amendment-gated, and includes a targeted regression test covering the newly introduced behavior.\n\n<details>\n<summary>Pull request overview</s"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The core fix in LoanPay.cpp is a clean, well-reasoned refactor: it correctly preserves the existing cannotSendFeeToOwner conditions (cover too low, deep-frozen, StrongAuth) and adds a new MPT-transfer"
+      }
+    ]
+  },
+  {
+    "pr_number": 8244,
+    "branch_name": "tialymov/FN-6-lending_batch_support",
+    "title": "feat: Allow lending transactions in Batch",
+    "body": "## High Level Overview of Change\n\nAllows Single Asset Vault and Lending Protocol transactions to run as Batch inner transactions\nwhen `featureLendingProtocolV1_2` is enabled. Before the amendment, these transaction types remain\ninvalid inside a Batch.\n\n## Context of Change\n\nBatch already applies inner transactions through the normal transaction pipeline, but explicitly\nrejects all Vault and Lending transaction types.\n\nThis change gates that restriction on `featureLendingProtocolV1_2`. It also verifies the special\nauthorization flow for `LoanSet`, where both parties sign the outer Batch instead of using an\ninner `CounterpartySignature`.\n\n## API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\n## Test Plan\n\n`Batch_test`:\n\n- rejection of Vault and Lending inner transactions before the amendment;\n- successful Vault creation and deposit after the amendment;\n- required `LoanSet` counterparty and Batch signer validation;\n- successful `LoanSet` and cover deposit in one Batch;\n- rollback of a `LoanSet` when a later inner transaction fails.\n\nNew `LendingBatch` suite, each case run with `LendingProtocolV1_1` on and off:\n\n- vault lifecycle in one Batch: `VaultCreate`, `VaultDeposit`, `VaultWithdraw`, `VaultDelete`,\n  on an open-ended vault and on a closed-ended vault in the Subscription phase;\n- loan lifecycle: `VaultCreate`, `VaultDeposit`, `LoanBrokerSet`, `LoanSet`, `LoanPay`. One Batch\n  on an open-ended vault with V1_1 off. Two Batches on a closed-ended vault with V1_1 on, split\n  at the Subscription to Investment boundary, because `VaultDeposit` and `LoanSet` are only\n  valid in different phases;\n- arbitrage under `tfAllOrNothing`: `LoanSet`, DEX buy, DEX sell, `LoanPay`. One run that\n  profits and one where the sell offer cannot fill and nothing persists;\n- `LoanManage` default and `LoanBrokerCoverWithdraw` in one Batch, once the grace period of a\n  loan created earlier has passed;\n- `tfIndependent` chains where a failing ",
+    "user": "tyalymov",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-17T20:52:54Z",
+    "merged_at": "2026-10-06T00:32:15Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8244?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-17T20:55:24Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "https://github.com/XRPLF/rippled/blob/14f27e66bfd6f0db3812102867a7e89a11ea0ac5/src/libxrpl/tx/transactors/system/Batch.cpp#L360-L365\n\nWith `featureLendingProtocolV1_2`, `LoanSet` can be a Batch inner, so this comment no longer holds. An inner `LoanSet` in a proposed Batch now gets `TapProposal`. It still needs `sfCounterparty` and the signer check is deferred to submission, so I don't see a bypass, but can we update the comment and add a test for a proposed Batch with a `LoanSet` inner?",
+        "created_at": "2026-09-29T10:14:45Z"
+      }
+    ],
+    "reviews_count": 27,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This is a small, well-scoped change that gates Batch's existing Vault/Lending inner-transaction rejection behind featureLendingProtocolV1_1. The logic in Batch.cpp is correct: pre-amendment it preserv"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udfe2 Approval recommended\n\nThe amendment gate and representative Vault/Loan Batch paths are covered without identified correctness issues.\n\n<details>\n<summary>Pull request overview</summary>\n\nAllows "
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The change cleanly gates the previously-hardcoded Batch inner-transaction rejection list (kDisabledTxTypes) behind featureLendingProtocolV1_2, correctly inverting the amendment check (isDisabledTxType"
+      }
+    ]
+  },
+  {
+    "pr_number": 6319,
+    "branch_name": "ledger-entry-all",
+    "title": "feat: Add full support for all objects in `ledger_entry`",
+    "body": "## High Level Overview of Change\r\n\r\nThis PR adds full support (including the keylet parts) for checks, NFT offers, payment channels, and signer lists.\r\n\r\n### Context of Change\r\n\r\nFixes #5198 \r\n\r\n### Type of Change\r\n\r\n- [x] New feature (non-breaking change which adds functionality)\r\n\r\n### API Impact\r\n\r\n- [x] Public API: New feature (new methods and/or new fields)\\\r\n\r\n## Before / After\r\n\r\nBefore: checks, NFT offers, payment channels, and signer lists only had basic support, to identify the object from its hash. \r\n\r\nAfter: Those objects can now also be identified from the pieces that form their keylets.\r\n\r\n## Test Plan\r\n\r\nTests are added and pass.",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-02-03T15:33:17Z",
+    "merged_at": "2026-10-06T00:32:15Z",
+    "labels": [
+      "Ready to merge",
+      "API Change",
+      "Will Need Documentation",
+      "Added to API Changelog"
+    ],
+    "comments_count": 16,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/6319?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-02-03T15:52:32Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-04-03T00:05:37Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-04-03T14:54:13Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-05-03T11:07:19Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "We recently merged a refactor to `develop` that enables clang-tidy's `readability-identifier-naming`. Your branch now has heavy conflicts that are largely mechanical. Below is a workflow that aligns your branch's naming with develop _before_ merging, which should minimize the merge conflicts.\n\n## One-time setup\n\nIf you don't already have clang-tidy working in your env, on macOS:\n\n```bash\nbrew install llvm@21\n# Follow brew's hint to put $(brew --prefix llvm@21)/bin on PATH so run-clang-tidy is fo",
+        "created_at": "2026-05-04T14:25:50Z"
+      }
+    ],
+    "reviews_count": 18,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nAdds keylet-based lookup support in the `ledger_entry` RPC for several ledger object types that previously only supported direct hash/index lookup, aligning behavior with the"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 3 out of 3 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*."
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nCopilot reviewed 3 out of 3 changed files in this pull request and generated no new comments.\n\n\n\n\n\n---\n\n\ud83d\udca1 <a href=\"/XRPLF/rippled/new/develop/.github/instructions?filename=*."
+      }
+    ]
+  },
+  {
     "pr_number": 8479,
     "branch_name": "update_nix",
     "title": "chore: Update nix flake file",
