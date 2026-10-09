@@ -1,5 +1,45 @@
 [
   {
+    "pr_number": 8536,
+    "branch_name": "clang_tidy_23",
+    "title": "chore: Update clang-tidy image to v23",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nThis starts using an image with clang-tidy 23.\nSome new `misc-const-correctness` issues will be implemented in a later PR, it will be quite huge.\nNew checks that give issues have been disabled, all the fixes here are related to what's already found by existing checks, so this PR is kept fairly trivial.\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods a",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-08T16:22:23Z",
+    "merged_at": "2026-10-09T11:04:34Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8536?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `85.95041%` with `17 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8536?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
+        "created_at": "2026-10-08T16:24:35Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "\ud83d\udd25\ud83d\udd25\ud83d\udd25"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nThe mechanical changes span 100 files across transaction, consensus, RPC, and CI code and warrant full CI plus final human validation.\n\n**0 open fi"
+      },
+      {
+        "user": "a1q123456",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8535,
     "branch_name": "update_binary_locs",
     "title": "refactor: Group binaries in subdirectories",
@@ -2270,46 +2310,6 @@
         "user": "oleks-rip",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8026,
-    "branch_name": "style/precommit-gtest-names",
-    "title": "style: Precommit hook for gtest naming",
-    "body": "## High Level Overview of Change\r\n\r\nWhile migrating to gtest we introduced a lot of tests with different naming conventions. Majority is in snake_case but there were outliers in CamelCase and mixed case too.\r\nThis PR introduces a hook that automatically detects and fixes wrong style for these names.\r\n\r\n### Context of Change\r\n\r\nGtest migration.\r\n\r\n### API Impact\r\n\r\nN/A",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-13T18:06:55Z",
-    "merged_at": "2026-09-22T23:19:28Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8026?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-13T18:44:04Z"
-      }
-    ],
-    "reviews_count": 10,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "DISMISSED",
-        "body": ""
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nAdds a local pre-commit hook to enforce consistent GoogleTest naming across the codebase (CamelCase test suite names, snake_case test case names) to reduce style drift introd"
       }
     ]
   }
