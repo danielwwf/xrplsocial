@@ -1,5 +1,193 @@
 [
   {
+    "pr_number": 8538,
+    "branch_name": "ripple/cosign",
+    "title": "feat: Add TransactionProposalCancel & Cosign Ticket reservation",
+    "body": "Implementation of https://github.com/XRPLF/XRPL-Standards/pull/613 (XLS-0103 On-Chain Cosigner). Follow-up to #8205, which introduced the `Cosign` amendment and `TransactionProposalCreate`.\n\n## High Level Overview of Change\n\nAdds `TransactionProposalCancel` (tx type 94, field `ProposalID`), the second transaction of the Cosign proposal lifecycle. It deletes a `TransactionProposal` ledger entry and releases the reserve held by its Owner or reserve sponsor.\n\nWhile a proposal is live, only its Owner, the proposed transaction's `Account`, or the `Delegate` named in it may cancel it. Anyone else gets `tecNO_PERMISSION`. Once the proposal is terminal, anyone may delete it (XLS-0103 \u00a77.2). A proposal is terminal when its `Expiration` has passed, or the ledger is strictly past the proposed transaction's `LastLedgerSequence`.\n\nIntroduces Ticket reservation (XLS-0103 \u00a74.2.1). While a proposal keyed to a Ticket exists, only that proposal's own proposed transaction may consume the Ticket. Any other transaction spending it fails with the new retryable `terTICKET_RESERVED` code. This stops unrelated activity on the target account from invalidating a proposal while signatures are collected.\n\nA reserved Ticket is consumed either by the proposed transaction executing or by `AccountDelete` sweeping the target's Tickets. Either way, the stale proposal is deleted automatically and its reserve released (XLS-0103 \u00a74.5).\n\n`TransactionProposalCreate` now also rejects proposing a `TransactionProposalCancel`. It likewise rejects a proposed `Batch` whose inner transactions include a proposal transaction, a pseudo-transaction, or a nested `Batch`.\n\n## Context of Change\n\nMerges the `ripple/cosign` integration branch into `develop`. The new transactor and Ticket reservation landed there via #7979, and the branch has since been kept current with `develop` (#8324, #8526).\n\nThe `featureCosign` amendment remains `Supported::No`, so none of this is enabled on any network. `TransactionProposalSign` wi",
+    "user": "ckeshava",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-08T18:56:15Z",
+    "merged_at": "2026-10-13T21:28:00Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8538?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-08T18:58:11Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This diff is test-support plumbing for the new TransactionProposalCancel transaction: a jtx helper (`cancel`) to build the JSON for the transaction, an auto-generated protocol test file, and a mechani"
+      },
+      {
+        "user": "Kassaking7",
+        "state": "APPROVED",
+        "body": "Already Reviewed in feature branch"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "CHANGES_REQUESTED",
+        "body": "Signature bypass in preflight - see inline.\n\n<!-- review-fingerprint:36a2ff38c0cc8ce1 -->"
+      }
+    ]
+  },
+  {
+    "pr_number": 8575,
+    "branch_name": "fix_failing_rpm",
+    "title": "ci: Fix rpm installation problems",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThe RPM install test job sometimes ran past its 5-minute timeout on Rocky Linux and AlmaLinux (about 21 of ~1,100 recent jobs). The step stalled in `dnf install` while downloading repository metadata.\r\nExample: https://github.com/XRPLF/rippled/actions/runs/38408713066/job/115349846794?pr=8570\r\n\r\nThese distros pick a mirror from a mirror list, and sometimes get one that serves data at only a few hundred kB/s or less.\r\n\r\n- Fix: run `dnf install` with `--setopt=minrate=1M --setopt=timeout=10`. A mirror averaging under 1 MB/s for 10 s is now dropped, and dnf switches to the next mirror in the list.\r\n- Verified locally: with a throttled mirror listed first, dnf with default settings was still stuck after 150 s, while the new settings switched mirrors and finished in 14 s. Normal installs on Rocky, AlmaLinux and UBI still succeed.\r\n\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design d",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-13T17:04:27Z",
+    "merged_at": "2026-10-13T21:28:00Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8575?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-13T17:07:23Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage4: "
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe focused workflow change correctly addresses slow mirror stalls without affecting package behavior.\n\n**0 open findings**\n\n<details>\n<summary><s"
+      }
+    ]
+  },
+  {
+    "pr_number": 8574,
+    "branch_name": "clarify_code_freeze",
+    "title": "docs: Clarify freeze on large changes 2 weeks before first RC",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nThis clarifies when we freeze what type of changes in release process.\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol c",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-13T16:36:59Z",
+    "merged_at": "2026-10-13T21:28:00Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8574?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-13T16:39:55Z"
+      },
+      {
+        "user": "godexsoft",
+        "body": "Does this mean rpc-spec work also needs to be blocked until after release? or does it not qualify for big refactoring?",
+        "created_at": "2026-10-13T16:42:08Z"
+      },
+      {
+        "user": "mathbunnyru",
+        "body": "> Does this mean rpc-spec work also needs to be blocked until after release? or does it not qualify for big refactoring?\r\n\r\nThe code freeze we agreed upon is for `large changes (e.g., big refactors, moving or renaming many files, mass reformatting)`, meaning a huge diff in this repo.\r\n\r\nThe `rpc-spec` doesn't qualify. Whether it's blocked for a more nuanced reason (like \"we don't want to merge it till we're sure, it works well\") is a question this PR doesn't try to address.",
+        "created_at": "2026-10-13T16:56:10Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe documentation changes are consistent, clear, and appropriately scoped.\n\n**0 open findings**\n\n<details>\n<summary><strong>What changed in this P"
+      },
+      {
+        "user": "ximinez",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8257,
+    "branch_name": "tapanito/sav-fixed-precision-vault-rounding",
+    "title": "feat: Add FixedPrecision Vault grid and balance helpers",
+    "body": "## Stack\n\nPart 1 of 6 in the FixedPrecision Vault stack. Review and merge in order.\n\n1. #8257 Vault grid and balance helpers (this PR)\n2. #8460 Vault transactors and invariants\n3. #8258 LoanBroker cover\n4. #8260 LoanSet\n5. #8271 LoanPay\n6. #8461 LoanManage\n\nBased on: `develop`. Next: #8460.\n\n## Changes\n\nAdds the library pieces for LEVersion 2 (FixedPrecision) Vaults. No transaction behaviour changes: VaultCreate does not create FixedPrecision Vaults until the next PR.\n\n- `VaultVersion::FixedPrecision`, the FixedPrecision IOU scale limit (10), and two Vault fields: `YieldUnrealized` and `AssetsDeployed` (exact sum of open Loan principal on the base grid).\n- `getAssetsTotal` returns `AssetsAvailable + AssetsDeployed` on FixedPrecision Vaults; stored `AssetsTotal` is a cache floored to 16 digits.\n- `adjustVaultBalances`, the single writer of a FixedPrecision Vault's balances. It applies a cash change with the same arithmetic as the ledger transfer, so `AssetsAvailable` always equals the pseudo-account balance.\n- Grid helpers: live and posterior scale, inflow floor, outflow clamp, base-grid representability, Open-zone capacity.\n- `kVaultMaximumIouScale` is kept for now; the next PR replaces it.\n\nTests: gtests for the grid and balance helpers, `VaultHelpers_test`.\n",
+    "user": "Tapanito",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-22T10:27:52Z",
+    "merged_at": "2026-10-13T19:21:21Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 8,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-22T11:16:26Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-09-22T11:42:06Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8257?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.07317%` with `6 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8257?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-09-22T11:44:15Z"
+      },
+      {
+        "user": "a1q123456",
+        "body": "```\r\n[a1q123456](https://github.com/a1q123456) [force-pushed](https://github.com/XRPLF/rippled/compare/5b5d4c2bdb1eded3fcafdd7407d25f73af1c0808..5e0e36f87d79be6074a274f0df289fa93b5e3a32) the tapanito/sav-fixed-precision-vault-rounding branch from [5b5d4c2](https://github.com/XRPLF/rippled/commit/5b5d4c2bdb1eded3fcafdd7407d25f73af1c0808) to [5e0e36f](https://github.com/XRPLF/rippled/commit/5e0e36f87d79be6074a274f0df289fa93b5e3a32) \r\n[2 minutes ago](https://github.com/XRPLF/rippled/pull/8257#event",
+        "created_at": "2026-09-28T14:07:46Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-30T15:59:19Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This is a well-structured, carefully-tested change adding FixedPrecision vault semantics (base/live/posterior scale helpers, Open-zone deposit admission) and extending cash-basis lending dispatch to t"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Reviewed the fixed-precision vault scale helpers (VaultHelpers.h/.cpp), the new VaultVersion::FixedPrecision plumbing (Protocol.h, VaultCreate.cpp, sfields/ledger_entries macros, autogen Vault.h), the"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nCritical amendment-dependency and FixedPrecision rounding/clamping paths remain unresolved.\n\n*Get a fresh assessment by"
+      }
+    ]
+  },
+  {
     "pr_number": 8570,
     "branch_name": "update_codegen_reqs",
     "title": "build: Update codegen requirements",
@@ -2439,47 +2627,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": ":rage1: "
-      }
-    ]
-  },
-  {
-    "pr_number": 8326,
-    "branch_name": "support_custom_channels",
-    "title": "build: Support custom release channel",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nEverything which doesn't match existing release channels will go to \"custom\" release channel.\r\nRequires https://github.com/XRPLF/actions/pull/184 (will update hash when it's been merged).\r\n\r\nI also had to rewrite conan recipe upload, removing plain `rc` and `release` versions:\r\n- Any tag pushed did overwrite `release` recipe (which doesn't make sense)\r\n- Moving tags are not that useful most of the time in the first place (unless it's develop)\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* lib",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-29T09:42:22Z",
-    "merged_at": "2026-09-29T18:47:43Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8326?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-29T09:45:28Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nValid metadata can be mis-normalized, and `+` metadata produces invalid Docker tags.\n\n**Review effort:** Balanced  \n**F"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe pinned release-info action must be updated before package jobs can receive the custom channel.\n\n**Review effort:** "
       }
     ]
   }
