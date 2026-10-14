@@ -1,5 +1,89 @@
 [
   {
+    "hash": "b76bd767",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/smart-escrow-escrow-tx",
+    "date": "2026-10-14T18:42:37+00:00",
+    "message": "Merge branch 'mvadari/smart-escrow-fee-voting' into mvadari/smart-escrow-escrow-tx"
+  },
+  {
+    "hash": "ddbe61ed",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/smart-escrow-escrow-tx",
+    "date": "2026-10-14T18:42:29+00:00",
+    "message": "chore: Move the strong-types TODO in Fees.h to an issue"
+  },
+  {
+    "hash": "ddbe61ed",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/smart-escrow-fee-voting",
+    "date": "2026-10-14T18:42:29+00:00",
+    "message": "chore: Move the strong-types TODO in Fees.h to an issue"
+  },
+  {
+    "hash": "59f96b1a",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T18:14:32+00:00",
+    "message": "chore: Fix clang-tidy in relay changes"
+  },
+  {
+    "hash": "be69dacc",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T17:49:08+00:00",
+    "message": "Fix merge issue"
+  },
+  {
+    "hash": "99dea676",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T17:37:36+00:00",
+    "message": "perf: Do not re-parse STTx when relaying a transaction"
+  },
+  {
+    "hash": "d70f17e0",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T17:12:36+00:00",
+    "message": "perf: Skip building proposed-tx JSON when nobody subscribes"
+  },
+  {
+    "hash": "78a725e1",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T17:08:16+00:00",
+    "message": "Merge branch 'develop' into gregtatcam/mpt/dex-fix-offers-1"
+  },
+  {
+    "hash": "91985dc3",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T16:58:27+00:00",
+    "message": "perf: Use memcmp for BaseUInt comparisons"
+  },
+  {
+    "hash": "7237b332",
+    "author": "Timur Yalymov",
+    "branch": "origin",
+    "date": "2026-10-14T16:35:42+00:00",
+    "message": "fix: Charge transfer fee on third-party vault withdrawals (#8267)"
+  },
+  {
+    "hash": "b197ae92",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T16:27:20+00:00",
+    "message": "perf: Remove SHAMap overhead on hot paths"
+  },
+  {
+    "hash": "44616773",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-14T15:44:37+00:00",
+    "message": "perf: Make STVar, STObject and STArray moves noexcept"
+  },
+  {
     "hash": "9ea6e2f9",
     "author": "JCW",
     "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
@@ -77,6 +161,41 @@
     "message": "fix: Reject VaultClawback with a nonexistent holder (#8470)"
   },
   {
+    "hash": "84d980d8",
+    "author": "Timur Yalymov",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T14:29:05+00:00",
+    "message": "fix: Reject VaultClawback with a nonexistent holder (#8470)"
+  },
+  {
+    "hash": "84d980d8",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T14:29:05+00:00",
+    "message": "fix: Reject VaultClawback with a nonexistent holder (#8470)"
+  },
+  {
+    "hash": "84d980d8",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T14:29:05+00:00",
+    "message": "fix: Reject VaultClawback with a nonexistent holder (#8470)"
+  },
+  {
+    "hash": "84d980d8",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T14:29:05+00:00",
+    "message": "fix: Reject VaultClawback with a nonexistent holder (#8470)"
+  },
+  {
+    "hash": "84d980d8",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T14:29:05+00:00",
+    "message": "fix: Reject VaultClawback with a nonexistent holder (#8470)"
+  },
+  {
     "hash": "f00ad8e0",
     "author": "Vito",
     "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
@@ -101,6 +220,41 @@
     "hash": "791c96fa",
     "author": "Timur Yalymov",
     "branch": "origin",
+    "date": "2026-10-14T13:51:24+00:00",
+    "message": "fix: Enforce pseudo-account directory contents with an invariant (#8181)"
+  },
+  {
+    "hash": "791c96fa",
+    "author": "Timur Yalymov",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T13:51:24+00:00",
+    "message": "fix: Enforce pseudo-account directory contents with an invariant (#8181)"
+  },
+  {
+    "hash": "791c96fa",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T13:51:24+00:00",
+    "message": "fix: Enforce pseudo-account directory contents with an invariant (#8181)"
+  },
+  {
+    "hash": "791c96fa",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T13:51:24+00:00",
+    "message": "fix: Enforce pseudo-account directory contents with an invariant (#8181)"
+  },
+  {
+    "hash": "791c96fa",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T13:51:24+00:00",
+    "message": "fix: Enforce pseudo-account directory contents with an invariant (#8181)"
+  },
+  {
+    "hash": "791c96fa",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
     "date": "2026-10-14T13:51:24+00:00",
     "message": "fix: Enforce pseudo-account directory contents with an invariant (#8181)"
   },
@@ -133,6 +287,76 @@
     "message": "fix: Enforce asset authorization on LoanBrokerDelete (#8204)"
   },
   {
+    "hash": "31473e7e",
+    "author": "Ayaz Salikhov",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "build: Unify clang variables (#8581)"
+  },
+  {
+    "hash": "aa70b368",
+    "author": "Timur Yalymov",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "fix: Enforce asset authorization on LoanBrokerDelete (#8204)"
+  },
+  {
+    "hash": "31473e7e",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "build: Unify clang variables (#8581)"
+  },
+  {
+    "hash": "aa70b368",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "fix: Enforce asset authorization on LoanBrokerDelete (#8204)"
+  },
+  {
+    "hash": "31473e7e",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "build: Unify clang variables (#8581)"
+  },
+  {
+    "hash": "aa70b368",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "fix: Enforce asset authorization on LoanBrokerDelete (#8204)"
+  },
+  {
+    "hash": "31473e7e",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "build: Unify clang variables (#8581)"
+  },
+  {
+    "hash": "aa70b368",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "fix: Enforce asset authorization on LoanBrokerDelete (#8204)"
+  },
+  {
+    "hash": "31473e7e",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "build: Unify clang variables (#8581)"
+  },
+  {
+    "hash": "aa70b368",
+    "author": "Timur Yalymov",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T13:51:05+00:00",
+    "message": "fix: Enforce asset authorization on LoanBrokerDelete (#8204)"
+  },
+  {
     "hash": "14a0e812",
     "author": "JCW",
     "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
@@ -161,6 +385,41 @@
     "message": "feat: Book FixedPrecision LoanSet through AssetsDeployed (#8260)"
   },
   {
+    "hash": "d3db569b",
+    "author": "Vito Tumas",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T13:20:58+00:00",
+    "message": "feat: Book FixedPrecision LoanSet through AssetsDeployed (#8260)"
+  },
+  {
+    "hash": "d3db569b",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T13:20:58+00:00",
+    "message": "feat: Book FixedPrecision LoanSet through AssetsDeployed (#8260)"
+  },
+  {
+    "hash": "d3db569b",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T13:20:58+00:00",
+    "message": "feat: Book FixedPrecision LoanSet through AssetsDeployed (#8260)"
+  },
+  {
+    "hash": "d3db569b",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T13:20:58+00:00",
+    "message": "feat: Book FixedPrecision LoanSet through AssetsDeployed (#8260)"
+  },
+  {
+    "hash": "d3db569b",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T13:20:58+00:00",
+    "message": "feat: Book FixedPrecision LoanSet through AssetsDeployed (#8260)"
+  },
+  {
     "hash": "94d6b7da",
     "author": "Vito Tumas",
     "branch": "origin",
@@ -171,6 +430,41 @@
     "hash": "94d6b7da",
     "author": "Vito Tumas",
     "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-14T12:59:39+00:00",
+    "message": "feat: Round LoanBroker cover on the FixedPrecision grid (#8258)"
+  },
+  {
+    "hash": "94d6b7da",
+    "author": "Vito Tumas",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T12:59:39+00:00",
+    "message": "feat: Round LoanBroker cover on the FixedPrecision grid (#8258)"
+  },
+  {
+    "hash": "94d6b7da",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T12:59:39+00:00",
+    "message": "feat: Round LoanBroker cover on the FixedPrecision grid (#8258)"
+  },
+  {
+    "hash": "94d6b7da",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T12:59:39+00:00",
+    "message": "feat: Round LoanBroker cover on the FixedPrecision grid (#8258)"
+  },
+  {
+    "hash": "94d6b7da",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T12:59:39+00:00",
+    "message": "feat: Round LoanBroker cover on the FixedPrecision grid (#8258)"
+  },
+  {
+    "hash": "94d6b7da",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
     "date": "2026-10-14T12:59:39+00:00",
     "message": "feat: Round LoanBroker cover on the FixedPrecision grid (#8258)"
   },
@@ -185,6 +479,41 @@
     "hash": "e089abe9",
     "author": "Vito Tumas",
     "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-14T12:52:25+00:00",
+    "message": "feat: Use FixedPrecision accounting in Vault transactors (#8460)"
+  },
+  {
+    "hash": "e089abe9",
+    "author": "Vito Tumas",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T12:52:25+00:00",
+    "message": "feat: Use FixedPrecision accounting in Vault transactors (#8460)"
+  },
+  {
+    "hash": "e089abe9",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T12:52:25+00:00",
+    "message": "feat: Use FixedPrecision accounting in Vault transactors (#8460)"
+  },
+  {
+    "hash": "e089abe9",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T12:52:25+00:00",
+    "message": "feat: Use FixedPrecision accounting in Vault transactors (#8460)"
+  },
+  {
+    "hash": "e089abe9",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T12:52:25+00:00",
+    "message": "feat: Use FixedPrecision accounting in Vault transactors (#8460)"
+  },
+  {
+    "hash": "e089abe9",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
     "date": "2026-10-14T12:52:25+00:00",
     "message": "feat: Use FixedPrecision accounting in Vault transactors (#8460)"
   },
@@ -289,13 +618,6 @@
   {
     "hash": "33289e88",
     "author": "Alex Kremer",
-    "branch": "gh-readonly-queue/develop/pr-8561-1ed0bccb07446c19d935e61d30770cb6a1a089c6",
-    "date": "2026-10-14T10:15:32+00:00",
-    "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
-  },
-  {
-    "hash": "33289e88",
-    "author": "Alex Kremer",
     "branch": "origin",
     "date": "2026-10-14T10:15:32+00:00",
     "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
@@ -304,6 +626,48 @@
     "hash": "33289e88",
     "author": "Alex Kremer",
     "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-14T10:15:32+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
+  },
+  {
+    "hash": "33289e88",
+    "author": "Alex Kremer",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T10:15:32+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
+  },
+  {
+    "hash": "33289e88",
+    "author": "Alex Kremer",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T10:15:32+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
+  },
+  {
+    "hash": "33289e88",
+    "author": "Alex Kremer",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T10:15:32+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
+  },
+  {
+    "hash": "33289e88",
+    "author": "Alex Kremer",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T10:15:32+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
+  },
+  {
+    "hash": "33289e88",
+    "author": "Alex Kremer",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T10:15:32+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
+  },
+  {
+    "hash": "33289e88",
+    "author": "Alex Kremer",
+    "branch": "mvadari/perf-st-noexcept-move",
     "date": "2026-10-14T10:15:32+00:00",
     "message": "refactor: Migrate handlers to rpc-spec (C) (#8561)"
   },
@@ -320,6 +684,13 @@
     "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-14T09:59:29+00:00",
     "message": "Merge remote-tracking branch 'origin/tapanito/sav-fixed-precision-loanmanage' into a1q123456/split-loan-set-and-loan-accept-implementation"
+  },
+  {
+    "hash": "7977fdfe",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-14T09:58:09+00:00",
+    "message": "Merge remote-tracking branch 'origin/develop' into tapanito/sav-fixed-precision-vault-transactors"
   },
   {
     "hash": "a5350678",
@@ -359,35 +730,133 @@
   {
     "hash": "1ed0bccb",
     "author": "Gregory Tsipenyuk",
-    "branch": "gh-readonly-queue/develop/pr-8561-1ed0bccb07446c19d935e61d30770cb6a1a089c6",
+    "branch": "origin",
     "date": "2026-10-14T07:49:27+00:00",
     "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
   },
   {
     "hash": "1ed0bccb",
     "author": "Gregory Tsipenyuk",
-    "branch": "origin",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-14T07:49:27+00:00",
+    "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
+  },
+  {
+    "hash": "1ed0bccb",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T07:49:27+00:00",
+    "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
+  },
+  {
+    "hash": "1ed0bccb",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T07:49:27+00:00",
+    "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
+  },
+  {
+    "hash": "1ed0bccb",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T07:49:27+00:00",
+    "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
+  },
+  {
+    "hash": "1ed0bccb",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T07:49:27+00:00",
+    "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
+  },
+  {
+    "hash": "1ed0bccb",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T07:49:27+00:00",
+    "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
+  },
+  {
+    "hash": "1ed0bccb",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-14T07:49:27+00:00",
+    "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
+  },
+  {
+    "hash": "1ed0bccb",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-14T07:49:27+00:00",
     "message": "fix: Clamp invalid XRP amounts in Quality::ceilOut & getBookPage (#8480)"
   },
   {
     "hash": "1da55e39",
     "author": "Gregory Tsipenyuk",
-    "branch": "gh-readonly-queue/develop/pr-8561-1ed0bccb07446c19d935e61d30770cb6a1a089c6",
+    "branch": "origin",
     "date": "2026-10-14T07:49:12+00:00",
     "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
   },
   {
     "hash": "1da55e39",
     "author": "Gregory Tsipenyuk",
-    "branch": "origin",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-14T07:49:12+00:00",
+    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
+  },
+  {
+    "hash": "1da55e39",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-14T07:49:12+00:00",
+    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
+  },
+  {
+    "hash": "1da55e39",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-14T07:49:12+00:00",
+    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
+  },
+  {
+    "hash": "1da55e39",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-14T07:49:12+00:00",
+    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
+  },
+  {
+    "hash": "1da55e39",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-14T07:49:12+00:00",
+    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
+  },
+  {
+    "hash": "1da55e39",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-14T07:49:12+00:00",
+    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
+  },
+  {
+    "hash": "1da55e39",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-14T07:49:12+00:00",
+    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
+  },
+  {
+    "hash": "1da55e39",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-14T07:49:12+00:00",
     "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
   },
   {
     "hash": "166e97e1",
     "author": "Valentin Balaschenko",
-    "branch": "gh-readonly-queue/develop/pr-8561-1ed0bccb07446c19d935e61d30770cb6a1a089c6",
+    "branch": "origin",
     "date": "2026-10-13T23:33:32+00:00",
     "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
   },
@@ -401,41 +870,55 @@
   {
     "hash": "166e97e1",
     "author": "Valentin Balaschenko",
-    "branch": "origin",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
     "date": "2026-10-13T23:33:32+00:00",
     "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
   },
   {
     "hash": "166e97e1",
     "author": "Valentin Balaschenko",
-    "branch": "origin",
+    "branch": "mvadari/perf-baseuint-memcmp",
     "date": "2026-10-13T23:33:32+00:00",
     "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
   },
   {
     "hash": "166e97e1",
     "author": "Valentin Balaschenko",
-    "branch": "gh-readonly-queue/develop/pr-5874-33e5a6fa7cafd2629169bb9e01ef3421791c6dfd",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T23:33:32+00:00",
+    "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
+  },
+  {
+    "hash": "166e97e1",
+    "author": "Valentin Balaschenko",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T23:33:32+00:00",
+    "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
+  },
+  {
+    "hash": "166e97e1",
+    "author": "Valentin Balaschenko",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T23:33:32+00:00",
+    "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
+  },
+  {
+    "hash": "166e97e1",
+    "author": "Valentin Balaschenko",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T23:33:32+00:00",
+    "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
+  },
+  {
+    "hash": "166e97e1",
+    "author": "Valentin Balaschenko",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T23:33:32+00:00",
     "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
   },
   {
     "hash": "abde8f0b",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
     "branch": "bthomee/shamap-checkfilter-verify-hash",
     "date": "2026-10-13T22:06:26+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
@@ -443,91 +926,14 @@
   {
     "hash": "abde8f0b",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
     "date": "2026-10-13T22:06:26+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
   },
   {
     "hash": "abde8f0b",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T22:06:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "abde8f0b",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
     "date": "2026-10-13T22:06:26+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
   },
@@ -555,14 +961,105 @@
   {
     "hash": "abde8f0b",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
+    "branch": "bthomee/shamap-invalid-11-revive-timer",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14b-fail-fast",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "date": "2026-10-13T22:06:26+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
+  },
+  {
+    "hash": "abde8f0b",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
     "date": "2026-10-13T22:06:26+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
   },
   {
     "hash": "b3815b07",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
+    "branch": "bthomee/shamap-checkfilter-verify-hash",
     "date": "2026-10-13T22:04:25+00:00",
     "message": "test: Assert what a refused settle leaves behind"
   },
@@ -576,105 +1073,14 @@
   {
     "hash": "b3815b07",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
     "date": "2026-10-13T22:04:25+00:00",
     "message": "test: Assert what a refused settle leaves behind"
   },
   {
     "hash": "b3815b07",
     "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T22:04:25+00:00",
-    "message": "test: Assert what a refused settle leaves behind"
-  },
-  {
-    "hash": "b3815b07",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
     "date": "2026-10-13T22:04:25+00:00",
     "message": "test: Assert what a refused settle leaves behind"
   },
@@ -702,14 +1108,105 @@
   {
     "hash": "b3815b07",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
+    "branch": "bthomee/shamap-invalid-11-revive-timer",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14b-fail-fast",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "date": "2026-10-13T22:04:25+00:00",
+    "message": "test: Assert what a refused settle leaves behind"
+  },
+  {
+    "hash": "b3815b07",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
     "date": "2026-10-13T22:04:25+00:00",
     "message": "test: Assert what a refused settle leaves behind"
   },
   {
     "hash": "d8fdb042",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
+    "branch": "bthomee/shamap-checkfilter-verify-hash",
     "date": "2026-10-13T21:57:21+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
   },
@@ -723,105 +1220,14 @@
   {
     "hash": "d8fdb042",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
     "date": "2026-10-13T21:57:21+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
   },
   {
     "hash": "d8fdb042",
     "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T21:57:21+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "d8fdb042",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
     "date": "2026-10-13T21:57:21+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
   },
@@ -849,21 +1255,105 @@
   {
     "hash": "d8fdb042",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
+    "branch": "bthomee/shamap-invalid-11-revive-timer",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14b-fail-fast",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "date": "2026-10-13T21:57:21+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
+  },
+  {
+    "hash": "d8fdb042",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
     "date": "2026-10-13T21:57:21+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
   },
   {
     "hash": "78fef478",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
+    "branch": "bthomee/shamap-checkfilter-verify-hash",
     "date": "2026-10-13T21:56:18+00:00",
     "message": "fix: Spell the leaf-depth rule once and cover its two edges"
   },
@@ -877,105 +1367,21 @@
   {
     "hash": "78fef478",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
     "date": "2026-10-13T21:56:18+00:00",
     "message": "fix: Spell the leaf-depth rule once and cover its two edges"
   },
   {
     "hash": "78fef478",
     "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
+    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
     "date": "2026-10-13T21:56:18+00:00",
     "message": "fix: Spell the leaf-depth rule once and cover its two edges"
   },
   {
     "hash": "78fef478",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T21:56:18+00:00",
-    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
-  },
-  {
-    "hash": "78fef478",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
     "date": "2026-10-13T21:56:18+00:00",
     "message": "fix: Spell the leaf-depth rule once and cover its two edges"
   },
@@ -1003,49 +1409,112 @@
   {
     "hash": "78fef478",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
+    "branch": "bthomee/shamap-invalid-11-revive-timer",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14b-fail-fast",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "date": "2026-10-13T21:56:18+00:00",
+    "message": "fix: Spell the leaf-depth rule once and cover its two edges"
+  },
+  {
+    "hash": "78fef478",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
     "date": "2026-10-13T21:56:18+00:00",
     "message": "fix: Spell the leaf-depth rule once and cover its two edges"
   },
   {
     "hash": "be81fcdf",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
+    "branch": "bthomee/shamap-checkfilter-verify-hash",
     "date": "2026-10-13T21:50:42+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
   },
   {
     "hash": "7e0177c7",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
+    "branch": "bthomee/shamap-checkfilter-verify-hash",
     "date": "2026-10-13T21:50:42+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
   },
@@ -1059,294 +1528,301 @@
   {
     "hash": "be81fcdf",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
     "date": "2026-10-13T21:50:42+00:00",
     "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
   },
   {
     "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "be81fcdf",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "7e0177c7",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T21:50:42+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
     "author": "Bart",
     "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-11-revive-timer",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-11-revive-timer",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14b-fail-fast",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14b-fail-fast",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
+  },
+  {
+    "hash": "be81fcdf",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
+  },
+  {
+    "hash": "7e0177c7",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "date": "2026-10-13T21:50:42+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
   },
   {
     "hash": "aaa70f7a",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-04-atomic-state",
+    "branch": "bthomee/shamap-checkfilter-verify-hash",
     "date": "2026-10-13T21:50:27+00:00",
     "message": "fix: Log a zero account hash refusal at warn"
   },
@@ -1360,105 +1836,35 @@
   {
     "hash": "aaa70f7a",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "branch": "bthomee/shamap-invalid-04-atomic-state",
     "date": "2026-10-13T21:50:27+00:00",
     "message": "fix: Log a zero account hash refusal at warn"
   },
   {
     "hash": "aaa70f7a",
     "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
+    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
     "date": "2026-10-13T21:50:27+00:00",
     "message": "fix: Log a zero account hash refusal at warn"
   },
   {
     "hash": "aaa70f7a",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
     "date": "2026-10-13T21:50:27+00:00",
     "message": "fix: Log a zero account hash refusal at warn"
   },
   {
     "hash": "aaa70f7a",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
     "date": "2026-10-13T21:50:27+00:00",
     "message": "fix: Log a zero account hash refusal at warn"
   },
   {
     "hash": "aaa70f7a",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T21:50:27+00:00",
-    "message": "fix: Log a zero account hash refusal at warn"
-  },
-  {
-    "hash": "aaa70f7a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
     "date": "2026-10-13T21:50:27+00:00",
     "message": "fix: Log a zero account hash refusal at warn"
   },
@@ -1486,16 +1892,100 @@
   {
     "hash": "aaa70f7a",
     "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
+    "branch": "bthomee/shamap-invalid-11-revive-timer",
     "date": "2026-10-13T21:50:27+00:00",
     "message": "fix: Log a zero account hash refusal at warn"
   },
   {
-    "hash": "acd160f1",
-    "author": "JCW",
-    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
-    "date": "2026-10-13T19:39:06+00:00",
-    "message": "Merge remote-tracking branch 'origin/tapanito/sav-fixed-precision-loanmanage' into a1q123456/split-loan-set-and-loan-accept-implementation"
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-12-batch-progress",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-14b-fail-fast",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
+  },
+  {
+    "hash": "aaa70f7a",
+    "author": "Bart",
+    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
+    "date": "2026-10-13T21:50:27+00:00",
+    "message": "fix: Log a zero account hash refusal at warn"
   },
   {
     "hash": "acd160f1",
@@ -1512,9 +2002,121 @@
     "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
   },
   {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
+    "hash": "33e5a6fa",
+    "author": "Chenna Keshava B S",
+    "branch": "mvadari/perf-sttx-copy-refs",
+    "date": "2026-10-13T19:07:45+00:00",
+    "message": "feat: Add TransactionProposalCancel & Cosign Ticket reservation (#8538)"
+  },
+  {
     "hash": "b1f9dc69",
     "author": "Ayaz Salikhov",
     "branch": "origin",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T18:46:41+00:00",
+    "message": "ci: Fix rpm installation problems (#8575)"
+  },
+  {
+    "hash": "b1f9dc69",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T18:46:41+00:00",
     "message": "ci: Fix rpm installation problems (#8575)"
   },
@@ -1526,9 +2128,121 @@
     "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
   },
   {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
+    "hash": "38965af0",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-sttx-copy-refs",
+    "date": "2026-10-13T18:43:24+00:00",
+    "message": "docs: Clarify freeze on large changes 2 weeks before first RC (#8574)"
+  },
+  {
     "hash": "b010d4a5",
     "author": "Gregory Tsipenyuk",
     "branch": "origin",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T18:03:10+00:00",
+    "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
+  },
+  {
+    "hash": "b010d4a5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T18:03:10+00:00",
     "message": "refactor: Retire fixAMMv1_1 amendment (#8226)"
   },
@@ -1540,9 +2254,121 @@
     "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
   },
   {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
+    "hash": "eedd6604",
+    "author": "dependabot[bot]",
+    "branch": "mvadari/perf-sttx-copy-refs",
+    "date": "2026-10-13T17:48:57+00:00",
+    "message": "chore: [DEPENDABOT] bump pyparsing from 3.3.2 to 3.3.3 in /cmake/scripts/codegen in the codegen-dependencies group (#8572)"
+  },
+  {
     "hash": "59ff04b6",
     "author": "Mayukha Vadari",
     "branch": "origin",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T17:39:32+00:00",
+    "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
+  },
+  {
+    "hash": "59ff04b6",
+    "author": "Mayukha Vadari",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T17:39:32+00:00",
     "message": "fix: Allow WASM transactions in simulate only in admin mode (#8568)"
   },
@@ -1554,9 +2380,121 @@
     "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
   },
   {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
+    "hash": "fcb3ee64",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-sttx-copy-refs",
+    "date": "2026-10-13T17:35:35+00:00",
+    "message": "fix: Detect int64 overflow in XRPAmount and MPTAmount (#8453)"
+  },
+  {
     "hash": "77eacbb5",
     "author": "Gregory Tsipenyuk",
     "branch": "origin",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T17:18:47+00:00",
+    "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
+  },
+  {
+    "hash": "77eacbb5",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T17:18:47+00:00",
     "message": "fix: Assorted MPT/DEX offer related fixes (#8211)"
   },
@@ -1610,9 +2548,58 @@
     "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
   },
   {
-    "hash": "d65a4357",
+    "hash": "5ce85b27",
     "author": "Vito Tumas",
-    "branch": "gh-readonly-queue/develop/pr-8257-7cb19f4dcea1c327694e46b5d53b1879febf3a99",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T16:19:08+00:00",
+    "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
+  },
+  {
+    "hash": "5ce85b27",
+    "author": "Vito Tumas",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "date": "2026-10-13T16:19:08+00:00",
+    "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
+  },
+  {
+    "hash": "5ce85b27",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-baseuint-memcmp",
+    "date": "2026-10-13T16:19:08+00:00",
+    "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
+  },
+  {
+    "hash": "5ce85b27",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-relay-skip-reparse",
+    "date": "2026-10-13T16:19:08+00:00",
+    "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
+  },
+  {
+    "hash": "5ce85b27",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T16:19:08+00:00",
+    "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
+  },
+  {
+    "hash": "5ce85b27",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T16:19:08+00:00",
+    "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
+  },
+  {
+    "hash": "5ce85b27",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T16:19:08+00:00",
+    "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
+  },
+  {
+    "hash": "5ce85b27",
+    "author": "Vito Tumas",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T16:19:08+00:00",
     "message": "feat: Add FixedPrecision Vault grid and balance helpers (#8257)"
   },
@@ -1622,41 +2609,6 @@
     "branch": "a1q123456/early-exit-fee",
     "date": "2026-10-13T16:17:36+00:00",
     "message": "Apply batched suggestions from code review"
-  },
-  {
-    "hash": "cdff2a12",
-    "author": "Ed Hennis",
-    "branch": "gregtatcam/retire/fixAMMv1_1",
-    "date": "2026-10-13T16:09:04+00:00",
-    "message": "Merge branch 'develop' into gregtatcam/retire/fixAMMv1_1"
-  },
-  {
-    "hash": "0ddefa25",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/native-max-offer-fixes",
-    "date": "2026-10-13T16:05:26+00:00",
-    "message": "Fix clang-tidy"
-  },
-  {
-    "hash": "7cb19f4d",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gh-readonly-queue/develop/pr-8257-7cb19f4dcea1c327694e46b5d53b1879febf3a99",
-    "date": "2026-10-13T16:01:30+00:00",
-    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
-  },
-  {
-    "hash": "7cb19f4d",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gh-readonly-queue/develop/pr-8231-4538d198e17d068cf1bd7bc3224d0a7851199b23",
-    "date": "2026-10-13T16:01:30+00:00",
-    "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
-  },
-  {
-    "hash": "a0e22e23",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/simulate-block-wasm",
-    "date": "2026-10-13T15:42:24+00:00",
-    "message": "Merge branch 'develop' into mvadari/simulate-block-wasm"
   },
   {
     "hash": "e4a7904b",
@@ -1694,60 +2646,11 @@
     "message": "Merge remote-tracking branch 'upstream/develop' into mvadari/rearch/offer-entry"
   },
   {
-    "hash": "cd9da350",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/mpt/xrp-mpt-math",
-    "date": "2026-10-13T15:17:55+00:00",
-    "message": "Merge remote-tracking branch 'origin/gregtatcam/mpt/xrp-mpt-math' into gregtatcam/mpt/xrp-mpt-math"
-  },
-  {
-    "hash": "4ef93dea",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/mpt/xrp-mpt-math",
-    "date": "2026-10-13T15:17:15+00:00",
-    "message": "test: Add static_asserts for checkedMul overflow boundaries"
-  },
-  {
-    "hash": "4779b954",
-    "author": "dependabot[bot]",
-    "branch": "dependabot/uv/cmake/scripts/codegen/develop/codegen-dependencies-9ec14b72a7",
-    "date": "2026-10-13T15:14:02+00:00",
-    "message": "chore: [DEPENDABOT] bump pyparsing"
-  },
-  {
-    "hash": "6652df5d",
-    "author": "Ed Hennis",
-    "branch": "gregtatcam/mpt/dex-fix-offers",
-    "date": "2026-10-13T15:14:00+00:00",
-    "message": "Merge branch 'develop' into gregtatcam/mpt/dex-fix-offers"
-  },
-  {
-    "hash": "97335297",
-    "author": "Ed Hennis",
-    "branch": "gregtatcam/mpt/cantransfer-invariant-hygiene",
-    "date": "2026-10-13T15:06:16+00:00",
-    "message": "Merge branch 'develop' into gregtatcam/mpt/cantransfer-invariant-hygiene"
-  },
-  {
-    "hash": "9af29b7e",
-    "author": "Ed Hennis",
-    "branch": "gregtatcam/mpt/xrp-mpt-math",
-    "date": "2026-10-13T15:06:08+00:00",
-    "message": "Merge branch 'develop' into gregtatcam/mpt/xrp-mpt-math"
-  },
-  {
     "hash": "e3dee687",
     "author": "JCW",
     "branch": "a1q123456/early-exit-fee",
     "date": "2026-10-13T14:49:37+00:00",
     "message": "Fix clang-tidy errors"
-  },
-  {
-    "hash": "26711a4f",
-    "author": "Ed Hennis",
-    "branch": "gregtatcam/native-max-offer-fixes",
-    "date": "2026-10-13T14:44:03+00:00",
-    "message": "Merge branch 'develop' into gregtatcam/native-max-offer-fixes"
   },
   {
     "hash": "4538d198",
@@ -1759,35 +2662,56 @@
   {
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
-    "branch": "gh-readonly-queue/develop/pr-8257-7cb19f4dcea1c327694e46b5d53b1879febf3a99",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
   {
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
-    "branch": "gregtatcam/retire/fixAMMv1_1",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
   {
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
-    "branch": "gh-readonly-queue/develop/pr-8231-4538d198e17d068cf1bd7bc3224d0a7851199b23",
+    "branch": "mvadari/perf-baseuint-memcmp",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
   {
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
-    "branch": "mvadari/simulate-block-wasm",
+    "branch": "mvadari/perf-relay-skip-reparse",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
   {
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
-    "branch": "mvadari/rearch/permissioneddomain-entry",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T14:29:59+00:00",
+    "message": "build: Update codegen requirements (#8570)"
+  },
+  {
+    "hash": "4538d198",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T14:29:59+00:00",
+    "message": "build: Update codegen requirements (#8570)"
+  },
+  {
+    "hash": "4538d198",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T14:29:59+00:00",
+    "message": "build: Update codegen requirements (#8570)"
+  },
+  {
+    "hash": "4538d198",
+    "author": "Ayaz Salikhov",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
@@ -1795,13 +2719,6 @@
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
     "branch": "mvadari/rearch/delegate-entry",
-    "date": "2026-10-13T14:29:59+00:00",
-    "message": "build: Update codegen requirements (#8570)"
-  },
-  {
-    "hash": "4538d198",
-    "author": "Ayaz Salikhov",
-    "branch": "mvadari/rearch/oracle-entry",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
@@ -1822,28 +2739,14 @@
   {
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
-    "branch": "gregtatcam/mpt/xrp-mpt-math",
+    "branch": "mvadari/rearch/oracle-entry",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
   {
     "hash": "4538d198",
     "author": "Ayaz Salikhov",
-    "branch": "dependabot/uv/cmake/scripts/codegen/develop/codegen-dependencies-9ec14b72a7",
-    "date": "2026-10-13T14:29:59+00:00",
-    "message": "build: Update codegen requirements (#8570)"
-  },
-  {
-    "hash": "4538d198",
-    "author": "Ayaz Salikhov",
-    "branch": "gregtatcam/mpt/dex-fix-offers",
-    "date": "2026-10-13T14:29:59+00:00",
-    "message": "build: Update codegen requirements (#8570)"
-  },
-  {
-    "hash": "4538d198",
-    "author": "Ayaz Salikhov",
-    "branch": "gregtatcam/mpt/cantransfer-invariant-hygiene",
+    "branch": "mvadari/rearch/permissioneddomain-entry",
     "date": "2026-10-13T14:29:59+00:00",
     "message": "build: Update codegen requirements (#8570)"
   },
@@ -1883,9 +2786,23 @@
     "message": "test: Expect tecPRECISION_LOSS for out-of-range AssetsMaximum on FixedPrecision"
   },
   {
+    "hash": "b549db8c",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T12:45:26+00:00",
+    "message": "test: Expect tecPRECISION_LOSS for out-of-range AssetsMaximum on FixedPrecision"
+  },
+  {
     "hash": "16d44c5c",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T12:14:48+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
+  },
+  {
+    "hash": "16d44c5c",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T12:14:48+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
   },
@@ -1897,9 +2814,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
   },
   {
+    "hash": "683f9fb8",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T12:14:45+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
+  },
+  {
     "hash": "0a81c64c",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T12:14:42+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
+  },
+  {
+    "hash": "0a81c64c",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T12:14:42+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
   },
@@ -1911,9 +2842,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
   },
   {
+    "hash": "0779f4a6",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T12:14:39+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
+  },
+  {
     "hash": "de078770",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T12:14:36+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
+  },
+  {
+    "hash": "de078770",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T12:14:36+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
   },
@@ -1925,9 +2870,23 @@
     "message": "fix: Reject out-of-range values in isOnVaultBaseGrid"
   },
   {
+    "hash": "77296557",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T12:14:22+00:00",
+    "message": "fix: Reject out-of-range values in isOnVaultBaseGrid"
+  },
+  {
     "hash": "90ecf34a",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T11:20:15+00:00",
+    "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
+  },
+  {
+    "hash": "90ecf34a",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T11:20:15+00:00",
     "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
   },
@@ -1939,9 +2898,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
   },
   {
+    "hash": "c159a87b",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T11:17:25+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
+  },
+  {
     "hash": "2dc43acd",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T11:17:03+00:00",
+    "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
+  },
+  {
+    "hash": "2dc43acd",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T11:17:03+00:00",
     "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
   },
@@ -1953,9 +2926,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
   },
   {
+    "hash": "c25ce4c2",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T11:14:27+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
+  },
+  {
     "hash": "d12903de",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T11:14:21+00:00",
+    "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
+  },
+  {
+    "hash": "d12903de",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T11:14:21+00:00",
     "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
   },
@@ -1967,9 +2954,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
   },
   {
+    "hash": "4e3d4155",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T11:12:20+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
+  },
+  {
     "hash": "ad035568",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:57:39+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
+  },
+  {
+    "hash": "ad035568",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:57:39+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
   },
@@ -1981,9 +2982,23 @@
     "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
   },
   {
+    "hash": "001e7a70",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:57:34+00:00",
+    "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
+  },
+  {
     "hash": "ea0e1eeb",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:53:27+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
+  },
+  {
+    "hash": "ea0e1eeb",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:53:27+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
   },
@@ -1995,9 +3010,23 @@
     "message": "test: Use NOLINTNEXTLINE for the optional access in VaultHelpers test"
   },
   {
+    "hash": "cd638459",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:53:18+00:00",
+    "message": "test: Use NOLINTNEXTLINE for the optional access in VaultHelpers test"
+  },
+  {
     "hash": "2d0ee689",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:49:01+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
+  },
+  {
+    "hash": "2d0ee689",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:49:01+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
   },
@@ -2009,9 +3038,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
   },
   {
+    "hash": "cf668a50",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:27:41+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
+  },
+  {
     "hash": "7cdefdff",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:27:17+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
+  },
+  {
+    "hash": "7cdefdff",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:27:17+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
   },
@@ -2023,9 +3066,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
   },
   {
+    "hash": "b531a5d6",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:26:05+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
+  },
+  {
     "hash": "f2dd2398",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:25:28+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
+  },
+  {
+    "hash": "f2dd2398",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:25:28+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
   },
@@ -2037,9 +3094,23 @@
     "message": "chore: Regenerate protocol autogen tests"
   },
   {
+    "hash": "ab97784f",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:25:04+00:00",
+    "message": "chore: Regenerate protocol autogen tests"
+  },
+  {
     "hash": "27414887",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:06:49+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
+  },
+  {
+    "hash": "27414887",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:06:49+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
   },
@@ -2051,9 +3122,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
   },
   {
+    "hash": "ca0ed4eb",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:06:34+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
+  },
+  {
     "hash": "4196ff56",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:06:30+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
+  },
+  {
+    "hash": "4196ff56",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:06:30+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
   },
@@ -2065,9 +3150,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
   },
   {
+    "hash": "32608826",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:05:59+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
+  },
+  {
     "hash": "e1c05bf2",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:05:36+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
+  },
+  {
+    "hash": "e1c05bf2",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:05:36+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
   },
@@ -2079,9 +3178,23 @@
     "message": "Merge remote-tracking branch 'origin/develop' into tapanito/sav-fixed-precision-vault-rounding"
   },
   {
+    "hash": "d5d9160f",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:05:17+00:00",
+    "message": "Merge remote-tracking branch 'origin/develop' into tapanito/sav-fixed-precision-vault-rounding"
+  },
+  {
     "hash": "b4142832",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:04:30+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
+  },
+  {
+    "hash": "b4142832",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:04:30+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanpay' into tapanito/sav-fixed-precision-loanmanage"
   },
@@ -2093,9 +3206,23 @@
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
   },
   {
+    "hash": "d693c823",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T10:03:58+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanset' into tapanito/sav-fixed-precision-loanpay"
+  },
+  {
     "hash": "397956a6",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T10:03:55+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
+  },
+  {
+    "hash": "397956a6",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T10:03:55+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-loanbroker' into tapanito/sav-fixed-precision-loanset"
   },
@@ -2107,9 +3234,23 @@
     "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
   },
   {
+    "hash": "c35d4d36",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T09:55:19+00:00",
+    "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
+  },
+  {
     "hash": "2e7f9682",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T09:49:47+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
+  },
+  {
+    "hash": "2e7f9682",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T09:49:47+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
   },
@@ -2121,9 +3262,23 @@
     "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
   },
   {
+    "hash": "4604f437",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T09:49:41+00:00",
+    "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
+  },
+  {
     "hash": "080b7da6",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T09:43:24+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
+  },
+  {
+    "hash": "080b7da6",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T09:43:24+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
   },
@@ -2135,9 +3290,23 @@
     "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
   },
   {
+    "hash": "56ea39fb",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T09:42:50+00:00",
+    "message": "chore: Apply clang-tidy trailing-comma and const-correctness fixes"
+  },
+  {
     "hash": "0e14d9a1",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T09:25:46+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
+  },
+  {
+    "hash": "0e14d9a1",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T09:25:46+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-transactors' into tapanito/sav-fixed-precision-loanbroker"
   },
@@ -2149,9 +3318,23 @@
     "message": "fix: clang-tidy"
   },
   {
+    "hash": "59a80e0d",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T09:20:55+00:00",
+    "message": "fix: clang-tidy"
+  },
+  {
     "hash": "2a561809",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T09:06:54+00:00",
+    "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
+  },
+  {
+    "hash": "2a561809",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T09:06:54+00:00",
     "message": "Merge branch 'tapanito/sav-fixed-precision-vault-rounding' into tapanito/sav-fixed-precision-vault-transactors"
   },
@@ -2165,13 +3348,6 @@
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "gh-readonly-queue/develop/pr-8257-7cb19f4dcea1c327694e46b5d53b1879febf3a99",
-    "date": "2026-10-13T08:46:55+00:00",
-    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
-  },
-  {
-    "hash": "4c39b05f",
-    "author": "Gregory Tsipenyuk",
     "branch": "a1q123456/early-exit-fee",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
@@ -2179,35 +3355,56 @@
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/retire/fixAMMv1_1",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/native-max-offer-fixes",
+    "branch": "gregtatcam/mpt/dex-fix-offers-1",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "gh-readonly-queue/develop/pr-8231-4538d198e17d068cf1bd7bc3224d0a7851199b23",
+    "branch": "mvadari/perf-baseuint-memcmp",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "mvadari/simulate-block-wasm",
+    "branch": "mvadari/perf-relay-skip-reparse",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "mvadari/rearch/permissioneddomain-entry",
+    "branch": "mvadari/perf-shamap-small-wins",
+    "date": "2026-10-13T08:46:55+00:00",
+    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
+  },
+  {
+    "hash": "4c39b05f",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-skip-proposed-tx-json",
+    "date": "2026-10-13T08:46:55+00:00",
+    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
+  },
+  {
+    "hash": "4c39b05f",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-st-noexcept-move",
+    "date": "2026-10-13T08:46:55+00:00",
+    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
+  },
+  {
+    "hash": "4c39b05f",
+    "author": "Gregory Tsipenyuk",
+    "branch": "mvadari/perf-sttx-copy-refs",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
@@ -2215,13 +3412,6 @@
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
     "branch": "mvadari/rearch/delegate-entry",
-    "date": "2026-10-13T08:46:55+00:00",
-    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
-  },
-  {
-    "hash": "4c39b05f",
-    "author": "Gregory Tsipenyuk",
-    "branch": "mvadari/rearch/oracle-entry",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
@@ -2242,35 +3432,14 @@
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/mpt/xrp-mpt-math",
+    "branch": "mvadari/rearch/oracle-entry",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
   {
     "hash": "4c39b05f",
     "author": "Gregory Tsipenyuk",
-    "branch": "dependabot/uv/cmake/scripts/codegen/develop/codegen-dependencies-9ec14b72a7",
-    "date": "2026-10-13T08:46:55+00:00",
-    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
-  },
-  {
-    "hash": "4c39b05f",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/mpt/dex-fix-offers",
-    "date": "2026-10-13T08:46:55+00:00",
-    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
-  },
-  {
-    "hash": "4c39b05f",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/mpt/cantransfer-invariant-hygiene",
-    "date": "2026-10-13T08:46:55+00:00",
-    "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
-  },
-  {
-    "hash": "4c39b05f",
-    "author": "Gregory Tsipenyuk",
-    "branch": "gregtatcam/mpt/dex-fix-offers-1",
+    "branch": "mvadari/rearch/permissioneddomain-entry",
     "date": "2026-10-13T08:46:55+00:00",
     "message": "fix: Reject vault and lending amounts out of range for the asset (#8527)"
   },
@@ -2282,9 +3451,23 @@
     "message": "Merge remote-tracking branch 'origin/develop' into tapanito/sav-fixed-precision-vault-rounding"
   },
   {
+    "hash": "42699efc",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
+    "date": "2026-10-13T08:37:45+00:00",
+    "message": "Merge remote-tracking branch 'origin/develop' into tapanito/sav-fixed-precision-vault-rounding"
+  },
+  {
     "hash": "167dbd85",
     "author": "Vito",
     "branch": "a1q123456/early-exit-fee",
+    "date": "2026-10-13T08:37:34+00:00",
+    "message": "fix: Skip LoanPay transfer when an owner-borrower pays itself the fee"
+  },
+  {
+    "hash": "167dbd85",
+    "author": "Vito",
+    "branch": "a1q123456/split-loan-set-and-loan-accept-implementation",
     "date": "2026-10-13T08:37:34+00:00",
     "message": "fix: Skip LoanPay transfer when an owner-borrower pays itself the fee"
   },
@@ -2303,27 +3486,6 @@
     "message": "chore: Exclude VaultClawback dust check return from coverage"
   },
   {
-    "hash": "c7f74e72",
-    "author": "Vito Tumas",
-    "branch": "gregtatcam/vault-lending-amount-range",
-    "date": "2026-10-13T08:14:22+00:00",
-    "message": "Merge branch 'develop' into gregtatcam/vault-lending-amount-range"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
     "hash": "d7daa366",
     "author": "Bart",
     "branch": "bthomee/shamap-checkfilter-verify-hash",
@@ -2333,1170 +3495,8 @@
   {
     "hash": "d7daa366",
     "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "d7daa366",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T07:45:17+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
     "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "6123085e",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T07:44:26+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-05-addknownnode-verdict' into bthomee/shamap-invalid-06-refuse-immutable"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-04-atomic-state",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "c40a4c88",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-04-atomic-state' into bthomee/shamap-invalid-05-addknownnode-verdict"
-  },
-  {
-    "hash": "6e9a6f6a",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T07:44:25+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03b-refuse-zero-account-hash' into bthomee/shamap-invalid-04-atomic-state"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-04-atomic-state",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-03b-refuse-zero-account-hash",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-11-unwalkable-inner-node-tests",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "5ee22f72",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T07:43:23+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-03-signal-local-failure' into bthomee/shamap-invalid-03b-refuse-zero-account-hash"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-04-atomic-state",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-03b-refuse-zero-account-hash",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-03-signal-local-failure",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "cbbd17d3",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T07:42:55+00:00",
-    "message": "Merge branch 'bthomee/shamap-invalid-02b-acquire-harness' into bthomee/shamap-invalid-03-signal-local-failure"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-04-atomic-state",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-03b-refuse-zero-account-hash",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-03-signal-local-failure",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-02b-acquire-harness",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-checkfilter-verify-hash",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-08-move-entries-off-nodepathstack",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-16-late-reply-survives-giveset",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-17-duplicate-progress",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07a-refuse-misplaced-leaf",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "2252996f",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-13T07:01:09+00:00",
-    "message": "test: Keep the DeepChain depth counter from stepping below zero"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-07-getmissingnodes",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-06-refuse-immutable",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-05-addknownnode-verdict",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-04-atomic-state",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-03b-refuse-zero-account-hash",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-03-signal-local-failure",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-02b-acquire-harness",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-09-visit-differences-tests",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-10-derive-position-from-key",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07b-judge-position-at-hooks",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
-  },
-  {
-    "hash": "72e7f8ac",
-    "author": "Bart",
-    "branch": "bthomee/shamap-stack-07c-keep-getmissingnodes-verdict",
-    "date": "2026-10-13T06:45:04+00:00",
-    "message": "test: Verify the charge and the failure list through the real dispatch"
+    "date": "2026-10-13T07:45:17+00:00",
+    "message": "Merge branch 'bthomee/shamap-invalid-06-refuse-immutable' into bthomee/shamap-invalid-07-getmissingnodes"
   }
 ]

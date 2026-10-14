@@ -1,5 +1,126 @@
 [
   {
+    "pr_number": 8267,
+    "branch_name": "tialymov/FN-28-vault_withdraw_transfer_fee",
+    "title": "fix: Charge transfer fee on third-party vault withdrawals",
+    "body": "## High Level Overview of Change\n\n`VaultWithdraw` now charges the issuer's transfer fee when a holder withdraws to a third party. Gated by `fixCleanup3_5_0`.\n\n## Context of Change\n\nEvery vault withdrawal called `accountSend` with the transfer fee waived, so a deposit followed by a withdrawal to a third party moved IOUs and MPTs without paying the fee.\n\nWith the amendment enabled, the withdrawer's vault position pays the fee:\n\n- A fixed-asset request delivers the requested amount and redeems enough shares to cover the gross cost.\n- A fixed-share request burns the requested shares and delivers the amount left after the fee.\n- Withdrawals to the submitter or to the issuer stay fee-free, and so do withdrawals submitted by the issuer.\n\n`doWithdraw` settles the fee by redeeming the gross amount with the issuer and issuing the net amount to the destination. `ValidVault` expects the destination delta to equal the vault outflow less the fee.\n\n### Known gaps\n\nTwo routes still move the asset to a third party without the fee. Both are left for a follow-up:\n\n- `LoanBrokerCoverWithdraw` with a `Destination` waives the fee.\n- Vault shares are transferable, so a holder can pay shares to someone who then withdraws them to self without a fee.\n\n## API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\nTransaction processing change under the `fixCleanup3_5_0` amendment.\n\n## Test Plan\n\n`VaultLifecycle_test.cpp` covers IOU and MPT with the amendment off and on, both withdrawal modes, issuer and self destinations, an issuer withdrawing to a third party, a second depositor whose shares keep their value after another depositor pays the fee, gross funding of a fixed-asset request, the MPT payout that rounds to zero (with and without MPTokensV2), and the IOU receiver limit applied to the net amount. `STAmount.mul_ratio_*` gtests cover the `mulRatio(STAmount)` overload, and `TokenHelpers.add_transfer_fee` / `subtract_transfer_fee` cover the fee he",
+    "user": "tyalymov",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-22T21:26:20Z",
+    "merged_at": "2026-10-14T17:11:02Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 6,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8267?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `98.52941%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8267?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
+        "created_at": "2026-09-22T21:29:46Z"
+      },
+      {
+        "user": "tyalymov",
+        "body": "Agreed, both are out of scope here. I added them to the description as known gaps and will handle them in a follow-up.\n",
+        "created_at": "2026-09-30T21:31:36Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-09T22:34:02Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-13T11:11:46Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-14T15:10:53Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Reviewed the fixCleanup3_5_0 transfer-fee change for VaultWithdraw across View.cpp, TokenHelpers, VaultInvariant, VaultWithdraw, LoanBrokerCoverWithdraw, and the lifecycle tests. The core net/gross ac"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nA critical overflow path in `VaultWithdraw.cpp` can escape instead of returning the expected transaction error.\n\n*Get a"
+      },
+      {
+        "user": "depthfirst-app[bot]",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8461,
+    "branch_name": "tapanito/sav-fixed-precision-loanmanage",
+    "title": "feat: Book FixedPrecision LoanManage default and impairment",
+    "body": "## Stack\n\nPart 6 of 6 in the FixedPrecision Vault stack. Review and merge in order.\n\n1. #8257 Vault grid and balance helpers\n2. #8460 Vault transactors and invariants\n3. #8258 LoanBroker cover\n4. #8260 LoanSet\n5. #8271 LoanPay\n6. #8461 LoanManage (this PR)\n\nBased on: #8271. Next: none (last PR).\n\n## Changes\n\n- Default on a FixedPrecision Vault rounds first-loss cover on the broker grid, credits it to `AssetsAvailable` with the sum floor, and removes the Loan's principal, scheduled interest and impairment, through `adjustVaultBalances`.\n- Impair and unimpair move `LossUnrealized` by exactly the Loan's principal; impairing beyond `AssetsDeployed` returns `tecLIMIT_EXCEEDED`.\n- Legacy and CashBasis LoanManage are unchanged.\n- Removes the temporary LoanManage guard and the temporary `featureLendingProtocolV1_2` exclusion from `jtx::testableAmendments()`; existing suites now also run against FixedPrecision Vaults.\n- Updates to `InvariantsVault_test` and `VaultClosedEnded_test` that need FixedPrecision lending land here, because they can only pass once the whole stack is in.\n",
+    "user": "Tapanito",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-01T14:44:39Z",
+    "merged_at": "2026-10-14T16:16:27Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 11,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8461?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.29730%` with `2 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8461?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-10-01T14:47:37Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot",
+        "created_at": "2026-10-01T14:55:12Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot ",
+        "created_at": "2026-10-02T13:13:01Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-08T14:40:07Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-08T14:59:30Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This diff adds a large, self-contained unit test file (LoanManageFixedPrecision_test.cpp) covering default/impairment effects on AssetsDeployed/LossUnrealized, First-Loss Capital cover, coarsened-vaul"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This PR implements FixedPrecision default/impair/unimpair for LoanManage, replacing the previous temporary guard with real accounting logic routed through adjustVaultBalances, and updates dependent in"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe new scheduled-interest removal lacks a nonzero-interest default test.\n\n**Review effort:** Balanced  \n**Findings:** "
+      }
+    ]
+  },
+  {
     "pr_number": 8470,
     "branch_name": "tialymov/FN-30-vault_clawback_holder_existence",
     "title": "fix: Reject VaultClawback with a nonexistent holder",
@@ -2580,87 +2701,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe workflow and documentation changes consistently implement the intended stable-release behavior.\n\n**Review effort:*"
-      }
-    ]
-  },
-  {
-    "pr_number": 8466,
-    "branch_name": "check_no_merge_back",
-    "title": "ci: Add more guardrails for merging releases back to develop",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n1. Merging release back to develop should be performed manually (because queue squashes changes).\r\n2. No new commits should be added on top when merging release back to develop (except for a merge commit fixing conflicts)\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: B",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-02T10:26:21Z",
-    "merged_at": "2026-10-02T16:53:32Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8466?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-02T10:29:00Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe workflow and scripts consistently enforce the stated release merge-back constraints.\n\n**Review effort:** Balanced "
-      },
-      {
-        "user": "bthomee",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8467,
-    "branch_name": "new_release_process",
-    "title": "docs: Document new release process",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis documents how we're doing releases, removing old (and completely wrong) doc from maintaining.md (where it doesn't even belong in the first place).\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the ne",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-02T10:42:46Z",
-    "merged_at": "2026-10-02T16:41:05Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8467?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-02T13:24:18Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe documented workflow has contradictory merge requirements and may prematurely expose private security fixes.\n\n**Revi"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
