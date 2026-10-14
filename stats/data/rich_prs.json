@@ -1,5 +1,84 @@
 [
   {
+    "pr_number": 8596,
+    "branch_name": "mvadari/se-out-of-gas-gasused",
+    "title": "fix: Report the whole Gas allowance as GasUsed on tecOUT_OF_GAS",
+    "body": "## High Level Overview of Change\n\nOn `tecOUT_OF_GAS`, EscrowFinish now reports `GasUsed = Gas` instead of the wasmi meter's count.\n\n## Context of Change\n\nManual testing found that an out-of-gas finish reported `GasUsed = Gas \u2212 1` (9,999 for `Gas=10000`). The wasmi meter stops at the last instruction it can afford, so its count can be a little under the allowance. The comment in `EscrowFinish.cpp` and the test plan said it equals `Gas`. EVM and other chains burn the whole allowance on an out-of-gas halt. The fee is already based on `Gas`, so only the metadata changes. The WasmVM comment that said the engine reports the whole limit is corrected, and the `FinishFailures` test now checks for equality instead of a range.\n\nNot built or tested locally; relying on CI.\n\n## API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\nAI assisted with this change.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-14T20:55:01Z",
+    "merged_at": "2026-10-14T22:34:34Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8596?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-14T20:57:04Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Small, well-scoped fix: EscrowFinish now reports GasUsed = Gas (the full allowance) specifically when the result is tecOUT_OF_GAS, rather than trusting the wasmi meter's possibly-short count. The gati"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The change is small, well-scoped, and consistent with its description: on tecOUT_OF_GAS, EscrowFinish now reports the full allowance as GasUsed instead of the wasmi meter's slightly-under count, with "
+      },
+      {
+        "user": "TimothyBanks",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8583,
+    "branch_name": "no_standalone_dns",
+    "title": "fix: Skip bootstrap DNS lookups in standalone mode",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nOverlayImpl::start() resolved the bootstrap hosts (r.ripple.com etc.)\r\neven in standalone mode, where the server never connects to peers.\r\nEvery jtx::Env is standalone, so every unit test made real internet\r\nDNS lookups.\r\n\r\nAsio runs all lookups for an io_context on a single thread. When CI\r\nDNS is slow, a test's own lookup (e.g. ValidatorSite resolving\r\n127.0.0.1) queues behind a bootstrap lookup and can exceed its\r\ntimeout. Env teardown also waits for in-flight lookups. This caused\r\nthe \"xrpl.app.ValidatorSite had 41/42 failures\" CI flake.\r\n\r\nSkip both the bootstrap and [ips_fixed] lookups in standalone mode,\r\nmove the default bootstrap hosts into a constant, and share the\r\ndefault-port handling between the two lookups.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Cool part\r\n\r\n**Across the 21 Linux configs:**\r\n- **Typical saving:** 12% median (27s per config), 13% mean, ranging from 0% to 31%. Summed across configs, that's 5,706s down to 5,156s, about 10% less.\r\n- **Fast release builds gain the most, 21\u201331%:** `rhel-gcc-release-amd64` went from 144s to 100s, `ubuntu-clang-release-arm64` from 176s to 129s, `debian-gcc-release-amd64-assert` from 139s to 103s. Their test step is sho",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-14T15:34:24Z",
+    "merged_at": "2026-10-14T21:40:32Z",
+    "labels": [
+      "Ready to merge",
+      "Full CI build"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8583?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `4.34783%` with `22 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8583?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-10-14T15:37:35Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe standalone DNS suppression lacks deterministic automated regression coverage.\n\n<details open>\n<summary><strong>1 open finding</strong></summary"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage3: "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8267,
     "branch_name": "tialymov/FN-28-vault_withdraw_transfer_fee",
     "title": "fix: Charge transfer fee on third-party vault withdrawals",
@@ -2282,52 +2361,6 @@
     ]
   },
   {
-    "pr_number": 8244,
-    "branch_name": "tialymov/FN-6-lending_batch_support",
-    "title": "feat: Allow lending transactions in Batch",
-    "body": "## High Level Overview of Change\n\nAllows Single Asset Vault and Lending Protocol transactions to run as Batch inner transactions\nwhen `featureLendingProtocolV1_2` is enabled. Before the amendment, these transaction types remain\ninvalid inside a Batch.\n\n## Context of Change\n\nBatch already applies inner transactions through the normal transaction pipeline, but explicitly\nrejects all Vault and Lending transaction types.\n\nThis change gates that restriction on `featureLendingProtocolV1_2`. It also verifies the special\nauthorization flow for `LoanSet`, where both parties sign the outer Batch instead of using an\ninner `CounterpartySignature`.\n\n## API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\n## Test Plan\n\n`Batch_test`:\n\n- rejection of Vault and Lending inner transactions before the amendment;\n- successful Vault creation and deposit after the amendment;\n- required `LoanSet` counterparty and Batch signer validation;\n- successful `LoanSet` and cover deposit in one Batch;\n- rollback of a `LoanSet` when a later inner transaction fails.\n\nNew `LendingBatch` suite, each case run with `LendingProtocolV1_1` on and off:\n\n- vault lifecycle in one Batch: `VaultCreate`, `VaultDeposit`, `VaultWithdraw`, `VaultDelete`,\n  on an open-ended vault and on a closed-ended vault in the Subscription phase;\n- loan lifecycle: `VaultCreate`, `VaultDeposit`, `LoanBrokerSet`, `LoanSet`, `LoanPay`. One Batch\n  on an open-ended vault with V1_1 off. Two Batches on a closed-ended vault with V1_1 on, split\n  at the Subscription to Investment boundary, because `VaultDeposit` and `LoanSet` are only\n  valid in different phases;\n- arbitrage under `tfAllOrNothing`: `LoanSet`, DEX buy, DEX sell, `LoanPay`. One run that\n  profits and one where the sell offer cannot fill and nothing persists;\n- `LoanManage` default and `LoanBrokerCoverWithdraw` in one Batch, once the grace period of a\n  loan created earlier has passed;\n- `tfIndependent` chains where a failing ",
-    "user": "tyalymov",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-17T20:52:54Z",
-    "merged_at": "2026-10-06T00:32:15Z",
-    "labels": [
-      "Ready to merge",
-      "feature: LP1.2"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8244?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-17T20:55:24Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "https://github.com/XRPLF/rippled/blob/14f27e66bfd6f0db3812102867a7e89a11ea0ac5/src/libxrpl/tx/transactors/system/Batch.cpp#L360-L365\n\nWith `featureLendingProtocolV1_2`, `LoanSet` can be a Batch inner, so this comment no longer holds. An inner `LoanSet` in a proposed Batch now gets `TapProposal`. It still needs `sfCounterparty` and the signer check is deferred to submission, so I don't see a bypass, but can we update the comment and add a test for a proposed Batch with a `LoanSet` inner?",
-        "created_at": "2026-09-29T10:14:45Z"
-      }
-    ],
-    "reviews_count": 27,
-    "reviews": [
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "This is a small, well-scoped change that gates Batch's existing Vault/Lending inner-transaction rejection behind featureLendingProtocolV1_1. The logic in Batch.cpp is correct: pre-amendment it preserv"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "### \ud83d\udfe2 Approval recommended\n\nThe amendment gate and representative Vault/Loan Batch paths are covered without identified correctness issues.\n\n<details>\n<summary>Pull request overview</summary>\n\nAllows "
-      },
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "The change cleanly gates the previously-hardcoded Batch inner-transaction rejection list (kDisabledTxTypes) behind featureLendingProtocolV1_2, correctly inverting the amendment check (isDisabledTxType"
-      }
-    ]
-  },
-  {
     "pr_number": 6319,
     "branch_name": "ledger-entry-all",
     "title": "feat: Add full support for all objects in `ledger_entry`",
@@ -2665,42 +2698,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe revision entries are correctly formatted, documented, and ordered.\n\n**Review effort:** Balanced  \n**Findings:** No"
-      }
-    ]
-  },
-  {
-    "pr_number": 8469,
-    "branch_name": "private_stable",
-    "title": "ci: Make release always go into stable channel",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n### Low Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n- [ ] Peer p",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-02T17:18:04Z",
-    "merged_at": "2026-10-02T21:19:46Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8469?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-02T17:21:15Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe workflow and documentation changes consistently implement the intended stable-release behavior.\n\n**Review effort:*"
       }
     ]
   }
