@@ -1,5 +1,485 @@
 [
   {
+    "pr_number": 8470,
+    "branch_name": "tialymov/FN-30-vault_clawback_holder_existence",
+    "title": "fix: Reject VaultClawback with a nonexistent holder",
+    "body": "## High Level Overview of Change\n\n`VaultClawback` now fails in `preclaim` with `terNO_ACCOUNT` when the `Holder` account does not exist, gated on `fixCleanup3_5_0`.\n\n## Context of Change\n\nBefore this change a nonexistent `Holder` passed `preclaim`, and the transaction failed in `doApply`, which still charged the fee: `tecPRECISION_LOSS` with an implicit `Amount`, `tecNO_AUTH` with an explicit one. `Clawback` and `AMMClawback` already return `terNO_ACCOUNT` for a missing holder.\n\n## API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\n## Test Plan\n\n`VaultClawback_test` covers a nonexistent holder with an implicit and an explicit amount, with `fixCleanup3_5_0` enabled and disabled.\n",
+    "user": "tyalymov",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-02T18:17:48Z",
+    "merged_at": "2026-10-14T15:25:25Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8470?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-02T18:20:01Z"
+      }
+    ],
+    "reviews_count": 15,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Clean, well-scoped amendment-gated fix: VaultClawback now checks holder-account existence in preclaim and returns terNO_ACCOUNT when fixCleanup3_5_0 is enabled, matching the behavior of Clawback/AMMCl"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe consensus change is properly amendment-gated and covered for both amount forms and replay compatibility.\n\n**Review"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Small, well-scoped change adding a terNO_ACCOUNT preclaim check for a nonexistent VaultClawback holder, gated behind fixCleanup3_5_0, consistent with Clawback/AMMClawback behavior. Logic looks correct"
+      }
+    ]
+  },
+  {
+    "pr_number": 8181,
+    "branch_name": "tialymov/FN-130-pseudo_account_ownership_invariant",
+    "title": "fix: Enforce pseudo-account directory contents with an invariant",
+    "body": "## High Level Overview of Change\n`ValidPseudoAccounts` now also checks, under `fixCleanup3_5_0`, that every entry newly linked into a pseudo-account's owner directory belongs to that pseudo-account's own AMM, Vault or LoanBroker:\n- AMM: its AMM entry, its holdings of the two pool assets, and the trust lines of its LP token.\n- Vault: its share MPTokenIssuance, its holding of the vault asset, and the LoanBrokers operating on this vault.\n- LoanBroker: its Loans and its holding of the vault asset.\n\nAnything else fails the transaction with `tecINVARIANT_FAILED`/`tefINVARIANT_FAILED`: an unexpected entry type, an entry of an expected type that belongs to someone else (a trust line for an unrelated asset, another vault's LoanBroker, another broker's Loan), or a link to an entry that doesn't exist.\n\n## Context of Change\nA pseudo-account can't sign transactions, so anything linked into its owner directory that its own object doesn't manage is pinned there for good: nothing can remove it, and it blocks deleting the object that owns the pseudo-account. Several transactors already refuse to create such links (TrustSet, EscrowCreate, CheckCreate, PaymentChannelCreate, DelegateSet, SponsorshipSet, DepositPreauth, CredentialCreate, Payment, MPTokenAuthorize). This check is the backstop for that whole class of guard: it looks once at whatever actually lands in the directory, instead of relying on every current and future transactor getting it right. It follows a Sherlock audit finding that a related pseudo-account cleanup mechanism was itself exploitable and got reverted in an earlier PR; this is the general replacement fix.\n\n## API Impact\n- [x] `libxrpl` change\n\n## Test Plan\n- `InvariantsPseudoAccount_test`: for each pseudo-account kind (AMM/Vault/LoanBroker), links into its directory an unexpected entry type, an entry of an expected type that belongs to someone else, or a key with no entry behind it, the way a bug bypassing the transactor-level guards would. Checks that the invar",
+    "user": "tyalymov",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-07T12:04:13Z",
+    "merged_at": "2026-10-14T15:09:02Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8181?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `98.52941%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8181?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
+        "created_at": "2026-09-07T12:05:50Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This MR adds a new invariant (ValidPseudoAccountOwnership) gated behind fixPseudoAccountOwnership that rejects any ledger entry type landing in a pseudo-account's owner directory outside a fixed per-k"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udfe1 Changes recommended\n\nThe new amendment entry in `features.macro` is not placed at the top of the list as required by the file\u2019s documented ordering convention.\n\n*Once you've addressed the issues"
+      },
+      {
+        "user": "tyalymov",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8581,
+    "branch_name": "unify_clang_vars",
+    "title": "build: Unify clang variables",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\n`is_clang` is not very clear, 3 variables are better.\nAlso syncing this approach with clio: https://github.com/XRPLF/clio/pull/3273\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affec",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-14T13:10:45Z",
+    "merged_at": "2026-10-14T15:04:04Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8581?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-14T13:13:17Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "Nice :rage1: "
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe refactor consistently updates all references while preserving existing behavior for supported compilers.\n\n**0 open findings**\n\n<details>\n<summ"
+      }
+    ]
+  },
+  {
+    "pr_number": 8204,
+    "branch_name": "tialymov/FN-102-loanbrokerdelete_asset_auth",
+    "title": "fix: Enforce asset authorization on LoanBrokerDelete",
+    "body": "## High Level Overview of Change\n\nLoanBrokerDelete now checks asset transfer restrictions and owner authorization before returning nonzero broker cover, and creates the owner's holding when it is missing, as a withdrawal to self does.\n\n## Context of Change\n\nLoanBrokerDelete checked freeze state but returned cover through accountSend without the checks LoanBrokerCoverWithdraw uses. Under fixCleanup3_5_0, deletion follows the same self-withdrawal policy. If the cover is nonzero and the owner has deleted its MPToken or trust line, the payout creates it again: a recreated trust line always gets NoRipple, and the owner must cover its reserve. For the MPT case, ValidMPTIssuance lets LoanBrokerDelete create one MPToken and delete one, the same cap VaultWithdraw has. The broker's owner count is released before the holding is created, so the holding can use the reserve the broker frees. Pre-amendment and zero-cover behavior stay the same.\n\n## API Impact\n\n- [x] `libxrpl` change\n\n## Test Plan\n\nTwo table-driven LoanBroker tests run each case under all four combinations of fixCleanup3_5_0 and fixCleanup3_4_0, and check the result, the broker, the owner's balance, holding and owner count.\n\nIOU cases:\n- non-rippling owner line\n- owner line deleted before the payout; the recreated line has NoRipple with the amendment on\n- owner line deleted, and the issuer clears DefaultRipple\n- issuer clears DefaultRipple, owner line kept\n- owner line deleted, and the owner is below its reserve\n- owner line deleted while the issuer requires authorization\n- owner line recreated without authorization\n- zero cover, owner line deleted\n\nMPT cases:\n- owner authorization revoked\n- owner authorization revoked, cover clawed back to zero\n- owner MPToken deleted\n- owner MPToken deleted, owner exactly at its reserve\n- owner MPToken deleted, owner below its reserve\n- zero cover, owner MPToken deleted, also below its reserve\n\nInvariantsMPT covers the LoanBrokerDelete cap on created and deleted MPTokens.\n",
+    "user": "tyalymov",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-09T13:30:20Z",
+    "merged_at": "2026-10-14T14:58:40Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 7,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8204?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-09T13:32:49Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-02T23:41:00Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-05T15:56:16Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-09T10:58:11Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-09T19:30:36Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Production change extends LoanBrokerDelete::preclaim to run the same transfer/authorization checks as LoanBrokerCoverWithdraw under fixCleanup3_4_0 before releasing cover; the added canTransfer/requir"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udd35 Needs a closer look\n\nIt changes consensus-critical transaction preclaim behavior for asset transfer/authorization enforcement and should receive a final human review despite good targeted test c"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The core fix in LoanBrokerDelete.cpp consolidates the freeze/frozen checks under the existing `coverAvailable > 0` guard and adds a new fixCleanup3_4_0-gated block (canTransfer, requireAuth, holding-e"
+      }
+    ]
+  },
+  {
+    "pr_number": 8571,
+    "branch_name": "timothybanks/section-limits",
+    "title": "fix: Add limits for the number of entries in the type, imports, and exports sections in a wasm module",
+    "body": "## High Level Overview of Change\r\n\r\nCaps the number of entries in a wasm module's type, import and export sections, and the length of import and export names. The check runs before the module is compiled. A module that exceeds a cap is refused with a new `Limit` status, kept separate from ordinary malformed bytecode, so likely abuse can be told apart in the logs. Transaction results are unchanged: `temINVALID_BYTECODE` at preflight, `tecINTERNAL` at apply.\r\n\r\n## Context of Change\r\n\r\n`Module::new` parses, validates and stores every type, import and export entry. That work happens before a `Store` exists, so no fuel is charged for it. wasmi's `EnforcedLimits` has no setting for these sections. The only limits are wasmparser's hard-coded ones: 1,000,000 entries per section and 100,000 bytes per name. In testing, wasmi **accepted** a module declaring 1M types after 387 ms of uncharged work on every node that compiled it.\r\n\r\n**Approach.** `compile` now runs `check_section_counts` before `Module::new`. Because `compile` is the only path to a `Module`, `check`, `check_all` and `run` all enforce the same caps. The scan:\r\n- reads each section's entry count from its header, which costs almost nothing;\r\n- reads names only after the section's count has passed its cap;\r\n- stops at the code section, so function bodies and data are never read;\r\n- skips anything that doesn't parse, so `Module::new` still reports malformed modules with wasmi's own messages.\r\n\r\n**Caps** (new public constants in `xrpl-wasm-vm`):\r\n\r\n| Constant | Value | Example contracts use |\r\n|---|---|---|\r\n| `MAX_TYPES` | 2048 | \u2264 9 |\r\n| `MAX_IMPORTS` | 256 | \u2264 9 (the ABI has ~60 host functions) |\r\n| `MAX_EXPORTS` | 256 | \u2264 5 |\r\n| `MAX_NAME_BYTES` | 256 | \u2264 14 |\r\n\r\nThese values were chosen to leave far more room than any real contract needs, while staying low enough that reaching one signals a deliberately built module.\r\n\r\n**Error reporting.** A cap violation is reported as `Limit` at every layer: `CheckError::Limit",
+    "user": "TimothyBanks",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-13T15:07:34Z",
+    "merged_at": "2026-10-14T14:09:29Z",
+    "labels": [],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8571?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `98.07692%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8571?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
+        "created_at": "2026-10-13T15:10:17Z"
+      },
+      {
+        "user": "kuznetsss",
+        "body": "Examples from the section `Modules that exceed a cap` will be rejected by size any way.",
+        "created_at": "2026-10-14T12:32:18Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The core Rust change (scanning type/import/export section counts and name lengths via wasmparser before Module::new) is well-designed, thoroughly tested, and the FFI/error-mapping plumbing (CheckError"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The core scan logic (type/import/export section count + name caps, read cheaply from section headers before Module::new does real work) is sound and well-tested. One gap stood out: the scan explicitly"
+      },
+      {
+        "user": "kuznetsss",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8260,
+    "branch_name": "tapanito/sav-fixed-precision-loanset",
+    "title": "feat: Book FixedPrecision LoanSet through AssetsDeployed",
+    "body": "## Stack\n\nPart 4 of 6 in the FixedPrecision Vault stack. Review and merge in order.\n\n1. #8257 Vault grid and balance helpers\n2. #8460 Vault transactors and invariants\n3. #8258 LoanBroker cover\n4. #8260 LoanSet (this PR)\n5. #8271 LoanPay\n6. #8461 LoanManage\n\nBased on: #8258. Next: #8271.\n\n## Changes\n\n- LoanSet on a FixedPrecision Vault moves cash out of `AssetsAvailable`, adds the principal to `AssetsDeployed` and the scheduled interest to `YieldUnrealized`, through `adjustVaultBalances`. The transfer legs equal the cash change exactly.\n- Origination is refused (`tecLIMIT_EXCEEDED`) on a coarsened Vault or when `AssetsTotal + YieldUnrealized + interest` would leave the Open zone.\n- Broker `DebtTotal` moves by the exact principal. On Legacy/CashBasis it is still rounded at the Vault scale captured before the `AssetsTotal` update, as on develop.\n- The temporary LoanSet guard is removed. LoanPay and LoanManage still refuse FixedPrecision Vaults, so a FixedPrecision Loan created in this PR cannot be paid until the next one.\n",
+    "user": "Tapanito",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-22T14:39:03Z",
+    "merged_at": "2026-10-14T13:52:50Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 8,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8260?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `86.36364%` with `3 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8260?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-09-22T14:41:46Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "Next: #8271 (FixedPrecision LoanPay).",
+        "created_at": "2026-09-23T08:28:06Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot",
+        "created_at": "2026-10-01T14:55:09Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot ",
+        "created_at": "2026-10-02T13:12:11Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@gregtatcam the XRP and MPT cases are in a198934412: one loan each on an XRP and an MPT FixedPrecision Vault, checking AssetsDeployed and YieldUnrealized, with a nonzero management fee.\n\nOn the AI review question about the AssetsMaximum guard now being Legacy-only: FixedPrecision is cash-basis. LoanSet moves cash from AssetsAvailable to AssetsDeployed, so AssetsTotal does not change, and interest goes to YieldUnrealized rather than AssetsTotal. A loan therefore cannot push the Vault past AssetsM",
+        "created_at": "2026-10-12T09:11:32Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The core change (FixedPrecision Open-zone admission check in LoanSet::doApply) is well-targeted and the new test exercises the boundary condition described in the PR. Two things are worth a second loo"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nAdd regression coverage for coarsened vaults and base-scale behavior.\n\n**Review effort:** Lite  \n**Findings:** None\n\n<d"
+      },
+      {
+        "user": "gregtatcam",
+        "state": "APPROVED",
+        "body": "LGTM"
+      }
+    ]
+  },
+  {
+    "pr_number": 8258,
+    "branch_name": "tapanito/sav-fixed-precision-loanbroker",
+    "title": "feat: Round LoanBroker cover on the FixedPrecision grid",
+    "body": "## Stack\n\nPart 3 of 6 in the FixedPrecision Vault stack. Review and merge in order.\n\n1. #8257 Vault grid and balance helpers\n2. #8460 Vault transactors and invariants\n3. #8258 LoanBroker cover (this PR)\n4. #8260 LoanSet\n5. #8271 LoanPay\n6. #8461 LoanManage\n\nBased on: #8460. Next: #8260.\n\n## Changes\n\n- LoanBrokerCoverDeposit, LoanBrokerCoverWithdraw and LoanBrokerCoverClawback round on the posterior `CoverAvailable` grid for brokers on FixedPrecision Vaults, so `CoverAvailable` always equals the broker pseudo-account balance. Cover deposits stay inside the cover Open zone.\n- LoanBrokerSet rejects a `DebtMaximum` that is not representable on the Vault grid.\n- Lending dispatch treats FixedPrecision Vaults as cash-basis.\n- Legacy and CashBasis are unchanged.\n\nLoanSet, LoanPay and LoanManage still refuse FixedPrecision Vaults in this PR.\n",
+    "user": "Tapanito",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-22T13:48:57Z",
+    "merged_at": "2026-10-14T13:52:48Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 7,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8258?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `95.20000%` with `6 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8258?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-09-22T13:55:56Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "Stacked next PR: #8260 (LoanSet Open-zone admission).",
+        "created_at": "2026-09-22T14:39:14Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "Next after LoanSet: #8271 (FixedPrecision LoanPay).",
+        "created_at": "2026-09-23T08:28:07Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot",
+        "created_at": "2026-10-01T14:55:07Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot",
+        "created_at": "2026-10-02T10:22:29Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Solid, well-tested change: the FixedPrecision cover-grid rounding logic is consistently mirrored across deposit/withdraw/clawback (using TowardsZero rounding that always shrinks magnitude in the proto"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nA critical unity-build helper redefinition must be fixed before approval.\n\n*Get a fresh assessment by requesting anothe"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "Well-structured change extending FixedPrecision grid rounding to LoanBroker cover deposit/withdraw/clawback and DebtMaximum/minimumBrokerCover. The rounding directions are consistent and safe (always "
+      }
+    ]
+  },
+  {
+    "pr_number": 8460,
+    "branch_name": "tapanito/sav-fixed-precision-vault-transactors",
+    "title": "feat: Use FixedPrecision accounting in Vault transactors",
+    "body": "## Stack\n\nPart 2 of 6 in the FixedPrecision Vault stack. Review and merge in order.\n\n1. #8257 Vault grid and balance helpers\n2. #8460 Vault transactors and invariants (this PR)\n3. #8258 LoanBroker cover\n4. #8260 LoanSet\n5. #8271 LoanPay\n6. #8461 LoanManage\n\nBased on: #8257. Next: #8258.\n\n## Changes\n\n- VaultCreate creates FixedPrecision Vaults when `featureLendingProtocolV1_1`, `featureLendingProtocolV1_2` and `fixCleanup3_4_0` are enabled.\n- VaultDeposit, VaultWithdraw, VaultClawback, VaultSet and VaultDelete use `adjustVaultBalances` and the posterior `AssetsAvailable` grid on FixedPrecision Vaults. Deposits cannot coarsen the Vault (Open zone). VaultCreate (for a FixedPrecision Vault) and VaultSet reject an `AssetsMaximum` that is not representable on the Vault grid.\n- A final withdrawal or a clawback that would burn every share while `AssetsDeployed` is non-zero returns `tecHAS_OBLIGATIONS`.\n- ValidVault checks the FixedPrecision identities: `AssetsTotal == floor16(AssetsAvailable + AssetsDeployed)`, `AssetsAvailable` delta equals the pseudo-account transfer, `LossUnrealized <= AssetsDeployed`, `YieldUnrealized >= 0`, and only LoanSet/LoanPay/LoanManage change `AssetsDeployed` and `YieldUnrealized`.\n- Legacy and CashBasis Vaults are unchanged.\n\nTemporary until the lending PRs land:\n- LoanSet returns `tecNO_PERMISSION` for FixedPrecision Vaults until #8260, LoanPay until #8271, LoanManage until #8461.\n- `jtx::testableAmendments()` is unchanged and includes `featureLendingProtocolV1_2`. `VaultTestBase`, `LoanTestBase`, and the test functions that create FixedPrecision Vaults and need lending from later PRs exclude it explicitly, each marked temporary. #8461 removes those exclusions.\n\n",
+    "user": "Tapanito",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-01T14:44:37Z",
+    "merged_at": "2026-10-14T13:52:48Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 11,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-01T14:46:21Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot",
+        "created_at": "2026-10-01T14:55:05Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-01T15:02:21Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8460?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `94.59459%` with `10 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8460?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
+        "created_at": "2026-10-01T15:07:56Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot",
+        "created_at": "2026-10-02T10:20:59Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This diff is purely autogenerated test code adding coverage for a new `sfAssetsDeployed` field in the Vault ledger entry (builder round-trip, SLE round-trip, and optional-field-nullopt tests). The cha"
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This is a careful, mechanical change that threads a new FixedPrecision code path through VaultCreate/Deposit/Withdraw/Clawback/Set/Delete and the ValidVault invariant, while leaving Legacy/CashBasis b"
+      },
+      {
+        "user": "depthfirst-app[bot]",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8561,
+    "branch_name": "refactor/rpc-spec-handlers-C",
+    "title": "refactor: Migrate handlers to rpc-spec (C)",
+    "body": "## High Level Overview of Change\n\nMigrates three account handlers, `account_currencies`, `account_nfts` and `account_offers`, onto the shared `xrpl-rpc-spec` library (0.1.23), following the pattern set in #8484.\n\n## Context of Change\n\nPart of the rpc-spec migration; follows #8484.\n\n- **Handlers:** each one becomes a class with `Input`/`Output`, `process()` and `writeResult()`, dispatched through `handle<XHandler>`. The spec now parses `account`/`ident`, `limit` and `marker`, so the hand-written field checks are gone. `doAccountCurrencies`, `doAccountNFTs` and `doAccountOffers` are deleted.\n- **`limit`:** the spec parses it, and the handler clamps it to the `tuning` range for non-unlimited roles, as `readLimitField` did.\n- **`account_offers` marker:** the `index,hint` split moves into a local `parseMarker()`. The check that the marker's object belongs to the account stays in the handler.\n- **`JsonFieldView::isNull()`:** required by spec 0.1.23's `NullAs` modifier.\n- **CMake:** the three handlers are added to `rpcspec_generate_instantiations`.\n\n## API Impact\n\nNo change to successful responses, or to any request with a single problem. A request with more than one problem may now report a different one (`API-CHANGELOG.md`):\n\n- An invalid `ledger_hash`/`ledger_index` is reported before an invalid or missing `account`.\n- An invalid `limit` or `marker` is reported before `lgrNotFound` or `actNotFound`.\n",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-12T10:23:15Z",
+    "merged_at": "2026-10-14T10:53:16Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8561?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.35099%` with `4 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8561?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-10-12T10:25:49Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-12T13:04:52Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-12T13:45:29Z"
+      }
+    ],
+    "reviews_count": 15,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nAccount-offers marker validation does not implement the documented error precedence.\n\n<details open>\n<summary><strong>1 open finding</strong></summ"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe documented multi-error validation precedence lacks regression coverage for all three migrated handlers.\n\n<details open>\n<summary><strong>2 open"
+      }
+    ]
+  },
+  {
+    "pr_number": 8563,
+    "branch_name": "2267-Optimise_endianess",
+    "title": "refactor: Use std::byteswap instead of hand written edianess adjustment",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nUse `std::byteswap` instead of hand written bytes reversing code.\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\nThis is a follow up PR suggested on previous review: https://github.com/XRPLF/rippled/pull/7952#discussion_r3722494275\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_versio",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-12T12:14:10Z",
+    "merged_at": "2026-10-14T10:46:33Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8563?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-12T12:17:02Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "TimothyBanks",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 5874,
     "branch_name": "vlntb/mem-leak-ledger-history-3",
     "title": "refactor: Decouple LedgerHistory from TaggedCache internals",
@@ -2179,483 +2659,6 @@
       },
       {
         "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 5671,
-    "branch_name": "mpt-sub",
-    "title": "feat: Add MPT transaction stream to `subscribe` RPC",
-    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n\r\n### Context of Change\r\nThis change makes it easier for the client to listen to transactions related to particular MPTs, without the need to do client-side filtering.\r\n\r\nChanges to the `subscribe` RPC Request:\r\n| Field Name   | Required?        |  Type  | Description |\r\n|--------------|:----------------:|:-----------:|:-----------------:|\r\n| `mpt_issuances`|                  |`Array`     | Array with unique MPTIssuanceIDs of the MPTs to monitor to validated transactions. The server sends a `mptTransaction` type message whenever a transaction affects at least one of these MPTs.        |\r\n\r\nChanges to the `Unsubscribe` RPC Request:\r\n| Field Name   | Required?        |  Type  | Description |\r\n|--------------|:----------------:|:-----------:|:-----------------:|\r\n| `mpt_issuances`|                  |`Array`     | Array with unique MPTIssuanceIDs of the MPTs to stop receiving updates for. (This only stops those messages if you previously subscribed to those MPTs specifically. You cannot use this to filter MPTs out of the general transactions stream.)    |\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design docum",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2025-08-12T19:27:22Z",
-    "merged_at": "2026-10-02T16:41:05Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 14,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/5671?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `98.40000%` with `2 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/5671?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
-        "created_at": "2025-08-13T15:44:20Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "Since this is an RPC change, you should have a System XLS for this. Should be basically the same thing you have in the PR description.\ncc @Tapanito ",
-        "created_at": "2025-10-09T22:42:15Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-03-26T00:43:33Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-04-28T22:03:40Z"
-      },
-      {
-        "user": "shawnxie999",
-        "body": "> Since this is an RPC change, you should have a System XLS for this. Should be basically the same thing you have in the PR description. cc @Tapanito\r\n\r\n@mvadari why do we need a XLS for RPC change? This is a fairly small addition to an existing RPC. Wouldn't docs and PR description be sufficient?",
-        "created_at": "2026-04-29T16:39:03Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "PeterChen13579",
-        "state": "COMMENTED",
-        "body": "a few small things/questions"
-      }
-    ]
-  },
-  {
-    "pr_number": 8274,
-    "branch_name": "DEFI-1092",
-    "title": "fix: Paginate account_lines/offers/channels past new owner-dir types",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nFix account_lines / account_offers / account_channels pagination when the marker points at an owner-directory ledger entry whose type was added after the original hard-coded allowlist in rpc::isRelatedToAccount (Credential, Oracle, PermissionedDomain, MPTokenIssuance, MPToken, Vault, LoanBroker, Loan, Sponsorship, Delegate, DID, \u2026). Marker validation now checks owner-directory membership generically, so it stays correct as new ledger-entry types are added.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR br",
-    "user": "Kassaking7",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-23T17:09:35Z",
-    "merged_at": "2026-10-02T16:18:34Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8274?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-23T17:14:32Z"
-      }
-    ],
-    "reviews_count": 14,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nAddress unbounded directory scans and strengthen regression-test assertions.\n\n*Get a fresh assessment by requesting ano"
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": "Would you mind simplifying the comments in this PR? For example, for test case, we usually specify the purpose of the test and what to verify. We usually don't include implementation details.\n"
-      },
-      {
-        "user": "oleks-rip",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8186,
-    "branch_name": "lean4-nix",
-    "title": "feat: Add lean toolchain to nix",
-    "body": "## High Level Overview of Change\r\n\r\nAdd the [lean4](https://lean-lang.org/) toolchain to the nix development shell. This will be used by the upcoming formal verification work, and is not currently used in the build.\r\n\r\n## Context of change\r\n\r\nWe add a new development shell for formal verification containing the `Lean 4` toolchain. We use a separate shell as the tool is quite large and won't be used by most users.\r\n\r\n`check-tools` will check depending on the shell it's in using the `XRPL_DEVSHELL` env variable.\r\n\r\n## API Impact\r\n\r\nNo impact, development environment change only.\r\n\r\n---\r\n\r\n## OLD: previous approach, kept for context on previous approach\r\n\r\n```\r\n## Context of Change\r\n\r\nWe add a new `nix/lean4.nix` that fetches the `lean4 4.28.0` tarball directly.\r\n\r\nThe version is pinned in `nix/lean4.nix` for now. Once the Lean sources are in the tree it should read `formal_verification/lean-toolchain` instead, so the toolchain Nix provides and the one lake expects cannot drift apart.\r\n\r\n### Why?\r\n\r\nnixpkgs carries one `lean4` version at a time, currently 4.30.0, and we need  4.28.0. \r\n\r\nThere were a few alternatives considered that we could not use:\r\n\r\n1. override the lean `version` and `src` in the nix package: does not work because the packaging changed between 4.28 and current: nixpkgs' `mimalloc.patch` is cut against 4.30 sources and the hunk fails to apply, because Lean reformatted `CMakeLists.txt` between  the two releases. \r\n2. pinning nixpkgs to a rev when lean4 was 4.28: the toolchain is cached so this is cheap, but nixpkgs builds with `-DUSE_GITHASH=OFF` and substitutes the tag string, so `lean --githash` reports `v4.28.0` rather than the release commit `7e01a1bf5c70fc6167d49c345d3bf80596e9a79b`. Lake writes the githash into its traces, so artifacts built by a stock toolchain get discarded and (0 vs 41 modules on a test project with one prebuilt dependency). the githash fixes that, but the override is no longer cached, so becomes a 25 minute source build, pl",
-    "user": "v3lmx",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-08T08:57:34Z",
-    "merged_at": "2026-10-02T15:49:04Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 8,
-    "comments": [
-      {
-        "user": "v3lmx",
-        "body": "> 1. Can we maybe use 4.30.0? Not being able to use latest version of a tool is usually a pain in the future, when the gap will become even wider.\r\n\r\nLatest Lean4 release is 4.33, there are frequent version bumps. Using 4.30 helps us now as it's the latest in unstable, but it will be updated in the future. That means if there are ever breaking changes in Lean that break the formal verification code or proofs, that will have to be fixed as well. \r\nWe don't know exactly if that will happen, and if",
-        "created_at": "2026-09-08T11:42:26Z"
-      },
-      {
-        "user": "mathbunnyru",
-        "body": "> > 1. Can we maybe use 4.30.0? Not being able to use latest version of a tool is usually a pain in the future, when the gap will become even wider.\r\n> \r\n> Latest Lean4 release is 4.33, there are frequent version bumps. Using 4.30 helps us now as it's the latest in unstable, but it will be updated in the future. That means if there are ever breaking changes in Lean that break the formal verification code or proofs, that will have to be fixed as well. We don't know exactly if that will happen, an",
-        "created_at": "2026-09-08T12:54:23Z"
-      },
-      {
-        "user": "v3lmx",
-        "body": "> > > 1. Can we maybe use 4.30.0? Not being able to use latest version of a tool is usually a pain in the future, when the gap will become even wider.\r\n> > \r\n> > \r\n> > Latest Lean4 release is 4.33, there are frequent version bumps. Using 4.30 helps us now as it's the latest in unstable, but it will be updated in the future. That means if there are ever breaking changes in Lean that break the formal verification code or proofs, that will have to be fixed as well. We don't know exactly if that wil",
-        "created_at": "2026-09-08T14:52:46Z"
-      },
-      {
-        "user": "mathbunnyru",
-        "body": "Let's use nix-provided 4.30 for now, also let's update when this is merged: https://github.com/NixOS/nixpkgs/pull/545312",
-        "created_at": "2026-09-09T15:39:07Z"
-      },
-      {
-        "user": "v3lmx",
-        "body": "> Let's use nix-provided 4.30 for now, also let's update when this is merged: [NixOS/nixpkgs#545312](https://github.com/NixOS/nixpkgs/pull/545312)\r\n\r\nSounds good. \r\n\r\nOne remaining question about `check-tools.sh`, what about programs in the fv (non-default) shell? Should we check based on the shell name, eg.\r\n\r\n```sh\r\nif [ \"${XRPL_DEVSHELL:-}\" = \"formal-verification\" ]; then\r\n    echo\r\n    echo \"Formal verification toolchain:\"\r\n    check lean\r\n    check lake\r\nfi\r\n```",
-        "created_at": "2026-09-10T13:50:33Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "kuznetsss",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8457,
-    "branch_name": "no_version_file",
-    "title": "build: Determine version based on tags only",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nHaving a version file adds lots of frustration:\r\n- having to update it (author + 2 reviewers)\r\n- makes extra CI work when we need it most (waiting for a PR)\r\n- creates conflicts\r\n- 2 sources of truth on tags - tag and file\r\n- Clio doesn't have it \r\n\r\nOn tags, the version will be the tag value; on non-tags, it will be `0.0.0-dev`-style (we have to do it to conform to semver)\r\n\r\nIt's possible due to:\r\n- providing good build artifacts\r\n- moving consumers to use artifacts and not building on their own\r\n- having Docker images with a nice version\r\n\r\nIf someone wants to have a nice version, and they build from source, they can set \"FORCE_XRPLD_VERSION\"\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API me",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-01T10:54:48Z",
-    "merged_at": "2026-10-01T21:24:06Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8457?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-01T10:57:48Z"
-      }
-    ],
-    "reviews_count": 13,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nExported Conan builds can fail, incremental builds can report stale commits, and release documentation still references"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8341,
-    "branch_name": "anti_image",
-    "title": "build: Push docker image for antithesis with voidstar",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis implementation doesn't add new `antithesis` package, but replaces the binary in the docker image though, because:\r\n- no one actually asked for such a package\r\n- packaging would get more complicated\r\n- there would still be some slight differences in dockerfile\r\n\r\nI also:\r\n- slightly move docker images, so we don't have both \"docker\" and \"image\", which is confusing\r\n- update hashes\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/doc",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-29T20:40:02Z",
-    "merged_at": "2026-10-01T19:43:41Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8341?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-29T20:44:06Z"
-      },
-      {
-        "user": "mathbunnyru",
-        "body": "> This looks good. I'm wondering how complex the workflow is going to get when we need to build additional packages / images for assertions and the various sanitizers.\r\n\r\nImages for assertions should be easy, since we already have an assert package, and it is 100% the same as regular package, except the binary (and so same docker image/workflows should be fine).\r\n\r\nSanitizers will require some work, but luckily, we already have a notion of \"variant\" for a package, so it should be ok.\r\n\r\nAnd as a",
-        "created_at": "2026-10-01T18:33:24Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nRegistry publishing and externally sourced instrumentation warrant final human validation in the release environment.\n\n"
-      },
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": "This looks good. I'm wondering how complex the workflow is going to get when we need to build additional packages / images for assertions and the various sanitizers."
-      }
-    ]
-  },
-  {
-    "pr_number": 8456,
-    "branch_name": "up_hooks3",
-    "title": "style: Update pre-commit hooks",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nC++ style had some minimal changes, mostly bug fixes, so it looks nicer now in some tricky places.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change t",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-01T09:28:44Z",
-    "merged_at": "2026-10-01T14:26:05Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8456?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `50.00000%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8456?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
-        "created_at": "2026-10-01T09:31:20Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe changes are limited to hook revision updates and behavior-neutral formatting.\n\n**Review effort:** Balanced  \n**Fin"
-      },
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage2: "
-      }
-    ]
-  },
-  {
-    "pr_number": 8449,
-    "branch_name": "verify_release_process",
-    "title": "ci: Add guardrails for release backporting",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis checks 2 things:\r\n- that the commits in in PR on develop don't copy commits from a release or staging branch (we should merge, not cherry-pick/rebase). Commit is identified using patch-id\r\n- release is merged into develop (after grace period)\r\n\r\nShould prevent problems like https://github.com/XRPLF/rippled/pull/8239, where commit hashes were changed.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Prot",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-30T18:01:53Z",
-    "merged_at": "2026-10-01T14:26:05Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8449?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-30T18:08:32Z"
-      }
-    ],
-    "reviews_count": 11,
-    "reviews": [
-      {
-        "user": "bthomee",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "depthfirst-app[bot]",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nHotfixes released only from master evade both checks, and lightweight tags can start the grace period before publicatio"
-      }
-    ]
-  },
-  {
-    "pr_number": 8441,
-    "branch_name": "base_fee_range_check",
-    "title": "add range check to getBaseFee host function",
-    "body": "## High Level Overview of Change\r\nadd range check to getBaseFee host function",
-    "user": "pwang200",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-30T16:18:34Z",
-    "merged_at": "2026-09-30T16:43:16Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8441?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `66.66667%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8441?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
-        "created_at": "2026-09-30T16:23:58Z"
-      }
-    ],
-    "reviews_count": 1,
-    "reviews": [
-      {
-        "user": "TimothyBanks",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8328,
-    "branch_name": "fix/intrusive-ptr-leak",
-    "title": "fix: Resolve IntrusivePointer leak",
-    "body": "## High Level Overview of Change\r\n\r\nFixes a leak and a missed partial destruction when `SharedWeakUnion::convertToWeak()` converts the last strong reference to a weak one. The old code also tripped a UBSan unsigned-underflow report in `IntrusiveRefCounts::releaseWeakRef()`.\r\n\r\n## Context of Change\r\n\r\n- `addWeakReleaseStrongRef()` returned `NoOp` when converting the only strong ref. The weak ref it adds keeps the weak count above zero, so this must be `PartialDestroy`. Because of this, `partialDestructor()` never ran and the partial-destroy-started bit was never set.\r\n- `releaseWeakRef()` then took a fallback branch that was never meant to be reached. That branch subtracted `kWeakDelta` twice (the UBSan report) and passed the wrong expected values to `wait()`.\r\n- `convertToWeak()` stored the pointer that `partialDestructorFinished()` had just set to null. The union lost the object and its weak ref was never released, so the object leaked. This bug already existed; the first fix makes it the common path, so both fixes must land together.\r\n\r\nAffects `TreeNodeCache` (SHAMap nodes) through `TaggedCache::del()` and a race in `sweep()`. No change to transaction processing, so no amendment is needed.\r\n\r\nAdds `IntrusiveSharedTest.convert_last_strong_to_weak` and `IntrusiveSharedTest.multithreaded_convert_to_weak_partial_delete`. \r\n\r\n## API Impact\r\n\r\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-29T16:30:07Z",
-    "merged_at": "2026-09-30T16:29:57Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8328?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `83.33333%` with `2 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8328?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
-        "created_at": "2026-09-29T16:32:42Z"
-      }
-    ],
-    "reviews_count": 8,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nThe changes affect concurrent intrusive-reference lifetime and destruction ordering, warranting final human review.\n\n**"
-      },
-      {
-        "user": "vlntb",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe leak and synchronization fixes are coherent and tested; the remaining documentation duplication is non-blocking.\n\n"
-      }
-    ]
-  },
-  {
-    "pr_number": 8430,
-    "branch_name": "timothybanks/revert-account-reserve-change-2",
-    "title": "fix: Rollback accountReserve and ownerReserve default settings to prior values",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nAddresses [ticket](https://ripplelabs.atlassian.net/browse/RXI-2312?atlOrigin=eyJpIjoiMTIyOTFjMzYwMTFhNGY3ZmEwOTE2NWY5MjE5YjkxMDEiLCJwIjoiaiJ9) (Detailed finding 3.6) Default fee-voting configuration can raise account reserves tenfold\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] ",
-    "user": "TimothyBanks",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-30T13:44:59Z",
-    "merged_at": "2026-09-30T16:09:02Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8430?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-30T13:47:47Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "This MR rolls back the FeeSetup default accountReserve and ownerReserve values from multiplier-based expressions (10 * kDropsPerXrp, 2 * kDropsPerXrp) back to the correct hardcoded drop values (1,000,"
-      },
-      {
-        "user": "pwang200",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8177,
-    "branch_name": "chore/clang-tidy-typedef-style",
-    "title": "chore: CamelCase for typedef/using in `clang-tidy`",
-    "body": "## High Level Overview of Change\r\n\r\nEnforces CamelCase/TitleCase for typedefs and using declarations.\r\nExceptions are listed in .clang-tidy config file - names that must use snake_case for use with standard/boost facilities such as iterators.\r\n\r\n## API Impact\r\n\r\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\r\n\r\nNo impact in terms of RPC/API but `libxrpl` consumers may have to use new names for some types like UInt256 - a mechanical update.\r\n",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-04T16:11:10Z",
-    "merged_at": "2026-09-30T15:54:08Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 12,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8177?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `91.88312%` with `25 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8177?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
-        "created_at": "2026-09-04T16:13:19Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-15T17:51:56Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-09-18T00:10:12Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-22T14:34:55Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-09-22T15:47:51Z"
-      }
-    ],
-    "reviews_count": 23,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "### \ud83d\udd35 Needs a closer look\n\nIt performs sweeping, public API-visible identifier renames across many headers and components, so it needs careful human verification of downstream impact and migration/com"
-      },
-      {
-        "user": "godexsoft",
         "state": "COMMENTED",
         "body": ""
       }
