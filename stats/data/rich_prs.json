@@ -2361,6 +2361,52 @@
     ]
   },
   {
+    "pr_number": 8244,
+    "branch_name": "tialymov/FN-6-lending_batch_support",
+    "title": "feat: Allow lending transactions in Batch",
+    "body": "## High Level Overview of Change\n\nAllows Single Asset Vault and Lending Protocol transactions to run as Batch inner transactions\nwhen `featureLendingProtocolV1_2` is enabled. Before the amendment, these transaction types remain\ninvalid inside a Batch.\n\n## Context of Change\n\nBatch already applies inner transactions through the normal transaction pipeline, but explicitly\nrejects all Vault and Lending transaction types.\n\nThis change gates that restriction on `featureLendingProtocolV1_2`. It also verifies the special\nauthorization flow for `LoanSet`, where both parties sign the outer Batch instead of using an\ninner `CounterpartySignature`.\n\n## API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\n## Test Plan\n\n`Batch_test`:\n\n- rejection of Vault and Lending inner transactions before the amendment;\n- successful Vault creation and deposit after the amendment;\n- required `LoanSet` counterparty and Batch signer validation;\n- successful `LoanSet` and cover deposit in one Batch;\n- rollback of a `LoanSet` when a later inner transaction fails.\n\nNew `LendingBatch` suite, each case run with `LendingProtocolV1_1` on and off:\n\n- vault lifecycle in one Batch: `VaultCreate`, `VaultDeposit`, `VaultWithdraw`, `VaultDelete`,\n  on an open-ended vault and on a closed-ended vault in the Subscription phase;\n- loan lifecycle: `VaultCreate`, `VaultDeposit`, `LoanBrokerSet`, `LoanSet`, `LoanPay`. One Batch\n  on an open-ended vault with V1_1 off. Two Batches on a closed-ended vault with V1_1 on, split\n  at the Subscription to Investment boundary, because `VaultDeposit` and `LoanSet` are only\n  valid in different phases;\n- arbitrage under `tfAllOrNothing`: `LoanSet`, DEX buy, DEX sell, `LoanPay`. One run that\n  profits and one where the sell offer cannot fill and nothing persists;\n- `LoanManage` default and `LoanBrokerCoverWithdraw` in one Batch, once the grace period of a\n  loan created earlier has passed;\n- `tfIndependent` chains where a failing ",
+    "user": "tyalymov",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-17T20:52:54Z",
+    "merged_at": "2026-10-06T00:32:15Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8244?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-17T20:55:24Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "https://github.com/XRPLF/rippled/blob/14f27e66bfd6f0db3812102867a7e89a11ea0ac5/src/libxrpl/tx/transactors/system/Batch.cpp#L360-L365\n\nWith `featureLendingProtocolV1_2`, `LoanSet` can be a Batch inner, so this comment no longer holds. An inner `LoanSet` in a proposed Batch now gets `TapProposal`. It still needs `sfCounterparty` and the signer check is deferred to submission, so I don't see a bypass, but can we update the comment and add a test for a proposed Batch with a `LoanSet` inner?",
+        "created_at": "2026-09-29T10:14:45Z"
+      }
+    ],
+    "reviews_count": 27,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "This is a small, well-scoped change that gates Batch's existing Vault/Lending inner-transaction rejection behind featureLendingProtocolV1_1. The logic in Batch.cpp is correct: pre-amendment it preserv"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udfe2 Approval recommended\n\nThe amendment gate and representative Vault/Loan Batch paths are covered without identified correctness issues.\n\n<details>\n<summary>Pull request overview</summary>\n\nAllows "
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The change cleanly gates the previously-hardcoded Batch inner-transaction rejection list (kDisabledTxTypes) behind featureLendingProtocolV1_2, correctly inverting the amendment check (isDisabledTxType"
+      }
+    ]
+  },
+  {
     "pr_number": 6319,
     "branch_name": "ledger-entry-all",
     "title": "feat: Add full support for all objects in `ledger_entry`",
