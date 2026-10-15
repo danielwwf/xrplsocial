@@ -1,5 +1,432 @@
 [
   {
+    "pr_number": 8064,
+    "branch_name": "txq_refactor",
+    "title": "refactor: TxQ",
+    "body": "## High Level Overview of Change\r\nMostly divide TxQ::apply  into lesser functions. All functionality and execution order left almost the same. Some simple variables initialization (which doesn't require mutex or reading shamap) may change their order.\r\n\r\n\r\n\r\n",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-20T14:11:10Z",
+    "merged_at": "2026-10-15T19:04:48Z",
+    "labels": [],
+    "comments_count": 8,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8064?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.86477%` with `6 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8064?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-08-20T14:16:41Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-17T17:28:37Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-17T17:28:37Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-09-23T16:46:42Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-30T15:59:07Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "depthfirst-app[bot]",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "### \ud83d\udd35 Needs a closer look\n\nLarge refactor in core transaction-queue application logic warrants careful human validation to ensure no subtle behavioral or concurrency regressions.\n\n<details>\n<summary>P"
+      }
+    ]
+  },
+  {
+    "pr_number": 8533,
+    "branch_name": "AddZeroCredential",
+    "title": "fix: Reject a zero credential ID in deposit_authorized",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n`deposit_authorized` lets a caller pass a list of credential IDs. If one of those IDs is all zeros (the string \"0\", or 64 zero characters), the server used to pass it straight to a ledger lookup that is not supposed to ever be asked for a zero key. \r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fiel",
+    "user": "PeterChen13579",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-07T21:32:23Z",
+    "merged_at": "2026-10-15T18:52:51Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8533?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-07T21:34:55Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-14T10:57:35Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-14T17:10:37Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe guard correctly prevents the invalid lookup and is covered by focused regression tests.\n\n**0 open findings**\n\n<details>\n<summary><strong>What "
+      },
+      {
+        "user": "Kassaking7",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "oleks-rip",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8325,
+    "branch_name": "initial_IEK",
+    "title": "feat: Add IssuerMirrorEncryptionKey and InitialIssuerEncryptionKey",
+    "body": "## High Level Overview of Change\r\nAdded support for IssuerMirrorEncryptionKey and InitialIssuerEncryptionKey, and unit tests.\r\n\r\n\r\n",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-28T19:34:50Z",
+    "merged_at": "2026-10-15T18:52:09Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 7,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8325?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-28T19:37:40Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-02T23:42:16Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-05T22:08:17Z"
+      },
+      {
+        "user": "oleks-rip",
+        "body": "> Looks good on my side once you fix the rest of the comments. Please also remove \"invariant checks\" in the PR description as we are going to add it later\r\n\r\ndescription fixed",
+        "created_at": "2026-10-08T19:52:49Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-09T16:59:17Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "Copilot encountered an error and was unable to review this pull request. You can try again by re-requesting a review."
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "oleks-rip",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8331,
+    "branch_name": "sponsor_check_sign",
+    "title": "test: Sponsor checkSign additional tests",
+    "body": "Add more tests for sponsor + different signatures combination\r\n\r\n",
+    "user": "oleks-rip",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-29T18:10:19Z",
+    "merged_at": "2026-10-15T18:42:50Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 3,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8331?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-09-29T18:12:27Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-06T20:39:22Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-08T20:10:58Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe added tests correctly exercise the expected sponsor authorization outcomes.\n\n**Review effort:** Balanced  \n**Findi"
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "COMMENTED",
+        "body": "LGTM, but let's first fix the merge conflict before I approve"
+      },
+      {
+        "user": "PeterChen13579",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8271,
+    "branch_name": "tapanito/sav-fixed-precision-loanpay",
+    "title": "feat: Book FixedPrecision LoanPay and LoanManage",
+    "body": "## Stack\n\nPart 5 of 5 in the FixedPrecision Vault stack. This PR now also includes the LoanManage stage (#8461), which was merged into this branch.\n\n1. #8257 Vault grid and balance helpers\n2. #8460 Vault transactors and invariants\n3. #8258 LoanBroker cover\n4. #8260 LoanSet\n5. #8271 LoanPay and LoanManage (this PR)\n\nBased on: develop. Next: none (last PR).\n\n## Changes\n\n### LoanPay\n\n- LoanPay on a FixedPrecision Vault credits `floor16(AssetsAvailable + principal + interest) - AssetsAvailable`, reduces `AssetsDeployed` by the principal paid and `YieldUnrealized` by the scheduled interest, through `adjustVaultBalances`. A broker fee redirected to cover is floored on the cover grid.\n- A terminal payment whose Vault credit is zero closes the Loan and forgives the sub-unit remainder. If the fee is zero or goes to an owner who is also the borrower, nothing moves; otherwise the fee is sent and each trust line rounds its own side. A non-terminal zero-credit payment returns `tecPRECISION_LOSS`.\n- Late interest can coarsen a FixedPrecision Vault; tests cover payments, withdrawals and clawbacks on coarsened Vaults.\n- Legacy and CashBasis LoanPay are unchanged.\n- The temporary LoanPay guard is removed.\n\n### LoanManage\n\n- Default on a FixedPrecision Vault takes the exact first-loss cover (capped at `CoverAvailable`), floors `AssetsAvailable + cover` on the Vault's grid, and credits that amount to the Vault. The broker's `CoverAvailable` drops by the same amount and rounds to nearest on its own grid, as the broker's trust line does, so the two balances can round differently. A cover below one unit of the Vault's grid is forgiven. The default also removes the Loan's principal, scheduled interest and impairment, through `adjustVaultBalances`.\n- Impair and unimpair move `LossUnrealized` by exactly the Loan's principal; impairing beyond `AssetsDeployed` returns `tecLIMIT_EXCEEDED`.\n- Legacy and CashBasis LoanManage are unchanged.\n- Removes the temporary LoanManage guard and the tempora",
+    "user": "Tapanito",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-09-23T08:27:57Z",
+    "merged_at": "2026-10-15T18:35:54Z",
+    "labels": [
+      "Ready to merge",
+      "feature: LP1.2"
+    ],
+    "comments_count": 7,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8271?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.50000%` with `4 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8271?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-09-23T08:30:22Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot",
+        "created_at": "2026-10-01T14:55:10Z"
+      },
+      {
+        "user": "Tapanito",
+        "body": "@xrplf-bot ",
+        "created_at": "2026-10-02T13:12:41Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-12T08:34:56Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-12T11:30:29Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The FixedPrecision LoanPay changes are internally consistent with the PR description: vault credit is floored at the posterior live exponent of AssetsTotal+interestPaid, AssetsTotal is re-derived and "
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The core rounding logic in fixed_precision::loanPaymentDeltas and roundToPosteriorAvailableScale/posteriorScale looks correct and well-tested (verified the flooring behavior against the new unit test "
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "The core change wires FixedPrecision LoanPay to record interest into AssetsTotal first and decrement YieldUnrealized by the scheduled portion only, which matches the MR description and is well covered"
+      }
+    ]
+  },
+  {
+    "pr_number": 8588,
+    "branch_name": "clarify_requirements",
+    "title": "docs: Clarify OS and toolchain requirements",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\n\nDocuments which platforms are supported for building/testing and for running `xrpld`, in one place each:\n\n- `docs/build/environment.md`: new \"Supported development platforms\" section: Linux via the Nix dev shell, macOS 15+ via Nix or system Apple Clang, Windows best effort.\n- `docs/install.md`: new \"Requirements\" section: Linux only for running; any x86-64 distro with APT/DNF and glibc \u2265 2.31 should work; lists the distros CI tests packages on.\n- `BUILD.md`: replaces the outdated \"Operating Systems\" section with short pointers to both.\n\nAlso removes stale or duplicated content: hardcoded minimum tool versions (pointing to `nix/check-tools/` instead), outdated Xcode 16.2 pinning steps, the duplicate clang-tidy section, and repeated bullets in `nix.md`.\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options,",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-14T17:05:37Z",
+    "merged_at": "2026-10-15T18:30:31Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8588?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-15T16:19:00Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe documentation-only changes align with repository configuration and CI coverage, with no blocking issues identified.\n\n**0 open findings**\n\n<det"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": "Looks about right \ud83d\udc4d"
+      }
+    ]
+  },
+  {
+    "pr_number": 8601,
+    "branch_name": "pre_commit_tidy",
+    "title": "ci: Fix running pre-commit after clang-tidy",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nWe run clang-tidy in the same image, as build and this image doesn't have libatomic (and we won't have it there, because we don't want system libs in our build images).\nRunning node-based tools under pre-commit then fails, so we skip them.\nFortunately, they have nothing to do with clang-tidy changes, so they were useless even if we ran them.\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-15T14:45:31Z",
+    "merged_at": "2026-10-15T16:43:56Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8601?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-15T14:48:36Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe focused workflow changes address the container limitation and preserve the complete patch, with no unresolved findings.\n\n**0 open findings**\n\n"
+      },
+      {
+        "user": "godexsoft",
+        "state": "APPROVED",
+        "body": ":rage1: "
+      }
+    ]
+  },
+  {
+    "pr_number": 8597,
+    "branch_name": "update-sig-price",
+    "title": "fix: Change check_sig gas cost back to 35000",
+    "body": "`check_sig` was charged 300 gas, far below its measured cost. The host-function cost table used by the redesigned Rust code came from the old `wasmi-host-functions` branch, which had the wrong price for `check_sig`; the correct value (35000) lived on a different branch, so it was missed when the table was ported. ",
+    "user": "pwang200",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-14T23:28:20Z",
+    "merged_at": "2026-10-15T16:09:56Z",
+    "labels": [],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8597?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-14T23:31:15Z"
+      },
+      {
+        "user": "kuznetsss",
+        "body": "@pwang200, did you verify the cost with benchmarks?",
+        "created_at": "2026-10-15T10:33:56Z"
+      },
+      {
+        "user": "pwang200",
+        "body": "@kuznetsss, the cost was measured when all the other host functions were measured last year. As the PR description tried to explain, the `check_sig` cost was in the wrong branch (i.e. it should be in the old `wasmi-host-functions`, but somehow was put in the old `smart-escrow` branch), and hence missed by the redesign. This PR simply fix that. No new measurement. ",
+        "created_at": "2026-10-15T15:20:42Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "@kuznetsss for some additional context, Orion flagged this as a bug, so we just want to fix it to be in line with the correct gas amount (at least magnitudinally correct), and we can adjust it further later.",
+        "created_at": "2026-10-15T15:23:44Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "kuznetsss",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8602,
+    "branch_name": "4678-Strict_st_parsing",
+    "title": "fix: Make parseST strict",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nMake `parseST()` rejecting input containing trailing bytes.\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-15T15:24:58Z",
+    "merged_at": "2026-10-15T15:49:26Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8602?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-15T15:28:23Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8596,
     "branch_name": "mvadari/se-out-of-gas-gasused",
     "title": "fix: Report the whole Gas allowance as GasUsed on tecOUT_OF_GAS",
@@ -2613,137 +3040,6 @@
         "user": "mvadari",
         "state": "COMMENTED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8266,
-    "branch_name": "ConfidentialMPTHolderKeyUpdate",
-    "title": "feat: Implement Confidential mpt holder key update",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\nAdds the ConfidentialMPTHolderKeyUpdate transaction, letting a confidential MPT holder to rotate or recover their ElGamal encryption key without issuer involvement:\r\n\r\n- Rotation (tfHolderKeyRotation): holder still has their current private key. They submit a new public key plus their spending/inbox balances re-encrypted under it; the key and balances update immediately.\r\n- Recovery (tfHolderKeyRecovery): holder has lost their private key. They submit only a new public key, recorded as a pending sfRecoveryKey on the MPToken; balances are left untouched until the issuer separately completes recovery.\r\n- Cancel (tfCancelRecovery): holder revokes a pending recovery request.\r\n\r\n**Note** that `TransactionProposalCreate` number is swapped in this PR so the KeyRotation transactions are grouped together in `transactions.macro`\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for ",
-    "user": "PeterChen13579",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-22T20:44:12Z",
-    "merged_at": "2026-10-02T23:38:43Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8266?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-22T20:46:26Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-28T17:07:09Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-09-29T15:59:28Z"
-      },
-      {
-        "user": "oleks-rip",
-        "body": "2 lines are uncovered by tests, according to [codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8266?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF#07bd46d7609fea9a63ff2bd2763f6bbe-R92)",
-        "created_at": "2026-09-29T17:26:53Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nRotation proof verification, recovery completion handling, and API changelog documentation remain unresolved.\n\n*Get a f"
-      },
-      {
-        "user": "PeterChen13579",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "PeterChen13579",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8209,
-    "branch_name": "defi1049-regression-tests",
-    "title": "fix: Do not block MPToken deletion on unrelated confidential balances",
-    "body": "## High Level Overview of Change\r\n\r\nThe `ValidConfidentialMPToken` invariant folded an erased MPToken's **pre-transaction** public balance into the confidential-state check, which is gated on the issuance's `sfConfidentialOutstandingAmount` (COA). Any transaction that drains an MPToken and erases it within the same `doApply` therefore failed with `tecINVARIANT_FAILED` as soon as *any unrelated holder* of the same issuance held a confidential balance.\r\n\r\nThis splits the public-balance rule out of the COA gate, gated on `fixCleanup3_5_0`.\r\n\r\n## Context of Change\r\n\r\nThe invariant recorded a single flag from two unrelated conditions:\r\n\r\n```cpp\r\nbool const hasPublicBalance = before->getFieldU64(sfMPTAmount) > 0;\r\nbool const hasEncryptedFields = /* 4-way OR over ciphertext fields */;\r\n\r\nif (hasPublicBalance || hasEncryptedFields)\r\n    changes_[id].deletedWithEncrypted = true;\r\n```\r\n\r\nTwo problems compound here:\r\n\r\n1. **Wrong snapshot.** `before` is the MPToken at the *start* of the transaction, so `hasPublicBalance` is true for every legitimate drain-then-erase. Only `after` \u2014 which `ApplyStateTable` does supply on `Action::Erase` \u2014 can express \"erased while still holding a balance\".\r\n2. **Wrong gate.** Erasing an MPToken that still holds a public balance destroys value and has nothing to do with the issuance's confidential state, yet it was gated on COA.\r\n\r\nBecause COA is issuance-wide, a single unrelated holder converting one unit was enough to block deletion of MPTokens with no confidential state at all. Affected paths include `AMMWithdraw` of an entire pool and `LoanBrokerDelete` returning cover \u2014 both operate on pseudo-account MPTokens, which can never hold ciphertext fields (a pseudo-account cannot sign `ConfidentialMPTConvert`, and `ConfidentialMPTSend::preclaim` rejects any destination that has not already converted).\r\n\r\n## Changes\r\n\r\n- The public-balance rule now lives in `ValidMPTIssuance::finalize`, gated on `fixCleanup3_5_0`: any MPToken erased with a non-zero",
-    "user": "ckeshava",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-09T21:54:43Z",
-    "merged_at": "2026-10-02T23:35:57Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8209?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-09T21:57:12Z"
-      }
-    ],
-    "reviews_count": 24,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "### \ud83d\udd35 Needs a closer look\n\nIt changes consensus-critical invariant enforcement paths (including amendment-gated behavior), so it warrants careful human validation beyond automated review.\n\n<details>\n<"
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "ckeshava",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8463,
-    "branch_name": "chore/ignore-style-changes-git",
-    "title": "chore: Add ignore revs for recent style changes",
-    "body": "## High Level Overview of Change\r\n\r\nRemoves mechanical clang-tidy style changes etc. from git blame history.\r\n\r\n## Context of Change\r\n\r\nLots of clang-tidy and style updates that we forgot to add to ignores before.\r\n\r\n## API Impact\r\n\r\nN/A",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-01T17:17:39Z",
-    "merged_at": "2026-10-02T21:56:05Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8463?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-02T14:45:15Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe revision entries are correctly formatted, documented, and ordered.\n\n**Review effort:** Balanced  \n**Findings:** No"
       }
     ]
   }
