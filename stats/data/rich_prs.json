@@ -1,5 +1,65 @@
 [
   {
+    "pr_number": 8130,
+    "branch_name": "cosign-invariants-v1",
+    "title": "feat: Add TransactionProposal invariants for Cosign",
+    "body": "## High Level Overview of Change\n\nAdds `ValidTransactionProposal`, a global invariant for the `TransactionProposal` ledger entry.\n\nThe invariant enforces two properties:\n\n1. **Effect whitelist.** Only `TransactionProposalCreate` may create a proposal and only `SponsorshipTransfer` may modify one, with the exact counts the result allows. A proposal is deleted only by a successful `TransactionProposalCancel`, or together with the Ticket it is keyed to. A deleted Ticket takes its proposal along. A failed `TransactionProposalCreate`, `TransactionProposalCancel`, or `SponsorshipTransfer` must leave no trace.\n2. **Canonical signer arrays.** Collected signer arrays stay sorted by account, free of duplicates, and within `STTx::kMaxMultiSigners` (32) and `kMaxBatchSigners` (24).\n\n### Context of Change\n\nThis is the invariant layer for the On-Chain Cosigner work ([XLS-0103](https://github.com/shawnxie999/XRPL-Standards/blob/cosign/XLS-0103-onchain-cosigner/README.md)). Property 1 restates spec section 4.5; property 2 restates the signer-array rules in sections 4.2.2, 4.6 and 6.1.\n\nIt is a **global** invariant rather than part of `TransactionProposalCreate::visitInvariantEntry`. The properties are about the ledger entry and must hold whichever transactor touches it. `TransactionProposalCancel` and reserved-ticket cleanup are admitted explicitly.\n\nEarlier revisions also reconciled every `OwnerCount` move exactly. They held a Create or Cancel to the one Ticket it pays with, and re-checked the Cancel's named proposal and its authorization. Those checks are gone. Each restated a single shared helper or a transactor's preclaim, and together they were most of the file. An immutable-payload comparison (spec section 4.6) is gone as well. Which fields a transaction may change is the transactor's business, and the effect whitelist already limits who may modify a proposal.\n\nReserve accounting rests on `proposal::deleteProposal` and `proposalOwnerCount`, which the transactor suites assert ",
+    "user": "ckeshava",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-08-26T23:42:46Z",
+    "merged_at": "2026-10-16T21:30:35Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-08-26T23:54:17Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-08-27T01:39:51Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8130?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-08-27T01:41:43Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-13T21:32:20Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-14T16:34:11Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": "first bit"
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "shawnxie999",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8615,
     "branch_name": "fix_branches",
     "title": "ci: Fix release/staging branches running conditions",
@@ -2850,47 +2910,6 @@
       {
         "user": "kuznetsss",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8521,
-    "branch_name": "custom_clang_tools",
-    "title": "build: Make clang-tools custom in Nix, to match what's being built",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nBefore, clang-tidy used other libc (and headers) than the rest of the build process.\r\nThat created an incosistency, and a bump to nix lockfile could have broken \r\n\r\nAdded `jq` as well, because I'll soon need it (and it's a reasonable tool to have).\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new f",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-06T12:46:00Z",
-    "merged_at": "2026-10-06T14:36:00Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8521?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-06T12:48:26Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe Linux no-compiler shell unnecessarily acquires expensive custom-toolchain build dependencies.\n\n**Review effort:** B"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "kuznetsss",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
