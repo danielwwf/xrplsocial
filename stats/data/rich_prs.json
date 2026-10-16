@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 8589,
+    "branch_name": "add_todo",
+    "title": "docs: Add todo comment for key rotation zkproof",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\nAdd //TODO to avoid confusion for the key rotation feature.\nWe are waiting for the mpt-crypto release so that we can integrate the zkproof.\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that m",
+    "user": "yinyiqian1",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-14T17:11:10Z",
+    "merged_at": "2026-10-16T00:51:06Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8589?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-14T17:16:20Z"
+      }
+    ],
+    "reviews_count": 5,
+    "reviews": [
+      {
+        "user": "PeterChen13579",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe changes affect comments only, with one non-blocking documentation correction remaining.\n\n<details open>\n<summary><strong>1 open finding</stron"
+      },
+      {
+        "user": "yinyiqian1",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8064,
     "branch_name": "txq_refactor",
     "title": "refactor: TxQ",
@@ -2934,112 +2975,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": ":rage1: "
-      }
-    ]
-  },
-  {
-    "pr_number": 7582,
-    "branch_name": "fix-channel-id-type-validation",
-    "title": "fix: Add string type validation for channel_id and signature",
-    "body": "## High Level Overview of Change\r\n\r\nFixes #6765\r\n\r\nAdds `isString()` type validation checks before calling `asString()` \r\non the `channel_id` parameter in `ChannelAuthorize.cpp` and on both \r\n`channel_id` and `signature` parameters in `ChannelVerify.cpp`. \r\n\r\nPreviously, non-string inputs (e.g. integers, arrays) could be \r\nsilently coerced or cause unexpected behavior. Now, invalid types \r\nreturn RpcInvalidParams immediately, consistent with the existing \r\npattern used for the `amount` field in the same handlers.",
-    "user": "harshitgupta62",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-06-21T11:46:09Z",
-    "merged_at": "2026-10-05T20:00:24Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 8,
-    "comments": [
-      {
-        "user": "github-actions[bot]",
-        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
-        "created_at": "2026-06-21T11:46:18Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-30T15:56:45Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-10-05T11:49:26Z"
-      },
-      {
-        "user": "harshitgupta62",
-        "body": "> Please update the API changelog\r\n\r\nUpdated the API changelog, thanks!",
-        "created_at": "2026-10-05T11:51:21Z"
-      },
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7582?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `83.33333%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/7582?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
-        "created_at": "2026-10-05T12:34:19Z"
-      }
-    ],
-    "reviews_count": 13,
-    "reviews": [
-      {
-        "user": "mvadari",
-        "state": "CHANGES_REQUESTED",
-        "body": "Please update the API changelog"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nAdds JSON parameter type validation to the payment channel signing/verification RPC handlers to avoid `Json::Value::asString()` coercing non-string inputs (defense-in-depth f"
-      },
-      {
-        "user": "harshitgupta62",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7993,
-    "branch_name": "mvadari/gtest-migrate-beast",
-    "title": "test: Migrate three beast suites from beast::unit_test to gtest",
-    "body": "## High Level Overview of Change\n\nMoves three test suites from the legacy `beast::unit_test` framework under `src/test` to gtest under `src/tests`, continuing the ongoing migration.\n\n| From | To | Tests |\n| --- | --- | --- |\n| `src/test/beast/xxhasher_test.cpp` | `src/tests/libxrpl/beast/xxhasher.cpp` | 10 |\n| `src/test/beast/beast_Journal_test.cpp` | `src/tests/libxrpl/beast/Journal.cpp` | 3 |\n| `src/test/beast/beast_basic_seconds_clock_test.cpp` | `src/tests/libxrpl/beast/basic_seconds_clock.cpp` | 1 |\n\n### Context of Change\n\n`src/test` still holds 250 `beast::unit_test` suites against 178 gtest files in `src/tests`, so the migration has plenty left in it. This is a small, mechanical increment that should be reviewable as a straight translation.\n\nThese three were chosen because they exercise `libxrpl` only. The gtest tree is currently `src/tests/libxrpl` with no `jtx::Env` fixture, so suites that need a running `Env` can't move until that harness exists \u2014 that's a larger, separate decision. These have no such dependency.\n\nThe assertions are unchanged; `BEAST_EXPECT(a == b)` becomes `EXPECT_EQ(a, b)` and each `testcase` becomes its own `TEST`. Two small tidies came along with the move:\n\n- The xxhasher tests repeated a `for` loop concatenating the same string 20 or 100 times in five places. That is now a `repeat()` helper, and the shared input string is a single `constexpr std::string_view`.\n- `Journal_test`'s local counting sink was named `TestSink`, which now collides conceptually with the shared `xrpl::TestSink` helper in `src/tests/libxrpl/helpers`. Renamed to `CountingSink`, and its `run()` split into one `TEST` per severity threshold so a failure names which threshold broke, plus a third `TEST` that lowers the threshold on an existing `Journal`, which the split would otherwise have lost.\n\n`src/tests/libxrpl/CMakeLists.txt` globs its module directories with `CONFIGURE_DEPENDS`, so no build file changes are needed.\n\n**Not migrated, deliberately:** `src/test/basi",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-10T15:31:01Z",
-    "merged_at": "2026-10-05T18:42:53Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7993?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-10T16:18:37Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "@godexsoft Added named constants for the seeds and repeat counts in fdbff52. I kept the expected digests as literals, since a name for each would only add indirection.",
-        "created_at": "2026-10-05T12:29:14Z"
-      }
-    ],
-    "reviews_count": 20,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nMigrates three `beast::unit_test` suites under `src/test` to GoogleTest under `src/tests/libxrpl`, continuing the ongoing test harness migration for `libxrpl`-only coverage.\n"
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "mvadari",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
