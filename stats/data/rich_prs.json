@@ -1,5 +1,93 @@
 [
   {
+    "pr_number": 8608,
+    "branch_name": "se-amendment-name-fix",
+    "title": "fix: Resolve amendment_enabled names through the feature registry",
+    "body": "## High Level Overview of Change\r\n\r\nThe `amendment_enabled` host function now resolves an amendment name with `getRegisteredFeature` (the compiled-in feature list) instead of `AmendmentTable::find`. Unknown names return 0. Whether the amendment is enabled still comes from the ledger's rules. The 32-byte id form is unchanged.\r\n\r\n## Context of Change\r\n\r\n`AmendmentTable` names are node-local. Two validators with the same ledger could therefore give a contract different answers for `amendment_enabled(\"X\")` and compute different results for the same transaction.\r\n\r\nThe compiled-in feature list is the same on every node running the same binary, and a node whose binary does not know an enabled amendment is amendment-blocked, so all validating nodes agree.\r\n\r\n## Test Plan\r\n\r\nAdded a case to `AmendmentTable_test`. A `[veto_amendments]` line gives TokenEscrow the misspelled name \"TokenEscr\", which renames it in the node's real AmendmentTable. The host function must still answer by the compiled-in name: \"TokenEscrow\" reads 1 (enabled on the ledger) and \"TokenEscr\" reads 0. Without the fix, both answers are reversed.\r\n",
+    "user": "pwang200",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-15T21:48:44Z",
+    "merged_at": "2026-10-16T15:01:53Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8608?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-15T21:51:49Z"
+      }
+    ],
+    "reviews_count": 1,
+    "reviews": [
+      {
+        "user": "kuznetsss",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8573,
+    "branch_name": "refactor/rpc-spec-handlers-D",
+    "title": "refactor: Migrate handlers to rpc-spec (D)",
+    "body": "## High Level Overview of Change\n\nMigrates three account handlers, `account_info`, `account_lines` and `account_channels`, onto the shared `xrpl-rpc-spec` library (0.1.25), following #8561.\n\n## Context of Change\n\nPart of the rpc-spec migration; follows #8561.\n\n- **Handlers:** each one becomes a class with `Input`/`Output`, `process()` and `writeResult()`, dispatched through `handle<XHandler>`. The spec now parses `account`/`ident`, `peer`, `destination_account`, `ignore_default`, `queue`, `limit` and `marker`, so the hand-written field checks are gone. `doAccountInfo`, `doAccountLines` and `doAccountChannels` are deleted.\n- **`account_info`:** `ident` is read only when `account` is absent. A malformed account is still reported after the ledger lookup, with the ledger fields. The API v2 check that `signer_lists` is a bool stays in the handler, after the account is found, so its error still carries `account_data`.\n- **`account_lines`:** a malformed `account` or `peer` is still reported after the ledger lookup, with the ledger fields. An empty `peer` still means no filter.\n- **`account_channels`:** an empty `destination_account` still means no filter.\n- **`limit` / `marker`:** handled as in #8561. The handler clamps `limit` for non-unlimited roles. `account_lines` and `account_channels` now use the shared `parseAccountMarker()`.\n- **CMake:** the three handlers are added to `rpcspec_generate_instantiations`.\n- **Tests:** error cases now check `error_code`. The API v2 non-bool `signer_lists` case in `AccountInfo_test` sent invalid JSON and never reached the handler; it now does.\n\n## API Impact\n\nNo change to successful responses, or to any request with a single problem. A request with more than one problem may now report a different one (`API-CHANGELOG.md`):\n\n- An invalid `ledger_hash`/`ledger_index` is reported before a missing or invalid `account` (or `ident`).\n- An invalid `limit` or `marker`, or for `account_lines` a non-string `peer`, is reported before `lgrNotFound`",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-13T16:11:14Z",
+    "merged_at": "2026-10-16T14:39:17Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8573?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `94.11765%` with `16 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8573?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
+        "created_at": "2026-10-13T16:16:18Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-14T10:57:59Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-14T12:33:12Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-15T19:09:10Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-16T12:36:47Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nThe broad externally visible RPC migration and nuanced compatibility requirements warrant final human validation.\n\n**0 open findings**\n\n<details>\n<"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8589,
     "branch_name": "add_todo",
     "title": "docs: Add todo comment for key rotation zkproof",
@@ -2151,48 +2239,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "> [!NOTE]\n> Copilot was unable to run its full agentic suite in this review.\n\n<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n**Review effort:** Lite  \n**Findings:** 1 <picture><source media=\"(p"
-      }
-    ]
-  },
-  {
-    "pr_number": 8530,
-    "branch_name": "mathbunnyru/update_build_llvm_23",
-    "title": "build: Use images with Clang 23 except for clang-tidy",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis updates build-related docker images everywhere except clang-tidy.\r\n`clang-tidy` will be handled separately.\r\n\r\nAntithesis is used as a system library, because it's an external dependency.\r\nIdeally it should be in conan (which would do this automatically).\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods ",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-07T12:05:16Z",
-    "merged_at": "2026-10-07T13:41:59Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial",
-      "Full CI build"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8530?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-07T12:07:55Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "This MR bumps the pinned docker image SHA tag (sha-ed96e60 \u2192 sha-3d526d4) consistently across linux.json and several GitHub Actions workflow files, while explicitly leaving clang-tidy's image untouche"
-      },
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "This MR bumps the Docker image tag (sha-ed96e60 \u2192 sha-3d526d4) across several GitHub workflow files and the strategy matrix, and updates the recorded tool-check output files to reflect Clang 23 / Cona"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe image references and corresponding tool snapshots are consistent, with the dedicated clang-tidy workflow correctly"
       }
     ]
   },
