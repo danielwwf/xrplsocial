@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 8619,
+    "branch_name": "clion-fix",
+    "title": "chore: Fix an issue that breaks CLion",
+    "body": "Undefine `TRANSACTION_INCLUDE` after it serves its purpose.\r\n\r\nLeaving the macro defined can cause CLion's \"Nova\" engine to stall when loading the project. Per https://youtrack.jetbrains.com/issue/CPP-52150 one workaround is to undefine the macro.\r\n\r\n---\r\n\r\nIt would be really nice if this were merged ASAP and included in the next release, to allow CLion to load the project again without having to `cherry-pick` a temporary commit.",
+    "user": "nbougalis",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-17T21:36:39Z",
+    "merged_at": "2026-10-17T23:16:11Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "nbougalis",
+        "body": "@xrplf-bot, please review.",
+        "created_at": "2026-10-17T21:38:00Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8619?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-17T21:38:54Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe narrowly scoped cleanup preserves required header inclusion and has no identified blocking issues.\n\n**No open issues** \ud83c\udf89\n\n<details>\n<summary><"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": "I had the same issue in CLion and switched to VSCode, as their old engine was slow and the new one had this issue. Thanks for fixing!"
+      }
+    ]
+  },
+  {
     "pr_number": 8130,
     "branch_name": "cosign-invariants-v1",
     "title": "feat: Add TransactionProposal invariants for Cosign",
