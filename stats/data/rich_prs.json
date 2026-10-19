@@ -1,5 +1,66 @@
 [
   {
+    "pr_number": 8604,
+    "branch_name": "chore/check-error_code-in-handler-tests",
+    "title": "test: Check error consistently in rpc handlers",
+    "body": "## High Level Overview of Change\r\n\r\nUnify the way we check error_code and other fields in rpc-spec-based handler tests.\r\n\r\nNote: based on #8573 so review/merge after that lands.\r\n\r\n## Context of Change\r\n\r\nMigration to rpc-spec.\r\n\r\n## API Impact\r\n\r\nN/A",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-15T16:40:29Z",
+    "merged_at": "2026-10-19T16:51:11Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 5,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8604?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-15T16:44:55Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-15T19:09:14Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-16T12:56:01Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-16T14:45:37Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-16T15:02:57Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nThe stacked handler migrations and dependency upgrade require human compatibility validation, and a ledger-test assertion needs correction.\n\n<detai"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nThe included handler migration and external parser upgrade require human validation of RPC compatibility and CI confirmation.\n\n**0 open findings**\n"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8619,
     "branch_name": "clion-fix",
     "title": "chore: Fix an issue that breaks CLion",
