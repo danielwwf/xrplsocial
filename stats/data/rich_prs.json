@@ -1,5 +1,100 @@
 [
   {
+    "pr_number": 8613,
+    "branch_name": "refactor/rpc-spec-handlers-E",
+    "title": "refactor: Migrate handlers to rpc-spec (E)",
+    "body": "## High Level Overview of Change\r\n\r\nMigrates `deposit_authorized`, `nft_buy_offers` and `nft_sell_offers` onto `xrpl-rpc-spec` (bumped to 0.1.29), following the pattern of the earlier parts. Builds on #8573.\r\n\r\n## Context of Change\r\n\r\n- **`deposit_authorized`:** the spec now parses `source_account`, `destination_account` and `credentials`, and the hand-written checks are gone. The checks that read the ledger stay in the handler: accounts exist, credentials exist, are accepted, aren't expired, belong to the source, and aren't duplicated. Includes upstream's zero credential ID fix (#8533).\r\n- **`nft_buy_offers` / `nft_sell_offers`:** both now derive from a shared `NFTOffersHandlerBase` (`NFTOffersCommon`), which replaces `NFTOffersHelpers.h`. The spec parses `nft_id`, `limit` and `marker`.\r\n- **CMake:** `deposit_authorized` and `nft_offers_common` are added to the spec instantiations.\r\n\r\n## API Impact\r\n\r\nNo change to successful responses. A request with a single problem returns the same error as before, with one exception:\r\n\r\n- `nft_buy_offers` / `nft_sell_offers`: an `nft_id` that is an array or object now returns `invalidParams` instead of `internal`.\r\n\r\nA request with more than one problem may now report a different one (`API-CHANGELOG.md`). An invalid `ledger_hash`/`ledger_index` is now reported first, an invalid `credentials` array or `marker` is reported before the ledger lookups, and a malformed `credentials` element is now reported before an earlier element that doesn't exist on the ledger.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-16T14:52:39Z",
+    "merged_at": "2026-10-20T16:13:32Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 7,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-16T14:54:08Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-16T14:55:19Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8613?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `95.68966%` with `5 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8613?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-10-16T14:57:49Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-19T16:57:52Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-20T12:00:05Z"
+      }
+    ],
+    "reviews_count": 9,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe asynchronous test has an unsafe timeout path, and the dependency lockfile no longer pins the RPC-spec recipe revision.\n\n<details open>\n<summary"
+      },
+      {
+        "user": "godexsoft",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe RPC-spec lockfile entry needs a recipe-revision pin to preserve reproducible dependency resolution.\n\n**No open issues** \ud83c\udf89\n\n<details>\n<summary><"
+      }
+    ]
+  },
+  {
+    "pr_number": 8620,
+    "branch_name": "chore/improve-rpc-spec-api-usage",
+    "title": "chore: Simplify `account` and `ident` checks via rpc-spec",
+    "body": "## High Level Overview of Change\n\nBumps `xrpl-rpc-spec` to 0.1.29 and simplifies the `account_info` and `account_lines` handlers to match. Handler `Input` types no longer wrap a `std::expected` in a `std::optional`.\n\n## Context of Change\n\n`account_info` used to carry `account` and `ident` as two `std::optional<DeferredAccountId>` members, and `account_lines` carried `peer` as one. Each handler had to check whether the field was present and then whether it decoded (`input.peer->has_value()`, `**input.peer`).\n\nIn 0.1.29, `AccountError` gains `Missing`:\n- `account_info` has one `DeferredAccountId account`. The spec binds both `ident` and `account` to it, and a missing account is still rejected in the spec.\n- `account_lines`' `peer` is a `DeferredAccountId` that defaults to `Missing`. An empty string also counts as `Missing`.\n\nThe handlers now check `has_value()` once. A malformed account is still reported by the handler, after the ledger is resolved and with the ledger fields in the response, as before.\n\nNo behaviour or wire-format change.\n\n## API Impact\n\nNone.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-18T22:01:04Z",
+    "merged_at": "2026-10-20T14:08:01Z",
+    "labels": [
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8620?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-18T22:03:56Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nExternal parser compatibility and the additional `secp256k1` recipe revision remain unverified.\n\n**No open issues** \ud83c\udf89\n\n<details>\n<summary><strong>W"
+      },
+      {
+        "user": "nbougalis",
+        "state": "APPROVED",
+        "body": ":+1:\n\nThis looks great, thanks @godexsoft!"
+      }
+    ]
+  },
+  {
     "pr_number": 8604,
     "branch_name": "chore/check-error_code-in-handler-tests",
     "title": "test: Check error consistently in rpc handlers",
@@ -2878,140 +2973,6 @@
       {
         "user": "harshitgupta62",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8524,
-    "branch_name": "better_retries",
-    "title": "build: Make conan retry with Conan Center's source backups",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nGNU ftp is down quite often\r\nhttps://github.com/XRPLF/xrpld-private/actions/runs/37407948434/job/112176283822\r\nAdding recommended backup, to make our conan more robust\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should on",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-06T18:18:44Z",
-    "merged_at": "2026-10-06T20:02:21Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8524?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-06T18:22:29Z"
-      }
-    ],
-    "reviews_count": 2,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage3: "
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe new setting is incompatible with the documented minimum Conan version.\n\n**Review effort:** Balanced  \n**Findings:**"
-      }
-    ]
-  },
-  {
-    "pr_number": 7979,
-    "branch_name": "txnProposalCancel",
-    "title": "Add TransactionProposalCancel for Cosign",
-    "body": "## High Level Overview of Change\r\n\r\nAdds the `TransactionProposalCancel` transaction (Cosigner Spec \u00a77, transaction type 94): deletes a `TransactionProposal` ledger entry and releases the proposer's reserve. \r\n\r\n### Context of Change\r\n\r\nThird transaction of the On-Chain Cosigner feature ([Cosigner spec](https://github.com/shawnxie999/XRPL-Standards/blob/cosign/XLS-0103-onchain-cosigner/README.md)), building on `TransactionProposalCreate` (#7887).\r\n\r\n- While a proposal is live, only its Owner (the proposer) or its target (the proposed transaction's `Account`, or the `Delegate` named in it) may cancel: `tecNO_PERMISSION` otherwise.\r\n- Once a proposal is terminal (its `Expiration` has passed, or the ledger sequence is strictly past the proposed transaction's `LastLedgerSequence`, mirroring the ordinary transactor's `tefMAX_LEDGER` rule), anyone may delete it.\r\n- A zero `ProposalID` is `temMALFORMED`; a missing entry is `tecNO_ENTRY`.\r\n- `isValidProposalTxnType` now also rejects proposing a Cancel, or any proposal transaction hidden inside a proposed Batch (XLS-0103 \u00a75.3.1).\r\n- Includes shared jtx helper `proposal::cancel` and a 19-case test suite covering authorization, terminal boundaries, Batch/multisign/sponsorship/ticket interactions, and nesting rejections.\r\n\r\n### API Impact\r\n\r\n- [x] `libxrpl` change (new amendment-gated transaction type, `featureCosign`)\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\r\n\n",
-    "user": "ckeshava",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-08-07T22:06:22Z",
-    "merged_at": "2026-10-06T18:00:28Z",
-    "labels": [],
-    "comments_count": 9,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7979?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-08-07T22:38:24Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-08-20T20:46:55Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-08-24T17:21:29Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-08-25T17:32:39Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-08-25T17:54:45Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "Kassaking7",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "ckeshava",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "shawnxie999",
-        "state": "COMMENTED",
-        "body": "first bit of comments"
-      }
-    ]
-  },
-  {
-    "pr_number": 8520,
-    "branch_name": "update_docker_images",
-    "title": "chore: Update docker images; link Conan-built tools with a static runtime",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\nMostly update due to https://github.com/XRPLF/rippled/pull/8479\r\n\r\nSmall adjustments:\r\n- PRE_COMMIT_VERSION 4.6.0 \u2192 4.6.2\r\n- push path cleanup in the three image-build workflows\r\n\r\nUpdated software:\r\n- Python 3.13.13 \u2192 3.14.7\r\n- CMake 4.1.2 \u2192 4.4.3\r\n- Conan 2.28.1 \u2192 2.32.0\r\n- GCC 15.2.0 \u2192 15.3.0\r\n- Clang/LLVM 22.1.7 \u2192 22.1.8\r\n- Rust nightly moves to 2026-10-04\r\n\r\n**This update surfaced bugs**:\r\n1. Tools built by `conan` (like `protoc`) load libstdc++/libgcc_s from a Nix store path. The conan package ID records only `compiler.version`, so any change to gcc nix store path would fail a build. Now we build such tools with a static runtime.\r\n2. These tools were sanitised (it doesn't make sense to have a sanitised protoc binary). We don't sanitise them now.\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-06T09:51:42Z",
-    "merged_at": "2026-10-06T17:19:13Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8520?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-06T09:54:23Z"
-      }
-    ],
-    "reviews_count": 15,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nNew image availability and upgraded toolchain compatibility across CI still need confirmation.\n\n**Review effort:** Bala"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nConan runtime-linkage and sanitizer changes require validation across supported Linux toolchains before human approval."
-      },
-      {
-        "user": "kuznetsss",
-        "state": "APPROVED",
         "body": ""
       }
     ]
