@@ -1,5 +1,65 @@
 [
   {
+    "pr_number": 7366,
+    "branch_name": "retire_fill_or_kill",
+    "title": "refactor: Retire FillOrKill fix",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis change set retires the fill or kill fix and updates all related unit tests.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that may a",
+    "user": "TimothyBanks",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-29T19:54:39Z",
+    "merged_at": "2026-10-21T16:43:01Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 11,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7366?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-05-29T20:24:34Z"
+      },
+      {
+        "user": "TimothyBanks",
+        "body": "@a1q123456 Updated.",
+        "created_at": "2026-06-03T19:35:52Z"
+      },
+      {
+        "user": "TimothyBanks",
+        "body": "@a1q123456 @pratikmankawde Please take another look",
+        "created_at": "2026-06-10T20:31:56Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-06-26T12:11:44Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-06-26T15:34:12Z"
+      }
+    ],
+    "reviews_count": 24,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nRetires the `fixFillOrKill` amendment by moving it from active `XRPL_FIX` to `XRPL_RETIRE_FIX` in `features.macro`, removing the runtime `fillOrKillEnabled` branch in `Strand"
+      },
+      {
+        "user": "a1q123456",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "TimothyBanks",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8613,
     "branch_name": "refactor/rpc-spec-handlers-E",
     "title": "refactor: Migrate handlers to rpc-spec (E)",
@@ -2851,66 +2911,6 @@
       },
       {
         "user": "mathbunnyru",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 7882,
-    "branch_name": "dangell7/escrow-paychan-refactor",
-    "title": "refactor: Extract escrow lock helpers and paychan test helpers",
-    "body": "## High Level Overview of Change\n\nPulls the refactoring out of #5448 (XLS-93d Token-Enabled Payment Channels) into its own PR so it can merge ahead of the feature. Code motion only, no functional change.\n\n- Moves the escrow lock/unlock helpers from the Escrow transactors into `EscrowHelpers.h`.\n- Moves the jtx `paychan` helpers from `TestHelpers.h` into their own `test/jtx/paychan.h`, and hoists the file-local helpers from `PayChan_test.cpp` into them.\n- Moves the escrowed balance test helpers from `EscrowToken_test.cpp` into the shared jtx `TestHelpers.h`.\n\n### Context of Change\n\nSplit out of #5448 per review feedback. The token paychan transactors reuse the escrow lock/unlock helpers, so the extraction lands here first and the feature PR becomes mostly additive.\n\n### API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\n## Test Plan\n\nNo new tests, the moved code is covered by the existing suites. Ran Escrow, EscrowToken, Sponsor, PayChan, MPToken, AMM.\n",
-    "user": "dangell7",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-07-28T00:05:30Z",
-    "merged_at": "2026-10-06T20:35:01Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 9,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7882?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-07-28T00:50:06Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-08-07T16:00:58Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-08-31T16:06:07Z"
-      },
-      {
-        "user": "mvadari",
-        "body": "@dangell7 ready to merge?",
-        "created_at": "2026-09-15T18:19:59Z"
-      },
-      {
-        "user": "dangell7",
-        "body": "@mvadari yes, ready once CI is green. clang-tidy is fixed in 40a6ebe713 and develop is merged in.",
-        "created_at": "2026-09-30T15:46:09Z"
-      }
-    ],
-    "reviews_count": 9,
-    "reviews": [
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "dangell7",
         "state": "COMMENTED",
         "body": ""
       }
