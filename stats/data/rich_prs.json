@@ -1,5 +1,101 @@
 [
   {
+    "pr_number": 8631,
+    "branch_name": "up_emudhra",
+    "title": "fix: Update images/prepare-runner to not trust eMudhra certs",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\n- Use the CI images rebuilt with the eMudhra fix from #8629: bump the `nix-*`, `packaging-*` and `pre-commit` images to `sha-d3a71b2`.\r\n- Bump the pinned `XRPLF/actions` commits to pick up the macOS `prepare-runner` fix, which replaces `/etc/ssl/cert.pem` with Homebrew's Mozilla bundle and requires `certifi` >= 2026.10.19.\r\n- macOS Nix CI: set `NIX_SSL_CERT_FILE` (emitted by `nix/ci-env.nix`) to the patched `cacert`, so Nix-built `git`, `curl` and Conan stop using the runners' outdated Nix profile bundle. This replaces the narrower `REQUESTS_CA_BUNDLE`. Linux images are unaffected.\r\n- Packages: make the DEB and RPM depend on `ca-certificates`. The default config fetches validator lists over verified HTTPS, and the published Docker image had no CA store at all, so both validator list fetches failed.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, ple",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-22T17:26:12Z",
+    "merged_at": "2026-10-22T18:45:27Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8631?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-22T17:29:06Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nCross-platform certificate-trust changes warrant human review of macOS CI and clean package-install validation.\n\n**No open issues** \ud83c\udf89\n\n<details>\n<s"
+      }
+    ]
+  },
+  {
+    "pr_number": 7349,
+    "branch_name": "retire_xrpfees_amendment",
+    "title": "refactor: Retire XRPFees amendment",
+    "body": "<!--\r\nThis PR template helps you to write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR.  This avoids unnecessary redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis change set is retiring the XRPFees amendment.  The removal of that amendment resulted in various unit tests breaking because of the different ledger hashes being computed with that amendment flag being removed. The hash changes were driven by the new attributes for fee settings being turned on that were sitting behind that amendment.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n### API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: Se",
+    "user": "TimothyBanks",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-05-28T14:08:23Z",
+    "merged_at": "2026-10-22T17:48:24Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 18,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7349?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `97.43590%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/7349?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
+        "created_at": "2026-05-28T20:49:11Z"
+      },
+      {
+        "user": "TimothyBanks",
+        "body": "@a1q123456 This has been updated",
+        "created_at": "2026-06-03T18:08:36Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-06-10T11:49:34Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-06-10T19:01:35Z"
+      },
+      {
+        "user": "TimothyBanks",
+        "body": "@a1q123456 @pratikmankawde Please take another look",
+        "created_at": "2026-06-10T19:02:36Z"
+      }
+    ],
+    "reviews_count": 30,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR retires the `XRPFees` amendment by removing feature-gated logic and legacy fee-field handling, standardizing fee settings on the `*Drops` fields, and updating affecte"
+      },
+      {
+        "user": "a1q123456",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "TimothyBanks",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7357,
     "branch_name": "retire_amm_amendment",
     "title": "refactor: Retire AMM amendment and AMMOverflowOffer fix",
@@ -2915,102 +3011,6 @@
       },
       {
         "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8302,
-    "branch_name": "fix-mpt-partial-overflow",
-    "title": "fix: Fix MPT partial payment overflow",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n`divide` wrap on large MPT values, change to use `Number` operations instead. It's non exploitable.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any change that",
-    "user": "shawnxie999",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-25T19:45:53Z",
-    "merged_at": "2026-10-06T23:48:55Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8302?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `84.84848%` with `5 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8302?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
-        "created_at": "2026-09-25T19:48:24Z"
-      },
-      {
-        "user": "bthomee",
-        "body": "@shawnxie999 the code is triggering UB:\r\n\r\n```\r\n/__w/rippled/rippled/src/libxrpl/protocol/STAmount.cpp:1266:42: runtime error: unsigned integer overflow: 18446744073709551613 + 5 cannot be represented in type 'std::uint64_t' (aka 'unsigned long')\r\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /__w/rippled/rippled/src/libxrpl/protocol/STAmount.cpp:1266:42 \r\n5> xrpl.app.MPToken Partial payment divide overflow\r\n```",
-        "created_at": "2026-10-01T19:18:12Z"
-      },
-      {
-        "user": "shawnxie999",
-        "body": "@bthomee this is expected because this PR is meant to fix the overflow/undefined behavior that is on mainnet. The sanitizer fired because of a test that reproduces the bad scenario.",
-        "created_at": "2026-10-01T19:57:28Z"
-      },
-      {
-        "user": "shawnxie999",
-        "body": "@ximinez This is ready to merge.",
-        "created_at": "2026-10-06T17:51:40Z"
-      }
-    ],
-    "reviews_count": 20,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nAmendment-specific number-range handling and a pre-division source-cost overflow remain unresolved.\n\n*Get a fresh asses"
-      },
-      {
-        "user": "yinyiqian1",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "gregtatcam",
-        "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8522,
-    "branch_name": "use_llvm_23",
-    "title": "build: Use LLVM 23",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis updates nix toolchain to use LLVM 23.\r\nAlso makes packages.nix the source of truth for the version, and derives it automatically everywhere else.\r\nNext updates will be much easier (from non-C++ code changes)\r\n\r\nAfter this PR gets merged, I'll update docker images, and will fix clang-tidy there.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-06T17:31:45Z",
-    "merged_at": "2026-10-06T21:51:58Z",
-    "labels": [
-      "Ready to merge",
-      "Trivial"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8522?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-06T17:36:57Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage2: "
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe compiler documentation advertises LLVM 23 as CI-tested while the pinned Linux CI image still uses LLVM 22.\n\n**Revie"
-      },
-      {
-        "user": "mathbunnyru",
         "state": "COMMENTED",
         "body": ""
       }
