@@ -1,5 +1,51 @@
 [
   {
+    "pr_number": 8636,
+    "branch_name": "fix_double_apply",
+    "title": "build: Don't apply clang-tidy fixes twice via header symlinks",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nWe create header symlinks, and clang-tidy runs on these \"symlinks\" too.\nThis leads to double application of fixes in these headers.\n\nI now put these headers to `ExcludeHeaderFilterRegex`, which means they won't be fixed.\n\nThis fixes the \"double-application\" problem in every way we run clang-tidy.\nUnfortunately, to get fixes for headers, you'll have to use `-Dverify_headers=ON` (already ON in CI).\nI think it's a better trade-off, so people have less frustration when applying clang-tidy fixes.\nAnd we're now able to get rid of \"export-fixes\" + \"deduplicate\" + \"apply\" patter from pre-commit check.\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-C",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-10-23T17:35:03Z",
+    "merged_at": "2026-10-23T19:55:21Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8636?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-10-23T17:38:46Z"
+      },
+      {
+        "user": "bthomee",
+        "body": "LGTM but please take a look at Copilot's comment.",
+        "created_at": "2026-10-23T18:23:23Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe documented manual commands need updating so the new exclusion does not silently remove public-header checking.\n\n<details open>\n<summary><strong"
+      }
+    ]
+  },
+  {
     "pr_number": 8631,
     "branch_name": "up_emudhra",
     "title": "fix: Update images/prepare-runner to not trust eMudhra certs",
@@ -2960,59 +3006,6 @@
         "user": "godexsoft",
         "state": "APPROVED",
         "body": ":rage1: "
-      }
-    ]
-  },
-  {
-    "pr_number": 8236,
-    "branch_name": "2351-Add-wasm-call-tests",
-    "title": "tests: Add wasm call tests",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nThis PR adds tests calling host functions from wasm code. They use real wasm vm but mocked host functions.\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n## Context of Change\r\n\r\n<!--\r\nPlease include the context of a change.\r\nIf a bug fix, when was the bug introduced? What was the behavior?\r\nIf a new feature, why was this architecture chosen? What were the alternatives?\r\nIf a refactor, how is this better than the previous implementation?\r\n\r\nIf there is a spec or design document for this feature, please link it here.\r\n-->\r\n\r\n## API Impact\r\n\r\n<!--\r\nPlease check [x] relevant options, delete irrelevant ones.\r\n\r\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\r\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\r\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\r\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\r\n-->\r\n\r\n- [ ] Public API: New feature (new methods and/or new fields)\r\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\r\n- [ ] `libxrpl` change (any ch",
-    "user": "kuznetsss",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-16T16:04:01Z",
-    "merged_at": "2026-10-07T10:17:50Z",
-    "labels": [],
-    "comments_count": 4,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8236?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-16T17:10:50Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-09-21T16:23:24Z"
-      },
-      {
-        "user": "TimothyBanks",
-        "body": "It's a bit hard to see through all the code, but it seems like there is a lot of redundancy in the tests.  I am fine with it but just wanted to point out what claude dumped based on asking the question incase you might have a strong opinion on it.\r\n\r\n\r\n## Redundancy in `guest_calls/`: 28 of 63 files are clones\r\n\r\nComparing all 1,953 file pairs in `guest_calls/` after normalizing away the subject\r\nname (fixture name, `wasm_name` string, mock method), 9 clusters sit at \u22650.95\r\nsimilarity \u2014 several ",
-        "created_at": "2026-09-21T19:11:31Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-10-06T16:35:31Z"
-      }
-    ],
-    "reviews_count": 7,
-    "reviews": [
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
