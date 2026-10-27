@@ -1,19 +1,149 @@
 {
-  "generated_at": "2026-10-27T12:50:13.192291+00:00",
+  "generated_at": "2026-10-27T18:26:53.979178+00:00",
   "repo": "XRPLF/rippled",
-  "total_branches": 301,
+  "total_branches": 302,
   "total_contributors": 84,
   "branches": [
     {
-      "name": "dangell7/batch-delivermax",
+      "name": "dangell7/escrow-gateway-locked",
       "last_commit": {
-        "hash": "9f095993",
+        "hash": "fcd5b160",
         "author": "Denis Angell",
         "email": "dangell@transia.co",
-        "date": "2026-10-26T12:46:28+00:00",
+        "date": "2026-10-27T15:11:48+00:00",
+        "message": "docs: link the gateway_balances changelog entry to its PR"
+      },
+      "commits": [
+        {
+          "hash": "fcd5b160",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-27T15:11:48+00:00",
+          "message": "docs: link the gateway_balances changelog entry to its PR"
+        },
+        {
+          "hash": "0a153551",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-27T14:03:44+00:00",
+          "message": "refactor: drop never-firing MPT max checks in EscrowCreate and Clawback"
+        },
+        {
+          "hash": "21d50366",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-27T14:02:28+00:00",
+          "message": "fix: count only own-issued escrows in gateway_balances"
+        },
+        {
+          "hash": "8fd41ed7",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-27T14:00:56+00:00",
+          "message": "test: gateway locked totals count only the account's own escrowed tokens"
+        }
+      ],
+      "contributor_count": 20,
+      "contributors": [
+        {
+          "email": "dangell@transia.co",
+          "name": "Denis Angell"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "tbanks@ripple.com",
+          "name": "Timothy Banks"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "nikb@bougalis.net",
+          "name": "Nik Bougalis"
+        },
+        {
+          "email": "21219765+ckeshava@users.noreply.github.com",
+          "name": "Chenna Keshava B S"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "115580134+oleks-rip@users.noreply.github.com",
+          "name": "Olek"
+        },
+        {
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "name": "Peter Chen"
+        },
+        {
+          "email": "5780819+Tapanito@users.noreply.github.com",
+          "name": "Vito Tumas"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Clawback",
+        "type": "Feature",
+        "confidence": 0.95,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "dangell7/batch-delivermax",
+      "last_commit": {
+        "hash": "150d28c7",
+        "author": "Denis Angell",
+        "email": "dangell@transia.co",
+        "date": "2026-10-27T14:17:21+00:00",
         "message": "Local merge develop into dangell7/batch-delivermax"
       },
       "commits": [
+        {
+          "hash": "150d28c7",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-27T14:17:21+00:00",
+          "message": "Local merge develop into dangell7/batch-delivermax"
+        },
+        {
+          "hash": "05847a3c",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-10-27T13:49:07+00:00",
+          "message": "test: Shorten the ValidatorSite request timeout case (#8632)"
+        },
+        {
+          "hash": "9f095993",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-26T12:46:28+00:00",
+          "message": "Local merge develop into dangell7/batch-delivermax"
+        },
         {
           "hash": "9f095993",
           "author": "Denis Angell",
@@ -342,27 +472,6 @@
           "email": "akremer@ripple.com",
           "date": "2026-10-06T13:19:20+00:00",
           "message": "refactor: Migrate handlers to rpc-spec (A) (#8345)"
-        },
-        {
-          "hash": "cfcbe45b",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-10-06T12:12:22+00:00",
-          "message": "test: Declare, not define, entry instantiations in SLEBase test (#8357)"
-        },
-        {
-          "hash": "9cbf78ba",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-10-05T23:18:58+00:00",
-          "message": "test: Add more tests for granular permissions (#8459)"
-        },
-        {
-          "hash": "b8d8738f",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-10-05T23:17:36+00:00",
-          "message": "fix: Enforce that MPT issuance flags are never cleared (#8152)"
         }
       ],
       "contributor_count": 20,
@@ -370,6 +479,10 @@
         {
           "email": "dangell@transia.co",
           "name": "Denis Angell"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
         },
         {
           "email": "49699333+dependabot[bot]@users.noreply.github.com",
@@ -404,10 +517,6 @@
           "name": "Gregory Tsipenyuk"
         },
         {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
           "email": "yqian@ripple.com",
           "name": "yinyiqian1"
         },
@@ -438,13 +547,20 @@
     {
       "name": "origin",
       "last_commit": {
-        "hash": "b7d6b2c6",
-        "author": "dependabot[bot]",
-        "email": "49699333+dependabot[bot]@users.noreply.github.com",
-        "date": "2026-10-26T12:12:39+00:00",
-        "message": "ci: [DEPENDABOT] bump the github-actions group across 2 directories with 3 updates (#8642)"
+        "hash": "05847a3c",
+        "author": "Bart",
+        "email": "bthomee@users.noreply.github.com",
+        "date": "2026-10-27T13:49:07+00:00",
+        "message": "test: Shorten the ValidatorSite request timeout case (#8632)"
       },
       "commits": [
+        {
+          "hash": "05847a3c",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-10-27T13:49:07+00:00",
+          "message": "test: Shorten the ValidatorSite request timeout case (#8632)"
+        },
         {
           "hash": "b7d6b2c6",
           "author": "dependabot[bot]",
@@ -787,17 +903,14 @@
           "email": "gregtatcam@users.noreply.github.com",
           "date": "2026-10-14T07:49:12+00:00",
           "message": "fix: Waive CanTransfer on loan default and broker delete (#8231)"
-        },
-        {
-          "hash": "166e97e1",
-          "author": "Valentin Balaschenko",
-          "email": "13349202+vlntb@users.noreply.github.com",
-          "date": "2026-10-13T23:33:32+00:00",
-          "message": "refactor: Decouple LedgerHistory from TaggedCache internals (#5874)"
         }
       ],
       "contributor_count": 20,
       "contributors": [
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
         {
           "email": "49699333+dependabot[bot]@users.noreply.github.com",
           "name": "dependabot[bot]"
@@ -829,10 +942,6 @@
         {
           "email": "gregtatcam@users.noreply.github.com",
           "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
         },
         {
           "email": "yqian@ripple.com",
@@ -958,6 +1067,437 @@
         "amendment": "Other",
         "type": "CI/CD",
         "confidence": 0.8,
+        "source": "keyword_match"
+      }
+    },
+    {
+      "name": "dangell7/trusted-signing-key-rotation",
+      "last_commit": {
+        "hash": "899eb34c",
+        "author": "Denis Angell",
+        "email": "dangell@transia.co",
+        "date": "2026-10-24T18:33:07+00:00",
+        "message": "fix: Stop validating once a manifest revokes or replaces the validator key"
+      },
+      "commits": [
+        {
+          "hash": "899eb34c",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-24T18:33:07+00:00",
+          "message": "fix: Stop validating once a manifest revokes or replaces the validator key"
+        },
+        {
+          "hash": "ae3a308c",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-15T13:55:52+00:00",
+          "message": "style: Drop a lambda's empty parameter list and add a trailing comma for clang-tidy 23"
+        },
+        {
+          "hash": "45a0e791",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-14T22:50:19+00:00",
+          "message": "refactor: Keep trusted NodeIDs as a snapshot updated with each trust change"
+        },
+        {
+          "hash": "7820c724",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-14T22:32:31+00:00",
+          "message": "test: Check laggards skips a validation from an untrusted NodeID"
+        },
+        {
+          "hash": "ba5c28e3",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-14T21:36:10+00:00",
+          "message": "refactor: Keep getQuorumKeys copying under the read lock like its sibling getters"
+        },
+        {
+          "hash": "58677b05",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-14T21:21:28+00:00",
+          "message": "refactor: Allocate quorum NodeIDs outside the lock and document setNodeID"
+        },
+        {
+          "hash": "6714c1aa",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-12T13:40:40+00:00",
+          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
+        },
+        {
+          "hash": "553dd9d4",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-12T13:19:42+00:00",
+          "message": "fix: Declare AmendmentTable_test lambdas const"
+        },
+        {
+          "hash": "34fc86f5",
+          "author": "dependabot[bot]",
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "date": "2026-10-12T12:59:39+00:00",
+          "message": "ci: [DEPENDABOT] bump the github-actions group across 1 directory with 2 updates (#8562)"
+        },
+        {
+          "hash": "0501b155",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-12T12:59:35+00:00",
+          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
+        },
+        {
+          "hash": "e071f0a2",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-12T11:44:06+00:00",
+          "message": "chore: Fix misc-const-correctness (#8546)"
+        },
+        {
+          "hash": "f589ea0c",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-12T10:39:04+00:00",
+          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
+        },
+        {
+          "hash": "8faa624a",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-12T10:06:06+00:00",
+          "message": "chore: Update XRPLF/actions to use pip from python3.14 explicitly (#8560)"
+        },
+        {
+          "hash": "f11b7da3",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-10T01:34:25+00:00",
+          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
+        },
+        {
+          "hash": "6d6ab2d0",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@gmail.com",
+          "date": "2026-10-09T23:20:39+00:00",
+          "message": "Merge remote-tracking branch 'upstream/release/3.4.x' into develop"
+        },
+        {
+          "hash": "00e64075",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@gmail.com",
+          "date": "2026-10-09T22:50:58+00:00",
+          "message": "chore: Bump version to 3.4.1 and make pkg_release 2"
+        },
+        {
+          "hash": "00c06edf",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@gmail.com",
+          "date": "2026-10-09T21:45:18+00:00",
+          "message": "Merge remote-tracking branch 'upstream/release/3.4.x' into develop"
+        },
+        {
+          "hash": "de5053ae",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-09T16:33:41+00:00",
+          "message": "build: Reduce number of conan logs (#8548)"
+        },
+        {
+          "hash": "1940ec5c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-09T16:20:45+00:00",
+          "message": "chore: Fix readability-redundant-lambda-parameter-list (#8544)"
+        },
+        {
+          "hash": "19c94c73",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-09-24T16:08:00+00:00",
+          "message": "fix: Reject Batch inner txs with the wrong wrapper (fixBatchV1_2)"
+        },
+        {
+          "hash": "cd005ff6",
+          "author": "Bart",
+          "email": "bthomee@users.noreply.github.com",
+          "date": "2026-09-24T04:31:39+00:00",
+          "message": "ci: Update Nexus packaging URL"
+        },
+        {
+          "hash": "578224f2",
+          "author": "Gregory Tsipenyuk",
+          "email": "gregtatcam@users.noreply.github.com",
+          "date": "2026-09-24T03:16:30+00:00",
+          "message": "fix: Assorted integer-arithmetic hardening in the payment engine and ledger helpers"
+        },
+        {
+          "hash": "caf8055d",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-09T14:09:28+00:00",
+          "message": "docs: Drop the signing key from the documented Validation requirements"
+        },
+        {
+          "hash": "b9dfb963",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-09T13:38:10+00:00",
+          "message": "fix: Remove an unused PublicKey include from the consensus adaptor header"
+        },
+        {
+          "hash": "3857ce21",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-10-09T13:33:13+00:00",
+          "message": "fix: Change mpt subscription msg type back to `transaction` (#8539)"
+        },
+        {
+          "hash": "aa490df4",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-09T10:19:07+00:00",
+          "message": "chore: Update clang-tidy image to v23 (#8536)"
+        },
+        {
+          "hash": "88c1f1e7",
+          "author": "Jingchen",
+          "email": "a1q123456@users.noreply.github.com",
+          "date": "2026-10-09T10:18:31+00:00",
+          "message": "feat: Integrate Permissioned Domain & Credential Checks for Lending Protocol (#6517)"
+        },
+        {
+          "hash": "203517ac",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-09T02:13:52+00:00",
+          "message": "docs: Say where a validation's NodeID comes from"
+        },
+        {
+          "hash": "26eabfee",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-09T02:07:23+00:00",
+          "message": "fix: Set a validation's NodeID where its trust is decided"
+        },
+        {
+          "hash": "67ee1ae8",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-08T21:58:45+00:00",
+          "message": "refactor: Name trusted NodeIDs as NodeIDs in shouldPause and TrustedVotes"
+        },
+        {
+          "hash": "75ebb960",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-08T21:53:02+00:00",
+          "message": "fix: Key amendment votes and laggards by NodeID so signing key rotations keep counting"
+        },
+        {
+          "hash": "3ff6a62f",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-08T20:44:21+00:00",
+          "message": "fix: Refresh trusted signing keys when a validator rotates its key"
+        },
+        {
+          "hash": "ede8af81",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-08T12:34:06+00:00",
+          "message": "refactor: Group binaries in subdirectories (#8535)"
+        },
+        {
+          "hash": "3c24b605",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-10-08T09:57:38+00:00",
+          "message": "chore: Split multiple-in-one into individual tests (#8025)"
+        },
+        {
+          "hash": "d343b542",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-10-07T13:46:37+00:00",
+          "message": "refactor: Migrate handlers to rpc-spec (B) (#8484)"
+        },
+        {
+          "hash": "7acd719b",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-07T13:08:20+00:00",
+          "message": "build: Use images with Clang 23 except for clang-tidy (#8530)"
+        },
+        {
+          "hash": "b4564d53",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-07T10:59:37+00:00",
+          "message": "chore: Update pre-commit hooks and image (#8528)"
+        },
+        {
+          "hash": "60195e6d",
+          "author": "Shawn Xie",
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "date": "2026-10-06T23:16:13+00:00",
+          "message": "fix: Fix MPT partial payment overflow (#8302)"
+        },
+        {
+          "hash": "3d526d45",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-06T21:19:57+00:00",
+          "message": "build: Use LLVM 23 (#8522)"
+        },
+        {
+          "hash": "f05c9f79",
+          "author": "Denis Angell",
+          "email": "dangell@transia.co",
+          "date": "2026-10-06T19:58:52+00:00",
+          "message": "refactor: Extract escrow lock helpers and paychan test helpers (#7882)"
+        },
+        {
+          "hash": "c2a4bc3a",
+          "author": "Harshit Gupta",
+          "email": "harshit.ashish.nigoti@gmail.com",
+          "date": "2026-10-06T19:44:56+00:00",
+          "message": "fix: Validate vetoed parameter type in feature RPC (#7583)"
+        },
+        {
+          "hash": "718185e3",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-10-06T19:26:35+00:00",
+          "message": "refactor: Use CheckEntry everywhere (#8349)"
+        },
+        {
+          "hash": "1d7783bb",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-06T19:23:38+00:00",
+          "message": "build: Make conan retry with Conan Center's source backups (#8524)"
+        },
+        {
+          "hash": "9fd2c552",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-10-06T17:59:44+00:00",
+          "message": "refactor: Use AmendmentsEntry everywhere (#8368)"
+        },
+        {
+          "hash": "70b8fd30",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-06T16:47:35+00:00",
+          "message": "chore: Update docker images; link Conan-built tools with a static runtime (#8520)"
+        },
+        {
+          "hash": "e6564f55",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-10-06T14:23:24+00:00",
+          "message": "refactor: Use NegativeUNLEntry everywhere (#8365)"
+        },
+        {
+          "hash": "ed96e60c",
+          "author": "Ayaz Salikhov",
+          "email": "mathbunnyru@users.noreply.github.com",
+          "date": "2026-10-06T13:59:12+00:00",
+          "message": "build: Make clang-tools custom in Nix, to match what's being built (#8521)"
+        },
+        {
+          "hash": "2ebd745a",
+          "author": "Alex Kremer",
+          "email": "akremer@ripple.com",
+          "date": "2026-10-06T13:19:20+00:00",
+          "message": "refactor: Migrate handlers to rpc-spec (A) (#8345)"
+        },
+        {
+          "hash": "cfcbe45b",
+          "author": "Mayukha Vadari",
+          "email": "mvadari@ripple.com",
+          "date": "2026-10-06T12:12:22+00:00",
+          "message": "test: Declare, not define, entry instantiations in SLEBase test (#8357)"
+        },
+        {
+          "hash": "9cbf78ba",
+          "author": "yinyiqian1",
+          "email": "yqian@ripple.com",
+          "date": "2026-10-05T23:18:58+00:00",
+          "message": "test: Add more tests for granular permissions (#8459)"
+        }
+      ],
+      "contributor_count": 22,
+      "contributors": [
+        {
+          "email": "dangell@transia.co",
+          "name": "Denis Angell"
+        },
+        {
+          "email": "49699333+dependabot[bot]@users.noreply.github.com",
+          "name": "dependabot[bot]"
+        },
+        {
+          "email": "mathbunnyru@users.noreply.github.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "mathbunnyru@gmail.com",
+          "name": "Ayaz Salikhov"
+        },
+        {
+          "email": "bthomee@users.noreply.github.com",
+          "name": "Bart"
+        },
+        {
+          "email": "gregtatcam@users.noreply.github.com",
+          "name": "Gregory Tsipenyuk"
+        },
+        {
+          "email": "35279399+shawnxie999@users.noreply.github.com",
+          "name": "Shawn Xie"
+        },
+        {
+          "email": "a1q123456@users.noreply.github.com",
+          "name": "Jingchen"
+        },
+        {
+          "email": "akremer@ripple.com",
+          "name": "Alex Kremer"
+        },
+        {
+          "email": "harshit.ashish.nigoti@gmail.com",
+          "name": "Harshit Gupta"
+        },
+        {
+          "email": "mvadari@ripple.com",
+          "name": "Mayukha Vadari"
+        },
+        {
+          "email": "yqian@ripple.com",
+          "name": "yinyiqian1"
+        },
+        {
+          "email": "36795566+tyalymov@users.noreply.github.com",
+          "name": "Timur Yalymov"
+        },
+        {
+          "email": "34582813+PeterChen13579@users.noreply.github.com",
+          "name": "Peter Chen"
+        },
+        {
+          "email": "21219765+ckeshava@users.noreply.github.com",
+          "name": "Chenna Keshava B S"
+        }
+      ],
+      "ai_category": {
+        "amendment": "Other",
+        "type": "Refactor",
+        "confidence": 0.7,
         "source": "keyword_match"
       }
     },
@@ -6988,437 +7528,6 @@
         "amendment": "Other",
         "type": "Bug Fix",
         "confidence": 0.6,
-        "source": "keyword_match"
-      }
-    },
-    {
-      "name": "dangell7/trusted-signing-key-rotation",
-      "last_commit": {
-        "hash": "ae3a308c",
-        "author": "Denis Angell",
-        "email": "dangell@transia.co",
-        "date": "2026-10-15T13:55:52+00:00",
-        "message": "style: Drop a lambda's empty parameter list and add a trailing comma for clang-tidy 23"
-      },
-      "commits": [
-        {
-          "hash": "ae3a308c",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-15T13:55:52+00:00",
-          "message": "style: Drop a lambda's empty parameter list and add a trailing comma for clang-tidy 23"
-        },
-        {
-          "hash": "45a0e791",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-14T22:50:19+00:00",
-          "message": "refactor: Keep trusted NodeIDs as a snapshot updated with each trust change"
-        },
-        {
-          "hash": "7820c724",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-14T22:32:31+00:00",
-          "message": "test: Check laggards skips a validation from an untrusted NodeID"
-        },
-        {
-          "hash": "ba5c28e3",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-14T21:36:10+00:00",
-          "message": "refactor: Keep getQuorumKeys copying under the read lock like its sibling getters"
-        },
-        {
-          "hash": "58677b05",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-14T21:21:28+00:00",
-          "message": "refactor: Allocate quorum NodeIDs outside the lock and document setNodeID"
-        },
-        {
-          "hash": "6714c1aa",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-12T13:40:40+00:00",
-          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
-        },
-        {
-          "hash": "553dd9d4",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-12T13:19:42+00:00",
-          "message": "fix: Declare AmendmentTable_test lambdas const"
-        },
-        {
-          "hash": "34fc86f5",
-          "author": "dependabot[bot]",
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "date": "2026-10-12T12:59:39+00:00",
-          "message": "ci: [DEPENDABOT] bump the github-actions group across 1 directory with 2 updates (#8562)"
-        },
-        {
-          "hash": "0501b155",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-12T12:59:35+00:00",
-          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
-        },
-        {
-          "hash": "e071f0a2",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-12T11:44:06+00:00",
-          "message": "chore: Fix misc-const-correctness (#8546)"
-        },
-        {
-          "hash": "f589ea0c",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-12T10:39:04+00:00",
-          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
-        },
-        {
-          "hash": "8faa624a",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-12T10:06:06+00:00",
-          "message": "chore: Update XRPLF/actions to use pip from python3.14 explicitly (#8560)"
-        },
-        {
-          "hash": "f11b7da3",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-10T01:34:25+00:00",
-          "message": "Local merge develop into dangell7/trusted-signing-key-rotation"
-        },
-        {
-          "hash": "6d6ab2d0",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@gmail.com",
-          "date": "2026-10-09T23:20:39+00:00",
-          "message": "Merge remote-tracking branch 'upstream/release/3.4.x' into develop"
-        },
-        {
-          "hash": "00e64075",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@gmail.com",
-          "date": "2026-10-09T22:50:58+00:00",
-          "message": "chore: Bump version to 3.4.1 and make pkg_release 2"
-        },
-        {
-          "hash": "00c06edf",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@gmail.com",
-          "date": "2026-10-09T21:45:18+00:00",
-          "message": "Merge remote-tracking branch 'upstream/release/3.4.x' into develop"
-        },
-        {
-          "hash": "de5053ae",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-09T16:33:41+00:00",
-          "message": "build: Reduce number of conan logs (#8548)"
-        },
-        {
-          "hash": "1940ec5c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-09T16:20:45+00:00",
-          "message": "chore: Fix readability-redundant-lambda-parameter-list (#8544)"
-        },
-        {
-          "hash": "19c94c73",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-09-24T16:08:00+00:00",
-          "message": "fix: Reject Batch inner txs with the wrong wrapper (fixBatchV1_2)"
-        },
-        {
-          "hash": "cd005ff6",
-          "author": "Bart",
-          "email": "bthomee@users.noreply.github.com",
-          "date": "2026-09-24T04:31:39+00:00",
-          "message": "ci: Update Nexus packaging URL"
-        },
-        {
-          "hash": "578224f2",
-          "author": "Gregory Tsipenyuk",
-          "email": "gregtatcam@users.noreply.github.com",
-          "date": "2026-09-24T03:16:30+00:00",
-          "message": "fix: Assorted integer-arithmetic hardening in the payment engine and ledger helpers"
-        },
-        {
-          "hash": "caf8055d",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-09T14:09:28+00:00",
-          "message": "docs: Drop the signing key from the documented Validation requirements"
-        },
-        {
-          "hash": "b9dfb963",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-09T13:38:10+00:00",
-          "message": "fix: Remove an unused PublicKey include from the consensus adaptor header"
-        },
-        {
-          "hash": "3857ce21",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-10-09T13:33:13+00:00",
-          "message": "fix: Change mpt subscription msg type back to `transaction` (#8539)"
-        },
-        {
-          "hash": "aa490df4",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-09T10:19:07+00:00",
-          "message": "chore: Update clang-tidy image to v23 (#8536)"
-        },
-        {
-          "hash": "88c1f1e7",
-          "author": "Jingchen",
-          "email": "a1q123456@users.noreply.github.com",
-          "date": "2026-10-09T10:18:31+00:00",
-          "message": "feat: Integrate Permissioned Domain & Credential Checks for Lending Protocol (#6517)"
-        },
-        {
-          "hash": "203517ac",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-09T02:13:52+00:00",
-          "message": "docs: Say where a validation's NodeID comes from"
-        },
-        {
-          "hash": "26eabfee",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-09T02:07:23+00:00",
-          "message": "fix: Set a validation's NodeID where its trust is decided"
-        },
-        {
-          "hash": "67ee1ae8",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-08T21:58:45+00:00",
-          "message": "refactor: Name trusted NodeIDs as NodeIDs in shouldPause and TrustedVotes"
-        },
-        {
-          "hash": "75ebb960",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-08T21:53:02+00:00",
-          "message": "fix: Key amendment votes and laggards by NodeID so signing key rotations keep counting"
-        },
-        {
-          "hash": "3ff6a62f",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-08T20:44:21+00:00",
-          "message": "fix: Refresh trusted signing keys when a validator rotates its key"
-        },
-        {
-          "hash": "ede8af81",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-08T12:34:06+00:00",
-          "message": "refactor: Group binaries in subdirectories (#8535)"
-        },
-        {
-          "hash": "3c24b605",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-10-08T09:57:38+00:00",
-          "message": "chore: Split multiple-in-one into individual tests (#8025)"
-        },
-        {
-          "hash": "d343b542",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-10-07T13:46:37+00:00",
-          "message": "refactor: Migrate handlers to rpc-spec (B) (#8484)"
-        },
-        {
-          "hash": "7acd719b",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-07T13:08:20+00:00",
-          "message": "build: Use images with Clang 23 except for clang-tidy (#8530)"
-        },
-        {
-          "hash": "b4564d53",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-07T10:59:37+00:00",
-          "message": "chore: Update pre-commit hooks and image (#8528)"
-        },
-        {
-          "hash": "60195e6d",
-          "author": "Shawn Xie",
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "date": "2026-10-06T23:16:13+00:00",
-          "message": "fix: Fix MPT partial payment overflow (#8302)"
-        },
-        {
-          "hash": "3d526d45",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-06T21:19:57+00:00",
-          "message": "build: Use LLVM 23 (#8522)"
-        },
-        {
-          "hash": "f05c9f79",
-          "author": "Denis Angell",
-          "email": "dangell@transia.co",
-          "date": "2026-10-06T19:58:52+00:00",
-          "message": "refactor: Extract escrow lock helpers and paychan test helpers (#7882)"
-        },
-        {
-          "hash": "c2a4bc3a",
-          "author": "Harshit Gupta",
-          "email": "harshit.ashish.nigoti@gmail.com",
-          "date": "2026-10-06T19:44:56+00:00",
-          "message": "fix: Validate vetoed parameter type in feature RPC (#7583)"
-        },
-        {
-          "hash": "718185e3",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-10-06T19:26:35+00:00",
-          "message": "refactor: Use CheckEntry everywhere (#8349)"
-        },
-        {
-          "hash": "1d7783bb",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-06T19:23:38+00:00",
-          "message": "build: Make conan retry with Conan Center's source backups (#8524)"
-        },
-        {
-          "hash": "9fd2c552",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-10-06T17:59:44+00:00",
-          "message": "refactor: Use AmendmentsEntry everywhere (#8368)"
-        },
-        {
-          "hash": "70b8fd30",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-06T16:47:35+00:00",
-          "message": "chore: Update docker images; link Conan-built tools with a static runtime (#8520)"
-        },
-        {
-          "hash": "e6564f55",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-10-06T14:23:24+00:00",
-          "message": "refactor: Use NegativeUNLEntry everywhere (#8365)"
-        },
-        {
-          "hash": "ed96e60c",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-06T13:59:12+00:00",
-          "message": "build: Make clang-tools custom in Nix, to match what's being built (#8521)"
-        },
-        {
-          "hash": "2ebd745a",
-          "author": "Alex Kremer",
-          "email": "akremer@ripple.com",
-          "date": "2026-10-06T13:19:20+00:00",
-          "message": "refactor: Migrate handlers to rpc-spec (A) (#8345)"
-        },
-        {
-          "hash": "cfcbe45b",
-          "author": "Mayukha Vadari",
-          "email": "mvadari@ripple.com",
-          "date": "2026-10-06T12:12:22+00:00",
-          "message": "test: Declare, not define, entry instantiations in SLEBase test (#8357)"
-        },
-        {
-          "hash": "9cbf78ba",
-          "author": "yinyiqian1",
-          "email": "yqian@ripple.com",
-          "date": "2026-10-05T23:18:58+00:00",
-          "message": "test: Add more tests for granular permissions (#8459)"
-        },
-        {
-          "hash": "b8d8738f",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-10-05T23:17:36+00:00",
-          "message": "fix: Enforce that MPT issuance flags are never cleared (#8152)"
-        }
-      ],
-      "contributor_count": 22,
-      "contributors": [
-        {
-          "email": "dangell@transia.co",
-          "name": "Denis Angell"
-        },
-        {
-          "email": "49699333+dependabot[bot]@users.noreply.github.com",
-          "name": "dependabot[bot]"
-        },
-        {
-          "email": "mathbunnyru@users.noreply.github.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "mathbunnyru@gmail.com",
-          "name": "Ayaz Salikhov"
-        },
-        {
-          "email": "bthomee@users.noreply.github.com",
-          "name": "Bart"
-        },
-        {
-          "email": "gregtatcam@users.noreply.github.com",
-          "name": "Gregory Tsipenyuk"
-        },
-        {
-          "email": "35279399+shawnxie999@users.noreply.github.com",
-          "name": "Shawn Xie"
-        },
-        {
-          "email": "a1q123456@users.noreply.github.com",
-          "name": "Jingchen"
-        },
-        {
-          "email": "akremer@ripple.com",
-          "name": "Alex Kremer"
-        },
-        {
-          "email": "harshit.ashish.nigoti@gmail.com",
-          "name": "Harshit Gupta"
-        },
-        {
-          "email": "mvadari@ripple.com",
-          "name": "Mayukha Vadari"
-        },
-        {
-          "email": "yqian@ripple.com",
-          "name": "yinyiqian1"
-        },
-        {
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "name": "Timur Yalymov"
-        },
-        {
-          "email": "34582813+PeterChen13579@users.noreply.github.com",
-          "name": "Peter Chen"
-        },
-        {
-          "email": "21219765+ckeshava@users.noreply.github.com",
-          "name": "Chenna Keshava B S"
-        }
-      ],
-      "ai_category": {
-        "amendment": "Other",
-        "type": "Refactor",
-        "confidence": 0.7,
         "source": "keyword_match"
       }
     },
@@ -19606,6 +19715,27 @@
           "message": "Introduce opt-in bitwise operators for scoped enumerations"
         },
         {
+          "hash": "af9153ac",
+          "author": "Nik Bougalis",
+          "email": "nikb@bougalis.net",
+          "date": "2026-10-06T01:20:04+00:00",
+          "message": "Make ApplyFlags a scoped enumeration"
+        },
+        {
+          "hash": "7aa679de",
+          "author": "Nik Bougalis",
+          "email": "nikb@bougalis.net",
+          "date": "2026-10-01T03:52:20+00:00",
+          "message": "Make the path element type a scoped enumeration"
+        },
+        {
+          "hash": "4695f001",
+          "author": "Nik Bougalis",
+          "email": "nikb@bougalis.net",
+          "date": "2026-09-30T16:04:53+00:00",
+          "message": "Introduce opt-in bitwise operators for scoped enumerations"
+        },
+        {
           "hash": "b7d6b2c6",
           "author": "dependabot[bot]",
           "email": "49699333+dependabot[bot]@users.noreply.github.com",
@@ -19828,27 +19958,6 @@
           "email": "36795566+tyalymov@users.noreply.github.com",
           "date": "2026-10-14T16:35:42+00:00",
           "message": "fix: Charge transfer fee on third-party vault withdrawals (#8267)"
-        },
-        {
-          "hash": "84d980d8",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-10-14T14:29:05+00:00",
-          "message": "fix: Reject VaultClawback with a nonexistent holder (#8470)"
-        },
-        {
-          "hash": "791c96fa",
-          "author": "Timur Yalymov",
-          "email": "36795566+tyalymov@users.noreply.github.com",
-          "date": "2026-10-14T13:51:24+00:00",
-          "message": "fix: Enforce pseudo-account directory contents with an invariant (#8181)"
-        },
-        {
-          "hash": "31473e7e",
-          "author": "Ayaz Salikhov",
-          "email": "mathbunnyru@users.noreply.github.com",
-          "date": "2026-10-14T13:51:05+00:00",
-          "message": "build: Unify clang variables (#8581)"
         }
       ],
       "contributor_count": 20,
@@ -128971,8 +129080,8 @@
   "contributors": [
     {
       "email": "bthomee@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 300,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 303,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/default-cover-optimisation",
@@ -129071,6 +129180,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
@@ -129277,8 +129387,8 @@
     },
     {
       "email": "mathbunnyru@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 299,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 302,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/default-cover-optimisation",
@@ -129377,6 +129487,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
@@ -129582,8 +129693,8 @@
     },
     {
       "email": "akremer@ripple.com",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 251,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 254,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/early-exit-fee",
@@ -129664,6 +129775,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
@@ -129839,8 +129951,8 @@
     },
     {
       "email": "gregtatcam@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 251,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 254,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/early-exit-fee",
@@ -129919,6 +130031,7 @@
         "dangell7/datagram-3.4.1",
         "dangell7/datagram-counters",
         "dangell7/datagram-counters-a5c76fde",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
@@ -130096,8 +130209,8 @@
     },
     {
       "email": "34582813+PeterChen13579@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 217,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 220,
       "branches": [
         "a1q123456/early-exit-fee",
         "a1q123456/fix-autogen",
@@ -130162,6 +130275,7 @@
         "dangell7/batch-v2-inner-record",
         "dangell7/clob-cache",
         "dangell7/datagram-counters",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
@@ -130319,8 +130433,8 @@
     },
     {
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 200,
+      "name": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+      "commits": 203,
       "branches": [
         "a1q123456/default-cover-optimisation",
         "a1q123456/early-exit-fee",
@@ -130370,6 +130484,7 @@
         "dangell7/datagram",
         "dangell7/datagram-counters",
         "dangell7/datagram-counters-a5c76fde",
+        "dangell7/escrow-gateway-locked",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
         "dangell7/flatmap",
@@ -130525,8 +130640,8 @@
     },
     {
       "email": "21219765+ckeshava@users.noreply.github.com",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 197,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 200,
       "branches": [
         "a1q123456/early-exit-fee",
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -130592,6 +130707,7 @@
         "dangell7/datagram",
         "dangell7/datagram-3.4.1",
         "dangell7/datagram-counters",
+        "dangell7/escrow-gateway-locked",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
         "dangell7/jtaccept-load-targets",
@@ -130728,8 +130844,8 @@
     },
     {
       "email": "115580134+oleks-rip@users.noreply.github.com",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 192,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 195,
       "branches": [
         "a1q123456/early-exit-fee",
         "a1q123456/split-loan-set-and-loan-accept-implementation",
@@ -130801,6 +130917,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
         "dangell7/jtaccept-load-targets",
@@ -130809,6 +130926,7 @@
         "dangell7/online-delete-gc",
         "dangell7/sponsor-reap",
         "dangell7/token-paychan-clawback",
+        "dangell7/trusted-signing-key-rotation",
         "dangell7/validator-keys",
         "dependabot/github_actions/develop/github-actions-c0e2a5e460",
         "fix/ripd-7750-transaction-entry-error-codes",
@@ -130926,8 +131044,8 @@
     },
     {
       "email": "mvadari@ripple.com",
-      "name": "bthomee/graceful",
-      "commits": 187,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 190,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/default-cover-optimisation",
@@ -131017,6 +131135,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/memory-fix",
         "dangell7/memory-pressure",
@@ -131119,8 +131238,8 @@
     },
     {
       "email": "3397372+pratikmankawde@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 186,
+      "name": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+      "commits": 187,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/default-cover-optimisation",
@@ -131166,6 +131285,7 @@
         "dangell7/shamap-shed-subtrees",
         "dangell7/supported-cicd",
         "dangell7/trace",
+        "dangell7/trusted-signing-key-rotation",
         "dangell7/validator-keys",
         "g-ripple/default-jemalloc",
         "gh-readonly-queue/develop/pr-7331-7da643d8648959f83d5d6a7d5d3a869171dbf1ca",
@@ -131313,8 +131433,8 @@
     },
     {
       "email": "96991820+Kassaking7@users.noreply.github.com",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 174,
+      "name": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+      "commits": 175,
       "branches": [
         "a1q123456/default-cover-optimisation",
         "a1q123456/fix-autogen",
@@ -131355,6 +131475,7 @@
         "dangell7/shamap-shed-subtrees",
         "dangell7/supported-cicd",
         "dangell7/trace",
+        "dangell7/trusted-signing-key-rotation",
         "dangell7/validator-keys",
         "fix/ripd-7750-transaction-entry-error-codes",
         "gregtatcam/mpt/assorted-fixes-dev",
@@ -131495,8 +131616,8 @@
     },
     {
       "email": "35279399+shawnxie999@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 166,
+      "name": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+      "commits": 169,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
         "bthomee/config-legacy-removal",
@@ -131516,6 +131637,7 @@
         "dangell7/clob-cache",
         "dangell7/consensus-priority-lane",
         "dangell7/datagram-counters",
+        "dangell7/escrow-gateway-locked",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
         "dangell7/flatmap",
@@ -131642,6 +131764,7 @@
         "nb-serialization",
         "nb-slab",
         "nb-spinlock",
+        "origin",
         "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
         "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
         "pratik/openssl-3.5.6-performance-test",
@@ -131669,8 +131792,8 @@
     },
     {
       "email": "a1q123456@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 161,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 164,
       "branches": [
         "a1q123456/default-cover-optimisation",
         "a1q123456/early-exit-fee",
@@ -131756,6 +131879,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/flatmap",
         "dangell7/parallel-apply-access-set",
@@ -131836,8 +131960,8 @@
     },
     {
       "email": "5780819+Tapanito@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 149,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 151,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/default-cover-optimisation",
@@ -131923,6 +132047,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/flatmap",
         "dangell7/parallel-apply-access-set",
@@ -131991,8 +132116,8 @@
     },
     {
       "email": "yqian@ripple.com",
-      "name": "bthomee/graceful",
-      "commits": 146,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 149,
       "branches": [
         "a1q123456/default-cover-optimisation",
         "a1q123456/early-exit-fee",
@@ -132074,6 +132199,7 @@
         "dangell7/datagram",
         "dangell7/datagram-3.4.1",
         "dangell7/datagram-counters-a5c76fde",
+        "dangell7/escrow-gateway-locked",
         "dangell7/memory-fix",
         "dangell7/memory-pressure",
         "dangell7/perf-maxtx-cadence",
@@ -132142,137 +132268,9 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
-      "email": "mvadari@gmail.com",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 120,
-      "branches": [
-        "copilot/add-augmented-submit-fields",
-        "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
-        "copilot/fix-vetoed-type-error",
-        "hooks",
-        "mvadari/apply-context-view",
-        "mvadari/asf-macro",
-        "mvadari/batch-multisign-prefix",
-        "mvadari/check-bounds",
-        "mvadari/codify-agents-md",
-        "mvadari/config-reload",
-        "mvadari/constant-field-invariant",
-        "mvadari/ctidy-07-26",
-        "mvadari/error-message-ter",
-        "mvadari/fix-bad-cast",
-        "mvadari/invariant-perf",
-        "mvadari/logs-get-single-sink",
-        "mvadari/number-static-scale-comment",
-        "mvadari/perf-baseuint-memcmp",
-        "mvadari/perf-relay-skip-reparse",
-        "mvadari/perf-shamap-small-wins",
-        "mvadari/perf-skip-proposed-tx-json",
-        "mvadari/perf-st-noexcept-move",
-        "mvadari/perf-sttx-copy-refs",
-        "mvadari/prettier-prose-wrap",
-        "mvadari/rearch/account",
-        "mvadari/rearch/accountroot-accountReserve",
-        "mvadari/rearch/accountroot-checkDestinationAndTag",
-        "mvadari/rearch/accountroot-checkReserve",
-        "mvadari/rearch/accountroot-createPseudoAccount",
-        "mvadari/rearch/accountroot-decreaseOwnerCount",
-        "mvadari/rearch/accountroot-increaseOwnerCount",
-        "mvadari/rearch/accountroot-isGlobalFrozen",
-        "mvadari/rearch/accountroot-isPseudoAccount",
-        "mvadari/rearch/accountroot-ownerCount",
-        "mvadari/rearch/accountroot-transferRate",
-        "mvadari/rearch/accountroot-xrpLiquid",
-        "mvadari/rearch/all",
-        "mvadari/rearch/amm-ammHolds",
-        "mvadari/rearch/amm-ammLPHolds",
-        "mvadari/rearch/amm-entry",
-        "mvadari/rearch/amm-getTradingFee",
-        "mvadari/rearch/amm-initializeFeeAuctionVote",
-        "mvadari/rearch/amm-verifyAndAdjustLPTokenBalance",
-        "mvadari/rearch/credential-checkExpired",
-        "mvadari/rearch/credential-deleteSLE",
-        "mvadari/rearch/credential-entry",
-        "mvadari/rearch/credential-valid",
-        "mvadari/rearch/delegate-entry",
-        "mvadari/rearch/did-entry",
-        "mvadari/rearch/loan-constructLoanState",
-        "mvadari/rearch/loan-entry",
-        "mvadari/rearch/loan-isPaymentLate",
-        "mvadari/rearch/loan-loanVaultExposure",
-        "mvadari/rearch/loanbroker-adjustLoanBrokerOwnerCount",
-        "mvadari/rearch/loanbroker-canApplyToBrokerCover",
-        "mvadari/rearch/loanbroker-entry",
-        "mvadari/rearch/mptoken-createMPToken",
-        "mvadari/rearch/mptoken-deleteAMMMPToken",
-        "mvadari/rearch/mptoken-entry",
-        "mvadari/rearch/mptoken-isFrozen",
-        "mvadari/rearch/mptoken-isIndividualFrozen",
-        "mvadari/rearch/mptoken-lockEscrowMPT",
-        "mvadari/rearch/mptoken-removeEmptyHolding",
-        "mvadari/rearch/mptoken-requireAuth",
-        "mvadari/rearch/mptoken-unlockEscrowMPT",
-        "mvadari/rearch/mptokenissuance-availableMPTAmount",
-        "mvadari/rearch/mptokenissuance-canAddHolding",
-        "mvadari/rearch/mptokenissuance-canTrade",
-        "mvadari/rearch/mptokenissuance-canTransfer",
-        "mvadari/rearch/mptokenissuance-entry",
-        "mvadari/rearch/mptokenissuance-isGlobalFrozen",
-        "mvadari/rearch/mptokenissuance-isSoleShareholder",
-        "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
-        "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
-        "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
-        "mvadari/rearch/mptokenissuance-maxMPTAmount",
-        "mvadari/rearch/mptokenissuance-transferRate",
-        "mvadari/rearch/nftokenoffer-deleteTokenOffer",
-        "mvadari/rearch/nftokenoffer-entry",
-        "mvadari/rearch/nftokenpage-changeTokenURI",
-        "mvadari/rearch/nftokenpage-entry",
-        "mvadari/rearch/nftokenpage-findToken",
-        "mvadari/rearch/nftokenpage-findTokenAndPage",
-        "mvadari/rearch/nftokenpage-insertToken",
-        "mvadari/rearch/nftokenpage-removeToken",
-        "mvadari/rearch/offer-entry",
-        "mvadari/rearch/oracle-entry",
-        "mvadari/rearch/paychannel-entry",
-        "mvadari/rearch/permissioneddomain-entry",
-        "mvadari/rearch/ripplestate-creditLimit",
-        "mvadari/rearch/ripplestate-entry",
-        "mvadari/rearch/ripplestate-isDeepFrozen",
-        "mvadari/rearch/ripplestate-isFrozen",
-        "mvadari/rearch/ripplestate-isIndividualFrozen",
-        "mvadari/rearch/ripplestate-nftCheckTrustline",
-        "mvadari/rearch/ripplestate-removeEmptyHolding",
-        "mvadari/rearch/ripplestate-requireAuth",
-        "mvadari/rearch/ripplestate-trustCreate",
-        "mvadari/rearch/ripplestate-trustDelete",
-        "mvadari/rearch/signerlist-entry",
-        "mvadari/rearch/slebase-ergonomics",
-        "mvadari/rearch/sponsorship-entry",
-        "mvadari/rearch/ticket-entry",
-        "mvadari/rearch/token",
-        "mvadari/rearch/token-holder",
-        "mvadari/rearch/token-refactor",
-        "mvadari/rearch/typesafe2",
-        "mvadari/rearch/vault-assetsTotalForWithdrawal",
-        "mvadari/rearch/vault-assetsTotalScale",
-        "mvadari/rearch/vault-clampToAssetsTotalScale",
-        "mvadari/rearch/vault-clawbackAmount",
-        "mvadari/rearch/vault-entry",
-        "mvadari/rearch/vault-getVaultKind",
-        "mvadari/rearch/vault-getVaultPhase",
-        "mvadari/rearch/vault-getVaultVersion",
-        "mvadari/rearch/vault-roundToVaultScale",
-        "mvadari/se-wasmi-tests-update-host-functions",
-        "mvadari/smart-escrow-update-se-fees",
-        "mvadari/sponsor-add",
-        "mvadari/sponsor/ai-tests"
-      ],
-      "last_active": "2024-12-20T16:56:02+00:00"
-    },
-    {
       "email": "asalikhov@ripple.com",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 120,
+      "name": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+      "commits": 121,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "audit_wasm_vm_rust",
@@ -132292,6 +132290,7 @@
         "dangell7/memory-fix",
         "dangell7/memory-pressure",
         "dangell7/online-delete-gc",
+        "dangell7/trusted-signing-key-rotation",
         "dangell7/validator-keys",
         "mathbunnyru/apple_clang_21",
         "mathbunnyru/use_llvm_23",
@@ -132398,9 +132397,137 @@
       "last_active": "2026-02-23T16:41:39+00:00"
     },
     {
+      "email": "mvadari@gmail.com",
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 120,
+      "branches": [
+        "copilot/add-augmented-submit-fields",
+        "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
+        "copilot/fix-vetoed-type-error",
+        "hooks",
+        "mvadari/apply-context-view",
+        "mvadari/asf-macro",
+        "mvadari/batch-multisign-prefix",
+        "mvadari/check-bounds",
+        "mvadari/codify-agents-md",
+        "mvadari/config-reload",
+        "mvadari/constant-field-invariant",
+        "mvadari/ctidy-07-26",
+        "mvadari/error-message-ter",
+        "mvadari/fix-bad-cast",
+        "mvadari/invariant-perf",
+        "mvadari/logs-get-single-sink",
+        "mvadari/number-static-scale-comment",
+        "mvadari/perf-baseuint-memcmp",
+        "mvadari/perf-relay-skip-reparse",
+        "mvadari/perf-shamap-small-wins",
+        "mvadari/perf-skip-proposed-tx-json",
+        "mvadari/perf-st-noexcept-move",
+        "mvadari/perf-sttx-copy-refs",
+        "mvadari/prettier-prose-wrap",
+        "mvadari/rearch/account",
+        "mvadari/rearch/accountroot-accountReserve",
+        "mvadari/rearch/accountroot-checkDestinationAndTag",
+        "mvadari/rearch/accountroot-checkReserve",
+        "mvadari/rearch/accountroot-createPseudoAccount",
+        "mvadari/rearch/accountroot-decreaseOwnerCount",
+        "mvadari/rearch/accountroot-increaseOwnerCount",
+        "mvadari/rearch/accountroot-isGlobalFrozen",
+        "mvadari/rearch/accountroot-isPseudoAccount",
+        "mvadari/rearch/accountroot-ownerCount",
+        "mvadari/rearch/accountroot-transferRate",
+        "mvadari/rearch/accountroot-xrpLiquid",
+        "mvadari/rearch/all",
+        "mvadari/rearch/amm-ammHolds",
+        "mvadari/rearch/amm-ammLPHolds",
+        "mvadari/rearch/amm-entry",
+        "mvadari/rearch/amm-getTradingFee",
+        "mvadari/rearch/amm-initializeFeeAuctionVote",
+        "mvadari/rearch/amm-verifyAndAdjustLPTokenBalance",
+        "mvadari/rearch/credential-checkExpired",
+        "mvadari/rearch/credential-deleteSLE",
+        "mvadari/rearch/credential-entry",
+        "mvadari/rearch/credential-valid",
+        "mvadari/rearch/delegate-entry",
+        "mvadari/rearch/did-entry",
+        "mvadari/rearch/loan-constructLoanState",
+        "mvadari/rearch/loan-entry",
+        "mvadari/rearch/loan-isPaymentLate",
+        "mvadari/rearch/loan-loanVaultExposure",
+        "mvadari/rearch/loanbroker-adjustLoanBrokerOwnerCount",
+        "mvadari/rearch/loanbroker-canApplyToBrokerCover",
+        "mvadari/rearch/loanbroker-entry",
+        "mvadari/rearch/mptoken-createMPToken",
+        "mvadari/rearch/mptoken-deleteAMMMPToken",
+        "mvadari/rearch/mptoken-entry",
+        "mvadari/rearch/mptoken-isFrozen",
+        "mvadari/rearch/mptoken-isIndividualFrozen",
+        "mvadari/rearch/mptoken-lockEscrowMPT",
+        "mvadari/rearch/mptoken-removeEmptyHolding",
+        "mvadari/rearch/mptoken-requireAuth",
+        "mvadari/rearch/mptoken-unlockEscrowMPT",
+        "mvadari/rearch/mptokenissuance-availableMPTAmount",
+        "mvadari/rearch/mptokenissuance-canAddHolding",
+        "mvadari/rearch/mptokenissuance-canTrade",
+        "mvadari/rearch/mptokenissuance-canTransfer",
+        "mvadari/rearch/mptokenissuance-entry",
+        "mvadari/rearch/mptokenissuance-isGlobalFrozen",
+        "mvadari/rearch/mptokenissuance-isSoleShareholder",
+        "mvadari/rearch/mptokenissuance-isVaultPseudoAccountFrozen",
+        "mvadari/rearch/mptokenissuance-issuerFundsToSelfIssue",
+        "mvadari/rearch/mptokenissuance-issuerSelfDebitHookMPT",
+        "mvadari/rearch/mptokenissuance-maxMPTAmount",
+        "mvadari/rearch/mptokenissuance-transferRate",
+        "mvadari/rearch/nftokenoffer-deleteTokenOffer",
+        "mvadari/rearch/nftokenoffer-entry",
+        "mvadari/rearch/nftokenpage-changeTokenURI",
+        "mvadari/rearch/nftokenpage-entry",
+        "mvadari/rearch/nftokenpage-findToken",
+        "mvadari/rearch/nftokenpage-findTokenAndPage",
+        "mvadari/rearch/nftokenpage-insertToken",
+        "mvadari/rearch/nftokenpage-removeToken",
+        "mvadari/rearch/offer-entry",
+        "mvadari/rearch/oracle-entry",
+        "mvadari/rearch/paychannel-entry",
+        "mvadari/rearch/permissioneddomain-entry",
+        "mvadari/rearch/ripplestate-creditLimit",
+        "mvadari/rearch/ripplestate-entry",
+        "mvadari/rearch/ripplestate-isDeepFrozen",
+        "mvadari/rearch/ripplestate-isFrozen",
+        "mvadari/rearch/ripplestate-isIndividualFrozen",
+        "mvadari/rearch/ripplestate-nftCheckTrustline",
+        "mvadari/rearch/ripplestate-removeEmptyHolding",
+        "mvadari/rearch/ripplestate-requireAuth",
+        "mvadari/rearch/ripplestate-trustCreate",
+        "mvadari/rearch/ripplestate-trustDelete",
+        "mvadari/rearch/signerlist-entry",
+        "mvadari/rearch/slebase-ergonomics",
+        "mvadari/rearch/sponsorship-entry",
+        "mvadari/rearch/ticket-entry",
+        "mvadari/rearch/token",
+        "mvadari/rearch/token-holder",
+        "mvadari/rearch/token-refactor",
+        "mvadari/rearch/typesafe2",
+        "mvadari/rearch/vault-assetsTotalForWithdrawal",
+        "mvadari/rearch/vault-assetsTotalScale",
+        "mvadari/rearch/vault-clampToAssetsTotalScale",
+        "mvadari/rearch/vault-clawbackAmount",
+        "mvadari/rearch/vault-entry",
+        "mvadari/rearch/vault-getVaultKind",
+        "mvadari/rearch/vault-getVaultPhase",
+        "mvadari/rearch/vault-getVaultVersion",
+        "mvadari/rearch/vault-roundToVaultScale",
+        "mvadari/se-wasmi-tests-update-host-functions",
+        "mvadari/smart-escrow-update-se-fees",
+        "mvadari/sponsor-add",
+        "mvadari/sponsor/ai-tests"
+      ],
+      "last_active": "2024-12-20T16:56:02+00:00"
+    },
+    {
       "email": "v3lmx@pm.me",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 118,
+      "name": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+      "commits": 119,
       "branches": [
         "bthomee/config-legacy-removal",
         "bthomee/config-report-rejected-section",
@@ -132419,6 +132546,7 @@
         "dangell7/restart-sync-stall",
         "dangell7/shamap-shed-subtrees",
         "dangell7/supported-cicd",
+        "dangell7/trusted-signing-key-rotation",
         "mathbunnyru/update_docker_images",
         "mathbunnyru/use_llvm_23",
         "mvadari/rearch/accountroot-accountReserve",
@@ -132525,8 +132653,8 @@
     },
     {
       "email": "71097494+rachelflynn@users.noreply.github.com",
-      "name": "mvadari/rearch/accountroot-xrpLiquid",
-      "commits": 111,
+      "name": "mvadari/rearch/mptokenissuance-maxMPTAmount",
+      "commits": 112,
       "branches": [
         "bthomee/config-legacy-removal",
         "bthomee/config-report-rejected-section",
@@ -132543,6 +132671,7 @@
         "dangell7/memory-fix",
         "dangell7/memory-pressure",
         "dangell7/online-delete-gc",
+        "dangell7/trusted-signing-key-rotation",
         "dangell7/validator-keys",
         "mvadari/rearch/accountroot-accountReserve",
         "mvadari/rearch/accountroot-checkDestinationAndTag",
@@ -132644,8 +132773,8 @@
     },
     {
       "email": "36795566+tyalymov@users.noreply.github.com",
-      "name": "bthomee/graceful",
-      "commits": 98,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 101,
       "branches": [
         "Wasm-vm-redesign-host-functions",
         "a1q123456/early-exit-fee",
@@ -132707,6 +132836,7 @@
         "dangell7/batch-txq-weight",
         "dangell7/batch-v2-inner-record",
         "dangell7/datagram",
+        "dangell7/escrow-gateway-locked",
         "dangell7/restart-sync-stall",
         "dangell7/shamap-shed-subtrees",
         "dangell7/sponsor-reap",
@@ -132749,8 +132879,8 @@
     },
     {
       "email": "dangell@transia.co",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 86,
+      "name": "copilot/sub-pr-5439",
+      "commits": 89,
       "branches": [
         "a1q123456/fix-autogen",
         "a1q123456/migrate-some-tests",
@@ -132784,6 +132914,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/export-ledger-name-spaces",
         "dangell7/fix-pathfinder-dedup",
         "dangell7/fix-token-escrow-v2",
@@ -132831,6 +132962,7 @@
         "mvadari/rearch/ticket-entry",
         "mvadari/sponsor-add",
         "nb-enum-cleanup",
+        "origin",
         "pratik/Add_checks_db_objects",
         "pratik/Swtich-to-std-coroutines",
         "pratik/depositpreauth-self-and-credential-hardening",
@@ -132842,8 +132974,8 @@
     },
     {
       "email": "13349202+vlntb@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
-      "commits": 82,
+      "name": "mvadari/number-static-scale-comment",
+      "commits": 84,
       "branches": [
         "a1q123456/default-cover-optimisation",
         "a1q123456/early-exit-fee",
@@ -132894,6 +133026,7 @@
         "dangell7/docs-full",
         "dangell7/docs-infra",
         "dangell7/docs-test",
+        "dangell7/escrow-gateway-locked",
         "dangell7/flatmap",
         "dangell7/parallel-apply-access-set",
         "dangell7/perf-maxtx-cadence",
@@ -132920,6 +133053,7 @@
         "mvadari/rearch/token",
         "mvadari/sponsor-add",
         "nb-enum-cleanup",
+        "origin",
         "pratik/AutomatedHarness",
         "pratik/Fix_asan_lsan_flagged_issues",
         "pratik/OpenTelemetry_and_DistributedTracing_planning",
@@ -132932,7 +133066,7 @@
     },
     {
       "email": "11445373+bthomee@users.noreply.github.com",
-      "name": "bthomee/shamap-stack-09-visit-differences-tests",
+      "name": "bthomee/rpc-13-params-by-name",
       "commits": 69,
       "branches": [
         "bthomee/applyview-reset",
@@ -133009,7 +133143,7 @@
     },
     {
       "email": "ed@ripple.com",
-      "name": "mvadari/sponsor/ai-tests",
+      "name": "copilot/sub-pr-5439",
       "commits": 64,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -133080,8 +133214,62 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
+      "email": "tbanks@ripple.com",
+      "name": "bthomee/rpc-13-params-by-name",
+      "commits": 49,
+      "branches": [
+        "Wasm-vm-redesign-host-functions",
+        "alphanet",
+        "audit_wasm_vm_rust",
+        "bthomee/applyview-reset",
+        "bthomee/config-fail-unreadable",
+        "bthomee/golang_protos",
+        "bthomee/gtest-isolate-headers",
+        "bthomee/rpc-01-dead-account-history-notify",
+        "bthomee/rpc-02-value-string-view",
+        "bthomee/rpc-03-protocol-constants",
+        "bthomee/rpc-04-mask-secrets",
+        "bthomee/rpc-05-error-table-realign",
+        "bthomee/rpc-06-error-table-statuses",
+        "bthomee/rpc-07-handler-error-codes",
+        "bthomee/rpc-08-http-status-line",
+        "bthomee/rpc-09-reject-helper",
+        "bthomee/rpc-10-shape-reply",
+        "bthomee/rpc-11-unread-body-reasons",
+        "bthomee/rpc-12-batch-identity",
+        "bthomee/rpc-13-params-by-name",
+        "bthomee/rpc-14-charge-unread-bodies",
+        "bthomee/rpc-15-code-for-token",
+        "bthomee/rpc-16-ledger-entry-helpers-enum",
+        "bthomee/rpc-17-subscription-version",
+        "bthomee/rpc-18-version-reading",
+        "bthomee/rpc-19-envelope-v3",
+        "bthomee/rpc-20-websocket-envelope",
+        "bthomee/rpc-21-batch",
+        "bthomee/rpc-22-notifications",
+        "bthomee/rpc-23-stream-broadcast",
+        "bthomee/rpc-24-docs",
+        "bthomee/vsite-timeout-speedup",
+        "copilot/add-augmented-submit-fields",
+        "dangell7/batch-delivermax",
+        "dangell7/datagram-3.4.1",
+        "dangell7/escrow-gateway-locked",
+        "dependabot/github_actions/develop/github-actions-c0e2a5e460",
+        "g-ripple/default-jemalloc",
+        "mathbunnyru/apple_clang_21",
+        "mvadari/asf-macro",
+        "mvadari/config-reload",
+        "mvadari/rearch/all",
+        "mvadari/se-wasmi-tests-update-host-functions",
+        "mvadari/smart-escrow-update-se-fees",
+        "nb-enum-cleanup",
+        "origin"
+      ],
+      "last_active": "2026-06-27T12:06:56+00:00"
+    },
+    {
       "email": "skuznetsov@ripple.com",
-      "name": "dangell7/datagram",
+      "name": "a1q123456/default-cover-optimisation",
       "commits": 49,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -133137,16 +133325,12 @@
       "last_active": "2026-02-17T18:05:56+00:00"
     },
     {
-      "email": "tbanks@ripple.com",
-      "name": "mathbunnyru/apple_clang_21",
+      "email": "nikb@bougalis.net",
+      "name": "dangell7/token-paychan-clawback",
       "commits": 47,
       "branches": [
-        "Wasm-vm-redesign-host-functions",
-        "alphanet",
-        "audit_wasm_vm_rust",
+        "a1q123456/split-loan-set-and-loan-accept-implementation",
         "bthomee/applyview-reset",
-        "bthomee/config-fail-unreadable",
-        "bthomee/golang_protos",
         "bthomee/gtest-isolate-headers",
         "bthomee/rpc-01-dead-account-history-notify",
         "bthomee/rpc-02-value-string-view",
@@ -133173,25 +133357,28 @@
         "bthomee/rpc-23-stream-broadcast",
         "bthomee/rpc-24-docs",
         "bthomee/vsite-timeout-speedup",
-        "copilot/add-augmented-submit-fields",
         "dangell7/batch-delivermax",
-        "dangell7/datagram-3.4.1",
+        "dangell7/batch-txq-weight",
+        "dangell7/escrow-gateway-locked",
+        "dangell7/token-paychan-clawback",
         "dependabot/github_actions/develop/github-actions-c0e2a5e460",
-        "g-ripple/default-jemalloc",
-        "mathbunnyru/apple_clang_21",
-        "mvadari/asf-macro",
         "mvadari/config-reload",
-        "mvadari/rearch/all",
-        "mvadari/se-wasmi-tests-update-host-functions",
-        "mvadari/smart-escrow-update-se-fees",
+        "mvadari/number-static-scale-comment",
+        "nb-account58",
+        "nb-baseuint",
+        "nb-countedobject",
         "nb-enum-cleanup",
+        "nb-misc-cleanup-1",
+        "nb-serialization",
+        "nb-slab",
+        "nb-spinlock",
         "origin"
       ],
-      "last_active": "2026-06-27T12:06:56+00:00"
+      "last_active": "2026-08-24T02:37:47+00:00"
     },
     {
       "email": "legleux@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
+      "name": "copilot/sub-pr-5439",
       "commits": 47,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -133245,60 +133432,9 @@
       "last_active": "2024-12-20T16:56:02+00:00"
     },
     {
-      "email": "nikb@bougalis.net",
-      "name": "bthomee/rpc-01-dead-account-history-notify",
-      "commits": 45,
-      "branches": [
-        "a1q123456/split-loan-set-and-loan-accept-implementation",
-        "bthomee/applyview-reset",
-        "bthomee/gtest-isolate-headers",
-        "bthomee/rpc-01-dead-account-history-notify",
-        "bthomee/rpc-02-value-string-view",
-        "bthomee/rpc-03-protocol-constants",
-        "bthomee/rpc-04-mask-secrets",
-        "bthomee/rpc-05-error-table-realign",
-        "bthomee/rpc-06-error-table-statuses",
-        "bthomee/rpc-07-handler-error-codes",
-        "bthomee/rpc-08-http-status-line",
-        "bthomee/rpc-09-reject-helper",
-        "bthomee/rpc-10-shape-reply",
-        "bthomee/rpc-11-unread-body-reasons",
-        "bthomee/rpc-12-batch-identity",
-        "bthomee/rpc-13-params-by-name",
-        "bthomee/rpc-14-charge-unread-bodies",
-        "bthomee/rpc-15-code-for-token",
-        "bthomee/rpc-16-ledger-entry-helpers-enum",
-        "bthomee/rpc-17-subscription-version",
-        "bthomee/rpc-18-version-reading",
-        "bthomee/rpc-19-envelope-v3",
-        "bthomee/rpc-20-websocket-envelope",
-        "bthomee/rpc-21-batch",
-        "bthomee/rpc-22-notifications",
-        "bthomee/rpc-23-stream-broadcast",
-        "bthomee/rpc-24-docs",
-        "bthomee/vsite-timeout-speedup",
-        "dangell7/batch-delivermax",
-        "dangell7/batch-txq-weight",
-        "dangell7/token-paychan-clawback",
-        "dependabot/github_actions/develop/github-actions-c0e2a5e460",
-        "mvadari/config-reload",
-        "mvadari/number-static-scale-comment",
-        "nb-account58",
-        "nb-baseuint",
-        "nb-countedobject",
-        "nb-enum-cleanup",
-        "nb-misc-cleanup-1",
-        "nb-serialization",
-        "nb-slab",
-        "nb-spinlock",
-        "origin"
-      ],
-      "last_active": "2026-08-24T02:37:47+00:00"
-    },
-    {
       "email": "198982749+Copilot@users.noreply.github.com",
-      "name": "dangell7/datagram",
-      "commits": 40,
+      "name": "copilot/sub-pr-5439",
+      "commits": 41,
       "branches": [
         "a1q123456/support-lending-in-batch",
         "bthomee/config-fail-unreadable",
@@ -133317,6 +133453,7 @@
         "dangell7/memory-fix",
         "dangell7/memory-pressure",
         "dangell7/sponsor-reap",
+        "dangell7/trusted-signing-key-rotation",
         "dangell7/validator-keys",
         "fix/ripd-7750-transaction-entry-error-codes",
         "g-ripple/default-jemalloc",
@@ -133345,12 +133482,13 @@
     },
     {
       "email": "harshit.ashish.nigoti@gmail.com",
-      "name": "mathbunnyru/update_docker_images",
-      "commits": 29,
+      "name": "nb-spinlock",
+      "commits": 32,
       "branches": [
         "dangell7/batch-db",
         "dangell7/batch-delivermax",
         "dangell7/batch-v2-inner-record",
+        "dangell7/escrow-gateway-locked",
         "dangell7/restart-sync-stall",
         "dangell7/shamap-shed-subtrees",
         "dangell7/supported-cicd",
@@ -133376,18 +133514,20 @@
         "nb-misc-cleanup-1",
         "nb-serialization",
         "nb-slab",
-        "nb-spinlock"
+        "nb-spinlock",
+        "origin"
       ],
       "last_active": "2026-08-24T02:37:47+00:00"
     },
     {
       "email": "mathbunnyru@gmail.com",
-      "name": "mathbunnyru/update_docker_images",
-      "commits": 23,
+      "name": "mvadari/perf-skip-proposed-tx-json",
+      "commits": 26,
       "branches": [
         "alphanet",
         "dangell7/batch-delivermax",
         "dangell7/datagram-3.4.1",
+        "dangell7/escrow-gateway-locked",
         "dangell7/trusted-signing-key-rotation",
         "mathbunnyru/update_docker_images",
         "mvadari/codify-agents-md",
@@ -133407,13 +133547,14 @@
         "mvadari/rearch/slebase-ergonomics",
         "mvadari/rearch/sponsorship-entry",
         "mvadari/rearch/ticket-entry",
-        "nb-enum-cleanup"
+        "nb-enum-cleanup",
+        "origin"
       ],
       "last_active": "2026-10-06T12:49:59+00:00"
     },
     {
       "email": "129996061+vvysokikh1@users.noreply.github.com",
-      "name": "pratik/openssl_111_perf_test",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 20,
       "branches": [
         "a1q123456/fix-autogen",
@@ -133441,7 +133582,7 @@
     },
     {
       "email": "brok@incorrekt.com",
-      "name": "pratik/openssl_111_perf_test",
+      "name": "dangell/relay",
       "commits": 17,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -133466,7 +133607,7 @@
     },
     {
       "email": "andrzej.budzanowski@neti-soft.com",
-      "name": "dangell7/parallel-apply-access-set",
+      "name": "gh-readonly-queue/develop/pr-7331-7da643d8648959f83d5d6a7d5d3a869171dbf1ca",
       "commits": 16,
       "branches": [
         "a1q123456/fix-autogen",
@@ -133490,7 +133631,7 @@
     },
     {
       "email": "lmaisons@ripple.com",
-      "name": "dangell7/docs-ai",
+      "name": "lmaisons/stub-send-proof",
       "commits": 11,
       "branches": [
         "dangell7/docs",
@@ -133509,7 +133650,7 @@
     },
     {
       "email": "git@tequ.dev",
-      "name": "mvadari/rearch/token-holder",
+      "name": "dangell/relay",
       "commits": 11,
       "branches": [
         "a1q123456/migrate-some-tests",
@@ -133528,7 +133669,7 @@
     },
     {
       "email": "gtsipenyuk@ripple.com",
-      "name": "gregtatcam/mpt/assorted-fixes-dev",
+      "name": "gregtatcam/mpt/mptv2gate-large-mantissa",
       "commits": 8,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -133560,7 +133701,7 @@
     },
     {
       "email": "solunolab@outlook.com",
-      "name": "a1q123456/spd-log-from-clio",
+      "name": "a1q123456/default-cover-optimisation",
       "commits": 8,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -133576,7 +133717,7 @@
     },
     {
       "email": "67663680+ricky122-5@users.noreply.github.com",
-      "name": "dangell7/parallel-apply-access-set",
+      "name": "gh-readonly-queue/develop/pr-7331-7da643d8648959f83d5d6a7d5d3a869171dbf1ca",
       "commits": 8,
       "branches": [
         "copilot/remove-non-canonical-fields",
@@ -133592,7 +133733,7 @@
     },
     {
       "email": "rmanukyan@ripple.com",
-      "name": "dangell7/docs-ai",
+      "name": "mvadari/rearch/token",
       "commits": 8,
       "branches": [
         "dangell7/docs",
@@ -133608,7 +133749,7 @@
     },
     {
       "email": "pmankawde@ripple.com",
-      "name": "pratik/openssl_111_perf_test",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 8,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -133639,7 +133780,7 @@
     },
     {
       "email": "hustrust@outlook.com",
-      "name": "pratik/openssl_111_perf_test",
+      "name": "pratik/Migrate-Rippled-Embedded-tests-to-DoCtests",
       "commits": 7,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -133654,7 +133795,7 @@
     },
     {
       "email": "marek.foss@neti-soft.com",
-      "name": "mvadari/sponsor/ai-tests",
+      "name": "mvadari/asf-macro",
       "commits": 5,
       "branches": [
         "mvadari/asf-macro",
@@ -133667,7 +133808,7 @@
     },
     {
       "email": "97218929+shichengripple001@users.noreply.github.com",
-      "name": "a1q123456/spd-log-from-clio",
+      "name": "a1q123456/default-cover-optimisation",
       "commits": 5,
       "branches": [
         "a1q123456/default-cover-optimisation",
@@ -133680,7 +133821,7 @@
     },
     {
       "email": "71317875+pdp2121@users.noreply.github.com",
-      "name": "dangell7/trace",
+      "name": "lmaisons/stub-send-proof",
       "commits": 5,
       "branches": [
         "dangell7/perf-overlay-nodestore-payment-ws",
@@ -133693,7 +133834,7 @@
     },
     {
       "email": "chuanshanjida@outlook.com",
-      "name": "dangell7/perf-overlay-nodestore-payment-ws",
+      "name": "dangell7/trace",
       "commits": 4,
       "branches": [
         "dangell7/perf-overlay-nodestore-payment-ws",
@@ -133705,7 +133846,7 @@
     },
     {
       "email": "nuxtreact@outlook.com",
-      "name": "pratik/Fix_asan_lsan_flagged_issues",
+      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
       "commits": 4,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -133717,7 +133858,7 @@
     },
     {
       "email": "ndudfield@gmail.com",
-      "name": "pratik/Fix_asan_lsan_flagged_issues",
+      "name": "pratik/OpenTelemetry_and_DistributedTracing_planning",
       "commits": 4,
       "branches": [
         "copilot/fix-f350b804-905b-4a06-ab84-d0f12e5b0dd1",
@@ -133729,7 +133870,7 @@
     },
     {
       "email": "pratikmankawde@gmail.com",
-      "name": "pratik/openssl_111_perf_test",
+      "name": "pratik/openssl_354_test",
       "commits": 4,
       "branches": [
         "pratik/Fix_Sanitizer_flagged_issues",
@@ -133741,7 +133882,7 @@
     },
     {
       "email": "pwang200@gmail.com",
-      "name": "Wasm-vm-redesign-host-functions",
+      "name": "peng/number-guard-loop",
       "commits": 3,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -133752,7 +133893,7 @@
     },
     {
       "email": "sunnyraindy@outlook.com",
-      "name": "gregtatcam/bugs/ripd-4340",
+      "name": "pratik/Migrate-Rippled-embedded-tests-to-doctest-format",
       "commits": 3,
       "branches": [
         "gregtatcam/bugs/ripd-4340",
@@ -133763,7 +133904,7 @@
     },
     {
       "email": "mamudi92@gmail.com",
-      "name": "pratik/openssl_111_perf_test",
+      "name": "pratik/openssl_354_test",
       "commits": 3,
       "branches": [
         "pratik/openssl-3.6.0-alpha-performance-test",
@@ -133774,7 +133915,7 @@
     },
     {
       "email": "github.public@intelliot.com",
-      "name": "ci/windows-test",
+      "name": "hooks",
       "commits": 3,
       "branches": [
         "ci/windows-test",
@@ -133785,7 +133926,7 @@
     },
     {
       "email": "3maisons@gmail.com",
-      "name": "a1q123456/remove-const-cast-from-tagged-cache-2",
+      "name": "dangell/relay",
       "commits": 3,
       "branches": [
         "a1q123456/remove-const-cast-from-tagged-cache-2",
@@ -133826,7 +133967,7 @@
     },
     {
       "email": "354723+pwang200@users.noreply.github.com",
-      "name": "Wasm-vm-redesign-host-functions",
+      "name": "audit_wasm_vm_rust",
       "commits": 2,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -133836,7 +133977,7 @@
     },
     {
       "email": "mvanhorn@users.noreply.github.com",
-      "name": "Wasm-vm-redesign-host-functions",
+      "name": "audit_wasm_vm_rust",
       "commits": 2,
       "branches": [
         "Wasm-vm-redesign-host-functions",
@@ -133856,7 +133997,7 @@
     },
     {
       "email": "tsinglua@outlook.com",
-      "name": "mvadari/rearch/token-refactor",
+      "name": "mvadari/rearch/token-holder",
       "commits": 2,
       "branches": [
         "mvadari/rearch/token-holder",
@@ -133866,7 +134007,7 @@
     },
     {
       "email": "sappenin@gmail.com",
-      "name": "copilot/sub-pr-5439",
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
       "commits": 2,
       "branches": [
         "copilot/sub-pr-5439",
@@ -133876,7 +134017,7 @@
     },
     {
       "email": "50952098+janibakin@users.noreply.github.com",
-      "name": "copilot/sub-pr-5439",
+      "name": "pratik/Reduce-recursion-to-iterative-loop",
       "commits": 2,
       "branches": [
         "copilot/sub-pr-5439",
