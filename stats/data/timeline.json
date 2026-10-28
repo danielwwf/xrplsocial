@@ -1,5 +1,26 @@
 [
   {
+    "hash": "443589de",
+    "author": "Bart",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-28T19:27:31+00:00",
+    "message": "test: Use a designated initializer for the stop test's guard"
+  },
+  {
+    "hash": "8cf4318a",
+    "author": "Bart",
+    "branch": "bthomee/ledger-cleaner-catch",
+    "date": "2026-10-28T19:26:57+00:00",
+    "message": "fix: Catch every exception on the ledger cleaner thread"
+  },
+  {
+    "hash": "fcd5b160",
+    "author": "Denis Angell",
+    "branch": "dangell7/escrow-gateway-locked",
+    "date": "2026-10-27T15:11:48+00:00",
+    "message": "docs: link the gateway_balances changelog entry to its PR"
+  },
+  {
     "hash": "fcd5b160",
     "author": "Denis Angell",
     "branch": "dangell7/escrow-gateway-locked",
@@ -462,6 +483,48 @@
     "message": "fix: Don't trust eMudhra certificates (#8629)"
   },
   {
+    "hash": "93b1d653",
+    "author": "Bart",
+    "branch": "bthomee/shamap-misc-03-dense-child-bound",
+    "date": "2026-10-22T00:28:24+00:00",
+    "message": "fix: Assert the branch bound in TaggedPointer::getChildIndex"
+  },
+  {
+    "hash": "e1b5b3da",
+    "author": "Bart",
+    "branch": "bthomee/shamap-misc-02-tagged-cache-counters",
+    "date": "2026-10-22T00:03:37+00:00",
+    "message": "fix: Count key-only cache hits, misses and removals"
+  },
+  {
+    "hash": "80690064",
+    "author": "Bart",
+    "branch": "bthomee/missing-node-seq-latch",
+    "date": "2026-10-22T00:01:03+00:00",
+    "message": "fix: Release the missing-node latch after each acquisition pass"
+  },
+  {
+    "hash": "58310cf7",
+    "author": "Bart",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-21T23:58:33+00:00",
+    "message": "fix: Complete every queued node store read when the database stops"
+  },
+  {
+    "hash": "7cbf28e5",
+    "author": "Bart",
+    "branch": "bthomee/ledger-cleaner-catch",
+    "date": "2026-10-21T23:56:16+00:00",
+    "message": "fix: Catch exceptions on the ledger cleaner thread"
+  },
+  {
+    "hash": "7b878cab",
+    "author": "Bart",
+    "branch": "bthomee/shamap-misc-04-get-node-fat-cap",
+    "date": "2026-10-21T23:25:26+00:00",
+    "message": "fix: Cap the nodes getNodeFat appends to a reply"
+  },
+  {
     "hash": "1aae0156",
     "author": "Mayukha Vadari",
     "branch": "mvadari/config-reload",
@@ -684,6 +747,27 @@
     "branch": "dangell7/batch-txq-weight",
     "date": "2026-10-20T13:25:47+00:00",
     "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
+  },
+  {
+    "hash": "48c85e7a",
+    "author": "Bart",
+    "branch": "bthomee/inboundledgers-drop-dead-parameters",
+    "date": "2026-10-20T05:00:51+00:00",
+    "message": "refactor: Drop the unused parameters of LedgerMaster::gotFetchPack()"
+  },
+  {
+    "hash": "7dd9d1f0",
+    "author": "Bart",
+    "branch": "bthomee/shamap-item-size-check",
+    "date": "2026-10-20T04:53:50+00:00",
+    "message": "fix: Bound the size of a SHAMapItem"
+  },
+  {
+    "hash": "eb4472dd",
+    "author": "Bart",
+    "branch": "bthomee/acquire-freeze-loaded-maps-only",
+    "date": "2026-10-20T02:27:30+00:00",
+    "message": "fix: Freeze a loaded ledger's maps only when both roots are fetched"
   },
   {
     "hash": "86929f75",
@@ -3414,89 +3498,5 @@
     "branch": "bthomee/shamap-invalid-14-fail-unsatisfiable",
     "date": "2026-10-15T21:00:19+00:00",
     "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-14b-fail-fast",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-15-invalidated-map-receivenode",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-11-revive-timer",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-12-batch-progress",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08b-timeoutcounter-publication",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-09-settle-before-complete",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-10-header-ledger-mutable",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "4435ca4c",
-    "author": "Bart",
-    "branch": "bthomee/shamap-invalid-08-judge-abandoned-map",
-    "date": "2026-10-15T21:00:19+00:00",
-    "message": "refactor: Add a reusable peer harness for acquisition tests (#8310)"
-  },
-  {
-    "hash": "1f703b31",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/perf-relay-skip-reparse",
-    "date": "2026-10-15T19:33:14+00:00",
-    "message": "Merge branch 'develop' into mvadari/perf-relay-skip-reparse"
-  },
-  {
-    "hash": "53b321d4",
-    "author": "Mayukha Vadari",
-    "branch": "mvadari/perf-relay-skip-reparse",
-    "date": "2026-10-15T19:19:19+00:00",
-    "message": "refactor: Take relay hash from STTx and make message const"
-  },
-  {
-    "hash": "cd72a117",
-    "author": "Olek",
-    "branch": "origin",
-    "date": "2026-10-15T18:11:46+00:00",
-    "message": "refactor: TxQ (#8064)"
-  },
-  {
-    "hash": "cd72a117",
-    "author": "Olek",
-    "branch": "bthomee/applyview-reset",
-    "date": "2026-10-15T18:11:46+00:00",
-    "message": "refactor: TxQ (#8064)"
   }
 ]
