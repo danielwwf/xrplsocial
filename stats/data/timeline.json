@@ -1,5 +1,19 @@
 [
   {
+    "hash": "454c0307",
+    "author": "Denis Angell",
+    "branch": "alphanet",
+    "date": "2026-10-30T18:43:55+00:00",
+    "message": "compose: alphanet from XRPLF/rippled@097cb5e89b117d2e01e37120c3898605f2d36feb @ 097cb5e8 (16 branches)"
+  },
+  {
+    "hash": "3ba58298",
+    "author": "Bart",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-30T13:14:19+00:00",
+    "message": "test: Name the remaining amounts in the discard test"
+  },
+  {
     "hash": "3ba58298",
     "author": "Bart",
     "branch": "bthomee/applyview-reset",
@@ -21,6 +35,41 @@
     "message": "test: Name the burn amount that survives a discard"
   },
   {
+    "hash": "18dab506",
+    "author": "Denis Angell",
+    "branch": "alphanet",
+    "date": "2026-10-29T22:59:48+00:00",
+    "message": "fix: p256 with quantum: test an unassigned key type now that 3 is Dilithium"
+  },
+  {
+    "hash": "d9481753",
+    "author": "Denis Angell",
+    "branch": "alphanet",
+    "date": "2026-10-29T22:59:40+00:00",
+    "message": "fix: p256 with quantum: leave a P-256 signing key to the passkey check when Passkey is off"
+  },
+  {
+    "hash": "35b00282",
+    "author": "Denis Angell",
+    "branch": "alphanet",
+    "date": "2026-10-29T22:55:17+00:00",
+    "message": "fix: firewall and datagram merges: restore the TxSettings doc line and drop xbridge"
+  },
+  {
+    "hash": "af63447a",
+    "author": "Denis Angell",
+    "branch": "alphanet",
+    "date": "2026-10-29T22:53:57+00:00",
+    "message": "fix: datagram on develop 097cb5e89b: value-initialize the server info header"
+  },
+  {
+    "hash": "9c9f472c",
+    "author": "Denis Angell",
+    "branch": "alphanet",
+    "date": "2026-10-29T22:53:05+00:00",
+    "message": "fix: firewall with p256 and quantum: pass rules to the counterparty signing-key checks"
+  },
+  {
     "hash": "e4aad8ad",
     "author": "Bart",
     "branch": "bthomee/ledger-cleaner-catch",
@@ -131,6 +180,13 @@
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-28T20:21:09+00:00",
     "message": "fix: Catch exceptions on the ledger cleaner thread"
+  },
+  {
+    "hash": "34326fb7",
+    "author": "Bart",
+    "branch": "bthomee/ledger-cleaner-catch",
+    "date": "2026-10-28T20:21:07+00:00",
+    "message": "fix: Reset a ledger's save state when its database write fails"
   },
   {
     "hash": "34326fb7",
@@ -227,13 +283,6 @@
     "hash": "34326fb7",
     "author": "Bart",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-28T20:21:07+00:00",
-    "message": "fix: Reset a ledger's save state when its database write fails"
-  },
-  {
-    "hash": "34326fb7",
-    "author": "Bart",
-    "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-28T20:21:07+00:00",
     "message": "fix: Reset a ledger's save state when its database write fails"
   },
@@ -310,6 +359,13 @@
   {
     "hash": "b7d6b2c6",
     "author": "dependabot[bot]",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-26T12:12:39+00:00",
+    "message": "ci: [DEPENDABOT] bump the github-actions group across 2 directories with 3 updates (#8642)"
+  },
+  {
+    "hash": "b7d6b2c6",
+    "author": "dependabot[bot]",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-26T12:12:39+00:00",
     "message": "ci: [DEPENDABOT] bump the github-actions group across 2 directories with 3 updates (#8642)"
@@ -318,13 +374,6 @@
     "hash": "b7d6b2c6",
     "author": "dependabot[bot]",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-26T12:12:39+00:00",
-    "message": "ci: [DEPENDABOT] bump the github-actions group across 2 directories with 3 updates (#8642)"
-  },
-  {
-    "hash": "b7d6b2c6",
-    "author": "dependabot[bot]",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-26T12:12:39+00:00",
     "message": "ci: [DEPENDABOT] bump the github-actions group across 2 directories with 3 updates (#8642)"
   },
@@ -471,6 +520,13 @@
   {
     "hash": "1f46f753",
     "author": "Ayaz Salikhov",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-23T19:28:52+00:00",
+    "message": "build: Don't apply clang-tidy fixes twice via header symlinks (#8636)"
+  },
+  {
+    "hash": "1f46f753",
+    "author": "Ayaz Salikhov",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-23T19:28:52+00:00",
     "message": "build: Don't apply clang-tidy fixes twice via header symlinks (#8636)"
@@ -479,13 +535,6 @@
     "hash": "1f46f753",
     "author": "Ayaz Salikhov",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-23T19:28:52+00:00",
-    "message": "build: Don't apply clang-tidy fixes twice via header symlinks (#8636)"
-  },
-  {
-    "hash": "1f46f753",
-    "author": "Ayaz Salikhov",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-23T19:28:52+00:00",
     "message": "build: Don't apply clang-tidy fixes twice via header symlinks (#8636)"
   },
@@ -751,6 +800,20 @@
   {
     "hash": "097cb5e8",
     "author": "Ayaz Salikhov",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-22T18:05:38+00:00",
+    "message": "fix: Update images/prepare-runner to not trust eMudhra certs (#8631)"
+  },
+  {
+    "hash": "097cb5e8",
+    "author": "Ayaz Salikhov",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-22T18:05:38+00:00",
+    "message": "fix: Update images/prepare-runner to not trust eMudhra certs (#8631)"
+  },
+  {
+    "hash": "097cb5e8",
+    "author": "Ayaz Salikhov",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-22T18:05:38+00:00",
     "message": "fix: Update images/prepare-runner to not trust eMudhra certs (#8631)"
@@ -759,13 +822,6 @@
     "hash": "097cb5e8",
     "author": "Ayaz Salikhov",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-22T18:05:38+00:00",
-    "message": "fix: Update images/prepare-runner to not trust eMudhra certs (#8631)"
-  },
-  {
-    "hash": "097cb5e8",
-    "author": "Ayaz Salikhov",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-22T18:05:38+00:00",
     "message": "fix: Update images/prepare-runner to not trust eMudhra certs (#8631)"
   },
@@ -787,13 +843,6 @@
     "hash": "097cb5e8",
     "author": "Ayaz Salikhov",
     "branch": "origin",
-    "date": "2026-10-22T18:05:38+00:00",
-    "message": "fix: Update images/prepare-runner to not trust eMudhra certs (#8631)"
-  },
-  {
-    "hash": "097cb5e8",
-    "author": "Ayaz Salikhov",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-22T18:05:38+00:00",
     "message": "fix: Update images/prepare-runner to not trust eMudhra certs (#8631)"
   },
@@ -1031,6 +1080,20 @@
   {
     "hash": "a818f252",
     "author": "Timothy Banks",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-22T17:11:24+00:00",
+    "message": "refactor: Retire XRPFees amendment (#7349)"
+  },
+  {
+    "hash": "a818f252",
+    "author": "Timothy Banks",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-22T17:11:24+00:00",
+    "message": "refactor: Retire XRPFees amendment (#7349)"
+  },
+  {
+    "hash": "a818f252",
+    "author": "Timothy Banks",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-22T17:11:24+00:00",
     "message": "refactor: Retire XRPFees amendment (#7349)"
@@ -1039,13 +1102,6 @@
     "hash": "a818f252",
     "author": "Timothy Banks",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-22T17:11:24+00:00",
-    "message": "refactor: Retire XRPFees amendment (#7349)"
-  },
-  {
-    "hash": "a818f252",
-    "author": "Timothy Banks",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-22T17:11:24+00:00",
     "message": "refactor: Retire XRPFees amendment (#7349)"
   },
@@ -1067,13 +1123,6 @@
     "hash": "a818f252",
     "author": "Timothy Banks",
     "branch": "origin",
-    "date": "2026-10-22T17:11:24+00:00",
-    "message": "refactor: Retire XRPFees amendment (#7349)"
-  },
-  {
-    "hash": "a818f252",
-    "author": "Timothy Banks",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-22T17:11:24+00:00",
     "message": "refactor: Retire XRPFees amendment (#7349)"
   },
@@ -1311,6 +1360,20 @@
   {
     "hash": "3fa2accf",
     "author": "Timothy Banks",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-22T15:27:46+00:00",
+    "message": "refactor: Retire AMM amendment and AMMOverflowOffer fix (#7357)"
+  },
+  {
+    "hash": "3fa2accf",
+    "author": "Timothy Banks",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-22T15:27:46+00:00",
+    "message": "refactor: Retire AMM amendment and AMMOverflowOffer fix (#7357)"
+  },
+  {
+    "hash": "3fa2accf",
+    "author": "Timothy Banks",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-22T15:27:46+00:00",
     "message": "refactor: Retire AMM amendment and AMMOverflowOffer fix (#7357)"
@@ -1319,13 +1382,6 @@
     "hash": "3fa2accf",
     "author": "Timothy Banks",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-22T15:27:46+00:00",
-    "message": "refactor: Retire AMM amendment and AMMOverflowOffer fix (#7357)"
-  },
-  {
-    "hash": "3fa2accf",
-    "author": "Timothy Banks",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-22T15:27:46+00:00",
     "message": "refactor: Retire AMM amendment and AMMOverflowOffer fix (#7357)"
   },
@@ -1347,13 +1403,6 @@
     "hash": "3fa2accf",
     "author": "Timothy Banks",
     "branch": "origin",
-    "date": "2026-10-22T15:27:46+00:00",
-    "message": "refactor: Retire AMM amendment and AMMOverflowOffer fix (#7357)"
-  },
-  {
-    "hash": "3fa2accf",
-    "author": "Timothy Banks",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-22T15:27:46+00:00",
     "message": "refactor: Retire AMM amendment and AMMOverflowOffer fix (#7357)"
   },
@@ -1591,6 +1640,20 @@
   {
     "hash": "d3a71b2b",
     "author": "Ayaz Salikhov",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-22T15:01:37+00:00",
+    "message": "fix: Don't trust eMudhra certificates (#8629)"
+  },
+  {
+    "hash": "d3a71b2b",
+    "author": "Ayaz Salikhov",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-22T15:01:37+00:00",
+    "message": "fix: Don't trust eMudhra certificates (#8629)"
+  },
+  {
+    "hash": "d3a71b2b",
+    "author": "Ayaz Salikhov",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-22T15:01:37+00:00",
     "message": "fix: Don't trust eMudhra certificates (#8629)"
@@ -1599,13 +1662,6 @@
     "hash": "d3a71b2b",
     "author": "Ayaz Salikhov",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-22T15:01:37+00:00",
-    "message": "fix: Don't trust eMudhra certificates (#8629)"
-  },
-  {
-    "hash": "d3a71b2b",
-    "author": "Ayaz Salikhov",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-22T15:01:37+00:00",
     "message": "fix: Don't trust eMudhra certificates (#8629)"
   },
@@ -1627,13 +1683,6 @@
     "hash": "d3a71b2b",
     "author": "Ayaz Salikhov",
     "branch": "origin",
-    "date": "2026-10-22T15:01:37+00:00",
-    "message": "fix: Don't trust eMudhra certificates (#8629)"
-  },
-  {
-    "hash": "d3a71b2b",
-    "author": "Ayaz Salikhov",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-22T15:01:37+00:00",
     "message": "fix: Don't trust eMudhra certificates (#8629)"
   },
@@ -1927,6 +1976,20 @@
   {
     "hash": "025aa719",
     "author": "Timothy Banks",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-21T16:12:29+00:00",
+    "message": "refactor: Retire FillOrKill fix (#7366)"
+  },
+  {
+    "hash": "025aa719",
+    "author": "Timothy Banks",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-21T16:12:29+00:00",
+    "message": "refactor: Retire FillOrKill fix (#7366)"
+  },
+  {
+    "hash": "025aa719",
+    "author": "Timothy Banks",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-21T16:12:29+00:00",
     "message": "refactor: Retire FillOrKill fix (#7366)"
@@ -1935,13 +1998,6 @@
     "hash": "025aa719",
     "author": "Timothy Banks",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-21T16:12:29+00:00",
-    "message": "refactor: Retire FillOrKill fix (#7366)"
-  },
-  {
-    "hash": "025aa719",
-    "author": "Timothy Banks",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-21T16:12:29+00:00",
     "message": "refactor: Retire FillOrKill fix (#7366)"
   },
@@ -1963,13 +2019,6 @@
     "hash": "025aa719",
     "author": "Timothy Banks",
     "branch": "origin",
-    "date": "2026-10-21T16:12:29+00:00",
-    "message": "refactor: Retire FillOrKill fix (#7366)"
-  },
-  {
-    "hash": "025aa719",
-    "author": "Timothy Banks",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-21T16:12:29+00:00",
     "message": "refactor: Retire FillOrKill fix (#7366)"
   },
@@ -2228,6 +2277,20 @@
   {
     "hash": "ef5064ee",
     "author": "Mayukha Vadari",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-20T20:37:02+00:00",
+    "message": "feat: Remove XChainBridge feature (#8255)"
+  },
+  {
+    "hash": "ef5064ee",
+    "author": "Mayukha Vadari",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-20T20:37:02+00:00",
+    "message": "feat: Remove XChainBridge feature (#8255)"
+  },
+  {
+    "hash": "ef5064ee",
+    "author": "Mayukha Vadari",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-20T20:37:02+00:00",
     "message": "feat: Remove XChainBridge feature (#8255)"
@@ -2236,13 +2299,6 @@
     "hash": "ef5064ee",
     "author": "Mayukha Vadari",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-20T20:37:02+00:00",
-    "message": "feat: Remove XChainBridge feature (#8255)"
-  },
-  {
-    "hash": "ef5064ee",
-    "author": "Mayukha Vadari",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-20T20:37:02+00:00",
     "message": "feat: Remove XChainBridge feature (#8255)"
   },
@@ -2264,13 +2320,6 @@
     "hash": "ef5064ee",
     "author": "Mayukha Vadari",
     "branch": "origin",
-    "date": "2026-10-20T20:37:02+00:00",
-    "message": "feat: Remove XChainBridge feature (#8255)"
-  },
-  {
-    "hash": "ef5064ee",
-    "author": "Mayukha Vadari",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-20T20:37:02+00:00",
     "message": "feat: Remove XChainBridge feature (#8255)"
   },
@@ -2550,6 +2599,20 @@
   {
     "hash": "c2e739f6",
     "author": "Alex Kremer",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-20T15:39:27+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (E) (#8613)"
+  },
+  {
+    "hash": "c2e739f6",
+    "author": "Alex Kremer",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-20T15:39:27+00:00",
+    "message": "refactor: Migrate handlers to rpc-spec (E) (#8613)"
+  },
+  {
+    "hash": "c2e739f6",
+    "author": "Alex Kremer",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-20T15:39:27+00:00",
     "message": "refactor: Migrate handlers to rpc-spec (E) (#8613)"
@@ -2558,13 +2621,6 @@
     "hash": "c2e739f6",
     "author": "Alex Kremer",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-20T15:39:27+00:00",
-    "message": "refactor: Migrate handlers to rpc-spec (E) (#8613)"
-  },
-  {
-    "hash": "c2e739f6",
-    "author": "Alex Kremer",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-20T15:39:27+00:00",
     "message": "refactor: Migrate handlers to rpc-spec (E) (#8613)"
   },
@@ -2586,13 +2642,6 @@
     "hash": "c2e739f6",
     "author": "Alex Kremer",
     "branch": "origin",
-    "date": "2026-10-20T15:39:27+00:00",
-    "message": "refactor: Migrate handlers to rpc-spec (E) (#8613)"
-  },
-  {
-    "hash": "c2e739f6",
-    "author": "Alex Kremer",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-20T15:39:27+00:00",
     "message": "refactor: Migrate handlers to rpc-spec (E) (#8613)"
   },
@@ -2844,6 +2893,20 @@
   {
     "hash": "15fac625",
     "author": "Alex Kremer",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-20T13:25:47+00:00",
+    "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
+  },
+  {
+    "hash": "15fac625",
+    "author": "Alex Kremer",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-20T13:25:47+00:00",
+    "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
+  },
+  {
+    "hash": "15fac625",
+    "author": "Alex Kremer",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-20T13:25:47+00:00",
     "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
@@ -2852,13 +2915,6 @@
     "hash": "15fac625",
     "author": "Alex Kremer",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-20T13:25:47+00:00",
-    "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
-  },
-  {
-    "hash": "15fac625",
-    "author": "Alex Kremer",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-20T13:25:47+00:00",
     "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
   },
@@ -2880,13 +2936,6 @@
     "hash": "15fac625",
     "author": "Alex Kremer",
     "branch": "origin",
-    "date": "2026-10-20T13:25:47+00:00",
-    "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
-  },
-  {
-    "hash": "15fac625",
-    "author": "Alex Kremer",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-20T13:25:47+00:00",
     "message": "chore: Simplify `account` and `ident` checks via rpc-spec (#8620)"
   },
@@ -3187,6 +3236,20 @@
   {
     "hash": "36084335",
     "author": "Alex Kremer",
+    "branch": "bthomee/applyview-reset",
+    "date": "2026-10-19T16:17:30+00:00",
+    "message": "test: Check error consistently in rpc handlers (#8604)"
+  },
+  {
+    "hash": "36084335",
+    "author": "Alex Kremer",
+    "branch": "bthomee/nodestore-complete-reads-on-stop",
+    "date": "2026-10-19T16:17:30+00:00",
+    "message": "test: Check error consistently in rpc handlers (#8604)"
+  },
+  {
+    "hash": "36084335",
+    "author": "Alex Kremer",
     "branch": "bthomee/ledger-cleaner-catch",
     "date": "2026-10-19T16:17:30+00:00",
     "message": "test: Check error consistently in rpc handlers (#8604)"
@@ -3195,13 +3258,6 @@
     "hash": "36084335",
     "author": "Alex Kremer",
     "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-19T16:17:30+00:00",
-    "message": "test: Check error consistently in rpc handlers (#8604)"
-  },
-  {
-    "hash": "36084335",
-    "author": "Alex Kremer",
-    "branch": "bthomee/nodestore-complete-reads-on-stop",
     "date": "2026-10-19T16:17:30+00:00",
     "message": "test: Check error consistently in rpc handlers (#8604)"
   },
@@ -3223,13 +3279,6 @@
     "hash": "36084335",
     "author": "Alex Kremer",
     "branch": "origin",
-    "date": "2026-10-19T16:17:30+00:00",
-    "message": "test: Check error consistently in rpc handlers (#8604)"
-  },
-  {
-    "hash": "36084335",
-    "author": "Alex Kremer",
-    "branch": "bthomee/applyview-reset",
     "date": "2026-10-19T16:17:30+00:00",
     "message": "test: Check error consistently in rpc handlers (#8604)"
   },
@@ -3449,54 +3498,5 @@
     "branch": "bthomee/rpc-11-unread-body-reasons",
     "date": "2026-10-19T16:17:30+00:00",
     "message": "test: Check error consistently in rpc handlers (#8604)"
-  },
-  {
-    "hash": "36084335",
-    "author": "Alex Kremer",
-    "branch": "bthomee/rpc-12-batch-identity",
-    "date": "2026-10-19T16:17:30+00:00",
-    "message": "test: Check error consistently in rpc handlers (#8604)"
-  },
-  {
-    "hash": "36084335",
-    "author": "Alex Kremer",
-    "branch": "bthomee/rpc-02-value-string-view",
-    "date": "2026-10-19T16:17:30+00:00",
-    "message": "test: Check error consistently in rpc handlers (#8604)"
-  },
-  {
-    "hash": "36084335",
-    "author": "Alex Kremer",
-    "branch": "bthomee/rpc-03-protocol-constants",
-    "date": "2026-10-19T16:17:30+00:00",
-    "message": "test: Check error consistently in rpc handlers (#8604)"
-  },
-  {
-    "hash": "36084335",
-    "author": "Alex Kremer",
-    "branch": "bthomee/rpc-04-mask-secrets",
-    "date": "2026-10-19T16:17:30+00:00",
-    "message": "test: Check error consistently in rpc handlers (#8604)"
-  },
-  {
-    "hash": "7db5e1c6",
-    "author": "Denis Angell",
-    "branch": "dangell7/token-paychan-clawback",
-    "date": "2026-10-19T13:24:01+00:00",
-    "message": "style: satisfy clang-tidy in the token payment channel tests"
-  },
-  {
-    "hash": "7939339a",
-    "author": "Nik Bougalis",
-    "branch": "bthomee/ledger-cleaner-catch",
-    "date": "2026-10-17T22:43:53+00:00",
-    "message": "chore: Fix an issue that breaks CLion (#8619)"
-  },
-  {
-    "hash": "7939339a",
-    "author": "Nik Bougalis",
-    "branch": "bthomee/ledger-save-finish-on-throw",
-    "date": "2026-10-17T22:43:53+00:00",
-    "message": "chore: Fix an issue that breaks CLion (#8619)"
   }
 ]
