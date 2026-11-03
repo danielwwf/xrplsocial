@@ -1,5 +1,41 @@
 [
   {
+    "pr_number": 8672,
+    "branch_name": "fix_pre_commit_node",
+    "title": "chore: Use node: lts in pre-commit; update hooks",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nTitle says it all\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer p",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-03T15:13:28Z",
+    "merged_at": "2026-11-03T17:41:14Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8672?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-03T15:16:39Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nNo active review issues block the pre-commit tooling updates and packaging cleanup.\n\n**No open issues** \ud83c\udf89\n\n<details>\n<summary><strong>What changed"
+      }
+    ]
+  },
+  {
     "pr_number": 8636,
     "branch_name": "fix_double_apply",
     "title": "build: Don't apply clang-tidy fixes twice via header symlinks",
@@ -2878,56 +2914,6 @@
         "user": "ckeshava",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8484,
-    "branch_name": "refactor/rpc-spec-handlers-B",
-    "title": "refactor: Migrate handlers to rpc-spec (B)",
-    "body": "## High Level Overview of Change\r\n\r\nMigrates the first two function handlers, `book_changes` and `transaction_entry`, onto the shared `xrpl-rpc-spec` library (0.1.21), and makes the spec's `::rpc::Status` xrpld's only RPC status type. This sets the pattern the remaining handlers will follow: a class with `Input`/`Output`, `process()` and `writeResult()`.\r\n\r\nPart of the rpc-spec migration; follows #8345.\r\n\r\n## Context of Change\r\n\r\n- **One dispatch table (`Handler.cpp`):** `kClassHandlerArray`, `joinHandlers()` and `handlerFrom<>()` are gone. Every method is a row in `kHandlerArray`, which holds its name, role, condition, API range and command-line flag. A migrated handler differs only in `Method::of<&handle<XHandler>>()` instead of `Method::of<&byRef<&doX>>()`, so the static metadata on `LedgerHandler`/`VersionHandler` is removed.\r\n- **`BookChangesHandler`:** the spec's ledger selector, then `computeBookChanges`.\r\n- **`TransactionEntryHandler`:** `develop` checks `tx_hash` only after resolving the ledger, and reports it as a bare `error` beside the ledger fields. Spec 0.1.21 therefore leaves `tx_hash` to the handler on xrpld, and `process()` runs the checks in `develop`'s order.\r\n- **`RPCLedgerHelpers`:** `injectLedgerFields()` is extracted from `lookupLedger`, for handlers that start their response from the ledger fields.\r\n- **`Status`:** `src/xrpld/rpc/Status.h` and `detail/Status.cpp` are deleted. The ledger helpers, `Handler::Method`, `callMethod` and `doCommand` return `::rpc::Status`, which converts implicitly from `ErrorCodeI` since spec 0.1.21. Every `doCommand` caller already discarded the status.\r\n- **Deleted:** `doBookChanges` and `doTransactionEntry`, and `Status_test.cpp`, which covered only helpers that are gone.\r\n- **Spec 0.1.21:** `transaction_entry`'s `tx_hash` handling on xrpld; an implicit `Status(XrpldError)` and `Status::kOK`.\r\n\r\n## API Impact\r\n\r\nOne public API change, a bug fix (`API-CHANGELOG.md`, Bugfixes in 3.4.0):\r\n\r\n| Request | Before | Aft",
-    "user": "godexsoft",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-05T16:19:10Z",
-    "merged_at": "2026-10-07T14:31:44Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 3,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8484?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `83.96226%` with `17 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8484?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
-        "created_at": "2026-10-05T16:21:34Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-10-06T14:10:49Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-10-06T15:30:00Z"
-      }
-    ],
-    "reviews_count": 15,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nSpec warnings are currently injected into `transaction_entry` error responses.\n\n**Review effort:** Balanced  \n**Finding"
-      },
-      {
-        "user": "godexsoft",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "> [!NOTE]\n> Copilot was unable to run its full agentic suite in this review.\n\n<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n**Review effort:** Lite  \n**Findings:** 1 <picture><source media=\"(p"
       }
     ]
   }
