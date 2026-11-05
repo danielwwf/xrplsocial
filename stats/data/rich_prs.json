@@ -1,5 +1,140 @@
 [
   {
+    "pr_number": 8693,
+    "branch_name": "use_archive",
+    "title": "ci: Use archive.debian.org instead of snapshot.debian.org",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nThis looks like a better source of packages for an outdated distro\n\n<img width=\"861\" height=\"274\" alt=\"Screenshot 2026-11-05 at 14 50 06\" src=\"https://github.com/user-attachments/assets/8896c794-3466-4cab-98bf-d8588c86703c\" />\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking cha",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-05T14:50:44Z",
+    "merged_at": "2026-11-05T16:50:00Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8693?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-05T14:55:29Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nA Debian 11 install-job run is needed to confirm that archive.debian.org serves every configured APT suite because the image\u2019s sources and live arc"
+      }
+    ]
+  },
+  {
+    "pr_number": 8690,
+    "branch_name": "smart-contracts-ci-fix",
+    "title": "fix: STData UB on out-of-range type; skip WasmVM death tests under voidstar",
+    "body": "Fixes the two jobs that failed on tag `3.5.0-custom-5` (run 41954307244), found while building a custom package for `smart-contracts-devnet`.\n\n## Changes\n- `src/libxrpl/protocol/STData.cpp`: `STData(SerialIter&)` loaded the wire value into `SerializedTypeID` before switching on it. An out-of-range value (65535) is undefined behaviour and trips UBSan (`ubuntu-clang-release-amd64-ubsan`). Switch on the raw `uint16`; the existing `default:` branch already throws for unknown types.\n- `src/tests/libxrpl/tx/wasm/WasmVM.cpp`: skip `no_gas_is_refused_as_malformed_rather_than_run` and `dirty_host_is_refused_before_contract_runs` under `ENABLE_VOIDSTAR`. It is a debug build that does not abort on failed asserts, so the expected death never happens (`ubuntu-clang-debug-amd64-voidstar`). Same approach as `BaseUintDeathTest`.\n\n## Testing\nTag `3.5.0-custom-6` points at this commit (`6aa6d8de7`); its full Tag run (build, test, package, publish) passed: https://github.com/XRPLF/rippled/actions/runs/41958818395\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+    "user": "shichengripple001",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-05T11:43:21Z",
+    "merged_at": "2026-11-05T15:05:38Z",
+    "labels": [],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8690?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-05T11:46:25Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues found.\n\n<!-- review-fingerprint:b4920426f0a8fb9a -->"
+      },
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues found.\n\n<!-- review-fingerprint:3836633c2b1a9b0e -->"
+      }
+    ]
+  },
+  {
+    "pr_number": 7827,
+    "branch_name": "ci/null-sle-check-directory-callbacks",
+    "title": "fix: Guard against null SLE in NoRippleCheck and GatewayBalances callbacks",
+    "body": "## High Level Overview of Change\n\nThe `forEachItemAfter` callback in `doNoRippleCheck` and the `forEachItem` callback in `doGatewayBalances` dereference the `SLE` argument (`ownedItem`/`sle`) without checking for null first. The sibling account handlers (`doAccountLines`, `doAccountChannels`, `doAccountOffers`) all guard their directory callbacks with a `if (!sle) { UNREACHABLE(...); return; }` block. This adds the same guard to the two handlers that were missing it, so all directory-iteration callbacks are consistent. Fixes #7510.\n\n### Context of Change\n\nBoth callbacks receive the SLE via `view.read()` inside the directory helpers. In normal operation `read()` returns a valid entry, but the other account handlers already treat a null result as an unreachable-but-guarded case rather than dereferencing it. This change closes that inconsistency; the guard uses the existing `UNREACHABLE` macro with `LCOV_EXCL_START`/`LCOV_EXCL_STOP` markers, matching `AccountLines.cpp`.\n\n### API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\n## Test Plan\n\nThe null-SLE path is defensive and not reachable through the existing RPC unit tests without a corrupted ledger, so it is marked with `LCOV_EXCL` like the equivalent guard in `AccountLines.cpp`. The existing `NoRippleCheck` and `GatewayBalances` test suites exercise the normal (non-null) path and continue to pass. The change is formatted with the repository `.clang-format`.\n",
+    "user": "SAY-5",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-07-18T21:34:55Z",
+    "merged_at": "2026-11-05T12:58:47Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 7,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "\u26a0\ufe0f This PR contains unsigned commits. To get your PR merged, please sign them. \u26a0\ufe0f\n\nIf only the most recent commit is unsigned, you can run:\n1. Amend the commit: `git commit --amend --no-edit -n -S`\n2. Overwrite the commit: `git push --force-with-lease`\n\nIf multiple commits are unsigned, you can run:\n1. Go into interactive rebase mode: `git rebase --interactive HEAD~<NUM_OF_COMMITS>`, where `NUM_OF_COMMITS` is the number of most recent commits that will be available to edit.\n2. Change \"pick\" to \"",
+        "created_at": "2026-07-18T21:35:06Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/7827?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-07-20T16:45:19Z"
+      },
+      {
+        "user": "mvadari",
+        "body": "@SAY-5 if you sign your commits we can merge this PR.",
+        "created_at": "2026-08-03T16:03:05Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-09-30T15:58:55Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-18T09:57:53Z"
+      }
+    ],
+    "reviews_count": 3,
+    "reviews": [
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nNo unresolved issues were identified.\n\n**Review effort:** Lite  \n**Findings:** None\n\n<details>\n<summary><strong>What c"
+      },
+      {
+        "user": "mvadari",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8638,
     "branch_name": "fix/asbool-union-member",
     "title": "fix: Read correct union member in Json::Value::asBool",
@@ -2580,48 +2715,6 @@
       {
         "user": "mathbunnyru",
         "state": "COMMENTED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8564,
-    "branch_name": "dependabot/cargo/crates/develop/rust-dependencies-5b8a9df828",
-    "title": "chore: [DEPENDABOT] bump cxx from 1.0.202 to 1.0.203 in /crates in the rust-dependencies group",
-    "body": "Bumps the rust-dependencies group in /crates with 1 update: [cxx](https://github.com/dtolnay/cxx).\n\nUpdates `cxx` from 1.0.202 to 1.0.203\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a href=\"https://github.com/dtolnay/cxx/releases\">cxx's releases</a>.</em></p>\n<blockquote>\n<h2>1.0.203</h2>\n<ul>\n<li>Find target dir from OUT_DIR when CARGO_TARGET_DIR is relative (<a href=\"https://redirect.github.com/dtolnay/cxx/issues/1763\">#1763</a>, thanks <a href=\"https://github.com/akashchamp\"><code>@\u200bakashchamp</code></a>)</li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/7e86a3827aead7a1cd3de29eca4bc3cc87ff6966\"><code>7e86a38</code></a> Release 1.0.203</li>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/001911c4313a2eded676c94167b67ecf7caaf6f0\"><code>001911c</code></a> Lockfile update</li>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/f6abfe98d91c443a61dae0121bf6d57ee329378c\"><code>f6abfe9</code></a> Generate http_archive size_bytes</li>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/35b2b5d8637e9195cc9035f6cdfba5981b9ee9c7\"><code>35b2b5d</code></a> Merge pull request <a href=\"https://redirect.github.com/dtolnay/cxx/issues/1763\">#1763</a> from akashchamp/fix-relative-target-dir</li>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/9369e6f97189a7e01602f5c290215667aaa86900\"><code>9369e6f</code></a> Find target dir from OUT_DIR when CARGO_TARGET_DIR is relative</li>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/3f5f0b195b94d6b3465e22cf63fee8d24f0c496d\"><code>3f5f0b1</code></a> Regenerate MODULE.bazel.lock with bazel 9.3.0</li>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/29960afe1669a99f275e85947fc1018345f94074\"><code>29960af</code></a> Bump Bazel build to rustc 1.99.0</li>\n<li><a href=\"https://github.com/dtolnay/cxx/commit/b2971717da380618ea8ab5a3bf9ee68434e1f684\"><code>b297171</code></a> Update ui test suite to nightly-2026-09-26</li>\n<li><a href=\"https://gi",
-    "user": "dependabot[bot]",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-12T12:22:34Z",
-    "merged_at": "2026-10-12T18:43:22Z",
-    "labels": [
-      "Ready to merge",
-      "Dependencies",
-      "rust"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8564?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-12T12:24:49Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "xrplf-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "This is a Dependabot lockfile-only bump of the `cxx` crate family (cxx, cxx-build, cxxbridge-cmd, cxxbridge-flags, cxxbridge-macro). The main issue: the actual diff bumps these crates to 1.0.205, but "
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "Copilot wasn't able to review any files in this pull request. Check if the **Files changed** in this pull request are included in [default exclusions](https://docs.github.com/en/copilot/reference/revi"
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "APPROVED",
         "body": ""
       }
     ]
