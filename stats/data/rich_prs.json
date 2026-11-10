@@ -1,5 +1,47 @@
 [
   {
+    "pr_number": 8714,
+    "branch_name": "mvadari/security-md-drop-pr-reports",
+    "title": "docs: Remove open PRs from SECURITY.md supported scope",
+    "body": "## High Level Overview of Change\n\nRemoves \"and with proposed, open pull requests\" from the Supported Versions section of `SECURITY.md`. The policy now lists only the **master**, **release** and **develop** branches.\n\n## Context of Change\n\nA Clio maintainer asked why the same sentence belongs in the new Clio `SECURITY.md` (XRPLF/clio#3300), which copied it from this file. Clio dropped it. This PR makes rippled match.\n\n## API Impact\n\nNone. Documentation only.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-10T16:17:27Z",
+    "merged_at": "2026-11-10T18:22:44Z",
+    "labels": [
+      "Ready to merge",
+      "Documentation",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8714?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-10T16:33:44Z"
+      }
+    ],
+    "reviews_count": 4,
+    "reviews": [
+      {
+        "user": "xrplf-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues found.\n\n<!-- review-fingerprint:ab6e0e0e8d66b40a -->"
+      },
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nNo active review issues remain for the documentation-only update to the vulnerability-reporting scope.\n\n**No open issues** \ud83c\udf89\n\n<details>\n<summary><"
+      }
+    ]
+  },
+  {
     "pr_number": 7595,
     "branch_name": "fix-loglevel-missing-type-validation",
     "title": "fix: Add type validation to log_level parameters",
@@ -2544,66 +2586,6 @@
         "user": "TimothyBanks",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 5874,
-    "branch_name": "vlntb/mem-leak-ledger-history-3",
-    "title": "refactor: Decouple LedgerHistory from TaggedCache internals",
-    "body": "## High Level Overview of Change\r\n\r\nBound `LedgerHistory::ledgersByIndex_` on nodes with `online_delete` configured, and decouple `LedgerHistory` from `TaggedCache` internals by bundling the related maps and replacing direct mutex access with a callback.\r\n\r\nChanges:\r\n\r\n* Prune `ledgersByIndex_` on cache rotation - `SHAMapStoreImp::clearCaches` calls `clearLedgerCachePrior` during backend rotation; the method now prunes `ledgersByIndex_` alongside `ledgersByHash_` (same sequence cutoff, with telemetry for removed entries). Previously nothing on `develop` ever erased entries from this map, so it grew for the lifetime of the process. Scope note: this prune only runs on `online_delete` rotation. Nodes without `online_delete` (full-history nodes) keep `develop`'s existing growth, about 65 bytes per validated ledger (~1.4 MB/day, reset on restart); a rotation-independent bound is out of scope here.\r\n* Bundle the ledger maps - `ledgersByHash_` and `ledgersByIndex_` are grouped under a `LedgerMaps` struct guarded by `xrpl::Mutex<LedgerMaps>`. All previous `peekMutex()` sites go through `ledgerMaps_.lock()`.\r\n* Remove `TaggedCache::peekMutex()` - No external code needs it anymore.\r\n* Add `TaggedCache::fetchAndModify(key, callback)` - Atomic canonicalize-then-mutate under the cache mutex. Replaces the \"canonicalize then mutate outside the lock\" pattern in `builtLedger()` and `validatedLedger()`. static_asserts !IsKeyCache and the supported pointer types; re-entry avoided via the lock-token canonicalizeImpl overload.\r\n* Call `handleMismatch` outside the `consensusValidated_` lock - the callback only copies what `handleMismatch` needs into a local, and `handleMismatch` is called after `fetchAndModify` returns. On `develop` the DB reads, JSON serialization and per-tx logging all ran while holding that mutex.\r\n* Preserve `clearLedgerCachePrior` lock granularity - Take the cache pointer under a brief lock, snapshot keys and iterate lock-free, re-acquire briefly for `del`. Matches ",
-    "user": "vlntb",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2025-10-09T11:22:49Z",
-    "merged_at": "2026-10-14T00:49:23Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 19,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/5874?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `91.30435%` with `10 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/5874?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_te",
-        "created_at": "2025-10-16T12:34:11Z"
-      },
-      {
-        "user": "vlntb",
-        "body": "/ai-review",
-        "created_at": "2026-03-20T17:37:42Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-03-26T00:43:47Z"
-      },
-      {
-        "user": "godexsoft",
-        "body": "We recently merged a refactor to `develop` that enables clang-tidy's `readability-identifier-naming`. Your branch now has heavy conflicts that are largely mechanical. Below is a workflow that aligns your branch's naming with develop _before_ merging, which should minimize the merge conflicts.\n\n## One-time setup\n\nIf you don't already have clang-tidy working in your env, on macOS:\n\n```bash\nbrew install llvm@21\n# Follow brew's hint to put $(brew --prefix llvm@21)/bin on PATH so run-clang-tidy is fo",
-        "created_at": "2026-05-04T14:26:49Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-06-30T14:10:46Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "godexsoft",
-        "state": "CHANGES_REQUESTED",
-        "body": "Leaving some suggestions \ud83d\udc4d "
-      },
-      {
-        "user": "kuznetsss",
-        "state": "COMMENTED",
-        "body": ""
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "## Pull request overview\n\nThis PR addresses a long-standing FIXME by implementing cleanup of ledger indexes in `LedgerHistory`, and refactors synchronization by introducing a new `LedgerIndexMap` clas"
       }
     ]
   }
