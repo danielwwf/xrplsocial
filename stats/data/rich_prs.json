@@ -1,5 +1,66 @@
 [
   {
+    "pr_number": 7595,
+    "branch_name": "fix-loglevel-missing-type-validation",
+    "title": "fix: Add type validation to log_level parameters",
+    "body": "## High Level Overview of Change\r\n\r\nThe `log_level` admin RPC called `asString()` on the `severity` and `partition` parameters without first checking their JSON type. Passing a non-string value (for example `{\"severity\": 5}`) could throw or return an internal error.\r\n\r\nThis adds `isString()` checks before both conversions, so invalid types now return `rpcINVALID_PARAMS`.\r\n\r\n### Type of Change\r\n\r\n- [x] Bug fix",
+    "user": "harshitgupta62",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-06-22T19:22:55Z",
+    "merged_at": "2026-11-09T21:08:27Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 17,
+    "comments": [
+      {
+        "user": "harshitgupta62",
+        "body": "This is ready for review. It adds isString() checks to log_level so non-string severity/partition values return rpcINVALID_PARAMS instead of throwing. Could a maintainer approve the workflows and take a look? Thanks!\r\n",
+        "created_at": "2026-10-05T11:37:12Z"
+      },
+      {
+        "user": "harshitgupta62",
+        "body": "> Please add tests and update the API changelog\r\n\r\nHi @mvadari \u2014 addressed in 86ea964. I added the requested regression tests and API changelog entry, and fixed the indentation. Could you please re-review when you have a moment? Thank you.",
+        "created_at": "2026-10-05T17:04:26Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-10-05T20:05:13Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-10-06T00:36:35Z"
+      },
+      {
+        "user": "harshitgupta62",
+        "body": "@mvadari I've added the tests and the API changelog entry and fixed the indentation (86ea964). Could you approve the workflows and re-review when you have a chance? Thanks!",
+        "created_at": "2026-10-06T09:51:03Z"
+      }
+    ],
+    "reviews_count": 17,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "## Pull request overview\n\nThis PR hardens the `log_level` admin RPC handler by validating JSON parameter types before converting them to strings, avoiding exceptions and internal RPC errors when calle"
+      },
+      {
+        "user": "harshitgupta62",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "harshitgupta62",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 7626,
     "branch_name": "Add_tests_for_string_unhex",
     "title": "test: Add more test cases for strUnHex",
