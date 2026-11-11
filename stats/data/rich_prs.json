@@ -25,7 +25,7 @@
     "reviews_count": 4,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "No issues found.\n\n<!-- review-fingerprint:ab6e0e0e8d66b40a -->"
       },
@@ -216,7 +216,7 @@
     "reviews_count": 3,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "No issues found.\n\n<!-- review-fingerprint:b4920426f0a8fb9a -->"
       },
@@ -226,7 +226,7 @@
         "body": ""
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "No issues found.\n\n<!-- review-fingerprint:3836633c2b1a9b0e -->"
       }
@@ -1745,17 +1745,17 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The FixedPrecision LoanPay changes are internally consistent with the PR description: vault credit is floored at the posterior live exponent of AssetsTotal+interestPaid, AssetsTotal is re-derived and "
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The core rounding logic in fixed_precision::loanPaymentDeltas and roundToPosteriorAvailableScale/posteriorScale looks correct and well-tested (verified the flooring behavior against the new unit test "
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The core change wires FixedPrecision LoanPay to record interest into AssetsTotal first and decrement YieldUnrealized by the scheduled portion only, which matches the MR description and is well covered"
       }
@@ -1931,12 +1931,12 @@
     "reviews_count": 3,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "Small, well-scoped fix: EscrowFinish now reports GasUsed = Gas (the full allowance) specifically when the result is tecOUT_OF_GAS, rather than trusting the wasmi meter's possibly-short count. The gati"
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The change is small, well-scoped, and consistent with its description: on tecOUT_OF_GAS, EscrowFinish now reports the full allowance as GasUsed instead of the wasmi meter's slightly-under count, with "
       },
@@ -2032,7 +2032,7 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "Reviewed the fixCleanup3_5_0 transfer-fee change for VaultWithdraw across View.cpp, TokenHelpers, VaultInvariant, VaultWithdraw, LoanBrokerCoverWithdraw, and the lifecycle tests. The core net/gross ac"
       },
@@ -2093,12 +2093,12 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "This diff adds a large, self-contained unit test file (LoanManageFixedPrecision_test.cpp) covering default/impairment effects on AssetsDeployed/LossUnrealized, First-Loss Capital cover, coarsened-vaul"
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "This PR implements FixedPrecision default/impair/unimpair for LoanManage, replacing the previous temporary guard with real accounting logic routed through adjustVaultBalances, and updates dependent in"
       },
@@ -2133,7 +2133,7 @@
     "reviews_count": 15,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "Clean, well-scoped amendment-gated fix: VaultClawback now checks holder-account existence in preclaim and returns terNO_ACCOUNT when fixCleanup3_5_0 is enabled, matching the behavior of Clawback/AMMCl"
       },
@@ -2143,7 +2143,7 @@
         "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe consensus change is properly amendment-gated and covered for both amount forms and replay compatibility.\n\n**Review"
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "Small, well-scoped change adding a terNO_ACCOUNT preclaim check for a nonexistent VaultClawback holder, gated behind fixCleanup3_5_0, consistent with Clawback/AMMClawback behavior. Logic looks correct"
       }
@@ -2173,7 +2173,7 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "This MR adds a new invariant (ValidPseudoAccountOwnership) gated behind fixPseudoAccountOwnership that rejects any ledger entry type landing in a pseudo-account's owner directory outside a fixed per-k"
       },
@@ -2269,7 +2269,7 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "Production change extends LoanBrokerDelete::preclaim to run the same transfer/authorization checks as LoanBrokerCoverWithdraw under fixCleanup3_4_0 before releasing cover; the added canTransfer/requir"
       },
@@ -2279,7 +2279,7 @@
         "body": "### \ud83d\udd35 Needs a closer look\n\nIt changes consensus-critical transaction preclaim behavior for asset transfer/authorization enforcement and should receive a final human review despite good targeted test c"
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The core fix in LoanBrokerDelete.cpp consolidates the freeze/frozen checks under the existing `coverAvailable > 0` guard and adds a new fixCleanup3_4_0-gated block (canTransfer, requireAuth, holding-e"
       }
@@ -2312,12 +2312,12 @@
     "reviews_count": 3,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The core Rust change (scanning type/import/export section counts and name lengths via wasmparser before Module::new) is well-designed, thoroughly tested, and the FFI/error-mapping plumbing (CheckError"
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The core scan logic (type/import/export section count + name caps, read cheaply from section headers before Module::new does real work) is sound and well-tested. One gap stood out: the scan explicitly"
       },
@@ -2373,7 +2373,7 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "The core change (FixedPrecision Open-zone admission check in LoanSet::doApply) is well-targeted and the new test exercises the boundary condition described in the PR. Two things are worth a second loo"
       },
@@ -2434,7 +2434,7 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "Solid, well-tested change: the FixedPrecision cover-grid rounding logic is consistently mirrored across deposit/withdraw/clawback (using TowardsZero rounding that always shrinks magnitude in the proto"
       },
@@ -2444,7 +2444,7 @@
         "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nA critical unity-build helper redefinition must be fixed before approval.\n\n*Get a fresh assessment by requesting anothe"
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "Well-structured change extending FixedPrecision grid rounding to LoanBroker cover deposit/withdraw/clawback and DebtMaximum/minimumBrokerCover. The rounding directions are consistent and safe (always "
       }
@@ -2495,12 +2495,12 @@
     "reviews_count": 30,
     "reviews": [
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "This diff is purely autogenerated test code adding coverage for a new `sfAssetsDeployed` field in the Vault ledger entry (builder round-trip, SLE round-trip, and optional-field-nullopt tests). The cha"
       },
       {
-        "user": "xrplf-ai-reviewer[bot]",
+        "user": "ripple-ai-reviewer[bot]",
         "state": "APPROVED",
         "body": "This is a careful, mechanical change that threads a new FixedPrecision code path through VaultCreate/Deposit/Withdraw/Clawback/Set/Delete and the ValidVault invariant, while leaving Legacy/CashBasis b"
       },
