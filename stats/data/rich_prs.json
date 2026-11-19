@@ -1,5 +1,47 @@
 [
   {
+    "pr_number": 8738,
+    "branch_name": "resilient_ubuntu_install",
+    "title": "ci: Make ubuntu resilient to (archive|security).ubuntu.com failure",
+    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nFall back to the Azure Ubuntu mirror when installing test packages on Ubuntu.\r\nI tried to add mirrorlist, but apt hangs instead of failing, if the first mirror is down.\r\n\r\nDebian\u2019s mirrors already have the redundancy Ubuntu\u2019s lacked, so they are not changed.\r\n\r\nThe scheduled package test failed on every Ubuntu image because Canonical's `archive.ubuntu.com` and `security.ubuntu.com` were unreachable. The packages themselves were fine.\r\n\r\nChanges to the DEB install test:\r\n\r\n- **Fail early on mirror errors:** `apt-get update` now runs with `--error-on=any`. Previously it only warned when it couldn't download anything, and the failure showed up later as a misleading \"unmet dependencies\" error.\r\n- **Mirror fallback on Ubuntu:** downloads get 60 seconds. If they fail or time out, the step shows a warning, switches to `azure.archive.ubuntu.com` (the mirror GitHub's own runners use), and downloads again.\r\n- **Install only after downloading:** packages are downloaded first and installed in a separate command, so the timeout never interrupts dpkg. Debian images keep the old behaviour, with no time limit and no fallback.\r\n- **apt retries on every DEB image:** apt now retries failed downloads on all DEB images instead of only Debian 11.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting i",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-19T14:57:51Z",
+    "merged_at": "2026-11-19T18:29:58Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial",
+      "Full CI build"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8738?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-19T14:59:58Z"
+      }
+    ],
+    "reviews_count": 6,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe APT update uses an unsupported option on Ubuntu 20.04, blocking package tests and publishing, while the retry can fail on Ubuntu 24.04\u2019s missin"
+      }
+    ]
+  },
+  {
     "pr_number": 8721,
     "branch_name": "Remove_static_libgcc_flag",
     "title": "build: Link libgcc dynamically to avoid std::call_once failures",
@@ -2467,67 +2509,6 @@
         "user": "kuznetsss",
         "state": "APPROVED",
         "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8260,
-    "branch_name": "tapanito/sav-fixed-precision-loanset",
-    "title": "feat: Book FixedPrecision LoanSet through AssetsDeployed",
-    "body": "## Stack\n\nPart 4 of 6 in the FixedPrecision Vault stack. Review and merge in order.\n\n1. #8257 Vault grid and balance helpers\n2. #8460 Vault transactors and invariants\n3. #8258 LoanBroker cover\n4. #8260 LoanSet (this PR)\n5. #8271 LoanPay\n6. #8461 LoanManage\n\nBased on: #8258. Next: #8271.\n\n## Changes\n\n- LoanSet on a FixedPrecision Vault moves cash out of `AssetsAvailable`, adds the principal to `AssetsDeployed` and the scheduled interest to `YieldUnrealized`, through `adjustVaultBalances`. The transfer legs equal the cash change exactly.\n- Origination is refused (`tecLIMIT_EXCEEDED`) on a coarsened Vault or when `AssetsTotal + YieldUnrealized + interest` would leave the Open zone.\n- Broker `DebtTotal` moves by the exact principal. On Legacy/CashBasis it is still rounded at the Vault scale captured before the `AssetsTotal` update, as on develop.\n- The temporary LoanSet guard is removed. LoanPay and LoanManage still refuse FixedPrecision Vaults, so a FixedPrecision Loan created in this PR cannot be paid until the next one.\n",
-    "user": "Tapanito",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-22T14:39:03Z",
-    "merged_at": "2026-10-14T13:52:50Z",
-    "labels": [
-      "Ready to merge",
-      "feature: LP1.2"
-    ],
-    "comments_count": 8,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8260?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `86.36364%` with `3 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8260?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
-        "created_at": "2026-09-22T14:41:46Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "Next: #8271 (FixedPrecision LoanPay).",
-        "created_at": "2026-09-23T08:28:06Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "@xrplf-bot",
-        "created_at": "2026-10-01T14:55:09Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "@xrplf-bot ",
-        "created_at": "2026-10-02T13:12:11Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "@gregtatcam the XRP and MPT cases are in a198934412: one loan each on an XRP and an MPT FixedPrecision Vault, checking AssetsDeployed and YieldUnrealized, with a nonzero management fee.\n\nOn the AI review question about the AssetsMaximum guard now being Legacy-only: FixedPrecision is cash-basis. LoanSet moves cash from AssetsAvailable to AssetsDeployed, so AssetsTotal does not change, and interest goes to YieldUnrealized rather than AssetsTotal. A loan therefore cannot push the Vault past AssetsM",
-        "created_at": "2026-10-12T09:11:32Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "The core change (FixedPrecision Open-zone admission check in LoanSet::doApply) is well-targeted and the new test exercises the boundary condition described in the PR. Two things are worth a second loo"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udd35 Needs a closer look\n\nAdd regression coverage for coarsened vaults and base-scale behavior.\n\n**Review effort:** Lite  \n**Findings:** None\n\n<d"
-      },
-      {
-        "user": "gregtatcam",
-        "state": "APPROVED",
-        "body": "LGTM"
       }
     ]
   }
