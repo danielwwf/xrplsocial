@@ -1,5 +1,51 @@
 [
   {
+    "pr_number": 8721,
+    "branch_name": "Remove_static_libgcc_flag",
+    "title": "build: Link libgcc dynamically to avoid std::call_once failures",
+    "body": "## High Level Overview of Change\n\nStop linking libgcc statically on Linux. `-static-libstdc++` stays.\n\n- `cmake/XrplCompiler.cmake`: drop `-static-libgcc` from the `static` link options.\n- `crates/.cargo/config.toml`: drop the Linux `-static-libgcc` rustflags.\n- `crates/CMakeLists.txt`, `.gersemi/definitions.cmake`: remove `_unlink_libgcc_s`, which stripped `gcc_s` from Corrosion's link interface.\n- `conan/profiles/default`: drop `-static-libgcc` from the build-context tool link flags.\n- CI \"Check linking (Linux)\" now only requires libstdc++ to be static, and is renamed to \"Check `libstdc++` is statically linked (Linux)\".\n- `docs/build/nix.md` updated accordingly.\n\n## Context of Change\n\nWith `-static-libgcc`, an exception thrown from a `std::call_once` callable hangs or crashes the process, depending on the glibc version. Throwing from the callable is valid and must propagate to the caller.\n\nThere are two separate bugs:\n\n- **Two unwinders (fixed here).** With `-static-libstdc++ -static-libgcc`, `throw` uses the libgcc unwinder linked into the binary. glibc still `dlopen`s the shared `libgcc_s.so.1` for the personality routine of its own frames. When an unwind crosses a glibc frame with a cleanup handler (such as `pthread_once`), glibc calls the shared copy's `_Unwind_SetGR` on a context built by the static copy. The shared copy's register-size table was never initialized, so `gcc_assert` aborts the process with no message. Either flag alone is fine; only the combination breaks. So `libgcc_s.so.1` was already a hidden runtime dependency of the \"static\" binaries: glibc refuses to unwind without it.\n- **glibc BZ #18435 (fixed by #8722).** Before glibc 2.34, `pthread_once` registered its flag-reset cleanup only for thread cancellation, so a C++ exception skipped it and every later caller hangs. #8722 moves the Nix toolchain to glibc 2.34. The glibc fix is also what exposes the first bug, since the cleanup becomes visible to the unwinder. This PR must therefore land befo",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-12T15:29:24Z",
+    "merged_at": "2026-11-19T15:41:59Z",
+    "labels": [
+      "Ready to merge",
+      "Full CI build"
+    ],
+    "comments_count": 2,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8721?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-12T15:35:22Z"
+      },
+      {
+        "user": "kuznetsss",
+        "body": "> Where do we verify this?\n\nIt is verified in CI on every Linux job:\n\n- `bin/nix/check-build-context-runtime.sh` (run from `.github/actions/build-deps/action.yml`) runs `ldd` on every Nix-linked binary in the build-context packages and fails if anything resolves from `/nix/store` outside a `glibc` output. So `libgcc_s.so.1` coming from the GCC runtime would fail the job. `tools.build:exelinkflags` is part of the package ID, so this PR rebuilds those tools with dynamic libgcc and the check runs o",
+        "created_at": "2026-11-18T16:13:37Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nRuntime validation is needed to establish std::call_once exception propagation/retry and libgcc_s unwinder compatibility for retargeted release bin"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": "You say `libgcc_s.so.1` resolves from the pinned `glibc` output, which bundles it and comes before the GCC runtime in RUNPATH.\r\n\r\nWhere do we verify this?\r\nWe shouldn't depend on GCC runtime and this "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "COMMENTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8627,
     "branch_name": "batch-mem",
     "title": "perf: Avoid memory allocations during Batch preflight checks",
@@ -2482,67 +2528,6 @@
         "user": "gregtatcam",
         "state": "APPROVED",
         "body": "LGTM"
-      }
-    ]
-  },
-  {
-    "pr_number": 8258,
-    "branch_name": "tapanito/sav-fixed-precision-loanbroker",
-    "title": "feat: Round LoanBroker cover on the FixedPrecision grid",
-    "body": "## Stack\n\nPart 3 of 6 in the FixedPrecision Vault stack. Review and merge in order.\n\n1. #8257 Vault grid and balance helpers\n2. #8460 Vault transactors and invariants\n3. #8258 LoanBroker cover (this PR)\n4. #8260 LoanSet\n5. #8271 LoanPay\n6. #8461 LoanManage\n\nBased on: #8460. Next: #8260.\n\n## Changes\n\n- LoanBrokerCoverDeposit, LoanBrokerCoverWithdraw and LoanBrokerCoverClawback round on the posterior `CoverAvailable` grid for brokers on FixedPrecision Vaults, so `CoverAvailable` always equals the broker pseudo-account balance. Cover deposits stay inside the cover Open zone.\n- LoanBrokerSet rejects a `DebtMaximum` that is not representable on the Vault grid.\n- Lending dispatch treats FixedPrecision Vaults as cash-basis.\n- Legacy and CashBasis are unchanged.\n\nLoanSet, LoanPay and LoanManage still refuse FixedPrecision Vaults in this PR.\n",
-    "user": "Tapanito",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-22T13:48:57Z",
-    "merged_at": "2026-10-14T13:52:48Z",
-    "labels": [
-      "Ready to merge",
-      "feature: LP1.2"
-    ],
-    "comments_count": 7,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8258?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `95.20000%` with `6 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8258?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
-        "created_at": "2026-09-22T13:55:56Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "Stacked next PR: #8260 (LoanSet Open-zone admission).",
-        "created_at": "2026-09-22T14:39:14Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "Next after LoanSet: #8271 (FixedPrecision LoanPay).",
-        "created_at": "2026-09-23T08:28:07Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "@xrplf-bot",
-        "created_at": "2026-10-01T14:55:07Z"
-      },
-      {
-        "user": "Tapanito",
-        "body": "@xrplf-bot",
-        "created_at": "2026-10-02T10:22:29Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "Solid, well-tested change: the FixedPrecision cover-grid rounding logic is consistently mirrored across deposit/withdraw/clawback (using TowardsZero rounding that always shrinks magnitude in the proto"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nA critical unity-build helper redefinition must be fixed before approval.\n\n*Get a fresh assessment by requesting anothe"
-      },
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "Well-structured change extending FixedPrecision grid rounding to LoanBroker cover deposit/withdraw/clawback and DebtMaximum/minimumBrokerCover. The rounding directions are consistent and safe (always "
       }
     ]
   }
