@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 8740,
+    "branch_name": "c_sanitizers",
+    "title": "build: Add sanitizers to C libraries too",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nConan has separate C and C++ flags, and we only added sanitizer flags to C++ dependencies, which is clearly a bug.\n\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or de",
+    "user": "mathbunnyru",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-19T18:48:58Z",
+    "merged_at": "2026-11-20T19:37:29Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8740?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-19T18:52:15Z"
+      }
+    ],
+    "reviews_count": 10,
+    "reviews": [
+      {
+        "user": "bthomee",
+        "state": "APPROVED",
+        "body": ""
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThere are no active review issues for the change extending sanitizer instrumentation and package-ID tracking to C dependencies.\n\n**No open issues*"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe changes extending sanitizer coverage to C dependencies have no active review issues.\n\n**No open issues** \ud83c\udf89\n\n<sub>Review effort: Balanced</sub>"
+      }
+    ]
+  },
+  {
     "pr_number": 8738,
     "branch_name": "resilient_ubuntu_install",
     "title": "ci: Make ubuntu resilient to (archive|security).ubuntu.com failure",
@@ -2406,109 +2447,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nThe refactor consistently updates all references while preserving existing behavior for supported compilers.\n\n**0 open findings**\n\n<details>\n<summ"
-      }
-    ]
-  },
-  {
-    "pr_number": 8204,
-    "branch_name": "tialymov/FN-102-loanbrokerdelete_asset_auth",
-    "title": "fix: Enforce asset authorization on LoanBrokerDelete",
-    "body": "## High Level Overview of Change\n\nLoanBrokerDelete now checks asset transfer restrictions and owner authorization before returning nonzero broker cover, and creates the owner's holding when it is missing, as a withdrawal to self does.\n\n## Context of Change\n\nLoanBrokerDelete checked freeze state but returned cover through accountSend without the checks LoanBrokerCoverWithdraw uses. Under fixCleanup3_5_0, deletion follows the same self-withdrawal policy. If the cover is nonzero and the owner has deleted its MPToken or trust line, the payout creates it again: a recreated trust line always gets NoRipple, and the owner must cover its reserve. For the MPT case, ValidMPTIssuance lets LoanBrokerDelete create one MPToken and delete one, the same cap VaultWithdraw has. The broker's owner count is released before the holding is created, so the holding can use the reserve the broker frees. Pre-amendment and zero-cover behavior stay the same.\n\n## API Impact\n\n- [x] `libxrpl` change\n\n## Test Plan\n\nTwo table-driven LoanBroker tests run each case under all four combinations of fixCleanup3_5_0 and fixCleanup3_4_0, and check the result, the broker, the owner's balance, holding and owner count.\n\nIOU cases:\n- non-rippling owner line\n- owner line deleted before the payout; the recreated line has NoRipple with the amendment on\n- owner line deleted, and the issuer clears DefaultRipple\n- issuer clears DefaultRipple, owner line kept\n- owner line deleted, and the owner is below its reserve\n- owner line deleted while the issuer requires authorization\n- owner line recreated without authorization\n- zero cover, owner line deleted\n\nMPT cases:\n- owner authorization revoked\n- owner authorization revoked, cover clawed back to zero\n- owner MPToken deleted\n- owner MPToken deleted, owner exactly at its reserve\n- owner MPToken deleted, owner below its reserve\n- zero cover, owner MPToken deleted, also below its reserve\n\nInvariantsMPT covers the LoanBrokerDelete cap on created and deleted MPTokens.\n",
-    "user": "tyalymov",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-09T13:30:20Z",
-    "merged_at": "2026-10-14T14:58:40Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 7,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8204?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-09-09T13:32:49Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-10-02T23:41:00Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-10-05T15:56:16Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
-        "created_at": "2026-10-09T10:58:11Z"
-      },
-      {
-        "user": "github-actions[bot]",
-        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
-        "created_at": "2026-10-09T19:30:36Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "Production change extends LoanBrokerDelete::preclaim to run the same transfer/authorization checks as LoanBrokerCoverWithdraw under fixCleanup3_4_0 before releasing cover; the added canTransfer/requir"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "### \ud83d\udd35 Needs a closer look\n\nIt changes consensus-critical transaction preclaim behavior for asset transfer/authorization enforcement and should receive a final human review despite good targeted test c"
-      },
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "The core fix in LoanBrokerDelete.cpp consolidates the freeze/frozen checks under the existing `coverAvailable > 0` guard and adds a new fixCleanup3_4_0-gated block (canTransfer, requireAuth, holding-e"
-      }
-    ]
-  },
-  {
-    "pr_number": 8571,
-    "branch_name": "timothybanks/section-limits",
-    "title": "fix: Add limits for the number of entries in the type, imports, and exports sections in a wasm module",
-    "body": "## High Level Overview of Change\r\n\r\nCaps the number of entries in a wasm module's type, import and export sections, and the length of import and export names. The check runs before the module is compiled. A module that exceeds a cap is refused with a new `Limit` status, kept separate from ordinary malformed bytecode, so likely abuse can be told apart in the logs. Transaction results are unchanged: `temINVALID_BYTECODE` at preflight, `tecINTERNAL` at apply.\r\n\r\n## Context of Change\r\n\r\n`Module::new` parses, validates and stores every type, import and export entry. That work happens before a `Store` exists, so no fuel is charged for it. wasmi's `EnforcedLimits` has no setting for these sections. The only limits are wasmparser's hard-coded ones: 1,000,000 entries per section and 100,000 bytes per name. In testing, wasmi **accepted** a module declaring 1M types after 387 ms of uncharged work on every node that compiled it.\r\n\r\n**Approach.** `compile` now runs `check_section_counts` before `Module::new`. Because `compile` is the only path to a `Module`, `check`, `check_all` and `run` all enforce the same caps. The scan:\r\n- reads each section's entry count from its header, which costs almost nothing;\r\n- reads names only after the section's count has passed its cap;\r\n- stops at the code section, so function bodies and data are never read;\r\n- skips anything that doesn't parse, so `Module::new` still reports malformed modules with wasmi's own messages.\r\n\r\n**Caps** (new public constants in `xrpl-wasm-vm`):\r\n\r\n| Constant | Value | Example contracts use |\r\n|---|---|---|\r\n| `MAX_TYPES` | 2048 | \u2264 9 |\r\n| `MAX_IMPORTS` | 256 | \u2264 9 (the ABI has ~60 host functions) |\r\n| `MAX_EXPORTS` | 256 | \u2264 5 |\r\n| `MAX_NAME_BYTES` | 256 | \u2264 14 |\r\n\r\nThese values were chosen to leave far more room than any real contract needs, while staying low enough that reaching one signals a deliberately built module.\r\n\r\n**Error reporting.** A cap violation is reported as `Limit` at every layer: `CheckError::Limit",
-    "user": "TimothyBanks",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-13T15:07:34Z",
-    "merged_at": "2026-10-14T14:09:29Z",
-    "labels": [],
-    "comments_count": 2,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8571?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `98.07692%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8571?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
-        "created_at": "2026-10-13T15:10:17Z"
-      },
-      {
-        "user": "kuznetsss",
-        "body": "Examples from the section `Modules that exceed a cap` will be rejected by size any way.",
-        "created_at": "2026-10-14T12:32:18Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "The core Rust change (scanning type/import/export section counts and name lengths via wasmparser before Module::new) is well-designed, thoroughly tested, and the FFI/error-mapping plumbing (CheckError"
-      },
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "The core scan logic (type/import/export section count + name caps, read cheaply from section headers before Module::new does real work) is sound and well-tested. One gap stood out: the scan explicitly"
-      },
-      {
-        "user": "kuznetsss",
-        "state": "APPROVED",
-        "body": ""
       }
     ]
   }
