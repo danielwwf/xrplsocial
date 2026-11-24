@@ -1,5 +1,46 @@
 [
   {
+    "pr_number": 8759,
+    "branch_name": "mvadari/cspell-check-cmake",
+    "title": "ci: Check the cmake directory for spelling errors",
+    "body": "## High Level Overview of Change\n\nChecks `cmake/` with cspell. The directory was in `ignorePaths`; this removes it. `cmake/CodeCoverage.cmake` stays ignored because it is vendored from [bilke/cmake-modules](https://github.com/bilke/cmake-modules). Fixes the one real misspelling found (\"archictecture\" in `XrplSanity.cmake`) and allows 17 compiler, linker, and Windows library names with a `cspell:words` comment in the CMake files that use them.\n\n## Context of Change\n\ncspell never looked at the CMake files, so a typo in an error message (#8756 also fixes it) went unnoticed. The new words (`relro`, `Shlwapi`, and similar) are allowed with a `cspell:words` comment at the top of the file that uses them; only `Werror`, used in two files, is on the global list.\n\nThis is the first PR of a stack. The second PR disables compound-word matching.\n\n## API Impact\n\nNone.\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\n## Test Plan\n\n`pre-commit run cspell --all-files` passes.\n",
+    "user": "mvadari",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-23T17:51:20Z",
+    "merged_at": "2026-11-23T23:44:17Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8759?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-23T17:53:54Z"
+      }
+    ],
+    "reviews_count": 7,
+    "reviews": [
+      {
+        "user": "ripple-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues found.\n\n### \ud83e\udded Merge confidence: **82%** \u2014 no-regression estimate\n\n- \u26a0\ufe0f No test file touched (-10) \u2014 Production code changed and no test did.\n\n- \u26a0\ufe0f Inconclusive: Removing `cmake/**` from cspe"
+      },
+      {
+        "user": "ripple-ai-reviewer[bot]",
+        "state": "APPROVED",
+        "body": "No issues found.\n\n### \ud83e\udded Merge confidence: **77%** \u2014 no-regression estimate\n\n- \u26a0\ufe0f No test file touched (-10) \u2014 Production code changed and no test did.\n\n- \u26a0\ufe0f Inconclusive: Removing `cmake/**` from igno"
+      },
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe2 Approval recommended\n\nNo active review issues are reported for the change extending spelling checks to CMake files.\n\n**No open issues** \ud83c\udf89\n\n<details>\n<summary><strong>Wh"
+      }
+    ]
+  },
+  {
     "pr_number": 8740,
     "branch_name": "c_sanitizers",
     "title": "build: Add sanitizers to C libraries too",
@@ -53,7 +94,7 @@
     "labels": [
       "Ready to merge",
       "Trivial",
-      "Full CI build"
+      "Merge CI"
     ],
     "comments_count": 1,
     "comments": [
@@ -94,7 +135,7 @@
     "merged_at": "2026-11-19T15:41:59Z",
     "labels": [
       "Ready to merge",
-      "Full CI build"
+      "Merge CI"
     ],
     "comments_count": 2,
     "comments": [
@@ -2184,7 +2225,7 @@
     "merged_at": "2026-10-14T21:40:32Z",
     "labels": [
       "Ready to merge",
-      "Full CI build"
+      "Merge CI"
     ],
     "comments_count": 1,
     "comments": [
@@ -2331,86 +2372,6 @@
         "user": "copilot-pull-request-reviewer[bot]",
         "state": "COMMENTED",
         "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe1 Changes recommended\n\nThe new scheduled-interest removal lacks a nonzero-interest default test.\n\n**Review effort:** Balanced  \n**Findings:** "
-      }
-    ]
-  },
-  {
-    "pr_number": 8470,
-    "branch_name": "tialymov/FN-30-vault_clawback_holder_existence",
-    "title": "fix: Reject VaultClawback with a nonexistent holder",
-    "body": "## High Level Overview of Change\n\n`VaultClawback` now fails in `preclaim` with `terNO_ACCOUNT` when the `Holder` account does not exist, gated on `fixCleanup3_5_0`.\n\n## Context of Change\n\nBefore this change a nonexistent `Holder` passed `preclaim`, and the transaction failed in `doApply`, which still charged the fee: `tecPRECISION_LOSS` with an implicit `Amount`, `tecNO_AUTH` with an explicit one. `Clawback` and `AMMClawback` already return `terNO_ACCOUNT` for a missing holder.\n\n## API Impact\n\n- [x] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n\n## Test Plan\n\n`VaultClawback_test` covers a nonexistent holder with an implicit and an explicit amount, with `fixCleanup3_5_0` enabled and disabled.\n",
-    "user": "tyalymov",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-02T18:17:48Z",
-    "merged_at": "2026-10-14T15:25:25Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8470?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-02T18:20:01Z"
-      }
-    ],
-    "reviews_count": 15,
-    "reviews": [
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "Clean, well-scoped amendment-gated fix: VaultClawback now checks holder-account existence in preclaim and returns terNO_ACCOUNT when fixCleanup3_5_0 is enabled, matching the behavior of Clawback/AMMCl"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n## Copilot review overview\n\n### \ud83d\udfe2 Approval recommended\n\nThe consensus change is properly amendment-gated and covered for both amount forms and replay compatibility.\n\n**Review"
-      },
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "Small, well-scoped change adding a terNO_ACCOUNT preclaim check for a nonexistent VaultClawback holder, gated behind fixCleanup3_5_0, consistent with Clawback/AMMClawback behavior. Logic looks correct"
-      }
-    ]
-  },
-  {
-    "pr_number": 8181,
-    "branch_name": "tialymov/FN-130-pseudo_account_ownership_invariant",
-    "title": "fix: Enforce pseudo-account directory contents with an invariant",
-    "body": "## High Level Overview of Change\n`ValidPseudoAccounts` now also checks, under `fixCleanup3_5_0`, that every entry newly linked into a pseudo-account's owner directory belongs to that pseudo-account's own AMM, Vault or LoanBroker:\n- AMM: its AMM entry, its holdings of the two pool assets, and the trust lines of its LP token.\n- Vault: its share MPTokenIssuance, its holding of the vault asset, and the LoanBrokers operating on this vault.\n- LoanBroker: its Loans and its holding of the vault asset.\n\nAnything else fails the transaction with `tecINVARIANT_FAILED`/`tefINVARIANT_FAILED`: an unexpected entry type, an entry of an expected type that belongs to someone else (a trust line for an unrelated asset, another vault's LoanBroker, another broker's Loan), or a link to an entry that doesn't exist.\n\n## Context of Change\nA pseudo-account can't sign transactions, so anything linked into its owner directory that its own object doesn't manage is pinned there for good: nothing can remove it, and it blocks deleting the object that owns the pseudo-account. Several transactors already refuse to create such links (TrustSet, EscrowCreate, CheckCreate, PaymentChannelCreate, DelegateSet, SponsorshipSet, DepositPreauth, CredentialCreate, Payment, MPTokenAuthorize). This check is the backstop for that whole class of guard: it looks once at whatever actually lands in the directory, instead of relying on every current and future transactor getting it right. It follows a Sherlock audit finding that a related pseudo-account cleanup mechanism was itself exploitable and got reverted in an earlier PR; this is the general replacement fix.\n\n## API Impact\n- [x] `libxrpl` change\n\n## Test Plan\n- `InvariantsPseudoAccount_test`: for each pseudo-account kind (AMM/Vault/LoanBroker), links into its directory an unexpected entry type, an entry of an expected type that belongs to someone else, or a key with no entry behind it, the way a bug bypassing the transactor-level guards would. Checks that the invar",
-    "user": "tyalymov",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-09-07T12:04:13Z",
-    "merged_at": "2026-10-14T15:09:02Z",
-    "labels": [
-      "Ready to merge"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8181?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `98.52941%` with `1 line` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8181?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term",
-        "created_at": "2026-09-07T12:05:50Z"
-      }
-    ],
-    "reviews_count": 30,
-    "reviews": [
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "This MR adds a new invariant (ValidPseudoAccountOwnership) gated behind fixPseudoAccountOwnership that rejects any ledger entry type landing in a pseudo-account's owner directory outside a fixed per-k"
-      },
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "### \ud83d\udfe1 Changes recommended\n\nThe new amendment entry in `features.macro` is not placed at the top of the list as required by the file\u2019s documented ordering convention.\n\n*Once you've addressed the issues"
-      },
-      {
-        "user": "tyalymov",
-        "state": "COMMENTED",
-        "body": ""
       }
     ]
   }
