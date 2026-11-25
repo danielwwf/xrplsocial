@@ -1,5 +1,96 @@
 [
   {
+    "pr_number": 8774,
+    "branch_name": "doc/fix-refs",
+    "title": "docs: Fix doxygen refs",
+    "body": "## High Level Overview of Change\n\nFixes broken Doxygen references and comment syntax so that Doxygen and other tools no longer report broken refs or invalid syntax.\n\n## Context of Change\n\n- Some reference names weren't updated when the code they point to was renamed.\n- Some places used invalid syntax.\n- Some Doxygen comments had parameter descriptions merged into the overall description.",
+    "user": "godexsoft",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-25T14:29:38Z",
+    "merged_at": "2026-11-25T15:58:46Z",
+    "labels": [
+      "Ready to merge",
+      "Trivial"
+    ],
+    "comments_count": 1,
+    "comments": [
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8774?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `62.50000%` with `3 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8774?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
+        "created_at": "2026-11-25T14:32:24Z"
+      }
+    ],
+    "reviews_count": 2,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udd35 Needs a closer look\n\nThe required C++ guidance files, docs/cpp/guidelines.md and docs/cpp/antithesis.md, are absent from the supplied checkout, preventing verification "
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "APPROVED",
+        "body": ""
+      }
+    ]
+  },
+  {
+    "pr_number": 8688,
+    "branch_name": "Cpp_guidelines",
+    "title": "docs: Add C++ guidelines",
+    "body": "<!--\nThis PR template helps you write a good pull request description.\nPlease feel free to include additional useful information even beyond what is requested below.\n\nIf your branch is on a personal fork and has a name that allows it to\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\nopening the PR. This avoids redundant test runs. Renaming\nthe branch after opening the PR will close the PR.\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\n-->\n\n## High Level Overview of Change\n\nCreate a doc with C++ guidelines. Add github copilot instructions to check PR for following the guidelines.\n<!--\nPlease include a summary of the changes.\nThis may be a direct input to the release notes.\nIf too broad, please consider splitting into multiple PRs.\nIf there is a relevant task or issue, please link it here.\n-->\n\n## Context of Change\n\n<!--\nPlease include the context of a change.\nIf a bug fix, when was the bug introduced? What was the behavior?\nIf a new feature, why was this architecture chosen? What were the alternatives?\nIf a refactor, how is this better than the previous implementation?\n\nIf there is a spec or design document for this feature, please link it here.\n-->\n\n## API Impact\n\n<!--\nPlease check [x] relevant options, delete irrelevant ones.\n\n* If there is any impact to the public API methods (HTTP / WebSocket), please update https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md\n  * Update API-CHANGELOG.md and add the change directly in this PR by pushing to your PR branch.\n* libxrpl: See https://github.com/XRPLF/rippled/blob/develop/docs/build/depend.md\n* Peer Protocol: See https://xrpl.org/peer-protocol.html\n-->\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents",
+    "user": "kuznetsss",
+    "state": "closed",
+    "merged": true,
+    "created_at": "2026-11-04T17:56:16Z",
+    "merged_at": "2026-11-25T13:31:20Z",
+    "labels": [
+      "Ready to merge"
+    ],
+    "comments_count": 4,
+    "comments": [
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-11-05T16:52:06Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "This PR has conflicts, please resolve them in order for the PR to be reviewed.",
+        "created_at": "2026-11-05T16:52:06Z"
+      },
+      {
+        "user": "github-actions[bot]",
+        "body": "All conflicts have been resolved. Assigned reviewers can now start or resume their review.",
+        "created_at": "2026-11-09T15:20:18Z"
+      },
+      {
+        "user": "codecov[bot]",
+        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8688?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
+        "created_at": "2026-11-25T11:38:06Z"
+      }
+    ],
+    "reviews_count": 25,
+    "reviews": [
+      {
+        "user": "copilot-pull-request-reviewer[bot]",
+        "state": "COMMENTED",
+        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe namespace guideline must distinguish implementation-only helpers from out-of-class template member definitions, since moving the latter into `x"
+      },
+      {
+        "user": "mathbunnyru",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      },
+      {
+        "user": "ximinez",
+        "state": "CHANGES_REQUESTED",
+        "body": ""
+      }
+    ]
+  },
+  {
     "pr_number": 8759,
     "branch_name": "mvadari/cspell-check-cmake",
     "title": "ci: Check the cmake directory for spelling errors",
@@ -2171,85 +2262,6 @@
       {
         "user": "mvadari",
         "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8596,
-    "branch_name": "mvadari/se-out-of-gas-gasused",
-    "title": "fix: Report the whole Gas allowance as GasUsed on tecOUT_OF_GAS",
-    "body": "## High Level Overview of Change\n\nOn `tecOUT_OF_GAS`, EscrowFinish now reports `GasUsed = Gas` instead of the wasmi meter's count.\n\n## Context of Change\n\nManual testing found that an out-of-gas finish reported `GasUsed = Gas \u2212 1` (9,999 for `Gas=10000`). The wasmi meter stops at the last instruction it can afford, so its count can be a little under the allowance. The comment in `EscrowFinish.cpp` and the test plan said it equals `Gas`. EVM and other chains burn the whole allowance on an out-of-gas halt. The fee is already based on `Gas`, so only the metadata changes. The WasmVM comment that said the engine reports the whole limit is corrected, and the `FinishFailures` test now checks for equality instead of a range.\n\nNot built or tested locally; relying on CI.\n\n## API Impact\n\n- [ ] Public API: New feature (new methods and/or new fields)\n- [ ] Public API: Breaking change (in general, breaking changes should only impact the next api_version)\n- [ ] `libxrpl` change (any change that may affect `libxrpl` or dependents of `libxrpl`)\n- [ ] Peer protocol change (must be backward compatible or bump the peer protocol version)\n\nAI assisted with this change.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n",
-    "user": "mvadari",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-14T20:55:01Z",
-    "merged_at": "2026-10-14T22:34:34Z",
-    "labels": [],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8596?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n\n:loudspeaker: Thoughts on this report? [Let us know!](https://github.com/codecov/feedback/issues/255)",
-        "created_at": "2026-10-14T20:57:04Z"
-      }
-    ],
-    "reviews_count": 3,
-    "reviews": [
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "Small, well-scoped fix: EscrowFinish now reports GasUsed = Gas (the full allowance) specifically when the result is tecOUT_OF_GAS, rather than trusting the wasmi meter's possibly-short count. The gati"
-      },
-      {
-        "user": "ripple-ai-reviewer[bot]",
-        "state": "APPROVED",
-        "body": "The change is small, well-scoped, and consistent with its description: on tecOUT_OF_GAS, EscrowFinish now reports the full allowance as GasUsed instead of the wasmi meter's slightly-under count, with "
-      },
-      {
-        "user": "TimothyBanks",
-        "state": "APPROVED",
-        "body": ""
-      }
-    ]
-  },
-  {
-    "pr_number": 8583,
-    "branch_name": "no_standalone_dns",
-    "title": "fix: Skip bootstrap DNS lookups in standalone mode",
-    "body": "<!--\r\nThis PR template helps you write a good pull request description.\r\nPlease feel free to include additional useful information even beyond what is requested below.\r\n\r\nIf your branch is on a personal fork and has a name that allows it to\r\nrun CI build/test jobs (e.g. \"ci/foo\"), remember to rename it BEFORE\r\nopening the PR. This avoids redundant test runs. Renaming\r\nthe branch after opening the PR will close the PR.\r\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/renaming-a-branch\r\n-->\r\n\r\n## High Level Overview of Change\r\n\r\nOverlayImpl::start() resolved the bootstrap hosts (r.ripple.com etc.)\r\neven in standalone mode, where the server never connects to peers.\r\nEvery jtx::Env is standalone, so every unit test made real internet\r\nDNS lookups.\r\n\r\nAsio runs all lookups for an io_context on a single thread. When CI\r\nDNS is slow, a test's own lookup (e.g. ValidatorSite resolving\r\n127.0.0.1) queues behind a bootstrap lookup and can exceed its\r\ntimeout. Env teardown also waits for in-flight lookups. This caused\r\nthe \"xrpl.app.ValidatorSite had 41/42 failures\" CI flake.\r\n\r\nSkip both the bootstrap and [ips_fixed] lookups in standalone mode,\r\nmove the default bootstrap hosts into a constant, and share the\r\ndefault-port handling between the two lookups.\r\n\r\n<!--\r\nPlease include a summary of the changes.\r\nThis may be a direct input to the release notes.\r\nIf too broad, please consider splitting into multiple PRs.\r\nIf there is a relevant task or issue, please link it here.\r\n-->\r\n\r\n### Cool part\r\n\r\n**Across the 21 Linux configs:**\r\n- **Typical saving:** 12% median (27s per config), 13% mean, ranging from 0% to 31%. Summed across configs, that's 5,706s down to 5,156s, about 10% less.\r\n- **Fast release builds gain the most, 21\u201331%:** `rhel-gcc-release-amd64` went from 144s to 100s, `ubuntu-clang-release-arm64` from 176s to 129s, `debian-gcc-release-amd64-assert` from 139s to 103s. Their test step is sho",
-    "user": "mathbunnyru",
-    "state": "closed",
-    "merged": true,
-    "created_at": "2026-10-14T15:34:24Z",
-    "merged_at": "2026-10-14T21:40:32Z",
-    "labels": [
-      "Ready to merge",
-      "Merge CI"
-    ],
-    "comments_count": 1,
-    "comments": [
-      {
-        "user": "codecov[bot]",
-        "body": "## [Codecov](https://app.codecov.io/gh/XRPLF/rippled/pull/8583?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=XRPLF) Report\n:x: Patch coverage is `4.34783%` with `22 lines` in your changes missing coverage. Please review.\n| [Files with missing lines](https://app.codecov.io/gh/XRPLF/rippled/pull/8583?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_ter",
-        "created_at": "2026-10-14T15:37:35Z"
-      }
-    ],
-    "reviews_count": 6,
-    "reviews": [
-      {
-        "user": "copilot-pull-request-reviewer[bot]",
-        "state": "COMMENTED",
-        "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe standalone DNS suppression lacks deterministic automated regression coverage.\n\n<details open>\n<summary><strong>1 open finding</strong></summary"
-      },
-      {
-        "user": "godexsoft",
-        "state": "APPROVED",
-        "body": ":rage3: "
-      },
-      {
-        "user": "mathbunnyru",
-        "state": "COMMENTED",
         "body": ""
       }
     ]
